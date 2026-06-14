@@ -6,7 +6,7 @@
 ## これは何
 - 日本語学校の授業用ドリル集。GitHub Pages で公開し、**教室プロジェクター投影＋学生スマホ**の両方で使う。
 - 公開URL（学生に配る唯一の入口）: **https://skullchiave.github.io/scg-nihongo/**
-- リポジトリ: `skullchiave/scg-nihongo`（public）。ローカル制作フォルダ: `C:\Users\wsedc\Desktop\claude-work\tsunagu-drills\`（OSロックで改名失敗のままだが実害なし）。
+- リポジトリ（**正本＝GitHub**）: `skullchiave/scg-nihongo`（public）。ローカルの clone 先はマシンで異なる（自宅: `Desktop\0.4 claude-drills`）。複数拠点では GitHub を介して同期する（下記「作業場所・同期」）。
 
 ## ⚠ 最重要ルール（事故防止）
 - **`index.html` は手編集が正本**（2026-06-15〜）。ロゴ・ラベル・CSS を直接書いてある。
@@ -47,12 +47,17 @@
 ```
 "C:/Program Files/Google/Chrome/Application/chrome.exe" --headless=new \
   --remote-debugging-port=9222 --remote-allow-origins=* \
-  --user-data-dir="...tsunagu-drills/tmp/headless-profile" about:blank &
+  --user-data-dir="<repoフォルダ>/tmp/headless-profile" about:blank &
 python scratch/<撮影・計測スクリプト>.py     # CDP経由でfile:///を撮影・DOM計測
 taskkill //F //IM chrome.exe
 ```
 - `--remote-allow-origins=*` 必須（無いとCDPが403）。`show('flip')` 等でタブ切替して撮る。
 - 一括パッチは `scratch/patch_*.py`（8本共通構造にアンカー置換）。試作・スクショは scratch/ に閉じ込める。
+
+## 作業場所・同期（複数拠点）
+- **正本は GitHub**（`skullchiave/scg-nihongo`）。複数のPC/拠点で作業するなら **git clone / pull / push で同期**する。GitHub が単一の真実。
+- ⚠ **`.git` を含むこのフォルダを Google Drive 等のクラウド同期フォルダに置かない**。クラウド同期が `.git` 内部を file 単位で同期して破損する典型事故。バックアップ目的なら GitHub が既にそれ。
+- 自宅 clone: `Desktop\0.4 claude-drills`。職場PCは別パスに `git clone` する。`scratch/` `tmp/` は同期不要（gitignore済だが、クラウド同期は gitignore を無視するので特に注意）。
 
 ## デプロイ
 ローカルで編集 → `git add` → `git commit` → `git push`。GitHub Pages が数十秒〜1分で反映。コミットemailはnoreply化済。
