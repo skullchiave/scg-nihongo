@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>つなぐ L8-1 た形ドリル</title>
+<style>
+:root{
+  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1G=赤(最複雑・最重要) / 2G=青 / 3G=緑 */
+  --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
+  --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{font-family:"Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);
+  display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-user-select:none;user-select:none;}
+/* nav */
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#ffffff;border-bottom:2px solid var(--line);flex-shrink:0;align-items:center;}
+nav .ttl{font-weight:800;font-size:18px;margin-right:auto;letter-spacing:.5px;}
+nav .ttl small{color:var(--sub);font-weight:400;font-size:13px;margin-left:8px;}
+nav button{background:#eef2f8;color:var(--sub);border:1px solid var(--line);border-radius:8px;
+  padding:8px 16px;font-size:15px;cursor:pointer;font-family:inherit;white-space:nowrap;}
+nav button.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800;}
+nav button:hover{color:var(--ink);}
+/* ホームへ戻る（母艦ポータルへ） */
+nav .navhome{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 13px;font-size:14px;font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+nav .navhome:hover{border-color:var(--accent);color:var(--accentT);}
+/* 文字サイズ切替（Ctrl+= を知らない先生向けの明示ボタン） */
+nav .fzgrp{display:inline-flex;gap:6px;align-items:center;margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
+nav .fzgrp button{padding:6px 10px;font-size:14px;min-width:44px;}
+/* sections */
+.screen{flex:1;display:none;flex-direction:column;padding:24px 32px;overflow:auto;position:relative;}
+.screen.on{display:flex;}
+h2{font-size:26px;margin-bottom:6px;}
+rt{font-size:0.45em;font-weight:500;opacity:.8;}
+.hint{color:var(--sub);font-size:16px;margin-bottom:20px;}
+.legend{display:flex;gap:18px;font-size:15px;margin-bottom:18px;flex-wrap:wrap;}
+.chip{display:inline-flex;align-items:center;gap:7px;}
+.dot{width:15px;height:15px;border-radius:4px;display:inline-block;}
+.d1{background:var(--g1);}.d2{background:var(--g2);}.d3{background:var(--g3);}
+.shuf{margin-left:auto;background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 18px;font-size:15px;cursor:pointer;font-family:inherit;}
+.shuf:hover{background:#fff7e6;border-color:var(--accent);}
+
+/* RULE screen */
+.ru1{background:var(--panel);border-radius:14px;padding:22px 26px;border-top:6px solid var(--g1);}
+.ru1 h3{font-size:23px;margin-bottom:14px;}
+.onbin{display:grid;grid-template-columns:auto auto 1fr;gap:10px 18px;align-items:center;font-size:20px;}
+.onbin .from{color:var(--ink);font-weight:800;}
+.pill{justify-self:start;font-size:20px;font-weight:900;color:#fff;background:var(--accent);border-radius:20px;padding:4px 18px;}
+.onbin .ex{color:var(--sub);font-size:17px;}
+.row23{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px;}
+.ru{background:var(--panel);border-radius:14px;padding:18px 22px;border-top:6px solid;}
+.ru.r2{border-color:var(--g2);}.ru.r3{border-color:var(--g3);}
+.ru h3{font-size:21px;margin-bottom:8px;}
+.ru .big{font-size:19px;line-height:1.8;}
+.v{color:var(--accentT);font-weight:800;}
+.note{background:#fff7e6;border:1px solid #f0c97a;border-radius:12px;padding:14px 20px;margin-top:18px;font-size:16px;line-height:1.8;}
+.note b{color:var(--accentT);}
+
+/* FLIP cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;margin-top:8px;}
+.fcard{height:120px;border-radius:14px;cursor:pointer;perspective:800px;}
+.fin{position:relative;width:100%;height:100%;transition:transform .35s;transform-style:preserve-3d;}
+.fcard.flip .fin{transform:rotateY(180deg);}
+.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:14px;
+  backface-visibility:hidden;font-weight:800;flex-direction:column;}
+.front{background:var(--panel);border:2px solid var(--line);font-size:30px;box-shadow:0 2px 5px rgba(30,50,90,.08);}
+.back{background:#fff7e6;border:2px solid var(--accent);transform:rotateY(180deg);font-size:30px;}
+.back .ta{font-size:34px;color:var(--ink);}
+.back .gl{font-size:14px;margin-top:8px;padding:2px 12px;border-radius:20px;color:#fff;}
+.gl1{background:var(--g1);}.gl2{background:var(--g2);}.gl3{background:var(--g3);}
+
+/* SORT drill */
+.sortwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px;}
+.qcard{font-size:60px;font-weight:900;background:var(--panel);border:3px solid var(--line);border-radius:20px;
+  padding:32px 64px;min-width:340px;text-align:center;box-shadow:0 4px 12px rgba(30,50,90,.10);}
+.choices{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;max-width:760px;}
+.choices button{font-size:24px;font-weight:900;border:none;border-radius:14px;padding:16px 26px;cursor:pointer;color:#fff;font-family:inherit;min-width:96px;}
+.c1{background:var(--g1);}.c2{background:var(--g2);}.c3{background:var(--g3);}
+.choices button:active{transform:scale(.96);}
+.fb{font-size:28px;font-weight:800;min-height:44px;text-align:center;}
+.fb.ok{color:var(--ok);}.fb.ng{color:var(--ng);}
+.fb .ans{color:var(--accentT);}
+.score{position:absolute;top:16px;right:36px;font-size:18px;color:var(--sub);}
+.sortbtns{display:flex;gap:14px;}
+.sortbtns button{background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 20px;font-size:16px;cursor:pointer;font-family:inherit;}
+
+/* RHYTHM */
+.rhythm{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;cursor:pointer;}
+.rcard{font-size:92px;font-weight:900;text-align:center;}
+.rcard .arrow{color:var(--accent);font-size:56px;margin:8px 0;}
+.rta{color:var(--accentT);}
+.rsub{color:var(--sub);font-size:20px;}
+.rcount{position:absolute;bottom:24px;right:36px;color:var(--sub);font-size:16px;}
+kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-size:14px;}
+
+/* ===== スマホ対応（画面幅640px以下） ===== 投影用レイアウトはそのまま、スマホだけ組み替える */
+@media (max-width:640px){
+  body{height:100dvh;}
+  nav{padding:8px 10px;gap:6px;}
+  nav .ttl{font-size:14px;width:100%;margin:0 0 2px;}
+  nav .ttl small{display:block;margin:2px 0 0;font-size:11px;}
+  nav .fzgrp{display:none;}
+  nav button{flex:1 1 calc(50% - 3px);min-width:0;padding:11px 4px;font-size:14px;}
+  .screen{padding:14px 12px;}
+  h2{font-size:19px;line-height:1.35;}
+  h2 span{display:block;font-size:13px!important;margin-top:3px;}
+  .hint{font-size:14px;margin-bottom:14px;}
+  .rules{grid-template-columns:1fr;gap:12px;}
+  .rule{padding:16px;border-top-width:5px;}
+  .rule h3{font-size:20px;}
+  .rule .big{font-size:17px;line-height:1.7;}
+  .rule .ex{font-size:15px;margin-top:10px;}
+  .note{font-size:14px;padding:12px 14px;margin-top:14px;}
+  .legend{font-size:13px;gap:10px;margin-bottom:12px;}
+  .shuf{padding:8px 12px;font-size:13px;}
+  .grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .fcard{height:94px;}
+  .front,.back{font-size:clamp(15px,5vw,21px);}
+  .back .dic{font-size:clamp(17px,5.5vw,24px);}
+  .back .gl{font-size:11px;}
+  .qcard{font-size:clamp(28px,9.5vw,40px);min-width:0;width:100%;max-width:92vw;padding:22px 14px;}
+  .choices{flex-direction:column;width:100%;max-width:340px;gap:12px;}
+  .choices button{width:100%;font-size:18px;padding:15px;}
+  .fb{font-size:19px;height:auto;min-height:38px;text-align:center;}
+  .score{position:static;align-self:flex-end;margin:0 4px 2px 0;}
+  .sortwrap{gap:14px;justify-content:flex-start;padding-top:6px;}
+  .sortbtns{flex-wrap:wrap;justify-content:center;gap:10px;}
+  .sortbtns button{font-size:14px;padding:11px 14px;}
+  .rcard{font-size:clamp(34px,10.5vw,72px);}
+  .rcard .arrow{font-size:40px;}
+  .rsub{font-size:15px;}
+  .rcount{bottom:14px;right:16px;font-size:13px;}
+  .pill{font-size:16px;padding:3px 14px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="navhome" href="../">🏠 ホーム</a>
+  <span class="ttl">つなぐにほんご L8-1 <small>た<ruby>形<rt>けい</rt></ruby>ドリル（<ruby>過去<rt>かこ</rt></ruby>・<ruby>普通形<rt>ふつうけい</rt></ruby>）</small></span>
+  <span class="fzgrp">
+    <button id="fzdown">A−</button>
+    <button id="fzval" title="クリックで100%にもどす">100%</button>
+    <button id="fzup">A＋</button>
+  </span>
+  <button data-s="rule" class="on">① ルール</button>
+  <button data-s="flip">② めくり</button>
+  <button data-s="sort">③ た<ruby>形<rt>けい</rt></ruby>のおわり</button>
+  <button data-s="rhythm">④ リズム</button>
+</nav>
+
+<!-- ① RULE -->
+<section class="screen on" id="rule">
+  <h2>た<ruby>形<rt>けい</rt></ruby>（<ruby>過去<rt>かこ</rt></ruby>の <ruby>普通形<rt>ふつうけい</rt></ruby>）の つくりかた</h2>
+  <p class="hint">いちばん だいじなのは <span class="v">1グループの <ruby>音便<rt>おんびん</rt></ruby></span>。「ます」の まえの<ruby>音<rt>おと</rt></ruby>で きまる。</p>
+  <div class="ru1">
+    <h3>1グループ（<ruby>音便<rt>おんびん</rt></ruby>）</h3>
+    <div class="onbin">
+      <span class="from">い・ち・り</span><span class="pill">った</span><span class="ex">あいます→あった ／ まちます→まった ／ とります→とった</span>
+      <span class="from">に・び・み</span><span class="pill">んだ</span><span class="ex">しにます→しんだ ／ よびます→よんだ ／ のみます→のんだ</span>
+      <span class="from">き</span><span class="pill">いた</span><span class="ex">かきます→かいた ／ ききます→きいた</span>
+      <span class="from">ぎ</span><span class="pill">いだ</span><span class="ex">いそぎます→いそいだ ／ およぎます→およいだ</span>
+      <span class="from">し</span><span class="pill">した</span><span class="ex">はなします→はなした ／ けします→けした</span>
+    </div>
+  </div>
+  <div class="row23">
+    <div class="ru r2"><h3>2グループ</h3>
+      <div class="big">「ます」を とって <span class="v">＋た</span><br>
+        たべます→たべた ／ みます→みた ／ あけます→あけた</div>
+    </div>
+    <div class="ru r3"><h3>3グループ</h3>
+      <div class="big"><span class="v">2つだけ</span>（おぼえる）<br>
+        きます→<span class="v">きた</span> ／ します→<span class="v">した</span><br>
+        べんきょうします→べんきょうした</div>
+    </div>
+  </div>
+  <div class="note"><b>ちゅうい：</b>
+    <span class="v">いきます → いった</span>（「き」なのに <b>いた じゃない</b>！ た<ruby>形<rt>けい</rt></ruby>だけの れいがい）。<br>
+    <ruby>過去<rt>かこ</rt></ruby>の <ruby>否定<rt>ひてい</rt></ruby>は ない<ruby>形<rt>けい</rt></ruby>＋かった：いきます→いかない→<span class="v">いかなかった</span>（7-2の おうよう）。</div>
+</section>
+
+<!-- ② FLIP -->
+<section class="screen" id="flip">
+  <h2>ます<ruby>形<rt>けい</rt></ruby> → た<ruby>形<rt>けい</rt></ruby>　<span style="color:var(--sub);font-size:18px;">カードをクリックしてめくる</span></h2>
+  <p class="hint"><ruby>先<rt>さき</rt></ruby>に た<ruby>形<rt>けい</rt></ruby>を <ruby>言<rt>い</rt></ruby>って（<ruby>書<rt>か</rt></ruby>いて）から、クリックして <ruby>答<rt>こた</rt></ruby>え<ruby>合<rt>あ</rt></ruby>わせ。</p>
+  <div class="legend">
+    <span class="chip"><i class="dot d1"></i>1グループ</span>
+    <span class="chip"><i class="dot d2"></i>2グループ</span>
+    <span class="chip"><i class="dot d3"></i>3グループ</span>
+    <button class="shuf" id="flipshuffle">🔀 シャッフル</button>
+  </div>
+  <div class="grid" id="flipgrid"></div>
+</section>
+
+<!-- ③ SORT (ending judgment) -->
+<section class="screen" id="sort">
+  <h2>た<ruby>形<rt>けい</rt></ruby>の おわりは？　<span style="color:var(--sub);font-size:18px;">った？ んだ？ いた？ …</span></h2>
+  <div class="score" id="score">0 / 0</div>
+  <div class="sortwrap">
+    <div class="qcard" id="sortq">のみます</div>
+    <div class="choices">
+      <button class="c1" data-e="った">った</button>
+      <button class="c1" data-e="んだ">んだ</button>
+      <button class="c1" data-e="いた">いた</button>
+      <button class="c1" data-e="いだ">いだ</button>
+      <button class="c1" data-e="した">した</button>
+      <button class="c3" data-e="た">た（2G・3G）</button>
+    </div>
+    <div class="fb" id="sortfb"></div>
+    <div class="sortbtns">
+      <button id="sortnext">つぎ ▶</button>
+      <button id="sortreset">さいしょから</button>
+      <button id="sndtoggle">🔊 おと ON</button>
+    </div>
+  </div>
+</section>
+
+<!-- ④ RHYTHM -->
+<section class="screen" id="rhythm">
+  <h2>リズム<ruby>変換<rt>へんかん</rt></ruby>　<span style="color:var(--sub);font-size:18px;">ます<ruby>形<rt>けい</rt></ruby> → た<ruby>形<rt>けい</rt></ruby>。<ruby>画面<rt>がめん</rt></ruby>クリック／<kbd>Space</kbd> でめくる・つぎへ</span></h2>
+  <div class="rhythm" id="rhythmarea">
+    <div class="rcard" id="rcard"><span id="rmasu">のみます → ？</span></div>
+    <div class="rsub" id="rsub">（クリック）</div>
+  </div>
+  <div class="rcount" id="rcount"></div>
+</section>
+
+<script>
+// ===== verb data =====
+// m=ます形, ta=た形, g=group, e=た形の語尾(った/んだ/いた/いだ/した/た), ex=メモ(任意)
+// 語彙は L7-1・L7-2 の語 ＋ L8-1教科書 ＋ 会話頻出。全音便タイプを網羅
+const VERBS=[
+  // った（い・ち・り）
+  {m:"いきます",ta:"いった",g:1,e:"った",ex:"れいがい！「き」なのに った"},
+  {m:"あいます",ta:"あった",g:1,e:"った"},
+  {m:"かいます",ta:"かった",g:1,e:"った"},
+  {m:"まちます",ta:"まった",g:1,e:"った"},
+  {m:"もちます",ta:"もった",g:1,e:"った"},
+  {m:"とります",ta:"とった",g:1,e:"った"},
+  {m:"かえります",ta:"かえった",g:1,e:"った",ex:"い<ruby>段<rt>だん</rt></ruby>だけど1G"},
+  {m:"あります",ta:"あった",g:1,e:"った"},
+  // んだ（に・び・み）
+  {m:"のみます",ta:"のんだ",g:1,e:"んだ"},
+  {m:"よみます",ta:"よんだ",g:1,e:"んだ"},
+  {m:"よびます",ta:"よんだ",g:1,e:"んだ"},
+  {m:"あそびます",ta:"あそんだ",g:1,e:"んだ"},
+  {m:"やすみます",ta:"やすんだ",g:1,e:"んだ"},
+  // いた（き）／ いだ（ぎ）
+  {m:"かきます",ta:"かいた",g:1,e:"いた"},
+  {m:"ききます",ta:"きいた",g:1,e:"いた"},
+  {m:"いそぎます",ta:"いそいだ",g:1,e:"いだ"},
+  {m:"およぎます",ta:"およいだ",g:1,e:"いだ"},
+  // した（し）
+  {m:"はなします",ta:"はなした",g:1,e:"した"},
+  {m:"けします",ta:"けした",g:1,e:"した"},
+  // た（2グループ）
+  {m:"たべます",ta:"たべた",g:2,e:"た"},
+  {m:"みます",ta:"みた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  {m:"あけます",ta:"あけた",g:2,e:"た"},
+  {m:"おきます",ta:"おきた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2G"},
+  // た（3グループ）
+  {m:"きます",ta:"きた",g:3,e:"た",ex:"くる→きた"},
+  {m:"します",ta:"した",g:3,e:"た"},
+  {m:"べんきょうします",ta:"べんきょうした",g:3,e:"た"}
+];
+const GNAME={1:"1グループ",2:"2グループ",3:"3グループ"};
+function rshuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+// 一周ごとの再シャッフル。直前の語が新しい先頭に来たら1つずらして連続を防ぐ
+function reshufflePool(pool){const last=pool[pool.length-1];pool=rshuffle(pool);if(pool.length>1&&pool[0]===last)pool.push(pool.shift());return pool;}
+
+// ===== sound（Web Audioで合成・外部ファイル不要） =====
+let actx=null,soundOn=true;
+function tone(freq,delay,dur,type,vol){
+  if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+  const t=actx.currentTime+delay;
+  const o=actx.createOscillator(),g=actx.createGain();
+  o.type=type;o.frequency.value=freq;
+  g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+dur);
+}
+function sndOK(){if(!soundOn)return;tone(1318.5,0,0.15,'sine',0.3);tone(1046.5,0.15,0.6,'sine',0.3);}  // ピンポーン
+// ブーーー：矩形波1本・音量一定のまっすぐなブザー（終端だけ50msで絞ってクリックノイズ防止）
+function sndNG(){
+  if(!soundOn)return;
+  if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+  const t=actx.currentTime,dur=0.9;
+  const o=actx.createOscillator(),g=actx.createGain();
+  o.type='square';o.frequency.value=110;
+  g.gain.setValueAtTime(0.25,t);
+  g.gain.setValueAtTime(0.25,t+dur-0.05);
+  g.gain.linearRampToValueAtTime(0.0001,t+dur);
+  o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+dur);
+}
+const sndBtn=document.getElementById('sndtoggle');
+sndBtn.onclick=()=>{soundOn=!soundOn;sndBtn.textContent=soundOn?'🔊 おと ON':'🔇 おと OFF';};
+
+// ===== nav =====
+const btns=document.querySelectorAll('nav button[data-s]');
+const screens=document.querySelectorAll('.screen');
+function show(id){
+  screens.forEach(s=>s.classList.toggle('on',s.id===id));
+  btns.forEach(b=>b.classList.toggle('on',b.dataset.s===id));
+}
+btns.forEach(b=>b.onclick=()=>show(b.dataset.s));
+
+// ===== 文字サイズ（zoom方式＝レイアウトごと拡大）。設定は全ドリル共通で保存 =====
+let zoom=1;try{zoom=parseFloat(localStorage.getItem('drill_zoom'))||1;}catch(e){}
+const fzval=document.getElementById('fzval');
+function applyZoom(){
+  zoom=Math.min(1.6,Math.max(0.7,Math.round(zoom*10)/10));
+  document.body.style.zoom=zoom;
+  document.body.style.height=(100/zoom)+'dvh'; // zoomで縦がはみ出すのを補正
+  document.querySelector('nav').style.zoom=1/zoom; // navは打ち消して常に等倍（ボタンの押しやすさ維持）
+  fzval.textContent=Math.round(zoom*100)+'%';
+  try{localStorage.setItem('drill_zoom',zoom);}catch(e){}
+}
+document.getElementById('fzup').onclick=()=>{zoom+=0.1;applyZoom();};
+document.getElementById('fzdown').onclick=()=>{zoom-=0.1;applyZoom();};
+fzval.onclick=()=>{zoom=1;applyZoom();};
+applyZoom();
+
+// ===== ② FLIP =====
+const fg=document.getElementById('flipgrid');
+function flipDeal(){
+  fg.innerHTML='';
+  rshuffle(VERBS).forEach(v=>{
+    const c=document.createElement('div');c.className='fcard';
+    c.innerHTML=`<div class="fin">
+      <div class="face front">${v.m}</div>
+      <div class="face back"><span class="ta">${v.ta}</span><span class="gl gl${v.g}">${GNAME[v.g]}${v.ex?' ⚠':''}</span></div>
+    </div>`;
+    c.onclick=()=>c.classList.toggle('flip');
+    fg.appendChild(c);
+  });
+}
+document.getElementById('flipshuffle').onclick=flipDeal;
+flipDeal();
+
+// ===== ③ SORT（語尾あて）=====
+let sortPool=[], sortIdx=0, sCorrect=0, sTotal=0, answered=false;
+const sortq=document.getElementById('sortq'), sortfb=document.getElementById('sortfb'), scoreEl=document.getElementById('score');
+function sortStart(){sortPool=rshuffle(VERBS);sortIdx=0;sCorrect=0;sTotal=0;answered=false;sortShow();updScore();}
+function sortShow(){answered=false;sortfb.className='fb';sortfb.textContent='';sortq.textContent=sortPool[sortIdx].m;}
+function updScore(){scoreEl.textContent=sCorrect+' / '+sTotal;}
+document.querySelectorAll('.choices button').forEach(b=>{
+  b.onclick=()=>{
+    if(answered)return;answered=true;sTotal++;
+    const v=sortPool[sortIdx];const pick=b.dataset.e;
+    if(pick===v.e){sndOK();sCorrect++;sortfb.className='fb ok';sortfb.innerHTML='⭕ せいかい！　→ <span class="ans">'+v.ta+'</span>（'+GNAME[v.g]+(v.ex?'・'+v.ex:'')+'）';}
+    else{sndNG();sortfb.className='fb ng';sortfb.innerHTML='❌ → <span class="ans">'+v.ta+'</span>（'+GNAME[v.g]+(v.ex?'・'+v.ex:'')+'）';}
+    updScore();
+  };
+});
+document.getElementById('sortnext').onclick=()=>{
+  sortIdx++;
+  if(sortIdx>=sortPool.length){sortPool=reshufflePool(sortPool);sortIdx=0;}
+  sortShow();
+};
+document.getElementById('sortreset').onclick=sortStart;
+sortStart();
+
+// ===== ④ RHYTHM =====
+let rPool=[], rIdx=0, rState=0; // 0=ます表示, 1=た形表示
+const rcard=document.getElementById('rcard'), rsub=document.getElementById('rsub'), rcount=document.getElementById('rcount');
+function rStart(){rPool=rshuffle(VERBS);rIdx=0;rState=0;rRender();}
+function rRender(){
+  const v=rPool[rIdx];
+  if(rState===0){rcard.innerHTML='<span>'+v.m+' <span style="color:var(--accent);">→</span> ？</span>';rsub.textContent='（クリック）';}
+  else{rcard.innerHTML='<span>'+v.m+'</span><div class="arrow">▼</div><span class="rta">'+v.ta+'</span>';rsub.innerHTML='<span class="gl gl'+v.g+'" style="padding:2px 12px;border-radius:20px;color:#fff;">'+GNAME[v.g]+'</span>　つぎへ →';}
+  rcount.textContent=(rIdx+1)+' / '+rPool.length;
+}
+function rStep(){
+  if(rState===0){rState=1;}
+  else{
+    rState=0;rIdx++;
+    if(rIdx>=rPool.length){rPool=reshufflePool(rPool);rIdx=0;}
+  }
+  rRender();
+}
+document.getElementById('rhythmarea').onclick=rStep;
+rStart();
+
+// ===== keyboard =====
+document.addEventListener('keydown',e=>{
+  const cur=document.querySelector('.screen.on').id;
+  if(['1','2','3','4'].includes(e.key)){const map={'1':'rule','2':'flip','3':'sort','4':'rhythm'};show(map[e.key]);return;}
+  if(cur==='rhythm'&&(e.key===' '||e.key==='ArrowRight')){e.preventDefault();rStep();}
+  if(cur==='sort'&&(e.key===' '||e.key==='ArrowRight')){e.preventDefault();document.getElementById('sortnext').click();}
+});
+</script>
+</body>
+</html>
