@@ -22,6 +22,9 @@ nav button{background:#eef2f8;color:var(--sub);border:1px solid var(--line);bord
   padding:8px 16px;font-size:15px;cursor:pointer;font-family:inherit;white-space:nowrap;}
 nav button.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800;}
 nav button:hover{color:var(--ink);}
+/* ホームへ戻る（母艦ポータルへ） */
+nav .navhome{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 13px;font-size:14px;font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+nav .navhome:hover{border-color:var(--accent);color:var(--accentT);}
 /* 文字サイズ切替（Ctrl+= を知らない先生向けの明示ボタン） */
 nav .fzgrp{display:inline-flex;gap:6px;align-items:center;margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
 nav .fzgrp button{padding:6px 10px;font-size:14px;min-width:44px;}
@@ -134,6 +137,7 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
 </head>
 <body>
 <nav>
+  <a class="navhome" href="../">🏠 ホーム</a>
   <span class="ttl">つなぐにほんご L7-1 <small><ruby>普通形<rt>ふつうけい</rt></ruby>（<ruby>辞書形<rt>じしょけい</rt></ruby>）ドリル</small></span>
   <span class="fzgrp">
     <button id="fzdown">A−</button>
