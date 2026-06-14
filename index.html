@@ -25,6 +25,8 @@ ruby rt{font-size:0.55em;font-weight:500;opacity:.85;}
 header{background:#fff;border-bottom:3px solid var(--accent);padding:20px 18px;text-align:center;}
 header h1{font-size:clamp(24px,7vw,36px);letter-spacing:.5px;}
 header h1 .em{color:var(--accent);}
+.brandrow{display:flex;align-items:center;justify-content:center;gap:12px;}
+.hmark{width:auto;height:clamp(34px,8vw,50px);flex-shrink:0;}
 .qrbtn{margin-top:14px;background:var(--accent);color:#fff;border:none;border-radius:12px;
   padding:12px 24px;font-size:clamp(14px,3.6vw,17px);font-weight:800;font-family:inherit;cursor:pointer;
   box-shadow:0 3px 8px rgba(232,146,12,.35);-webkit-tap-highlight-color:transparent;}
@@ -78,6 +80,10 @@ main{max-width:720px;margin:0 auto;padding:18px 16px 60px;}
 .soonbox .big{font-size:clamp(20px,5.5vw,26px);font-weight:800;color:var(--ink);margin-bottom:10px;}
 
 footer{text-align:center;color:var(--sub);font-size:12px;padding:24px 16px;line-height:1.8;}
+/* ホーム下の学校ロゴ（宣伝） */
+.brand{margin-top:30px;display:flex;justify-content:center;}
+.brandcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 28px;box-shadow:0 2px 8px rgba(30,50,90,.07);display:flex;justify-content:center;max-width:90%;}
+.brandcard img{width:min(280px,72vw);height:auto;display:block;}
 
 .qrov{position:fixed;inset:0;background:rgba(16,28,48,.85);z-index:1000;display:none;
   align-items:center;justify-content:center;padding:24px;}
@@ -95,7 +101,7 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:24px 16px;line-
 </head>
 <body>
 <header>
-  <h1>SCG<ruby>日本語<rt>にほんご</rt></ruby> <span class="em">ドリル</span></h1>
+  <div class="brandrow"><img class="hmark" src="logo-mark.png" alt=""><h1>SCG<ruby>日本語<rt>にほんご</rt></ruby> <span class="em">ドリル</span></h1></div>
   <button class="qrbtn" onclick="document.getElementById('qrov').classList.add('on')">📱 QRコードを<ruby>表示<rt>ひょうじ</rt></ruby>（<ruby>学生用<rt>がくせいよう</rt></ruby>）</button>
 </header>
 
@@ -150,7 +156,8 @@ function viewHome(){
       +'<div class="cattxt"><div class="catlabel">'+c.label+(c.ready?'':'<span class="miniready">じゅんびちゅう</span>')+'</div>'
       +'<div class="catsub">'+c.sub+'</div></div><div class="catgo">▶</div></a>';
   });
-  return h+'</div>';
+  return h+'</div>'+
+    '<div class="brand"><div class="brandcard"><img src="logo-school.png" alt="SCG日本語学校" loading="lazy"></div></div>';
 }
 function viewTextbookList(){
   let h=barHTML('<ruby>教科書<rt>きょうかしょ</rt></ruby>');
