@@ -4,3 +4,6 @@ scratch/
 
 # Drive原本のコピー（正本はH:マイドライブ側。公開リポジトリに含めない）
 _original/
+
+# ロゴ元画像（高画質版。サイトは軽量版 logo-*.png を使う。repoには含めない）
+images/
