@@ -175,7 +175,7 @@ function viewTextbook(tbId){
     ds.filter(function(d){return d.lesson===L;}).forEach(function(d){
       if(d.ready){
         h+='<a class="item" href="'+d.file+'"><span class="itxt"><span class="iname">'+d.label
-          +'<span class="badge ready">できる</span></span>'+(d.desc?'<span class="idesc">'+d.desc+'</span>':'')
+          +'</span>'+(d.desc?'<span class="idesc">'+d.desc+'</span>':'')
           +'</span><span class="igo">▶</span></a>';
       }else{
         h+='<div class="item soon"><span class="itxt"><span class="iname">'+d.label
