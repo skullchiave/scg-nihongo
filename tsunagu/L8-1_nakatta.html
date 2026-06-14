@@ -32,6 +32,10 @@ nav button:hover{color:var(--ink);}
 /* ホームへ戻る（母艦ポータルへ） */
 nav .navhome{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 13px;font-size:14px;font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
 nav .navhome:hover{border-color:var(--accent);color:var(--accentT);}
+/* もどる/すすむ（PWAでブラウザ戻るが無いため = history.back/forward） */
+nav .navnav{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+nav .navnav:hover{border-color:var(--accent);color:var(--accentT);}
+nav .navnav:active{background:#fff7e6;}
 /* 文字サイズ切替（Ctrl+= を知らない先生向けの明示ボタン） */
 nav .fzgrp{display:inline-flex;gap:6px;align-items:center;margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
 nav .fzgrp button{padding:6px 10px;font-size:14px;min-width:44px;}
@@ -160,6 +164,8 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
 <body>
 <nav>
   <a class="navhome" href="../">🏠 ホーム</a>
+  <button class="navnav" id="navback" title="まえのページへ">◀ もどる</button>
+  <button class="navnav" id="navfwd" title="つぎのページへ">すすむ ▶</button>
   <span class="ttl">つなぐにほんご L8-1 <small>なかったドリル（<ruby>過去否定<rt>かこひてい</rt></ruby>・<ruby>普通形<rt>ふつうけい</rt></ruby>）</small></span>
   <span class="fzgrp">
     <button id="fzdown">A−</button>
@@ -322,6 +328,8 @@ function show(id){
   btns.forEach(b=>b.classList.toggle('on',b.dataset.s===id));
 }
 btns.forEach(b=>b.onclick=()=>show(b.dataset.s));
+document.getElementById('navback').onclick=()=>history.back();
+document.getElementById('navfwd').onclick=()=>history.forward();
 
 // ===== 文字サイズ（zoom方式＝レイアウトごと拡大）。設定は全ドリル共通で保存 =====
 let zoom=1;try{zoom=parseFloat(localStorage.getItem('drill_zoom'))||1;}catch(e){}
