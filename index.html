@@ -207,5 +207,18 @@ function render(){
 window.addEventListener('hashchange',render);
 render();
 </script>
+<script>
+// Service Worker 登録（オフライン対応・通信節約）
+if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(){});});}
+// 利用記録（端末ローカルのみ・表示なし・ログイン不要。将来の継続表示用に貯める）
+(function(){try{
+  var id=(location.pathname.split('/').pop()||'index').replace('.html','')||'index';
+  var k='drill_stats',s=JSON.parse(localStorage.getItem(k)||'{}');
+  var d=s[id]||(s[id]={opens:0,correct:0,total:0,last:null});
+  d.opens++; d.last=new Date().toISOString();
+  localStorage.setItem(k,JSON.stringify(s));
+  window.__drillLog=function(ok){try{var s2=JSON.parse(localStorage.getItem(k)||'{}');var d2=s2[id]||(s2[id]={opens:0,correct:0,total:0,last:null});d2.total++;if(ok)d2.correct++;d2.last=new Date().toISOString();localStorage.setItem(k,JSON.stringify(s2));}catch(e){}};
+}catch(e){}})();
+</script>
 </body>
 </html>
