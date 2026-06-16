@@ -12,7 +12,8 @@ const CACHE = 'scg-v2';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest',
   'logo-school.png', 'logo-mark.png',
-  'icon-180.png', 'icon-192.png', 'icon-512.png', 'icon-512-maskable.png'
+  'icon-180.png', 'icon-192.png', 'icon-512.png', 'icon-512-maskable.png',
+  'fonts/BIZUDPGothic-Regular.subset.woff2', 'fonts/BIZUDPGothic-Bold.subset.woff2'
 ];
 
 self.addEventListener('install', e => {

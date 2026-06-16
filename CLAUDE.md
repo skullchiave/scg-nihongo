@@ -18,6 +18,7 @@
 - `tsunagu/*.html` … つなぐにほんご ドリル本体8本（各HTML自己完結・外部依存なし）。L7-1/L7-2/L7-3/L8-1_ta/L8-1_nakatta/L8-2_keiyou/L8-2_matome/L9。
 - `logo-school.png`（横ロゴ＝ホーム下）, `logo-mark.png`（ブロブ＝ヘッダー左）, `icon-*.png`（PWAアイコン）, `manifest.webmanifest`, `.nojekyll`（必須・無いとPagesがREADMEをindex化）。
 - `_original/` … 投影用の原本HTML8本（触らず温存・参照のみ）。
+- `fonts/BIZUDPGothic-{Regular,Bold}.subset.woff2` … 本文フォント（**自己ホスト・追跡する**）。下記「字体」参照。
 - `scratch/` `tmp/` … 実験・一時（**git追跡しない**＝GitHubに上がらない）。検証スクリプトはここ。
 - `README.md` … 公開URL・構成・公開方針の概要。`CLAUDE.md`（本書）… 開発・運用の詳細。
 
@@ -74,6 +75,23 @@ taskkill //F //IM chrome.exe
 ## その他の学生向け仕様（2026-06-15〜）
 - **本文は選択可・カード/操作部は選択不可**（`user-select`）。狙い＝学生が分からない語を長押し→コピー→翻訳アプリに渡せるようにしつつ、タップ誤選択は防ぐ。`</style>` 直前のCSSで上書き。
 - **利用記録（端末ローカル・表示なし）**: `localStorage['drill_stats']` に各ドリルの `opens/last`（＋将来用に `correct/total` と `window.__drillLog(ok)` フック）を貯める。ログイン不要・サーバー無し・名簿無し。**今は表示UIなし**（記録を貯めるだけ。将来「🔥連続」等を出すなら配線する）。
+
+## 字体（BIZ UDPGothic 自己ホスト・2026-06-16〜）
+- **なぜ**: 旧 `Yu Gothic` 等のゴシックは き・さ・ふ 等のはらいが繋がり、学習者が手で書く形と違う（「繋ぎ字」問題）。教育用UDフォント **BIZ UDPGothic**（Morisawa, OFL）に変更。き・さ等が学習向けに分離し、太く明快で投影・小画面の視認性も高い。
+- **自己ホストの理由**: 学生スマホ（iPhone/Android）に教育フォントは入っていない＋本サイトはオフラインSW対応。CDN依存だと圏外で游ゴシックに戻る。→ `fonts/` に woff2 同梱し SW(`SHELL`)でプリキャッシュ。
+- **読み込み**: 全HTML（index＋tsunagu/8本）の `<style>` 冒頭に `@font-face`（400/700, パスは**絶対** `/scg-nihongo/fonts/...`＝深さ非依存・アイコンと同流儀）。`body` の font-family 先頭に `"BIZ UDPGothic"` を追加（既存スタックはフォールバックで温存）。weight 800/900 は最寄りの 700 face を使う。
+- **サブセット**: 常用漢字＋全ひらがな/カタカナ/ASCII/記号＋現ドリルの全使用文字（計~3800グリフ）で各~490KB。元TTF（~4.6MB×2）と中間物は `tmp/`（非追跡）。
+- **新ドリルで常用外の漢字を使った時だけ**サブセット再生成が要る（フォールバックで游ゴシック表示になり字体が混ざる）。再生成手順:
+  ```
+  # tmp/ に BIZUDPGothic-{Regular,Bold}.ttf を置く（公式: googlefonts/morisawa-biz-ud-gothic）
+  pip install fonttools brotli
+  # subset_text.txt = 常用漢字 + 全HTMLの使用文字、を用意して:
+  python -m fontTools.subset tmp/BIZUDPGothic-Regular.ttf --text-file=tmp/subset_text.txt \
+    --unicodes="U+0020-007E,U+00A0-00FF,U+2000-206F,U+2190-21FF,U+2460-24FF,U+25A0-25FF,U+2600-27BF,U+3000-30FF,U+FF00-FFEF" \
+    --layout-features='kern,palt,vert,vrt2,liga,calt' --flavor=woff2 --no-hinting --desubroutinize \
+    --output-file=fonts/BIZUDPGothic-Regular.subset.woff2   # Bold も同様
+  ```
+- **検証済**: headless Chrome + CDP で `document.fonts.check('400/700 24px "BIZ UDPGothic"')=true`、両ウェイト loaded、body に適用を実測（2026-06-16）。
 
 ## 公開・拡散ガバナンス（ユーザーと合意・要遵守）
 - **認証なし開放が正**（中身は無害な文法ドリル＝答案・個人情報・成績は無い）。**答案/名簿/クラス限定情報は開放URLに置かない**（必要なら最初からログイン制の別の場所に作る）。
