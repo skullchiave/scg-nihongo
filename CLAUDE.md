@@ -31,6 +31,7 @@
 
 ## ドリル本体の作り（8本共通）
 - 4モード構成: ①ルール(rule) ②めくり(flip) ③並べ替え/おわり(sort) ④リズム(rhythm)。タブ`show(id)`で画面切替（タブは履歴に含めない）。
+- **リズムの「じどう送り」（2026-06-29〜・8本共通）**: リズム画面に `▶ じどう`＋速度3段 `おそい(5s)/ふつう(3s)/はやい(1s)`（既定ふつう）。ONで等間隔に`rStep`自動実行（問題↔答えを刻む）。じどう中の画面タップ＝一時停止/再開、OFF時は従来の手動めくり。`show()`がリズム以外への切替で`rSetAuto(false)`し裏で回り続けないようにする。**新規ドリルにもこのコントロール一式（HTML `#rauto`＋CSS `.rauto/.rplay/.rspd`＋JS `rSetAuto`機構）を必ず含める**。一括追加は `scratch/patch_rhythm_autoplay.py` 参照（アンカー: `.rcount`ルール / `rcount`div / `rhythmarea onclick` / `show()`）。
 - 1ファイルで投影/スマホ両対応: `@media(max-width:640px)` ＋ `clamp()` ＋ `100dvh`。スマホでナビは2×2、③の選択肢はgrid。
 - ナビ左上: `🏠 ホーム`(`../`でポータルへ) ＋ `◀もどる`/`すすむ▶`（`history.back()/forward()`＝PWAでブラウザ戻りが無い対策）。
 

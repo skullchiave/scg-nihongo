@@ -120,6 +120,14 @@ body.nohint .hintbar{visibility:hidden;}
 .rans{color:var(--accentT);}
 .rsub{color:var(--sub);font-size:20px;}
 .rcount{position:absolute;bottom:24px;right:36px;color:var(--sub);font-size:16px;}
+.rauto{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;}
+.rauto button{font-family:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--line);background:#eef2f8;color:var(--ink);}
+.rplay{padding:10px 22px;font-size:18px;font-weight:700;}
+.rplay.on{background:var(--accent);color:#fff;border-color:var(--accent);}
+.rspdwrap{display:inline-flex;gap:6px;}
+.rspd{padding:9px 16px;font-size:15px;}
+.rspd.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+@media(max-width:640px){.rauto{gap:7px;margin:0 0 8px;}.rplay{padding:8px 16px;font-size:15px;}.rspd{padding:7px 11px;font-size:13px;}}
 kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-size:14px;}
 
 /* ===== スマホ対応（画面幅640px以下） ===== 投影用レイアウトはそのまま、スマホだけ組み替える */
@@ -316,6 +324,14 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
     <div class="rcard" id="rcard"><span>のみませんでした → ？</span></div>
     <div class="rsub" id="rsub">（クリック）</div>
   </div>
+  <div class="rauto" id="rauto">
+    <button class="rplay" id="rplay" type="button">▶ じどう</button>
+    <span class="rspdwrap">
+      <button class="rspd" data-ms="5000" type="button">おそい</button>
+      <button class="rspd on" data-ms="3000" type="button">ふつう</button>
+      <button class="rspd" data-ms="1000" type="button">はやい</button>
+    </span>
+  </div>
   <div class="rcount" id="rcount"></div>
 </section>
 
@@ -396,6 +412,7 @@ const screens=document.querySelectorAll('.screen');
 function show(id){
   screens.forEach(s=>s.classList.toggle('on',s.id===id));
   btns.forEach(b=>b.classList.toggle('on',b.dataset.s===id));
+  if(id!=='rhythm'&&typeof rSetAuto==='function')rSetAuto(false);
 }
 btns.forEach(b=>b.onclick=()=>show(b.dataset.s));
 document.getElementById('navback').onclick=()=>history.back();
@@ -488,7 +505,22 @@ function rStep(){
   }
   rRender();
 }
-document.getElementById('rhythmarea').onclick=rStep;
+// ===== リズム じどう送り =====
+let rTimer=null, rSpeed=3000, rAuto=false;
+const rplay=document.getElementById('rplay');
+function rRun(){clearInterval(rTimer);rTimer=setInterval(rStep,rSpeed);}
+function rStop(){clearInterval(rTimer);rTimer=null;}
+function rSetAuto(on){rAuto=on;rplay.textContent=on?'⏸ とめる':'▶ じどう';rplay.classList.toggle('on',on);if(on)rRun();else rStop();}
+rplay.onclick=function(e){e.stopPropagation();rSetAuto(!rAuto);};
+document.querySelectorAll('.rspd').forEach(function(b){b.onclick=function(e){
+  e.stopPropagation();rSpeed=+b.dataset.ms;
+  document.querySelectorAll('.rspd').forEach(function(x){x.classList.toggle('on',x===b);});
+  if(rAuto&&rTimer)rRun();
+};});
+document.getElementById('rhythmarea').onclick=function(){
+  if(rAuto){ if(rTimer)rStop(); else rRun(); }   // じどう中タップ=一時停止/再開
+  else rStep();                                   // 手動めくり
+};
 rStart();
 
 // ===== keyboard =====
