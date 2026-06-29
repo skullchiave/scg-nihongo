@@ -127,6 +127,11 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:24px 16px;line-
 .utag.fix{background:var(--g3);}
 .utag.drill{background:var(--accent);}
 .ntext{font-size:clamp(15px,4vw,17px);line-height:1.65;}
+/* 連続学習の応援バナー */
+.streak{background:linear-gradient(135deg,#fff7e6,#ffe9c7);border:1px solid #f0c97a;border-radius:14px;
+  padding:14px 18px;margin-bottom:16px;font-size:clamp(15px,4.2vw,18px);font-weight:800;color:var(--accentT);
+  text-align:center;box-shadow:0 2px 8px rgba(232,146,12,.15);line-height:1.5;}
+.streak b{color:#dc2626;font-size:1.25em;}
 
 @media (max-width:640px){ .qrbtn{display:none;} }
 </style>
@@ -193,6 +198,31 @@ function soonHTML(name){
 function isNewsUnread(){try{var seen=localStorage.getItem('news_seen');return DATA.updates.length>0 && (!seen || seen<DATA.updates[0].date);}catch(e){return false;}}
 function markNewsSeen(){try{if(DATA.updates.length>0)localStorage.setItem('news_seen',DATA.updates[0].date);}catch(e){}}
 function fmtDate(s){var p=s.split('-');return p.length===3?p[0]+'/'+(+p[1])+'/'+(+p[2]):s;}
+// 連続学習日数（端末ローカル・サイトを開いた日をカウント。切れたら黙って1にもどす＝責めない）
+function updateStreak(){
+  try{
+    var d=new Date();
+    var ymd=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    var st=JSON.parse(localStorage.getItem('drill_streak')||'{}');
+    if(st.last!==ymd){
+      var diff=st.last?Math.round((new Date(ymd+'T00:00:00')-new Date(st.last+'T00:00:00'))/86400000):null;
+      st.streak=(diff===1)?(st.streak||0)+1:1;   // 昨日に続けて＝+1／初回・2日以上あき＝1
+      st.last=ymd; st.best=Math.max(st.best||0,st.streak);
+      localStorage.setItem('drill_streak',JSON.stringify(st));
+    }
+  }catch(e){}
+}
+function streakHTML(){
+  try{
+    var st=JSON.parse(localStorage.getItem('drill_streak')||'{}');
+    var n=st.streak||0;
+    if(n<1) return '';
+    if(n===1) return '<div class="streak">🌱 きょうも べんきょう、いいね！</div>';
+    var emoji=(n>=7)?'🏆':'🔥';
+    var praise=(n>=7)?'すごい！！':(n>=3?'えらい！！':'');
+    return '<div class="streak">'+emoji+' <b>'+n+'</b>にち つづけて べんきょう！'+praise+'</div>';
+  }catch(e){return '';}
+}
 function contactHTML(){
   return '<div class="contact">'
     +'<div class="ctext">なにか <ruby>要望<rt>ようぼう</rt></ruby>や <ruby>質問<rt>しつもん</rt></ruby>が あれば、<ruby>佐々木<rt>ささき</rt></ruby>まで どうぞ！</div>'
@@ -216,7 +246,8 @@ function viewNews(){
   return h+'</div>'+contactHTML();
 }
 function viewHome(){
-  let h=newsButtonHTML();
+  let h=streakHTML();
+  h+=newsButtonHTML();
   h+='<div class="cats">';
   DATA.categories.forEach(function(c){
     h+='<a class="catbtn c-'+c.id+'" href="#/'+c.id+'">'
@@ -273,6 +304,7 @@ function render(){
   window.scrollTo(0,0);
 }
 window.addEventListener('hashchange',render);
+updateStreak();
 render();
 </script>
 <script>
