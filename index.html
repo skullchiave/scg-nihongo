@@ -139,14 +139,7 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:24px 16px;line-
 
 <main id="app"></main>
 
-<footer>
-  <div class="contact">
-    <div class="ctext">なにか <ruby>要望<rt>ようぼう</rt></ruby>や <ruby>質問<rt>しつもん</rt></ruby>が あれば、<ruby>佐々木<rt>ささき</rt></ruby>まで どうぞ！</div>
-    <a class="cbtn" href="mailto:sasaki-h@mail.seki.co.jp?subject=SCG%E3%81%AB%E3%81%BB%E3%82%93%E3%81%94%E3%83%89%E3%83%AA%E3%83%AB%20%E3%82%88%E3%81%86%E3%81%BC%E3%81%86%E3%83%BB%E3%81%97%E3%81%A4%E3%82%82%E3%82%93&body=%EF%BC%88%E3%81%93%E3%81%93%E3%81%AB%20%E3%82%88%E3%81%86%E3%81%BC%E3%81%86%E3%83%BB%E3%81%97%E3%81%A4%E3%82%82%E3%82%93%E3%82%92%20%E3%81%8B%E3%81%84%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%EF%BC%89%0A%0A">✉ メールを おくる</a>
-    <div class="caddr">sasaki-h@mail.seki.co.jp</div>
-  </div>
-  <div class="fname">SCG<ruby>日本語<rt>にほんご</rt></ruby> ドリル</div>
-</footer>
+<footer>SCG<ruby>日本語<rt>にほんご</rt></ruby> ドリル</footer>
 
 <div class="qrov" id="qrov" onclick="this.classList.remove('on')">
   <div class="qrbox" onclick="event.stopPropagation()">
@@ -200,6 +193,12 @@ function soonHTML(name){
 function isNewsUnread(){try{var seen=localStorage.getItem('news_seen');return DATA.updates.length>0 && (!seen || seen<DATA.updates[0].date);}catch(e){return false;}}
 function markNewsSeen(){try{if(DATA.updates.length>0)localStorage.setItem('news_seen',DATA.updates[0].date);}catch(e){}}
 function fmtDate(s){var p=s.split('-');return p.length===3?p[0]+'/'+(+p[1])+'/'+(+p[2]):s;}
+function contactHTML(){
+  return '<div class="contact">'
+    +'<div class="ctext">なにか <ruby>要望<rt>ようぼう</rt></ruby>や <ruby>質問<rt>しつもん</rt></ruby>が あれば、<ruby>佐々木<rt>ささき</rt></ruby>まで どうぞ！</div>'
+    +'<a class="cbtn" href="mailto:sasaki-h@mail.seki.co.jp?subject=SCG%E3%81%AB%E3%81%BB%E3%82%93%E3%81%94%E3%83%89%E3%83%AA%E3%83%AB%20%E3%82%88%E3%81%86%E3%81%BC%E3%81%86%E3%83%BB%E3%81%97%E3%81%A4%E3%82%82%E3%82%93&body=%EF%BC%88%E3%81%93%E3%81%93%E3%81%AB%20%E3%82%88%E3%81%86%E3%81%BC%E3%81%86%E3%83%BB%E3%81%97%E3%81%A4%E3%82%82%E3%82%93%E3%82%92%20%E3%81%8B%E3%81%84%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%EF%BC%89%0A%0A">✉ メールを おくる</a>'
+    +'<div class="caddr">sasaki-h@mail.seki.co.jp</div></div>';
+}
 function newsButtonHTML(){
   return '<a class="newsbtn" href="#/news"><span class="nico">🔔</span>'
     +'<span>おしらせ・<ruby>更新<rt>こうしん</rt></ruby><ruby>履歴<rt>りれき</rt></ruby></span>'
@@ -214,7 +213,7 @@ function viewNews(){
       +'<span class="utag '+(u.cls||'')+'">'+u.tag+'</span></div>'
       +'<div class="ntext">'+u.text+'</div></div>';
   });
-  return h+'</div>';
+  return h+'</div>'+contactHTML();
 }
 function viewHome(){
   let h=newsButtonHTML();
@@ -224,7 +223,7 @@ function viewHome(){
       +'<div class="cattxt"><div class="catlabel">'+c.label+(c.ready?'':'<span class="miniready">じゅんびちゅう</span>')+'</div>'
       +'<div class="catsub">'+c.sub+'</div></div><div class="catgo">▶</div></a>';
   });
-  return h+'</div>'+
+  return h+'</div>'+contactHTML()+
     '<div class="brand"><div class="brandcard"><img src="logo-school.png" alt="SCG日本語学校" loading="lazy"></div></div>';
 }
 function viewTextbookList(){
