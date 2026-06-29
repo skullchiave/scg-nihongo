@@ -98,6 +98,27 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:24px 16px;line-
 .qrclose{margin-top:22px;background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:12px;
   padding:12px 30px;font-size:16px;font-weight:800;font-family:inherit;cursor:pointer;}
 
+/* おしらせ・更新履歴 */
+.newsbtn{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+  border-left:10px solid var(--accent);border-radius:14px;padding:14px 18px;text-decoration:none;color:inherit;
+  box-shadow:0 2px 8px rgba(30,50,90,.07);margin-bottom:16px;font-weight:800;
+  font-size:clamp(15px,4vw,18px);-webkit-tap-highlight-color:transparent;}
+.newsbtn:active{transform:scale(.99);}
+.newsbtn .nico{font-size:20px;flex-shrink:0;}
+.newsbtn .ndot{width:11px;height:11px;border-radius:50%;background:#dc2626;flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(220,38,38,.18);}
+.newsbtn .ngo{margin-left:auto;color:var(--accent);font-weight:900;font-size:18px;flex-shrink:0;}
+.news{display:flex;flex-direction:column;gap:12px;margin-top:6px;}
+.nitem{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;
+  box-shadow:0 2px 6px rgba(30,50,90,.06);}
+.nmeta{display:flex;align-items:center;gap:10px;margin-bottom:7px;}
+.ndate{font-size:13px;color:var(--sub);font-weight:700;}
+.utag{font-size:11px;font-weight:800;color:#fff;background:var(--sub);border-radius:20px;padding:3px 11px;white-space:nowrap;}
+.utag.feat{background:var(--g2);}
+.utag.fix{background:var(--g3);}
+.utag.drill{background:var(--accent);}
+.ntext{font-size:clamp(15px,4vw,17px);line-height:1.65;}
+
 @media (max-width:640px){ .qrbtn{display:none;} }
 </style>
 </head>
@@ -140,6 +161,13 @@ const DATA={
     {tb:'tsunagu', lesson:'L8', label:'い・な<ruby>形容詞<rt>けいようし</rt></ruby>・<ruby>名詞<rt>めいし</rt></ruby>の<ruby>過去<rt>かこ</rt></ruby> <ruby>普通形<rt>ふつうけい</rt></ruby>②', file:'tsunagu/L8-2_keiyou.html', ready:true},
     {tb:'tsunagu', lesson:'L8', label:'<ruby>普通形<rt>ふつうけい</rt></ruby>まとめ', file:'tsunagu/L8-2_matome.html', ready:true},
     {tb:'tsunagu', lesson:'L9', label:'て<ruby>形<rt>けい</rt></ruby>', file:'tsunagu/L9.html', ready:true},
+  ],
+  // ===== おしらせ・更新履歴（新しい順。1行足すだけ。date は YYYY-MM-DD） =====
+  updates:[
+    {date:'2026-06-29', tag:'<ruby>新<rt>しん</rt></ruby><ruby>機能<rt>きのう</rt></ruby>', cls:'feat', text:'リズムに「じどう<ruby>送<rt>おく</rt></ruby>り」を つけました。<ruby>画面<rt>がめん</rt></ruby>が ひとりでに すすみます（おそい・ふつう・はやい）。'},
+    {date:'2026-06-16', tag:'かいぜん', cls:'fix', text:'もじを よみやすい <ruby>字体<rt>じたい</rt></ruby>（BIZ UDフォント）に かえました。'},
+    {date:'2026-06-15', tag:'<ruby>新<rt>しん</rt></ruby><ruby>機能<rt>きのう</rt></ruby>', cls:'feat', text:'スマホで オフライン（ネットが なくても）でも つかえるように なりました。'},
+    {date:'2026-06-15', tag:'<ruby>新<rt>しん</rt></ruby>ドリル', cls:'drill', text:'「つなぐにほんご」L7〜L9 の ドリルを こうかいしました。'},
   ]
 };
 
@@ -151,8 +179,28 @@ function barHTML(title){
 function soonHTML(name){
   return '<div class="soonbox"><div class="big">'+name+'</div>いま じゅんびちゅうです。<br>もうすこし まってください。</div>';
 }
+function isNewsUnread(){try{var seen=localStorage.getItem('news_seen');return DATA.updates.length>0 && (!seen || seen<DATA.updates[0].date);}catch(e){return false;}}
+function markNewsSeen(){try{if(DATA.updates.length>0)localStorage.setItem('news_seen',DATA.updates[0].date);}catch(e){}}
+function fmtDate(s){var p=s.split('-');return p.length===3?p[0]+'/'+(+p[1])+'/'+(+p[2]):s;}
+function newsButtonHTML(){
+  return '<a class="newsbtn" href="#/news"><span class="nico">🔔</span>'
+    +'<span>おしらせ・<ruby>更新<rt>こうしん</rt></ruby><ruby>履歴<rt>りれき</rt></ruby></span>'
+    +(isNewsUnread()?'<span class="ndot" title="あたらしい おしらせ"></span>':'')
+    +'<span class="ngo">▶</span></a>';
+}
+function viewNews(){
+  let h=barHTML('おしらせ・<ruby>更新<rt>こうしん</rt></ruby><ruby>履歴<rt>りれき</rt></ruby>');
+  h+='<div class="news">';
+  DATA.updates.forEach(function(u){
+    h+='<div class="nitem"><div class="nmeta"><span class="ndate">'+fmtDate(u.date)+'</span>'
+      +'<span class="utag '+(u.cls||'')+'">'+u.tag+'</span></div>'
+      +'<div class="ntext">'+u.text+'</div></div>';
+  });
+  return h+'</div>';
+}
 function viewHome(){
-  let h='<div class="cats">';
+  let h=newsButtonHTML();
+  h+='<div class="cats">';
   DATA.categories.forEach(function(c){
     h+='<a class="catbtn c-'+c.id+'" href="#/'+c.id+'">'
       +'<div class="cattxt"><div class="catlabel">'+c.label+(c.ready?'':'<span class="miniready">じゅんびちゅう</span>')+'</div>'
@@ -198,6 +246,7 @@ function render(){
   const parts=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
   let html;
   if(parts.length===0){ html=viewHome(); }
+  else if(parts[0]==='news'){ html=viewNews(); markNewsSeen(); }
   else if(parts[0]==='textbook' && parts.length===1){ html=viewTextbookList(); }
   else if(parts[0]==='textbook'){ html=viewTextbook(parts[1]); }
   else if(parts[0]==='drill'){ html=barHTML('ドリル')+soonHTML('ドリル'); }
