@@ -6,7 +6,7 @@
 ## これは何
 - 日本語学校の授業用ドリル集。GitHub Pages で公開し、**教室プロジェクター投影＋学生スマホ**の両方で使う。
 - 公開URL（学生に配る唯一の入口）: **https://skullchiave.github.io/scg-nihongo/**
-- リポジトリ（**正本＝GitHub**）: `skullchiave/scg-nihongo`（public）。ローカルの clone 先はマシンで異なる（自宅: `Desktop\0.4 claude-drills`）。複数拠点では GitHub を介して同期する（下記「作業場所・同期」）。
+- リポジトリ（**正本＝GitHub**）: `skullchiave/scg-nihongo`（public）。ローカルの clone 先はマシンで異なる（自宅: `Desktop\claude code\scg-nihongo`・2026-07-17 に他の scg 系リポと同じ場所へ clone し直し）。複数拠点では GitHub を介して同期する（下記「作業場所・同期」）。
 
 ## ⚠ 最重要ルール（事故防止）
 - **`index.html` は手編集が正本**（2026-06-15〜）。ロゴ・ラベル・CSS を直接書いてある。
@@ -15,7 +15,7 @@
 
 ## ファイル構成
 - `index.html` … 母艦ポータル（**正本・手編集**）。冒頭に `DATA`（カード定義）、ヘッダーに学校ロゴ、ハッシュルーティング（`#/textbook/tsunagu` 等）。
-- `tsunagu/*.html` … つなぐにほんご ドリル本体8本（各HTML自己完結・外部依存なし）。L7-1/L7-2/L7-3/L8-1_ta/L8-1_nakatta/L8-2_keiyou/L8-2_matome/L9。
+- `tsunagu/*.html` … つなぐにほんご ドリル本体11本（各HTML自己完結・外部依存なし）。L7-1/L7-2/L7-3/L8-1_ta/L8-1_nakatta/L8-2_keiyou/L8-2_matome/L9/L10-2_keiyou/L13-3_ikou/L14-2_jouken。
 - `logo-school.png`（横ロゴ＝ホーム下）, `logo-mark.png`（ブロブ＝ヘッダー左）, `icon-*.png`（PWAアイコン）, `manifest.webmanifest`, `.nojekyll`（必須・無いとPagesがREADMEをindex化）。
 - `_original/` … 投影用の原本HTML8本（触らず温存・参照のみ）。
 - `fonts/BIZUDPGothic-{Regular,Bold}.subset.woff2` … 本文フォント（**自己ホスト・追跡する**）。下記「字体」参照。
@@ -38,7 +38,7 @@
   `cls`: `feat`(青=新機能) / `fix`(緑=かいぜん) / `drill`(オレンジ=新ドリル)。`text`は**やさしい日本語＋漢字ルビ**（学生も読む）。
 - **新着の赤●（未読バッジ）**: `localStorage['news_seen']` に「最後に見た更新の日付」を保存。`DATA.updates[0].date` がそれより新しければホームのボタンに●。`#/news` を開くと既読化して●が消える（`markNewsSeen`）。**ドリルを足したら updates にも1行足す運用**（足し忘れると学生に気づかれない）。
 
-## ドリル本体の作り（8本共通）
+## ドリル本体の作り（全ドリル共通）
 - 4モード構成: ①ルール(rule) ②めくり(flip) ③並べ替え/おわり(sort) ④リズム(rhythm)。タブ`show(id)`で画面切替（タブは履歴に含めない）。
 - **リズムの「じどう送り」（2026-06-29〜・8本共通）**: リズム画面に `▶ じどう`＋速度3段 `おそい(5s)/ふつう(3s)/はやい(1s)`（既定ふつう）。ONで等間隔に`rStep`自動実行（問題↔答えを刻む）。じどう中の画面タップ＝一時停止/再開、OFF時は従来の手動めくり。`show()`がリズム以外への切替で`rSetAuto(false)`し裏で回り続けないようにする。**新規ドリルにもこのコントロール一式（HTML `#rauto`＋CSS `.rauto/.rplay/.rspd`＋JS `rSetAuto`機構）を必ず含める**。一括追加は `scratch/patch_rhythm_autoplay.py` 参照（アンカー: `.rcount`ルール / `rcount`div / `rhythmarea onclick` / `show()`）。
 - 1ファイルで投影/スマホ両対応: `@media(max-width:640px)` ＋ `clamp()` ＋ `100dvh`。スマホでナビは2×2、③の選択肢はgrid。
@@ -48,6 +48,7 @@
 - 形容詞は「い形容詞／な形容詞」。表示は「い・な形容詞」。
 - L7-3＝**い・な形容詞の普通形①**（現在）、L8-2＝**い・な形容詞・名詞の過去 普通形②**（過去）。①②でペア。
 - 「なかった形」とは言わない→ラベルは「なかった」。
+- 動詞活用の呼び名は教科書準拠: L13-3=**いこう形**（〜(よ)う）、L14-2=**じょうけん形**（〜ば）。「意向形／条件形」とは表記しない（学生が教科書と照合できるように。ひらがな表記）。
 - ③の結合ボタンは「た/て」を大きく＋「（2・3グループ）」を小さい2行（2・3グループはおわりが同じなので1ボタン。判定は `data-e` で「おわり」のみ）。
 
 ## iOS文字はみ出し対策（めくりカード）
@@ -68,7 +69,7 @@ taskkill //F //IM chrome.exe
 ## 作業場所・同期（複数拠点）
 - **正本は GitHub**（`skullchiave/scg-nihongo`）。複数のPC/拠点で作業するなら **git clone / pull / push で同期**する。GitHub が単一の真実。
 - ⚠ **`.git` を含むこのフォルダを Google Drive 等のクラウド同期フォルダに置かない**。クラウド同期が `.git` 内部を file 単位で同期して破損する典型事故。バックアップ目的なら GitHub が既にそれ。
-- 自宅 clone: `Desktop\0.4 claude-drills`。職場PCは別パスに `git clone` する。`scratch/` `tmp/` は同期不要（gitignore済だが、クラウド同期は gitignore を無視するので特に注意）。
+- 自宅 clone: `Desktop\claude code\scg-nihongo`。職場PCは別パスに `git clone` する。`scratch/` `tmp/` は同期不要（gitignore済だが、クラウド同期は gitignore を無視するので特に注意）。
 
 ## デプロイ
 ローカルで編集 → `git add` → `git commit` → `git push`。GitHub Pages が数十秒〜1分で反映。コミットemailはnoreply化済。
