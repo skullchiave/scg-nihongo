@@ -80,7 +80,6 @@ rt{font-size:0.45em;font-weight:500;opacity:.8;}
 .front{background:var(--panel);border:2px solid var(--line);font-size:30px;box-shadow:0 2px 5px rgba(30,50,90,.08);}
 .back{background:#fff7e6;border:2px solid var(--accent);transform:rotateY(180deg);font-size:30px;}
 .back .ta{font-size:34px;color:var(--ink);}
-.back .negline{font-size:14px;color:var(--sub);font-weight:700;margin-top:4px;}
 .back .gl{font-size:14px;margin-top:8px;padding:2px 12px;border-radius:20px;color:#fff;}
 .gl1{background:var(--g1);}.gl2{background:var(--g2);}.gl3{background:var(--g3);}
 
@@ -144,7 +143,6 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
   .fcard{height:94px;}
   .front,.back{font-size:clamp(15px,5vw,21px);}
   .back .ta{font-size:clamp(17px,5.5vw,24px);}
-  .back .negline{font-size:10px;margin-top:2px;}
   .back .gl{font-size:11px;}
   .qcard{font-size:clamp(28px,9.5vw,40px);min-width:0;width:100%;max-width:92vw;padding:22px 14px;}
   .choices{flex-direction:column;width:100%;max-width:340px;gap:12px;}
@@ -227,7 +225,7 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
     </div>
   </div>
   <div class="note"><b>「〜ない とき」は 〜なければ：</b>
-    ない<ruby>形<rt>けい</rt></ruby> ＋ ければ。あるきません→<span class="v">あるかなければ</span> ／ たべません→<span class="v">たべなければ</span> ／ きません→<span class="v">こなければ</span><br>
+    あるきません→<span class="v">あるかなければ</span> ／ たべません→<span class="v">たべなければ</span> ／ きません→<span class="v">こなければ</span>　→ 「なければ」ドリルで れんしゅう！<br>
     まいにち えきまで <span class="v">あるけば</span>、やせますよ。あまい ものを <span class="v">たべなければ</span>、やせますよ。</div>
 </section>
 
@@ -266,7 +264,7 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
 
 <!-- ④ RHYTHM -->
 <section class="screen" id="rhythm">
-  <h2>リズム<ruby>変換<rt>へんかん</rt></ruby>　<span style="color:var(--sub);font-size:18px;">ます<ruby>形<rt>けい</rt></ruby> → じょうけん<ruby>形<rt>けい</rt></ruby>（「ません→なければ」も でるよ）。<ruby>画面<rt>がめん</rt></ruby>クリック／<kbd>Space</kbd> でめくる・つぎへ</span></h2>
+  <h2>リズム<ruby>変換<rt>へんかん</rt></ruby>　<span style="color:var(--sub);font-size:18px;">ます<ruby>形<rt>けい</rt></ruby> → じょうけん<ruby>形<rt>けい</rt></ruby>。<ruby>画面<rt>がめん</rt></ruby>クリック／<kbd>Space</kbd> でめくる・つぎへ</span></h2>
   <div class="rhythm" id="rhythmarea">
     <div class="rcard" id="rcard"><span id="rmasu">のみます → ？</span></div>
     <div class="rsub" id="rsub">（クリック）</div>
@@ -284,12 +282,13 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
 
 <script>
 // ===== verb data =====
-// m=ます形, ba=じょうけん形, g=group, negm/neg=否定（ません→なければ・教科書の表と例文の語のみ）, ex=メモ(任意)
+// m=ます形, ba=じょうけん形, g=group, ex=メモ(任意)
 // 語彙は L14-2教科書（練習1の表＋会話・文型）＋ L7〜L13ドリルの既習語
+// ※「〜なければ」（否定）は L14-2_nakereba.html に分離（2026-07-27・同じ動詞セット）
 const VERBS=[
   // 1グループ（い段→え段＋ば）
-  {m:"あるきます",ba:"あるけば",g:1,negm:"あるきません",neg:"あるかなければ"},
-  {m:"のります",ba:"のれば",g:1,negm:"のりません",neg:"のらなければ"},
+  {m:"あるきます",ba:"あるけば",g:1},
+  {m:"のります",ba:"のれば",g:1},
   {m:"さがします",ba:"さがせば",g:1},
   {m:"つかいます",ba:"つかえば",g:1},
   {m:"いきます",ba:"いけば",g:1},
@@ -313,20 +312,20 @@ const VERBS=[
   {m:"やります",ba:"やれば",g:1},
   {m:"かえります",ba:"かえれば",g:1,ex:"い<ruby>段<rt>だん</rt></ruby>だけど1グループ"},
   // 2グループ（＋れば）
-  {m:"たべます",ba:"たべれば",g:2,negm:"たべません",neg:"たべなければ"},
+  {m:"たべます",ba:"たべれば",g:2},
   {m:"ねます",ba:"ねれば",g:2},
   {m:"できます",ba:"できれば",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"かたづけます",ba:"かたづければ",g:2},
   {m:"でかけます",ba:"でかければ",g:2},
-  {m:"みます",ba:"みれば",g:2,negm:"みません",neg:"みなければ",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
+  {m:"みます",ba:"みれば",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"（シャツを）きます",ba:"きれば",g:2,ex:"きる（ふくを きる）→きれば"},
   {m:"（あさ）おきます",ba:"おきれば",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   // 3グループ
   {m:"します",ba:"すれば",g:3},
-  {m:"うんどうします",ba:"うんどうすれば",g:3,negm:"うんどうしません",neg:"うんどうしなければ"},
+  {m:"うんどうします",ba:"うんどうすれば",g:3},
   {m:"べんきょうします",ba:"べんきょうすれば",g:3},
   {m:"でんわします",ba:"でんわすれば",g:3},
-  {m:"（学校へ）きます",ba:"くれば",g:3,negm:"（学校へ）きません",neg:"こなければ",ex:"くる→くれば"}
+  {m:"（学校へ）きます",ba:"くれば",g:3,ex:"くる→くれば"}
 ];
 const GNAME={1:"1グループ",2:"2グループ",3:"3グループ"};
 function rshuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
@@ -395,7 +394,7 @@ function flipDeal(){
     const c=document.createElement('div');c.className='fcard';
     c.innerHTML=`<div class="fin">
       <div class="face front">${v.m}</div>
-      <div class="face back"><span class="ta">${v.ba}</span>${v.neg?'<span class="negline">'+v.negm+'→'+v.neg+'</span>':''}<span class="gl gl${v.g}">${GNAME[v.g]}</span></div>
+      <div class="face back"><span class="ta">${v.ba}</span><span class="gl gl${v.g}">${GNAME[v.g]}</span></div>
     </div>`;
     c.onclick=()=>c.classList.toggle('flip');
     fg.appendChild(c);
@@ -428,15 +427,9 @@ document.getElementById('sortreset').onclick=sortStart;
 sortStart();
 
 // ===== ④ RHYTHM =====
-// プール＝全語の肯定＋教科書掲載語の否定（ません→なければ）
-const RPOOL_BASE=[];
-VERBS.forEach(v=>{
-  RPOOL_BASE.push({m:v.m,ba:v.ba,g:v.g});
-  if(v.neg)RPOOL_BASE.push({m:v.negm,ba:v.neg,g:v.g});
-});
 let rPool=[], rIdx=0, rState=0; // 0=ます表示, 1=じょうけん形表示
 const rcard=document.getElementById('rcard'), rsub=document.getElementById('rsub'), rcount=document.getElementById('rcount');
-function rStart(){rPool=rshuffle(RPOOL_BASE);rIdx=0;rState=0;rRender();}
+function rStart(){rPool=rshuffle(VERBS);rIdx=0;rState=0;rRender();}
 function rRender(){
   const v=rPool[rIdx];
   if(rState===0){rcard.innerHTML='<span>'+v.m+' <span style="color:var(--accent);">→</span> ？</span>';rsub.textContent='（クリック）';}
