@@ -67,6 +67,8 @@ rt{font-size:0.45em;font-weight:500;opacity:.8;}
 .ru.r2{border-color:var(--g2);}.ru.r3{border-color:var(--g3);}
 .ru h3{font-size:21px;margin-bottom:8px;}
 .ru .big{font-size:19px;line-height:1.8;}
+.ru .mini{font-size:15px;color:var(--sub);margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);line-height:1.6;}
+.ru .mini b{color:var(--accentT);}
 .v{color:var(--accentT);font-weight:800;}
 .note{background:#fff7e6;border:1px solid #f0c97a;border-radius:12px;padding:14px 20px;margin-top:18px;font-size:16px;line-height:1.8;}
 .note b{color:var(--accentT);}
@@ -137,6 +139,7 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
   .ru{padding:16px;border-top-width:5px;}
   .ru h3{font-size:20px;}
   .ru .big{font-size:16px;line-height:1.7;}
+  .ru .mini{font-size:13px;margin-top:8px;padding-top:7px;}
   .note{font-size:14px;padding:12px 14px;margin-top:14px;}
   .legend{font-size:13px;gap:10px;margin-bottom:12px;}
   .shuf{padding:8px 12px;font-size:13px;}
@@ -195,7 +198,7 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
   </span>
   <button data-s="rule" class="on">① ルール</button>
   <button data-s="flip">② めくり</button>
-  <button data-s="sort">③ ければ？なら？</button>
+  <button data-s="sort">③ ひんしは？</button>
   <button data-s="rhythm">④ リズム</button>
 </nav>
 
@@ -218,11 +221,13 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
       <div class="big">そのまま <span class="v">＋なら</span><br>
         べんり→べんり<span class="v">なら</span> ／ かんたん→かんたん<span class="v">なら</span><br>
         しずか→しずか<span class="v">なら</span></div>
+      <div class="mini">みわけかた：<ruby>名詞<rt>めいし</rt></ruby>の <ruby>前<rt>まえ</rt></ruby>で <b>「〜な」</b><br>べんり<b>な</b> アプリ ／ しずか<b>な</b> へや</div>
     </div>
     <div class="ru r3"><h3><ruby>名詞<rt>めいし</rt></ruby></h3>
       <div class="big"><span class="v">な<ruby>形容詞<rt>けいようし</rt></ruby>と おなじ</span><br>
         やすみ→やすみ<span class="v">なら</span> ／ あめ→あめ<span class="v">なら</span><br>
         へいじつ→へいじつ<span class="v">なら</span></div>
+      <div class="mini">みわけかた：<ruby>名詞<rt>めいし</rt></ruby>の <ruby>前<rt>まえ</rt></ruby>で <b>「〜の」</b><br>やすみ<b>の</b> <ruby>日<rt>ひ</rt></ruby> ／ あめ<b>の</b> <ruby>日<rt>ひ</rt></ruby></div>
     </div>
   </div>
   <div class="note"><b>「〜ない とき」は 〜なければ：</b>
@@ -245,13 +250,14 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
 
 <!-- ③ SORT (ending judgment) -->
 <section class="screen" id="sort">
-  <h2>おわりは？　<span style="color:var(--sub);font-size:18px;">〜ければ？ 〜なら？</span></h2>
+  <h2>これは？　<span style="color:var(--sub);font-size:18px;">い<ruby>形容詞<rt>けいようし</rt></ruby>？ な<ruby>形容詞<rt>けいようし</rt></ruby>？ <ruby>名詞<rt>めいし</rt></ruby>？</span></h2>
   <div class="score" id="score">0 / 0</div>
   <div class="sortwrap">
     <div class="qcard" id="sortq">やすい</div>
     <div class="choices">
-      <button class="c1" data-e="ければ"><span class="opt-big">〜ければ</span><span class="opt-sub">（い<ruby>形容詞<rt>けいようし</rt></ruby>）</span></button>
-      <button class="c2" data-e="なら"><span class="opt-big">〜なら</span><span class="opt-sub">（な<ruby>形容詞<rt>けいようし</rt></ruby>・<ruby>名詞<rt>めいし</rt></ruby>）</span></button>
+      <button class="c1" data-t="i"><span class="opt-big">い<ruby>形容詞<rt>けいようし</rt></ruby></span><span class="opt-sub">〜ければ</span></button>
+      <button class="c2" data-t="na"><span class="opt-big">な<ruby>形容詞<rt>けいようし</rt></ruby></span><span class="opt-sub">〜なら</span></button>
+      <button class="c3" data-t="n"><span class="opt-big"><ruby>名詞<rt>めいし</rt></ruby></span><span class="opt-sub">〜なら</span></button>
     </div>
     <div class="fb" id="sortfb"></div>
     <div class="sortbtns">
@@ -407,7 +413,10 @@ function flipDeal(){
 document.getElementById('flipshuffle').onclick=flipDeal;
 flipDeal();
 
-// ===== ③ SORT（おわりあて＝ければ / なら）=====
+// ===== ③ SORT（ひんしあて＝い形容詞 / な形容詞 / 名詞）=====
+// 「おわり当て」ではなく「ひんし当て」にしている理由: な形容詞と名詞はおわりが同じ「なら」で、
+// おわりを問うと押し分けが成立しない。ひんしを問えば矛盾せず、ボタンにおわりを併記して両方学べる。
+// 誤答でも おわりが同じ組（な形容詞↔名詞）なら「じょうけん形は合っている」と明示して混乱を防ぐ。
 let sortPool=[], sortIdx=0, sCorrect=0, sTotal=0, answered=false;
 const sortq=document.getElementById('sortq'), sortfb=document.getElementById('sortfb'), scoreEl=document.getElementById('score');
 function sortStart(){sortPool=rshuffle(WORDS);sortIdx=0;sCorrect=0;sTotal=0;answered=false;sortShow();updScore();}
@@ -416,10 +425,14 @@ function updScore(){scoreEl.textContent=sCorrect+' / '+sTotal;}
 document.querySelectorAll('.choices button').forEach(b=>{
   b.onclick=()=>{
     if(answered)return;answered=true;sTotal++;
-    const w=sortPool[sortIdx];const pick=b.dataset.e;
+    const w=sortPool[sortIdx];const pick=b.dataset.t;
     const tail='<span class="ans">'+w.j+'</span>（'+TNAME[w.t]+(w.ex?'・'+w.ex:'')+'）';
-    if(pick===endOf(w.t)){sndOK();sCorrect++;sortfb.className='fb ok';sortfb.innerHTML='⭕ せいかい！　→ '+tail;}
-    else{sndNG();sortfb.className='fb ng';sortfb.innerHTML='❌ → '+tail;}
+    if(pick===w.t){sndOK();sCorrect++;sortfb.className='fb ok';sortfb.innerHTML='⭕ せいかい！　→ '+tail;}
+    else{
+      sndNG();sortfb.className='fb ng';
+      const same=(endOf(pick)===endOf(w.t))?'<br><span style="font-size:.72em;color:var(--sub);">おわりは おなじ「なら」で OK！ ひんしだけ ちがいます</span>':'';
+      sortfb.innerHTML='❌ → '+tail+same;
+    }
     updScore();
   };
 });
