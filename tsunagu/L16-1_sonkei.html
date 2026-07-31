@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="/scg-nihongo/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/scg-nihongo/icon-192.png">
+<link rel="manifest" href="/scg-nihongo/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="SCG日本語">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffffff">
+<title>つなぐ L16 そんけいご（とくべつな ことば）ドリル</title>
+<style>
+@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:400;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Regular.subset.woff2') format('woff2');}
+@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:700;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Bold.subset.woff2') format('woff2');}
+:root{
+  --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
+  --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{font-family:"BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);
+  display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-user-select:none;user-select:none;}
+/* nav */
+nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#ffffff;border-bottom:2px solid var(--line);flex-shrink:0;align-items:center;}
+nav .ttl{font-weight:800;font-size:18px;margin-right:auto;letter-spacing:.5px;}
+nav .ttl small{color:var(--sub);font-weight:400;font-size:13px;margin-left:8px;}
+nav button{background:#eef2f8;color:var(--sub);border:1px solid var(--line);border-radius:8px;
+  padding:8px 16px;font-size:15px;cursor:pointer;font-family:inherit;white-space:nowrap;}
+nav button.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800;}
+nav button:hover{color:var(--ink);}
+/* ホームへ戻る（母艦ポータルへ） */
+nav .navhome{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 13px;font-size:14px;font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+nav .navhome:hover{border-color:var(--accent);color:var(--accentT);}
+/* もどる/すすむ（PWAでブラウザ戻るが無いため = history.back/forward） */
+nav .navnav{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
+nav .navnav:hover{border-color:var(--accent);color:var(--accentT);}
+nav .navnav:active{background:#fff7e6;}
+/* 文字サイズ切替（Ctrl+= を知らない先生向けの明示ボタン） */
+nav .fzgrp{display:inline-flex;gap:6px;align-items:center;margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
+nav .fzgrp button{padding:6px 10px;font-size:14px;min-width:44px;}
+/* 語彙スコープ切替（16-1 → ＋コラム7 累積） */
+nav .scope{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:var(--sub);
+  margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
+nav .scope button{padding:6px 12px;font-size:14px;}
+nav .scope button.on{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:800;}
+/* sections */
+.screen{flex:1;display:none;flex-direction:column;padding:24px 32px;overflow:auto;position:relative;}
+.screen.on{display:flex;}
+h2{font-size:26px;margin-bottom:6px;}
+rt{font-size:0.45em;font-weight:500;opacity:.8;}
+.hint{color:var(--sub);font-size:16px;margin-bottom:20px;}
+.shuf{margin-left:auto;background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 18px;font-size:15px;cursor:pointer;font-family:inherit;}
+.shuf:hover{background:#fff7e6;border-color:var(--accent);}
+.toolbar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap;}
+.dirbtn{background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 18px;font-size:15px;cursor:pointer;font-family:inherit;font-weight:700;}
+.dirbtn:hover{background:#fff7e6;border-color:var(--accent);}
+.dirbtn.rev{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+/* ① おぼえる（とくべつな ことば 一覧） */
+.kgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:4px;}
+.kcard{background:var(--panel);border-radius:14px;padding:16px 20px;border-top:6px solid;box-shadow:0 2px 5px rgba(30,50,90,.06);}
+.kcard.plain{border-top-color:var(--line);}   /* 合流しないもの＝無色 */
+.kcard .kh{font-size:24px;font-weight:900;margin-bottom:10px;}
+.kcard .kh.long{font-size:20px;}          /* ごぞんじではありません 等の長い語だけ縮める */
+/* 「3つ → 1つ」＝色が付いている理由（合流）を明示するピル */
+.kcard .mg{font-size:13px;color:#fff;font-weight:800;border-radius:20px;padding:3px 11px;margin-left:9px;vertical-align:middle;white-space:nowrap;}
+.kcard .kfrom{font-size:19px;line-height:1.75;color:var(--ink);}
+.kcard .kfrom b{font-weight:800;display:inline-block;}  /* 語の途中で改行させない */
+.kcard .arw{color:var(--accent);font-weight:900;margin:0 6px;}
+.kcard .mini{display:block;font-size:14px;color:var(--sub);margin-top:8px;line-height:1.6;}
+.note{background:#fff7e6;border:1px solid #f0c97a;border-radius:12px;padding:14px 20px;margin-top:18px;font-size:16px;line-height:1.9;}
+.note b{color:var(--accentT);}
+.v{color:var(--accentT);font-weight:800;}
+
+/* ② FLIP cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-top:8px;}
+.fcard{height:126px;border-radius:14px;cursor:pointer;perspective:800px;}
+.fin{position:relative;width:100%;height:100%;transition:transform .35s;transform-style:preserve-3d;}
+.fcard.flip .fin{transform:rotateY(180deg);}
+.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:14px;
+  backface-visibility:hidden;font-weight:800;flex-direction:column;padding:6px;}
+.front{background:var(--panel);border:2px solid var(--line);font-size:25px;box-shadow:0 2px 5px rgba(30,50,90,.08);}
+.back{background:#fff7e6;border:2px solid var(--accent);transform:rotateY(180deg);font-size:25px;}
+.back .ta{font-size:26px;color:var(--ink);}
+/* 裏に もとの ことばを 小さく併記（「いらっしゃいます」が3枚できるので、どれの答えか分かるように） */
+.back .src{font-size:13px;color:var(--sub);font-weight:600;margin-bottom:3px;}
+.gl{font-size:13px;margin-top:8px;padding:2px 12px;border-radius:20px;color:#fff;font-weight:800;}
+
+/* ③ SORT drill */
+.sortwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px;}
+.qcard{font-size:52px;font-weight:900;background:var(--panel);border:3px solid var(--line);border-radius:20px;
+  padding:30px 56px;min-width:340px;text-align:center;box-shadow:0 4px 12px rgba(30,50,90,.10);}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;width:100%;}
+.choices button{font-size:23px;font-weight:900;border:none;border-radius:14px;padding:16px 20px;cursor:pointer;color:#fff;font-family:inherit;}
+.choices button:active{transform:scale(.96);}
+.fb{font-size:26px;font-weight:800;min-height:44px;text-align:center;}
+.fb.ok{color:var(--ok);}.fb.ng{color:var(--ng);}
+.fb .ans{color:var(--accentT);}
+.fb .exn{display:block;font-size:16px;color:var(--sub);font-weight:600;}
+.score{position:absolute;top:16px;right:36px;font-size:18px;color:var(--sub);}
+.sortbtns{display:flex;gap:14px;}
+.sortbtns button{background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 20px;font-size:16px;cursor:pointer;font-family:inherit;}
+
+/* ④ RHYTHM */
+.rhythm{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;cursor:pointer;}
+.rcard{font-size:72px;font-weight:900;text-align:center;}
+.rcard .arrow{color:var(--accent);font-size:52px;margin:8px 0;}
+.rta{color:var(--accentT);}
+.rsub{color:var(--sub);font-size:20px;}
+.rcount{position:absolute;bottom:24px;right:36px;color:var(--sub);font-size:16px;}
+.rauto{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;}
+.rauto button{font-family:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--line);background:#eef2f8;color:var(--ink);}
+.rplay{padding:10px 22px;font-size:18px;font-weight:700;}
+.rplay.on{background:var(--accent);color:#fff;border-color:var(--accent);}
+.rspdwrap{display:inline-flex;gap:6px;}
+.rspd{padding:9px 16px;font-size:15px;}
+.rspd.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+@media(max-width:640px){.rauto{gap:7px;margin:0 0 8px;}.rplay{padding:8px 16px;font-size:15px;}.rspd{padding:7px 11px;font-size:13px;}}
+kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-size:14px;}
+
+/* ===== スマホ対応（画面幅640px以下） ===== 投影用レイアウトはそのまま、スマホだけ組み替える */
+@media (max-width:640px){
+  body{height:100dvh;}
+  nav{padding:8px 10px;gap:6px;}
+  nav .ttl{font-size:14px;width:100%;margin:0 0 2px;}
+  nav .ttl small{display:block;margin:2px 0 0;font-size:11px;}
+  nav .fzgrp{display:none;}
+  nav .scope{margin:0 0 2px;padding:0 0 4px;border-right:none;width:100%;font-size:12px;}
+  nav .scope button{flex:1 1 0;padding:8px 4px;font-size:13px;}
+  nav button{flex:1 1 calc(50% - 3px);min-width:0;padding:11px 4px;font-size:14px;}
+  .screen{padding:14px 12px;}
+  h2{font-size:19px;line-height:1.35;}
+  h2 span{display:block;font-size:13px!important;margin-top:3px;}
+  .hint{font-size:14px;margin-bottom:14px;}
+  .toolbar{gap:8px;margin-bottom:10px;}
+  .dirbtn{padding:8px 12px;font-size:13px;}
+  .kgrid{grid-template-columns:1fr;gap:12px;}
+  .kcard{padding:13px 15px;border-top-width:5px;}
+  .kcard .kh{font-size:20px;margin-bottom:7px;}
+  .kcard .kfrom{font-size:16px;line-height:1.7;}
+  .kcard .mini{font-size:12px;}
+  .note{font-size:14px;padding:12px 14px;margin-top:14px;}
+  .shuf{padding:8px 12px;font-size:13px;}
+  .grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .fcard{height:100px;}
+  .front,.back{font-size:clamp(13px,4.2vw,19px);}
+  .back .ta{font-size:clamp(13px,4.4vw,20px);}
+  .gl{font-size:10px;margin-top:5px;padding:1px 8px;}
+  .qcard{font-size:clamp(26px,8.5vw,38px);min-width:0;width:100%;max-width:92vw;padding:22px 14px;}
+  .choices{grid-template-columns:1fr;max-width:360px;gap:10px;}
+  .choices button{width:100%;font-size:17px;padding:14px 8px;}
+  .fb{font-size:17px;height:auto;min-height:36px;text-align:center;}
+  .fb .exn{font-size:13px;}
+  .score{position:static;align-self:flex-end;margin:0 4px 2px 0;}
+  .sortwrap{gap:14px;justify-content:flex-start;padding-top:6px;}
+  .sortbtns{flex-wrap:wrap;justify-content:center;gap:10px;}
+  .sortbtns button{font-size:14px;padding:11px 14px;}
+  .rcard{font-size:clamp(26px,8vw,58px);}
+  .rcard .arrow{font-size:38px;}
+  .rsub{font-size:15px;}
+  .rcount{bottom:14px;right:16px;font-size:13px;}
+}
+
+/* sort1gamen: 判定画面(#sort)を1画面に収める＝スクロールなし（640px以下） */
+@media (max-width:640px){
+  #sort h2{margin-bottom:2px;}
+  #sort h2 span{margin-top:1px;}
+  #sort .score{position:absolute;top:10px;right:14px;align-self:auto;margin:0;}
+  #sort .sortwrap{gap:7px;justify-content:space-evenly;padding-top:2px;}
+  #sort .qcard{font-size:clamp(20px,6vw,30px);padding:10px 12px;}
+  #sort .choices{gap:7px;width:100%;max-width:360px;}
+  #sort .choices button{padding:11px 6px;font-size:15px;white-space:normal;line-height:1.25;}
+  #sort .fb{font-size:15px;min-height:22px;}
+  #sort .sortbtns{gap:7px;}
+  #sort .sortbtns button{padding:7px 11px;font-size:13px;}
+}
+.fitwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;white-space:nowrap;transform-origin:center;}
+/* 翻訳コピー対応: 本文は選択可・カード/操作部は選択不可（タップ誤選択防止） */
+body{-webkit-user-select:text;user-select:text;}
+nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-webkit-user-select:none;user-select:none;}
+</style>
+</head>
+<body>
+<nav>
+  <a class="navhome" href="../">🏠 ホーム</a>
+  <button class="navnav" id="navback" title="まえのページへ">◀ もどる</button>
+  <button class="navnav" id="navfwd" title="つぎのページへ">すすむ ▶</button>
+  <span class="ttl">つなぐにほんご L16 <small>そんけいご（とくべつな ことば）ドリル ― <ruby>言<rt>い</rt></ruby>います → おっしゃいます</small></span>
+  <span class="fzgrp">
+    <button id="fzdown">A−</button>
+    <button id="fzval" title="クリックで100%にもどす">100%</button>
+    <button id="fzup">A＋</button>
+  </span>
+  <span class="scope">ことば
+    <button data-sec="1" class="on">16-1</button>
+    <button data-sec="2">＋コラム7</button>
+  </span>
+  <button data-s="rule" class="on">① おぼえる</button>
+  <button data-s="flip">② めくり</button>
+  <button data-s="sort">③ どれに なる？</button>
+  <button data-s="rhythm">④ リズム</button>
+</nav>
+
+<!-- ① RULE（＝おぼえる。とくべつな ことば は ルールが ない） -->
+<section class="screen on" id="rule">
+  <h2>そんけいご「とくべつな ことば」</h2>
+  <p class="hint"><ruby>先生<rt>せんせい</rt></ruby>・<ruby>部長<rt>ぶちょう</rt></ruby>・お<ruby>客<rt>きゃく</rt></ruby>さん…＝ <b>うえの ひと</b>の ことを <ruby>話<rt>はな</rt></ruby>す とき、ことばが <span class="v">ぜんぜん ちがう ことば</span>に なります。ルールは ありません。おぼえましょう。<br>
+    <span style="font-size:14px;">※ <b style="color:#dc2626;">色</b>が ついて いる ものは、いくつかの ことばが <b>1つ</b>に なります（＝まちがえやすい ところ）。</span></p>
+  <div class="kgrid" id="kgrid"></div>
+  <div class="note"><b>ちゅうい：</b>
+    「いらっしゃいます」は <span class="v">3つ</span>（いきます・きます・います）の いみが あります。どれかは <ruby>文<rt>ぶん</rt></ruby>で わかります。<br>
+    「めしあがります」は のみます と たべます、りょうほう。<br>
+    「ごぞんじです」だけ <span class="v">「〜ます」じゃない</span>（です）。<br>
+    <b>じぶん</b>の ことには つかいません（×わたしが おっしゃいます）。
+  </div>
+</section>
+
+<!-- ② FLIP -->
+<section class="screen" id="flip">
+  <h2 id="fliph">ふつうの ことば → そんけいご　<span style="color:var(--sub);font-size:18px;">カードをクリックしてめくる</span></h2>
+  <p class="hint"><ruby>先<rt>さき</rt></ruby>に <ruby>答<rt>こた</rt></ruby>えを <ruby>言<rt>い</rt></ruby>って（<ruby>書<rt>か</rt></ruby>いて）から、クリックして <ruby>答<rt>こた</rt></ruby>え<ruby>合<rt>あ</rt></ruby>わせ。</p>
+  <div class="toolbar">
+    <button class="dirbtn" id="flipdir">⇄ ぎゃく（そんけいご → ふつう）</button>
+    <button class="shuf" id="flipshuffle">🔀 シャッフル</button>
+  </div>
+  <div class="grid" id="flipgrid"></div>
+</section>
+
+<!-- ③ SORT（どの そんけいごに なるか＝合流あて） -->
+<section class="screen" id="sort">
+  <h2>どの そんけいごに なりますか？　<span style="color:var(--sub);font-size:18px;">4つから えらぶ</span></h2>
+  <div class="score" id="score">0 / 0</div>
+  <div class="sortwrap">
+    <div class="qcard" id="sortq">いいます</div>
+    <div class="choices" id="choices"></div>
+    <div class="fb" id="sortfb"></div>
+    <div class="sortbtns">
+      <button id="sortnext">つぎ ▶</button>
+      <button id="sortreset">さいしょから</button>
+      <button id="sndtoggle">🔊 おと ON</button>
+    </div>
+  </div>
+</section>
+
+<!-- ④ RHYTHM -->
+<section class="screen" id="rhythm">
+  <h2>リズム<ruby>変換<rt>へんかん</rt></ruby>　<span style="color:var(--sub);font-size:18px;">ふつう → そんけいご。<ruby>画面<rt>がめん</rt></ruby>クリック／<kbd>Space</kbd> でめくる・つぎへ</span></h2>
+  <div class="rhythm" id="rhythmarea">
+    <div class="rcard" id="rcard"><span>いいます → ？</span></div>
+    <div class="rsub" id="rsub">（クリック）</div>
+  </div>
+  <div class="rauto" id="rauto">
+    <button class="rplay" id="rplay" type="button">▶ じどう</button>
+    <span class="rspdwrap">
+      <button class="rspd" data-ms="5000" type="button">おそい</button>
+      <button class="rspd on" data-ms="3000" type="button">ふつう</button>
+      <button class="rspd" data-ms="2000" type="button">はやい</button>
+      <button class="rspd" data-ms="1000" type="button">とてもはやい</button>
+    </span>
+  </div>
+  <div class="rcount" id="rcount"></div>
+</section>
+
+<script>
+// ===== data =====
+// p=ふつうの ことば（ます形）, key=そんけいご（③の選択肢キー・合流の単位）,
+// a=答えの表示（keyと違う時だけ）, s=スコープ(1=16-1の表 / 2=コラム7でふえる分), ex=メモ(任意)
+// 教科書 つなぐにほんごⅡ L16-1 ぶんけい1 の変換表（p18）＋ コラム7「敬語 特別なことば」（p43）が正。
+// ⚠ この課の「変換」は規則ではなく語彙の置きかえ＝ルールで作れない。だから③は「おわりあて」ではなく
+//    「どの そんけいごに 合流するか」を問う（いく・くる・いる → いらっしゃいます の3合流が最大の山）。
+const KEIGO=[
+  // ===== 16-1 ぶんけい1 の表（s:1）=====
+  {p:"いきます",              key:"いらっしゃいます", s:1},
+  {p:"（がっこうへ）きます",   key:"いらっしゃいます", s:1, ex:"くる＝いらっしゃいます"},
+  {p:"います",                key:"いらっしゃいます", s:1},
+  {p:"（けんきゅうして）います",key:"いらっしゃいます", s:1, a:"（けんきゅうして）いらっしゃいます", ex:"〜ています → 〜ていらっしゃいます"},
+  {p:"いいます",              key:"おっしゃいます",   s:1},
+  {p:"します",                key:"なさいます",       s:1},
+  {p:"のみます",              key:"めしあがります",   s:1},
+  {p:"たべます",              key:"めしあがります",   s:1},
+  {p:"みます",                key:"ごらんになります", s:1},
+  {p:"しっています",          key:"ごぞんじです",     s:1, ex:"「〜ます」じゃない"},
+  // ===== コラム7（p43）でふえる分（s:2）=====
+  {p:"ねます",                key:"おやすみになります",     s:2},
+  {p:"（シャツを）きます",     key:"おめしになります",       s:2, ex:"きる（シャツ）＝おめしになります"},
+  {p:"くれます",              key:"くださいます",           s:2},
+  {p:"しりません",            key:"ごぞんじではありません", s:2, ex:"ごぞんじです の ないかたち"}
+];
+// ===== 色は「合流」にだけ使う =====
+// 2つ以上の ふつうの ことばが 1つの そんけいごに なるものだけ 色を付ける（＝この課の山）。
+// 1対1のものは無色。色数を増やさないため、色は意味を持つ時だけ使う。
+const MCOL=["#dc2626","#c2410c","#7c3aed"];  // 合流グループ用（スコープ内の出現順に割当）
+const PLAIN="#334155";                        // 合流しないもの（ボタン・チップ用の無彩色）
+let colOf={}, mergeN={};
+function buildColors(){
+  colOf={};mergeN={};let i=0;
+  keysInScope().forEach(k=>{
+    const n=pool().filter(v=>v.key===k&&!v.a).length;   // 〜ています（派生）は数えない
+    mergeN[k]=n;
+    colOf[k]=n>=2?MCOL[i++%MCOL.length]:null;           // null＝無色
+  });
+}
+const colBtn=k=>colOf[k]||PLAIN;
+const ans=v=>v.a||v.key;                       // 答えの表示（〜ています だけ key と違う）
+function rshuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+// 一周ごとの再シャッフル。直前の語が新しい先頭に来たら1つずらして連続を防ぐ
+function reshufflePool(pool){const last=pool[pool.length-1];pool=rshuffle(pool);if(pool.length>1&&pool[0]===last)pool.push(pool.shift());return pool;}
+
+// ===== 語彙スコープ（16-1 → ＋コラム7 累積）=====
+let scopeSec=1;
+function pool(){return KEIGO.filter(v=>v.s<=scopeSec);}
+function keysInScope(){const o=[];pool().forEach(v=>{if(o.indexOf(v.key)<0)o.push(v.key);});return o;}
+
+// ===== sound（Web Audioで合成・外部ファイル不要） =====
+let actx=null,soundOn=true;
+function tone(freq,delay,dur,type,vol){
+  if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+  const t=actx.currentTime+delay;
+  const o=actx.createOscillator(),g=actx.createGain();
+  o.type=type;o.frequency.value=freq;
+  g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+dur);
+}
+function sndOK(){if(!soundOn)return;tone(1318.5,0,0.15,'sine',0.3);tone(1046.5,0.15,0.6,'sine',0.3);}  // ピンポーン
+// ブーーー：矩形波1本・音量一定のまっすぐなブザー（終端だけ50msで絞ってクリックノイズ防止）
+function sndNG(){
+  if(!soundOn)return;
+  if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+  const t=actx.currentTime,dur=0.9;
+  const o=actx.createOscillator(),g=actx.createGain();
+  o.type='square';o.frequency.value=110;
+  g.gain.setValueAtTime(0.25,t);
+  g.gain.setValueAtTime(0.25,t+dur-0.05);
+  g.gain.linearRampToValueAtTime(0.0001,t+dur);
+  o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+dur);
+}
+const sndBtn=document.getElementById('sndtoggle');
+sndBtn.onclick=()=>{soundOn=!soundOn;sndBtn.textContent=soundOn?'🔊 おと ON':'🔇 おと OFF';};
+
+// ===== nav =====
+const btns=document.querySelectorAll('nav button[data-s]');
+const screens=document.querySelectorAll('.screen');
+function show(id){
+  screens.forEach(s=>s.classList.toggle('on',s.id===id));
+  btns.forEach(b=>b.classList.toggle('on',b.dataset.s===id));
+  if(id!=='rhythm'&&typeof rSetAuto==='function')rSetAuto(false);
+}
+btns.forEach(b=>b.onclick=()=>show(b.dataset.s));
+document.getElementById('navback').onclick=()=>history.back();
+document.getElementById('navfwd').onclick=()=>history.forward();
+
+// ===== 文字サイズ（zoom方式＝レイアウトごと拡大）。設定は全ドリル共通で保存 =====
+let zoom=1;try{zoom=parseFloat(localStorage.getItem('drill_zoom'))||1;}catch(e){}
+const fzval=document.getElementById('fzval');
+function applyZoom(){
+  zoom=Math.min(1.6,Math.max(0.7,Math.round(zoom*10)/10));
+  document.body.style.zoom=zoom;
+  document.body.style.height=(100/zoom)+'dvh'; // zoomで縦がはみ出すのを補正
+  document.querySelector('nav').style.zoom=1/zoom; // navは打ち消して常に等倍（ボタンの押しやすさ維持）
+  fzval.textContent=Math.round(zoom*100)+'%';
+  try{localStorage.setItem('drill_zoom',zoom);}catch(e){}
+}
+document.getElementById('fzup').onclick=()=>{zoom+=0.1;applyZoom();};
+document.getElementById('fzdown').onclick=()=>{zoom-=0.1;applyZoom();};
+fzval.onclick=()=>{zoom=1;applyZoom();};
+applyZoom();
+
+// ===== ① おぼえる（そんけいごごとに ふつうの ことばを まとめる）=====
+const kgrid=document.getElementById('kgrid');
+function ruleDraw(){
+  kgrid.innerHTML='';
+  keysInScope().forEach(k=>{
+    const list=pool().filter(v=>v.key===k);
+    const plain=list.filter(v=>!v.a).map(v=>'<b>'+v.p+'</b>').join(' ／ ');
+    const alt=list.filter(v=>v.a).map(v=>v.p+'<span class="arw">→</span>'+v.a).join('<br>');
+    const col=colOf[k];
+    const c=document.createElement('div');
+    c.className='kcard'+(col?'':' plain');
+    if(col)c.style.borderTopColor=col;
+    const mg=col?'<span class="mg" style="background:'+col+'">'+mergeN[k]+'つ → 1つ</span>':'';
+    c.innerHTML='<div class="kh'+(k.length>=10?' long':'')+'"'+(col?' style="color:'+col+'"':'')+'>'+k+mg+'</div>'+
+      '<div class="kfrom">'+plain+'</div>'+
+      (alt?'<span class="mini">'+alt+'</span>':'');
+    kgrid.appendChild(c);
+  });
+}
+
+// ===== ② FLIP =====
+const fg=document.getElementById('flipgrid');
+let flipRev=false;   // false: ふつう→そんけい / true: そんけい→ふつう（聞いてわかる練習）
+const flipdir=document.getElementById('flipdir'), fliph=document.getElementById('fliph');
+function flipDeal(){
+  fg.innerHTML='';
+  rshuffle(pool()).forEach(v=>{
+    const col=colBtn(v.key);
+    const front=flipRev?ans(v):v.p;
+    const back =flipRev?v.p:ans(v);
+    const c=document.createElement('div');c.className='fcard';
+    c.innerHTML='<div class="fin">'+
+      '<div class="face front">'+front+'</div>'+
+      '<div class="face back"><span class="src">'+front+' →</span><span class="ta">'+back+'</span>'+
+      '<span class="gl" style="background:'+col+'">'+(flipRev?'ふつう':'そんけいご')+'</span></div>'+
+      '</div>';
+    c.onclick=()=>c.classList.toggle('flip');
+    fg.appendChild(c);
+  });
+}
+flipdir.onclick=()=>{
+  flipRev=!flipRev;
+  flipdir.classList.toggle('rev',flipRev);
+  flipdir.textContent=flipRev?'⇄ もどす（ふつう → そんけいご）':'⇄ ぎゃく（そんけいご → ふつう）';
+  fliph.innerHTML=(flipRev?'そんけいご → ふつうの ことば':'ふつうの ことば → そんけいご')+
+    '　<span style="color:var(--sub);font-size:18px;">カードをクリックしてめくる</span>';
+  flipDeal();
+};
+document.getElementById('flipshuffle').onclick=flipDeal;
+
+// ===== ③ SORT（どの そんけいごに なる？＝合流あて。4択は毎回つくる）=====
+let sortPool=[], sortIdx=0, sCorrect=0, sTotal=0, answered=false;
+const sortq=document.getElementById('sortq'), sortfb=document.getElementById('sortfb'),
+      scoreEl=document.getElementById('score'), choices=document.getElementById('choices');
+function sortStart(){sortPool=rshuffle(pool());sortIdx=0;sCorrect=0;sTotal=0;answered=false;sortShow();updScore();}
+function updScore(){scoreEl.textContent=sCorrect+' / '+sTotal;}
+function sortShow(){
+  answered=false;sortfb.className='fb';sortfb.textContent='';
+  const v=sortPool[sortIdx];
+  sortq.innerHTML=v.p+' <span style="color:var(--accent);">→</span> ？';
+  // 選択肢＝正解＋おなじスコープの他の そんけいご からランダム3つ（最大4）
+  const others=rshuffle(keysInScope().filter(k=>k!==v.key)).slice(0,3);
+  const opts=rshuffle([v.key].concat(others));
+  choices.innerHTML='';
+  opts.forEach(k=>{
+    const b=document.createElement('button');
+    // ⚠ ボタンは必ず同色。合流色を付けると「色が付いている＝正解」のヒントになってしまう
+    b.textContent=k;b.style.background=PLAIN;b.dataset.k=k;
+    b.onclick=()=>pick(b);
+    choices.appendChild(b);
+  });
+}
+function pick(b){
+  if(answered)return;answered=true;sTotal++;
+  const v=sortPool[sortIdx];
+  // 答え合わせの後なら色を出してよい（合流のものは色付き＝おぼえる画面と同じ手がかり）
+  const ac=colOf[v.key]?' style="color:'+colOf[v.key]+'"':'';
+  const mg=colOf[v.key]?'<span class="exn">'+mergeN[v.key]+'つ → 1つ に なる ことば</span>':'';
+  const exn=v.ex?'<span class="exn">'+v.ex+'</span>':'';
+  if(b.dataset.k===v.key){sndOK();sCorrect++;sortfb.className='fb ok';
+    sortfb.innerHTML='⭕ せいかい！　'+v.p+' → <span class="ans"'+ac+'>'+ans(v)+'</span>'+exn+mg;}
+  else{sndNG();sortfb.className='fb ng';
+    sortfb.innerHTML='❌ '+v.p+' → <span class="ans"'+ac+'>'+ans(v)+'</span>'+exn+mg;}
+  updScore();
+  if(window.__drillLog)window.__drillLog(b.dataset.k===v.key);
+}
+document.getElementById('sortnext').onclick=()=>{
+  sortIdx++;
+  if(sortIdx>=sortPool.length){sortPool=reshufflePool(sortPool);sortIdx=0;}
+  sortShow();
+};
+document.getElementById('sortreset').onclick=sortStart;
+
+// ===== ④ RHYTHM =====
+let rPool=[], rIdx=0, rState=0; // 0=ふつう表示, 1=そんけいご表示
+const rcard=document.getElementById('rcard'), rsub=document.getElementById('rsub'), rcount=document.getElementById('rcount');
+function rStart(){rPool=rshuffle(pool());rIdx=0;rState=0;rRender();}
+function rRender(){
+  const v=rPool[rIdx];
+  if(rState===0){rcard.innerHTML='<span>'+v.p+' <span style="color:var(--accent);">→</span> ？</span>';rsub.textContent='（クリック）';}
+  else{rcard.innerHTML='<span>'+v.p+'</span><div class="arrow">▼</div><span class="rta">'+ans(v)+'</span>';
+       rsub.innerHTML='<span class="gl" style="background:'+colBtn(v.key)+';display:inline-block;">そんけいご</span>　つぎへ →';}
+  rcount.textContent=(rIdx+1)+' / '+rPool.length;
+}
+function rStep(){
+  if(rState===0){rState=1;}
+  else{
+    rState=0;rIdx++;
+    if(rIdx>=rPool.length){rPool=reshufflePool(rPool);rIdx=0;}
+  }
+  rRender();
+}
+// ===== リズム じどう送り =====
+let rTimer=null, rSpeed=3000, rAuto=false;
+const rplay=document.getElementById('rplay');
+function rRun(){clearInterval(rTimer);rTimer=setInterval(rStep,rSpeed);}
+function rStop(){clearInterval(rTimer);rTimer=null;}
+function rSetAuto(on){rAuto=on;rplay.textContent=on?'⏸ とめる':'▶ じどう';rplay.classList.toggle('on',on);if(on)rRun();else rStop();}
+rplay.onclick=function(e){e.stopPropagation();rSetAuto(!rAuto);};
+document.querySelectorAll('.rspd').forEach(function(b){b.onclick=function(e){
+  e.stopPropagation();rSpeed=+b.dataset.ms;
+  document.querySelectorAll('.rspd').forEach(function(x){x.classList.toggle('on',x===b);});
+  if(rAuto&&rTimer)rRun();
+};});
+document.getElementById('rhythmarea').onclick=function(){
+  if(rAuto){ if(rTimer)rStop(); else rRun(); }   // じどう中タップ=一時停止/再開
+  else rStep();                                   // 手動めくり
+};
+
+// ===== スコープ切替 =====
+const scopeBtns=document.querySelectorAll('.scope button');
+function setScope(s){
+  scopeSec=s;
+  scopeBtns.forEach(b=>b.classList.toggle('on',+b.dataset.sec===s));
+  buildColors();                     // 合流の有無はスコープで変わるので先に色を決める
+  ruleDraw();flipDeal();sortStart();rStart();
+}
+scopeBtns.forEach(b=>b.onclick=()=>setScope(+b.dataset.sec));
+setScope(1);
+
+// ===== keyboard =====
+document.addEventListener('keydown',e=>{
+  const cur=document.querySelector('.screen.on').id;
+  if(['1','2','3','4'].includes(e.key)){const map={'1':'rule','2':'flip','3':'sort','4':'rhythm'};show(map[e.key]);return;}
+  if(cur==='rhythm'&&(e.key===' '||e.key==='ArrowRight')){e.preventDefault();rStep();}
+  if(cur==='sort'&&(e.key===' '||e.key==='ArrowRight')){e.preventDefault();document.getElementById('sortnext').click();}
+});
+
+/* めくり: iOS文字拡大や長い語でカードからはみ出す時、自動で縮めてカード内に収める保険 */
+(function(){
+  var grid=document.getElementById('flipgrid');
+  if(!grid) return;
+  function fitOne(face){
+    var wrap=face.querySelector(':scope > .fitwrap');
+    if(!wrap){
+      wrap=document.createElement('span'); wrap.className='fitwrap';
+      while(face.firstChild) wrap.appendChild(face.firstChild);
+      face.appendChild(wrap);
+    }
+    wrap.style.transform='';
+    var cw=face.clientWidth, ch=face.clientHeight, sw=wrap.scrollWidth, sh=wrap.scrollHeight;
+    if(!cw||!sw) return;                 /* 非表示中(0px)はスキップ */
+    var s=Math.min(cw/sw, ch/sh, 1);
+    if(s<0.99) wrap.style.transform='scale('+(s*0.96).toFixed(3)+')';
+  }
+  function fit(){ requestAnimationFrame(function(){ grid.querySelectorAll('.face').forEach(fitOne); }); }
+  new MutationObserver(fit).observe(grid,{childList:true});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ if(es.some(function(e){return e.isIntersecting;})) fit(); }).observe(grid);
+  }
+  window.addEventListener('resize',fit);
+  window.addEventListener('orientationchange',fit);
+  fit();
+})();
+</script>
+<script>
+// Service Worker 登録（オフライン対応・通信節約）
+if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(){});});}
+// 利用記録（端末ローカルのみ・表示なし・ログイン不要。将来の継続表示用に貯める）
+(function(){try{
+  var id=(location.pathname.split('/').pop()||'index').replace('.html','')||'index';
+  var k='drill_stats',s=JSON.parse(localStorage.getItem(k)||'{}');
+  var d=s[id]||(s[id]={opens:0,correct:0,total:0,last:null});
+  d.opens++; d.last=new Date().toISOString();
+  localStorage.setItem(k,JSON.stringify(s));
+  window.__drillLog=function(ok){try{var s2=JSON.parse(localStorage.getItem(k)||'{}');var d2=s2[id]||(s2[id]={opens:0,correct:0,total:0,last:null});d2.total++;if(ok)d2.correct++;d2.last=new Date().toISOString();localStorage.setItem(k,JSON.stringify(s2));}catch(e){}};
+}catch(e){}})();
+</script>
+</body>
+</html>
