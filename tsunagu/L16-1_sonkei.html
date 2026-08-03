@@ -58,18 +58,16 @@ rt{font-size:0.45em;font-weight:500;opacity:.8;}
 .dirbtn:hover{background:#fff7e6;border-color:var(--accent);}
 .dirbtn.rev{background:var(--ink);color:#fff;border-color:var(--ink);}
 
-/* ① おぼえる（とくべつな ことば 一覧） */
-.kgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:4px;}
-.kcard{background:var(--panel);border-radius:14px;padding:16px 20px;border-top:6px solid;box-shadow:0 2px 5px rgba(30,50,90,.06);}
-.kcard.plain{border-top-color:var(--line);}   /* 合流しないもの＝無色 */
-.kcard .kh{font-size:24px;font-weight:900;margin-bottom:10px;}
-.kcard .kh.long{font-size:20px;}          /* ごぞんじではありません 等の長い語だけ縮める */
-/* 「3つ → 1つ」＝色が付いている理由（合流）を明示するピル */
-.kcard .mg{font-size:13px;color:#fff;font-weight:800;border-radius:20px;padding:3px 11px;margin-left:9px;vertical-align:middle;white-space:nowrap;}
-.kcard .kfrom{font-size:19px;line-height:1.75;color:var(--ink);}
-.kcard .kfrom b{font-weight:800;display:inline-block;}  /* 語の途中で改行させない */
-.kcard .arw{color:var(--accent);font-weight:900;margin:0 6px;}
-.kcard .mini{display:block;font-size:14px;color:var(--sub);margin-top:8px;line-height:1.6;}
+/* ① おぼえる（教科書 p18 の変換表と おなじ形の 一覧表）
+   合流（いく・くる・いる → いらっしゃいます）を rowspan の セル結合で 見た目に出す＝パッと見て分かる */
+.ktwrap{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:4px;align-items:start;}
+.ktbl{width:100%;border-collapse:collapse;background:var(--panel);box-shadow:0 2px 6px rgba(30,50,90,.07);}
+.ktbl td{border:1.5px solid var(--line);padding:13px 16px;vertical-align:middle;line-height:1.35;}
+.ktbl td.from{width:48%;font-size:25px;font-weight:800;color:var(--ink);}
+.ktbl td.to{font-size:26px;font-weight:900;color:var(--accentT);}
+.ktbl td.lg{font-size:20px;}   /* 長い語だけ 縮める（（けんきゅうして）〜 等） */
+.ktbl td.xs{font-size:16px;}
+.ktbl td.mrg{border-left-width:5px;}   /* 合流するものだけ 色（色＝1つに なる印） */
 .note{background:#fff7e6;border:1px solid #f0c97a;border-radius:12px;padding:14px 20px;margin-top:18px;font-size:16px;line-height:1.9;}
 .note b{color:var(--accentT);}
 .v{color:var(--accentT);font-weight:800;}
@@ -80,7 +78,9 @@ rt{font-size:0.45em;font-weight:500;opacity:.8;}
 .fin{position:relative;width:100%;height:100%;transition:transform .35s;transform-style:preserve-3d;}
 .fcard.flip .fin{transform:rotateY(180deg);}
 .face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:14px;
-  backface-visibility:hidden;font-weight:800;flex-direction:column;padding:6px;}
+  backface-visibility:hidden;font-weight:800;flex-direction:column;padding:6px;text-align:center;}
+/* ⚠ ルビ(<ruby>)は そのまま置くと flex の子要素になって 1語が バラバラに縦積みされる。必ず span で包む */
+.face .ft{display:block;}
 .front{background:var(--panel);border:2px solid var(--line);font-size:25px;box-shadow:0 2px 5px rgba(30,50,90,.08);}
 .back{background:#fff7e6;border:2px solid var(--accent);transform:rotateY(180deg);font-size:25px;}
 .back .ta{font-size:26px;color:var(--ink);}
@@ -136,11 +136,12 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
   .hint{font-size:14px;margin-bottom:14px;}
   .toolbar{gap:8px;margin-bottom:10px;}
   .dirbtn{padding:8px 12px;font-size:13px;}
-  .kgrid{grid-template-columns:1fr;gap:12px;}
-  .kcard{padding:13px 15px;border-top-width:5px;}
-  .kcard .kh{font-size:20px;margin-bottom:7px;}
-  .kcard .kfrom{font-size:16px;line-height:1.7;}
-  .kcard .mini{font-size:12px;}
+  .ktwrap{grid-template-columns:1fr;gap:14px;}
+  .ktbl td{padding:8px 9px;}
+  .ktbl td.from{font-size:16px;}
+  .ktbl td.to{font-size:16px;}
+  .ktbl td.lg{font-size:14px;}
+  .ktbl td.xs{font-size:12px;}
   .note{font-size:14px;padding:12px 14px;margin-top:14px;}
   .shuf{padding:8px 12px;font-size:13px;}
   .grid{grid-template-columns:1fr 1fr;gap:10px;}
@@ -207,11 +208,11 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
 <section class="screen on" id="rule">
   <h2>そんけいご「とくべつな ことば」</h2>
   <p class="hint"><ruby>先生<rt>せんせい</rt></ruby>・<ruby>部長<rt>ぶちょう</rt></ruby>・お<ruby>客<rt>きゃく</rt></ruby>さん…＝ <b>うえの ひと</b>の ことを <ruby>話<rt>はな</rt></ruby>す とき、ことばが <span class="v">ぜんぜん ちがう ことば</span>に なります。ルールは ありません。おぼえましょう。<br>
-    <span style="font-size:14px;">※ <b style="color:#dc2626;">色</b>が ついて いる ものは、いくつかの ことばが <b>1つ</b>に なります（＝まちがえやすい ところ）。</span></p>
-  <div class="kgrid" id="kgrid"></div>
+    <span style="font-size:14px;">※ <b style="color:#dc2626;">色</b>の ところは、いくつかの ことばが <b>1つ</b>に なります（＝まちがえやすい ところ）。</span></p>
+  <div class="ktwrap" id="ktwrap"></div>
   <div class="note"><b>ちゅうい：</b>
-    「いらっしゃいます」は <span class="v">3つ</span>（いきます・きます・います）の いみが あります。どれかは <ruby>文<rt>ぶん</rt></ruby>で わかります。<br>
-    「めしあがります」は のみます と たべます、りょうほう。<br>
+    「いらっしゃいます」は <span class="v">3つ</span>（<ruby>行<rt>い</rt></ruby>きます・<ruby>来<rt>き</rt></ruby>ます・います）の いみが あります。どれかは <ruby>文<rt>ぶん</rt></ruby>で わかります。<br>
+    「めしあがります」は <ruby>飲<rt>の</rt></ruby>みます と <ruby>食<rt>た</rt></ruby>べます、りょうほう。<br>
     「ごぞんじです」だけ <span class="v">「〜ます」じゃない</span>（です）。<br>
     <b>じぶん</b>の ことには つかいません（×わたしが おっしゃいます）。
   </div>
@@ -220,7 +221,8 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
 <!-- ② FLIP -->
 <section class="screen" id="flip">
   <h2 id="fliph">ふつうの ことば → そんけいご　<span style="color:var(--sub);font-size:18px;">カードをクリックしてめくる</span></h2>
-  <p class="hint"><ruby>先<rt>さき</rt></ruby>に <ruby>答<rt>こた</rt></ruby>えを <ruby>言<rt>い</rt></ruby>って（<ruby>書<rt>か</rt></ruby>いて）から、クリックして <ruby>答<rt>こた</rt></ruby>え<ruby>合<rt>あ</rt></ruby>わせ。</p>
+  <p class="hint"><ruby>先<rt>さき</rt></ruby>に <ruby>答<rt>こた</rt></ruby>えを <ruby>言<rt>い</rt></ruby>って（<ruby>書<rt>か</rt></ruby>いて）から、クリックして <ruby>答<rt>こた</rt></ruby>え<ruby>合<rt>あ</rt></ruby>わせ。<br>
+    <span style="font-size:14px;">※ うらの ラベルに <b style="color:#dc2626;">色</b>が ついて いたら、いくつかの ことばが <b>1つ</b>に なる ことば（①の <ruby>表<rt>ひょう</rt></ruby>と おなじ色）。</span></p>
   <div class="toolbar">
     <button class="dirbtn" id="flipdir">⇄ ぎゃく（そんけいご → ふつう）</button>
     <button class="shuf" id="flipshuffle">🔀 シャッフル</button>
@@ -270,24 +272,29 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
 // 教科書 つなぐにほんごⅡ L16-1 ぶんけい1 の変換表（p18）＋ コラム7「敬語 特別なことば」（p43）が正。
 // ⚠ この課の「変換」は規則ではなく語彙の置きかえ＝ルールで作れない。だから③は「おわりあて」ではなく
 //    「どの そんけいごに 合流するか」を問う（いく・くる・いる → いらっしゃいます の3合流が最大の山）。
+// 表記：ふつうの ことば＝漢字＋ふりがな（教科書 p18 と同じ）／そんけいご＝ひらがな（同 p18 の右列と同じ）
+// ふりがなは「漢字{よみ}」記法で書く。表示のときだけ RB() で <ruby> に展開する（文字数判定は TX() の実文字で）
 const KEIGO=[
   // ===== 16-1 ぶんけい1 の表（s:1）=====
-  {p:"いきます",              key:"いらっしゃいます", s:1},
-  {p:"（がっこうへ）きます",   key:"いらっしゃいます", s:1, ex:"くる＝いらっしゃいます"},
-  {p:"います",                key:"いらっしゃいます", s:1},
-  {p:"（けんきゅうして）います",key:"いらっしゃいます", s:1, a:"（けんきゅうして）いらっしゃいます", ex:"〜ています → 〜ていらっしゃいます"},
-  {p:"いいます",              key:"おっしゃいます",   s:1},
-  {p:"します",                key:"なさいます",       s:1},
-  {p:"のみます",              key:"めしあがります",   s:1},
-  {p:"たべます",              key:"めしあがります",   s:1},
-  {p:"みます",                key:"ごらんになります", s:1},
-  {p:"しっています",          key:"ごぞんじです",     s:1, ex:"「〜ます」じゃない"},
+  {p:"行{い}きます",                    key:"いらっしゃいます", s:1},
+  {p:"（学校{がっこう}へ）来{き}ます",   key:"いらっしゃいます", s:1, ex:"来{く}る＝いらっしゃいます"},
+  {p:"います",                          key:"いらっしゃいます", s:1},
+  {p:"（研究{けんきゅう}して）います",   key:"いらっしゃいます", s:1, a:"（研究{けんきゅう}して）いらっしゃいます", ex:"〜ています → 〜ていらっしゃいます"},
+  {p:"言{い}います",                    key:"おっしゃいます",   s:1},
+  {p:"します",                          key:"なさいます",       s:1},
+  {p:"飲{の}みます",                    key:"めしあがります",   s:1},
+  {p:"食{た}べます",                    key:"めしあがります",   s:1},
+  {p:"見{み}ます",                      key:"ごらんになります", s:1},
+  {p:"知{し}っています",                key:"ごぞんじです",     s:1, ex:"「〜ます」じゃない"},
   // ===== コラム7（p43）でふえる分（s:2）=====
-  {p:"ねます",                key:"おやすみになります",     s:2},
-  {p:"（シャツを）きます",     key:"おめしになります",       s:2, ex:"きる（シャツ）＝おめしになります"},
-  {p:"くれます",              key:"くださいます",           s:2},
-  {p:"しりません",            key:"ごぞんじではありません", s:2, ex:"ごぞんじです の ないかたち"}
+  {p:"寝{ね}ます",                      key:"おやすみになります",     s:2},
+  {p:"（シャツを）着{き}ます",           key:"おめしになります",       s:2, ex:"着{き}る（シャツ）＝おめしになります"},
+  {p:"くれます",                        key:"くださいます",           s:2},
+  {p:"知{し}りません",                  key:"ごぞんじではありません", s:2, ex:"ごぞんじです の ないかたち"}
 ];
+// 「行{い}きます」→ <ruby>行<rt>い</rt></ruby>きます／TX は ふりがなを外した実文字（幅・文字数の判定用）
+const RB=s=>s.replace(/([一-鿿々]+)\{([^}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>');
+const TX=s=>s.replace(/\{[^}]+\}/g,'');
 // ===== 色は「合流」にだけ使う =====
 // 2つ以上の ふつうの ことばが 1つの そんけいごに なるものだけ 色を付ける（＝この課の山）。
 // 1対1のものは無色。色数を増やさないため、色は意味を持つ時だけ使う。
@@ -302,7 +309,10 @@ function buildColors(){
     colOf[k]=n>=2?MCOL[i++%MCOL.length]:null;           // null＝無色
   });
 }
-const colBtn=k=>colOf[k]||PLAIN;
+// 色は「合流する そんけいご」だけ。〜ています（派生）は （けんきゅうして）います →（けんきゅうして）いらっしゃいます の
+// 1対1なので、キーが いらっしゃいます でも 無色にする（①の表と ②④ で色が食い違わないように）
+const colV=v=>(v.a?null:colOf[v.key]);
+const colBtn=v=>colV(v)||PLAIN;
 const ans=v=>v.a||v.key;                       // 答えの表示（〜ています だけ key と違う）
 function rshuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 // 一周ごとの再シャッフル。直前の語が新しい先頭に来たら1つずらして連続を防ぐ
@@ -367,24 +377,43 @@ document.getElementById('fzdown').onclick=()=>{zoom-=0.1;applyZoom();};
 fzval.onclick=()=>{zoom=1;applyZoom();};
 applyZoom();
 
-// ===== ① おぼえる（そんけいごごとに ふつうの ことばを まとめる）=====
-const kgrid=document.getElementById('kgrid');
-function ruleDraw(){
-  kgrid.innerHTML='';
-  keysInScope().forEach(k=>{
-    const list=pool().filter(v=>v.key===k);
-    const plain=list.filter(v=>!v.a).map(v=>'<b>'+v.p+'</b>').join(' ／ ');
-    const alt=list.filter(v=>v.a).map(v=>v.p+'<span class="arw">→</span>'+v.a).join('<br>');
-    const col=colOf[k];
-    const c=document.createElement('div');
-    c.className='kcard'+(col?'':' plain');
-    if(col)c.style.borderTopColor=col;
-    const mg=col?'<span class="mg" style="background:'+col+'">'+mergeN[k]+'つ → 1つ</span>':'';
-    c.innerHTML='<div class="kh'+(k.length>=10?' long':'')+'"'+(col?' style="color:'+col+'"':'')+'>'+k+mg+'</div>'+
-      '<div class="kfrom">'+plain+'</div>'+
-      (alt?'<span class="mini">'+alt+'</span>':'');
-    kgrid.appendChild(c);
+// ===== ① おぼえる（教科書 p18 の表と同じ形。合流は セル結合＝rowspan で見せる）=====
+const ktwrap=document.getElementById('ktwrap');
+const tint=h=>'rgba('+parseInt(h.slice(1,3),16)+','+parseInt(h.slice(3,5),16)+','+parseInt(h.slice(5,7),16)+',.08)';
+const szCls=t=>t.length>=13?' xs':(t.length>=10?' lg':'');
+// 行のもと＝{key:そんけいご, items:[ふつうの ことば…]}。〜ています（派生）は答えが違うので独立行にして最後へ回す
+function ruleGroups(){
+  const gs=[],seen={},tail=[];
+  pool().forEach(v=>{
+    if(v.a){tail.push({key:v.a,items:[v]});return;}
+    if(seen[v.key]){seen[v.key].items.push(v);return;}
+    const g={key:v.key,items:[v]};seen[v.key]=g;gs.push(g);
   });
+  return gs.concat(tail);
+}
+// 左右2枚に分ける（行数がだいたい半分になるところで切る＝教科書の見開きと同じ形になる）
+function splitGroups(gs){
+  const half=Math.ceil(gs.reduce((a,g)=>a+g.items.length,0)/2);
+  const L=[],R=[];let n=0;
+  gs.forEach(g=>{if(n<half){L.push(g);n+=g.items.length;}else R.push(g);});
+  return [L,R];
+}
+function tblHTML(gs){
+  let h='<table class="ktbl">';
+  gs.forEach(g=>{
+    const col=colOf[g.key]||null;
+    const st=col?' style="color:'+col+';background:'+tint(col)+';border-left-color:'+col+'"':'';
+    g.items.forEach((v,i)=>{
+      h+='<tr><td class="from'+szCls(TX(v.p))+'">'+RB(v.p)+'</td>';
+      if(i===0)h+='<td class="to'+(col?' mrg':'')+szCls(TX(g.key))+'" rowspan="'+g.items.length+'"'+st+'>'+RB(g.key)+'</td>';
+      h+='</tr>';
+    });
+  });
+  return h+'</table>';
+}
+function ruleDraw(){
+  const[L,R]=splitGroups(ruleGroups());
+  ktwrap.innerHTML=tblHTML(L)+tblHTML(R);
 }
 
 // ===== ② FLIP =====
@@ -394,13 +423,13 @@ const flipdir=document.getElementById('flipdir'), fliph=document.getElementById(
 function flipDeal(){
   fg.innerHTML='';
   rshuffle(pool()).forEach(v=>{
-    const col=colBtn(v.key);
+    const col=colBtn(v);
     const front=flipRev?ans(v):v.p;
     const back =flipRev?v.p:ans(v);
     const c=document.createElement('div');c.className='fcard';
     c.innerHTML='<div class="fin">'+
-      '<div class="face front">'+front+'</div>'+
-      '<div class="face back"><span class="src">'+front+' →</span><span class="ta">'+back+'</span>'+
+      '<div class="face front"><span class="ft">'+RB(front)+'</span></div>'+
+      '<div class="face back"><span class="src">'+RB(front)+' →</span><span class="ta">'+RB(back)+'</span>'+
       '<span class="gl" style="background:'+col+'">'+(flipRev?'ふつう':'そんけいご')+'</span></div>'+
       '</div>';
     c.onclick=()=>c.classList.toggle('flip');
@@ -426,7 +455,7 @@ function updScore(){scoreEl.textContent=sCorrect+' / '+sTotal;}
 function sortShow(){
   answered=false;sortfb.className='fb';sortfb.textContent='';
   const v=sortPool[sortIdx];
-  sortq.innerHTML=v.p+' <span style="color:var(--accent);">→</span> ？';
+  sortq.innerHTML=RB(v.p)+' <span style="color:var(--accent);">→</span> ？';
   // 選択肢＝正解＋おなじスコープの他の そんけいご からランダム3つ（最大4）
   const others=rshuffle(keysInScope().filter(k=>k!==v.key)).slice(0,3);
   const opts=rshuffle([v.key].concat(others));
@@ -443,13 +472,13 @@ function pick(b){
   if(answered)return;answered=true;sTotal++;
   const v=sortPool[sortIdx];
   // 答え合わせの後なら色を出してよい（合流のものは色付き＝おぼえる画面と同じ手がかり）
-  const ac=colOf[v.key]?' style="color:'+colOf[v.key]+'"':'';
-  const mg=colOf[v.key]?'<span class="exn">'+mergeN[v.key]+'つ → 1つ に なる ことば</span>':'';
-  const exn=v.ex?'<span class="exn">'+v.ex+'</span>':'';
+  const ac=colV(v)?' style="color:'+colV(v)+'"':'';
+  const mg=colV(v)?'<span class="exn">'+mergeN[v.key]+'つ → 1つ に なる ことば</span>':'';
+  const exn=v.ex?'<span class="exn">'+RB(v.ex)+'</span>':'';
   if(b.dataset.k===v.key){sndOK();sCorrect++;sortfb.className='fb ok';
-    sortfb.innerHTML='⭕ せいかい！　'+v.p+' → <span class="ans"'+ac+'>'+ans(v)+'</span>'+exn+mg;}
+    sortfb.innerHTML='⭕ せいかい！　'+RB(v.p)+' → <span class="ans"'+ac+'>'+RB(ans(v))+'</span>'+exn+mg;}
   else{sndNG();sortfb.className='fb ng';
-    sortfb.innerHTML='❌ '+v.p+' → <span class="ans"'+ac+'>'+ans(v)+'</span>'+exn+mg;}
+    sortfb.innerHTML='❌ '+RB(v.p)+' → <span class="ans"'+ac+'>'+RB(ans(v))+'</span>'+exn+mg;}
   updScore();
   if(window.__drillLog)window.__drillLog(b.dataset.k===v.key);
 }
@@ -466,9 +495,9 @@ const rcard=document.getElementById('rcard'), rsub=document.getElementById('rsub
 function rStart(){rPool=rshuffle(pool());rIdx=0;rState=0;rRender();}
 function rRender(){
   const v=rPool[rIdx];
-  if(rState===0){rcard.innerHTML='<span>'+v.p+' <span style="color:var(--accent);">→</span> ？</span>';rsub.textContent='（クリック）';}
-  else{rcard.innerHTML='<span>'+v.p+'</span><div class="arrow">▼</div><span class="rta">'+ans(v)+'</span>';
-       rsub.innerHTML='<span class="gl" style="background:'+colBtn(v.key)+';display:inline-block;">そんけいご</span>　つぎへ →';}
+  if(rState===0){rcard.innerHTML='<span>'+RB(v.p)+' <span style="color:var(--accent);">→</span> ？</span>';rsub.textContent='（クリック）';}
+  else{rcard.innerHTML='<span>'+RB(v.p)+'</span><div class="arrow">▼</div><span class="rta">'+RB(ans(v))+'</span>';
+       rsub.innerHTML='<span class="gl" style="background:'+colBtn(v)+';display:inline-block;">そんけいご</span>　つぎへ →';}
   rcount.textContent=(rIdx+1)+' / '+rPool.length;
 }
 function rStep(){
