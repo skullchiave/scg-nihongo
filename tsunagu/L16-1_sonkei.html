@@ -93,7 +93,11 @@ rt{font-size:0.45em;font-weight:500;opacity:.8;}
 .qcard{font-size:52px;font-weight:900;background:var(--panel);border:3px solid var(--line);border-radius:20px;
   padding:30px 56px;min-width:340px;text-align:center;box-shadow:0 4px 12px rgba(30,50,90,.10);}
 .choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;width:100%;}
-.choices button{font-size:23px;font-weight:900;border:none;border-radius:14px;padding:16px 20px;cursor:pointer;color:#fff;font-family:inherit;}
+/* 選択肢＝グループではなく そんけいごの ことば なので、L8-2_matome と同じ「白＋枠線」型にそろえる
+   （グループ色の c1/c2/c3 を使う他ドリルと違い、ここで色を付けると「色＝正解」のヒントになる） */
+.choices button{font-size:23px;font-weight:900;border:2px solid var(--line);border-radius:14px;padding:16px 20px;
+  cursor:pointer;color:var(--ink);background:var(--panel);font-family:inherit;box-shadow:0 2px 5px rgba(30,50,90,.08);}
+.choices button:hover{border-color:var(--accent);}
 .choices button:active{transform:scale(.96);}
 .fb{font-size:26px;font-weight:800;min-height:44px;text-align:center;}
 .fb.ok{color:var(--ok);}.fb.ng{color:var(--ng);}
@@ -462,8 +466,8 @@ function sortShow(){
   choices.innerHTML='';
   opts.forEach(k=>{
     const b=document.createElement('button');
-    // ⚠ ボタンは必ず同色。合流色を付けると「色が付いている＝正解」のヒントになってしまう
-    b.textContent=k;b.style.background=PLAIN;b.dataset.k=k;
+    // ⚠ ボタンは必ず全部おなじ見た目（CSSの白＋枠線のまま）。合流色を付けると「色が付いている＝正解」のヒントになる
+    b.textContent=k;b.dataset.k=k;
     b.onclick=()=>pick(b);
     choices.appendChild(b);
   });
