@@ -143,14 +143,6 @@ def extract(drill_path):
 
 def build(def_path, out_path=None):
     d = json.load(io.open(def_path, encoding="utf-8"))
-    pieces = []
-    for kind, val in template_parts():
-        if kind == "skel":
-            pieces.append("\n".join(val))
-        else:
-            pieces.append(d["slots"]["SLOT" + val])
-    html = "".join(p if i == 0 else ("\n" + p if p != "" else "") for i, p in enumerate(pieces))
-    # ↑ 単純結合だと空スロットで改行が乱れるため、join は素直に行リストで行う
     lines = []
     for kind, val in template_parts():
         if kind == "skel":
