@@ -23,6 +23,24 @@
 - `scratch/` `tmp/` … 実験・一時（**git追跡しない**＝GitHubに上がらない）。検証スクリプトはここ。
 - `README.md` … 公開URL・構成・公開方針の概要。`CLAUDE.md`（本書）… 開発・運用の詳細。
 
+## ドリルの型（テンプレート＋定義 → 生成。2026-08-22〜・標準形の新ドリルはこちら）
+
+**標準形（動詞活用・グループ3択）の新ドリルは、HTMLを手書きせず定義ファイルから生成する。**
+配布物は従来どおり完全自己完結の単一HTML（変更なし）。
+
+- 構成: `template/drill_std.tmpl.html`（共通骨格・4モードエンジン一式）＋ `drill_defs/*.json`（課ごとの
+  スロット12個＝タイトル／字サイズ調整CSS×4／ルール画面／③④見出し／語彙データ／判定行／リズムラベル）
+  ＋ `scripts/build_drill.py`（生成・抽出・golden検証）
+- **新ドリルの手順**: 一番近い定義（例: `drill_defs/L19-1_kanou.json`）をコピー → スロットを書き換え →
+  `python scripts/build_drill.py build drill_defs/新.json -o tmp/preview.html` で検証 → 本出力 →
+  index.html に2行（drills/updates）→ **`python tests/test_build_drill.py` を回して全緑を確認**
+- **生成済みドリルを後から手直しした時は必ず `extract` で定義に反映**（`python scripts/build_drill.py
+  extract tsunagu/◯◯.html`）。定義と実ファイルのズレは golden（バイト一致検証）が検知する＝型の腐り防止
+- **骨格を直す時**（全ドリル共通の機能追加＝じどう送りの類）: テンプレートを直して全定義から再生成
+  → 適用中の7本にまとめて配れる。`make-template` は骨格の再抽出（基準=L19-1×参照群の差分の和集合）
+- **適用範囲**: 現在7本が定義化済み（L13-3/L14-2×2/L19-1/L19-3/L23-1/L27-3＝全てバイト一致のgolden）。
+  **L29-1・L8系・L9・L7系・L16系（敬語）は別構造＝型の適用外**（既存のまま据え置き。無理に取り込まない）
+
 ## ドリルの足し方（データ駆動）
 `index.html` 冒頭の `DATA.drills` に1行足す：
 ```js
