@@ -18,7 +18,14 @@ const SHELL = [
 
 self.addEventListener('install', e => {
   self.skipWaiting();
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL).catch(() => {})));
+  // 1件ずつキャッシュして失敗を数える（addAll+握りつぶしだと「オフライン対応済みのつもりで
+  // 実は焼けていない」が誰にも見えない。失敗してもinstall自体は成功させ、焼けた分だけ効かせる）
+  e.waitUntil(caches.open(CACHE).then(c =>
+    Promise.allSettled(SHELL.map(u => c.add(u))).then(rs => {
+      const ng = rs.filter(r => r.status === 'rejected').length;
+      if (ng) console.warn('[SCG SW] シェル ' + ng + '/' + SHELL.length + ' 件のキャッシュに失敗（オフライン対応が不完全な可能性）');
+    })
+  ));
 });
 
 self.addEventListener('activate', e => {

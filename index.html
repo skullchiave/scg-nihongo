@@ -333,7 +333,7 @@ render();
 </script>
 <script>
 // Service Worker 登録（オフライン対応・通信節約）
-if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(){});});}
+if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(err){console.warn('[SCG] Service Worker登録に失敗（オフライン対応は無効のまま動作）:',err);});});}
 // 利用記録（端末ローカルのみ・表示なし・ログイン不要。将来の継続表示用に貯める）
 (function(){try{
   var id=(location.pathname.split('/').pop()||'index').replace('.html','')||'index';
