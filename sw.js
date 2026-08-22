@@ -42,9 +42,12 @@ self.addEventListener('fetch', e => {
 
   if (isPortal) {
     // network-first: 最新のドリル一覧を出す。オフライン時はキャッシュへフォールバック
+    // ★r.ok のときだけキャッシュする（SWR側と同じガード）。デプロイ直後等の 404/503 を
+    //   put すると正常な index のキャッシュがエラーページで上書きされ、
+    //   以後オフラインの学生にエラー画面が出続けてしまう
     e.respondWith(
       fresh()
-        .then(r => { const cp = r.clone(); caches.open(CACHE).then(c => c.put(req, cp)); return r; })
+        .then(r => { if (r && r.ok) { const cp = r.clone(); caches.open(CACHE).then(c => c.put(req, cp)); } return r; })
         .catch(() => caches.match(req).then(m => m || caches.match('index.html')))
     );
   } else {
