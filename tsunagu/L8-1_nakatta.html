@@ -209,11 +209,11 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
       <div class="ex">たべ<span class="aen">ませんでした</span> → たべなかった<br>
         み<span class="aen">ませんでした</span> → みなかった<br>
         あけ<span class="aen">ませんでした</span> → あけなかった<br>
-        おき<span class="aen">ませんでした</span> → おきなかった</div>
+        （あさ）おき<span class="aen">ませんでした</span> → おきなかった</div>
     </div>
     <div class="rule r3"><h3>3グループ</h3>
       <div class="big"><span class="v">2つだけ</span>（おぼえる）</div>
-      <div class="ex">きませんでした → <span class="v">こなかった</span><br>
+      <div class="ex">（学校へ）きませんでした → <span class="v">こなかった</span><br>
         しませんでした → <span class="v">しなかった</span><br>
         べんきょうしませんでした →<br>べんきょうしなかった</div>
     </div>
@@ -221,7 +221,8 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
   <div class="note"><b>ちゅうい：</b>
     「い」は あ<ruby>段<rt>だん</rt></ruby>で <span class="v">わ</span> に なる：か<span class="aen">い</span>ませんでした → か<span class="aen">わ</span>なかった（×かあなかった）<br>
     <b>ありませんでした</b> は <span class="v">なかった</span>（×あらなかった）。<br>
-    ない<ruby>形<rt>けい</rt></ruby>を しっていたら かんたん：いかない → いか<span class="v">なかった</span> ／ こない → こ<span class="v">なかった</span>（ない → なかった）。</div>
+    ない<ruby>形<rt>けい</rt></ruby>を しっていたら かんたん：いかない → いか<span class="v">なかった</span> ／ こない → こ<span class="v">なかった</span>（ない → なかった）。<br>
+    <b>おなじ おと・べつの ことば：</b> <span class="v">（あさ）おきませんでした</span>→おきなかった（2グループ）と <span class="v">（ほんを）おきませんでした</span>→おかなかった（1グループ）。<span class="v">（学校へ）きませんでした</span>→こなかった（3グループ）と <span class="v">（シャツを）きませんでした</span>→きなかった（2グループ）。</div>
 </section>
 
 <!-- ② FLIP -->
@@ -302,13 +303,15 @@ const VERBS=[
   {m:"およぎませんでした",k:"およがなかった",g:1},
   {m:"はなしませんでした",k:"はなさなかった",g:1},
   {m:"けしませんでした",k:"けさなかった",g:1},
+  {m:"（ほんを）おきませんでした",k:"おかなかった",g:1,ex:"おく（1グループ）。（あさ）おきませんでした と べつ"},
   // 2グループ
   {m:"たべませんでした",k:"たべなかった",g:2},
   {m:"みませんでした",k:"みなかった",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"あけませんでした",k:"あけなかった",g:2},
-  {m:"おきませんでした",k:"おきなかった",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
+  {m:"（あさ）おきませんでした",k:"おきなかった",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ。（ほんを）おきませんでした は おかなかった"},
+  {m:"（シャツを）きませんでした",k:"きなかった",g:2,ex:"きる（2グループ）。（学校へ）きませんでした は こなかった"},
   // 3グループ
-  {m:"きませんでした",k:"こなかった",g:3,ex:"くる→こなかった"},
+  {m:"（学校へ）きませんでした",k:"こなかった",g:3,ex:"くる→こなかった。（シャツを）きませんでした と べつ"},
   {m:"しませんでした",k:"しなかった",g:3},
   {m:"べんきょうしませんでした",k:"べんきょうしなかった",g:3}
 ];

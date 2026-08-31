@@ -221,13 +221,14 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
     </div>
     <div class="ru r3"><h3>3グループ</h3>
       <div class="big"><span class="v">2つだけ</span>（おぼえる）<br>
-        きました→<span class="v">きた</span> ／ しました→<span class="v">した</span><br>
+        （学校へ）きました→<span class="v">きた</span> ／ しました→<span class="v">した</span><br>
         べんきょうしました→べんきょうした</div>
     </div>
   </div>
   <div class="note"><b>ちゅうい：</b>
     <span class="v">いきました → いった</span>（「き」なのに <b>いた じゃない</b>！ た<ruby>形<rt>けい</rt></ruby>だけの れいがい）。<br>
-    <ruby>過去<rt>かこ</rt></ruby>の <ruby>否定<rt>ひてい</rt></ruby>は ない<ruby>形<rt>けい</rt></ruby>＋かった：いきます→いかない→<span class="v">いかなかった</span>（7-2の おうよう）。</div>
+    <ruby>過去<rt>かこ</rt></ruby>の <ruby>否定<rt>ひてい</rt></ruby>は ない<ruby>形<rt>けい</rt></ruby>＋かった：いきます→いかない→<span class="v">いかなかった</span>（7-2の おうよう）。<br>
+    <b>おなじ おと・べつの ことば：</b> <span class="v">（あさ）おきました</span>→おきた（2グループ）と <span class="v">（ほんを）おきました</span>→おいた（1グループ）。<span class="v">（学校へ）きました</span>と <span class="v">（シャツを）きました</span>は た<ruby>形<rt>けい</rt></ruby>が どちらも <span class="v">きた</span>（グループは 3と2）。</div>
 </section>
 
 <!-- ② FLIP -->
@@ -308,6 +309,7 @@ const VERBS=[
   // いた（き）／ いだ（ぎ）
   {m:"かきました",ta:"かいた",g:1,e:"いた"},
   {m:"ききました",ta:"きいた",g:1,e:"いた"},
+  {m:"（ほんを）おきました",ta:"おいた",g:1,e:"いた",ex:"おく（1グループ）。（あさ）おきました と べつ"},
   {m:"いそぎました",ta:"いそいだ",g:1,e:"いだ"},
   {m:"およぎました",ta:"およいだ",g:1,e:"いだ"},
   // した（し）
@@ -317,9 +319,10 @@ const VERBS=[
   {m:"たべました",ta:"たべた",g:2,e:"た"},
   {m:"みました",ta:"みた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"あけました",ta:"あけた",g:2,e:"た"},
-  {m:"おきました",ta:"おきた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
+  {m:"（あさ）おきました",ta:"おきた",g:2,e:"た",ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ。（ほんを）おきました は おいた"},
+  {m:"（シャツを）きました",ta:"きた",g:2,e:"た",ex:"きる（2グループ）。（学校へ）きました と おなじ おと"},
   // た（3グループ）
-  {m:"きました",ta:"きた",g:3,e:"た",ex:"くる→きた"},
+  {m:"（学校へ）きました",ta:"きた",g:3,e:"た",ex:"くる→きた。（シャツを）きました と おなじ おと"},
   {m:"しました",ta:"した",g:3,e:"た"},
   {m:"べんきょうしました",ta:"べんきょうした",g:3,e:"た"}
 ];

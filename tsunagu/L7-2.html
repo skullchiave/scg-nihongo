@@ -214,7 +214,7 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
     </div>
     <div class="rule r3"><h3>3グループ</h3>
       <div class="big"><span class="v">2つだけ</span>（おぼえる）</div>
-      <div class="ex">きません → <span class="v">こない</span><br>
+      <div class="ex">（学校へ）きません → <span class="v">こない</span><br>
         しません → <span class="v">しない</span><br>
         さんぽしません → さんぽしない<br>
         べんきょうしません → べんきょうしない</div>
@@ -222,7 +222,8 @@ nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-web
   </div>
   <div class="note"><b>ちゅうい：</b>
     「い」が あ<ruby>段<rt>だん</rt></ruby>に かわると <span class="v">わ</span> に なる：か<span class="aen">い</span>ません → か<span class="aen">わ</span>ない ／ あ<span class="aen">い</span>ません → あ<span class="aen">わ</span>ない（×かあない）<br>
-    <b>ありません</b> は <span class="v">ない</span>（×あらない）。</div>
+    <b>ありません</b> は <span class="v">ない</span>（×あらない）。<br>
+    <b>おなじ おと・べつの ことば：</b> <span class="v">（あさ）おきません</span>→おきない（2グループ）と <span class="v">（ほんを）おきません</span>→おかない（1グループ）。<span class="v">（学校へ）きません</span>→こない（3グループ）と <span class="v">（シャツを）きません</span>→きない（2グループ）。</div>
 </section>
 
 <!-- ② FLIP -->
@@ -296,6 +297,7 @@ const VERBS=[
   {m:"あいません",d:"あう",n:"あわない",g:1,ex:"う→わ"},
   {m:"かいません",d:"かう",n:"かわない",g:1,ex:"う→わ"},
   {m:"ありません",d:"ある",n:"ない",g:1,ex:"ない<ruby>形<rt>けい</rt></ruby>は「ない」"},
+  {m:"（ほんを）おきません",d:"おく",n:"おかない",g:1,ex:"おく（1グループ）。（あさ）おきません と べつ"},
   // 2グループ：る→ない
   {m:"たべません",d:"たべる",n:"たべない",g:2},
   {m:"ねません",d:"ねる",n:"ねない",g:2},
@@ -304,9 +306,10 @@ const VERBS=[
   {m:"あびません",d:"あびる",n:"あびない",g:2},
   {m:"みません",d:"みる",n:"みない",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
   {m:"いません",d:"いる",n:"いない",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
-  {m:"おきません",d:"おきる",n:"おきない",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ"},
+  {m:"（あさ）おきません",d:"おきる",n:"おきない",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ。（ほんを）おきません と べつ"},
+  {m:"（シャツを）きません",d:"きる",n:"きない",g:2,ex:"い<ruby>段<rt>だん</rt></ruby>だけど2グループ。（学校へ）きません と べつ"},
   // 3グループ
-  {m:"きません",d:"くる",n:"こない",g:3,ex:"くる→こない"},
+  {m:"（学校へ）きません",d:"くる",n:"こない",g:3,ex:"くる→こない。（シャツを）きません と べつ"},
   {m:"しません",d:"する",n:"しない",g:3},
   {m:"さんぽしません",d:"さんぽする",n:"さんぽしない",g:3},
   {m:"べんきょうしません",d:"べんきょうする",n:"べんきょうしない",g:3}
