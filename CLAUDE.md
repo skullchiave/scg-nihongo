@@ -136,6 +136,7 @@ taskkill //F //IM chrome.exe
 - **正本は GitHub**（`skullchiave/scg-nihongo`）。複数のPC/拠点で作業するなら **git clone / pull / push で同期**する。GitHub が単一の真実。
 - ⚠ **`.git` を含むこのフォルダを Google Drive 等のクラウド同期フォルダに置かない**。クラウド同期が `.git` 内部を file 単位で同期して破損する典型事故。バックアップ目的なら GitHub が既にそれ。
 - 自宅 clone: `Desktop\claude code\scg-nihongo`。職場PCは別パスに `git clone` する。`scratch/` `tmp/` は同期不要（gitignore済だが、クラウド同期は gitignore を無視するので特に注意）。
+- ⚠ **別マシンで作業する前に `git config core.autocrlf` を見る**（2026-08-31 会社PCで判明）。`.gitattributes` が無いので **autocrlf=true のマシンでは作業ツリーが CRLF で展開され、LF前提の `build_drill.py` がスロットを置換できず golden が 7本とも NG** になる（画面上のドリルは正常に動くので気づきにくい／`extract` も「骨格ドリフト」と誤報する）。直し方＝**そのマシンだけ** `git config core.autocrlf false` → 変更をコミットしてから `git rm --cached -r . && git reset --hard` で LF に再展開。会社PC（`Desktop\0.4 claude-drills`）は対処済み。
 
 ## デプロイ
 ローカルで編集 → `git add` → `git commit` → `git push`。GitHub Pages が数十秒〜1分で反映。コミットemailはnoreply化済。
