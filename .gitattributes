@@ -1,0 +1,19 @@
+# ── 改行コードの固定（2026-09-01）────────────────────────────
+# なぜ: scripts/build_drill.py が LF 前提で骨格スロット <<<SLOTnn>>> を置換する。
+# core.autocrlf=true のマシン（Windows の既定）では作業ツリーが CRLF で展開され、
+# 行末に \r が付いてスロットが一致せず golden が全滅する（2026-08-31 会社PCで発覚）。
+# ドリル自体は画面上は正常に動くため気づけない。ここで eol=lf を宣言しておけば
+# autocrlf の設定に関係なく、どのマシンでも作業ツリーが LF で展開される。
+* text=auto eol=lf
+
+# バイナリ（改行変換も差分表示もさせない）
+*.png   binary
+*.woff2 binary
+*.pyc   binary
+
+# Windows でダブルクリックして走らせる物だけは CRLF でないと壊れる。
+# 今このリポには無いが、後で足したときに巻き込まれないよう先に宣言しておく。
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.vbs text eol=crlf
+*.ps1 text eol=crlf

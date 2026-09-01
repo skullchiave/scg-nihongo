@@ -136,7 +136,13 @@ taskkill //F //IM chrome.exe
 - **正本は GitHub**（`skullchiave/scg-nihongo`）。複数のPC/拠点で作業するなら **git clone / pull / push で同期**する。GitHub が単一の真実。
 - ⚠ **`.git` を含むこのフォルダを Google Drive 等のクラウド同期フォルダに置かない**。クラウド同期が `.git` 内部を file 単位で同期して破損する典型事故。バックアップ目的なら GitHub が既にそれ。
 - 自宅 clone: `Desktop\claude code\scg-nihongo`。職場PCは別パスに `git clone` する。`scratch/` `tmp/` は同期不要（gitignore済だが、クラウド同期は gitignore を無視するので特に注意）。
-- ⚠ **別マシンで作業する前に `git config core.autocrlf` を見る**（2026-08-31 会社PCで判明）。`.gitattributes` が無いので **autocrlf=true のマシンでは作業ツリーが CRLF で展開され、LF前提の `build_drill.py` がスロットを置換できず golden が 7本とも NG** になる（画面上のドリルは正常に動くので気づきにくい／`extract` も「骨格ドリフト」と誤報する）。直し方＝**そのマシンだけ** `git config core.autocrlf false` → 変更をコミットしてから `git rm --cached -r . && git reset --hard` で LF に再展開。会社PC（`Desktop\0.4 claude-drills`）は対処済み。
+- ✔ **改行コードは `.gitattributes` で LF に固定済み**（2026-09-01）。`* text=auto eol=lf` を置いたので、**`core.autocrlf` の設定に関係なくどのマシンでも LF で展開される**。新しいマシンで clone する分には何もしなくてよい。
+  - 背景（2026-08-31 会社PCで発覚）：`.gitattributes` が無かったため **autocrlf=true のマシンでは作業ツリーが CRLF で展開され、LF前提の `build_drill.py` がスロットを置換できず golden が 7本とも NG**になっていた（画面上のドリルは正常に動くので気づきにくい／`extract` も「骨格ドリフト」と誤報する）。
+  - ⚠ **すでに CRLF で展開済みの clone（= 家PC）だけは 1 回展開し直す**。`.gitattributes` を pull しても、既に手元にあるファイルは書き換わらないため。
+    1. `git status` で**未コミットの変更が無いこと**を確かめる（あれば先に commit か stash。次の手順は作業ツリーを捨てる）
+    2. `git rm --cached -r .` → `git reset --hard`
+    3. `git ls-files --eol | grep w/crlf` が**空**で、`py tests/test_build_drill.py` が **7 OK / 0 NG** になることを確認
+  - 会社PC（`Desktop\0.4 claude-drills`）は 8/31 に `core.autocrlf false` で対処済み。`.bat` `.vbs` `.ps1` は逆に CRLF でないと壊れるので、`.gitattributes` 側で `eol=crlf` を先に宣言してある（今は該当ファイル無し）。
 
 ## デプロイ
 ローカルで編集 → `git add` → `git commit` → `git push`。GitHub Pages が数十秒〜1分で反映。コミットemailはnoreply化済。
