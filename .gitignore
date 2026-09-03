@@ -7,3 +7,17 @@ _original/
 
 # ロゴ元画像（高画質版。サイトは軽量版 logo-*.png を使う。repoには含めない）
 images/
+
+# 実データは社用ドライブ側にのみ置く（2026-09-03 実データ分離）
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.tsv
+*.dump
+*.sql.gz
+logs/
+.env
+.env.*
+!.env.example
+!data/sample/**

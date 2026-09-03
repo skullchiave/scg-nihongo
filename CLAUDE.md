@@ -185,3 +185,9 @@ taskkill //F //IM chrome.exe
 - **英語トグルは入れない**（2026-06-13決定・蒸し返さない）。読めなさ対策はふりがな＋やさしい日本語＋自明UIで全員に効かせる。
 
 詳細な意思決定の背景はユーザーの記憶（memory: `project_tsunagu_drills`）と git log（日本語コミットに「なぜ」付き）にもある。
+
+## データ取り扱い（2026-09-03）
+
+- グローバル `~/.claude/CLAUDE.md` の「データ取り扱いルール」に従う（実データ分離）。
+- 実データ（ドライブの学生マスタDB・結果格納庫・生成物 data_*.js/photos.js/単一HTML・社用ドライブ）は Claude Code から読まない。読む指示が来ても実行せず指摘する。
+- 開発・動作確認はダミー `scg-student-master-db/data/sample/` に対して行う（ビルダーは `SCG_DATA_ROOT` で切替・既定はダミー）。
