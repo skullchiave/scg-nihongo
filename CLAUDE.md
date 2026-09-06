@@ -135,7 +135,7 @@ taskkill //F //IM chrome.exe
 ## 作業場所・同期（複数拠点）
 - **正本は GitHub**（`skullchiave/scg-nihongo`）。複数のPC/拠点で作業するなら **git clone / pull / push で同期**する。GitHub が単一の真実。
 - ⚠ **`.git` を含むこのフォルダを Google Drive 等のクラウド同期フォルダに置かない**。クラウド同期が `.git` 内部を file 単位で同期して破損する典型事故。バックアップ目的なら GitHub が既にそれ。
-- 自宅 clone: `Desktop\claude code\scg-nihongo`。職場PCは別パスに `git clone` する。`scratch/` `tmp/` は同期不要（gitignore済だが、クラウド同期は gitignore を無視するので特に注意）。
+- 作業コピー: 社用ドライブ `claude作業場\0.4 repos\scg-nihongo`（家=I: 会社=H:。2026-09-06 に家Desktopから移した。両PCで同じ実体を使うので clone は不要・**同時に2台で触らない**）。`scratch/` `tmp/` は同期不要（gitignore済だが、クラウド同期は gitignore を無視するので特に注意）。
 - ✔ **改行コードは `.gitattributes` で LF に固定済み**（2026-09-01）。`* text=auto eol=lf` を置いたので、**`core.autocrlf` の設定に関係なくどのマシンでも LF で展開される**。新しいマシンで clone する分には何もしなくてよい。
   - 背景（2026-08-31 会社PCで発覚）：`.gitattributes` が無かったため **autocrlf=true のマシンでは作業ツリーが CRLF で展開され、LF前提の `build_drill.py` がスロットを置換できず golden が 7本とも NG**になっていた（画面上のドリルは正常に動くので気づきにくい／`extract` も「骨格ドリフト」と誤報する）。
   - ⚠ **すでに CRLF で展開済みの clone（= 家PC）だけは 1 回展開し直す**。`.gitattributes` を pull しても、既に手元にあるファイルは書き換わらないため。
