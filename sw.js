@@ -44,7 +44,11 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return; // 外部リクエストは触らない
 
   // ドリル一覧(catalog.js)もポータルと同じ network-first＝ドリルを足したら次に開いた時すぐ出る
-  const isPortal = url.pathname.endsWith('/') || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/assets/catalog.js');
+  // ★共通UI(drill-ui.css/js)も network-first（2026-11-11）。SWRだと見た目を直しても
+  //   1回目は旧版が出て「直っていない」に見える（PC版レイアウト公開時に実際に起きた）
+  const p = url.pathname;
+  const isPortal = p.endsWith('/') || p.endsWith('/index.html') || p.endsWith('/assets/catalog.js')
+    || p.endsWith('/assets/drill-ui.css') || p.endsWith('/assets/drill-ui.js');
 
   // 再取得は cache:'no-cache' で条件付き再検証（サーバに変更有無を確認＝未変更は304で激安・変更時のみ実DL）
   const fresh = () => fetch(new Request(url.href, { cache: 'no-cache' }));
