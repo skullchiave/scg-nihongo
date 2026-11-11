@@ -10,13 +10,15 @@
 
 ## ⚠ 最重要ルール（事故防止）
 - **`index.html` は手編集が正本**（2026-06-15〜）。ロゴ・ラベル・CSS を直接書いてある。
-- **`scratch/_RETIRED_build_index.py` は絶対に実行しない**（旧 index.html 生成スクリプト。実行すると手編集が消える。実行ガード入り）。ドリル追加は下記「ドリルの足し方」で index.html を直接編集する。
+- **`scratch/_RETIRED_build_index.py` は絶対に実行しない**（旧 index.html 生成スクリプト。実行すると手編集が消える。実行ガード入り）。ドリル追加は下記「ドリルの足し方」（`assets/catalog.js` に1行＋index.html の updates に1行）。
 - ユーザーが手編集を始めた本番ファイルは再生成しない／勝手に作り直さない。危険操作（削除・上書き・外部影響）は事前確認。
 - **教材（出版社）との権利境界（2026-08-22 きあ判断・第三者評価の指摘に対する結論）**: ドリルは変換の型（活用ルール）を扱っており、**教科書の例文はほぼ使っていない**ため公開継続で問題なし。新ドリルを作るときもこの線を守る＝**例文の転載はしない**（型・活用表・自作の語彙で組む）。
 
 ## ファイル構成
-- `index.html` … 母艦ポータル（**正本・手編集**）。冒頭に `DATA`（カード定義）、ヘッダーに学校ロゴ、ハッシュルーティング（`#/textbook/tsunagu` 等）。
-- `tsunagu/*.html` … つなぐにほんご ドリル本体24本（各HTML自己完結・外部依存なし）。L7-1/L7-2/L7-3/L8-1_ta/L8-1_nakatta/L8-2_keiyou/L8-2_matome/L9/L10-2_keiyou/L13-3_ikou/L14-2_jouken/L14-2_nakereba/L15-1_jouken_keiyou/L15-1_nakereba_keiyou/L16-1_sonkei/L16-2_sonkei_oninaru/L16-3_kenjou/L16-4_kenjou_osuru/L19-1_kanou/L19-3_ukemi/L23-1_meirei/L24-1_sonkei_reru/L27-3_shieki/L29-1_shiekiukemi。
+- `index.html` … 母艦ポータル（**正本・手編集**）。冒頭に `DATA`（カテゴリ・おしらせ）、ハッシュルーティング（`#/textbook/tsunagu` 等）。**ドリル一覧は `assets/catalog.js`**（2026-11-11〜）。
+- `assets/catalog.js` … **ドリル一覧（教科書・ドリルの並び）**。ポータルと各ドリルの「つぎの課」が両方ここを読む。sw.js は network-first。
+- `assets/drill-ui.css` `assets/drill-ui.js` … **全ドリル共通UI**（2026-11-11 スマホ版刷新）。下記「共通UI」参照。
+- `tsunagu/*.html` … つなぐにほんご ドリル本体24本（データ・判定は各HTMLに自己完結。見た目だけ共通UI `assets/drill-ui.*` を読む）。L7-1/L7-2/L7-3/L8-1_ta/L8-1_nakatta/L8-2_keiyou/L8-2_matome/L9/L10-2_keiyou/L13-3_ikou/L14-2_jouken/L14-2_nakereba/L15-1_jouken_keiyou/L15-1_nakereba_keiyou/L16-1_sonkei/L16-2_sonkei_oninaru/L16-3_kenjou/L16-4_kenjou_osuru/L19-1_kanou/L19-3_ukemi/L23-1_meirei/L24-1_sonkei_reru/L27-3_shieki/L29-1_shiekiukemi。
 - `logo-school.png`（横ロゴ＝ホーム下）, `logo-mark.png`（ブロブ＝ヘッダー左）, `icon-*.png`（PWAアイコン）, `manifest.webmanifest`, `.nojekyll`（必須・無いとPagesがREADMEをindex化）。
 - `_original/` … 投影用の原本HTML8本（触らず温存・参照のみ）。
 - `fonts/BIZUDPGothic-{Regular,Bold}.subset.woff2` … 本文フォント（**自己ホスト・追跡する**）。下記「字体」参照。
@@ -42,11 +44,20 @@
   **L29-1・L8系・L9・L7系・L16系（敬語）は別構造＝型の適用外**（既存のまま据え置き。無理に取り込まない）
 
 ## ドリルの足し方（データ駆動）
-`index.html` 冒頭の `DATA.drills` に1行足す：
+**`assets/catalog.js` の `drills` に1行足す**（2026-11-11 に index.html から移した。並び順＝課一覧の順＝ドリル画面の「つぎの課」の順）：
 ```js
 {tb:'tsunagu', lesson:'L7', label:'ない<ruby>形<rt>けい</rt></ruby>', file:'tsunagu/L7-2.html', ready:true},
 ```
 `ready:false`＝「じゅんびちゅう」（押せない）。HTMLを作って `ready:true` で公開。将来カテゴリ用に `general/`(ドリル) `quiz/`(問題) フォルダを予定。
+
+## 共通UI（drill-ui・2026-11-11 スマホ版刷新）
+指示書（Claude アプリ版が作成した `scg-drill-redesign-brief.md`）に沿って、全24本の見た目を**共通ファイル2つ**で組み替えた（きあ判断＝方式A。各HTMLの自己完結は崩したが、直す場所を1か所にするため）。
+- 各ドリルは `</head>` 直前に `drill-ui.css`、SW登録スクリプトの直前に `catalog.js`＋`drill-ui.js` を読むだけ（**3行。ドリル本体のコード・データは無変更**）。テンプレート `template/drill_std.tmpl.html` にも同じ3行を入れてあるので、型から生成するドリルは自動で付く。**手書きの新ドリルにも必ずこの3行を入れる**。
+- `drill-ui.js` は**ドリル側の関数とidをそのまま使って DOM を組み替えるだけ**: 旧 `<nav>` は CSS で隠して裏で動かし、新ヘッダー（‹ 課一覧／課名／Aa／つぎの課）と下のタブバーを作る。`show()` `rSetAuto()` `applyZoom()` を包む／差し替える。③は `#sortq`+`#sortfb` を `.dui-qbox` に入れ、回答後は選択肢の代わりに `#sortnext` を大きく出す。④は `#rcard` の描画を MutationObserver で縦並び（↓矢印・？）に直す。**前提となる id・関数名（sortq/sortfb/sortnext/sndtoggle/flipshuffle/flipgrid/score/rcard/rsub/rplay/.rspd/show/rSetAuto/applyZoom、進捗は sortIdx/sortPool・qIdx/qPool・rIdx/rPool）を新ドリルでも変えない**。
+- 文字サイズは旧 A−/A＋ の代わりに **Aa（100→115→130%）**。`localStorage['drill_zoom']` は旧と共通。PC幅（>640px）は縦長1列のまま画面の高さに合わせて拡大（`fitF`）。
+- 「つぎの課」= catalog.js の並びで次の ready ドリル（旧「すすむ」= history.forward は廃止）。発音ボタンは作らない（きあ判断）。
+- ルール画面は L7・L8 系の `.rule.r1-3` だけ指示書の形（色ラベル＋2列の例＋注意枠）に組み替え。**その他の課のルール画面（表・品詞の枠など）は系統ごとに後で整える（未着手）**。
+- 検証: `scratch/20261111-redesign/check_all.py`（全ドリル×4モードを375px iframeで開き、エラー・はみ出し・ヘッダー/タブ/進捗・回答後の枠を機械チェック＝96/96 OK）。`shots_drill.py tsunagu/X.html` で1本の全モードを撮影。
 
 ## おしらせ・更新履歴の足し方（2026-06-29〜）
 「どんどん足す」設計で先生・学生に**何が増えたか**を見せるため、母艦ホームに `🔔 おしらせ・更新履歴`（`#/news`）。
@@ -61,7 +72,7 @@
 - 4モード構成: ①ルール(rule) ②めくり(flip) ③並べ替え/おわり(sort) ④リズム(rhythm)。タブ`show(id)`で画面切替（タブは履歴に含めない）。
 - **リズムの「じどう送り」（2026-06-29〜・全ドリル共通）**: リズム画面に `▶ じどう`＋速度4段 `おそい(5s)/ふつう(3s)/はやい(2s)/とてもはやい(1s)`（既定ふつう。2026-07-27 に3段→4段化：「1秒ははやすぎ・3秒は遅い」学生が多く中間の2秒を追加）。ONで等間隔に`rStep`自動実行（問題↔答えを刻む）。じどう中の画面タップ＝一時停止/再開、OFF時は従来の手動めくり。`show()`がリズム以外への切替で`rSetAuto(false)`し裏で回り続けないようにする。**新規ドリルにもこのコントロール一式（HTML `#rauto`＋CSS `.rauto/.rplay/.rspd`＋JS `rSetAuto`機構）を必ず含める**。一括追加は `scratch/patch_rhythm_autoplay.py` 参照（アンカー: `.rcount`ルール / `rcount`div / `rhythmarea onclick` / `show()`）。
 - 1ファイルで投影/スマホ両対応: `@media(max-width:640px)` ＋ `clamp()` ＋ `100dvh`。スマホでナビは2×2、③の選択肢はgrid。
-- ナビ左上: `🏠 ホーム`(`../`でポータルへ) ＋ `◀もどる`/`すすむ▶`（`history.back()/forward()`＝PWAでブラウザ戻りが無い対策）。
+- ~~ナビ左上: 🏠 ホーム ＋ ◀もどる/すすむ▶~~ → 2026-11-11 から共通UIのヘッダー（‹ 課一覧へ／つぎの課）に置きかえ。旧ナビのHTMLは各ドリルに残っている（隠して裏で使う）。
 - **③の選択肢ボタンの見た目は2種類しかない。新規ドリルはどちらかに必ず寄せる**（2026-08-03 きあ指摘で統一）:
   1. 選択肢＝**1/2/3グループ**のとき … `.c1/.c2/.c3`＝`var(--g1/g2/g3)` の**グループ色＋白文字**（色そのものが情報。17本がこれ）
   2. 選択肢が**グループ以外**（ことば・品詞など）のとき … **白(`var(--panel)`)＋`var(--ink)`文字＋2px枠線**、hoverで`--accent`（`L8-2_matome.html` / `L16-1_sonkei.html`）。**個別に色を塗らない**——選択肢の一部だけ色が付くと「色＝正解」のヒントになる
@@ -181,7 +192,7 @@ taskkill //F //IM chrome.exe
 ## その他の学生向け仕様（2026-06-15〜）
 - **本文は選択可・カード/操作部は選択不可**（`user-select`）。狙い＝学生が分からない語を長押し→コピー→翻訳アプリに渡せるようにしつつ、タップ誤選択は防ぐ。`</style>` 直前のCSSで上書き。
 - **利用記録（端末ローカル・表示なし）**: `localStorage['drill_stats']` に各ドリルの `opens/last`（＋将来用に `correct/total` と `window.__drillLog(ok)` フック）を貯める。ログイン不要・サーバー無し・名簿無し。
-- **連続学習バナー（2026-06-29〜）**: `localStorage['drill_streak']`＝`{last,streak,best}`。**サイト（ポータル）を開いた日**をカウント＝アクセス基準（ゆるめ）。`updateStreak()` を初回 `render()` 前に1回呼ぶ（index.htmlのみ。ドリル本体は触らない＝入口はポータル前提）。判定: 前回が昨日→+1／初回・2日以上あき→**1に戻す（"切れた"等は出さない＝責めない方針**。[[feedback_management_not_enforcement]]）。表示は**ホームの先頭のみ**（`streakHTML()`）。1日=🌱、2-6日=🔥…えらい、7日〜=🏆…すごい。端末ローカルなので機種変・データ削除でリセットされる割り切り。
+- **連続学習バナー（2026-06-29〜）**: `localStorage['drill_streak']`＝`{last,streak,best}`。**サイト（ポータル）を開いた日**をカウント＝アクセス基準（ゆるめ）。`updateStreak()` を初回 `render()` 前に1回呼ぶ（index.htmlのみ。ドリル本体は触らない＝入口はポータル前提）。判定: 前回が昨日→+1／初回・2日以上あき→**1に戻す（"切れた"等は出さない＝責めない方針**。[[feedback_management_not_enforcement]]）。表示は**ホームのあいさつ行**（`helloLine()`・2026-11-11〜 絵文字をやめて文字だけ：「3にち つづけて べんきょう！ えらい！」、1日目は「きょうも べんきょう、いいね！」）。3日〜=えらい、7日〜=すごい。端末ローカルなので機種変・データ削除でリセットされる割り切り。
 
 ## 字体（BIZ UDPGothic 自己ホスト・2026-06-16〜）
 - **なぜ**: 旧 `Yu Gothic` 等のゴシックは き・さ・ふ 等のはらいが繋がり、学習者が手で書く形と違う（「繋ぎ字」問題）。教育用UDフォント **BIZ UDPGothic**（Morisawa, OFL）に変更。き・さ等が学習向けに分離し、太く明快で投影・小画面の視認性も高い。

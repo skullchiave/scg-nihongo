@@ -186,6 +186,7 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
 body{-webkit-user-select:text;user-select:text;}
 nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-webkit-user-select:none;user-select:none;}
 </style>
+<link rel="stylesheet" href="/scg-nihongo/assets/drill-ui.css">
 </head>
 <body>
 <nav>
@@ -518,6 +519,8 @@ document.addEventListener('keydown',e=>{
   fit();
 })();
 </script>
+<script src="/scg-nihongo/assets/catalog.js"></script>
+<script src="/scg-nihongo/assets/drill-ui.js"></script>
 <script>
 // Service Worker 登録（オフライン対応・通信節約）
 if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(){});});}

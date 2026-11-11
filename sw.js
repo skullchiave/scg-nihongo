@@ -13,7 +13,8 @@ const SHELL = [
   './', 'index.html', 'manifest.webmanifest',
   'logo-school.png', 'logo-mark.png',
   'icon-180.png', 'icon-192.png', 'icon-512.png', 'icon-512-maskable.png',
-  'fonts/BIZUDPGothic-Regular.subset.woff2', 'fonts/BIZUDPGothic-Bold.subset.woff2'
+  'fonts/BIZUDPGothic-Regular.subset.woff2', 'fonts/BIZUDPGothic-Bold.subset.woff2',
+  'assets/catalog.js', 'assets/drill-ui.css', 'assets/drill-ui.js'
 ];
 
 self.addEventListener('install', e => {
@@ -42,7 +43,8 @@ self.addEventListener('fetch', e => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return; // 外部リクエストは触らない
 
-  const isPortal = url.pathname.endsWith('/') || url.pathname.endsWith('/index.html');
+  // ドリル一覧(catalog.js)もポータルと同じ network-first＝ドリルを足したら次に開いた時すぐ出る
+  const isPortal = url.pathname.endsWith('/') || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/assets/catalog.js');
 
   // 再取得は cache:'no-cache' で条件付き再検証（サーバに変更有無を確認＝未変更は304で激安・変更時のみ実DL）
   const fresh = () => fetch(new Request(url.href, { cache: 'no-cache' }));
