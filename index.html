@@ -103,6 +103,7 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent;}
 .row:active{background:#f7f9fc;}
 .row .nm{flex:1;min-width:0;font-size:16px;font-weight:700;line-height:1.5;}
 .row.soon{cursor:default;}
+.row .nm .sub{display:block;font-size:12px;font-weight:400;color:var(--sub);margin-top:1px;}
 .row.soon .nm{color:var(--sub);}
 .badge{display:inline-block;font-size:11px;font-weight:700;color:var(--sub);background:#e6ebf3;
   border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle;}
@@ -156,13 +157,14 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent;}
 const DATA={
   categories:[
     {id:'textbook', label:'<ruby>教科書<rt>きょうかしょ</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>', sub:'きょうかしょで べんきょうした こと', ready:true},
-    {id:'drill',    label:'ドリル', sub:'ぶんぽうや ことばの れんしゅう', ready:false},
+    {id:'drill',    label:'ドリル', sub:'JLPTの ぶんぽうや ことばの れんしゅう', ready:true},
     {id:'quiz',     label:'<ruby>問題<rt>もんだい</rt></ruby>', sub:'おぼえたことを ためす', ready:false},
   ],
   textbooks:window.SCG_CATALOG.textbooks,   // ← 一覧は assets/catalog.js（ドリルを足すのはそちら）
   drills:window.SCG_CATALOG.drills,
   // ===== おしらせ・更新履歴（新しい順。1行足すだけ。date は YYYY-MM-DD） =====
   updates:[
+    {date:'2026-11-11', tag:'<ruby>新<rt>しん</rt></ruby>ドリル', cls:'drill', text:'JLPT N4 の <ruby>文法<rt>ぶんぽう</rt></ruby>ドリルが できました！ ホームの「ドリル」→「N4」→「<ruby>文法<rt>ぶんぽう</rt></ruby>」から 139もん れんしゅうできます。まちがえた もんだいだけ もう<ruby>一度<rt>いちど</rt></ruby> とくことも できます。'},
     {date:'2026-11-11', tag:'かいぜん', cls:'fix', text:'スマホで みやすく、おしやすく なりました！ ドリルの モード（ルール・めくり・グループわけ・リズム）は がめんの したで えらびます。「つぎの か」で つぎの ドリルへ すすめます。'},
     {date:'2026-10-26', tag:'<ruby>新<rt>しん</rt></ruby>ドリル', cls:'drill', text:'L16「そんけい（お〜になります）」「けんじょう（お〜します）」の ドリルが できました！<ruby>待<rt>ま</rt></ruby>ちます→お<ruby>待<rt>ま</rt></ruby>ちになります（うえの ひとが まつ）／お<ruby>待<rt>ま</rt></ruby>ちします（わたしが まつ）の ちがいを れんしゅうしましょう。'},
     {date:'2026-10-26', tag:'<ruby>新<rt>しん</rt></ruby>ドリル', cls:'drill', text:'L24「そんけい（〜れる・〜られる）」の ドリルが できました！<ruby>読<rt>よ</rt></ruby>みます→<ruby>読<rt>よ</rt></ruby>まれます の ように、うえの ひとが する ことを ていねいに <ruby>言<rt>い</rt></ruby>う かたちです。'},
@@ -331,6 +333,24 @@ function viewTextbook(tbId){
   });
   return h+'</main>';
 }
+// ===== ドリル（JLPT）: レベル一覧 → 文法・語彙 =====
+function soonRow(label){ return '<div class="row soon" aria-disabled="true"><span class="nm">'+label+'<span class="badge">じゅんびちゅう</span></span></div>'; }
+function viewDrill(){
+  let h=hdSub('#/','ホーム','ドリル')+'<main class="page"><section class="lsec"><div class="lh">JLPT</div><div class="list">';
+  (window.SCG_CATALOG.jlpt||[]).forEach(function(lv){
+    h+= lv.ready ? '<a class="row" href="#/drill/'+lv.id+'"><span class="nm">'+lv.label+'</span><span class="go">'+ic('fwd')+'</span></a>' : soonRow(lv.label);
+  });
+  return h+'</div></section></main>';
+}
+function viewDrillLevel(id){
+  const lv=(window.SCG_CATALOG.jlpt||[]).find(function(x){return x.id===id && x.ready;});
+  if(!lv) return viewDrill();
+  let h=hdSub('#/drill','ドリル','JLPT '+lv.label)+'<main class="page"><div class="list">';
+  (lv.items||[]).forEach(function(it){
+    h+= it.ready ? '<a class="row" href="'+it.file+'"><span class="nm">'+it.label+(it.sub?'<span class="sub">'+it.sub+'</span>':'')+'</span><span class="go">'+ic('fwd')+'</span></a>' : soonRow(it.label);
+  });
+  return h+'</div></main>';
+}
 function render(){
   const parts=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
   let html;
@@ -338,7 +358,8 @@ function render(){
   else if(parts[0]==='news'){ html=viewNews(); markNewsSeen(); }
   else if(parts[0]==='textbook' && parts.length===1){ html=viewTextbookList(); }
   else if(parts[0]==='textbook'){ html=viewTextbook(parts[1]); }
-  else if(parts[0]==='drill'){ html=hdSub('#/','ホーム','ドリル')+'<main class="page">'+soonHTML('ドリル')+'</main>'; }
+  else if(parts[0]==='drill' && parts.length===1){ html=viewDrill(); }
+  else if(parts[0]==='drill'){ html=viewDrillLevel(parts[1]); }
   else if(parts[0]==='quiz'){ html=hdSub('#/','ホーム','<ruby>問題<rt>もんだい</rt></ruby>')+'<main class="page">'+soonHTML('<ruby>問題<rt>もんだい</rt></ruby>')+'</main>'; }
   else { html=viewHome(); }
   if(html===null) return;   // 転送した（hashchange でもう一度 render される）

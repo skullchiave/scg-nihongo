@@ -30,5 +30,15 @@ window.SCG_CATALOG={
     {tb:'tsunagu', lesson:'L24', label:'そんけい（〜れる・〜られる）', file:'tsunagu/L24-1_sonkei_reru.html', ready:true},
     {tb:'tsunagu', lesson:'L27', label:'しえき<ruby>形<rt>けい</rt></ruby>（〜させます）', file:'tsunagu/L27-3_shieki.html', ready:true},
     {tb:'tsunagu', lesson:'L29', label:'しえきうけみ<ruby>形<rt>けい</rt></ruby>（〜させられます）', file:'tsunagu/L29-1_shiekiukemi.html', ready:true},
+  ],
+  // ===== JLPT（ホーム「ドリル」→ レベル → 文法・語彙）。ready:false＝じゅんびちゅう =====
+  jlpt:[
+    {id:'n1', label:'N1', ready:false},
+    {id:'n2', label:'N2', ready:false},
+    {id:'n3', label:'N3', ready:false},
+    {id:'n4', label:'N4', ready:true, items:[
+      {label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', sub:'139もん・4つから 1つ えらぶ', file:'jlpt/N4_bunpou.html', ready:true},
+      {label:'<ruby>語彙<rt>ごい</rt></ruby>', ready:false},
+    ]},
   ]
 };
