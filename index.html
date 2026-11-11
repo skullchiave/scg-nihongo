@@ -138,6 +138,78 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent;}
   min-height:48px;padding:12px 30px;font-size:16px;font-weight:800;font-family:inherit;cursor:pointer;}
 
 @media (max-width:640px){ .qronly{display:none;} }
+
+/* ===== PC版ホーム（641px以上）。寸法は 1920×1080 基準。fitZoom() が画面に合わせて全体を縮める =====
+   スマホ版（.sphome）は触らない。PC版（.pchome）は PC 幅でだけ出す */
+.pchome{display:none;}
+@media (min-width:641px){
+  .sphome{display:none;}
+  .pchome{display:block;}
+  .pchd{background:#fff;border-bottom:1px solid var(--hair);}
+  .pchdin{max-width:1816px;margin:0 auto;padding:0 48px;height:104px;display:flex;align-items:center;gap:20px;}
+  .pchdin .brand img{height:48px;}
+  .pchdin .brand h1{font-size:40px;}
+  .pcnews{height:64px;display:inline-flex;align-items:center;gap:12px;padding:0 24px;border:1px solid var(--line);border-radius:16px;
+    background:#fff;font-size:24px;font-weight:700;}
+  .pcnews .ic{width:30px;height:30px;color:var(--sub);}
+  .pcnews .newpill{font-size:18px;padding:3px 12px;}
+  .pcmain{max-width:1816px;margin:0 auto;padding:36px 48px 40px;display:grid;grid-template-columns:minmax(0,1fr) 480px;column-gap:40px;
+    grid-template-areas:"hello hello" "left right";}
+  .pchello{grid-area:hello;margin-bottom:24px;}
+  .pchello .s{font-size:24px;color:var(--sub);font-weight:700;}
+  .pchello .s b{color:var(--accentT);}
+  .pchello .q{font-size:52px;font-weight:700;line-height:1.4;}
+  .pcleft{grid-area:left;display:flex;flex-direction:column;gap:24px;min-width:0;}
+  .pcright{grid-area:right;display:flex;flex-direction:column;gap:24px;}
+  .pctb{display:flex;align-items:center;gap:32px;background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:32px 36px;}
+  .pctb:active{transform:scale(.995);}
+  .pcico{width:112px;height:112px;border-radius:28px;display:grid;place-items:center;background:var(--accentSoft);color:var(--accentT);flex-shrink:0;}
+  .pcico .ic{width:60px;height:60px;}
+  .pctb .t{font-size:48px;font-weight:700;line-height:1.45;}
+  .pctb .s{font-size:26px;color:var(--sub);margin-top:4px;}
+  .pctb .go{margin-left:auto;color:var(--ink);}
+  .pctb .go .ic{width:56px;height:56px;}
+  .pcdr{background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:28px 36px 32px;}
+  .pcdrh{display:flex;align-items:center;gap:20px;}
+  .pcdrh .pcico{width:72px;height:72px;border-radius:20px;}
+  .pcdrh .pcico .ic{width:38px;height:38px;}
+  .pcdrh .t{font-size:40px;font-weight:700;line-height:1.3;}
+  .pcdrh .s{font-size:22px;color:var(--sub);}
+  .lvtiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:24px;}
+  .lvt{height:120px;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+  .lvt .lv{font-size:44px;font-weight:700;line-height:1.1;}
+  .lvt .k{font-size:22px;font-weight:700;line-height:1.5;}
+  a.lvt{background:var(--ink);color:#fff;}
+  a.lvt .k{color:#c9d4e6;}
+  a.lvt:active{transform:scale(.98);}
+  .lvt.soon{background:#f7f9fc;border:2px dashed var(--line);color:var(--sub);cursor:default;}
+  .lvt.soon .lv{color:#8a98b0;}
+  .lvt.soon .k{font-size:18px;}
+  .pcquiz{display:flex;align-items:center;gap:20px;background:#f7f9fc;border:2px dashed var(--line);border-radius:24px;padding:20px 36px;color:var(--sub);}
+  .pcquiz .pcico{width:64px;height:64px;border-radius:18px;background:#e6ebf3;color:var(--sub);}
+  .pcquiz .pcico .ic{width:34px;height:34px;}
+  .pcquiz .t{font-size:32px;font-weight:700;color:var(--muted);}
+  .pcquiz .s{font-size:22px;}
+  .pcquiz .soonlbl{margin:0 0 0 auto;font-size:22px;}
+  .qrbig{flex:1;min-height:520px;width:100%;border:none;border-radius:28px;background:var(--ink);color:#fff;cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px;font-family:inherit;}
+  .qrbig:active{transform:scale(.99);}
+  .qrframe{width:200px;height:200px;border-radius:24px;background:#fff;color:var(--ink);display:grid;place-items:center;margin-bottom:8px;}
+  .qrframe .ic{width:128px;height:128px;}
+  .qrbig .t{font-size:40px;font-weight:700;line-height:1.4;}
+  .qrbig .s{font-size:24px;color:#c9d4e6;line-height:1.6;}
+  .pcmail{background:#fff;border-radius:24px;box-shadow:var(--card-shadow);padding:24px;text-align:center;}
+  .pcmail .s{font-size:22px;color:var(--sub);margin-bottom:12px;}
+  .pcmail .mailbtn{height:64px;font-size:24px;padding:0 28px;border-radius:16px;}
+  .pcmail .mailbtn .ic{width:28px;height:28px;}
+  /* QRの拡大表示（投影用：画面の高さの7割ぐらい） */
+  .qrov{padding:1.5vh;}
+  .qrbox{max-width:none;padding:2.5vh 4vh;}
+  .qrttl{font-size:3.4vh;margin-bottom:1.6vh;}
+  .qrsvg{width:68vh;max-width:90vw;}
+  .qrurl{font-size:2vh;margin-top:1.2vh;}
+  .qrclose{margin-top:1.8vh;min-height:6vh;font-size:2.4vh;padding:0 5vh;}
+}
 </style>
 </head>
 <body>
@@ -252,9 +324,11 @@ function helloLine(){
   return '<b>'+n+'</b>にち つづけて べんきょう！'+praise;
 }
 function footHTML(){
-  return '<div class="foot"><div class="s"><ruby>要望<rt>ようぼう</rt></ruby>・<ruby>質問<rt>しつもん</rt></ruby>は</div>'
-    +'<a class="mailbtn" href="mailto:sasaki-h@mail.seiki.co.jp?subject=SCG%E3%81%AB%E3%81%BB%E3%82%93%E3%81%94%E3%83%89%E3%83%AA%E3%83%AB%20%E3%82%88%E3%81%86%E3%81%BC%E3%81%86%E3%83%BB%E3%81%97%E3%81%A4%E3%82%82%E3%82%93&body=%EF%BC%88%E3%81%93%E3%81%93%E3%81%AB%20%E3%82%88%E3%81%86%E3%81%BC%E3%81%86%E3%83%BB%E3%81%97%E3%81%A4%E3%82%82%E3%82%93%E3%82%92%20%E3%81%8B%E3%81%84%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%EF%BC%89%0A%0A">'
-    +ic('mail')+'<span><ruby>佐々木<rt>ささき</rt></ruby>に メールする</span></a></div>';
+  return '<div class="foot"><div class="s"><ruby>要望<rt>ようぼう</rt></ruby>・<ruby>質問<rt>しつもん</rt></ruby>は</div>'+mailBtnHTML()+'</div>';
+}
+function mailBtnHTML(){
+  return '<a class="mailbtn" href="mailto:sasaki-h@mail.seiki.co.jp?subject=SCG%E3%81%AB%E3%81%BB%E3%82%93%E3%81%94%E3%83%89%E3%83%AA%E3%83%AB%20%E3%82%88%E3%81%86%E3%81%BC%E3%81%86%E3%83%BB%E3%81%97%E3%81%A4%E3%82%82%E3%82%93&body=%EF%BC%88%E3%81%93%E3%81%93%E3%81%AB%20%E3%82%88%E3%81%86%E3%81%BC%E3%81%86%E3%83%BB%E3%81%97%E3%81%A4%E3%82%82%E3%82%93%E3%82%92%20%E3%81%8B%E3%81%84%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%EF%BC%89%0A%0A">'
+    +ic('mail')+'<span><ruby>佐々木<rt>ささき</rt></ruby>に メールする</span></a>';
 }
 function newsButtonHTML(){
   return '<a class="newsbtn" href="#/news">'+ic('bell')
@@ -299,7 +373,53 @@ function viewHome(){
   });
   h+='</div>';
   h+=newsButtonHTML();
-  return h+footHTML()+'</main>';
+  return '<div class="sphome">'+h+footHTML()+'</main></div>'+viewHomePC();
+}
+// PC版ホーム（投影・QR用。641px以上でだけ見える。寸法は1920×1080基準）
+function viewHomePC(){
+  const main=DATA.categories[0], drill=DATA.categories.find(function(c){return c.id==='drill';}), quiz=DATA.categories.find(function(c){return c.id==='quiz';});
+  let h='<div class="pchome"><header class="pchd"><div class="pchdin">'
+    +'<div class="brand"><img src="logo-mark.png" alt=""><h1>SCG<ruby>日本語<rt>にほんご</rt></ruby> <span class="em">ドリル</span></h1></div>'
+    +'<a class="pcnews" href="#/news">'+ic('bell')+'<span>おしらせ</span>'+(isNewsUnread()?'<span class="newpill">NEW</span>':'')+'</a>'
+    +'</div></header><main class="pcmain">';
+  h+='<div class="pchello"><div class="s">'+helloLine()+'</div><div class="q">なにを れんしゅうする？</div></div>';
+  h+='<div class="pcleft">';
+  // 教科書の練習
+  const chips=[];
+  readyTextbooks().forEach(function(t){
+    var ns=DATA.drills.filter(function(d){return d.tb===t.id && d.ready;})
+      .map(function(d){return parseInt(String(d.lesson).replace(/\D/g,''),10);}).filter(function(n){return !isNaN(n);});
+    chips.push(t.label+(ns.length?' L'+Math.min.apply(null,ns)+'〜L'+Math.max.apply(null,ns):''));
+  });
+  h+='<a class="pctb" href="#/'+main.id+'"><span class="pcico">'+ic('book')+'</span><span><span class="t" style="display:block">'+main.label+'</span>'
+    +'<span class="s" style="display:block">'+chips.join('／')+'</span></span><span class="go">'+ic('fwd')+'</span></a>';
+  // ドリル（N4→N1 のタイル）
+  if(drill){
+    h+='<div class="pcdr"><div class="pcdrh"><span class="pcico">'+ic('pencil')+'</span><span><span class="t" style="display:block">'+drill.label+'</span>'
+      +'<span class="s" style="display:block">'+drill.sub+'</span></span></div><div class="lvtiles">';
+    (window.SCG_CATALOG.jlpt||[]).slice().reverse().forEach(function(lv){
+      const items=(lv.items||[]).filter(function(it){return it.ready;});
+      if(lv.ready && items.length){
+        const href=items.length===1?items[0].file:'#/drill/'+lv.id;
+        const kinds=items.map(function(it){return it.label;}).join('・');
+        h+='<a class="lvt" href="'+href+'"><span class="lv">'+lv.label+'</span><span class="k">'+kinds+'</span></a>';
+      }else{
+        h+='<div class="lvt soon" aria-disabled="true"><span class="lv">'+lv.label+'</span><span class="k">じゅんびちゅう</span></div>';
+      }
+    });
+    h+='</div></div>';
+  }
+  // 問題（準備中なら点線の帯）
+  if(quiz){
+    const inner='<span class="pcico">'+ic('quiz')+'</span><span><span class="t" style="display:block">'+quiz.label+'</span><span class="s" style="display:block">'+quiz.sub+'</span></span>';
+    h+= quiz.ready ? '<a class="pctb" href="#/quiz">'+inner+'<span class="go">'+ic('fwd')+'</span></a>'
+                   : '<div class="pcquiz" aria-disabled="true">'+inner+'<span class="soonlbl">じゅんびちゅう</span></div>';
+  }
+  h+='</div><div class="pcright">';
+  h+='<button class="qrbig" onclick="openQR()"><span class="qrframe">'+ic('qr')+'</span>'
+    +'<span class="t">QRコードを <ruby>表示<rt>ひょうじ</rt></ruby></span><span class="s">スマホで よみとってね（<ruby>学生<rt>がくせい</rt></ruby><ruby>用<rt>よう</rt></ruby>）</span></button>';
+  h+='<div class="pcmail"><div class="s"><ruby>要望<rt>ようぼう</rt></ruby>・<ruby>質問<rt>しつもん</rt></ruby>は</div>'+mailBtnHTML()+'</div>';
+  return h+'</div></main></div>';
 }
 function readyTextbooks(){ return DATA.textbooks.filter(function(t){return t.ready;}); }
 function viewTextbookList(){
@@ -365,12 +485,16 @@ function render(){
   else { html=viewHome(); }
   if(html===null) return;   // 転送した（hashchange でもう一度 render される）
   app.innerHTML=html;
+  fitZoom();
   window.scrollTo(0,0);
 }
-// 投影（PC幅）では同じデザインを画面に合わせて拡大する。スマホ（640px以下）は等倍
+// 投影（PC幅）では画面に合わせて拡大する。スマホ（640px以下）は等倍
+// ホームのPC版は1920×1080基準で作ってあるので、その比率で縮める。ほかの画面はスマホの並びのまま拡大する
 function fitZoom(){
   var w=window.innerWidth, h=window.innerHeight, z=1;
-  if(w>640){ z=Math.min(w/560, h/880); z=Math.max(1, Math.min(z, 2.4)); }
+  var home=location.hash.replace(/^#\/?/,'')==='';
+  if(w>640 && home){ z=Math.max(0.45, Math.min(w/1920, h/1080, 2)); }
+  else if(w>640){ z=Math.min(w/560, h/880); z=Math.max(1, Math.min(z, 2.4)); }
   app.style.zoom=z;
 }
 window.addEventListener('resize',fitZoom);
