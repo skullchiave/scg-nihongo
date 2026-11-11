@@ -11,135 +11,47 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#ffffff">
 <title>つなぐ L16 けんじょうご（とくべつな ことば）ドリル</title>
+<link rel="stylesheet" href="/scg-nihongo/assets/drill-base.css">
 <style>
-@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:400;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Regular.subset.woff2') format('woff2');}
-@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:700;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Bold.subset.woff2') format('woff2');}
-:root{
-  --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
-  --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-body{font-family:"BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);
-  display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-user-select:none;user-select:none;}
-/* nav */
-nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#ffffff;border-bottom:2px solid var(--line);flex-shrink:0;align-items:center;}
-nav .ttl{font-weight:800;font-size:18px;margin-right:auto;letter-spacing:.5px;}
-nav .ttl small{color:var(--sub);font-weight:400;font-size:13px;margin-left:8px;}
-nav button{background:#eef2f8;color:var(--sub);border:1px solid var(--line);border-radius:8px;
-  padding:8px 16px;font-size:15px;cursor:pointer;font-family:inherit;white-space:nowrap;}
-nav button.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800;}
-nav button:hover{color:var(--ink);}
-/* ホームへ戻る（母艦ポータルへ） */
-nav .navhome{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 13px;font-size:14px;font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-nav .navhome:hover{border-color:var(--accent);color:var(--accentT);}
-/* もどる/すすむ（PWAでブラウザ戻るが無いため = history.back/forward） */
-nav .navnav{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-nav .navnav:hover{border-color:var(--accent);color:var(--accentT);}
-nav .navnav:active{background:#fff7e6;}
-/* 文字サイズ切替（Ctrl+= を知らない先生向けの明示ボタン） */
-nav .fzgrp{display:inline-flex;gap:6px;align-items:center;margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
-nav .fzgrp button{padding:6px 10px;font-size:14px;min-width:44px;}
-/* 語彙スコープ切替（16-3 → ＋コラム7 累積） */
-nav .scope{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:var(--sub);
-  margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
+/* このドリルだけの差分（共通の見た目は assets/drill-base.css） */
+:root{--bg:#eef1f7;--panel:#ffffff;--ink:#16233a;--sub:#5a6b86;--line:#c9d4e6;--ok:#15803d;--ng:#dc2626;--accent:#e8920c;--accentT:#b45309;--g1:unset;--g2:unset;--g3:unset;}
+nav .scope{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:var(--sub);margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
 nav .scope button{padding:6px 12px;font-size:14px;}
 nav .scope button.on{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:800;}
-/* sections */
-.screen{flex:1;display:none;flex-direction:column;padding:24px 32px;overflow:auto;position:relative;}
-.screen.on{display:flex;}
-h2{font-size:26px;margin-bottom:6px;}
-rt{font-size:0.45em;font-weight:500;opacity:.8;}
-.hint{color:var(--sub);font-size:16px;margin-bottom:20px;}
-.shuf{margin-left:auto;background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 18px;font-size:15px;cursor:pointer;font-family:inherit;}
-.shuf:hover{background:#fff7e6;border-color:var(--accent);}
 .toolbar{display:flex;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap;}
 .dirbtn{background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 18px;font-size:15px;cursor:pointer;font-family:inherit;font-weight:700;}
 .dirbtn:hover{background:#fff7e6;border-color:var(--accent);}
 .dirbtn.rev{background:var(--ink);color:#fff;border-color:var(--ink);}
-
-/* ① おぼえる（教科書 p34 の変換表と おなじ形の 一覧表）
-   合流（きく・しつもんする → うかがいます 等）を rowspan の セル結合で 見た目に出す＝パッと見て分かる
-   ただし「行きます」だけは 答えが 2つ（まいります／うかがいます）なので 教科書どおり 独立の セル */
 .ktwrap{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:4px;align-items:start;}
 .ktbl{width:100%;border-collapse:collapse;background:var(--panel);box-shadow:0 2px 6px rgba(30,50,90,.07);}
 .ktbl td{border:1.5px solid var(--line);padding:13px 16px;vertical-align:middle;line-height:1.35;}
 .ktbl td.from{width:48%;font-size:25px;font-weight:800;color:var(--ink);}
 .ktbl td.to{font-size:26px;font-weight:900;color:var(--accentT);}
-.ktbl td.lg{font-size:20px;}   /* 長い語だけ 縮める */
+.ktbl td.lg{font-size:20px;}
 .ktbl td.xs{font-size:16px;}
-.ktbl td.mrg{border-left-width:5px;}   /* 合流するものだけ 色（色＝1つに なる印） */
+.ktbl td.mrg{border-left-width:5px;}
 .note{background:#fff7e6;border:1px solid #f0c97a;border-radius:12px;padding:14px 20px;margin-top:18px;font-size:16px;line-height:1.9;}
-.note b{color:var(--accentT);}
-.v{color:var(--accentT);font-weight:800;}
-.sep{color:var(--sub);font-weight:400;margin:0 3px;}   /* 答えが2つ ある ことばの くぎり（／） */
-
-/* ② FLIP cards */
+.sep{color:var(--sub);font-weight:400;margin:0 3px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-top:8px;}
 .fcard{height:126px;border-radius:14px;cursor:pointer;perspective:800px;}
-.fin{position:relative;width:100%;height:100%;transition:transform .35s;transform-style:preserve-3d;}
-.fcard.flip .fin{transform:rotateY(180deg);}
-.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:14px;
-  backface-visibility:hidden;font-weight:800;flex-direction:column;padding:6px;text-align:center;}
-/* ⚠ ルビ(<ruby>)は そのまま置くと flex の子要素になって 1語が バラバラに縦積みされる。必ず span で包む */
+.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:14px;backface-visibility:hidden;font-weight:800;flex-direction:column;padding:6px;text-align:center;}
 .face .ft{display:block;}
 .front{background:var(--panel);border:2px solid var(--line);font-size:25px;box-shadow:0 2px 5px rgba(30,50,90,.08);}
 .back{background:#fff7e6;border:2px solid var(--accent);transform:rotateY(180deg);font-size:25px;}
 .back .ta{font-size:26px;color:var(--ink);}
-/* 裏に もとの ことばを 小さく併記（「うかがいます」「いただきます」が何枚もできるので、どれの答えか分かるように） */
 .back .src{font-size:13px;color:var(--sub);font-weight:600;margin-bottom:3px;}
 .gl{font-size:13px;margin-top:8px;padding:2px 12px;border-radius:20px;color:#fff;font-weight:800;}
-
-/* ③ SORT drill */
-.sortwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px;}
-.qcard{font-size:52px;font-weight:900;background:var(--panel);border:3px solid var(--line);border-radius:20px;
-  padding:30px 56px;min-width:340px;text-align:center;box-shadow:0 4px 12px rgba(30,50,90,.10);}
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;width:100%;}
-/* 選択肢＝グループではなく けんじょうごの ことば なので、L8-2_matome / L16-1 と同じ「白＋枠線」型にそろえる
-   （ここで色を付けると「色＝正解」のヒントになる） */
-.choices button{font-size:23px;font-weight:900;border:2px solid var(--line);border-radius:14px;padding:16px 20px;
-  cursor:pointer;color:var(--ink);background:var(--panel);font-family:inherit;box-shadow:0 2px 5px rgba(30,50,90,.08);}
+.qcard{font-size:52px;font-weight:900;background:var(--panel);border:3px solid var(--line);border-radius:20px;padding:30px 56px;min-width:340px;text-align:center;box-shadow:0 4px 12px rgba(30,50,90,.10);}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;width:100%;flex-wrap:unset;justify-content:unset;}
+.choices button{font-size:23px;font-weight:900;border:2px solid var(--line);border-radius:14px;padding:16px 20px;cursor:pointer;color:var(--ink);background:var(--panel);font-family:inherit;box-shadow:0 2px 5px rgba(30,50,90,.08);min-width:unset;}
 .choices button:hover{border-color:var(--accent);}
-.choices button:active{transform:scale(.96);}
 .fb{font-size:26px;font-weight:800;min-height:44px;text-align:center;}
-.fb.ok{color:var(--ok);}.fb.ng{color:var(--ng);}
-.fb .ans{color:var(--accentT);}
 .fb .exn{display:block;font-size:16px;color:var(--sub);font-weight:600;}
-.score{position:absolute;top:16px;right:36px;font-size:18px;color:var(--sub);}
-.sortbtns{display:flex;gap:14px;}
-.sortbtns button{background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 20px;font-size:16px;cursor:pointer;font-family:inherit;}
-
-/* ④ RHYTHM */
-.rhythm{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;cursor:pointer;}
 .rcard{font-size:72px;font-weight:900;text-align:center;}
 .rcard .arrow{color:var(--accent);font-size:52px;margin:8px 0;}
-.rta{color:var(--accentT);}
-.rsub{color:var(--sub);font-size:20px;}
-.rcount{position:absolute;bottom:24px;right:36px;color:var(--sub);font-size:16px;}
-.rauto{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;}
-.rauto button{font-family:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--line);background:#eef2f8;color:var(--ink);}
-.rplay{padding:10px 22px;font-size:18px;font-weight:700;}
-.rplay.on{background:var(--accent);color:#fff;border-color:var(--accent);}
-.rspdwrap{display:inline-flex;gap:6px;}
-.rspd{padding:9px 16px;font-size:15px;}
-.rspd.on{background:var(--ink);color:#fff;border-color:var(--ink);}
-@media(max-width:640px){.rauto{gap:7px;margin:0 0 8px;}.rplay{padding:8px 16px;font-size:15px;}.rspd{padding:7px 11px;font-size:13px;}}
-kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-size:14px;}
-
-/* ===== スマホ対応（画面幅640px以下） ===== 投影用レイアウトはそのまま、スマホだけ組み替える */
 @media (max-width:640px){
-  body{height:100dvh;}
-  nav{padding:8px 10px;gap:6px;}
-  nav .ttl{font-size:14px;width:100%;margin:0 0 2px;}
-  nav .ttl small{display:block;margin:2px 0 0;font-size:11px;}
-  nav .fzgrp{display:none;}
   nav .scope{margin:0 0 2px;padding:0 0 4px;border-right:none;width:100%;font-size:12px;}
   nav .scope button{flex:1 1 0;padding:8px 4px;font-size:13px;}
-  nav button{flex:1 1 calc(50% - 3px);min-width:0;padding:11px 4px;font-size:14px;}
-  .screen{padding:14px 12px;}
-  h2{font-size:19px;line-height:1.35;}
-  h2 span{display:block;font-size:13px!important;margin-top:3px;}
-  .hint{font-size:14px;margin-bottom:14px;}
   .toolbar{gap:8px;margin-bottom:10px;}
   .dirbtn{padding:8px 12px;font-size:13px;}
   .ktwrap{grid-template-columns:1fr;gap:14px;}
@@ -148,45 +60,22 @@ kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-s
   .ktbl td.to{font-size:16px;}
   .ktbl td.lg{font-size:14px;}
   .ktbl td.xs{font-size:12px;}
-  .note{font-size:14px;padding:12px 14px;margin-top:14px;}
-  .shuf{padding:8px 12px;font-size:13px;}
-  .grid{grid-template-columns:1fr 1fr;gap:10px;}
   .fcard{height:100px;}
   .front,.back{font-size:clamp(13px,4.2vw,19px);}
   .back .ta{font-size:clamp(13px,4.4vw,20px);}
   .gl{font-size:10px;margin-top:5px;padding:1px 8px;}
   .qcard{font-size:clamp(26px,8.5vw,38px);min-width:0;width:100%;max-width:92vw;padding:22px 14px;}
-  .choices{grid-template-columns:1fr;max-width:360px;gap:10px;}
+  .choices{grid-template-columns:1fr;max-width:360px;gap:10px;flex-direction:unset;width:unset;}
   .choices button{width:100%;font-size:17px;padding:14px 8px;}
   .fb{font-size:17px;height:auto;min-height:36px;text-align:center;}
   .fb .exn{font-size:13px;}
-  .score{position:static;align-self:flex-end;margin:0 4px 2px 0;}
-  .sortwrap{gap:14px;justify-content:flex-start;padding-top:6px;}
-  .sortbtns{flex-wrap:wrap;justify-content:center;gap:10px;}
-  .sortbtns button{font-size:14px;padding:11px 14px;}
   .rcard{font-size:clamp(26px,8vw,58px);}
   .rcard .arrow{font-size:38px;}
-  .rsub{font-size:15px;}
-  .rcount{bottom:14px;right:16px;font-size:13px;}
-}
-
-/* sort1gamen: 判定画面(#sort)を1画面に収める＝スクロールなし（640px以下） */
-@media (max-width:640px){
-  #sort h2{margin-bottom:2px;}
-  #sort h2 span{margin-top:1px;}
-  #sort .score{position:absolute;top:10px;right:14px;align-self:auto;margin:0;}
-  #sort .sortwrap{gap:7px;justify-content:space-evenly;padding-top:2px;}
   #sort .qcard{font-size:clamp(20px,6vw,30px);padding:10px 12px;}
-  #sort .choices{gap:7px;width:100%;max-width:360px;}
-  #sort .choices button{padding:11px 6px;font-size:15px;white-space:normal;line-height:1.25;}
-  #sort .fb{font-size:15px;min-height:22px;}
-  #sort .sortbtns{gap:7px;}
-  #sort .sortbtns button{padding:7px 11px;font-size:13px;}
+  #sort .choices{gap:7px;width:100%;max-width:360px;display:unset;grid-template-columns:unset;}
+  #sort .choices button{padding:11px 6px;font-size:15px;white-space:normal;line-height:1.25;width:unset;min-width:unset;}
+  .back .gl{font-size:unset;}
 }
-.fitwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;white-space:nowrap;transform-origin:center;}
-/* 翻訳コピー対応: 本文は選択可・カード/操作部は選択不可（タップ誤選択防止） */
-body{-webkit-user-select:text;user-select:text;}
-nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-webkit-user-select:none;user-select:none;}
 </style>
 <link rel="stylesheet" href="/scg-nihongo/assets/drill-ui.css">
 </head>

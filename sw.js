@@ -14,7 +14,7 @@ const SHELL = [
   'logo-school.png', 'logo-mark.png',
   'icon-180.png', 'icon-192.png', 'icon-512.png', 'icon-512-maskable.png',
   'fonts/BIZUDPGothic-Regular.subset.woff2', 'fonts/BIZUDPGothic-Bold.subset.woff2',
-  'assets/catalog.js', 'assets/drill-ui.css', 'assets/drill-ui.js'
+  'assets/catalog.js', 'assets/drill-base.css', 'assets/drill-ui.css', 'assets/drill-ui.js'
 ];
 
 self.addEventListener('install', e => {
@@ -44,11 +44,11 @@ self.addEventListener('fetch', e => {
   if (url.origin !== location.origin) return; // 外部リクエストは触らない
 
   // ドリル一覧(catalog.js)もポータルと同じ network-first＝ドリルを足したら次に開いた時すぐ出る
-  // ★共通UI(drill-ui.css/js)も network-first（2026-11-11）。SWRだと見た目を直しても
+  // ★共通UI(drill-base.css・drill-ui.css/js)も network-first（2026-11-11）。SWRだと見た目を直しても
   //   1回目は旧版が出て「直っていない」に見える（PC版レイアウト公開時に実際に起きた）
   const p = url.pathname;
   const isPortal = p.endsWith('/') || p.endsWith('/index.html') || p.endsWith('/assets/catalog.js')
-    || p.endsWith('/assets/drill-ui.css') || p.endsWith('/assets/drill-ui.js');
+    || p.endsWith('/assets/drill-base.css') || p.endsWith('/assets/drill-ui.css') || p.endsWith('/assets/drill-ui.js');
 
   // 再取得は cache:'no-cache' で条件付き再検証（サーバに変更有無を確認＝未変更は304で激安・変更時のみ実DL）
   const fresh = () => fetch(new Request(url.href, { cache: 'no-cache' }));

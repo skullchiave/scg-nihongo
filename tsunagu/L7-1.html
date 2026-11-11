@@ -11,172 +11,45 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#ffffff">
 <title>つなぐ L7-1 普通形（辞書形）ドリル</title>
+<link rel="stylesheet" href="/scg-nihongo/assets/drill-base.css">
 <style>
-@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:400;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Regular.subset.woff2') format('woff2');}
-@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:700;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Bold.subset.woff2') format('woff2');}
-:root{
-  --g1:#dc2626; --g2:#1d4ed8; --g3:#15803d;   /* 1グループ=赤(最複雑・最重要) / 2グループ=青 / 3グループ=緑 */
-  --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6;
-  --ok:#15803d; --ng:#dc2626; --accent:#e8920c; --accentT:#b45309;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-body{font-family:"BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);
-  display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-user-select:none;user-select:none;}
-/* nav */
-nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#ffffff;border-bottom:2px solid var(--line);flex-shrink:0;align-items:center;}
-nav .ttl{font-weight:800;font-size:18px;margin-right:auto;letter-spacing:.5px;}
-nav .ttl small{color:var(--sub);font-weight:400;font-size:13px;margin-left:8px;}
-nav button{background:#eef2f8;color:var(--sub);border:1px solid var(--line);border-radius:8px;
-  padding:8px 16px;font-size:15px;cursor:pointer;font-family:inherit;white-space:nowrap;}
-nav button.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800;}
-nav button:hover{color:var(--ink);}
-/* ホームへ戻る（母艦ポータルへ） */
-nav .navhome{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 13px;font-size:14px;font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-nav .navhome:hover{border-color:var(--accent);color:var(--accentT);}
-/* もどる/すすむ（PWAでブラウザ戻るが無いため = history.back/forward） */
-nav .navnav{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 11px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;white-space:nowrap;-webkit-tap-highlight-color:transparent;}
-nav .navnav:hover{border-color:var(--accent);color:var(--accentT);}
-nav .navnav:active{background:#fff7e6;}
-/* 文字サイズ切替（Ctrl+= を知らない先生向けの明示ボタン） */
-nav .fzgrp{display:inline-flex;gap:6px;align-items:center;margin-right:12px;padding-right:14px;border-right:2px solid var(--line);}
-nav .fzgrp button{padding:6px 10px;font-size:14px;min-width:44px;}
-/* sections */
-.screen{flex:1;display:none;flex-direction:column;padding:24px 32px;overflow:auto;position:relative;}
-.screen.on{display:flex;}
-h2{font-size:26px;margin-bottom:6px;}
-rt{font-size:0.45em;font-weight:500;opacity:.8;}
-.hint{color:var(--sub);font-size:16px;margin-bottom:20px;}
-.legend{display:flex;gap:18px;font-size:15px;margin-bottom:18px;flex-wrap:wrap;}
-.chip{display:inline-flex;align-items:center;gap:7px;}
-.dot{width:15px;height:15px;border-radius:4px;display:inline-block;}
-.d1{background:var(--g1);}.d2{background:var(--g2);}.d3{background:var(--g3);}
-.shuf{margin-left:auto;background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 18px;font-size:15px;cursor:pointer;font-family:inherit;}
-.shuf:hover{background:#fff7e6;border-color:var(--accent);}
-
-/* RULE screen */
+/* このドリルだけの差分（共通の見た目は assets/drill-base.css） */
 .rules{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:10px;}
 .rule{background:var(--panel);border-radius:14px;padding:24px;border-top:6px solid;}
-.rule.r1{border-color:var(--g1);}.rule.r2{border-color:var(--g2);}.rule.r3{border-color:var(--g3);}
+.rule.r1{border-color:var(--g1);}
+.rule.r2{border-color:var(--g2);}
+.rule.r3{border-color:var(--g3);}
 .rule h3{font-size:24px;margin-bottom:10px;}
 .rule .big{font-size:20px;line-height:1.9;}
 .rule .ex{color:var(--sub);font-size:17px;margin-top:14px;line-height:1.8;}
-.v{color:var(--accentT);font-weight:800;}
 .note{background:#fff7e6;border:1px solid #f0c97a;border-radius:12px;padding:16px 20px;margin-top:22px;font-size:17px;line-height:1.8;}
-.note b{color:var(--accentT);}
-
-/* FLIP cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:8px;}
-.fcard{height:120px;border-radius:14px;cursor:pointer;perspective:800px;}
-.fin{position:relative;width:100%;height:100%;transition:transform .35s;transform-style:preserve-3d;}
-.fcard.flip .fin{transform:rotateY(180deg);}
-.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:14px;
-  backface-visibility:hidden;font-weight:800;flex-direction:column;}
 .front{background:var(--panel);border:2px solid var(--line);font-size:30px;box-shadow:0 2px 5px rgba(30,50,90,.08);}
 .back{background:#fff7e6;border:2px solid var(--accent);transform:rotateY(180deg);font-size:30px;}
 .back .dic{font-size:34px;color:var(--ink);}
-.back .gl{font-size:14px;margin-top:8px;padding:2px 12px;border-radius:20px;color:#fff;}
-.gl1{background:var(--g1);}.gl2{background:var(--g2);}.gl3{background:var(--g3);}
 .ch{color:var(--accentT);}
-
-/* SORT drill */
-.sortwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px;}
-.qcard{font-size:64px;font-weight:900;background:var(--panel);border:3px solid var(--line);border-radius:20px;
-  padding:36px 70px;min-width:360px;text-align:center;box-shadow:0 4px 12px rgba(30,50,90,.10);}
-.choices{display:flex;gap:18px;}
-.choices button{font-size:22px;font-weight:800;border:none;border-radius:14px;padding:18px 30px;cursor:pointer;color:#fff;font-family:inherit;}
-.c1{background:var(--g1);}.c2{background:var(--g2);}.c3{background:var(--g3);}
-.choices button:active{transform:scale(.96);}
-.fb{font-size:30px;font-weight:800;height:44px;}
-.fb.ok{color:var(--ok);}.fb.ng{color:var(--ng);}
-.fb .ans{color:var(--accentT);}
-.score{position:absolute;top:16px;right:36px;font-size:18px;color:var(--sub);}
-.sortbtns{display:flex;gap:14px;}
-.sortbtns button{background:#eef2f8;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 20px;font-size:16px;cursor:pointer;font-family:inherit;}
-
-/* RHYTHM */
+.qcard{font-size:64px;font-weight:900;background:var(--panel);border:3px solid var(--line);border-radius:20px;padding:36px 70px;min-width:360px;text-align:center;box-shadow:0 4px 12px rgba(30,50,90,.10);}
+.choices{display:flex;gap:18px;flex-wrap:unset;justify-content:unset;max-width:unset;}
+.choices button{font-size:22px;font-weight:800;border:none;border-radius:14px;padding:18px 30px;cursor:pointer;color:#fff;font-family:inherit;min-width:unset;}
+.fb{font-size:30px;font-weight:800;height:44px;min-height:unset;text-align:unset;}
 .rhythm{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;cursor:pointer;}
 .rcard{font-size:96px;font-weight:900;text-align:center;}
 .rcard .arrow{color:var(--accent);font-size:60px;margin:10px 0;}
 .rdic{color:var(--accentT);}
-.rsub{color:var(--sub);font-size:20px;}
-.rcount{position:absolute;bottom:24px;right:36px;color:var(--sub);font-size:16px;}
-.rauto{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;}
-.rauto button{font-family:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--line);background:#eef2f8;color:var(--ink);}
-.rplay{padding:10px 22px;font-size:18px;font-weight:700;}
-.rplay.on{background:var(--accent);color:#fff;border-color:var(--accent);}
-.rspdwrap{display:inline-flex;gap:6px;}
-.rspd{padding:9px 16px;font-size:15px;}
-.rspd.on{background:var(--ink);color:#fff;border-color:var(--ink);}
-@media(max-width:640px){.rauto{gap:7px;margin:0 0 8px;}.rplay{padding:8px 16px;font-size:15px;}.rspd{padding:7px 11px;font-size:13px;}}
-kbd{background:#e2e8f0;color:var(--ink);border-radius:5px;padding:2px 9px;font-size:14px;}
-
-/* ===== スマホ対応（画面幅640px以下） ===== 投影用レイアウトはそのまま、スマホだけ組み替える */
 @media (max-width:640px){
-  body{height:100dvh;}                         /* zoomのインライン指定をスマホでは打ち消す */
-  /* ナビ：タイトルを1行目、モードボタンを2行目に均等4分割。文字サイズ(先生用)は隠す */
-  nav{padding:8px 10px;gap:6px;}
-  nav .ttl{font-size:14px;width:100%;margin:0 0 2px;}
-  nav .ttl small{display:block;margin:2px 0 0;font-size:11px;}
-  nav .fzgrp{display:none;}
-  nav button{flex:1 1 calc(50% - 3px);min-width:0;padding:11px 4px;font-size:14px;}  /* 2×2配置: 文字はみ出しを構造的に防ぐ */
-  .screen{padding:14px 12px;}
-  h2{font-size:19px;line-height:1.35;}
-  h2 span{display:block;font-size:13px!important;margin-top:3px;}
-  .hint{font-size:14px;margin-bottom:14px;}
-  /* ①ルール：3列→1列 */
   .rules{grid-template-columns:1fr;gap:12px;}
   .rule{padding:16px;border-top-width:5px;}
   .rule h3{font-size:20px;}
   .rule .big{font-size:17px;line-height:1.7;}
   .rule .ex{font-size:15px;margin-top:10px;}
-  .note{font-size:14px;padding:12px 14px;margin-top:14px;}
-  .legend{font-size:13px;gap:10px;margin-bottom:12px;}
-  .shuf{padding:8px 12px;font-size:13px;}
-  /* ②めくり：2列 */
-  .grid{grid-template-columns:1fr 1fr;gap:10px;}
-  .fcard{height:94px;}
-  .front,.back{font-size:clamp(15px,5vw,21px);}  /* 8文字動詞でもカード内に収まる */
   .back .dic{font-size:clamp(17px,5.5vw,24px);}
-  .back .gl{font-size:11px;}
-  /* ③グループ分け：問題カード縮小・選択肢は縦full幅 */
-  .qcard{font-size:clamp(28px,9.5vw,40px);min-width:0;width:100%;max-width:92vw;padding:22px 14px;}  /* 8文字動詞対応 */
-  .choices{flex-direction:column;width:100%;max-width:340px;gap:12px;}
-  .choices button{width:100%;font-size:18px;padding:15px;}
-  .fb{font-size:19px;height:auto;min-height:38px;text-align:center;}
-  .score{position:static;align-self:flex-end;margin:0 4px 2px 0;}
-  .sortwrap{gap:14px;justify-content:flex-start;padding-top:6px;}
-  .sortbtns{flex-wrap:wrap;justify-content:center;gap:10px;}
-  .sortbtns button{font-size:14px;padding:11px 14px;}
-  /* ④リズム */
-  .rcard{font-size:clamp(34px,10.5vw,72px);}  /* 8文字動詞でも375px幅端末に収まる */
-  .rcard .arrow{font-size:40px;}
-  .rsub{font-size:15px;}
-  .rcount{bottom:14px;right:16px;font-size:13px;}
-}
-
-/* sort1gamen: 3分類画面(#sort)を1画面に収める＝スクロールなし（640px以下） */
-@media (max-width:640px){
-  #sort h2{margin-bottom:2px;}
-  #sort h2 span{margin-top:1px;}
-  #sort .score{position:absolute;top:10px;right:14px;align-self:auto;margin:0;}
-  #sort .sortwrap{gap:7px;justify-content:space-evenly;padding-top:2px;}
-  #sort .qcard{font-size:clamp(22px,6.5vw,32px);padding:10px 12px;}
   #sort .qcard .gl{font-size:11px;margin-top:5px;}
   #sort .choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:7px;width:100%;max-width:360px;}
-  #sort .choices button{width:auto;min-width:0;padding:11px 6px;font-size:15px;white-space:nowrap;}
-  #sort .fb{font-size:15px;min-height:22px;}
-  #sort .sortbtns{gap:7px;}
-  #sort .sortbtns button{padding:7px 11px;font-size:13px;}
   #sort .task{font-size:17px;padding:5px 16px;}
   #sort .hintbar{gap:5px;}
   #sort .hintbar .hc{font-size:12px;padding:3px 8px;}
   #sort .hinttoggle{padding:6px 11px;font-size:12px;}
 }
-.fitwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;white-space:nowrap;transform-origin:center;}
-/* 翻訳コピー対応: 本文は選択可・カード/操作部は選択不可（タップ誤選択防止） */
-body{-webkit-user-select:text;user-select:text;}
-nav,button,.fcard,.qcard,.rcard,.rhythm,.choices,.sortbtns,.shuf,.score,.fb{-webkit-user-select:none;user-select:none;}
 </style>
 <link rel="stylesheet" href="/scg-nihongo/assets/drill-ui.css">
 </head>

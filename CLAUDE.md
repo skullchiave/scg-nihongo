@@ -18,7 +18,9 @@
 - `index.html` … 母艦ポータル（**正本・手編集**）。冒頭に `DATA`（カテゴリ・おしらせ）、ハッシュルーティング（`#/textbook/tsunagu` 等）。**ドリル一覧は `assets/catalog.js`**（2026-11-11〜）。
 - `assets/catalog.js` … **ドリル一覧（教科書・ドリルの並び）**。ポータルと各ドリルの「つぎの課」が両方ここを読む。sw.js は network-first。
 - `assets/drill-ui.css` `assets/drill-ui.js` … **全ドリル共通UI**（2026-11-11 スマホ版刷新）。下記「共通UI」参照。
-- `tsunagu/*.html` … つなぐにほんご ドリル本体24本（データ・判定は各HTMLに自己完結。見た目だけ共通UI `assets/drill-ui.*` を読む）。L7-1/L7-2/L7-3/L8-1_ta/L8-1_nakatta/L8-2_keiyou/L8-2_matome/L9/L10-2_keiyou/L13-3_ikou/L14-2_jouken/L14-2_nakereba/L15-1_jouken_keiyou/L15-1_nakereba_keiyou/L16-1_sonkei/L16-2_sonkei_oninaru/L16-3_kenjou/L16-4_kenjou_osuru/L19-1_kanou/L19-3_ukemi/L23-1_meirei/L24-1_sonkei_reru/L27-3_shieki/L29-1_shiekiukemi。
+- `assets/drill-base.css` … **教科書ドリルの土台の見た目**（2026-11-11 各ドリルにコピーされていた `<style>` 約150行×24本を集約）。下記「見た目を1か所に」参照。
+- `scripts/check_layout.py` … **見た目の自動点検**（全ドリル×全モード×スマホ/PC。はみ出し・エラー・前後の画素比較）。
+- `tsunagu/*.html` … つなぐにほんご ドリル本体24本（データ・判定は各HTMLに自己完結。見た目は `drill-base.css`＋そのドリルだけの差分 `<style>`＋共通UI `drill-ui.*`）。L7-1/L7-2/L7-3/L8-1_ta/L8-1_nakatta/L8-2_keiyou/L8-2_matome/L9/L10-2_keiyou/L13-3_ikou/L14-2_jouken/L14-2_nakereba/L15-1_jouken_keiyou/L15-1_nakereba_keiyou/L16-1_sonkei/L16-2_sonkei_oninaru/L16-3_kenjou/L16-4_kenjou_osuru/L19-1_kanou/L19-3_ukemi/L23-1_meirei/L24-1_sonkei_reru/L27-3_shieki/L29-1_shiekiukemi。
 - `logo-school.png`（横ロゴ＝ホーム下）, `logo-mark.png`（ブロブ＝ヘッダー左）, `icon-*.png`（PWAアイコン）, `manifest.webmanifest`, `.nojekyll`（必須・無いとPagesがREADMEをindex化）。
 - `_original/` … 投影用の原本HTML8本（触らず温存・参照のみ）。
 - `fonts/BIZUDPGothic-{Regular,Bold}.subset.woff2` … 本文フォント（**自己ホスト・追跡する**）。下記「字体」参照。
@@ -31,7 +33,8 @@
 配布物は従来どおり完全自己完結の単一HTML（変更なし）。
 
 - 構成: `template/drill_std.tmpl.html`（共通骨格・4モードエンジン一式）＋ `drill_defs/*.json`（課ごとの
-  スロット12個＝タイトル／字サイズ調整CSS×4／ルール画面／③④見出し／語彙データ／判定行／リズムラベル）
+  スロット＝タイトル(01)／そのドリルだけの差分CSS(02)／ルール画面／③④見出し／語彙データ／判定行／リズムラベル。
+  2026-11-11 CSS を drill-base.css に出したので SLOT03〜05 は欠番）
   ＋ `scripts/build_drill.py`（生成・抽出・golden検証）
 - **新ドリルの手順**: 一番近い定義（例: `drill_defs/L19-1_kanou.json`）をコピー → スロットを書き換え →
   `python scripts/build_drill.py build drill_defs/新.json -o tmp/preview.html` で検証 → 本出力 →
@@ -40,6 +43,7 @@
   extract tsunagu/◯◯.html`）。定義と実ファイルのズレは golden（バイト一致検証）が検知する＝型の腐り防止
 - **骨格を直す時**（全ドリル共通の機能追加＝じどう送りの類）: テンプレートを直して全定義から再生成
   → 適用中の7本にまとめて配れる。`make-template` は骨格の再抽出（基準=L19-1×参照群の差分の和集合）
+  ⚠ **`make-template` は今は使わない**（CSS を外へ出して各ファイルが短くなり、類似度0.80の線で参照が全部はずれる。下げると定義の顔ぶれが変わる）。骨格はテンプレートを直接直す
 - **適用範囲**: 現在10本が定義化済み（L13-3/L14-2×2/L16-2/L16-4/L19-1/L19-3/L23-1/L24-1/L27-3＝全てバイト一致のgolden）。
   **L29-1・L8系・L9・L7系・L16系（敬語）は別構造＝型の適用外**（既存のまま据え置き。無理に取り込まない）
 
@@ -58,6 +62,17 @@
 - 「つぎの課」= catalog.js の並びで次の ready ドリル（旧「すすむ」= history.forward は廃止）。発音ボタンは作らない（きあ判断）。
 - ルール画面は L7・L8 系の `.rule.r1-3` だけ指示書の形（色ラベル＋2列の例＋注意枠）に組み替え。**その他の課のルール画面（表・品詞の枠など）は系統ごとに後で整える（未着手）**。
 - 検証: `scratch/20261111-redesign/check_all.py`（全ドリル×4モードを375px iframeで開き、エラー・はみ出し・ヘッダー/タブ/進捗・回答後の枠を機械チェック＝96/96 OK）。`shots_drill.py tsunagu/X.html` で1本の全モードを撮影。
+
+## 見た目を1か所に（2026-11-11・問題や語彙を足してもUIがブレないように）
+- **教科書ドリルの見た目は3枚重ね**：`assets/drill-base.css`（土台・全ドリル共通）→ 各ドリルの `<style>`（**そのドリルだけの差分**。4〜60ルール）→ `assets/drill-ui.css`（スマホ/PC の共通UI）。
+  - 土台＝24本のうち半分以上が持っていたルールの多数決。各ドリルには土台と違う値だけを残した（L7・L8・L9・L10・L16-1/3 など古い形ほど差分が多い）。古い形のドリルに無かったスマホ用の共通ルール（新しいルール画面 `.ru` `.onbin` 用）は、そのドリルの `<style>` で打ち消してある。
+  - 移行で全画面（スマホ375・PC1920/1280、めくった後・答えた後も含め435枚）が**作業前と1画素も変わらない**ことを確認済み。移行道具は `scratch/20261111-css/migrate.py`（1回きり）。
+- **★ルール**：全ドリルの見た目を変える時は `drill-base.css` か `drill-ui.css` を直す。**ドリルの中に見た目を書き足さない**（書くとそのドリルだけずれる）。新しいドリルは `<style>` を空にして始める（テンプレートは `drill-base.css` を読む形に直してある）。
+- **★問題・語彙・ドリルを足したら** `py scripts/check_layout.py` を1回回す（約5分）。★NG が0件ならOK。長すぎる語は「めくり」で全カードを見るので、ドリル名と語がそのまま出る。
+  - 前後比較: `py scripts/check_layout.py --ref HEAD --shots tmp/shots/before` → 直す → `--shots tmp/shots/after` → `--compare tmp/shots/before tmp/shots/after`（違う 0 が合格）。めくりの裏面の角は1画素ゆれるので、4画素以下は「ゆれ」として別に数える。
+  - 仕組み: Playwright＋インストール済みの Chrome。`/scg-nihongo/` をこのリポのファイルで返すので本番と同じHTMLのまま開ける（書き換えコピー不要）。乱数固定・SWは止めて開く。
+  - 2026-11-11 時点で見つかっている既存の NG: L8-2_matome（スマホ）めくりの裏面「辞書形…ない形…」が9pxはみ出し／リズムが5px縦にあふれる（作業前から）。
+- sw.js：`drill-base.css`・`drill-ui.css/js`・`catalog.js` は network-first（見た目を直したら次に開いた時すぐ出る。SWRだと1回目は旧版が出て「直っていない」に見える）。
 
 ## JLPT ドリル（2026-11-11〜・ホーム「ドリル」→ JLPT N1〜N4 → 文法・語彙）
 - 入口は catalog.js の `jlpt`（レベル→items）。index.html の `#/drill`（レベル一覧）・`#/drill/n4`（文法・語彙）が描画。N1〜N3・語彙は ready:false＝じゅんびちゅう。
