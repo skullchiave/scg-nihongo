@@ -65,6 +65,7 @@ main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .selwrap{position:relative;}
 .selwrap select{appearance:none;-webkit-appearance:none;width:100%;height:52px;border-radius:14px;border:1px solid var(--line);
   background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
+.catruby{margin:6px 4px 0;font-size:15px;font-weight:700;color:var(--muted);line-height:2;}
 .selwrap .ic{position:absolute;right:14px;top:15px;pointer-events:none;color:var(--sub);}
 .bigbtn{width:100%;min-height:68px;margin-top:16px;border:none;border-radius:16px;background:var(--ink);color:#fff;
   display:flex;align-items:center;gap:14px;padding:8px 20px;text-align:left;}
@@ -203,6 +204,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
     </div>
     <label class="lbl" for="catSel"><ruby>分野<rt>ぶんや</rt></ruby></label>
     <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="catruby" id="catRuby" aria-hidden="true"></div>
     <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b><small>まずは ここから</small></span></button>
     <div class="list">
       <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
@@ -238,7 +240,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 
   <!-- 5. 文法リスト -->
   <section id="list" class="hidden">
-    <div class="searchwrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="search" placeholder="さがす（れい：ば、てしまう、敬語）" aria-label="文法を さがす"></div>
+    <div class="searchwrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="search" placeholder="さがす（れい：ば、てしまう、けいご）" aria-label="文法を さがす"></div>
     <div class="info" id="listInfo"></div>
     <div id="listBody"></div>
   </section>
@@ -507,8 +509,11 @@ function updateStats(){
   let ok=0,tot=0; seen.forEach(it=>{ok+=rec[it.id].ok;tot+=rec[it.id].n;});
   $("sTotal").textContent=p.length; $("sSeen").textContent=seen.length;
   $("sRate").textContent=tot?Math.round(ok/tot*100)+"%":"–";
-  $("allCount").textContent=p.length+"問";
-  $("wrongCount").textContent=wrong.length+"問"; $("unseenCount").textContent=(p.length-seen.length)+"問";
+  const MON='<ruby>問<rt>もん</rt></ruby>';
+  $("allCount").innerHTML=p.length+MON;
+  $("wrongCount").innerHTML=wrong.length+MON; $("unseenCount").innerHTML=(p.length-seen.length)+MON;
+  const c=catSel.value;
+  $("catRuby").innerHTML=c?ruby(CATR[c]||c):'すべての <ruby>分野<rt>ぶんや</rt></ruby>';
   $("wrongBtn").disabled=!wrong.length;
   document.querySelector('[data-mode="unseen"]').disabled=(p.length===seen.length);
 }
