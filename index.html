@@ -202,6 +202,36 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent;}
   .pcmail .s{font-size:22px;color:var(--sub);margin-bottom:12px;}
   .pcmail .mailbtn{height:64px;font-size:24px;padding:0 28px;border-radius:16px;}
   .pcmail .mailbtn .ic{width:28px;height:28px;}
+  /* ホーム以外の画面（課一覧・ドリル・おしらせ・じゅんびちゅう）の PC 版。スマホ用のクラスに大きさだけ足す */
+  .hdin{max-width:1816px;padding:0 48px;min-height:104px;gap:16px;}
+  .hd .ibtn{width:64px;height:64px;border-radius:16px;}
+  .hd .ibtn .ic{width:32px;height:32px;}
+  .ibtn.back{margin-left:-14px;}
+  .hdsmall{font-size:24px;}
+  .hdtitle{max-width:1816px;padding:0 48px 24px;font-size:44px;}
+  .page{max-width:1816px;padding:32px 48px 48px;}
+  .page.narrow > *{max-width:1200px;}   /* 見出しと左端をそろえたまま、行が長くなりすぎないように */
+  .lh{font-size:26px;margin-bottom:12px;gap:16px;}
+  .lh::after{height:2px;}
+  .list{border-radius:24px;}
+  .row{min-height:84px;padding:12px 24px 12px 32px;gap:16px;}
+  .row .nm{font-size:30px;}
+  .row .nm .sub{font-size:22px;}
+  .row .cnt{font-size:24px;}
+  .row .go .ic{width:32px;height:32px;}
+  .badge{font-size:20px;padding:3px 14px;margin-left:12px;}
+  .lsec{margin-top:36px;}
+  .page.lessons{column-count:3;column-gap:36px;}
+  .page.lessons .lsec{break-inside:avoid;margin:0 0 32px;display:inline-block;width:100%;}
+  .page.newsp .news{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .nitem{border-radius:24px;padding:24px 28px;}
+  .ndate{font-size:22px;} .utag{font-size:18px;padding:4px 14px;}
+  .ntext{font-size:24px;}
+  .foot{margin-top:40px;} .foot .s{font-size:22px;}
+  .foot .mailbtn{height:64px;font-size:24px;padding:0 28px;border-radius:16px;}
+  .foot .mailbtn .ic{width:28px;height:28px;}
+  .soonbox{border-radius:28px;padding:80px 40px;font-size:28px;}
+  .soonbox .big{font-size:44px;}
   /* QRの拡大表示（投影用：画面の高さの7割ぐらい） */
   .qrov{padding:1.5vh;}
   .qrbox{max-width:none;padding:2.5vh 4vh;}
@@ -348,7 +378,7 @@ function textbookChips(){
   return h;
 }
 function viewNews(){
-  let h=hdSub('#/','ホーム','おしらせ・<ruby>更新<rt>こうしん</rt></ruby><ruby>履歴<rt>りれき</rt></ruby>')+'<main class="page"><div class="news">';
+  let h=hdSub('#/','ホーム','おしらせ・<ruby>更新<rt>こうしん</rt></ruby><ruby>履歴<rt>りれき</rt></ruby>')+'<main class="page newsp"><div class="news">';
   DATA.updates.forEach(function(u){
     h+='<div class="nitem"><div class="nmeta"><span class="ndate">'+fmtDate(u.date)+'</span>'
       +'<span class="utag '+(u.cls||'')+'">'+u.tag+'</span></div>'
@@ -426,7 +456,7 @@ function viewTextbookList(){
   // 教科書が1つだけなら、その課一覧へそのまま進む（1タップ減らす）
   const rt=readyTextbooks();
   if(rt.length===1 && DATA.textbooks.length===1){ location.replace('#/textbook/'+rt[0].id); return null; }
-  let h=hdSub('#/','ホーム','<ruby>教科書<rt>きょうかしょ</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>')+'<main class="page"><div class="list">';
+  let h=hdSub('#/','ホーム','<ruby>教科書<rt>きょうかしょ</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>')+'<main class="page narrow"><div class="list">';
   DATA.textbooks.forEach(function(t){
     if(t.ready) h+='<a class="row" href="#/textbook/'+t.id+'"><span class="nm">'+t.label+'</span><span class="go">'+ic('fwd')+'</span></a>';
     else h+='<div class="row soon"><span class="nm">'+t.label+'<span class="badge">じゅんびちゅう</span></span></div>';
@@ -437,7 +467,7 @@ function viewTextbook(tbId){
   const tb=DATA.textbooks.find(function(t){return t.id===tbId;});
   if(!tb) return viewHome();
   const back=(DATA.textbooks.length===1)?'#/':'#/textbook';
-  let h=hdSub(back,'<ruby>教科書<rt>きょうかしょ</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>',tb.label)+'<main class="page">';
+  let h=hdSub(back,'<ruby>教科書<rt>きょうかしょ</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>',tb.label)+'<main class="page lessons">';
   const ds=DATA.drills.filter(function(d){return d.tb===tbId;});
   const lessons=[];
   ds.forEach(function(d){ if(lessons.indexOf(d.lesson)<0) lessons.push(d.lesson); });
@@ -457,7 +487,7 @@ function viewTextbook(tbId){
 // ===== ドリル（JLPT）: レベル一覧 → 文法・語彙 =====
 function soonRow(label){ return '<div class="row soon" aria-disabled="true"><span class="nm">'+label+'<span class="badge">じゅんびちゅう</span></span></div>'; }
 function viewDrill(){
-  let h=hdSub('#/','ホーム','ドリル')+'<main class="page"><section class="lsec"><div class="lh">JLPT</div><div class="list">';
+  let h=hdSub('#/','ホーム','ドリル')+'<main class="page narrow"><section class="lsec"><div class="lh">JLPT</div><div class="list">';
   (window.SCG_CATALOG.jlpt||[]).forEach(function(lv){
     h+= lv.ready ? '<a class="row" href="#/drill/'+lv.id+'"><span class="nm">'+lv.label+'</span><span class="go">'+ic('fwd')+'</span></a>' : soonRow(lv.label);
   });
@@ -466,7 +496,7 @@ function viewDrill(){
 function viewDrillLevel(id){
   const lv=(window.SCG_CATALOG.jlpt||[]).find(function(x){return x.id===id && x.ready;});
   if(!lv) return viewDrill();
-  let h=hdSub('#/drill','ドリル','JLPT '+lv.label)+'<main class="page"><div class="list">';
+  let h=hdSub('#/drill','ドリル','JLPT '+lv.label)+'<main class="page narrow"><div class="list">';
   (lv.items||[]).forEach(function(it){
     h+= it.ready ? '<a class="row" href="'+it.file+'"><span class="nm">'+it.label+(it.sub?'<span class="sub">'+it.sub+'</span>':'')+'</span>'+(it.count?'<span class="cnt">'+it.count+'</span>':'')+'<span class="go">'+ic('fwd')+'</span></a>' : soonRow(it.label);
   });
@@ -481,7 +511,7 @@ function render(){
   else if(parts[0]==='textbook'){ html=viewTextbook(parts[1]); }
   else if(parts[0]==='drill' && parts.length===1){ html=viewDrill(); }
   else if(parts[0]==='drill'){ html=viewDrillLevel(parts[1]); }
-  else if(parts[0]==='quiz'){ html=hdSub('#/','ホーム','<ruby>問題<rt>もんだい</rt></ruby>')+'<main class="page">'+soonHTML('<ruby>問題<rt>もんだい</rt></ruby>')+'</main>'; }
+  else if(parts[0]==='quiz'){ html=hdSub('#/','ホーム','<ruby>問題<rt>もんだい</rt></ruby>')+'<main class="page narrow">'+soonHTML('<ruby>問題<rt>もんだい</rt></ruby>')+'</main>'; }
   else { html=viewHome(); }
   if(html===null) return;   // 転送した（hashchange でもう一度 render される）
   app.innerHTML=html;
@@ -489,12 +519,10 @@ function render(){
   window.scrollTo(0,0);
 }
 // 投影（PC幅）では画面に合わせて拡大する。スマホ（640px以下）は等倍
-// ホームのPC版は1920×1080基準で作ってあるので、その比率で縮める。ほかの画面はスマホの並びのまま拡大する
+// PC版（641px以上）は全画面とも1920×1080基準の寸法で書いてあるので、その比率で縮める
 function fitZoom(){
   var w=window.innerWidth, h=window.innerHeight, z=1;
-  var home=location.hash.replace(/^#\/?/,'')==='';
-  if(w>640 && home){ z=Math.max(0.45, Math.min(w/1920, h/1080, 2)); }
-  else if(w>640){ z=Math.min(w/560, h/880); z=Math.max(1, Math.min(z, 2.4)); }
+  if(w>640){ z=Math.max(0.45, Math.min(w/1920, h/1080, 2)); }
   app.style.zoom=z;
 }
 window.addEventListener('resize',fitZoom);

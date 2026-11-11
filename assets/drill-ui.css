@@ -130,3 +130,97 @@ a.dui-next,a.dui-back{text-decoration:none;-webkit-tap-highlight-color:transpare
 #rhythm .rspd{height:44px;border:none !important;background:none !important;border-radius:10px !important;font-size:13px !important;
   color:var(--muted) !important;padding:0 2px !important;line-height:1.2;white-space:nowrap;}
 #rhythm .rspd.on{background:#fff !important;color:var(--ink) !important;font-weight:700;box-shadow:0 1px 3px rgba(22,35,58,.15);}
+
+/* ===== PC版（641px以上・2026-11-11）。寸法は 1920×1080 基準で書き、drill-ui.js の fitF() が画面に合わせて全体を縮める =====
+   スマホ版（640px以下）はここより上だけで決まる＝この中を直してもスマホの見た目は変わらない */
+.dui-seg{display:none;}
+@media (min-width:641px){
+  /* ヘッダー：‹ ／課名／モード切替（中央）／Aa・つぎの課 */
+  .dui-hdrow{max-width:1816px;min-height:104px;padding:0 48px;gap:20px;}
+  .dui-ibtn{width:64px;height:64px;border-radius:16px;}
+  .dui-ibtn .dui-ic{width:32px;height:32px;}
+  .dui-back{margin-left:-14px;}
+  .dui-ttl{flex:0 1 auto;text-align:left;}
+  .dui-ttl-s{font-size:20px;}
+  .dui-ttl-m{font-size:34px;-webkit-line-clamp:1;white-space:nowrap;text-overflow:ellipsis;display:block;}
+  .dui-seg{display:flex;gap:4px;background:#e6ebf3;border-radius:18px;padding:5px;margin:0 auto;}
+  .dui-segb{height:64px;padding:0 26px;border:none;border-radius:14px;background:none;color:var(--sub);cursor:pointer;font-family:inherit;
+    display:flex;align-items:center;gap:10px;font-size:24px;line-height:1.3;white-space:nowrap;}
+  .dui-segb .dui-ic{width:28px;height:28px;}
+  .dui-segb rt{font-size:.5em;}
+  .dui-segb[aria-current="page"]{background:#fff;color:var(--ink);font-weight:700;box-shadow:0 1px 4px rgba(22,35,58,.15);}
+  .dui-aa{font-size:24px;}
+  .dui-next{height:64px;padding:0 18px 0 24px;border:1px solid #f3d9ad;border-radius:16px;background:var(--accentSoft);font-size:24px;gap:4px;}
+  .dui-next .dui-ic{width:28px;height:28px;}
+  .dui-prog{max-width:1816px;padding:0 48px 18px;gap:20px;}
+  .dui-bar{height:14px;}
+  .dui-cnt{font-size:28px;}
+  .dui-tabs{display:none;}
+
+  /* 画面の共通 */
+  .screen{max-width:1816px;padding:32px 48px 40px !important;}
+  .screen h2{font-size:44px !important;margin-bottom:8px !important;}
+  .screen h2 span{font-size:24px !important;margin-top:4px !important;}
+  #flip h2,#sort h2,#rhythm h2{font-size:40px !important;}
+  .screen .hint{font-size:24px !important;margin-bottom:24px !important;}
+  .screen rt{font-size:.45em;}
+
+  /* ① ルール：3列 */
+  .rules{grid-template-columns:repeat(auto-fit,minmax(460px,1fr)) !important;gap:28px !important;margin-top:16px !important;}
+  .rule{border-radius:24px !important;padding:28px 32px !important;}
+  .rule h3.dui-glabel{font-size:24px !important;padding:4px 16px;border-radius:10px;margin:0 12px 10px 0 !important;}
+  .rule .big{font-size:28px !important;}
+  .rule .ex{font-size:26px !important;}
+  .rule .ex.dui-exgrid{grid-template-columns:1fr;font-size:26px !important;gap:8px 24px;margin-top:18px !important;}
+  /* L7・L8 系（.rules）以外のルール画面は課ごとに作りがちがう（表・品詞の枠など）。中身は旧投影用の大きさなので、まとめて1.3倍にする */
+  #rule > :not(h2):not(.hint):not(.note):not(.rules){zoom:1.3;}
+  .note{border-radius:24px !important;padding:22px 28px !important;font-size:26px !important;margin-top:28px !important;}
+  .dui-notehd .dui-ic{width:30px;height:30px;}
+
+  /* ② めくり */
+  .legend{gap:16px !important;margin-bottom:24px !important;}
+  .shuf,.dui-flipall{flex:0 0 auto;height:64px;padding:0 28px !important;font-size:24px !important;border-radius:16px !important;gap:10px;}
+  .shuf .dui-ic,.dui-flipall .dui-ic{width:28px;height:28px;}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr)) !important;gap:16px !important;}
+  .fcard{height:122px !important;border-radius:22px !important;}
+  .face{border-radius:22px !important;overflow:hidden;}
+  .front{font-size:36px !important;}
+  .back{font-size:36px !important;}
+  .back .gl{font-size:18px !important;padding:2px 12px !important;margin:0 0 6px !important;}
+  .back .dic{font-size:36px !important;}
+
+  /* ③ グループ分け：まん中に大きく */
+  #sort .sortwrap{width:100%;max-width:1400px;margin:0 auto;gap:24px !important;}
+  .dui-qbox{min-height:340px;border-radius:32px;border-width:4px;gap:14px;padding:32px;}
+  #sort .qcard{font-size:110px !important;line-height:1.3;}
+  #sort .fb{font-size:40px !important;}
+  .dui-verd{font-size:30px;}
+  #sort .choices{gap:24px !important;}
+  #sort .choices button{min-height:130px;border-radius:24px !important;font-size:34px !important;padding:12px !important;}
+  #sort .choices:has(> :nth-child(4)){grid-template-columns:repeat(3,1fr) !important;gap:16px !important;}
+  #sort .choices:has(> :nth-child(4)) button{min-height:96px;}
+  .dui-qbox:has(+ .choices > :nth-child(4)), #sort .sortwrap:has(.choices > :nth-child(4)) .dui-qbox{min-height:240px;}
+  .dui-gn{font-size:56px;line-height:1.1;} .dui-gs{font-size:24px;}
+  .dui-nextbig{height:120px;border-radius:24px;font-size:40px;gap:10px;}
+  .dui-nextbig .dui-ic{width:44px;height:44px;}
+  #sort .sortbtns button{height:64px;font-size:24px !important;padding:0 16px !important;}
+  #sort .sortbtns #sndtoggle{width:64px;border-radius:16px !important;}
+  #sort .sortbtns #sndtoggle .dui-ic{width:30px;height:30px;}
+  #sort #score{font-size:26px !important;}
+  #sort .task{font-size:30px !important;}
+  #sort .hintbar .hc{font-size:22px !important;}
+  .hinttoggle{font-size:22px !important;min-height:56px;padding:0 20px !important;}
+
+  /* ④ リズム */
+  #rhythm .rhythm{border-radius:32px;margin:8px 0 24px;padding:32px;min-height:420px;gap:20px !important;}
+  #rhythm .rcard{font-size:110px !important;}
+  #rhythm .rcard .arrow{margin:10px 0 !important;}
+  #rhythm .rcard .arrow .dui-ic{width:72px;height:72px;}
+  #rhythm .rsub{font-size:26px !important;}
+  #rhythm .rsub .gl{font-size:22px;}
+  #rhythm .rauto{flex-direction:row;justify-content:center !important;gap:24px !important;}
+  #rhythm .rplay{height:84px;min-width:420px;border-radius:24px !important;font-size:30px !important;gap:12px;padding:0 40px !important;}
+  #rhythm .rplay .dui-ic{width:34px;height:34px;}
+  #rhythm .rspdwrap{border-radius:20px;padding:6px;gap:6px !important;min-width:720px;}
+  #rhythm .rspd{height:72px;border-radius:14px !important;font-size:26px !important;}
+}

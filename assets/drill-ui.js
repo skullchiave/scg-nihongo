@@ -72,7 +72,13 @@ modeBtns.forEach(function(b){
 });
 tabs.appendChild(tin);
 D.body.appendChild(tabs);
-function syncTabs(id){ qa('.dui-tab',tin).forEach(function(t){ if(t.dataset.s===id) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); }); }
+// PC版（641px以上）：モードの切り替えはヘッダーの中（下のタブバーは CSS で隠す）
+var seg=D.createElement('div'); seg.className='dui-seg'; seg.setAttribute('role','tablist');
+qa('.dui-tab',tin).forEach(function(t){
+  var c=t.cloneNode(true); c.className='dui-segb'; c.onclick=t.onclick; seg.appendChild(c);
+});
+hd.querySelector('.dui-ttl').insertAdjacentElement('afterend',seg);
+function syncTabs(id){ qa('.dui-tab,.dui-segb').forEach(function(t){ if(t.dataset.s===id) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); }); }
 
 // show() を包む：タブバーの選択表示と進捗バーをいっしょに更新
 var _show=window.show;
@@ -97,7 +103,8 @@ function updProg(){
 // ---------- 文字サイズ（Aa＝3段で切り替え）＋投影（PC幅）の拡大 ----------
 var STEPS=[1,1.15,1.3], uz=1;
 try{ uz=parseFloat(localStorage.getItem('drill_zoom'))||1; }catch(e){}
-function fitF(){ var w=window.innerWidth,h=window.innerHeight; if(w<=640) return 1; return Math.max(1,Math.min(h/760,w/620,2.2)); }
+// PC版は drill-ui.css の @media(min-width:641px) で 1920×1080 基準の寸法にしてあるので、その比率で全体を縮める
+function fitF(){ var w=window.innerWidth,h=window.innerHeight; if(w<=640) return 1; return Math.max(0.45,Math.min(w/1920,h/1080,2)); }
 window.applyZoom=function(){
   uz=Math.min(1.6,Math.max(0.7,Math.round(uz*100)/100));
   var f=fitF();
