@@ -37,7 +37,7 @@ window.SCG_CATALOG={
     {id:'n2', label:'N2', ready:false},
     {id:'n3', label:'N3', ready:false},
     {id:'n4', label:'N4', ready:true, items:[
-      {label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', sub:'139もん・4つから 1つ えらぶ', file:'jlpt/N4_bunpou.html', ready:true},
+      {label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 139<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N4_bunpou.html', ready:true},
       {label:'<ruby>語彙<rt>ごい</rt></ruby>', ready:false},
     ]},
   ]

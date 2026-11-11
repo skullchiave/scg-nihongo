@@ -103,6 +103,7 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent;}
 .row:active{background:#f7f9fc;}
 .row .nm{flex:1;min-width:0;font-size:16px;font-weight:700;line-height:1.5;}
 .row.soon{cursor:default;}
+.row .cnt{font-size:13px;color:var(--sub);white-space:nowrap;flex-shrink:0;}
 .row .nm .sub{display:block;font-size:12px;font-weight:400;color:var(--sub);margin-top:1px;}
 .row.soon .nm{color:var(--sub);}
 .badge{display:inline-block;font-size:11px;font-weight:700;color:var(--sub);background:#e6ebf3;
@@ -347,7 +348,7 @@ function viewDrillLevel(id){
   if(!lv) return viewDrill();
   let h=hdSub('#/drill','ドリル','JLPT '+lv.label)+'<main class="page"><div class="list">';
   (lv.items||[]).forEach(function(it){
-    h+= it.ready ? '<a class="row" href="'+it.file+'"><span class="nm">'+it.label+(it.sub?'<span class="sub">'+it.sub+'</span>':'')+'</span><span class="go">'+ic('fwd')+'</span></a>' : soonRow(it.label);
+    h+= it.ready ? '<a class="row" href="'+it.file+'"><span class="nm">'+it.label+(it.sub?'<span class="sub">'+it.sub+'</span>':'')+'</span>'+(it.count?'<span class="cnt">'+it.count+'</span>':'')+'<span class="go">'+ic('fwd')+'</span></a>' : soonRow(it.label);
   });
   return h+'</div></main>';
 }
