@@ -54,7 +54,7 @@ hd.innerHTML='<div class="dui-hdrow">'
   +'<a class="dui-ibtn dui-back" href="'+BASE+'#/textbook/'+tbId+'" aria-label="もどる">'+ic('back')+'</a>'
   +'<div class="dui-ttl"><div class="dui-ttl-s">'+(tb?tb.label+' ':'')+code+'</div><div class="dui-ttl-m">'+title+'</div></div>'
   +'<button class="dui-ibtn dui-aa" type="button" aria-label="もじの おおきさ">Aa</button>'
-  +(next?'<a class="dui-next" href="'+BASE+next.file+'">つぎの<ruby>課<rt>か</rt></ruby>'+ic('fwd')+'</a>':'')
+  +(next?'<a class="dui-next" href="'+BASE+next.file+'" aria-label="つぎの課"><span class="dui-nexttx">つぎの<ruby>課<rt>か</rt></ruby></span>'+ic('fwd')+'</a>':'')
   +'</div><div class="dui-prog" hidden><div class="dui-bar"><i></i></div><span class="dui-cnt"></span></div>';
 oldNav.parentNode.insertBefore(hd,oldNav);
 var prog=hd.querySelector('.dui-prog'), progBar=hd.querySelector('.dui-bar i'), progCnt=hd.querySelector('.dui-cnt');
@@ -82,7 +82,7 @@ function syncTabs(id){ qa('.dui-tab,.dui-segb').forEach(function(t){ if(t.datase
 
 // show() を包む：タブバーの選択表示と進捗バーをいっしょに更新
 var _show=window.show;
-window.show=function(id){ _show(id); syncTabs(id); updProg(); };
+window.show=function(id){ _show(id); syncTabs(id); updProg(); relayout(); };
 
 // ---------- 進捗（グループ分け・リズムのときだけ） ----------
 function curId(){ var s=D.querySelector('.screen.on'); return s?s.id:''; }
@@ -116,8 +116,13 @@ window.applyZoom=function(){
 };
 hd.querySelector('.dui-aa').onclick=function(){
   var i=0; STEPS.forEach(function(s,k){ if(Math.abs(s-uz)<0.05) i=k; });
-  uz=STEPS[(i+1)%STEPS.length]; window.applyZoom();
+  uz=STEPS[(i+1)%STEPS.length]; window.applyZoom(); relayout();
 };
+// 文字サイズ・画面幅・モードが変わった時にやり直す物（めくりの文字の縮小、ボタンの文字が入るか）
+var relayouts=[];
+function relayout(){ requestAnimationFrame(function(){ relayouts.forEach(function(f){ f(); }); }); }
+window.addEventListener('resize',relayout);
+if(D.fonts&&D.fonts.ready) D.fonts.ready.then(relayout);
 window.addEventListener('resize',window.applyZoom);
 
 // ---------- 文言（スマホ向け：クリック→タップ、キーボード表記は出さない） ----------
@@ -152,6 +157,48 @@ qa('.rule').forEach(function(r){
     return '<div>'+left+right+'</div>';
   }).join('');
 });
+// 新しい形のルール画面（.ru1＝1グループの表、.ru.r2/.r3＝2・3グループのカード）
+// 見出しの「1グループ」等を色ラベルにする（カード上端の色帯はやめた＝CSS）
+qa('.ru1 > h3, .ru > h3').forEach(function(h){
+  h.innerHTML=h.innerHTML.replace(/^\s*([123])グループ/,'<span class="dui-glabel dui-bg$1">$1グループ</span>');
+});
+// 「段・語尾・例」の表：1行ぶん（.from＋語尾＋例）を束ねる。スマホは 段＋語尾 の下に例を1つずつ縦に（PCは display:contents で元の3列のまま）
+function splitEx(el){
+  var parts=el.innerHTML.split(/\s*／\s*/);
+  if(parts.length<2) return;
+  el.innerHTML=parts.map(function(x){ return '<span class="dui-exi">'+x+'</span>'; }).join('<span class="dui-exsep"> ／ </span>');
+}
+qa('.onbin').forEach(function(ob){
+  var kids=Array.prototype.slice.call(ob.children), row=null, hd=null;
+  kids.forEach(function(k){
+    if(k.classList.contains('from')||!row){
+      row=D.createElement('div'); row.className='dui-onrow';
+      hd=D.createElement('div'); hd.className='dui-onhd'; row.appendChild(hd);
+      ob.insertBefore(row,k);
+    }
+    if(k.classList.contains('ex')){ splitEx(k); row.appendChild(k); } else hd.appendChild(k);
+  });
+});
+// 絵文字（⭕❌★⚠）は色つきの文字に（端末で絵がちがう・大きさがそろわないため）。答え合わせの欄（#sortfb）は③の処理が先に読むので除く
+var EMO=/[⭕❌★⚠]️?/;
+function deEmoji(root){
+  var w=D.createTreeWalker(root,NodeFilter.SHOW_TEXT,null), n, hit=[];
+  while((n=w.nextNode())){ if(EMO.test(n.nodeValue)&&!(n.parentNode.closest&&n.parentNode.closest('#sortfb,script,style'))) hit.push(n); }
+  hit.forEach(function(t){
+    var sp=D.createElement('span');
+    sp.innerHTML=t.nodeValue.replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/⭕️?/g,'<b class="dui-mk dui-mko">○</b>').replace(/❌️?/g,'<b class="dui-mk dui-mkx">×</b>')
+      .replace(/⚠️?\s*/g,'')
+      .replace(/★\s*([^（(]*)/g,'<b class="dui-mk dui-mks">$1</b>');
+    while(sp.firstChild) t.parentNode.insertBefore(sp.firstChild,t);
+    t.parentNode.removeChild(t);
+  });
+}
+screens.forEach(function(s){
+  deEmoji(s);
+  new MutationObserver(function(){ deEmoji(s); }).observe(s,{childList:true,subtree:true});
+});
+
 qa('.note').forEach(function(nt){
   var b=nt.firstElementChild;
   if(b&&b.tagName==='B'&&/^\s*ちゅうい/.test(b.textContent)&&nt.firstChild===b){
@@ -173,6 +220,41 @@ qa('.note').forEach(function(nt){
   grid.addEventListener('click',function(){ setTimeout(paint,0); });
   new MutationObserver(paint).observe(grid,{childList:true});
   paint();
+  // カードの文字をカードの内側（余白を除く）に収まるまで縮める。Aa 130% でも働く
+  function fitOne(face){
+    var wrap=face.querySelector(':scope > .fitwrap');
+    if(!wrap){
+      wrap=D.createElement('span'); wrap.className='fitwrap';
+      while(face.firstChild) wrap.appendChild(face.firstChild);
+      face.appendChild(wrap);
+    }
+    wrap.style.transform='';
+    var cs=getComputedStyle(face);
+    var aw=face.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-12;
+    var ah=face.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom)-6;
+    var w=Math.max(wrap.offsetWidth,wrap.scrollWidth), h=Math.max(wrap.offsetHeight,wrap.scrollHeight);
+    if(aw<=0||!w) return;                  // 非表示中（0px）はとばす
+    var s=Math.min(aw/w, ah/h, 1);
+    if(s<1) wrap.style.transform='scale('+s.toFixed(3)+')';
+  }
+  function fitAll(){ qa('.face',grid).forEach(fitOne); }
+  function fitBtns(){
+    [shuf,all].forEach(function(b){
+      b.classList.remove('dui-icononly');
+      var sp=b.querySelector('span'); if(!sp) return;
+      b.setAttribute('aria-label',sp.textContent);
+      // 文字が2行に割れる（高さが1行ぶんを超える）か、はみ出すならアイコンだけ
+      if(sp.offsetHeight>parseFloat(getComputedStyle(sp).fontSize)*1.9||b.scrollWidth>b.clientWidth+1) b.classList.add('dui-icononly');
+    });
+  }
+  relayouts.push(fitAll,fitBtns);
+  new MutationObserver(function(){ relayout(); }).observe(grid,{childList:true});
+  var _paint=paint; paint=function(){ _paint(); fitBtns(); };
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ if(es.some(function(e){return e.isIntersecting;})) relayout(); }).observe(grid);
+  }
+  window.addEventListener('orientationchange',relayout);
+  relayout();
 })();
 
 // ---------- ③ グループ分け ----------
@@ -190,6 +272,18 @@ qa('.note').forEach(function(nt){
     nextB.classList.add('dui-nextbig'); nextB.innerHTML='つぎへ'+ic('fwd');
     if(ch) ch.parentNode.insertBefore(nextB,ch.nextSibling);
   }
+  // 選択肢の文字が3行以上に細切れになるなら、1つずつ全幅で並べる（L29-1「させられます・こさせられます」を Aa 130% で 等）
+  function fitChoices(){
+    if(!ch) return;
+    ch.classList.remove('dui-ch1');
+    var bad=qa('button',ch).some(function(b){
+      var t=b.querySelector('.opt-big'); if(!t||!t.offsetHeight) return false;   // 文字の選択肢（.opt-big）だけ見る
+      var cs=getComputedStyle(t), lh=parseFloat(cs.lineHeight)||parseFloat(cs.fontSize)*1.2;
+      return t.offsetHeight>lh*2.5;
+    });
+    if(bad) ch.classList.add('dui-ch1');
+  }
+  relayouts.push(fitChoices);
   var btns=wrap.querySelector('.sortbtns'), score=$('score');
   if(btns&&score){ btns.insertBefore(score,btns.firstChild); }
   var snd=$('sndtoggle');
@@ -264,4 +358,5 @@ qa('.hinttoggle').forEach(function(b){
 window.applyZoom();
 syncTabs(curId());
 updProg();
+relayout();
 })();

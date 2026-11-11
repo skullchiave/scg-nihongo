@@ -9,12 +9,14 @@
   py scripts/check_layout.py --shots tmp/shots/after          # 画面写真も保存する
   py scripts/check_layout.py --ref HEAD --shots tmp/shots/before   # コミット済みの版で撮る（比較の基準）
   py scripts/check_layout.py --compare tmp/shots/before tmp/shots/after   # 2組の写真を1画素ずつ比べる
+  py scripts/check_layout.py --sp --zoom 1.3   # スマホ幅だけ・文字サイズ Aa 130% で（1.15 / 1.3）
 
 サイズ: スマホ 375×760 ／ PC 1920×1080 ／ PC 1280×800
 見るもの（★＝NG＝直す。・＝参考）
   ★ JSエラー
   ★ 横のはみ出し（ページ全体・画面・カード/ボタン/問題の1つ1つ）… はみ出した語をそのまま印字
   ★ グループ分け・リズムが縦に1画面へ収まらない（この2つは1画面で使う前提）
+  ★ 絵文字が見えている／ルール画面のカード上端の色帯／スマホで44pxより低いボタン
   ・ ルール・めくりの縦スクロール（読む画面・カードが多い画面は縦スクロール可）
 語彙の長さは「めくり」で全カード（表・裏）を見る＝全語が1回は検査される。
 仕組み: Playwright＋インストール済みの Chrome。/scg-nihongo/ をこのリポのファイルで返す（本番と同じHTMLのまま）。
@@ -53,6 +55,26 @@ PROBE = r"""() => {
       const k = el.className + '|' + t;
       if (!seen.has(k)) { seen.add(k); out.items.push((el.className || el.tagName) + '「' + t + '」+' + over + 'px'); }
     }
+  }
+  // 絵文字が見えている（端末で絵がちがう・大きさがそろわない）
+  const vis = (el) => el && el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden';
+  out.emoji = [];
+  const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let n;
+  while ((n = tw.nextNode())) {
+    const m = n.nodeValue.match(/[\u{1F300}-\u{1FAFF}⭕❌★⚠✅]/u);
+    if (m && vis(n.parentElement) && !n.parentElement.closest('script,style,nav')) out.emoji.push(m[0]);
+  }
+  // ルール画面のカード上端の色帯（3px以上）
+  out.band = 0;
+  if (s.id === 'rule') for (const el of s.querySelectorAll('*')) {
+    if (vis(el) && parseFloat(getComputedStyle(el).borderTopWidth) >= 3) out.band++;
+  }
+  // 44px より低いボタン（スマホ）
+  out.small = [];
+  if (innerWidth <= 640) for (const el of document.querySelectorAll('.screen.on button, .dui-hd button, .dui-hd a')) {
+    const r = el.getBoundingClientRect();
+    if (vis(el) && r.height && r.height < 43.5) out.small.push((el.innerText || el.getAttribute('aria-label') || el.className).trim().slice(0, 12) + ' ' + Math.round(r.height) + 'px');
   }
   return out;
 }"""
@@ -105,10 +127,11 @@ def run_check(args):
     ng, notes, count = [], [], 0
     with sync_playwright() as p:
         br = p.chromium.launch(channel="chrome")
-        for tag, W, H in SIZES:
+        for tag, W, H in [x for x in SIZES if not args.sp or x[0] == "sp"]:
+            if args.zoom: tag = f"{tag}z{int(round(float(args.zoom) * 100))}"
             ctx = br.new_context(viewport={"width": W, "height": H}, device_scale_factor=1, service_workers="block")
             ctx.route("**/*", serve(src))
-            ctx.add_init_script(INIT)
+            ctx.add_init_script(INIT + (f"try{{localStorage.setItem('drill_zoom','{args.zoom}')}}catch(e){{}}" if args.zoom else ""))
             for rel in targets:
                 html = (src.read(rel) or b"").decode("utf-8", "ignore")
                 name = os.path.basename(rel)[:-5]
@@ -129,8 +152,12 @@ def run_check(args):
                     if r["page"] > 1: ng.append(f"{label}  ページが横に {r['page']}px はみ出し")
                     if r["screen"] > 1: ng.append(f"{label}  画面が横に {r['screen']}px はみ出し")
                     for it in r["items"]: ng.append(f"{label}  はみ出し {it}")
+                    if r["emoji"]: ng.append(f"{label}  絵文字 {''.join(sorted(set(r['emoji'])))}")
+                    if r["band"]: ng.append(f"{label}  カード上端の色帯 {r['band']}か所")
+                    for it in r["small"]: ng.append(f"{label}  44pxより低いボタン「{it}」")
                     if r["sy"] > 1:
-                        (ng if m in FIT_MODES else notes).append(f"{label}  縦スクロール {r['sy']}px")
+                        # 1画面に収まるべきなのは Aa 100% の時だけ（文字を大きくしたら縦スクロールは可）
+                        (ng if m in FIT_MODES and not args.zoom else notes).append(f"{label}  縦スクロール {r['sy']}px")
                     if args.shots:
                         page.screenshot(path=os.path.join(args.shots, f"{tag}_{name}{('_' + m) if m else ''}.png"))
                     # 操作した後の画面（めくり＝全部めくった裏面／グループ分け＝1問こたえた後）
@@ -143,14 +170,14 @@ def run_check(args):
                         r = page.evaluate(PROBE)
                         for it in r["items"]: ng.append(f"{label}(操作後)  はみ出し {it}")
                         if r["screen"] > 1: ng.append(f"{label}(操作後)  画面が横に {r['screen']}px はみ出し")
-                        if m in FIT_MODES and r["sy"] > 1: ng.append(f"{label}(操作後)  縦スクロール {r['sy']}px")
+                        if m in FIT_MODES and r["sy"] > 1 and not args.zoom: ng.append(f"{label}(操作後)  縦スクロール {r['sy']}px")
                         if len(errs) > n_err: ng.append(f"{label}(操作後)  JSエラー: {errs[-1]}")
                         if args.shots:
                             page.screenshot(path=os.path.join(args.shots, f"{tag}_{name}_{m}_after.png"))
                     page.close()
             ctx.close()
         br.close()
-    print(f"点検した画面: {count}（{len(targets)}ページ × モード × {len(SIZES)}サイズ）")
+    print(f"点検した画面: {count}（{len(targets)}ページ × モード × サイズ{('・Aa ' + args.zoom) if args.zoom else ''}）")
     print(f"★NG: {len(ng)}件")
     for x in ng: print("  ★", x)
     print(f"・参考（ルール・めくりの縦スクロール）: {len(notes)}件")
@@ -186,5 +213,7 @@ if __name__ == "__main__":
     ap.add_argument("--shots")
     ap.add_argument("--compare", nargs=2)
     ap.add_argument("-v", "--verbose", action="store_true")
+    ap.add_argument("--sp", action="store_true", help="スマホ幅だけ")
+    ap.add_argument("--zoom", help="文字サイズ Aa の倍率（1.15 / 1.3）")
     a = ap.parse_args()
     sys.exit(run_compare(*a.compare) if a.compare else run_check(a))

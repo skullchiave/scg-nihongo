@@ -314,32 +314,7 @@ document.addEventListener('keydown',e=>{
   if(cur==='sort'&&(e.key===' '||e.key==='ArrowRight')){e.preventDefault();document.getElementById('sortnext').click();}
 });
 
-/* めくり: iOS文字拡大や長い語でカードからはみ出す時、自動で縮めてカード内に収める保険 */
-(function(){
-  var grid=document.getElementById('flipgrid');
-  if(!grid) return;
-  function fitOne(face){
-    var wrap=face.querySelector(':scope > .fitwrap');
-    if(!wrap){
-      wrap=document.createElement('span'); wrap.className='fitwrap';
-      while(face.firstChild) wrap.appendChild(face.firstChild);
-      face.appendChild(wrap);
-    }
-    wrap.style.transform='';
-    var cw=face.clientWidth, ch=face.clientHeight, sw=wrap.scrollWidth, sh=wrap.scrollHeight;
-    if(!cw||!sw) return;                 /* 非表示中(0px)はスキップ */
-    var s=Math.min(cw/sw, ch/sh, 1);
-    if(s<0.99) wrap.style.transform='scale('+(s*0.96).toFixed(3)+')';
-  }
-  function fit(){ requestAnimationFrame(function(){ grid.querySelectorAll('.face').forEach(fitOne); }); }
-  new MutationObserver(fit).observe(grid,{childList:true});
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){ if(es.some(function(e){return e.isIntersecting;})) fit(); }).observe(grid);
-  }
-  window.addEventListener('resize',fit);
-  window.addEventListener('orientationchange',fit);
-  fit();
-})();
+/* めくりの文字の縮小は共通UI（assets/drill-ui.js）でやる（2026-11-11 Aa 130% でもはみ出さないよう集約） */
 </script>
 <script src="/scg-nihongo/assets/catalog.js"></script>
 <script src="/scg-nihongo/assets/drill-ui.js"></script>
