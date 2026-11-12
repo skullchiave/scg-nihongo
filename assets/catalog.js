@@ -8,10 +8,10 @@ window.SCG_CATALOG={
   drills:[
     {tb:'tsunagu', lesson:'L7', label:'<ruby>辞書形<rt>じしょけい</rt></ruby>', file:'tsunagu/L7-1.html', ready:true},
     {tb:'tsunagu', lesson:'L7', label:'ない<ruby>形<rt>けい</rt></ruby>', file:'tsunagu/L7-2.html', ready:true},
-    {tb:'tsunagu', lesson:'L7', label:'い・な<ruby>形容詞<rt>けいようし</rt></ruby>の<ruby>普通形<rt>ふつうけい</rt></ruby>①', file:'tsunagu/L7-3.html', ready:true},
+    {tb:'tsunagu', lesson:'L7', label:'い・な<ruby>形容詞<rt>けいようし</rt></ruby>・<ruby>名詞<rt>めいし</rt></ruby>（〜くない・〜じゃない）', file:'tsunagu/L7-3.html', ready:true},
     {tb:'tsunagu', lesson:'L8', label:'た<ruby>形<rt>けい</rt></ruby>', file:'tsunagu/L8-1_ta.html', ready:true},
     {tb:'tsunagu', lesson:'L8', label:'なかった', file:'tsunagu/L8-1_nakatta.html', ready:true},
-    {tb:'tsunagu', lesson:'L8', label:'い・な<ruby>形容詞<rt>けいようし</rt></ruby>・<ruby>名詞<rt>めいし</rt></ruby>の<ruby>過去<rt>かこ</rt></ruby> <ruby>普通形<rt>ふつうけい</rt></ruby>②', file:'tsunagu/L8-2_keiyou.html', ready:true},
+    {tb:'tsunagu', lesson:'L8', label:'い・な<ruby>形容詞<rt>けいようし</rt></ruby>・<ruby>名詞<rt>めいし</rt></ruby>の<ruby>過去<rt>かこ</rt></ruby>（<ruby>普通形<rt>ふつうけい</rt></ruby>）', file:'tsunagu/L8-2_keiyou.html', ready:true},
     {tb:'tsunagu', lesson:'L8', label:'<ruby>普通形<rt>ふつうけい</rt></ruby>まとめ', file:'tsunagu/L8-2_matome.html', ready:true},
     {tb:'tsunagu', lesson:'L9', label:'て<ruby>形<rt>けい</rt></ruby>', file:'tsunagu/L9.html', ready:true},
     {tb:'tsunagu', lesson:'L10', label:'い・な<ruby>形容詞<rt>けいようし</rt></ruby>の て<ruby>形<rt>けい</rt></ruby>', file:'tsunagu/L10-2_keiyou.html', ready:true},
