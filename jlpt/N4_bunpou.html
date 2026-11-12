@@ -68,6 +68,8 @@ main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .selwrap{position:relative;}
 .selwrap select{appearance:none;-webkit-appearance:none;width:100%;height:52px;border-radius:14px;border:1px solid var(--line);
   background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
+.cf{display:block;}
+.ct{display:block;font-size:.72em;font-weight:500;color:var(--sub);line-height:1.8;}
 .catruby{margin:6px 4px 0;font-size:15px;font-weight:700;color:var(--muted);line-height:2;}
 .selwrap .ic{position:absolute;right:14px;top:15px;pointer-events:none;color:var(--sub);}
 .bigbtn{width:100%;min-height:68px;margin-top:16px;border:none;border-radius:16px;background:var(--ink);color:#fff;
@@ -335,7 +337,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
       <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
       <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
     </div>
-    <label class="lbl" for="catSel"><ruby>分野<rt>ぶんや</rt></ruby></label>
+    <label class="lbl" for="catSel">グループ</label>
     <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
     <div class="catruby" id="catRuby" aria-hidden="true"></div>
     <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
@@ -578,6 +580,10 @@ const esc = s => s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':
 const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>').replace(/~~(.+?)~~/g,'<s class="del">$1</s>');
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2').replace(/~~/g,'');   // ルビを読みに置きかえた文（検索用）
 const catR = c => CATR[c] ? ruby(CATR[c]) : esc(c);
+// 分野の表示名：学生が見分けられる「形」を主役にし、用語は小さく添える（中身は scripts/jlpt_catforms.py の表）
+const CATF = {"条件": "〜ば・〜たら", "授受（あげる・くれる・もらう）": "〜てあげる・〜てもらう", "推量・様子・伝聞": "〜そうだ・〜ようだ", "可能・受身・使役": "〜られる・〜させる", "て形の表現": "〜ておく・〜てしまう", "意志・予定・決定": "〜ようと{思|おも}う・〜つもりだ", "義務・許可・命令": "〜なくてもいい・〜なさい", "時間・状態": "〜{間|あいだ}に・〜ながら", "程度・比較・難易": "〜すぎる・〜やすい", "名詞化・引用・疑問": "〜こと・〜という", "接続・副詞": "〜し・〜のに", "敬語": "いらっしゃる・お〜になる", "その他": "〜がる・〜{必要|ひつよう}がある"};
+const catF = c => CATF[c] ? ruby(CATF[c])+' など' : catR(c);
+const catL = c => CATF[c] ? '<span class="cf">'+ruby(CATF[c])+' など</span><small class="ct">'+catR(c)+'</small>' : catR(c);
 
 /* ---------- アイコン ---------- */
 const IC={
@@ -666,7 +672,7 @@ function applyRuby(){ document.body.classList.toggle("noruby",!rubyOn); const b=
 function paintSound(){ const b=$("soundBtn"); if(!b) return; b.innerHTML=ic(soundOn?'spk':'spkoff'); b.setAttribute("aria-label",soundOn?"おと：オン":"おと：オフ"); b.setAttribute("aria-pressed",String(soundOn)); }
 
 const catSel=$("catSel");
-catSel.innerHTML='<option value="">すべての 分野（ぶんや）</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");
+catSel.innerHTML='<option value="">ぜんぶ</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(CATF[c]?plain(CATF[c])+' など':c)}</option>`).join("");
 function pool(){ const c=catSel.value; return ITEMS.filter(it=>!c||it.cat===c); }
 function updateStats(){
   const p=pool();
@@ -679,12 +685,12 @@ function updateStats(){
   $("allCount").innerHTML=p.length+MON;
   $("wrongCount").innerHTML=wrong.length+MON; $("unseenCount").innerHTML=(p.length-seen.length)+MON;
   const c=catSel.value;
-  $("catRuby").innerHTML=c?ruby(CATR[c]||c):'すべての <ruby>分野<rt>ぶんや</rt></ruby>';
+  $("catRuby").innerHTML=c?catL(c):'ぜんぶ';
   // PC版：分野のボタン一覧（select の代わり）と、えらんでいる分野のピル
-  $("catPill").innerHTML=$("catRuby").innerHTML;
+  $("catPill").innerHTML=c?catF(c):'ぜんぶ';
   $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
     const n=k?ITEMS.filter(it=>it.cat===k).length:ITEMS.length;
-    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):'すべての <ruby>分野<rt>ぶんや</rt></ruby>'}</span><span class="n">${n}${MON}</span></button>`;
+    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catL(k):'ぜんぶ'}</span><span class="n">${n}${MON}</span></button>`;
   }).join("");
   $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
   $("wrongBtn").disabled=!wrong.length;
@@ -854,7 +860,7 @@ function renderList(){
   $("listInfo").innerHTML=`${hit.length} <ruby>項目<rt>こうもく</rt></ruby>`+(kw?`（ぜんぶで ${ITEMS.length}）`:"");
   $("listBody").innerHTML=CAT_ORDER.map(c=>{
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
-    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>この<ruby>分野<rt>ぶんや</rt></ruby>を<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
+    return `<div class="cath" data-h="${esc(c)}"><span>${catF(c)}<small class="ct">${catR(c)}（${xs.length}）</small></span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
       xs.map(it=>`<div class="gcard"><div class="gtop"><span class="gname">${ruby(it.g)}</span>${recPill(it.id)}</div>
           <div class="gmean">${ruby(it.m)}</div><div class="gform"><ruby>接続<rt>せつぞく</rt></ruby>：${ruby(it.f)}</div>
           <div class="gex">${fillAnswer(it)}</div></div>`).join("");
@@ -862,7 +868,7 @@ function renderList(){
   $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });
   // PC版：左の目次（押すとその分野の見出しへ。けんさくで0件の分野は押せない）
   $("toc").innerHTML=CAT_ORDER.map(c=>{ const n=hit.filter(it=>it.cat===c).length;
-    return `<button data-go="${esc(c)}"${n?"":" disabled"}><span>${catR(c)}</span><span class="n">${n}</span></button>`; }).join("");
+    return `<button data-go="${esc(c)}"${n?"":" disabled"}><span>${catL(c)}</span><span class="n">${n}</span></button>`; }).join("");
   $("toc").querySelectorAll("button").forEach(b=>b.onclick=()=>{
     const h=$("listBody").querySelector(`.cath[data-h="${CSS.escape(b.dataset.go)}"]`);
     if(h){ $("main").scrollTop=h.offsetTop-$("main").offsetTop-24; markToc(); }
