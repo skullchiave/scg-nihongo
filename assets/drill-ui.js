@@ -457,7 +457,8 @@ function wordWrap(el){
   if(el.closest('.fcard,.rcard,#sortq,#sortfb,.choices,button,script,style,svg,rt,table')) return;   // 表のマスは縮めたいので包まない
   // flex/grid の箱（.dui-nl 等）は子が1つずつ並ぶ箱なので、まとめずに中へだけ入る（まとめると縮まない塊になってはみ出す）
   var disp=getComputedStyle(el).display;
-  if(/flex|grid/.test(disp)){ Array.prototype.slice.call(el.children).forEach(wordWrap); return; }
+  // display:contents（.dui-onrow/.dui-onhd＝PCは表の3列・スマホは flex）も同じ扱い
+  if(/flex|grid|contents/.test(disp)||el.classList.contains('dui-onhd')||el.classList.contains('dui-onrow')){ Array.prototype.slice.call(el.children).forEach(wordWrap); return; }
   var kids=Array.prototype.slice.call(el.childNodes), pieces=[];
   // 子を「かけら」に分ける：テキストは切れ目で分割、インラインの要素はそのまま1かけら、それ以外は区切り
   kids.forEach(function(n){
