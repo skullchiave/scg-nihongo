@@ -41,6 +41,8 @@ a.dui-next,a.dui-back{text-decoration:none;-webkit-tap-highlight-color:transpare
 .dui-tab{height:54px;border:none;background:none;border-radius:14px;color:var(--sub);cursor:pointer;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;line-height:1.15;}
 .dui-tab rt{font-size:.6em;}
+.dui-tab > span{white-space:nowrap;}   /* モード名は1行（2026-11-12 きあ「2列になって気持ち悪い」） */
+.dui-tab{padding:0 4px;min-width:0;}
 .dui-tab[aria-current="page"]{background:var(--accentSoft);color:var(--accentT);font-weight:700;}
 
 /* ===== 画面の共通 ===== */

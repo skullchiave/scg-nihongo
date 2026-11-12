@@ -63,7 +63,8 @@ var prog=hd.querySelector('.dui-prog'), progBar=hd.querySelector('.dui-bar i'), 
 var modeBtns=qa('button[data-s]',oldNav);
 var tabs=D.createElement('div'); tabs.className='dui-tabs';
 var tin=D.createElement('div'); tin.className='dui-tabsin'; tin.setAttribute('role','tablist');
-tin.style.gridTemplateColumns='repeat('+modeBtns.length+',1fr)';
+// 文字の長いタブ（じょうけん形の おわり 等）も1行に：各タブは文字の幅以上、残りを等分
+tin.style.gridTemplateColumns='repeat('+modeBtns.length+',minmax(max-content,1fr))';
 modeBtns.forEach(function(b){
   var t=D.createElement('button'); t.type='button'; t.className='dui-tab'; t.dataset.s=b.dataset.s;
   t.innerHTML=ic(b.dataset.s)+'<span>'+b.innerHTML.replace(/^\s*[①-⑳]\s*/,'')+'</span>';
