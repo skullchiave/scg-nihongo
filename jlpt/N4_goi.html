@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="ja" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="/scg-nihongo/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/scg-nihongo/icon-192.png">
+<link rel="manifest" href="/scg-nihongo/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="SCG日本語">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffffff">
+<title>JLPT N4 語彙ドリル</title>
+<style>
+@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:400;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Regular.subset.woff2') format('woff2');}
+@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:700;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Bold.subset.woff2') format('woff2');}
+:root{
+  --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6; --hair:#dfe5ef;
+  --accentT:#b45309; --accentSoft:#fff3e0; --accentStrong:#d97706; --muted:#3c4c66;
+  --ok:#15803d; --ng:#dc2626; --okSoft:#e7f5ec; --ngSoft:#fdecec;
+  --card-shadow:0 1px 2px rgba(22,35,58,.06),0 4px 16px rgba(22,35,58,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{font-family:"BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);
+  display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;line-height:1.6;}
+button,select,input{font-family:inherit;color:inherit;}
+button{-webkit-tap-highlight-color:transparent;cursor:pointer;}
+rt{font-size:.5em;font-weight:500;color:var(--sub);}
+body.noruby rt{display:none;}
+.ic{width:22px;height:22px;flex-shrink:0;display:block;}
+.hidden{display:none !important;}
+
+/* ヘッダー */
+.hd{flex-shrink:0;background:#fff;border-bottom:1px solid var(--hair);}
+.hdrow{max-width:600px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:6px 8px;min-height:60px;}
+.ibtn{width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;border-radius:12px;border:1px solid transparent;
+  background:none;color:var(--ink);text-decoration:none;}
+.ibtn.frame{border-color:var(--line);background:#fff;}
+.ibtn:active{transform:scale(.95);}
+.ttl{flex:1;min-width:0;padding-left:2px;}
+.ttl-s{font-size:11px;color:var(--sub);font-weight:700;line-height:1.3;}
+.ttl-m{font-size:17px;font-weight:700;line-height:1.4;}
+.rubybtn{height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:700;color:var(--sub);flex-shrink:0;}
+.rubybtn[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+.aabtn{font-size:15px;font-weight:700;}
+.aabtn.on{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+.bar{flex:1;height:8px;background:#e6ebf3;border-radius:99px;overflow:hidden;}
+.bar i{display:block;height:100%;width:0;background:var(--accentStrong);border-radius:99px;transition:width .25s;}
+.qcount{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;padding-right:8px;}
+
+/* 本文 */
+main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.page{max-width:600px;margin:0 auto;padding:18px 16px 24px;}
+.h{font-size:22px;font-weight:700;line-height:1.4;}
+.lead{font-size:13px;color:var(--muted);margin-top:2px;}
+
+/* 1. 練習メニュー */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:16px;}
+.stats > div{text-align:center;padding:12px 4px;border-left:1px solid #edf1f7;}
+.stats > div:first-child{border-left:none;}
+.stats b{display:block;font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.3;}
+.stats span{font-size:11px;color:var(--sub);font-weight:700;}
+.lbl{display:block;font-size:13px;font-weight:700;margin:18px 0 6px;}
+.selwrap{position:relative;}
+.selwrap select{appearance:none;-webkit-appearance:none;width:100%;height:52px;border-radius:14px;border:1px solid var(--line);
+  background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
+.catruby{margin:6px 4px 0;font-size:15px;font-weight:700;color:var(--muted);line-height:2;}
+.selwrap .ic{position:absolute;right:14px;top:15px;pointer-events:none;color:var(--sub);}
+.bigbtn{width:100%;min-height:68px;margin-top:16px;border:none;border-radius:16px;background:var(--ink);color:#fff;
+  display:flex;align-items:center;gap:14px;padding:8px 20px;text-align:left;}
+.bigbtn b{display:block;font-size:18px;line-height:1.3;}
+.bigbtn small{display:block;font-size:12px;color:#c9d4e6;}
+.bigbtn:active,.nextbtn:active,.btn-main:active{transform:scale(.99);}
+.list{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);overflow:hidden;margin-top:12px;}
+.row{width:100%;display:flex;align-items:center;gap:8px;min-height:56px;padding:8px 12px 8px 16px;border:none;border-top:1px solid #edf1f7;
+  background:#fff;text-align:left;font-size:15px;font-weight:700;}
+.row:first-child{border-top:none;}
+.row .cnt{margin-left:auto;font-size:13px;color:var(--sub);font-weight:400;white-space:nowrap;}
+.row .go{color:#8a98b0;}
+.row:disabled{background:#f7f9fc;color:#8a98b0;cursor:default;}
+.row:disabled .cnt{color:#8a98b0;}
+.linkbtn{display:block;margin:16px auto 0;height:44px;padding:0 12px;background:none;border:none;font-size:13px;color:var(--sub);text-decoration:underline;}
+.confirm{background:var(--ngSoft);border-radius:16px;padding:14px 16px;margin-top:8px;font-size:15px;font-weight:700;text-align:center;}
+.confirm .two{display:flex;gap:8px;margin-top:10px;}
+.confirm button{flex:1;height:48px;border-radius:12px;font-size:15px;font-weight:700;}
+.btn-danger{background:#b91c1c;color:#fff;border:none;}
+.btn-plain{background:#fff;border:1px solid var(--line);}
+
+/* 2. 問題 */
+.tag{display:inline-block;font-size:12px;font-weight:700;background:#e6ebf3;color:var(--muted);border-radius:999px;padding:3px 10px;line-height:1.7;}
+.qcard{background:#fff;border-radius:20px;box-shadow:var(--card-shadow);padding:18px;margin-top:10px;font-size:22px;line-height:2.3;overflow-wrap:anywhere;}
+.blank{display:inline-block;min-width:4.5em;border-bottom:2px solid var(--ink);text-align:center;margin:0 2px;line-height:1.4;}
+.blank.filled{border-color:var(--ok);color:var(--ok);font-weight:700;}
+.choices{display:grid;gap:10px;margin-top:14px;}
+.choice{display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 14px;border:2px solid var(--hair);border-radius:16px;background:#fff;
+  font-size:19px;text-align:left;line-height:1.8;color:var(--ink);}
+.choice .n{flex:none;width:32px;height:32px;border-radius:50%;background:#eef1f7;display:grid;place-items:center;font-size:15px;font-weight:700;line-height:1;}
+.choice.ok{border-color:var(--ok);background:var(--okSoft);} .choice.ok .n{background:var(--ok);color:#fff;}
+.choice.ng{border-color:var(--ng);background:var(--ngSoft);} .choice.ng .n{background:var(--ng);color:#fff;}
+.choice.dim .n{color:#8a98b0;}
+.choice:disabled{cursor:default;}
+.fb{border-radius:16px;padding:14px 16px;margin-top:14px;font-size:14px;line-height:1.9;}
+.fb.ok{background:var(--okSoft);} .fb.ng{background:var(--ngSoft);}
+.verdict{font-size:16px;font-weight:700;margin-bottom:2px;}
+.fb.ok .verdict{color:var(--ok);} .fb.ng .verdict{color:#b91c1c;}
+.fbfoot{display:flex;align-items:center;gap:10px;margin-top:8px;}
+.fbg{flex:1;min-width:0;font-size:12px;color:var(--muted);line-height:1.8;}
+.fbg b{color:var(--ink);}
+.morebtn{flex-shrink:0;height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 12px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;font-size:13px;font-weight:700;color:var(--ink);}
+.morebtn .ic{width:18px;height:18px;}
+.kbd{font-size:12px;color:var(--sub);text-align:center;margin-top:14px;}
+@media (max-width:640px){ .kbd{display:none;} }
+
+/* 下の段（タブ／つぎへ） */
+.bottom{flex-shrink:0;background:#fff;border-top:1px solid var(--hair);padding:8px 16px max(12px, env(safe-area-inset-bottom));}
+.bottomin{max-width:568px;margin:0 auto;}
+.nextbtn{width:100%;height:60px;border:none;border-radius:16px;background:var(--ink);color:#fff;font-size:17px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:4px;}
+.waithint{height:60px;display:grid;place-items:center;font-size:13px;color:var(--sub);}
+.tabsbar{padding:6px 8px max(16px, env(safe-area-inset-bottom));}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-width:568px;margin:0 auto;}
+.tab{height:54px;border:none;background:none;border-radius:14px;color:var(--sub);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;line-height:1.2;}
+.tab rt{font-size:.6em;}
+.tab[aria-current="page"]{background:var(--accentSoft);color:var(--accentT);font-weight:700;}
+
+/* 4. けっか */
+.scorecard{background:#fff;border-radius:20px;box-shadow:var(--card-shadow);padding:24px 20px;text-align:center;}
+.big{font-size:56px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;}
+.big small{font-size:22px;font-weight:700;color:var(--sub);}
+.rbar{height:10px;border-radius:5px;background:var(--ngSoft);overflow:hidden;margin:16px 0 10px;}
+.rbar i{display:block;height:100%;background:var(--ok);}
+.r3{display:flex;justify-content:space-between;font-size:13px;gap:6px;}
+.r3 .g{color:var(--ok);font-weight:700;} .r3 .r{color:#b91c1c;font-weight:700;}
+.sech{font-size:13px;font-weight:700;margin:20px 0 8px;}
+.wrow{padding:10px 16px;min-height:56px;border-top:1px solid #edf1f7;}
+.wrow:first-child{border-top:none;}
+.wrow b{display:block;font-size:16px;line-height:1.6;} .wrow span{font-size:13px;color:var(--sub);}
+.allok{text-align:center;color:var(--sub);padding:16px;font-weight:700;}
+.btn-main{width:100%;height:60px;border:none;border-radius:16px;background:var(--ink);color:#fff;font-size:16px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;}
+.btn-main:disabled{opacity:.4;cursor:default;}
+.btn-sub{width:100%;height:52px;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:15px;font-weight:700;margin-top:10px;}
+
+/* 5. 文法リスト */
+.searchwrap{position:relative;margin-bottom:6px;}
+.searchwrap input{width:100%;height:48px;border-radius:14px;background:#f7f9fc;border:1px solid var(--line);font-size:16px;padding:0 14px 0 42px;color:var(--ink);}
+.searchwrap .ic{position:absolute;left:12px;top:13px;color:var(--sub);}
+.info{font-size:12px;color:var(--sub);}
+.cath{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:20px 0 8px;}
+.cath > span{font-size:15px;font-weight:700;color:var(--accentT);line-height:1.6;}
+.catgo{flex-shrink:0;height:44px;padding:0 14px;border:none;border-radius:22px;background:var(--ink);color:#fff;font-size:12px;font-weight:700;
+  display:inline-flex;align-items:center;gap:6px;}
+.catgo .ic{width:16px;height:16px;}
+.gcard{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);padding:14px 16px;margin-bottom:10px;}
+.gtop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+.gname{font-size:19px;font-weight:700;line-height:1.6;}
+.gmean{font-size:14px;margin-top:2px;line-height:1.8;}
+.gform{font-size:12px;color:var(--sub);margin-top:2px;line-height:1.8;}
+.gex{background:#f7f9fc;border-radius:10px;padding:8px 12px;margin-top:8px;font-size:16px;line-height:2.1;}
+.ans{color:var(--accentT);font-weight:700;}
+.del{text-decoration:line-through;text-decoration-thickness:2px;}  /* 連用形接続：ます形の「ます」をとる */
+.pill{flex-shrink:0;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;white-space:nowrap;font-variant-numeric:tabular-nums;margin-top:4px;}
+.pill.good{background:var(--okSoft);color:var(--ok);} .pill.bad{background:var(--ngSoft);color:#b91c1c;} .pill.none{background:#e6ebf3;color:var(--sub);}
+
+/* 3. 文法の説明シート */
+.shov{position:fixed;inset:0;background:rgba(22,35,58,.4);z-index:50;display:flex;align-items:flex-end;justify-content:center;}
+.sheet{background:#fff;width:100%;max-width:600px;max-height:78vh;max-height:78dvh;overflow-y:auto;border-radius:24px 24px 0 0;
+  padding:8px 16px max(16px, env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.15);}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 8px;}
+.shtop{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.shclose{border-radius:50%;background:#eef1f7;}
+.shname{font-size:26px;font-weight:700;line-height:1.5;margin-top:4px;}
+.shmean{font-size:15px;line-height:1.8;}
+.shtbl{display:grid;grid-template-columns:64px 1fr;gap:10px 8px;margin-top:14px;align-items:baseline;}
+.shtbl dt{font-size:12px;font-weight:700;color:var(--sub);}
+.shtbl dd{font-size:15px;line-height:1.8;}
+.shtbl dd.ex{font-size:16px;line-height:2.1;}
+.shsep{height:1px;background:#edf1f7;margin:16px 0 12px;}
+.shsim{font-size:12px;font-weight:700;color:var(--sub);margin-bottom:8px;line-height:1.8;}
+.sims{display:flex;flex-wrap:wrap;gap:8px;}
+.sim{min-height:44px;padding:4px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:14px;line-height:1.6;color:var(--ink);}
+.sim[aria-current="true"]{background:var(--accentSoft);border-color:#f3d9ad;color:var(--accentT);font-weight:700;}
+.shback{width:100%;height:52px;border:none;border-radius:16px;background:var(--ink);color:#fff;font-size:16px;font-weight:700;margin-top:18px;}
+
+/* 翻訳コピー対応: 本文は選択可・操作部は選択不可 */
+body{-webkit-user-select:text;user-select:text;}
+button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
+
+/* ===== PC版（641px以上）。寸法は 1920×1080 基準で書き、applyZoom() が画面に合わせて全体を縮める =====
+   スマホ版（640px以下）の見た目はここより上だけで決まる。.pconly は PC 幅でだけ出す部品 */
+.pconly{display:none;}
+@media (min-width:641px){
+  rt{font-size:.45em;}
+  /* ヘッダー */
+  .hdrow{max-width:1816px;height:104px;padding:0 48px;gap:16px;}
+  .ibtn{width:64px;height:64px;border-radius:16px;}
+  .ibtn .ic{width:32px;height:32px;}
+  .ttl{flex:none;font-size:34px;font-weight:700;padding-right:12px;white-space:nowrap;}
+  .seg{display:flex;gap:4px;background:#e6ebf3;border-radius:16px;padding:4px;}
+  .seg button{height:56px;padding:0 28px;border:none;border-radius:12px;background:none;font-size:24px;color:var(--sub);}
+  .seg button[aria-current="page"]{background:#fff;color:var(--ink);font-weight:700;box-shadow:0 1px 4px rgba(22,35,58,.15);}
+  .hdsp{flex:1;}
+  .rubybtn{height:64px;padding:0 22px;border-radius:16px;font-size:24px;}
+  .aabtn{font-size:24px;}
+  .xbtn{height:64px;display:inline-flex;align-items:center;gap:8px;padding:0 22px 0 14px;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:24px;font-weight:700;flex-shrink:0;}
+  .xbtn .ic{width:30px;height:30px;}
+  .hdrow .tag{font-size:22px;padding:6px 18px;flex-shrink:0;}
+  .bar{height:14px;margin:0 8px;}
+  .qcount{font-size:32px;padding-right:12px;}
+  .qcount + .hdsp{flex:0 0 24px;}
+  .bottom{display:none !important;}   /* PC版は下のタブ・つぎへ を使わない */
+  .page{max-width:1816px;padding:36px 48px 40px;}
+  /* 1. 練習メニュー */
+  /* 右の列は1行ずつ並べ、左の列（分野）は全行にまたがせる。最後の 1fr 行が余りを吸うので右の列の間が空かない */
+  #setup:not(.hidden){display:grid;grid-template-columns:520px minmax(0,1fr);grid-template-rows:repeat(8,auto) 1fr;column-gap:40px;align-items:start;}
+  #setup > *{grid-column:2;}
+  .catlist{display:flex;flex-direction:column;grid-column:1 !important;grid-row:1 / -1;background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:16px;gap:4px;}
+  .catlist button{min-height:52px;display:flex;align-items:center;gap:12px;padding:6px 16px;border:none;border-radius:14px;background:none;text-align:left;font-size:22px;line-height:1.5;color:var(--ink);}
+  .catlist button .n{margin-left:auto;font-size:20px;color:var(--sub);white-space:nowrap;}
+  .catlist button[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);font-weight:700;}
+  .catlist button[aria-pressed="true"] .n{color:var(--accentT);}
+  .catlist button:hover{background:#f7f9fc;} .catlist button[aria-pressed="true"]:hover{background:var(--accentSoft);}
+  .sethd{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;}
+  .h{font-size:52px;}
+  .lead{font-size:26px;}
+  .catpill{display:inline-block;flex-shrink:0;font-size:24px;font-weight:700;background:var(--accentSoft);color:var(--accentT);border-radius:999px;padding:8px 24px;line-height:1.6;}
+  .stats{border-radius:28px;margin-top:28px;}
+  .stats > div{padding:18px 8px;}
+  .stats b{font-size:64px;line-height:1.25;}
+  .stats span{font-size:22px;}
+  .lbl,.selwrap,.catruby{display:none;}
+  .bigbtn{min-height:150px;margin-top:28px;border-radius:28px;gap:28px;padding:16px 48px;}
+  .bigbtn .ic{width:64px;height:64px;}
+  .bigbtn b{font-size:48px;line-height:1.4;}
+  .bigbtn small{font-size:24px;}
+  #setup .list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;background:none;box-shadow:none;overflow:visible;margin-top:28px;}
+  #setup .row{min-height:130px;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:16px 28px;border:2px solid transparent;border-radius:24px;box-shadow:var(--card-shadow);font-size:32px;line-height:1.5;}
+  #setup .row .cnt{margin-left:0;font-size:22px;}
+  #setup .row .go{display:none;}
+  #setup .row:disabled{background:#f7f9fc;border:2px dashed var(--line);box-shadow:none;}
+  #setup .row:hover:not(:disabled){border-color:var(--line);}
+  .linkbtn{font-size:20px;height:56px;margin-top:20px;}
+  .confirm{font-size:24px;border-radius:24px;padding:20px;}
+  .confirm button{height:64px;font-size:24px;border-radius:16px;}
+  /* 2. 問題 */
+  #quiz:not(.hidden){display:grid;grid-template-columns:minmax(0,1fr) 560px;grid-template-rows:repeat(6,auto) 1fr;column-gap:36px;align-items:start;}
+  #quiz > *{grid-column:1;}
+  #qCat,.fb{display:none !important;}
+  .qcard{margin-top:0;border-radius:28px;padding:44px 52px;font-size:52px;line-height:2.1;}
+  .blank{border-bottom-width:4px;}
+  .choices{grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
+  .choice{min-height:128px;border-width:3px;border-radius:24px;gap:22px;padding:12px 28px;font-size:42px;line-height:1.6;}
+  .choice .n{width:64px;height:64px;font-size:30px;}
+  .choice:hover:not(:disabled){border-color:var(--line);}
+  .qfoot{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:24px;min-height:96px;}
+  .kbd{margin:0;font-size:20px;text-align:left;}
+  .nextpc{display:flex;align-items:center;justify-content:center;gap:8px;height:96px;min-width:340px;padding:0 48px;border:none;border-radius:24px;background:var(--ink);color:#fff;font-size:34px;font-weight:700;}
+  .nextpc .ic{width:38px;height:38px;}
+  .gpanel{display:block;grid-column:2 !important;grid-row:1 / -1;background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:28px;}
+  .gwait{border:3px dashed var(--line);border-radius:20px;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:var(--sub);font-size:24px;text-align:center;line-height:1.7;padding:24px;}
+  .gwait .ic{width:64px;height:64px;}
+  .gv{border-radius:20px;padding:18px 22px;font-size:22px;line-height:1.8;}
+  .gv.ok{background:var(--okSoft);} .gv.ng{background:var(--ngSoft);}
+  .gv .verdict{font-size:34px;margin-bottom:4px;}
+  .gv.ok .verdict{color:var(--ok);} .gv.ng .verdict{color:#b91c1c;}
+  .gpanel .gname{font-size:44px;line-height:1.5;margin-top:20px;display:block;}
+  .gpanel .gmean2{font-size:24px;line-height:1.7;}
+  .gtbl{display:grid;grid-template-columns:88px 1fr;gap:12px 12px;margin-top:18px;align-items:baseline;}
+  .gtbl dt{font-size:20px;font-weight:700;color:var(--sub);}
+  .gtbl dd{font-size:24px;line-height:1.7;}
+  .pill{font-size:20px;padding:3px 14px;}
+  .gpanel .shsep{margin:20px 0 14px;}
+  .gpanel .shsim{font-size:20px;}
+  .gpanel .sims{gap:10px;}
+  .gpanel .sim{min-height:52px;padding:4px 18px;font-size:22px;}
+  /* 4. けっか */
+  #result:not(.hidden){display:grid;grid-template-columns:1fr 1fr;column-gap:20px;max-width:1100px;margin:0 auto;}
+  #result > :not(.btn-main):not(.btn-sub){grid-column:1 / -1;}
+  .scorecard{border-radius:28px;padding:36px 48px;}
+  .big{font-size:120px;}
+  .big small{font-size:48px;}
+  .rbar{height:20px;border-radius:10px;margin:24px 0 16px;}
+  .r3{font-size:28px;}
+  .sech{font-size:24px;margin:28px 0 12px;}
+  #rWrong .list{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:none;box-shadow:none;overflow:visible;margin-top:0;}
+  .wrow{background:#fff;border:none;border-radius:20px;box-shadow:var(--card-shadow);padding:16px 24px;}
+  .wrow b{font-size:36px;line-height:1.5;} .wrow span{font-size:24px;}
+  .allok{font-size:28px;padding:28px;}
+  .btn-main,.btn-sub{height:96px;margin-top:28px;border-radius:24px;font-size:30px;}
+  .btn-main .ic{width:36px;height:36px;}
+  /* 5. 文法リスト */
+  #list:not(.hidden){display:grid;grid-template-columns:440px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:36px;align-items:start;}
+  #list > *{grid-column:2;}
+  #listBody{grid-row:2;}
+  .toc{display:flex;flex-direction:column;gap:4px;grid-column:1 !important;grid-row:1 / -1;position:sticky;top:24px;background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:16px;}
+  .toc button{min-height:52px;display:flex;align-items:center;gap:12px;padding:6px 16px;border:none;border-radius:14px;background:none;text-align:left;font-size:21px;line-height:1.5;color:var(--ink);}
+  .toc button .n{margin-left:auto;font-size:20px;color:var(--sub);}
+  .toc button.cur{background:var(--accentSoft);color:var(--accentT);font-weight:700;}
+  .toc button:disabled{color:#8a98b0;cursor:default;}
+  .searchwrap{grid-row:1;margin-bottom:0;}
+  .searchwrap input{height:76px;border:2px solid var(--line);border-radius:20px;font-size:26px;padding:0 220px 0 64px;background:#fff;}
+  .searchwrap .ic{left:20px;top:22px;width:32px;height:32px;}
+  .info{grid-row:1;justify-self:end;align-self:center;font-size:22px;padding-right:28px;position:relative;pointer-events:none;}
+  #listBody{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;}
+  .cath{grid-column:1 / -1;margin:24px 0 0;}
+  .cath > span{font-size:34px;}
+  .catgo{height:64px;padding:0 28px;border-radius:32px;font-size:22px;gap:10px;}
+  .catgo .ic{width:24px;height:24px;}
+  .gcard{margin:0;border-radius:24px;padding:28px 32px;}
+  .gname{font-size:40px;}
+  .gmean{font-size:24px;}
+  .gform{font-size:20px;}
+  .gex{font-size:30px;line-height:2;border-radius:16px;padding:12px 20px;margin-top:14px;}
+}
+
+/* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
+.opts{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:12px;padding:12px 16px;}
+.opts .ol{display:block;font-size:13px;font-weight:700;margin:0 0 6px;}
+.opts .og + .og{margin-top:14px;}
+.selwrap2{position:relative;}
+.selwrap2 select{appearance:none;-webkit-appearance:none;width:100%;height:48px;border-radius:12px;border:1px solid var(--line);
+  background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
+.selwrap2 .ic{position:absolute;right:14px;top:13px;pointer-events:none;color:var(--sub);}
+.kjinfo{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.9;}
+.kjinfo b{color:var(--ink);font-variant-numeric:tabular-nums;}
+.qt{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.qt button{min-height:48px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;font-weight:700;color:var(--sub);line-height:1.4;padding:4px 2px;}
+.qt button[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+.qt button:disabled{opacity:.45;cursor:default;}
+.qask{display:block;font-size:13px;font-weight:700;color:var(--sub);line-height:1.6;text-align:left;}
+.qcard.word{text-align:center;}
+.qword{display:block;font-size:36px;font-weight:700;line-height:2;}
+.qmean{display:block;font-size:22px;font-weight:700;line-height:1.7;padding:10px 0;}
+.choice.en{font-size:17px;line-height:1.5;}
+.fbw{font-size:18px;font-weight:700;line-height:2;}
+#listBody .gcard{cursor:pointer;}
+.kjc{display:inline-block;margin:0 10px 2px 0;white-space:nowrap;}
+.kjc b{font-size:1.25em;margin-right:4px;}
+.kjc span{font-size:.85em;color:var(--sub);}
+@media (min-width:641px){
+  #setup:not(.hidden){grid-template-rows:repeat(10,auto) 1fr;}
+  .opts{border-radius:28px;margin-top:24px;padding:20px 32px;display:grid;grid-template-columns:1fr 1fr;column-gap:32px;align-items:start;}
+  .opts .og + .og{margin-top:0;}
+  .opts .ol{font-size:22px;margin-bottom:10px;}
+  .selwrap2 select{height:72px;border-radius:16px;font-size:24px;padding:0 60px 0 20px;}
+  .selwrap2 .ic{right:20px;top:22px;width:28px;height:28px;}
+  .kjinfo{font-size:20px;margin-top:8px;}
+  .qt{gap:10px;}
+  .qt button{min-height:72px;border-radius:16px;font-size:22px;}
+  .qask{font-size:24px;}
+  .qword{font-size:96px;line-height:1.9;}
+  .qmean{font-size:52px;line-height:1.6;padding:20px 0;}
+  .choice.en{font-size:30px;line-height:1.4;}
+  .gv .fbw{font-size:30px;}
+  .kjc{margin-right:20px;}
+}
+</style>
+</head>
+<body>
+<header class="hd" id="hd"></header>
+
+<main id="main"><div class="page">
+  <!-- 1. 練習メニュー -->
+  <section id="setup">
+    <div class="catlist pconly" id="catList" role="group" aria-label="しゅるい"></div>
+    <div class="sethd"><div>
+    <div class="h"><ruby>練習<rt>れんしゅう</rt></ruby>を はじめる</div>
+    <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
+    </div><span class="catpill pconly" id="catPill"></span></div>
+    <div class="stats">
+      <div><b id="sTotal">0</b><span>ことばの <ruby>数<rt>かず</rt></ruby></span></div>
+      <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
+      <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
+    </div>
+    <div class="opts">
+      <div class="og">
+        <label class="ol" for="kjSel"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい（<ruby>習<rt>なら</rt></ruby>った ところまで）</label>
+        <div class="selwrap2"><select id="kjSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="kjinfo" id="kjInfo"></div>
+      </div>
+      <div class="og">
+        <span class="ol"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい</span>
+        <div class="qt" id="qtBox" role="group" aria-label="問題の しゅるい">
+          <button data-qt="mix">まぜる</button><button data-qt="m">いみ</button><button data-qt="w">ことば</button><button data-qt="y">よみ<ruby>方<rt>かた</rt></ruby></button>
+        </div>
+        <div class="kjinfo" id="qtInfo"></div>
+      </div>
+    </div>
+    <label class="lbl" for="catSel">ことばの しゅるい</label>
+    <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="catruby" id="catRuby" aria-hidden="true"></div>
+    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
+    <div class="list">
+      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない ことば</span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた ことば</span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    </div>
+    <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
+    <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
+      <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
+    </div>
+  </section>
+
+  <!-- 2. 問題 -->
+  <section id="quiz" class="hidden">
+    <span class="tag" id="qCat"></span>
+    <div class="qcard word" id="qText"></div>
+    <div class="choices" id="choices"></div>
+    <div id="fb" class="fb hidden"></div>
+    <div class="qfoot"><div class="kbd">キーボード：1〜4で えらぶ ／ Enterで つぎへ</div><button class="nextpc pconly hidden" id="nextPC"></button></div>
+    <aside class="gpanel pconly" id="gPanel" aria-live="polite"></aside>
+  </section>
+
+  <!-- 4. けっか -->
+  <section id="result" class="hidden">
+    <div class="scorecard">
+      <div class="big"><span id="rOk">0</span><small id="rTot"> / 0</small></div>
+      <div class="rbar"><i id="rBar"></i></div>
+      <div class="r3"><span class="g" id="rOk2"></span><span id="rRate"></span><span class="r" id="rNg"></span></div>
+    </div>
+    <div id="rWrong"></div>
+    <button class="btn-main" id="retryWrongBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.3L3 16M3 21v-5h5"/></svg><span>まちがえた ことばを もう<ruby>一度<rt>いちど</rt></ruby></span></button>
+    <button class="btn-sub" id="backBtn">メニューへ</button>
+  </section>
+
+  <!-- 5. ことばリスト -->
+  <section id="list" class="hidden">
+    <nav class="toc pconly" id="toc" aria-label="しゅるい"></nav>
+    <div class="searchwrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="search" placeholder="さがす（れい：あつまる、会、gift）" aria-label="ことばを さがす"></div>
+    <div class="info" id="listInfo"></div>
+    <div id="listBody"></div>
+  </section>
+</div></main>
+
+<div class="bottom tabsbar" id="tabsbar"><div class="tabs">
+  <button class="tab" id="tab-practice" aria-current="page"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span><ruby>練習<rt>れんしゅう</rt></ruby></span></button>
+  <button class="tab" id="tab-list"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg><span>ことばリスト</span></button>
+</div></div>
+<div class="bottom hidden" id="nextbar"><div class="bottomin">
+  <div class="waithint" id="waitHint">こたえを タップ</div>
+  <button class="nextbtn hidden" id="nextBtn"></button>
+</div></div>
+
+<div class="shov hidden" id="shov"><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shName"></div></div>
+
+<script src="/scg-nihongo/assets/jlpt-kanji.js"></script>
+<script>
+/* ============================================================
+   ★このファイルは手で直さない。組み立て道具 scripts/jlpt_goi/build_goi.py が
+     語のデータ（scripts/jlpt_goi/n4_words.txt）と型（goi.tmpl.html）から作る。直すのは 語のデータ（タブ区切りの .txt）か型。
+   データ形式: [しゅるい, 語, 意味, にている語の印]
+     語は 漢字1字ずつのルビ表記 {銀|ぎん}{行|こう}。意味は {en:"…", ne:"…"} のように言語ごと（今は英語だけ）。
+     「にている語の印」が同じ語どうしは、選択肢にいっしょに出さない（答えが2つに見えるのを防ぐ）。
+   ★記録(localStorage n4goi_v1)のキーは「語／よみ」（例 合う/あう）。語の表記やよみを変えるとその語の記録は0にもどる。
+   ★漢字で出すか ひらがなで出すかは、データではなく画面で決める：えらんだ「習った漢字」（assets/jlpt-kanji.js）に
+     無い字が1つでも入る語は、語まるごと ひらがな。えらんだ範囲は jlpt_kanji_scope（語彙ドリル共通）に残る。
+   記録の形・きょうの10問・定着度などは文法ドリルと同じ（assets/jlpt-study.js をそのまま使う）。
+   ============================================================ */
+const DATA = [
+["V", "{合|あ}う", "to fit, to match"],
+["V", "{上|あ}がる", "to go up, to rise", "updown"],
+["V", "{空|あ}く", "to become vacant, to be free", "aku"],
+["V", "あげる", "to give (to someone)", "give"],
+["V", "{集|あつ}まる", "to gather (people gather)", "atsu"],
+["V", "{集|あつ}める", "to collect (things)", "atsu"],
+["V", "{謝|あやま}る", "to apologize"],
+["V", "{生|い}きる", "to live, to be alive"],
+["V", "いたす", "to do (humble)", "hum-do"],
+["V", "いただく", "to receive; to eat, to drink (humble)", "hum-get"],
+["V", "いらっしゃる", "to go, to come, to be (honorific)", "hon-be"],
+["V", "{植|う}える", "to plant"],
+["V", "{伺|うかが}う", "to visit; to ask (humble)", "ask"],
+["V", "{動|うご}く", "to move (by itself)", "move"],
+["V", "{打|う}つ", "to hit"],
+["V", "{写|うつ}す", "to copy; to take a photo"],
+["V", "{移|うつ}る", "to move to another place", "move"],
+["V", "{選|えら}ぶ", "to choose"],
+["V", "おいでになる", "to come, to go, to be (very polite)", "hon-be"],
+["V", "{送|おく}る", "to send"],
+["V", "{遅|おく}れる", "to be late"],
+["V", "{起|お}こす", "to wake (someone) up"],
+["V", "{行|おこな}う", "to hold, to carry out (an event)", "hold"],
+["V", "{怒|おこ}る", "to get angry", "angry"],
+["V", "{落|お}ちる", "to fall, to drop (by itself)", "fall"],
+["V", "おっしゃる", "to say (honorific)", "say"],
+["V", "{落|お}とす", "to drop (something)", "fall"],
+["V", "{驚|おどろ}く", "to be surprised", "surprise"],
+["V", "{思|おも}い{出|だ}す", "to remember, to recall", "think"],
+["V", "{思|おも}う", "to think, to feel", "think"],
+["V", "{下|お}りる", "to go down, to come down", "updown"],
+["V", "{折|お}る", "to bend and break; to fold", "break"],
+["V", "おる", "to be (humble)", "hon-be"],
+["V", "{折|お}れる", "to break, to snap (by itself)", "break"],
+["V", "{変|か}える", "to change (something)", "change"],
+["V", "{飾|かざ}る", "to decorate"],
+["V", "{片|かた}{付|づ}ける", "to tidy up, to put away"],
+["V", "{勝|か}つ", "to win"],
+["V", "かむ", "to bite, to chew"],
+["V", "{通|かよ}う", "to go regularly, to commute", "pass"],
+["V", "{乾|かわ}く", "to get dry"],
+["V", "{変|か}わる", "to change (by itself)", "change"],
+["V", "{考|かんが}える", "to think about, to consider", "think"],
+["V", "{頑|がん}{張|ば}る", "to try hard, to do one's best"],
+["V", "{聞|き}こえる", "to be heard, can hear"],
+["V", "{決|き}まる", "to be decided", "decide"],
+["V", "{決|き}める", "to decide", "decide"],
+["V", "くださる", "to give (to me) (honorific)", "give"],
+["V", "{比|くら}べる", "to compare"],
+["V", "{暮|く}れる", "to get dark (the sun goes down)"],
+["V", "くれる", "to give (to me)", "give"],
+["V", "{込|こ}む", "to be crowded"],
+["V", "{壊|こわ}す", "to break (something)", "break"],
+["V", "{壊|こわ}れる", "to break, to be broken (a machine etc.)", "break"],
+["V", "ご{覧|らん}になる", "to see, to look (honorific)"],
+["V", "{探|さが}す", "to look for, to search", "search"],
+["V", "{下|さ}がる", "to go down, to fall (price, temperature)", "updown"],
+["V", "{下|さ}げる", "to lower (something)", "updown"],
+["V", "{差|さ}し{上|あ}げる", "to give (humble)", "give"],
+["V", "（{傘|かさ}を）さす", "to put up (an umbrella)"],
+["V", "{誘|さそ}う", "to invite"],
+["V", "{触|さわ}る", "to touch"],
+["V", "しかる", "to scold", "angry"],
+["V", "{知|し}らせる", "to let someone know, to notify", "tell"],
+["V", "{調|しら}べる", "to check, to look up", "search"],
+["V", "{過|す}ぎる", "to pass (time, place); to be too much", "pass"],
+["V", "{空|す}く", "to become empty, to be less crowded", "aku"],
+["V", "{進|すす}む", "to go forward, to advance"],
+["V", "{捨|す}てる", "to throw away"],
+["V", "{滑|すべ}る", "to slip, to slide"],
+["V", "{育|そだ}てる", "to raise, to bring up"],
+["V", "{倒|たお}れる", "to fall down, to collapse", "fall"],
+["V", "{足|た}す", "to add"],
+["V", "{尋|たず}ねる", "to ask (a question)", "ask"],
+["V", "{訪|たず}ねる", "to visit (a person or place)", "ask"],
+["V", "{建|た}てる", "to build"],
+["V", "{足|た}りる", "to be enough"],
+["V", "{捕|つか}まえる", "to catch"],
+["V", "{伝|つた}える", "to tell, to pass on (a message)", "tell"],
+["V", "{包|つつ}む", "to wrap"],
+["V", "{続|つづ}く", "to continue (by itself)", "cont"],
+["V", "{続|つづ}ける", "to continue (something), to keep doing", "cont"],
+["V", "{釣|つ}る", "to fish, to catch (a fish)"],
+["V", "{連|つ}れる", "to take (a person) along"],
+["V", "{手|て}{伝|つだ}う", "to help"],
+["V", "{通|とお}る", "to pass, to go through", "pass"],
+["V", "{閉|と}じる", "to close, to shut"],
+["V", "{届|とど}ける", "to deliver"],
+["V", "{泊|と}まる", "to stay overnight"],
+["V", "{止|と}める", "to stop (something)", "stop"],
+["V", "{取|と}り{替|か}える", "to exchange, to replace"],
+["V", "{直|なお}す", "to fix, to repair; to correct", "fix"],
+["V", "{治|なお}る", "to get well, to recover (from illness)", "fix"],
+["V", "{直|なお}る", "to be fixed, to be repaired", "fix"],
+["V", "{泣|な}く", "to cry"],
+["V", "{無|な}くなる", "to be lost, to be gone, to run out", "gone"],
+["V", "{亡|な}くなる", "to pass away, to die", "gone"],
+["V", "{投|な}げる", "to throw"],
+["V", "{慣|な}れる", "to get used to"],
+["V", "{似|に}{合|あ}う", "to suit, to look good on", "niru"],
+["V", "{逃|に}げる", "to run away, to escape"],
+["V", "{似|に}る", "to look like, to be similar", "niru"],
+["V", "{盗|ぬす}む", "to steal"],
+["V", "{残|のこ}る", "to remain, to be left"],
+["V", "{乗|の}り{換|か}える", "to change (trains, buses)"],
+["V", "{運|はこ}ぶ", "to carry"],
+["V", "{始|はじ}める", "to start, to begin (something)"],
+["V", "{払|はら}う", "to pay"],
+["V", "{冷|ひ}える", "to get cold"],
+["V", "{光|ひか}る", "to shine"],
+["V", "{引|ひ}っ{越|こ}す", "to move house", "move"],
+["V", "{開|ひら}く", "to open; to hold (a party, a meeting)", "hold"],
+["V", "{拾|ひろ}う", "to pick up"],
+["V", "{増|ふ}える", "to increase"],
+["V", "{太|ふと}る", "to gain weight, to get fat"],
+["V", "{踏|ふ}む", "to step on"],
+["V", "{降|ふ}り{出|だ}す", "to start to rain"],
+["V", "ほめる", "to praise"],
+["V", "{参|まい}る", "to go, to come (humble)", "hon-be"],
+["V", "{負|ま}ける", "to lose (a game)"],
+["V", "{間|ま}{違|ちが}える", "to make a mistake"],
+["V", "{間|ま}に{合|あ}う", "to be in time"],
+["V", "{回|まわ}る", "to turn, to go around", "mawaru"],
+["V", "{回|まわ}す", "to turn (something)", "mawaru"],
+["V", "{見|み}える", "to be visible, can see"],
+["V", "{見|み}つかる", "to be found", "find"],
+["V", "{見|み}つける", "to find", "find"],
+["V", "{向|む}かう", "to head for, to go toward"],
+["V", "{迎|むか}える", "to welcome, to go to meet"],
+["V", "{召|め}し{上|あ}がる", "to eat, to drink (honorific)", "hum-get"],
+["V", "{申|もう}し{上|あ}げる", "to say (to a superior) (humble)", "say"],
+["V", "{申|もう}す", "to say; to be called (humble)", "say"],
+["V", "{戻|もど}る", "to return, to come back"],
+["V", "もらう", "to receive, to get", "hum-get"],
+["V", "{焼|や}く", "to bake, to grill, to burn (something)", "yaku"],
+["V", "{役|やく}に{立|た}つ", "to be useful"],
+["V", "{焼|や}ける", "to be baked, to be burned", "yaku"],
+["V", "やせる", "to lose weight, to get thin"],
+["V", "{止|や}む", "to stop (rain, wind)", "stop"],
+["V", "{止|や}める", "to quit, to give up", "stop"],
+["V", "{揺|ゆ}れる", "to shake, to sway"],
+["V", "{汚|よご}れる", "to get dirty"],
+["V", "{寄|よ}る", "to stop by, to drop in"],
+["V", "{喜|よろこ}ぶ", "to be glad, to be pleased"],
+["V", "{沸|わ}かす", "to boil (water)", "boil"],
+["V", "{沸|わ}く", "to boil (water boils)", "boil"],
+["V", "{笑|わら}う", "to laugh, to smile"],
+["V", "{割|わ}れる", "to break, to crack (glass, a plate)", "break"],
+["V", "びっくりする", "to be surprised", "surprise"],
+["S", "あいさつ", "greeting"],
+["S", "アルバイト", "part-time job", "part"],
+["S", "{案|あん}{内|ない}", "guiding, showing around"],
+["S", "{運|うん}{転|てん}", "driving"],
+["S", "{運|うん}{動|どう}", "exercise"],
+["S", "{営|えい}{業|ぎょう}", "being open for business"],
+["S", "{遠|えん}{慮|りょ}", "holding back, being reserved"],
+["S", "お{祝|いわ}い", "celebration; congratulatory gift"],
+["S", "{会|かい}{議|ぎ}", "meeting, conference"],
+["S", "{会|かい}{話|わ}", "conversation"],
+["S", "{関|かん}{係|けい}", "relation, connection"],
+["S", "{教|きょう}{育|いく}", "education"],
+["S", "{計|けい}{画|かく}", "plan, project", "plan"],
+["S", "{経|けい}{験|けん}", "experience"],
+["S", "けが", "injury"],
+["S", "けんか", "quarrel, fight"],
+["S", "{見|けん}{学|がく}", "visit to observe and learn, field trip", "see"],
+["S", "{研|けん}{究|きゅう}", "research"],
+["S", "{見|けん}{物|ぶつ}", "sightseeing", "see"],
+["S", "ゲーム", "game", "game"],
+["S", "{講|こう}{義|ぎ}", "lecture"],
+["S", "{工|こう}{事|じ}", "construction work"],
+["S", "{故|こ}{障|しょう}", "breakdown (of a machine)"],
+["S", "ごちそう", "feast; treating someone to a meal"],
+["S", "{試|し}{合|あい}", "match, game (sports)", "game"],
+["S", "{試|し}{験|けん}", "exam, test"],
+["S", "{支|し}{度|たく}", "getting ready (to go out, for a meal)", "prep"],
+["S", "{失|しっ}{敗|ぱい}", "failure, mistake"],
+["S", "{出|しゅっ}{席|せき}", "attendance"],
+["S", "{出|しゅっ}{発|ぱつ}", "departure"],
+["S", "{紹|しょう}{介|かい}", "introduction"],
+["S", "{招|しょう}{待|たい}", "invitation"],
+["S", "{食|しょく}{事|じ}", "meal"],
+["S", "{心|しん}{配|ぱい}", "worry"],
+["S", "{準|じゅん}{備|び}", "preparation", "prep"],
+["S", "{水|すい}{泳|えい}", "swimming"],
+["S", "{生|せい}{活|かつ}", "life, daily living", "life"],
+["S", "{生|せい}{産|さん}", "production"],
+["S", "{説|せつ}{明|めい}", "explanation"],
+["S", "{世|せ}{話|わ}", "care, looking after"],
+["S", "{相|そう}{談|だん}", "consultation, asking for advice"],
+["S", "{卒|そつ}{業|ぎょう}", "graduation"],
+["S", "{退|たい}{院|いん}", "leaving the hospital", "hosp"],
+["S", "{誕|たん}{生|じょう}", "birth", "birth"],
+["S", "{暖|だん}{房|ぼう}", "heating", "aircon"],
+["S", "チェック", "check"],
+["S", "{遅|ち}{刻|こく}", "being late"],
+["S", "{注|ちゅう}{意|い}", "caution, attention; warning"],
+["S", "{中|ちゅう}{止|し}", "cancellation"],
+["S", "{注|ちゅう}{射|しゃ}", "injection"],
+["S", "{入|にゅう}{院|いん}", "entering the hospital", "hosp"],
+["S", "{入|にゅう}{学|がく}", "entering a school"],
+["S", "{寝|ね}{坊|ぼう}", "oversleeping"],
+["S", "{拝|はい}{見|けん}", "seeing, looking at (humble)"],
+["S", "{発|はつ}{音|おん}", "pronunciation"],
+["S", "{花|はな}{見|み}", "cherry-blossom viewing"],
+["S", "ファックス", "fax"],
+["S", "{復|ふく}{習|しゅう}", "review (of lessons)", "study"],
+["S", "{返|へん}{事|じ}", "reply, answer", "answer"],
+["S", "{翻|ほん}{訳|やく}", "translation"],
+["S", "{貿|ぼう}{易|えき}", "trade (between countries)", "trade"],
+["S", "{約|やく}{束|そく}", "promise, appointment"],
+["S", "{輸|ゆ}{出|しゅつ}", "export", "trade"],
+["S", "{輸|ゆ}{入|にゅう}", "import", "trade"],
+["S", "{用|よう}{意|い}", "preparation, getting things ready", "prep"],
+["S", "{予|よ}{習|しゅう}", "preparation for a lesson", "study"],
+["S", "{予|よ}{定|てい}", "plan, schedule", "plan"],
+["S", "{予|よ}{約|やく}", "reservation"],
+["S", "{利|り}{用|よう}", "use"],
+["S", "{留|る}{守|す}", "being away from home"],
+["S", "{冷|れい}{房|ぼう}", "air conditioning (cooling)", "aircon"],
+["S", "{連|れん}{絡|らく}", "contact, getting in touch"],
+["I", "{浅|あさ}い", "shallow"],
+["I", "{美|うつく}しい", "beautiful"],
+["I", "うまい", "tasty; good at"],
+["I", "うるさい", "noisy"],
+["I", "{嬉|うれ}しい", "happy, glad"],
+["I", "{多|おお}い", "many, much"],
+["I", "おかしい", "strange; funny", "strange"],
+["I", "おとなしい", "quiet, well-behaved"],
+["I", "{固|かた}い", "hard, firm"],
+["I", "{悲|かな}しい", "sad"],
+["I", "{厳|きび}しい", "strict"],
+["I", "{細|こま}かい", "small, fine, detailed"],
+["I", "{怖|こわ}い", "scary, frightening"],
+["I", "{寂|さび}しい", "lonely"],
+["I", "すごい", "amazing, great", "great"],
+["I", "{素|す}{晴|ば}らしい", "wonderful", "great"],
+["I", "{正|ただ}しい", "correct, right"],
+["I", "{苦|にが}い", "bitter"],
+["I", "{眠|ねむ}い", "sleepy"],
+["I", "{恥|は}ずかしい", "embarrassed, shy"],
+["I", "ひどい", "terrible, cruel"],
+["I", "{深|ふか}い", "deep"],
+["I", "{珍|めずら}しい", "rare, unusual"],
+["I", "{優|やさ}しい", "kind, gentle", "kind"],
+["I", "{柔|やわ}らかい", "soft"],
+["I", "よろしい", "good, all right (polite)"],
+["A", "{安|あん}{心|しん}", "relief, peace of mind", "safe"],
+["A", "{安|あん}{全|ぜん}", "safe", "safe"],
+["A", "{一|いっ}{生|しょう}{懸|けん}{命|めい}", "with all one's effort, very hard"],
+["A", "いっぱい", "full; a lot"],
+["A", "{簡|かん}{単|たん}", "easy, simple"],
+["A", "{危|き}{険|けん}", "dangerous"],
+["A", "{急|きゅう}", "urgent; sudden"],
+["A", "{元|げん}{気|き}", "healthy, energetic, well"],
+["A", "{残|ざん}{念|ねん}", "regrettable, disappointing"],
+["A", "{失|しつ}{礼|れい}", "rude, impolite"],
+["A", "{親|しん}{切|せつ}", "kind, helpful", "kind"],
+["A", "{邪|じゃ}{魔|ま}", "in the way; disturbance"],
+["A", "{十|じゅう}{分|ぶん}", "enough"],
+["A", "{自|じ}{由|ゆう}", "free; freedom"],
+["A", "すてき", "lovely, nice", "great"],
+["A", "たいてい", "usually, mostly", "usual"],
+["A", "{確|たし}か", "sure, certain; if I remember correctly"],
+["A", "{楽|たの}しみ", "something to look forward to; pleasure"],
+["A", "{大|だい}{事|じ}", "important"],
+["A", "だめ", "no good, not allowed"],
+["A", "{丁|てい}{寧|ねい}", "polite; careful"],
+["A", "{適|てき}{当|とう}", "suitable, appropriate"],
+["A", "{特|とく}{別|べつ}", "special", "special"],
+["A", "{熱|ねっ}{心|しん}", "eager, enthusiastic"],
+["A", "{反|はん}{対|たい}", "opposite; opposition"],
+["A", "{久|ひさ}しぶり", "after a long time"],
+["A", "{必|ひつ}{要|よう}", "necessary"],
+["A", "{複|ふく}{雑|ざつ}", "complicated"],
+["A", "{不|ふ}{便|べん}", "inconvenient"],
+["A", "{変|へん}", "strange, odd", "strange"],
+["A", "{真面目|まじめ}", "serious, hardworking"],
+["A", "{無|む}{理|り}", "impossible; unreasonable"],
+["A", "{普|ふ}{通|つう}", "ordinary, normal", "usual"],
+["N", "{意|い}{見|けん}", "opinion"],
+["N", "{急|きゅう}{行|こう}", "express (train)", "train"],
+["N", "{原|げん}{因|いん}", "cause", "reason"],
+["N", "{間|あいだ}", "between; interval"],
+["N", "{赤|あか}ちゃん", "baby", "baby"],
+["N", "{赤|あか}ん{坊|ぼう}", "baby (infant)", "baby"],
+["N", "{味|あじ}", "taste, flavor"],
+["N", "{明日|あす}", "tomorrow"],
+["N", "{遊|あそ}び", "play, playing"],
+["N", "{以|い}{下|か}", "... or less, below", "ika"],
+["N", "{以|い}{外|がい}", "other than, except", "ika"],
+["N", "{医|い}{学|がく}", "medical science"],
+["N", "{石|いし}", "stone"],
+["N", "{一|いち}{度|ど}", "once, one time", "again"],
+["N", "{一|いち}{日|にち}おき", "every other day"],
+["N", "{糸|いと}", "thread"],
+["N", "{以|い}{内|ない}", "within", "ika"],
+["N", "{田舎|いなか}", "countryside; hometown", "suburb"],
+["N", "{意|い}{味|み}", "meaning"],
+["N", "{受|うけ}{付|つけ}", "reception desk"],
+["N", "うそ", "lie"],
+["N", "{腕|うで}", "arm"],
+["N", "{生|う}まれ", "birth, place of birth", "birth"],
+["N", "{売|う}り{場|ば}", "sales counter, section of a store"],
+["N", "{運|うん}{転|てん}{手|しゅ}", "driver"],
+["N", "{運|うん}{動|どう}{会|かい}", "sports day"],
+["N", "{駅|えき}{員|いん}", "station staff", "staff"],
+["N", "{枝|えだ}", "branch (of a tree)"],
+["N", "{億|おく}", "hundred million"],
+["N", "{屋|おく}{上|じょう}", "rooftop"],
+["N", "{贈|おく}り{物|もの}", "gift, present", "gift"],
+["N", "お{子|こ}さん", "(someone else's) child", "child"],
+["N", "お{宅|たく}", "(someone else's) home (polite)"],
+["N", "{夫|おっと}", "(my) husband", "husband"],
+["N", "おつり", "change (money returned)"],
+["N", "{音|おと}", "sound"],
+["N", "{踊|おど}り", "dance"],
+["N", "お{祭|まつ}り", "festival"],
+["N", "お{見|み}{舞|ま}い", "visit to a sick person"],
+["N", "お{土産|みやげ}", "souvenir", "gift"],
+["N", "おもちゃ", "toy"],
+["N", "お{礼|れい}", "thanks; thank-you gift"],
+["N", "{終|お}わり", "end", "end"],
+["N", "{音|おん}{楽|がく}{家|か}", "musician"],
+["N", "{海|かい}{岸|がん}", "coast, seashore"],
+["N", "{会|かい}{議|ぎ}{室|しつ}", "meeting room"],
+["N", "{会|かい}{社|しゃ}{員|いん}", "company employee", "staff"],
+["N", "{会|かい}{場|じょう}", "venue, place of an event"],
+["N", "{帰|かえ}り", "return, way home"],
+["N", "{科|か}{学|がく}", "science"],
+["N", "{鏡|かがみ}", "mirror"],
+["N", "{火|か}{事|じ}", "fire (a building on fire)", "fire"],
+["N", "{形|かたち}", "shape"],
+["N", "{課|か}{長|ちょう}", "section manager", "boss"],
+["N", "{格|かっ}{好|こう}", "appearance, outfit"],
+["N", "{家|か}{内|ない}", "(my) wife", "wife"],
+["N", "お{金|かね}{持|も}ち", "rich person"],
+["N", "{壁|かべ}", "wall"],
+["N", "{髪|かみ}", "hair (on the head)", "hair"],
+["N", "{代|か}わり", "substitute, instead"],
+["N", "{看|かん}{護|ご}{婦|ふ}", "nurse (older word)"],
+["N", "{気|き}", "mind, feeling, spirit", "feel"],
+["N", "{機|き}{会|かい}", "chance, opportunity"],
+["N", "{汽|き}{車|しゃ}", "steam train", "train"],
+["N", "{季|き}{節|せつ}", "season"],
+["N", "{規|き}{則|そく}", "rule, regulation", "rule"],
+["N", "{気|き}{分|ぶん}", "mood, how one feels", "feel"],
+["N", "{気|き}{持|も}ち", "feeling", "feel"],
+["N", "{着|き}{物|もの}", "kimono"],
+["N", "{客|きゃく}", "guest, customer"],
+["N", "{教|きょう}{会|かい}", "church"],
+["N", "{興|きょう}{味|み}", "interest"],
+["N", "{近|きん}{所|じょ}", "neighborhood"],
+["N", "{技|ぎ}{術|じゅつ}", "technology, skill"],
+["N", "{空|くう}{気|き}", "air"],
+["N", "{空|くう}{港|こう}", "airport"],
+["N", "{首|くび}", "neck"],
+["N", "{雲|くも}", "cloud"],
+["N", "{具|ぐ}{合|あい}", "condition, state (of health, of a machine)"],
+["N", "{毛|け}", "hair, fur", "hair"],
+["N", "{警|けい}{察|さつ}", "police"],
+["N", "{経|けい}{済|ざい}", "economy"],
+["N", "{景|け}{色|しき}", "scenery, view"],
+["N", "{消|け}しゴム", "eraser"],
+["N", "{結|けっ}{婚|こん}{式|しき}", "wedding ceremony", "ceremony"],
+["N", "{子|こ}", "child", "child"],
+["N", "{郊|こう}{外|がい}", "suburbs", "suburb"],
+["N", "{高|こう}{校|こう}{生|せい}", "high school student", "student"],
+["N", "{高|こう}{校|こう}", "high school", "school"],
+["N", "{工|こう}{場|じょう}", "factory"],
+["N", "{校|こう}{長|ちょう}", "school principal", "boss"],
+["N", "{交|こう}{通|つう}", "traffic, transportation"],
+["N", "{国|こく}{際|さい}", "international"],
+["N", "{心|こころ}", "heart, mind", "feel"],
+["N", "{答|こた}え", "answer", "answer"],
+["N", "{小|こ}{鳥|とり}", "small bird"],
+["N", "{米|こめ}", "rice (uncooked)"],
+["N", "{今|こん}{度|ど}", "this time; next time"],
+["N", "{今|こん}{夜|や}", "tonight"],
+["N", "ご{主|しゅ}{人|じん}", "(someone else's) husband", "husband"],
+["N", "ご{存|ぞん}じ", "knowing (honorific)"],
+["N", "ごみ", "trash, garbage"],
+["N", "{最|さい}{後|ご}", "last, the end", "end"],
+["N", "{坂|さか}", "slope, hill"],
+["N", "{市|し}", "city"],
+["N", "{仕|し}{方|かた}", "way of doing, how to do"],
+["N", "{下|した}{着|ぎ}", "underwear"],
+["N", "{島|しま}", "island"],
+["N", "{市|し}{民|みん}", "citizen"],
+["N", "{社|しゃ}{会|かい}", "society"],
+["N", "{社|しゃ}{長|ちょう}", "company president", "boss"],
+["N", "{習|しゅう}{慣|かん}", "habit, custom"],
+["N", "{趣|しゅ}{味|み}", "hobby"],
+["N", "{小|しょう}{学|がっ}{校|こう}", "elementary school", "school"],
+["N", "{正|しょう}{月|がつ}", "New Year"],
+["N", "{小|しょう}{説|せつ}", "novel", "novel"],
+["N", "{小|しょう}{説|せつ}{家|か}", "novelist", "novel"],
+["N", "{食|しょく}{堂|どう}", "cafeteria, dining hall"],
+["N", "{食|しょく}{料|りょう}{品|ひん}", "food, groceries"],
+["N", "{新|しん}{聞|ぶん}{社|しゃ}", "newspaper company"],
+["N", "{字|じ}", "letter, character"],
+["N", "{事|じ}{故|こ}", "accident"],
+["N", "{地|じ}{震|しん}", "earthquake"],
+["N", "{時|じ}{代|だい}", "era, period"],
+["N", "{辞|じ}{典|てん}", "dictionary"],
+["N", "{事|じ}{務|む}{所|しょ}", "office"],
+["N", "{住|じゅう}{所|しょ}", "address"],
+["N", "{女|じょ}{性|せい}", "woman, female", "gender"],
+["N", "{人|じん}{口|こう}", "population"],
+["N", "{神|じん}{社|じゃ}", "Shinto shrine", "temple"],
+["N", "{人|じん}{生|せい}", "(a person's) life", "life"],
+["N", "{水|すい}{道|どう}", "water supply, tap water"],
+["N", "{数|すう}{学|がく}", "mathematics"],
+["N", "{砂|すな}", "sand"],
+["N", "{隅|すみ}", "corner"],
+["N", "すり", "pickpocket", "thief"],
+["N", "{西|せい}{洋|よう}", "the West, Western countries"],
+["N", "{世|せ}{界|かい}", "world"],
+["N", "{席|せき}", "seat"],
+["N", "{背|せ}{中|なか}", "back (of the body)"],
+["N", "{線|せん}", "line"],
+["N", "{先|せん}{輩|ぱい}", "senior (at school or work)"],
+["N", "{専|せん}{門|もん}", "specialty, major"],
+["N", "{送|そう}{別|べつ}{会|かい}", "farewell party"],
+["N", "{卒|そつ}{業|ぎょう}{式|しき}", "graduation ceremony", "ceremony"],
+["N", "{祖|そ}{父|ふ}", "grandfather"],
+["N", "{祖|そ}{母|ぼ}", "grandmother"],
+["N", "{台|たい}{風|ふう}", "typhoon"],
+["N", "{畳|たたみ}", "tatami mat"],
+["N", "{棚|たな}", "shelf"],
+["N", "{大|だい}{学|がく}{生|せい}", "university student", "student"],
+["N", "{大|だい}{体|たい}", "about, roughly; mostly", "usual"],
+["N", "{男|だん}{性|せい}", "man, male", "gender"],
+["N", "{力|ちから}", "strength, power"],
+["N", "{地|ち}{図|ず}", "map"],
+["N", "{中|ちゅう}{学|がっ}{校|こう}", "junior high school", "school"],
+["N", "{駐|ちゅう}{車|しゃ}{場|じょう}", "parking lot"],
+["N", "{月|つき}", "moon"],
+["N", "{妻|つま}", "(my) wife", "wife"],
+["N", "{手|て}{袋|ぶくろ}", "gloves"],
+["N", "{寺|てら}", "Buddhist temple", "temple"],
+["N", "{点|てん}", "point, score; dot"],
+["N", "{店|てん}{員|いん}", "shop clerk", "staff"],
+["N", "{天|てん}{気|き}{予|よ}{報|ほう}", "weather forecast"],
+["N", "{展|てん}{覧|らん}{会|かい}", "exhibition"],
+["N", "{電|でん}{気|き}{代|だい}", "electricity bill", "bill"],
+["N", "{電|でん}{話|わ}{代|だい}", "phone bill", "bill"],
+["N", "{通|とお}り", "street"],
+["N", "{床|とこ}{屋|や}", "barber shop", "hairshop"],
+["N", "{特|とっ}{急|きゅう}", "limited express (train)", "train"],
+["N", "{道|どう}{具|ぐ}", "tool"],
+["N", "{動|どう}{物|ぶつ}{園|えん}", "zoo"],
+["N", "{泥|どろ}{棒|ぼう}", "thief", "thief"],
+["N", "におい", "smell"],
+["N", "{二|に}{階|かい}{建|だ}て", "two-story building"],
+["N", "{二|に}{回|かい}{目|め}", "the second time"],
+["N", "{日|にっ}{記|き}", "diary"],
+["N", "{日|に}{本|ほん}{製|せい}", "made in Japan"],
+["N", "{入|にゅう}{学|がく}{式|しき}", "school entrance ceremony", "ceremony"],
+["N", "{人|にん}{形|ぎょう}", "doll"],
+["N", "{値|ね}{段|だん}", "price"],
+["N", "{熱|ねつ}", "fever; heat"],
+["N", "のど", "throat"],
+["N", "{乗|の}り{物|もの}", "vehicle"],
+["N", "{葉|は}", "leaf"],
+["N", "{歯|は}{医|い}{者|しゃ}", "dentist"],
+["N", "{林|はやし}", "woods (small forest)", "forest"],
+["N", "{場|ば}{合|あい}", "case, situation"],
+["N", "{場|ば}{所|しょ}", "place"],
+["N", "{番|ばん}{組|ぐみ}", "(TV, radio) program"],
+["N", "{日|ひ}", "day; sun"],
+["N", "{火|ひ}", "fire, flame", "fire"],
+["N", "{光|ひかり}", "light"],
+["N", "{引|ひ}き{出|だ}し", "drawer"],
+["N", "ひげ", "beard, mustache"],
+["N", "ひと{月|つき}", "one month"],
+["N", "{一|ひと}つ{目|め}", "the first one"],
+["N", "{昼|ひる}{休|やす}み", "lunch break"],
+["N", "{美|び}{術|じゅつ}{館|かん}", "art museum"],
+["N", "{美|び}{容|よう}{院|いん}", "hair salon, beauty salon", "hairshop"],
+["N", "{布|ふ}{団|とん}", "futon (Japanese bedding)"],
+["N", "{船|ふね}", "ship, boat"],
+["N", "{部|ぶ}{長|ちょう}", "department manager", "boss"],
+["N", "ぶどう", "grapes"],
+["N", "{文|ぶん}{化|か}", "culture"],
+["N", "{文|ぶん}{学|がく}", "literature", "lit"],
+["N", "{文|ぶん}{学|がく}{部|ぶ}", "faculty of literature", "lit"],
+["N", "{文|ぶん}{法|ぽう}", "grammar"],
+["N", "{法|ほう}{律|りつ}", "law", "rule"],
+["N", "{星|ほし}", "star"],
+["N", "{周|まわ}り", "surroundings, around"],
+["N", "{漫|まん}{画|が}", "comic, manga"],
+["N", "{真|ま}ん{中|なか}", "middle, center"],
+["N", "{湖|みずうみ}", "lake"],
+["N", "みそ", "miso (soybean paste)"],
+["N", "みんな", "everyone"],
+["N", "{港|みなと}", "port, harbor"],
+["N", "{虫|むし}", "insect, bug"],
+["N", "{息子|むすこ}", "son"],
+["N", "{娘|むすめ}", "daughter"],
+["N", "{森|もり}", "forest", "forest"],
+["N", "{湯|ゆ}", "hot water"],
+["N", "{指|ゆび}", "finger", "finger"],
+["N", "{指|ゆび}{輪|わ}", "ring (for a finger)", "finger"],
+["N", "{夢|ゆめ}", "dream"],
+["N", "{用|よう}", "errand, something to do", "errand"],
+["N", "{用|よう}{事|じ}", "errand, things to do", "errand"],
+["N", "{理|り}{由|ゆう}", "reason", "reason"],
+["N", "{両|りょう}{方|ほう}", "both"],
+["N", "{旅|りょ}{館|かん}", "Japanese-style inn"],
+["N", "{歴|れき}{史|し}", "history"],
+["N", "わけ", "reason; meaning", "reason"],
+["N", "{忘|わす}れ{物|もの}", "something left behind"],
+["N", "{以|い}{上|じょう}", "... or more, above", "ika"],
+["N", "{将|しょう}{来|らい}", "future"],
+["N", "{都|つ}{合|ごう}", "convenience, circumstances"],
+["N", "{遠|とお}く", "a far place, far away"],
+["N", "{途|と}{中|ちゅう}", "on the way, in the middle"],
+["N", "{昔|むかし}", "long ago, the old days"],
+["K", "スーパー", "supermarket"],
+["K", "タイプ", "type, kind"],
+["K", "アイディア", "idea"],
+["K", "アクセサリー", "accessory"],
+["K", "アジア", "Asia"],
+["K", "アナウンサー", "announcer"],
+["K", "アフリカ", "Africa"],
+["K", "アメリカ", "America, the U.S."],
+["K", "アルコール", "alcohol"],
+["K", "エスカレーター", "escalator"],
+["K", "オートバイ", "motorcycle"],
+["K", "カーテン", "curtain"],
+["K", "ガス", "gas (for cooking, heating)", "gas"],
+["K", "ガソリン", "gasoline, petrol", "gas"],
+["K", "ガソリンスタンド", "gas station", "gas"],
+["K", "ガラス", "glass (material)"],
+["K", "ケーキ", "cake"],
+["K", "コンサート", "concert"],
+["K", "コンピューター", "computer", "pc"],
+["K", "サラダ", "salad"],
+["K", "サンダル", "sandals"],
+["K", "サンドイッチ", "sandwich"],
+["K", "ジャム", "jam"],
+["K", "スクリーン", "screen"],
+["K", "ステレオ", "stereo"],
+["K", "ステーキ", "steak", "steak"],
+["K", "スーツ", "suit", "suit"],
+["K", "スーツケース", "suitcase", "suit"],
+["K", "チケット", "ticket"],
+["K", "テキスト", "textbook"],
+["K", "テニス", "tennis"],
+["K", "ハンドバッグ", "handbag"],
+["K", "ハンバーグ", "hamburger steak", "steak"],
+["K", "パソコン", "personal computer, PC", "pc"],
+["K", "パート", "part-time work (often by housewives)", "part"],
+["K", "ビル", "building"],
+["K", "ピアノ", "piano"],
+["K", "プレゼント", "present, gift", "gift"],
+["K", "ベル", "bell"],
+["K", "ルール", "rule", "rule"],
+["K", "レジ", "cash register, checkout"],
+["K", "レポート", "report, paper"],
+["K", "ワープロ", "word processor"],
+["F", "しっかり", "firmly, properly"],
+["F", "{必|かなら}ず", "always, without fail", "sure"],
+["F", "こう", "like this, this way", "such"],
+["F", "この{間|あいだ}", "the other day", "recent"],
+["F", "このごろ", "these days", "recent"],
+["F", "{最|さい}{近|きん}", "recently, lately", "recent"],
+["F", "{最|さい}{初|しょ}", "first, the beginning", "first"],
+["F", "さっき", "a little while ago"],
+["F", "{再|さ}{来|らい}{月|げつ}", "the month after next", "sarai"],
+["F", "{再|さ}{来|らい}{週|しゅう}", "the week after next", "sarai"],
+["F", "しばらく", "for a while"],
+["F", "すっかり", "completely", "all"],
+["F", "ぜひ", "by all means, definitely", "sure"],
+["F", "{全|ぜん}{然|ぜん}", "(not) at all"],
+["F", "それほど", "(not) so much, to that extent", "such"],
+["F", "そろそろ", "soon, it is about time", "soon"],
+["F", "そんなに", "so much, that much", "such"],
+["F", "{例|たと}えば", "for example"],
+["F", "たまに", "once in a while, occasionally"],
+["F", "{直|ちょく}{接|せつ}", "directly"],
+["F", "ちょっと", "a little, a bit"],
+["F", "できるだけ", "as much as possible", "asmuch"],
+["F", "とうとう", "finally, in the end", "atlast"],
+["F", "{特|とく}に", "especially", "special"],
+["F", "どんどん", "more and more, rapidly"],
+["F", "なかなか", "quite; (not) easily", "very"],
+["F", "なるべく", "as ... as possible, if possible", "asmuch"],
+["F", "なるほど", "I see, indeed"],
+["F", "はっきり", "clearly"],
+["F", "{非|ひ}{常|じょう}に", "very, extremely", "very"],
+["F", "ほとんど", "almost all, almost", "all"],
+["F", "まず", "first of all", "first"],
+["F", "もう{一|いち}{度|ど}", "once more, again", "again"],
+["F", "もうすぐ", "very soon", "soon"],
+["F", "もし", "if"],
+["F", "もちろん", "of course", "sure"],
+["F", "{最|もっと}も", "the most"],
+["F", "やっと", "at last (after effort)", "atlast"],
+["F", "やはり", "as expected, after all"],
+["F", "ゆっくり", "slowly; at ease"],
+["F", "けれども", "but, however"],
+["F", "これから", "from now on"],
+["F", "すると", "then, and then", "then"],
+["F", "それで", "so, and then", "then"],
+["F", "それに", "besides, moreover"],
+["F", "だから", "so, therefore", "then"],
+["F", "または", "or"],
+["X", "{行|い}って{参|まい}ります", "I'm leaving (and will come back). (humble)"],
+["X", "おかげさまで", "thanks to you"],
+["X", "お{大|だい}{事|じ}に", "Take care of yourself. (to a sick person)"],
+["X", "かしこまりました", "Certainly. / Understood. (very polite)"],
+["X", "〜{区|く}", "... ward (in an address)", "addr"],
+["X", "〜センチ", "... centimeters"],
+["X", "〜{町|ちょう}", "... town (in an address)", "addr"],
+["X", "{彼|かの}{女|じょ}", "she; girlfriend", "he"],
+["X", "{彼|かれ}", "he; boyfriend", "he"],
+["X", "{彼|かれ}ら", "they", "he"],
+["X", "{君|きみ}", "you (casual)"],
+["X", "そんな", "such, that kind of", "such"],
+["X", "{僕|ぼく}", "I (used by men and boys)"]
+];
+const CATN = {V:"{動詞|どうし}", S:"「する」が つく ことば", N:"{名詞|めいし}", K:"カタカナの ことば", I:"い{形容詞|けいようし}", A:"な{形容詞|けいようし}", F:"{副詞|ふくし}・{接続詞|せつぞくし}", X:"そのほか"};
+const LANGS = [["en","English"]];   // 訳を足したらここに言語を足す（2つ以上になると えらぶ所が出る）
+
+const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
+const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1');
+const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
+const ITEMS = DATA.map(d=>{ const p=plain(d[1]), y=kana(d[1]);
+  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
+
+/* ---------- ルビ ---------- */
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>');
+const catName = c => plain(CATN[c]||c);
+const catR = c => ruby(CATN[c]||c);
+
+/* ---------- アイコン ---------- */
+const IC={
+  back:'<path d="M15 6l-6 6 6 6"/>', fwd:'<path d="M9 6l6 6-6 6"/>', x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  spk:'<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
+  spkoff:'<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M16 9l5 6M21 9l-5 6"/>',
+  book:'<path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/>',
+  play:'<path d="M7 4.5v15l12-7.5z" fill="currentColor" stroke="none"/>'
+};
+function ic(n,sw){ return '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||2)+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>'; }
+
+/* ---------- 記録（この端末だけ） ---------- */
+const KEY="n4goi_v1";
+let rec={};
+try{ rec=JSON.parse(localStorage.getItem(KEY)||"{}")||{}; }catch(e){ rec={}; }
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(rec)); }catch(e){} }
+let rubyOn=true, soundOn=true, qtype='mix', lang='en';
+try{ rubyOn = localStorage.getItem(KEY+"_ruby")!=="0"; soundOn = localStorage.getItem(KEY+"_sound")!=="0";
+     qtype = localStorage.getItem(KEY+"_qtype")||'mix'; lang = localStorage.getItem('jlpt_lang')||'en'; }catch(e){}
+if(!LANGS.some(l=>l[0]===lang)) lang='en';
+if(!['mix','m','w','y'].includes(qtype)) qtype='mix';
+const mean = it => it.m[lang]||it.m.en;
+
+/* ---------- 習った漢字（どこまで漢字で出すか） ---------- */
+const KJ = window.JLPT_KANJI || {base:'',n4:'',steps:[]};
+const SCOPE_KEY='jlpt_kanji_scope';
+let scope='n4';
+try{ scope=localStorage.getItem(SCOPE_KEY)||'n4'; }catch(e){}
+if(!(scope==='n4'||scope==='all'||scope==='none'||KJ.steps.some(s=>s.id===scope))) scope='n4';
+let KNOWN=new Set();
+function buildKnown(){
+  KNOWN=new Set();
+  if(scope==='none'||scope==='all') return;
+  if(scope==='n4'){ (KJ.n4+KJ.base).split('').forEach(k=>KNOWN.add(k)); return; }
+  KJ.base.split('').forEach(k=>KNOWN.add(k));
+  for(const s of KJ.steps){ s.k.split('').forEach(k=>KNOWN.add(k)); if(s.id===scope) break; }
+}
+const inKanji = it => it.ks.length>0 && scope!=='none' && (scope==='all' || it.ks.every(k=>KNOWN.has(k)));
+const disp = it => inKanji(it) ? it.w : it.y;          // 画面に出す形（ルビ表記のまま返す）
+const BOOKR = {"初級":"{初級|しょきゅう}","中級":"{中級|ちゅうきゅう}"};
+const stepLabel = s => (BOOKR[s.b]||s.b)+' '+s.l;
+function whereKanji(k){   // その字をどこで習うか
+  const s=KJ.steps.find(x=>x.k.includes(k));
+  if(s) return ruby(stepLabel(s));
+  if(KJ.base.includes(k)) return 'すうじ など';
+  if(KJ.n4.includes(k)) return 'N4の <ruby>漢字<rt>かんじ</rt></ruby>';
+  return '―';
+}
+
+/* ---------- 画面 ---------- */
+const $=id=>document.getElementById(id);
+const HOME='/scg-nihongo/#/drill/n4';
+const TTL='<ruby>語彙<rt>ごい</rt></ruby>ドリル';
+let view='setup';
+function show(id){
+  view=id;
+  ["setup","quiz","result","list"].forEach(s=>$(s).classList.toggle("hidden",s!==id));
+  $("tabsbar").classList.toggle("hidden",!(id==="setup"||id==="list"));
+  $("nextbar").classList.toggle("hidden",id!=="quiz");
+  $("tab-practice").toggleAttribute("aria-current",id==="setup"); if(id==="setup") $("tab-practice").setAttribute("aria-current","page");
+  $("tab-list").toggleAttribute("aria-current",id==="list"); if(id==="list") $("tab-list").setAttribute("aria-current","page");
+  setHeader(id);
+  $("main").scrollTop=0;
+}
+const MQ=window.matchMedia('(min-width:641px)');
+const isPC=()=>MQ.matches;
+function hdTools(){
+  return '<span class="hdsp"></span>'
+    +'<button class="ibtn frame aabtn" id="aMinus" aria-label="もじを ちいさく">A−</button>'
+    +'<button class="ibtn frame aabtn" id="aPlus" aria-label="もじを おおきく">A＋</button>'
+    +'<button class="rubybtn" id="rubyBtn" aria-pressed="'+rubyOn+'">ルビ</button>'
+    +'<button class="ibtn frame" id="soundBtn"></button>';
+}
+function setHeaderPC(id){
+  let h='<div class="hdrow">';
+  if(id==='quiz'){
+    h+='<button class="xbtn" id="quitBtn">'+ic('x',2.2)+'やめる</button><span class="tag" id="qCatH"></span>'
+      +'<div class="bar"><i id="qBar"></i></div><span class="qcount" id="qCount"></span>';
+  }else{
+    h+= id==='result' ? '<button class="ibtn" id="hdMenu" aria-label="メニューへ">'+ic('back',2.2)+'</button><div class="ttl">けっか</div>'
+                      : '<a class="ibtn" href="'+HOME+'" aria-label="もどる">'+ic('back',2.2)+'</a><div class="ttl">JLPT N4 '+TTL+'</div>';
+    if(id!=='result') h+='<div class="seg" role="group" aria-label="きりかえ">'
+      +'<button id="segPractice"'+(id==='setup'?' aria-current="page"':'')+'><ruby>練習<rt>れんしゅう</rt></ruby></button>'
+      +'<button id="segList"'+(id==='list'?' aria-current="page"':'')+'>ことばリスト</button></div>';
+  }
+  $("hd").innerHTML=h+hdTools()+'</div>';
+  if($("segPractice")) $("segPractice").onclick=()=>setTab("practice");
+  if($("segList")) $("segList").onclick=()=>setTab("list");
+  $("aMinus").onclick=()=>{ uz-=0.1; saveZoom(); applyZoom(); };
+  $("aPlus").onclick=()=>{ uz+=0.1; saveZoom(); applyZoom(); };
+}
+function setHeader(id){
+  if(isPC()){ setHeaderPC(id); bindHeader(); return; }
+  let h='<div class="hdrow">';
+  if(id==='quiz'){
+    h+='<button class="ibtn" id="quitBtn" aria-label="やめる">'+ic('x',2.2)+'</button><div class="bar"><i id="qBar"></i></div><span class="qcount" id="qCount"></span>';
+  }else if(id==='result'){
+    h+='<button class="ibtn" id="hdMenu" aria-label="メニューへ">'+ic('back',2.2)+'</button><div class="ttl"><div class="ttl-m">けっか</div></div>';
+  }else{
+    h+='<a class="ibtn" href="'+HOME+'" aria-label="もどる">'+ic('back',2.2)+'</a>'
+      +'<div class="ttl"><div class="ttl-s">JLPT N4</div><div class="ttl-m">'+(id==='list'?'ことばリスト':TTL)+'</div></div>'
+      +'<button class="rubybtn" id="rubyBtn" aria-pressed="'+rubyOn+'">ルビ</button>'
+      +(id==='setup'?'<button class="ibtn frame" id="soundBtn"></button>':'')
+      +'<button class="ibtn frame aabtn" id="aaBtn" aria-label="もじの おおきさ">Aa</button>';
+  }
+  $("hd").innerHTML=h+'</div>';
+  bindHeader();
+}
+function bindHeader(){
+  if($("quitBtn")) $("quitBtn").onclick=quit;
+  if($("hdMenu")) $("hdMenu").onclick=()=>{ show("setup"); updateStats(); };
+  if($("rubyBtn")) $("rubyBtn").onclick=()=>{ rubyOn=!rubyOn; try{localStorage.setItem(KEY+"_ruby",rubyOn?"1":"0");}catch(e){} applyRuby(); };
+  if($("soundBtn")){ $("soundBtn").onclick=()=>{ soundOn=!soundOn; try{localStorage.setItem(KEY+"_sound",soundOn?"1":"0");}catch(e){} paintSound(); if(soundOn) sndOK(); }; paintSound(); }
+  if($("aaBtn")){ $("aaBtn").onclick=cycleZoom; $("aaBtn").classList.toggle("on",uz>1.01); }
+}
+function applyRuby(){ document.body.classList.toggle("noruby",!rubyOn); const b=$("rubyBtn"); if(b) b.setAttribute("aria-pressed",String(rubyOn)); }
+function paintSound(){ const b=$("soundBtn"); if(!b) return; b.innerHTML=ic(soundOn?'spk':'spkoff'); b.setAttribute("aria-label",soundOn?"おと：オン":"おと：オフ"); b.setAttribute("aria-pressed",String(soundOn)); }
+
+/* ---------- メニュー：漢字のはんい・問題のしゅるい・ことばのしゅるい ---------- */
+const kjSel=$("kjSel");
+(function(){
+  let h='<option value="none">ぜんぶ ひらがな</option>', book='';
+  KJ.steps.forEach(s=>{
+    if(s.b!==book){ if(book) h+='</optgroup>'; book=s.b; h+='<optgroup label="どんどん 漢字 '+esc(book)+'">'; }
+    h+='<option value="'+s.id+'">'+esc(s.b+' '+plain(s.l))+' まで</option>';
+  });
+  if(book) h+='</optgroup>';
+  h+='<optgroup label="そのほか"><option value="n4">N4の 漢字 ぜんぶ</option><option value="all">ぜんぶ 漢字</option></optgroup>';
+  kjSel.innerHTML=h; kjSel.value=scope;
+})();
+kjSel.onchange=()=>{ scope=kjSel.value; try{localStorage.setItem(SCOPE_KEY,scope);}catch(e){} buildKnown(); updateStats(); };
+document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
+const QT_INFO={mix:'いみ・ことば・よみ<ruby>方<rt>かた</rt></ruby>を まぜて <ruby>出<rt>だ</rt></ruby>します',
+  m:'ことばを <ruby>見<rt>み</rt></ruby>て、いみを えらびます', w:'いみを <ruby>見<rt>み</rt></ruby>て、ことばを えらびます',
+  y:'<ruby>漢字<rt>かんじ</rt></ruby>の ことばを <ruby>見<rt>み</rt></ruby>て、よみ<ruby>方<rt>かた</rt></ruby>を えらびます'};
+
+const catSel=$("catSel");
+catSel.innerHTML='<option value="">すべての ことば</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(catName(c))}</option>`).join("");
+// よみ方の問題は、今のはんいで漢字で出る語だけ
+function pool(){ const c=catSel.value; return ITEMS.filter(it=>(!c||it.cat===c)&&(qtype!=='y'||inKanji(it))); }
+function updateStats(){
+  const p=pool();
+  const seen=p.filter(it=>rec[it.id]);
+  const wrong=p.filter(it=>rec[it.id]&&rec[it.id].last===0);
+  let ok=0,tot=0; seen.forEach(it=>{ok+=rec[it.id].ok;tot+=rec[it.id].n;});
+  $("sTotal").textContent=p.length; $("sSeen").textContent=seen.length;
+  $("sRate").textContent=tot?Math.round(ok/tot*100)+"%":"–";
+  const MON='<ruby>問<rt>もん</rt></ruby>';
+  $("allCount").innerHTML=p.length+MON;
+  $("wrongCount").innerHTML=wrong.length+MON; $("unseenCount").innerHTML=(p.length-seen.length)+MON;
+  const c=catSel.value;
+  $("catRuby").innerHTML=c?catR(c):'すべての ことば';
+  $("catPill").innerHTML=$("catRuby").innerHTML;
+  $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
+    const n=ITEMS.filter(it=>(!k||it.cat===k)&&(qtype!=='y'||inKanji(it))).length;
+    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):'すべての ことば'}</span><span class="n">${n}${MON}</span></button>`;
+  }).join("");
+  $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
+  $("wrongBtn").disabled=!wrong.length;
+  document.querySelector('[data-mode="unseen"]').disabled=(p.length===seen.length);
+  document.querySelector('[data-mode="random10"]').disabled=!p.length;
+  document.querySelector('[data-mode="all"]').disabled=!p.length;
+  // 漢字のはんい・問題のしゅるい
+  const withK=ITEMS.filter(it=>it.ks.length), inK=withK.filter(inKanji);
+  $("kjInfo").innerHTML='<ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>で</rt></ruby>る ことば <b>'+inK.length+'</b> / '+withK.length+'　（ほかは ひらがな）';
+  document.querySelectorAll("#qtBox button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.qt===qtype)));
+  $("qtInfo").innerHTML=QT_INFO[qtype];
+}
+catSel.onchange=updateStats;
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+/* ---------- 効果音（サイト共通） ---------- */
+let actx=null;
+function ac(){ if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); return actx; }
+function tone(freq,delay,dur,type,vol){
+  const a=ac(), t=a.currentTime+delay, o=a.createOscillator(), g=a.createGain();
+  o.type=type; o.frequency.value=freq;
+  g.gain.setValueAtTime(vol,t); g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+dur);
+}
+function sndOK(){ if(!soundOn) return; try{ tone(1318.5,0,0.15,'sine',0.3); tone(1046.5,0.15,0.6,'sine',0.3); }catch(e){} }
+function sndNG(){
+  if(!soundOn) return;
+  try{
+    const a=ac(), t=a.currentTime, dur=0.9, o=a.createOscillator(), g=a.createGain();
+    o.type='square'; o.frequency.value=110;
+    g.gain.setValueAtTime(0.25,t); g.gain.setValueAtTime(0.25,t+dur-0.05); g.gain.linearRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+dur);
+  }catch(e){}
+}
+
+/* ---------- 出題 ---------- */
+let queue=[],pos=0,score=0,wrongIds=[],answered=false,cur=null,order=[],qt='m',opts=[];
+function start(list){
+  if(!list.length) return;
+  queue=shuffle(list); pos=0; score=0; wrongIds=[]; show("quiz"); render();
+}
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
+  const p=pool(), m=b.dataset.mode;
+  if(m==="random10") start(shuffle(p).slice(0,10));
+  if(m==="all") start(p);
+  if(m==="wrong") start(p.filter(it=>rec[it.id]&&rec[it.id].last===0));
+  if(m==="unseen") start(p.filter(it=>!rec[it.id]));
+});
+
+// この問題の しゅるい（まぜる の時：いみ4・ことば4・よみ方2 の割合。よみ方は漢字で出る語だけ）
+function pickType(it){
+  if(qtype!=='mix') return (qtype==='y'&&!inKanji(it))?'m':qtype;
+  const r=Math.random();
+  if(inKanji(it)) return r<0.4?'m':r<0.8?'w':'y';
+  return r<0.5?'m':'w';
+}
+// まちがいの選択肢を3つ。同じ しゅるい の語から、答えが2つに見えるものを外してえらぶ
+function pickOthers(it,t){
+  const used=new Set(), out=[];
+  const keyOf = x => t==='m' ? mean(x) : t==='y' ? x.y : plain(disp(x));
+  used.add(keyOf(it));
+  const okx = x => x!==it && x.y!==it.y && !(t!=='y' && it.tag && x.tag===it.tag) && (t!=='y' || inKanji(x));
+  const take = xs => { for(const x of shuffle(xs)){ if(out.length>=3) break; const k=keyOf(x); if(used.has(k)||!okx(x)) continue; used.add(k); out.push(x); } };
+  if(t==='y'){   // よみ方：同じ漢字を使う語 → よみの長さが近い語 の順
+    take(ITEMS.filter(x=>x.ks.some(k=>it.ks.includes(k))).slice(0,40));
+    take(ITEMS.filter(x=>x.cat===it.cat && Math.abs(x.y.length-it.y.length)<=1));
+  }
+  take(ITEMS.filter(x=>x.cat===it.cat));
+  take(ITEMS);
+  return out;
+}
+const QASK={m:'いみは どれ？', w:'ことばは どれ？', y:'よみ<ruby>方<rt>かた</rt></ruby>は どれ？'};
+function optHTML(x){ return qt==='m' ? esc(mean(x)) : qt==='y' ? esc(x.y) : ruby(disp(x)); }
+function render(){
+  cur=queue[pos]; answered=false;
+  qt=pickType(cur); opts=[cur].concat(pickOthers(cur,qt));
+  paintProgress();
+  $("qCat").innerHTML=catR(cur.cat);
+  $("gPanel").innerHTML=`<div class="gwait">${ic('book')}<span>こたえると ここに<br>ことばの <ruby>説明<rt>せつめい</rt></ruby>が でます</span></div>`;
+  $("nextPC").classList.add("hidden");
+  $("qText").innerHTML='<span class="qask">'+QASK[qt]+'</span>'
+    +(qt==='w' ? '<span class="qmean">'+esc(mean(cur))+'</span>'
+               : '<span class="qword">'+(qt==='y'?esc(cur.p):ruby(disp(cur)))+'</span>');
+  order=shuffle(opts.map((_,i)=>i));
+  $("choices").innerHTML=order.map((oi,k)=>`<button class="choice${qt==='m'?' en':''}" data-oi="${oi}"><span class="n">${k+1}</span><span>${optHTML(opts[oi])}</span></button>`).join("");
+  $("choices").querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.oi));
+  $("fb").className="fb hidden";
+  $("waitHint").classList.remove("hidden"); $("nextBtn").classList.add("hidden");
+  $("main").scrollTop=0;
+}
+function verdictHTML(ok,ansNo){ return `<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>`; }
+function wordLine(it){ return `<span class="fbw">${ruby(disp(it))}</span>　${esc(mean(it))}`; }
+function answer(oi){
+  if(answered) return; answered=true;
+  const ok=oi===0;
+  const r=rec[cur.id]||{n:0,ok:0,last:0}; r.n++; if(ok) r.ok++; r.last=ok?1:0; rec[cur.id]=r; save();
+  if(ok) score++; else wrongIds.push(cur.id);
+  if(ok) sndOK(); else sndNG();
+  try{ if(window.__drillLog) window.__drillLog(ok); }catch(e){}
+  $("choices").querySelectorAll(".choice").forEach(b=>{
+    b.disabled=true; const v=+b.dataset.oi;
+    if(v===0){ b.classList.add("ok"); b.querySelector(".n").textContent="○"; }
+    else if(v===oi){ b.classList.add("ng"); b.querySelector(".n").textContent="×"; }
+    else b.classList.add("dim");
+  });
+  if(qt==='y'){ const w=$("qText").querySelector(".qword"); if(w) w.innerHTML=ruby(cur.w); }   // よみ方の問題は、答えた後にルビを出す
+  const fb=$("fb");
+  fb.className="fb "+(ok?"ok":"ng");
+  const ansNo=order.indexOf(0)+1;
+  fb.innerHTML=verdictHTML(ok,ansNo)+wordLine(cur)
+    +`<div class="fbfoot"><div class="fbg">${catR(cur.cat)}</div>`
+    +`<button class="morebtn" id="moreBtn">${ic('book')}くわしく</button></div>`;
+  $("moreBtn").onclick=()=>openSheet(cur);
+  $("nextBtn").innerHTML=(pos+1<queue.length?"つぎへ":"けっかを <ruby>見<rt>み</rt></ruby>る")+ic('fwd');
+  $("waitHint").classList.add("hidden"); $("nextBtn").classList.remove("hidden");
+  $("nextPC").innerHTML=$("nextBtn").innerHTML; $("nextPC").classList.remove("hidden");
+  lastOk=ok; lastAnsNo=ansNo; renderPanel(cur);
+}
+$("nextBtn").onclick=()=>{ pos++; if(pos<queue.length) render(); else finish(); };
+$("nextPC").onclick=()=>$("nextBtn").click();
+function paintProgress(){
+  if(!cur) return;
+  $("qCount").textContent=`${pos+1} / ${queue.length}`;
+  $("qBar").style.width=(pos/queue.length*100)+"%";
+  if($("qCatH")) $("qCatH").innerHTML=catR(cur.cat);
+}
+
+/* ---------- ことばの説明（スマホ＝下から出るシート／PC＝右のパネル。中身は同じ） ---------- */
+function sameKanji(it){ return it.ks.length ? ITEMS.filter(x=>x!==it && x.ks.some(k=>it.ks.includes(k))).slice(0,14) : []; }
+function detailRows(it){   // よみ・しゅるい・漢字（どこで習うか）・記録
+  let h=`<dt>よみ<ruby>方<rt>かた</rt></ruby></dt><dd>${esc(it.y)}</dd>`
+    +`<dt>しゅるい</dt><dd>${catR(it.cat)}</dd>`;
+  if(it.ks.length){
+    h+=`<dt><ruby>漢字<rt>かんじ</rt></ruby></dt><dd><div>${ruby(it.w)}</div>`
+      +it.ks.filter(k=>k!=='々').map(k=>`<span class="kjc"><b>${esc(k)}</b><span>${whereKanji(k)}</span></span>`).join("")+`</dd>`;
+  }
+  return h+`<dt><ruby>記録<rt>きろく</rt></ruby></dt><dd>${recPill(it.id)}</dd>`;
+}
+function simsHTML(it){
+  const sims=sameKanji(it); if(!sims.length) return '';
+  return `<div class="shsep"></div><div class="shsim">おなじ <ruby>漢字<rt>かんじ</rt></ruby>の ことば</div>`
+    +`<div class="sims">${sims.map(x=>`<button class="sim" data-id="${esc(x.id)}">${ruby(x.w)}</button>`).join("")}</div>`;
+}
+let lastOk=false, lastAnsNo=1;
+function renderPanel(it){
+  $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}">${verdictHTML(lastOk,lastAnsNo)}${wordLine(cur)}</div>
+    <span class="gname">${ruby(disp(it))}</span><div class="gmean2">${esc(mean(it))}</div>
+    <dl class="gtbl">${detailRows(it)}</dl>${simsHTML(it)}`;
+  $("gPanel").querySelectorAll(".sim").forEach(b=>b.onclick=()=>renderPanel(BYID[b.dataset.id]));
+}
+function quit(){ if(pos>0||answered) finish(true); else { show("setup"); updateStats(); } }
+
+function finish(early){
+  const done = answered ? pos+1 : pos;
+  const total = early ? done : queue.length;
+  show("result");
+  $("rOk").textContent=score; $("rTot").textContent=" / "+total;
+  $("rBar").style.width=(total?score/total*100:0)+"%";
+  $("rOk2").textContent="せいかい "+score;
+  $("rRate").innerHTML= total? `<ruby>正答率<rt>せいとうりつ</rt></ruby> ${Math.round(score/total*100)}%` : "";
+  $("rNg").textContent="まちがい "+(total-score);
+  const w=wrongIds.map(id=>BYID[id]);
+  $("rWrong").innerHTML = w.length
+    ? `<div class="sech">まちがえた ことば</div><div class="list">${w.map(it=>`<div class="wrow"><b>${ruby(disp(it))}</b><span>${esc(mean(it))}</span></div>`).join("")}</div>`
+    : `<div class="allok"><ruby>全問<rt>ぜんもん</rt></ruby><ruby>正解<rt>せいかい</rt></ruby>です！</div>`;
+  $("retryWrongBtn").disabled=!w.length;
+}
+$("retryWrongBtn").onclick=()=>start(wrongIds.map(id=>BYID[id]));
+$("backBtn").onclick=()=>{ show("setup"); updateStats(); };
+
+let sheetOpen=false;
+function recPill(id){
+  const r=rec[id];
+  return r?`<span class="pill ${r.last?"good":"bad"}">${r.last?"○":"×"} ${r.ok}/${r.n}</span>`:`<span class="pill none">まだ</span>`;
+}
+function renderSheet(it){
+  $("sheet").innerHTML=`<div class="grab"></div>
+    <div class="shtop"><span class="tag">${catR(it.cat)}</span><button class="ibtn shclose" id="shClose" aria-label="とじる">${ic('x',2.2)}</button></div>
+    <div class="shname" id="shName">${ruby(disp(it))}</div><div class="shmean">${esc(mean(it))}</div>
+    <dl class="shtbl">${detailRows(it)}</dl>${simsHTML(it)}
+    <button class="shback" id="shBack">もどる</button>`;
+  $("shClose").onclick=closeSheet; $("shBack").onclick=closeSheet;
+  $("sheet").querySelectorAll(".sim").forEach(b=>b.onclick=()=>{ renderSheet(BYID[b.dataset.id]); $("sheet").scrollTop=0; $("shClose").focus(); });
+}
+function openSheet(it){ renderSheet(it); $("shov").classList.remove("hidden"); sheetOpen=true; $("sheet").scrollTop=0; $("shClose").focus(); }
+function closeSheet(){ $("shov").classList.add("hidden"); sheetOpen=false; const m=$("moreBtn"); if(m&&view==='quiz') m.focus(); }
+$("shov").onclick=e=>{ if(e.target===$("shov")) closeSheet(); };
+
+/* ---------- キーボード ---------- */
+document.addEventListener("keydown",e=>{
+  if(sheetOpen){ if(e.key==="Escape") closeSheet(); return; }
+  if(view!=="quiz") return;
+  if(!answered && /^[1-4]$/.test(e.key)){ const b=$("choices").children[+e.key-1]; if(b) b.click(); }
+  else if(answered && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); $("nextBtn").click(); }
+});
+
+/* ---------- リセット ---------- */
+$("resetBtn").onclick=()=>$("resetConfirm").classList.remove("hidden");
+$("resetNo").onclick=()=>$("resetConfirm").classList.add("hidden");
+$("resetYes").onclick=()=>{ rec={}; save(); $("resetConfirm").classList.add("hidden"); updateStats(); };
+
+/* ---------- ことばリスト ---------- */
+function renderList(){
+  const kw=$("search").value.trim().toLowerCase();
+  const hit=ITEMS.filter(it=>!kw||[it.p,it.y,mean(it),catName(it.cat)].join(" ").toLowerCase().includes(kw));   // 漢字でも よみでも 意味でも さがせる
+  $("listInfo").innerHTML=`${hit.length} <ruby>語<rt>ご</rt></ruby>`+(kw?`（ぜんぶで ${ITEMS.length}）`:"");
+  $("listBody").innerHTML=CAT_ORDER.map(c=>{
+    const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
+    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}これを<ruby>練習<rt>れんしゅう</rt></ruby></button></div>`+
+      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${ruby(disp(it))}</span>${recPill(it.id)}</div>
+          <div class="gmean">${esc(mean(it))}</div></div>`).join("");
+  }).join("");
+  $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });
+  $("listBody").querySelectorAll(".gcard").forEach(b=>b.onclick=()=>{ if(!isPC()) openSheet(BYID[b.dataset.id]); });
+  $("toc").innerHTML=CAT_ORDER.map(c=>{ const n=hit.filter(it=>it.cat===c).length;
+    return `<button data-go="${esc(c)}"${n?"":" disabled"}><span>${catR(c)}</span><span class="n">${n}</span></button>`; }).join("");
+  $("toc").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const h=$("listBody").querySelector(`.cath[data-h="${CSS.escape(b.dataset.go)}"]`);
+    if(h){ $("main").scrollTop=h.offsetTop-$("main").offsetTop-24; markToc(); }
+  });
+  markToc();
+}
+function markToc(){
+  if(view!=="list"||!isPC()) return;
+  const top=$("main").getBoundingClientRect().top+80;
+  let curH=null; $("listBody").querySelectorAll(".cath").forEach(h=>{ if(h.getBoundingClientRect().top<=top) curH=h.dataset.h; });
+  if(!curH){ const f=$("listBody").querySelector(".cath"); curH=f&&f.dataset.h; }
+  $("toc").querySelectorAll("button").forEach(b=>b.classList.toggle("cur",b.dataset.go===curH));
+}
+$("main").addEventListener("scroll",markToc,{passive:true});
+$("search").oninput=renderList;
+function setTab(t){ if(t==="list"){ show("list"); renderList(); } else { show("setup"); updateStats(); } }
+$("tab-practice").onclick=()=>setTab("practice");
+$("tab-list").onclick=()=>setTab("list");
+
+/* ---------- 文字の大きさ（文法ドリルと同じ） ---------- */
+const STEPS=[1,1.15,1.3]; let uz=1;
+try{ uz=parseFloat(localStorage.getItem('drill_zoom'))||1; }catch(e){}
+function fitF(){ const w=window.innerWidth,h=window.innerHeight; if(w<=640) return 1; return Math.max(0.45,Math.min(w/1920,h/1080,2)); }
+function applyZoom(){
+  uz=Math.min(1.6,Math.max(0.7,Math.round(uz*100)/100));
+  const z=fitF()*uz; document.body.style.zoom=z; document.body.style.height=(100/z)+'dvh';
+  const b=$("aaBtn"); if(b) b.classList.toggle("on",uz>1.01);
+  if($("aMinus")) $("aMinus").disabled=uz<=0.7; if($("aPlus")) $("aPlus").disabled=uz>=1.6;
+}
+function saveZoom(){ uz=Math.min(1.6,Math.max(0.7,Math.round(uz*100)/100)); try{localStorage.setItem('drill_zoom',uz);}catch(e){} }
+function cycleZoom(){ let i=0; STEPS.forEach((s,k)=>{ if(Math.abs(s-uz)<0.05) i=k; }); uz=STEPS[(i+1)%STEPS.length]; try{localStorage.setItem('drill_zoom',uz);}catch(e){} applyZoom(); }
+window.addEventListener('resize',applyZoom);
+MQ.addEventListener('change',()=>{
+  setHeader(view);
+  if(view==='quiz'){ paintProgress(); if(answered) renderPanel(cur); }
+  if(isPC() && sheetOpen) closeSheet();
+  if(view==='list') renderList();
+  applyZoom();
+});
+
+buildKnown();
+applyRuby();
+applyZoom();
+show("setup");
+updateStats();
+</script>
+<script src="/scg-nihongo/assets/jlpt-study.js"></script>
+<script>
+// Service Worker 登録（オフライン対応・通信節約）
+if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(){});});}
+// 利用記録（端末ローカルのみ・表示なし・ログイン不要。将来の継続表示用に貯める）
+(function(){try{
+  var id=(location.pathname.split('/').pop()||'index').replace('.html','')||'index';
+  var k='drill_stats',s=JSON.parse(localStorage.getItem(k)||'{}');
+  var d=s[id]||(s[id]={opens:0,correct:0,total:0,last:null});
+  d.opens++; d.last=new Date().toISOString();
+  localStorage.setItem(k,JSON.stringify(s));
+  window.__drillLog=function(ok){try{var s2=JSON.parse(localStorage.getItem(k)||'{}');var d2=s2[id]||(s2[id]={opens:0,correct:0,total:0,last:null});d2.total++;if(ok)d2.correct++;d2.last=new Date().toISOString();localStorage.setItem(k,JSON.stringify(s2));}catch(e){}};
+}catch(e){}})();
+</script>
+</body>
+</html>

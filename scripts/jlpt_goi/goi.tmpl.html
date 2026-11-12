@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="/scg-nihongo/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/scg-nihongo/icon-192.png">
+<link rel="manifest" href="/scg-nihongo/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="SCG日本語">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffffff">
+<title>JLPT __LV__ 語彙ドリル</title>
+<style>
+/*__BASECSS__*/
+
+/* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
+.opts{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:12px;padding:12px 16px;}
+.opts .ol{display:block;font-size:13px;font-weight:700;margin:0 0 6px;}
+.opts .og + .og{margin-top:14px;}
+.selwrap2{position:relative;}
+.selwrap2 select{appearance:none;-webkit-appearance:none;width:100%;height:48px;border-radius:12px;border:1px solid var(--line);
+  background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
+.selwrap2 .ic{position:absolute;right:14px;top:13px;pointer-events:none;color:var(--sub);}
+.kjinfo{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.9;}
+.kjinfo b{color:var(--ink);font-variant-numeric:tabular-nums;}
+.qt{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.qt button{min-height:48px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;font-weight:700;color:var(--sub);line-height:1.4;padding:4px 2px;}
+.qt button[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+.qt button:disabled{opacity:.45;cursor:default;}
+.qask{display:block;font-size:13px;font-weight:700;color:var(--sub);line-height:1.6;text-align:left;}
+.qcard.word{text-align:center;}
+.qword{display:block;font-size:36px;font-weight:700;line-height:2;}
+.qmean{display:block;font-size:22px;font-weight:700;line-height:1.7;padding:10px 0;}
+.choice.en{font-size:17px;line-height:1.5;}
+.fbw{font-size:18px;font-weight:700;line-height:2;}
+#listBody .gcard{cursor:pointer;}
+.kjc{display:inline-block;margin:0 10px 2px 0;white-space:nowrap;}
+.kjc b{font-size:1.25em;margin-right:4px;}
+.kjc span{font-size:.85em;color:var(--sub);}
+@media (min-width:641px){
+  #setup:not(.hidden){grid-template-rows:repeat(10,auto) 1fr;}
+  .opts{border-radius:28px;margin-top:24px;padding:20px 32px;display:grid;grid-template-columns:1fr 1fr;column-gap:32px;align-items:start;}
+  .opts .og + .og{margin-top:0;}
+  .opts .ol{font-size:22px;margin-bottom:10px;}
+  .selwrap2 select{height:72px;border-radius:16px;font-size:24px;padding:0 60px 0 20px;}
+  .selwrap2 .ic{right:20px;top:22px;width:28px;height:28px;}
+  .kjinfo{font-size:20px;margin-top:8px;}
+  .qt{gap:10px;}
+  .qt button{min-height:72px;border-radius:16px;font-size:22px;}
+  .qask{font-size:24px;}
+  .qword{font-size:96px;line-height:1.9;}
+  .qmean{font-size:52px;line-height:1.6;padding:20px 0;}
+  .choice.en{font-size:30px;line-height:1.4;}
+  .gv .fbw{font-size:30px;}
+  .kjc{margin-right:20px;}
+}
+</style>
+</head>
+<body>
+<header class="hd" id="hd"></header>
+
+<main id="main"><div class="page">
+  <!-- 1. 練習メニュー -->
+  <section id="setup">
+    <div class="catlist pconly" id="catList" role="group" aria-label="しゅるい"></div>
+    <div class="sethd"><div>
+    <div class="h"><ruby>練習<rt>れんしゅう</rt></ruby>を はじめる</div>
+    <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
+    </div><span class="catpill pconly" id="catPill"></span></div>
+    <div class="stats">
+      <div><b id="sTotal">0</b><span>ことばの <ruby>数<rt>かず</rt></ruby></span></div>
+      <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
+      <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
+    </div>
+    <div class="opts">
+      <div class="og">
+        <label class="ol" for="kjSel"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい（<ruby>習<rt>なら</rt></ruby>った ところまで）</label>
+        <div class="selwrap2"><select id="kjSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="kjinfo" id="kjInfo"></div>
+      </div>
+      <div class="og">
+        <span class="ol"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい</span>
+        <div class="qt" id="qtBox" role="group" aria-label="問題の しゅるい">
+          <button data-qt="mix">まぜる</button><button data-qt="m">いみ</button><button data-qt="w">ことば</button><button data-qt="y">よみ<ruby>方<rt>かた</rt></ruby></button>
+        </div>
+        <div class="kjinfo" id="qtInfo"></div>
+      </div>
+    </div>
+    <label class="lbl" for="catSel">ことばの しゅるい</label>
+    <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="catruby" id="catRuby" aria-hidden="true"></div>
+    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
+    <div class="list">
+      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない ことば</span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた ことば</span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    </div>
+    <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
+    <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
+      <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
+    </div>
+  </section>
+
+  <!-- 2. 問題 -->
+  <section id="quiz" class="hidden">
+    <span class="tag" id="qCat"></span>
+    <div class="qcard word" id="qText"></div>
+    <div class="choices" id="choices"></div>
+    <div id="fb" class="fb hidden"></div>
+    <div class="qfoot"><div class="kbd">キーボード：1〜4で えらぶ ／ Enterで つぎへ</div><button class="nextpc pconly hidden" id="nextPC"></button></div>
+    <aside class="gpanel pconly" id="gPanel" aria-live="polite"></aside>
+  </section>
+
+  <!-- 4. けっか -->
+  <section id="result" class="hidden">
+    <div class="scorecard">
+      <div class="big"><span id="rOk">0</span><small id="rTot"> / 0</small></div>
+      <div class="rbar"><i id="rBar"></i></div>
+      <div class="r3"><span class="g" id="rOk2"></span><span id="rRate"></span><span class="r" id="rNg"></span></div>
+    </div>
+    <div id="rWrong"></div>
+    <button class="btn-main" id="retryWrongBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.3L3 16M3 21v-5h5"/></svg><span>まちがえた ことばを もう<ruby>一度<rt>いちど</rt></ruby></span></button>
+    <button class="btn-sub" id="backBtn">メニューへ</button>
+  </section>
+
+  <!-- 5. ことばリスト -->
+  <section id="list" class="hidden">
+    <nav class="toc pconly" id="toc" aria-label="しゅるい"></nav>
+    <div class="searchwrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="search" placeholder="さがす（れい：あつまる、会、gift）" aria-label="ことばを さがす"></div>
+    <div class="info" id="listInfo"></div>
+    <div id="listBody"></div>
+  </section>
+</div></main>
+
+<div class="bottom tabsbar" id="tabsbar"><div class="tabs">
+  <button class="tab" id="tab-practice" aria-current="page"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span><ruby>練習<rt>れんしゅう</rt></ruby></span></button>
+  <button class="tab" id="tab-list"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg><span>ことばリスト</span></button>
+</div></div>
+<div class="bottom hidden" id="nextbar"><div class="bottomin">
+  <div class="waithint" id="waitHint">こたえを タップ</div>
+  <button class="nextbtn hidden" id="nextBtn"></button>
+</div></div>
+
+<div class="shov hidden" id="shov"><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shName"></div></div>
+
+<script src="/scg-nihongo/assets/jlpt-kanji.js"></script>
+<script>
+/* ============================================================
+   ★このファイルは手で直さない。組み立て道具 scripts/jlpt_goi/build_goi.py が
+     語のデータ（scripts/jlpt_goi/__lv___words.txt）と型（goi.tmpl.html）から作る。直すのは 語のデータ（タブ区切りの .txt）か型。
+   データ形式: [しゅるい, 語, 意味, にている語の印]
+     語は 漢字1字ずつのルビ表記 {銀|ぎん}{行|こう}。意味は {en:"…", ne:"…"} のように言語ごと（今は英語だけ）。
+     「にている語の印」が同じ語どうしは、選択肢にいっしょに出さない（答えが2つに見えるのを防ぐ）。
+   ★記録(localStorage __lv__goi_v1)のキーは「語／よみ」（例 合う/あう）。語の表記やよみを変えるとその語の記録は0にもどる。
+   ★漢字で出すか ひらがなで出すかは、データではなく画面で決める：えらんだ「習った漢字」（assets/jlpt-kanji.js）に
+     無い字が1つでも入る語は、語まるごと ひらがな。えらんだ範囲は jlpt_kanji_scope（語彙ドリル共通）に残る。
+   記録の形・きょうの10問・定着度などは文法ドリルと同じ（assets/jlpt-study.js をそのまま使う）。
+   ============================================================ */
+const DATA = /*__DATA__*/;
+const CATN = {V:"{動詞|どうし}", S:"「する」が つく ことば", N:"{名詞|めいし}", K:"カタカナの ことば", I:"い{形容詞|けいようし}", A:"な{形容詞|けいようし}", F:"{副詞|ふくし}・{接続詞|せつぞくし}", X:"そのほか"};
+const LANGS = [["en","English"]];   // 訳を足したらここに言語を足す（2つ以上になると えらぶ所が出る）
+
+const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
+const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1');
+const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
+const ITEMS = DATA.map(d=>{ const p=plain(d[1]), y=kana(d[1]);
+  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
+
+/* ---------- ルビ ---------- */
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>');
+const catName = c => plain(CATN[c]||c);
+const catR = c => ruby(CATN[c]||c);
+
+/* ---------- アイコン ---------- */
+const IC={
+  back:'<path d="M15 6l-6 6 6 6"/>', fwd:'<path d="M9 6l6 6-6 6"/>', x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  spk:'<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
+  spkoff:'<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M16 9l5 6M21 9l-5 6"/>',
+  book:'<path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/>',
+  play:'<path d="M7 4.5v15l12-7.5z" fill="currentColor" stroke="none"/>'
+};
+function ic(n,sw){ return '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||2)+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>'; }
+
+/* ---------- 記録（この端末だけ） ---------- */
+const KEY="__lv__goi_v1";
+let rec={};
+try{ rec=JSON.parse(localStorage.getItem(KEY)||"{}")||{}; }catch(e){ rec={}; }
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(rec)); }catch(e){} }
+let rubyOn=true, soundOn=true, qtype='mix', lang='en';
+try{ rubyOn = localStorage.getItem(KEY+"_ruby")!=="0"; soundOn = localStorage.getItem(KEY+"_sound")!=="0";
+     qtype = localStorage.getItem(KEY+"_qtype")||'mix'; lang = localStorage.getItem('jlpt_lang')||'en'; }catch(e){}
+if(!LANGS.some(l=>l[0]===lang)) lang='en';
+if(!['mix','m','w','y'].includes(qtype)) qtype='mix';
+const mean = it => it.m[lang]||it.m.en;
+
+/* ---------- 習った漢字（どこまで漢字で出すか） ---------- */
+const KJ = window.JLPT_KANJI || {base:'',n4:'',steps:[]};
+const SCOPE_KEY='jlpt_kanji_scope';
+let scope='n4';
+try{ scope=localStorage.getItem(SCOPE_KEY)||'n4'; }catch(e){}
+if(!(scope==='n4'||scope==='all'||scope==='none'||KJ.steps.some(s=>s.id===scope))) scope='n4';
+let KNOWN=new Set();
+function buildKnown(){
+  KNOWN=new Set();
+  if(scope==='none'||scope==='all') return;
+  if(scope==='n4'){ (KJ.n4+KJ.base).split('').forEach(k=>KNOWN.add(k)); return; }
+  KJ.base.split('').forEach(k=>KNOWN.add(k));
+  for(const s of KJ.steps){ s.k.split('').forEach(k=>KNOWN.add(k)); if(s.id===scope) break; }
+}
+const inKanji = it => it.ks.length>0 && scope!=='none' && (scope==='all' || it.ks.every(k=>KNOWN.has(k)));
+const disp = it => inKanji(it) ? it.w : it.y;          // 画面に出す形（ルビ表記のまま返す）
+const BOOKR = {"初級":"{初級|しょきゅう}","中級":"{中級|ちゅうきゅう}"};
+const stepLabel = s => (BOOKR[s.b]||s.b)+' '+s.l;
+function whereKanji(k){   // その字をどこで習うか
+  const s=KJ.steps.find(x=>x.k.includes(k));
+  if(s) return ruby(stepLabel(s));
+  if(KJ.base.includes(k)) return 'すうじ など';
+  if(KJ.n4.includes(k)) return 'N4の <ruby>漢字<rt>かんじ</rt></ruby>';
+  return '―';
+}
+
+/* ---------- 画面 ---------- */
+const $=id=>document.getElementById(id);
+const HOME='/scg-nihongo/#/drill/__lv__';
+const TTL='<ruby>語彙<rt>ごい</rt></ruby>ドリル';
+let view='setup';
+function show(id){
+  view=id;
+  ["setup","quiz","result","list"].forEach(s=>$(s).classList.toggle("hidden",s!==id));
+  $("tabsbar").classList.toggle("hidden",!(id==="setup"||id==="list"));
+  $("nextbar").classList.toggle("hidden",id!=="quiz");
+  $("tab-practice").toggleAttribute("aria-current",id==="setup"); if(id==="setup") $("tab-practice").setAttribute("aria-current","page");
+  $("tab-list").toggleAttribute("aria-current",id==="list"); if(id==="list") $("tab-list").setAttribute("aria-current","page");
+  setHeader(id);
+  $("main").scrollTop=0;
+}
+const MQ=window.matchMedia('(min-width:641px)');
+const isPC=()=>MQ.matches;
+function hdTools(){
+  return '<span class="hdsp"></span>'
+    +'<button class="ibtn frame aabtn" id="aMinus" aria-label="もじを ちいさく">A−</button>'
+    +'<button class="ibtn frame aabtn" id="aPlus" aria-label="もじを おおきく">A＋</button>'
+    +'<button class="rubybtn" id="rubyBtn" aria-pressed="'+rubyOn+'">ルビ</button>'
+    +'<button class="ibtn frame" id="soundBtn"></button>';
+}
+function setHeaderPC(id){
+  let h='<div class="hdrow">';
+  if(id==='quiz'){
+    h+='<button class="xbtn" id="quitBtn">'+ic('x',2.2)+'やめる</button><span class="tag" id="qCatH"></span>'
+      +'<div class="bar"><i id="qBar"></i></div><span class="qcount" id="qCount"></span>';
+  }else{
+    h+= id==='result' ? '<button class="ibtn" id="hdMenu" aria-label="メニューへ">'+ic('back',2.2)+'</button><div class="ttl">けっか</div>'
+                      : '<a class="ibtn" href="'+HOME+'" aria-label="もどる">'+ic('back',2.2)+'</a><div class="ttl">JLPT __LV__ '+TTL+'</div>';
+    if(id!=='result') h+='<div class="seg" role="group" aria-label="きりかえ">'
+      +'<button id="segPractice"'+(id==='setup'?' aria-current="page"':'')+'><ruby>練習<rt>れんしゅう</rt></ruby></button>'
+      +'<button id="segList"'+(id==='list'?' aria-current="page"':'')+'>ことばリスト</button></div>';
+  }
+  $("hd").innerHTML=h+hdTools()+'</div>';
+  if($("segPractice")) $("segPractice").onclick=()=>setTab("practice");
+  if($("segList")) $("segList").onclick=()=>setTab("list");
+  $("aMinus").onclick=()=>{ uz-=0.1; saveZoom(); applyZoom(); };
+  $("aPlus").onclick=()=>{ uz+=0.1; saveZoom(); applyZoom(); };
+}
+function setHeader(id){
+  if(isPC()){ setHeaderPC(id); bindHeader(); return; }
+  let h='<div class="hdrow">';
+  if(id==='quiz'){
+    h+='<button class="ibtn" id="quitBtn" aria-label="やめる">'+ic('x',2.2)+'</button><div class="bar"><i id="qBar"></i></div><span class="qcount" id="qCount"></span>';
+  }else if(id==='result'){
+    h+='<button class="ibtn" id="hdMenu" aria-label="メニューへ">'+ic('back',2.2)+'</button><div class="ttl"><div class="ttl-m">けっか</div></div>';
+  }else{
+    h+='<a class="ibtn" href="'+HOME+'" aria-label="もどる">'+ic('back',2.2)+'</a>'
+      +'<div class="ttl"><div class="ttl-s">JLPT __LV__</div><div class="ttl-m">'+(id==='list'?'ことばリスト':TTL)+'</div></div>'
+      +'<button class="rubybtn" id="rubyBtn" aria-pressed="'+rubyOn+'">ルビ</button>'
+      +(id==='setup'?'<button class="ibtn frame" id="soundBtn"></button>':'')
+      +'<button class="ibtn frame aabtn" id="aaBtn" aria-label="もじの おおきさ">Aa</button>';
+  }
+  $("hd").innerHTML=h+'</div>';
+  bindHeader();
+}
+function bindHeader(){
+  if($("quitBtn")) $("quitBtn").onclick=quit;
+  if($("hdMenu")) $("hdMenu").onclick=()=>{ show("setup"); updateStats(); };
+  if($("rubyBtn")) $("rubyBtn").onclick=()=>{ rubyOn=!rubyOn; try{localStorage.setItem(KEY+"_ruby",rubyOn?"1":"0");}catch(e){} applyRuby(); };
+  if($("soundBtn")){ $("soundBtn").onclick=()=>{ soundOn=!soundOn; try{localStorage.setItem(KEY+"_sound",soundOn?"1":"0");}catch(e){} paintSound(); if(soundOn) sndOK(); }; paintSound(); }
+  if($("aaBtn")){ $("aaBtn").onclick=cycleZoom; $("aaBtn").classList.toggle("on",uz>1.01); }
+}
+function applyRuby(){ document.body.classList.toggle("noruby",!rubyOn); const b=$("rubyBtn"); if(b) b.setAttribute("aria-pressed",String(rubyOn)); }
+function paintSound(){ const b=$("soundBtn"); if(!b) return; b.innerHTML=ic(soundOn?'spk':'spkoff'); b.setAttribute("aria-label",soundOn?"おと：オン":"おと：オフ"); b.setAttribute("aria-pressed",String(soundOn)); }
+
+/* ---------- メニュー：漢字のはんい・問題のしゅるい・ことばのしゅるい ---------- */
+const kjSel=$("kjSel");
+(function(){
+  let h='<option value="none">ぜんぶ ひらがな</option>', book='';
+  KJ.steps.forEach(s=>{
+    if(s.b!==book){ if(book) h+='</optgroup>'; book=s.b; h+='<optgroup label="どんどん 漢字 '+esc(book)+'">'; }
+    h+='<option value="'+s.id+'">'+esc(s.b+' '+plain(s.l))+' まで</option>';
+  });
+  if(book) h+='</optgroup>';
+  h+='<optgroup label="そのほか"><option value="n4">N4の 漢字 ぜんぶ</option><option value="all">ぜんぶ 漢字</option></optgroup>';
+  kjSel.innerHTML=h; kjSel.value=scope;
+})();
+kjSel.onchange=()=>{ scope=kjSel.value; try{localStorage.setItem(SCOPE_KEY,scope);}catch(e){} buildKnown(); updateStats(); };
+document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
+const QT_INFO={mix:'いみ・ことば・よみ<ruby>方<rt>かた</rt></ruby>を まぜて <ruby>出<rt>だ</rt></ruby>します',
+  m:'ことばを <ruby>見<rt>み</rt></ruby>て、いみを えらびます', w:'いみを <ruby>見<rt>み</rt></ruby>て、ことばを えらびます',
+  y:'<ruby>漢字<rt>かんじ</rt></ruby>の ことばを <ruby>見<rt>み</rt></ruby>て、よみ<ruby>方<rt>かた</rt></ruby>を えらびます'};
+
+const catSel=$("catSel");
+catSel.innerHTML='<option value="">すべての ことば</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(catName(c))}</option>`).join("");
+// よみ方の問題は、今のはんいで漢字で出る語だけ
+function pool(){ const c=catSel.value; return ITEMS.filter(it=>(!c||it.cat===c)&&(qtype!=='y'||inKanji(it))); }
+function updateStats(){
+  const p=pool();
+  const seen=p.filter(it=>rec[it.id]);
+  const wrong=p.filter(it=>rec[it.id]&&rec[it.id].last===0);
+  let ok=0,tot=0; seen.forEach(it=>{ok+=rec[it.id].ok;tot+=rec[it.id].n;});
+  $("sTotal").textContent=p.length; $("sSeen").textContent=seen.length;
+  $("sRate").textContent=tot?Math.round(ok/tot*100)+"%":"–";
+  const MON='<ruby>問<rt>もん</rt></ruby>';
+  $("allCount").innerHTML=p.length+MON;
+  $("wrongCount").innerHTML=wrong.length+MON; $("unseenCount").innerHTML=(p.length-seen.length)+MON;
+  const c=catSel.value;
+  $("catRuby").innerHTML=c?catR(c):'すべての ことば';
+  $("catPill").innerHTML=$("catRuby").innerHTML;
+  $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
+    const n=ITEMS.filter(it=>(!k||it.cat===k)&&(qtype!=='y'||inKanji(it))).length;
+    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):'すべての ことば'}</span><span class="n">${n}${MON}</span></button>`;
+  }).join("");
+  $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
+  $("wrongBtn").disabled=!wrong.length;
+  document.querySelector('[data-mode="unseen"]').disabled=(p.length===seen.length);
+  document.querySelector('[data-mode="random10"]').disabled=!p.length;
+  document.querySelector('[data-mode="all"]').disabled=!p.length;
+  // 漢字のはんい・問題のしゅるい
+  const withK=ITEMS.filter(it=>it.ks.length), inK=withK.filter(inKanji);
+  $("kjInfo").innerHTML='<ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>で</rt></ruby>る ことば <b>'+inK.length+'</b> / '+withK.length+'　（ほかは ひらがな）';
+  document.querySelectorAll("#qtBox button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.qt===qtype)));
+  $("qtInfo").innerHTML=QT_INFO[qtype];
+}
+catSel.onchange=updateStats;
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+/* ---------- 効果音（サイト共通） ---------- */
+let actx=null;
+function ac(){ if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); return actx; }
+function tone(freq,delay,dur,type,vol){
+  const a=ac(), t=a.currentTime+delay, o=a.createOscillator(), g=a.createGain();
+  o.type=type; o.frequency.value=freq;
+  g.gain.setValueAtTime(vol,t); g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+dur);
+}
+function sndOK(){ if(!soundOn) return; try{ tone(1318.5,0,0.15,'sine',0.3); tone(1046.5,0.15,0.6,'sine',0.3); }catch(e){} }
+function sndNG(){
+  if(!soundOn) return;
+  try{
+    const a=ac(), t=a.currentTime, dur=0.9, o=a.createOscillator(), g=a.createGain();
+    o.type='square'; o.frequency.value=110;
+    g.gain.setValueAtTime(0.25,t); g.gain.setValueAtTime(0.25,t+dur-0.05); g.gain.linearRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+dur);
+  }catch(e){}
+}
+
+/* ---------- 出題 ---------- */
+let queue=[],pos=0,score=0,wrongIds=[],answered=false,cur=null,order=[],qt='m',opts=[];
+function start(list){
+  if(!list.length) return;
+  queue=shuffle(list); pos=0; score=0; wrongIds=[]; show("quiz"); render();
+}
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
+  const p=pool(), m=b.dataset.mode;
+  if(m==="random10") start(shuffle(p).slice(0,10));
+  if(m==="all") start(p);
+  if(m==="wrong") start(p.filter(it=>rec[it.id]&&rec[it.id].last===0));
+  if(m==="unseen") start(p.filter(it=>!rec[it.id]));
+});
+
+// この問題の しゅるい（まぜる の時：いみ4・ことば4・よみ方2 の割合。よみ方は漢字で出る語だけ）
+function pickType(it){
+  if(qtype!=='mix') return (qtype==='y'&&!inKanji(it))?'m':qtype;
+  const r=Math.random();
+  if(inKanji(it)) return r<0.4?'m':r<0.8?'w':'y';
+  return r<0.5?'m':'w';
+}
+// まちがいの選択肢を3つ。同じ しゅるい の語から、答えが2つに見えるものを外してえらぶ
+function pickOthers(it,t){
+  const used=new Set(), out=[];
+  const keyOf = x => t==='m' ? mean(x) : t==='y' ? x.y : plain(disp(x));
+  used.add(keyOf(it));
+  const okx = x => x!==it && x.y!==it.y && !(t!=='y' && it.tag && x.tag===it.tag) && (t!=='y' || inKanji(x));
+  const take = xs => { for(const x of shuffle(xs)){ if(out.length>=3) break; const k=keyOf(x); if(used.has(k)||!okx(x)) continue; used.add(k); out.push(x); } };
+  if(t==='y'){   // よみ方：同じ漢字を使う語 → よみの長さが近い語 の順
+    take(ITEMS.filter(x=>x.ks.some(k=>it.ks.includes(k))).slice(0,40));
+    take(ITEMS.filter(x=>x.cat===it.cat && Math.abs(x.y.length-it.y.length)<=1));
+  }
+  take(ITEMS.filter(x=>x.cat===it.cat));
+  take(ITEMS);
+  return out;
+}
+const QASK={m:'いみは どれ？', w:'ことばは どれ？', y:'よみ<ruby>方<rt>かた</rt></ruby>は どれ？'};
+function optHTML(x){ return qt==='m' ? esc(mean(x)) : qt==='y' ? esc(x.y) : ruby(disp(x)); }
+function render(){
+  cur=queue[pos]; answered=false;
+  qt=pickType(cur); opts=[cur].concat(pickOthers(cur,qt));
+  paintProgress();
+  $("qCat").innerHTML=catR(cur.cat);
+  $("gPanel").innerHTML=`<div class="gwait">${ic('book')}<span>こたえると ここに<br>ことばの <ruby>説明<rt>せつめい</rt></ruby>が でます</span></div>`;
+  $("nextPC").classList.add("hidden");
+  $("qText").innerHTML='<span class="qask">'+QASK[qt]+'</span>'
+    +(qt==='w' ? '<span class="qmean">'+esc(mean(cur))+'</span>'
+               : '<span class="qword">'+(qt==='y'?esc(cur.p):ruby(disp(cur)))+'</span>');
+  order=shuffle(opts.map((_,i)=>i));
+  $("choices").innerHTML=order.map((oi,k)=>`<button class="choice${qt==='m'?' en':''}" data-oi="${oi}"><span class="n">${k+1}</span><span>${optHTML(opts[oi])}</span></button>`).join("");
+  $("choices").querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.oi));
+  $("fb").className="fb hidden";
+  $("waitHint").classList.remove("hidden"); $("nextBtn").classList.add("hidden");
+  $("main").scrollTop=0;
+}
+function verdictHTML(ok,ansNo){ return `<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>`; }
+function wordLine(it){ return `<span class="fbw">${ruby(disp(it))}</span>　${esc(mean(it))}`; }
+function answer(oi){
+  if(answered) return; answered=true;
+  const ok=oi===0;
+  const r=rec[cur.id]||{n:0,ok:0,last:0}; r.n++; if(ok) r.ok++; r.last=ok?1:0; rec[cur.id]=r; save();
+  if(ok) score++; else wrongIds.push(cur.id);
+  if(ok) sndOK(); else sndNG();
+  try{ if(window.__drillLog) window.__drillLog(ok); }catch(e){}
+  $("choices").querySelectorAll(".choice").forEach(b=>{
+    b.disabled=true; const v=+b.dataset.oi;
+    if(v===0){ b.classList.add("ok"); b.querySelector(".n").textContent="○"; }
+    else if(v===oi){ b.classList.add("ng"); b.querySelector(".n").textContent="×"; }
+    else b.classList.add("dim");
+  });
+  if(qt==='y'){ const w=$("qText").querySelector(".qword"); if(w) w.innerHTML=ruby(cur.w); }   // よみ方の問題は、答えた後にルビを出す
+  const fb=$("fb");
+  fb.className="fb "+(ok?"ok":"ng");
+  const ansNo=order.indexOf(0)+1;
+  fb.innerHTML=verdictHTML(ok,ansNo)+wordLine(cur)
+    +`<div class="fbfoot"><div class="fbg">${catR(cur.cat)}</div>`
+    +`<button class="morebtn" id="moreBtn">${ic('book')}くわしく</button></div>`;
+  $("moreBtn").onclick=()=>openSheet(cur);
+  $("nextBtn").innerHTML=(pos+1<queue.length?"つぎへ":"けっかを <ruby>見<rt>み</rt></ruby>る")+ic('fwd');
+  $("waitHint").classList.add("hidden"); $("nextBtn").classList.remove("hidden");
+  $("nextPC").innerHTML=$("nextBtn").innerHTML; $("nextPC").classList.remove("hidden");
+  lastOk=ok; lastAnsNo=ansNo; renderPanel(cur);
+}
+$("nextBtn").onclick=()=>{ pos++; if(pos<queue.length) render(); else finish(); };
+$("nextPC").onclick=()=>$("nextBtn").click();
+function paintProgress(){
+  if(!cur) return;
+  $("qCount").textContent=`${pos+1} / ${queue.length}`;
+  $("qBar").style.width=(pos/queue.length*100)+"%";
+  if($("qCatH")) $("qCatH").innerHTML=catR(cur.cat);
+}
+
+/* ---------- ことばの説明（スマホ＝下から出るシート／PC＝右のパネル。中身は同じ） ---------- */
+function sameKanji(it){ return it.ks.length ? ITEMS.filter(x=>x!==it && x.ks.some(k=>it.ks.includes(k))).slice(0,14) : []; }
+function detailRows(it){   // よみ・しゅるい・漢字（どこで習うか）・記録
+  let h=`<dt>よみ<ruby>方<rt>かた</rt></ruby></dt><dd>${esc(it.y)}</dd>`
+    +`<dt>しゅるい</dt><dd>${catR(it.cat)}</dd>`;
+  if(it.ks.length){
+    h+=`<dt><ruby>漢字<rt>かんじ</rt></ruby></dt><dd><div>${ruby(it.w)}</div>`
+      +it.ks.filter(k=>k!=='々').map(k=>`<span class="kjc"><b>${esc(k)}</b><span>${whereKanji(k)}</span></span>`).join("")+`</dd>`;
+  }
+  return h+`<dt><ruby>記録<rt>きろく</rt></ruby></dt><dd>${recPill(it.id)}</dd>`;
+}
+function simsHTML(it){
+  const sims=sameKanji(it); if(!sims.length) return '';
+  return `<div class="shsep"></div><div class="shsim">おなじ <ruby>漢字<rt>かんじ</rt></ruby>の ことば</div>`
+    +`<div class="sims">${sims.map(x=>`<button class="sim" data-id="${esc(x.id)}">${ruby(x.w)}</button>`).join("")}</div>`;
+}
+let lastOk=false, lastAnsNo=1;
+function renderPanel(it){
+  $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}">${verdictHTML(lastOk,lastAnsNo)}${wordLine(cur)}</div>
+    <span class="gname">${ruby(disp(it))}</span><div class="gmean2">${esc(mean(it))}</div>
+    <dl class="gtbl">${detailRows(it)}</dl>${simsHTML(it)}`;
+  $("gPanel").querySelectorAll(".sim").forEach(b=>b.onclick=()=>renderPanel(BYID[b.dataset.id]));
+}
+function quit(){ if(pos>0||answered) finish(true); else { show("setup"); updateStats(); } }
+
+function finish(early){
+  const done = answered ? pos+1 : pos;
+  const total = early ? done : queue.length;
+  show("result");
+  $("rOk").textContent=score; $("rTot").textContent=" / "+total;
+  $("rBar").style.width=(total?score/total*100:0)+"%";
+  $("rOk2").textContent="せいかい "+score;
+  $("rRate").innerHTML= total? `<ruby>正答率<rt>せいとうりつ</rt></ruby> ${Math.round(score/total*100)}%` : "";
+  $("rNg").textContent="まちがい "+(total-score);
+  const w=wrongIds.map(id=>BYID[id]);
+  $("rWrong").innerHTML = w.length
+    ? `<div class="sech">まちがえた ことば</div><div class="list">${w.map(it=>`<div class="wrow"><b>${ruby(disp(it))}</b><span>${esc(mean(it))}</span></div>`).join("")}</div>`
+    : `<div class="allok"><ruby>全問<rt>ぜんもん</rt></ruby><ruby>正解<rt>せいかい</rt></ruby>です！</div>`;
+  $("retryWrongBtn").disabled=!w.length;
+}
+$("retryWrongBtn").onclick=()=>start(wrongIds.map(id=>BYID[id]));
+$("backBtn").onclick=()=>{ show("setup"); updateStats(); };
+
+let sheetOpen=false;
+function recPill(id){
+  const r=rec[id];
+  return r?`<span class="pill ${r.last?"good":"bad"}">${r.last?"○":"×"} ${r.ok}/${r.n}</span>`:`<span class="pill none">まだ</span>`;
+}
+function renderSheet(it){
+  $("sheet").innerHTML=`<div class="grab"></div>
+    <div class="shtop"><span class="tag">${catR(it.cat)}</span><button class="ibtn shclose" id="shClose" aria-label="とじる">${ic('x',2.2)}</button></div>
+    <div class="shname" id="shName">${ruby(disp(it))}</div><div class="shmean">${esc(mean(it))}</div>
+    <dl class="shtbl">${detailRows(it)}</dl>${simsHTML(it)}
+    <button class="shback" id="shBack">もどる</button>`;
+  $("shClose").onclick=closeSheet; $("shBack").onclick=closeSheet;
+  $("sheet").querySelectorAll(".sim").forEach(b=>b.onclick=()=>{ renderSheet(BYID[b.dataset.id]); $("sheet").scrollTop=0; $("shClose").focus(); });
+}
+function openSheet(it){ renderSheet(it); $("shov").classList.remove("hidden"); sheetOpen=true; $("sheet").scrollTop=0; $("shClose").focus(); }
+function closeSheet(){ $("shov").classList.add("hidden"); sheetOpen=false; const m=$("moreBtn"); if(m&&view==='quiz') m.focus(); }
+$("shov").onclick=e=>{ if(e.target===$("shov")) closeSheet(); };
+
+/* ---------- キーボード ---------- */
+document.addEventListener("keydown",e=>{
+  if(sheetOpen){ if(e.key==="Escape") closeSheet(); return; }
+  if(view!=="quiz") return;
+  if(!answered && /^[1-4]$/.test(e.key)){ const b=$("choices").children[+e.key-1]; if(b) b.click(); }
+  else if(answered && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); $("nextBtn").click(); }
+});
+
+/* ---------- リセット ---------- */
+$("resetBtn").onclick=()=>$("resetConfirm").classList.remove("hidden");
+$("resetNo").onclick=()=>$("resetConfirm").classList.add("hidden");
+$("resetYes").onclick=()=>{ rec={}; save(); $("resetConfirm").classList.add("hidden"); updateStats(); };
+
+/* ---------- ことばリスト ---------- */
+function renderList(){
+  const kw=$("search").value.trim().toLowerCase();
+  const hit=ITEMS.filter(it=>!kw||[it.p,it.y,mean(it),catName(it.cat)].join(" ").toLowerCase().includes(kw));   // 漢字でも よみでも 意味でも さがせる
+  $("listInfo").innerHTML=`${hit.length} <ruby>語<rt>ご</rt></ruby>`+(kw?`（ぜんぶで ${ITEMS.length}）`:"");
+  $("listBody").innerHTML=CAT_ORDER.map(c=>{
+    const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
+    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}これを<ruby>練習<rt>れんしゅう</rt></ruby></button></div>`+
+      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${ruby(disp(it))}</span>${recPill(it.id)}</div>
+          <div class="gmean">${esc(mean(it))}</div></div>`).join("");
+  }).join("");
+  $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });
+  $("listBody").querySelectorAll(".gcard").forEach(b=>b.onclick=()=>{ if(!isPC()) openSheet(BYID[b.dataset.id]); });
+  $("toc").innerHTML=CAT_ORDER.map(c=>{ const n=hit.filter(it=>it.cat===c).length;
+    return `<button data-go="${esc(c)}"${n?"":" disabled"}><span>${catR(c)}</span><span class="n">${n}</span></button>`; }).join("");
+  $("toc").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const h=$("listBody").querySelector(`.cath[data-h="${CSS.escape(b.dataset.go)}"]`);
+    if(h){ $("main").scrollTop=h.offsetTop-$("main").offsetTop-24; markToc(); }
+  });
+  markToc();
+}
+function markToc(){
+  if(view!=="list"||!isPC()) return;
+  const top=$("main").getBoundingClientRect().top+80;
+  let curH=null; $("listBody").querySelectorAll(".cath").forEach(h=>{ if(h.getBoundingClientRect().top<=top) curH=h.dataset.h; });
+  if(!curH){ const f=$("listBody").querySelector(".cath"); curH=f&&f.dataset.h; }
+  $("toc").querySelectorAll("button").forEach(b=>b.classList.toggle("cur",b.dataset.go===curH));
+}
+$("main").addEventListener("scroll",markToc,{passive:true});
+$("search").oninput=renderList;
+function setTab(t){ if(t==="list"){ show("list"); renderList(); } else { show("setup"); updateStats(); } }
+$("tab-practice").onclick=()=>setTab("practice");
+$("tab-list").onclick=()=>setTab("list");
+
+/* ---------- 文字の大きさ（文法ドリルと同じ） ---------- */
+const STEPS=[1,1.15,1.3]; let uz=1;
+try{ uz=parseFloat(localStorage.getItem('drill_zoom'))||1; }catch(e){}
+function fitF(){ const w=window.innerWidth,h=window.innerHeight; if(w<=640) return 1; return Math.max(0.45,Math.min(w/1920,h/1080,2)); }
+function applyZoom(){
+  uz=Math.min(1.6,Math.max(0.7,Math.round(uz*100)/100));
+  const z=fitF()*uz; document.body.style.zoom=z; document.body.style.height=(100/z)+'dvh';
+  const b=$("aaBtn"); if(b) b.classList.toggle("on",uz>1.01);
+  if($("aMinus")) $("aMinus").disabled=uz<=0.7; if($("aPlus")) $("aPlus").disabled=uz>=1.6;
+}
+function saveZoom(){ uz=Math.min(1.6,Math.max(0.7,Math.round(uz*100)/100)); try{localStorage.setItem('drill_zoom',uz);}catch(e){} }
+function cycleZoom(){ let i=0; STEPS.forEach((s,k)=>{ if(Math.abs(s-uz)<0.05) i=k; }); uz=STEPS[(i+1)%STEPS.length]; try{localStorage.setItem('drill_zoom',uz);}catch(e){} applyZoom(); }
+window.addEventListener('resize',applyZoom);
+MQ.addEventListener('change',()=>{
+  setHeader(view);
+  if(view==='quiz'){ paintProgress(); if(answered) renderPanel(cur); }
+  if(isPC() && sheetOpen) closeSheet();
+  if(view==='list') renderList();
+  applyZoom();
+});
+
+buildKnown();
+applyRuby();
+applyZoom();
+show("setup");
+updateStats();
+</script>
+<script src="/scg-nihongo/assets/jlpt-study.js"></script>
+<script>
+// Service Worker 登録（オフライン対応・通信節約）
+if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(){});});}
+// 利用記録（端末ローカルのみ・表示なし・ログイン不要。将来の継続表示用に貯める）
+(function(){try{
+  var id=(location.pathname.split('/').pop()||'index').replace('.html','')||'index';
+  var k='drill_stats',s=JSON.parse(localStorage.getItem(k)||'{}');
+  var d=s[id]||(s[id]={opens:0,correct:0,total:0,last:null});
+  d.opens++; d.last=new Date().toISOString();
+  localStorage.setItem(k,JSON.stringify(s));
+  window.__drillLog=function(ok){try{var s2=JSON.parse(localStorage.getItem(k)||'{}');var d2=s2[id]||(s2[id]={opens:0,correct:0,total:0,last:null});d2.total++;if(ok)d2.correct++;d2.last=new Date().toISOString();localStorage.setItem(k,JSON.stringify(s2));}catch(e){}};
+}catch(e){}})();
+</script>
+</body>
+</html>
