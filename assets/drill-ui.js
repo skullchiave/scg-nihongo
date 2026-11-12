@@ -124,6 +124,8 @@ var relayouts=[];
 function relayout(){ requestAnimationFrame(function(){ relayouts.forEach(function(f){ f(); }); }); }
 window.addEventListener('resize',relayout);
 if(D.fonts&&D.fonts.ready) D.fonts.ready.then(relayout);
+// フォントは使う字が出た時に追加で読まれる（サブセット）＝読み終わるたびにやり直す（重い端末で縮小を取りこぼさない）
+if(D.fonts&&D.fonts.addEventListener) D.fonts.addEventListener('loadingdone',relayout);
 window.addEventListener('resize',window.applyZoom);
 
 // ---------- 文言（スマホ向け：クリック→タップ、キーボード表記は出さない） ----------
@@ -220,12 +222,19 @@ function toLines(html){
   // 「（N グループ）と」で並べた組は行を分ける。文の終わり「。」と「／」でも分ける。sep＝前の行と「。」で区切った所
   var out=[];
   // 「／」はかっこの外のものだけ区切りにする（（読まれます／読めます）は1つのまま）
-  var d=0, buf='';
-  for(var i=0;i<html.length;i++){
-    var c=html[i];
-    if(c==='（'||c==='(') d++; else if((c==='）'||c===')')&&d>0) d--;
-    buf+=(c==='／'&&d===0)?'\u0001':c;
-  }
+  // タグの中（<span class="v">よかった ／ よくなかった</span> 等）の「／」も区切らない＝タグを途中で切って壊さない
+  var d=0, t=0, buf='';
+  html.split(/(<[^>]+>)/).forEach(function(seg){
+    if(seg.charAt(0)==='<'){
+      if(/^<\//.test(seg)) t=Math.max(0,t-1); else if(!/^<(br|img|wbr)\b|\/>$/i.test(seg)) t++;
+      buf+=seg; return;
+    }
+    for(var i=0;i<seg.length;i++){
+      var c=seg[i];
+      if(c==='（'||c==='(') d++; else if((c==='）'||c===')')&&d>0) d--;
+      buf+=(c==='／'&&d===0&&t===0)?'\u0001':c;
+    }
+  });
   buf.replace(/(グループ）)\s*と\s*/g,'$1\u0001').replace(/。\s*/g,'。\u0002').replace(/\s*\u0001\s*/g,'\u0001')
     .split(/([\u0001\u0002])/).forEach(function(x,i,arr){
       if(x==='\u0001'||x==='\u0002') return;
@@ -437,6 +446,57 @@ qa('.hinttoggle').forEach(function(b){
   function strip(){ var t=b.textContent, u=t.replace(/^[\s️\u{1F441}\u{1F648}]+/u,''); if(t!==u) b.textContent=u; }
   new MutationObserver(strip).observe(b,{childList:true,characterData:true,subtree:true}); strip();
 });
+
+// ---------- 語の途中で折り返さない（2026-11-12） ----------
+// 日本語はどの字の間でも折り返せるので、「い<ruby>形容詞</ruby>」が「い｜形容詞」と割れる。
+// 空白・「、」「。」「・」の後と「（」「「」の前を語の切れ目とみなし、1語（ルビや色つきの語を含む）を <dui-w>（nowrap）で包む。
+// 長すぎる語（10字超）は包まない＝はみ出さない。
+var INL={RUBY:1,SPAN:1,B:1,I:1,S:1,EM:1,STRONG:1};
+function wordWrap(el){
+  if(!el||el.nodeType!==1||el.tagName==='DUI-W') return;
+  if(el.closest('.fcard,.rcard,#sortq,#sortfb,.choices,button,script,style,svg,rt,table')) return;   // 表のマスは縮めたいので包まない
+  // flex/grid の箱（.dui-nl 等）は子が1つずつ並ぶ箱なので、まとめずに中へだけ入る（まとめると縮まない塊になってはみ出す）
+  var disp=getComputedStyle(el).display;
+  if(/flex|grid/.test(disp)){ Array.prototype.slice.call(el.children).forEach(wordWrap); return; }
+  var kids=Array.prototype.slice.call(el.childNodes), pieces=[];
+  // 子を「かけら」に分ける：テキストは切れ目で分割、インラインの要素はそのまま1かけら、それ以外は区切り
+  kids.forEach(function(n){
+    if(n.nodeType===3){
+      n.nodeValue.replace(/[^\s、。・（「『]+[、。・]?|[（「『][^\s、。・（「『]*[、。・]?|\s+|[、。・]/g,function(m){ pieces.push({t:m, node:null, src:n}); return m; });
+    } else if(n.nodeType===1&&INL[n.tagName]&&!/\s/.test(n.textContent.replace(/\s+$/,''))&&!n.querySelector('br,div')){
+      pieces.push({node:n});
+    } else {
+      pieces.push({brk:true, node:n});
+    }
+  });
+  // かけらを語にまとめ直して、元の子と入れ替える
+  var frag=D.createDocumentFragment(), word=[], len=0;
+  function flush(){
+    if(!word.length) return;
+    if(len<=10&&(word.length>1||len>1)){
+      if(frag.lastChild) frag.appendChild(D.createElement('wbr'));   // 語と語の間は必ず折り返せるように
+      var sp=D.createElement('dui-w');   // 専用のタグ（h2 span 等の既存の指定に当たらないように）
+      word.forEach(function(w){ sp.appendChild(w.node||D.createTextNode(w.t)); }); frag.appendChild(sp);
+    } else word.forEach(function(w){ frag.appendChild(w.node||D.createTextNode(w.t)); });
+    word=[]; len=0;
+  }
+  pieces.forEach(function(p){
+    if(p.brk){ flush(); frag.appendChild(p.node); wordWrap(p.node); return; }
+    if(p.t!=null){
+      if(/^\s+$/.test(p.t)){ flush(); frag.appendChild(D.createTextNode(p.t)); return; }
+      if(/^[（「『]/.test(p.t)) flush();
+      word.push(p); len+=p.t.length;
+      if(/[、。・]$/.test(p.t)) flush();
+      return;
+    }
+    word.push(p); len+=plain(p.node.innerHTML).length;
+  });
+  flush();
+  while(el.firstChild) el.removeChild(el.firstChild);
+  el.appendChild(frag);
+}
+qa('.screen h2, .screen .hint, #rule').forEach(wordWrap);
+qa('.dui-ttl-m').forEach(wordWrap);
 
 // ---------- 初期表示 ----------
 window.applyZoom();
