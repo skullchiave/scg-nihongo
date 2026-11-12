@@ -29,6 +29,9 @@
 .qt button{min-height:48px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;font-weight:700;color:var(--sub);line-height:1.4;padding:4px 2px;}
 .qt button[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
 .qt button:disabled{opacity:.45;cursor:default;}
+.lgnote{display:none;}
+.lgnote.on{display:block;}
+.choice.en,.qmean,.gmean,.gmean2,.shmean,.wrow span{overflow-wrap:anywhere;}
 .qask{display:block;font-size:13px;font-weight:700;color:var(--sub);line-height:1.6;text-align:left;}
 .qcard.word{text-align:center;}
 .qword{display:block;font-size:36px;font-weight:700;line-height:2;}
@@ -43,6 +46,7 @@
   #setup:not(.hidden){grid-template-rows:repeat(10,auto) 1fr;}
   .opts{border-radius:28px;margin-top:24px;padding:20px 32px;display:grid;grid-template-columns:1fr 1fr;column-gap:32px;align-items:start;}
   .opts .og + .og{margin-top:0;}
+  .opts{row-gap:20px;}
   .opts .ol{font-size:22px;margin-bottom:10px;}
   .selwrap2 select{height:72px;border-radius:16px;font-size:24px;padding:0 60px 0 20px;}
   .selwrap2 .ic{right:20px;top:22px;width:28px;height:28px;}
@@ -86,6 +90,11 @@
           <button data-qt="mix">まぜる</button><button data-qt="m">いみ</button><button data-qt="w">ことば</button><button data-qt="y" id="qtY">よみ<ruby>方<rt>かた</rt></ruby></button>
         </div>
         <div class="kjinfo" id="qtInfo"></div>
+      </div>
+      <div class="og" id="lgBox">
+        <label class="ol" for="lgSel">いみの ことば（Language）</label>
+        <div class="selwrap2"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="kjinfo lgnote" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
       </div>
     </div>
     <label class="lbl" for="catSel">ことばの しゅるい</label>
@@ -150,8 +159,9 @@
 /* ============================================================
    ★このファイルは手で直さない。組み立て道具 scripts/jlpt_goi/build_goi.py が
      語のデータ（scripts/jlpt_goi/__lv___words.txt）と型（goi.tmpl.html）から作る。直すのは 語のデータ（タブ区切りの .txt）か型。
-   データ形式: [しゅるい, 語, 意味, にている語の印]
-     語は 漢字1字ずつのルビ表記 {銀|ぎん}{行|こう}。意味は {en:"…", ne:"…"} のように言語ごと（今は英語だけ）。
+   データ形式: [しゅるい, 語, 意味, にている語の印, よみ方に出さない語は1, よみ方のまちがいの選択肢3つ]
+     語は 漢字1字ずつのルビ表記 {銀|ぎん}{行|こう}。意味は {en:"…", ne:"…"} のように言語ごと（英語のほかは下書き＝LANGS の3つ目が 1）。
+     よみ方のまちがいの選択肢は 語ごとに書いたもの（__lv___yomi.txt）。無い語は よみ方の問題に出さない。
      「にている語の印」が同じ語どうしは、選択肢にいっしょに出さない（答えが2つに見えるのを防ぐ）。
    ★記録(localStorage __lv__goi_v1)のキーは「語／よみ」（例 合う/あう）。語の表記やよみを変えるとその語の記録は0にもどる。
    ★漢字で出すか ひらがなで出すかは、データではなく画面で決める：えらんだ「習った漢字」（assets/jlpt-kanji.js）に
@@ -160,13 +170,15 @@
    ============================================================ */
 const DATA = /*__DATA__*/;
 const CATN = {V:"{動詞|どうし}", S:"「する」が つく ことば", N:"{名詞|めいし}", K:"カタカナの ことば", I:"い{形容詞|けいようし}", A:"な{形容詞|けいようし}", F:"{副詞|ふくし}・{接続詞|せつぞくし}", X:"そのほか"};
-const LANGS = [["en","English"]];   // 訳を足したらここに言語を足す（2つ以上になると えらぶ所が出る）
+// 訳を足したらここに言語を足す（2つ以上になると えらぶ所が出る）。3つ目が 1 の言語は「下書き」と出す（確かめた言語は 0 にする）
+const LANGS = [["en","English",0],["ne","नेपाली",1],["bn","বাংলা",1],["si","සිංහල",1],["my","မြန်မာ",1],["zh","中文",1],["vi","Tiếng Việt",1]]
+  .filter(l=>l[0]==='en'||DATA.some(d=>typeof d[2]!=='string'&&d[2][l[0]]));
 
 const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
 const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1');
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
 const ITEMS = DATA.map(d=>{ const p=plain(d[1]), y=kana(d[1]);
-  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
 const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 
 /* ---------- ルビ ---------- */
@@ -194,8 +206,8 @@ let rubyOn=true, soundOn=true, qtype='mix', lang='en';
 try{ rubyOn = localStorage.getItem(KEY+"_ruby")!=="0"; soundOn = localStorage.getItem(KEY+"_sound")!=="0";
      qtype = localStorage.getItem(KEY+"_qtype")||'mix'; lang = localStorage.getItem('jlpt_lang')||'en'; }catch(e){}
 if(!LANGS.some(l=>l[0]===lang)) lang='en';
-// よみ方の問題は 今は出さない（まちがいの選択肢を語ごとに作ってから戻す。戻す時は true にする）
-const YOMI_ON=false;
+// よみ方の問題：まちがいの選択肢を語ごとに書いた語（yd がある語）だけ出す。false にすると よみ方の問題をぜんぶ外せる
+const YOMI_ON=true;
 if(!['mix','m','w'].concat(YOMI_ON?['y']:[]).includes(qtype)) qtype='mix';
 const mean = it => it.m[lang]||it.m.en;
 
@@ -214,7 +226,7 @@ function buildKnown(){
   for(const s of KJ.steps){ s.k.split('').forEach(k=>KNOWN.add(k)); if(s.id===scope) break; }
 }
 const inKanji = it => it.ks.length>0 && scope!=='none' && (scope==='all' || it.ks.every(k=>KNOWN.has(k)));
-const canY = it => YOMI_ON && inKanji(it) && !it.ny;          // よみ方の問題に出せる語（読みが2つ以上ある語は、文脈が無いと決まらないので出さない）
+const canY = it => YOMI_ON && inKanji(it) && !it.ny && !!it.yd;   // よみ方の問題に出せる語（読みが2つ以上ある語は、文脈が無いと決まらないので出さない）
 const disp = it => inKanji(it) ? it.w : it.y;          // 画面に出す形（ルビ表記のまま返す）
 const BOOKR = {"初級":"{初級|しょきゅう}","中級":"{中級|ちゅうきゅう}"};
 const stepLabel = s => (BOOKR[s.b]||s.b)+' '+s.l;
@@ -308,6 +320,15 @@ const kjSel=$("kjSel");
   kjSel.innerHTML=h; kjSel.value=scope;
 })();
 kjSel.onchange=()=>{ scope=kjSel.value; try{localStorage.setItem(SCOPE_KEY,scope);}catch(e){} buildKnown(); updateStats(); };
+const lgSel=$("lgSel");
+if(LANGS.length<2) $("lgBox").remove();
+else{
+  lgSel.innerHTML=LANGS.map(l=>'<option value="'+l[0]+'">'+esc(l[1])+(l[2]?'（draft）':'')+'</option>').join('');
+  lgSel.value=lang;
+  const paintLg=()=>$("lgInfo").classList.toggle("on",!!(LANGS.find(l=>l[0]===lang)||[])[2]);
+  lgSel.onchange=()=>{ lang=lgSel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paintLg(); updateStats(); };
+  paintLg();
+}
 if(!YOMI_ON) $("qtY").remove();
 document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
 const QT_INFO={mix:(YOMI_ON?'いみ・ことば・よみ<ruby>方<rt>かた</rt></ruby>を':'いみ・ことばを')+' まぜて <ruby>出<rt>だ</rt></ruby>します',
@@ -399,10 +420,7 @@ function pickOthers(it,t){
   used.add(keyOf(it));
   const okx = x => x!==it && x.y!==it.y && x.p!==it.p && !(t!=='y' && it.tag && x.tag===it.tag) && (t!=='y' || inKanji(x));
   const take = xs => { for(const x of shuffle(xs)){ if(out.length>=3) break; const k=keyOf(x); if(used.has(k)||!okx(x)) continue; used.add(k); out.push(x); } };
-  if(t==='y'){   // よみ方：同じ漢字を使う語 → よみの長さが近い語 の順
-    take(ITEMS.filter(x=>x.ks.some(k=>it.ks.includes(k))).slice(0,40));
-    take(ITEMS.filter(x=>x.cat===it.cat && Math.abs(x.y.length-it.y.length)<=1));
-  }
+  if(t==='y') return it.yd.map(y=>({y:y}));   // よみ方：語ごとに書いた まちがいの読み（送りがなは正解と同じ・似ているが ちがう読み）
   take(ITEMS.filter(x=>x.cat===it.cat));
   take(ITEMS);
   return out;

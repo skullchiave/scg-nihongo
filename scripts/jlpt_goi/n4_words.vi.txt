@@ -1,0 +1,622 @@
+1	vừa, khớp
+2	đi lên, lên cao
+3	trống, rảnh
+4	cho (người khác)
+5	tụ họp (người)
+6	gom lại, sưu tầm (đồ vật)
+7	xin lỗi
+8	sống
+9	làm (khiêm nhường)
+10	nhận; ăn, uống (khiêm nhường)
+11	đi, đến, có mặt (kính ngữ)
+12	trồng (cây)
+13	đến thăm; hỏi (khiêm nhường)
+14	chuyển động (tự nó)
+15	đánh, gõ
+16	chép lại; chụp ảnh
+17	chuyển sang chỗ khác
+18	chọn
+19	đi, đến, có mặt (rất lịch sự)
+20	gửi
+21	trễ, muộn
+22	đánh thức (ai đó)
+23	tổ chức, tiến hành (sự kiện)
+24	tức giận
+25	rơi (tự rơi)
+26	nói (kính ngữ)
+27	làm rơi (vật)
+28	kinh ngạc, ngạc nhiên
+29	nhớ ra, nhớ lại
+30	nghĩ, cảm thấy
+31	đi xuống; xuống (xe buýt, tàu)
+32	bẻ gãy; gấp
+33	ở, có mặt (khiêm nhường)
+34	bị gãy (tự gãy)
+35	thay đổi (làm cho khác đi)
+36	trang trí
+37	dọn dẹp, cất gọn
+38	thắng
+39	cắn, nhai
+40	đi đi về về đều đặn (đi học, đi làm)
+41	khô
+42	thay đổi (tự đổi)
+43	suy nghĩ, cân nhắc
+44	cố gắng hết sức
+45	nghe thấy, nghe được
+46	được quyết định
+47	quyết định
+48	cho (tôi) (kính ngữ)
+49	so sánh
+50	trời tối (mặt trời lặn)
+50+	cho (tôi)
+51	đông đúc
+52	làm hỏng, đập vỡ (vật)
+53	bị hỏng (máy móc...)
+54	xem, nhìn (kính ngữ)
+55	tìm kiếm
+56	giảm xuống, hạ (giá, nhiệt độ)
+57	hạ xuống, làm giảm (vật)
+58	biếu, tặng (khiêm nhường)
+59	giương (ô)
+60	rủ, mời rủ
+61	sờ, chạm
+62	mắng
+63	thông báo, cho biết
+64	kiểm tra, tra cứu
+65	đi qua (thời gian, nơi); quá mức
+66	vắng, bớt đông
+67	tiến lên
+68	vứt bỏ
+69	trượt
+70	nuôi dưỡng, nuôi lớn
+71	ngã, đổ, gục
+72	cộng thêm, thêm vào
+73	hỏi (câu hỏi)
+74	đến thăm (người, nơi chốn)
+75	xây dựng
+76	đủ
+77	bắt, tóm
+78	truyền đạt, nhắn lại
+79	gói, bọc
+80	tiếp tục (tự diễn ra)
+81	tiếp tục (làm gì đó), cứ làm
+82	câu (cá)
+83	dẫn (người) đi cùng
+84	giúp đỡ
+85	đi qua
+86	đóng
+87	giao, chuyển đến
+88	ở lại qua đêm, trọ
+89	dừng (vật), đỗ xe
+90	đổi, thay thế
+91	sửa chữa; chỉnh sửa
+92	khỏi bệnh
+93	được sửa xong
+94	khóc
+95	mất, hết
+96	qua đời
+97	ném
+98	quen
+99	hợp, đẹp (khi mặc, đeo)
+100	chạy trốn
+101	giống
+102	ăn trộm
+103	còn lại
+104	đổi tàu xe
+105	mang, vận chuyển
+106	bắt đầu (làm gì)
+107	trả tiền
+108	lạnh đi
+109	tỏa sáng, phát sáng
+110	chuyển nhà
+111	mở; tổ chức (tiệc, cuộc họp)
+112	nhặt
+113	tăng lên
+114	béo lên, tăng cân
+115	giẫm lên
+116	bắt đầu mưa
+117	khen
+118	đi, đến (khiêm nhường)
+119	thua
+120	nhầm, làm sai
+121	kịp giờ
+122	quay, xoay vòng
+122+	xoay (vật)
+123	nhìn thấy được
+124	được tìm thấy
+125	tìm thấy
+126	hướng tới, đi về phía
+127	đón, chào đón
+128	ăn, uống (kính ngữ)
+129	thưa, nói (với người trên) (khiêm nhường)
+130	nói; tên là (khiêm nhường)
+131	quay lại
+132	nhận
+133	nướng, đốt (vật)
+134	có ích
+135	bị nướng chín, bị cháy
+136	gầy đi
+137	tạnh (mưa, gió)
+138	bỏ, từ bỏ
+139	lắc, rung lắc
+140	bị bẩn
+141	ghé qua
+142	vui mừng
+143	đun sôi (nước)
+144	sôi (nước sôi)
+145	cười
+146	vỡ, nứt (ly, đĩa)
+147	chào hỏi
+148	việc làm thêm
+149	hướng dẫn, dẫn đường
+150	ý kiến
+151	lái xe
+152	vận động, tập thể dục
+153	kinh doanh (cửa hàng mở cửa)
+154	ngại, giữ ý
+155	chúc mừng; quà mừng
+156	cuộc họp, hội nghị
+157	hội thoại
+158	quan hệ, liên quan
+159	tàu tốc hành
+160	giáo dục
+161	kế hoạch, dự án
+162	kinh nghiệm
+163	vết thương, bị thương
+164	cãi nhau, đánh nhau
+165	tham quan học tập
+166	nghiên cứu
+167	ngắm cảnh, tham quan
+168	nguyên nhân
+169	trò chơi
+170	bài giảng
+171	công trình xây dựng, thi công
+172	hỏng hóc (máy móc)
+173	bữa ăn ngon, chiêu đãi
+174	trận đấu (thể thao)
+175	kỳ thi, bài kiểm tra
+176	sửa soạn
+177	chắc chắn, đàng hoàng
+178	thất bại, sai sót
+179	có mặt, tham dự
+180	xuất phát
+181	giới thiệu
+182	mời (dự tiệc, sự kiện)
+183	bữa ăn
+184	lo lắng
+185	chuẩn bị
+186	bơi lội
+187	cuộc sống, sinh hoạt
+188	sản xuất
+189	giải thích
+190	chăm sóc, giúp đỡ
+191	bàn bạc, xin tư vấn
+192	tốt nghiệp
+193	xuất viện
+194	sự ra đời, sinh ra
+195	sưởi ấm
+196	kiểm tra
+197	đi muộn
+198	chú ý, cẩn thận; cảnh báo
+199	hủy, dừng lại
+200	tiêm
+201	nhập viện
+202	nhập học
+203	ngủ dậy muộn
+204	xem (khiêm nhường)
+205	phát âm
+206	ngắm hoa anh đào
+207	giật mình
+208	fax
+209	ôn bài (đã học)
+210	hồi âm, trả lời
+211	dịch (văn bản)
+212	buôn bán quốc tế
+213	lời hứa, cuộc hẹn
+214	xuất khẩu
+215	nhập khẩu
+216	chuẩn bị sẵn
+217	chuẩn bị bài trước
+218	dự định, lịch trình
+219	đặt trước
+220	sử dụng
+221	vắng nhà
+222	máy lạnh, làm mát
+223	liên lạc
+224	nông
+225	đẹp
+226	ngon; giỏi
+227	ồn ào
+228	vui, mừng
+229	nhiều
+230	lạ, kỳ; buồn cười
+231	ít nói, ngoan, trầm lặng
+232	cứng, chắc
+233	buồn
+234	nghiêm khắc
+235	nhỏ, tỉ mỉ, chi tiết
+236	đáng sợ
+237	cô đơn, quạnh quẽ
+238	tuyệt vời, ghê gớm
+239	tuyệt diệu, xuất sắc
+240	đúng
+241	đắng
+242	buồn ngủ
+243	xấu hổ, ngượng
+244	tệ, tàn nhẫn
+245	sâu
+246	hiếm, lạ
+247	hiền, tốt bụng, dịu dàng
+248	mềm
+249	được, tốt (lịch sự)
+250	yên tâm
+251	an toàn
+252	hết sức, chăm chỉ
+253	đầy; nhiều
+254	đơn giản, dễ
+255	nguy hiểm
+256	gấp; đột ngột
+257	khỏe, năng động
+258	đáng tiếc
+259	thất lễ, bất lịch sự
+260	tử tế, nhiệt tình giúp đỡ
+261	cản trở, vướng; sự quấy rầy
+262	đủ
+263	tự do
+264	đẹp, dễ thương, hay
+265	thường thì, phần lớn
+266	chắc chắn; nếu tôi nhớ không nhầm
+267	điều mong chờ; niềm vui
+268	quan trọng
+269	không được, cấm
+270	lịch sự; cẩn thận
+271	thích hợp, phù hợp
+272	đặc biệt
+273	nhiệt tình, hăng hái
+274	ngược lại; phản đối
+275	lâu rồi mới
+276	cần thiết
+277	phức tạp
+278	bất tiện
+279	lạ, kỳ quặc
+280	nghiêm túc, chăm chỉ
+281	không thể; quá sức, vô lý
+282	giữa; khoảng (thời gian)
+283	em bé
+284	trẻ sơ sinh
+285	vị
+286	ngày mai
+287	chơi, vui chơi
+288	... trở xuống, dưới
+289	ngoài ..., trừ ...
+290	y học
+291	đá
+292	một lần
+293	cách một ngày
+294	sợi chỉ
+295	trong vòng ...
+296	nông thôn; quê
+297	ý nghĩa
+298	quầy lễ tân
+299	lời nói dối
+300	cánh tay
+301	sinh ra; nơi sinh
+302	quầy bán, khu bán hàng
+303	tài xế
+304	hội thao
+305	nhân viên nhà ga
+306	cành cây
+307	một trăm triệu
+308	sân thượng
+309	quà tặng, quà biếu
+310	con (của người khác)
+311	nhà (của người khác) (lịch sự)
+312	chồng (của tôi)
+313	tiền thừa
+314	âm thanh
+315	điệu múa, nhảy múa
+316	lễ hội
+317	thăm người bệnh
+318	quà lưu niệm
+319	đồ chơi
+320	lời cảm ơn; quà cảm ơn
+321	kết thúc
+322	nhạc sĩ, nghệ sĩ âm nhạc
+323	bờ biển
+324	phòng họp
+325	nhân viên công ty
+326	địa điểm tổ chức sự kiện
+327	lúc về, đường về
+328	khoa học
+329	gương
+330	hỏa hoạn
+331	hình dạng
+332	trưởng phòng
+333	dáng vẻ, trang phục
+334	vợ (của tôi)
+335	người giàu
+336	tường
+337	tóc (trên đầu)
+338	thay thế, thay vì
+339	y tá (cách gọi cũ)
+340	tâm trạng, tinh thần
+341	cơ hội
+342	tàu hỏa chạy hơi nước
+343	mùa
+344	quy tắc, nội quy
+345	cảm giác trong người, tâm trạng
+346	cảm xúc, cảm giác
+347	kimono (áo truyền thống Nhật)
+348	khách
+349	nhà thờ
+350	hứng thú, quan tâm
+351	khu vực gần nhà, hàng xóm
+352	kỹ thuật
+353	không khí
+354	sân bay
+355	cổ
+356	mây
+357	tình trạng (sức khỏe, máy móc)
+358	lông (người, thú)
+359	cảnh sát
+360	kinh tế
+361	phong cảnh
+362	cục tẩy
+363	lễ cưới
+364	đứa trẻ, con
+365	ngoại ô
+366	học sinh cấp ba
+367	trường cấp ba
+368	nhà máy
+369	hiệu trưởng
+370	giao thông
+371	quốc tế
+372	trái tim, tâm hồn
+373	câu trả lời, đáp án
+374	chim nhỏ
+375	gạo
+376	lần tới; lần này
+377	tối nay
+378	chồng (của người khác)
+379	biết (kính ngữ)
+380	rác
+381	cuối cùng, sau cùng
+382	dốc
+383	thành phố
+384	cách làm
+385	đồ lót
+386	đảo
+387	người dân thành phố
+388	xã hội
+389	giám đốc công ty
+390	thói quen, phong tục
+391	sở thích
+392	trường tiểu học
+393	Tết Dương lịch (ở Nhật), năm mới
+394	tiểu thuyết
+395	nhà văn viết tiểu thuyết
+396	nhà ăn
+397	thực phẩm
+398	tòa soạn báo
+399	chữ
+400	tai nạn
+401	động đất
+402	thời đại
+403	từ điển
+404	văn phòng
+405	địa chỉ
+406	phụ nữ, nữ giới
+407	dân số
+408	đền thờ Thần đạo
+409	cuộc đời (của một người)
+410	nước máy
+411	toán học
+412	cát
+413	góc
+414	kẻ móc túi
+415	siêu thị
+416	phương Tây
+417	thế giới
+418	chỗ ngồi
+419	lưng
+420	đường kẻ, tuyến (tàu)
+421	tiền bối (đàn anh, đàn chị)
+422	chuyên môn, chuyên ngành
+423	tiệc chia tay
+424	lễ tốt nghiệp
+425	ông (nội, ngoại)
+426	bà (nội, ngoại)
+427	bão
+428	kiểu, loại
+429	chiếu tatami
+430	kệ
+431	sinh viên đại học
+432	đại khái, phần lớn
+433	đàn ông, nam giới
+434	sức mạnh
+435	bản đồ
+436	trường cấp hai
+437	bãi đỗ xe
+438	mặt trăng
+439	vợ (của tôi)
+440	găng tay
+441	chùa
+442	điểm, điểm số; chấm
+443	nhân viên cửa hàng
+444	dự báo thời tiết
+445	triển lãm
+446	tiền điện
+447	tiền điện thoại
+448	con đường, phố
+449	tiệm cắt tóc nam
+450	tàu tốc hành đặc biệt
+451	dụng cụ
+452	sở thú
+453	kẻ trộm
+454	mùi
+455	nhà hai tầng
+456	lần thứ hai
+457	nhật ký
+458	sản xuất tại Nhật
+459	lễ nhập học
+460	búp bê
+461	giá
+462	sốt; sức nóng
+463	cổ họng
+464	phương tiện giao thông
+465	lá
+466	nha sĩ
+467	rừng nhỏ
+468	trường hợp
+469	nơi, địa điểm
+470	chương trình (TV, radio)
+471	ngày; mặt trời
+472	lửa
+473	ánh sáng
+474	ngăn kéo
+475	râu
+476	một tháng
+477	cái thứ nhất
+478	nghỉ trưa
+479	bảo tàng mỹ thuật
+480	tiệm làm tóc, salon tóc
+481	nệm futon (đồ trải ngủ của Nhật)
+482	tàu thuyền
+483	trưởng bộ phận
+484	nho
+485	văn hóa
+486	văn học
+487	khoa văn học
+488	ngữ pháp
+489	luật pháp
+490	ngôi sao
+491	xung quanh
+492	truyện tranh
+493	chính giữa
+494	hồ
+495	miso (tương đậu nành Nhật)
+496	mọi người
+497	cảng
+498	côn trùng
+499	con trai
+500	con gái
+501	rừng
+502	nước nóng
+503	ngón tay
+504	nhẫn
+505	giấc mơ
+506	việc cần làm
+507	việc bận
+508	lý do
+509	cả hai
+510	nhà trọ kiểu Nhật (ryokan)
+511	lịch sử
+512	lý do; nghĩa là
+513	đồ để quên
+514	ý tưởng
+515	phụ kiện, trang sức
+516	châu Á
+517	phát thanh viên
+518	châu Phi
+519	Mỹ
+520	rượu bia, cồn
+521	thang cuốn
+522	xe máy
+523	rèm cửa
+524	ga (nấu ăn, sưởi)
+525	xăng
+526	trạm xăng
+527	kính (thủy tinh)
+528	bánh kem
+529	buổi hòa nhạc
+530	máy tính
+531	salad
+532	dép xăng-đan
+533	bánh sandwich
+534	mứt
+535	màn hình chiếu
+536	dàn âm thanh stereo
+537	bít tết
+538	bộ com-lê
+539	va li
+540	vé
+541	sách giáo trình
+542	quần vợt
+543	túi xách tay
+544	thịt băm viên (hamburger)
+545	máy tính cá nhân (PC)
+546	việc làm bán thời gian (thường của người nội trợ)
+547	tòa nhà
+548	đàn piano
+549	quà, món quà
+550	chuông
+551	luật chơi, quy định
+552	quầy thu ngân
+553	báo cáo, bài luận
+554	máy đánh chữ điện tử
+555	... trở lên, trên
+556	nhất định phải, chắc chắn
+557	như thế này
+558	hôm nọ
+559	dạo này
+560	gần đây
+561	đầu tiên, ban đầu
+562	lúc nãy
+563	tháng sau nữa
+564	tuần sau nữa
+565	một lúc, một thời gian
+566	tương lai
+567	hoàn toàn
+568	nhất định, rất mong
+569	(không) chút nào, hoàn toàn không
+570	(không) đến mức đó
+571	sắp đến lúc
+572	đến thế, nhiều như vậy
+573	ví dụ
+574	thỉnh thoảng
+575	trực tiếp
+576	một chút
+577	tình hình, điều kiện thuận tiện
+578	hết mức có thể
+579	rốt cuộc, cuối cùng thì
+580	nơi xa
+581	đặc biệt là
+582	giữa đường, giữa chừng
+583	ngày càng, nhanh chóng
+584	khá; (không) dễ
+585	cố gắng hết mức, nếu có thể
+586	ra vậy, quả thật
+587	rõ ràng
+588	vô cùng, rất
+589	bình thường
+590	hầu hết, gần như
+591	trước hết
+592	ngày xưa
+593	một lần nữa
+594	sắp tới, chẳng bao lâu nữa
+595	nếu
+596	tất nhiên
+597	nhất
+598	mãi mới, cuối cùng cũng (sau nỗ lực)
+599	quả nhiên, đúng như dự đoán
+600	chậm rãi; thong thả
+601	nhưng
+602	từ bây giờ
+603	thế là, rồi thì
+604	thế nên, và rồi
+605	hơn nữa
+606	vì vậy, do đó
+607	hoặc
+609	Tôi đi đây (rồi sẽ về) (khiêm nhường)
+610	nhờ có anh/chị, nhờ trời
+611	Hãy giữ gìn sức khỏe (nói với người bệnh)
+612	Tôi hiểu rồi ạ (rất lịch sự)
+613	… quận (trong địa chỉ)
+614	… xăng-ti-mét
+615	… khu phố (trong địa chỉ)
+616	cô ấy; bạn gái
+617	anh ấy; bạn trai
+618	họ
+619	cậu (thân mật, nam dùng)
+620	như thế, kiểu như vậy
+621	tớ, tôi (nam dùng)

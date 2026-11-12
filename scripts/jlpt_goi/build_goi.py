@@ -4,7 +4,9 @@
   型        : scripts/jlpt_goi/goi.tmpl.html     … 画面と動き。見た目の土台は jlpt/N4_bunpou.html の <style> をそのまま写す
   使い方    : py -X utf8 scripts/jlpt_goi/build_goi.py n4          （リポの一番上で）
   ★出力の HTML は手で直さない。直すのは 語のデータ（タブ区切りの .txt）か型。直したらこの道具を回す。
-  訳を足す時: <lv>_words.<言語>.txt（番号<TAB>訳）を置くと、その言語を意味に入れる（型の LANGS にも言語を足す）。"""
+  よみ方のまちがいの選択肢: scripts/jlpt_goi/<lv>_yomi.txt … 番号 / まちがい1 / まちがい2 / まちがい3（語ごと。無い語は よみ方の問題に出さない）
+  訳を足す時: <lv>_words.<言語>.txt（番号<TAB>訳）を置くと、その言語を意味に入れる（型の LANGS にも言語を足す）。
+  番号は語ごとに1つ（重ねない）。Claude が足した行は「50+」のように、前の行の番号に + を付ける。"""
 import sys, re, json, os, glob, collections
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
 lv = sys.argv[1].lower(); LV = lv.upper()
@@ -24,6 +26,21 @@ if os.path.exists(f):
             noyomi.add(c[0])
 yomi = collections.defaultdict(set)
 for r in rows: yomi[RB.sub(r'\1', r[2])].add(RB.sub(r'\2', r[2]))
+# よみ方のまちがいの選択肢（語ごと）：<lv>_yomi.txt（番号<TAB>まちがい1<TAB>まちがい2<TAB>まちがい3）。無い語は よみ方の問題に出さない
+#   決まり＝正解・その語の別の読みと同じにしない／{ } の外の字（送りがな など）は正解と同じ位置に同じ字／漢字の所は ひらがなだけ
+ydist = {}; f = os.path.join(HERE, lv + '_yomi.txt'); byno = {r[0]: r for r in rows}
+assert len(byno) == len(rows), '番号が重なっている'
+if os.path.exists(f):
+    for l in open(f, encoding='utf-8').read().splitlines():
+        if not l.strip() or l.startswith('#'): continue
+        c = l.split('\t'); assert len(c) >= 4 and c[0] in byno and c[0] not in ydist, ('yomi の行', l)
+        w = byno[c[0]][2]; ok = RB.sub(r'\2', w); ds = c[1:4]
+        shape = re.compile(''.join('[ぁ-ん]+' if i % 3 else re.escape(x) for i, x in enumerate(RB.split(w)) if i % 3 != 2))
+        assert len(set(ds + [ok])) == 4, ('yomi 同じ読みがある', l)
+        for d in ds:
+            assert shape.fullmatch(d), ('yomi 送りがなが正解とちがう', l, w)
+            assert d not in yomi[RB.sub(r'\1', w)], ('yomi その語の別の読み', l)
+        ydist[c[0]] = ds
 data = []; keys = collections.Counter(); order = 'VSIANKFX'; nny = 0
 for r in rows:
     assert len(r) in (4, 5), r
@@ -36,7 +53,8 @@ for r in rows:
     for code, d in extra.items():
         if d.get(no): m[code] = d[no]
     ny = no in noyomi or len(yomi[RB.sub(r'\1', w)]) > 1; nny += ny
-    data.append((order.index(cat), [cat, w, m if len(m) > 1 else en.strip()] + ([tag, 1] if ny else [tag] if tag else [])))
+    yd = None if ny else ydist.get(no)
+    data.append((order.index(cat), [cat, w, m if len(m) > 1 else en.strip()] + ([tag, 0, yd] if yd else [tag, 1] if ny else [tag] if tag else [])))
 assert not [k for k, n in keys.items() if n > 1], [k for k, n in keys.items() if n > 1]
 data = [d for _, d in sorted(data, key=lambda x: x[0])]          # しゅるいごとにまとめる（中の順は TSV のまま）
 base = open(os.path.join(ROOT, 'jlpt', 'N4_bunpou.html'), encoding='utf-8').read()
@@ -47,4 +65,7 @@ out = t.replace('/*__BASECSS__*/', css).replace('/*__DATA__*/', js).replace('__L
 assert '__' not in re.sub(r'__drillLog|__jlptStudy', '', out), '置きかえ残り'
 p = os.path.join(ROOT, 'jlpt', LV + '_goi.html')
 open(p, 'w', encoding='utf-8', newline='\n').write(out)
-print(p, len(data), '語', collections.Counter(d[0] for d in data), '言語', ['en'] + sorted(extra), 'よみ方に出さない語', nny)
+for code, d in extra.items():
+    assert not set(d) - set(byno), ('訳の番号が語のデータに無い', code, sorted(set(d) - set(byno))[:5])
+    print('  訳', code, len([n for n in byno if d.get(n)]), '/', len(rows), '（無い語は英語で出る）')
+print(p, len(data), '語', collections.Counter(d[0] for d in data), '言語', ['en'] + sorted(extra), 'よみ方に出さない語', nny, 'よみ方の選択肢がある語', sum(1 for d in data if len(d) > 5))
