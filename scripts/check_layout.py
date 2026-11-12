@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-見た目の自動点検（教科書ドリル24本＋N4）
+見た目の自動点検（教科書ドリル24本＋JLPT ドリル）
 =========================================
 問題・語彙・ドリルを足したら、これを1回回す。はみ出し・エラーが0件なら見た目は崩れていない。
 
@@ -121,8 +121,9 @@ def run_check(args):
     from playwright.sync_api import sync_playwright
     src = Source(args.ref)
     targets = [d for d in src.drills() if not args.names or any(n in d for n in args.names)]
-    if not args.names or any("N4" in n for n in args.names):
-        targets.append("jlpt/N4_bunpou.html")
+    # JLPT ドリル（jlpt/*.html＝N4・N3・N2…。共通UIは使わない自前の見た目）
+    jl = sorted("jlpt/" + os.path.basename(x) for x in glob.glob(os.path.join(ROOT, "jlpt", "*.html"))) if not args.ref else         sorted(x for x in subprocess.run(["git", "-C", ROOT, "ls-tree", "--name-only", args.ref, "jlpt/"], capture_output=True, text=True).stdout.split() if x.endswith(".html"))
+    targets += [j for j in jl if not args.names or any(n in j for n in args.names)]
     if args.shots: os.makedirs(args.shots, exist_ok=True)
     ng, notes, count = [], [], 0
     with sync_playwright() as p:
