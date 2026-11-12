@@ -190,7 +190,7 @@ dui-w{white-space:nowrap;}
   /* D. リズムのヒント：変換式は折り返して並べ、ON/OFF はその下に全幅 44px */
   #rhythm div:has(> .hintbar){flex-direction:column;align-items:stretch !important;gap:8px !important;}
   #rhythm .hinttoggle{margin-left:0 !important;min-height:44px;width:100%;}
-  #rhythm:has(.hintbar) .rhythm{min-height:150px;}   /* ヒントの式とボタンのぶん、カードを低く（L8-2 まとめ） */
+  #rhythm:has(.hintbar) .rhythm{min-height:144px;}   /* ヒントの式とボタンのぶん、カードを低く（L8-2 まとめ） */
   /* F. 押しにくいボタン（L16 めくりの「⇄ ぎゃく」）を44px以上に */
   .dirbtn{min-height:44px;}
 }

@@ -5,10 +5,13 @@
    ★直したら py scripts/check_layout.py で全画面を点検する。 */
 @font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:400;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Regular.subset.woff2') format('woff2');}
 @font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:700;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Bold.subset.woff2') format('woff2');}
+/* 2026-11-12 きあ決定：UDデジタル教科書体が入っている端末（Windows＝教室の投影PC）だけ教科書体。配らない（local()のみ）。無い端末（学生のスマホ）は BIZ UDPGothic */
+@font-face{font-family:'SCG Kyokasho';font-style:normal;font-weight:400;src:local('UD Digi Kyokasho NP'),local('UDDigiKyokashoNP'),local('UD Digi Kyokasho NP-R'),local('UDDigiKyokashoNP-R');}
+@font-face{font-family:'SCG Kyokasho';font-style:normal;font-weight:700;src:local('UD Digi Kyokasho NP Bold'),local('UDDigiKyokashoNP-Bold'),local('UD Digi Kyokasho NP-B'),local('UDDigiKyokashoNP-B');}
 :root{--g1:#dc2626;--g2:#1d4ed8;--g3:#15803d;--bg:#eef1f7;--panel:#ffffff;--ink:#16233a;--sub:#5a6b86;--line:#c9d4e6;--ok:#15803d;--ng:#dc2626;--accent:#e8920c;--accentT:#b45309;}
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-body{font-family:"BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-user-select:none;user-select:none;}
+body{font-family:"SCG Kyokasho","BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-user-select:none;user-select:none;}
 nav{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;background:#ffffff;border-bottom:2px solid var(--line);flex-shrink:0;align-items:center;}
 nav .ttl{font-weight:800;font-size:18px;margin-right:auto;letter-spacing:.5px;}
 nav .ttl small{color:var(--sub);font-weight:400;font-size:13px;margin-left:8px;}
