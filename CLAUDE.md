@@ -288,7 +288,7 @@ taskkill //F //IM chrome.exe
     --layout-features='kern,palt,vert,vrt2,liga,calt' --flavor=woff2 --no-hinting --desubroutinize \
     --output-file=fonts/BIZUDPGothic-Regular.subset.woff2   # Bold も同様
   ```
-- **UDデジタル教科書体を優先（2026-11-12 きあ決定）**: 入っている端末（Windows＝教室の投影PC）だけ教科書体、無い端末（学生のスマホ）は BIZ UDPGothic。**配らない**（Windows付属の教科書体はサイトに置いて配る許可がない）＝`@font-face 'SCG Kyokasho'` を `local()` だけで書き、body の font-family の先頭に置く。drill-base.css・index.html・jlpt 5本に同じ2行。名前は Windows 11 が「UD Digi Kyokasho NP」「…NP Bold」、古い Windows は「…NP-R」「…NP-B」（両方書いてある）。⚠ この PC の Chrome は教科書体を持っているので、check_layout は教科書体で測る（字の幅・高さが少し違う。切りかえ時に L8-2 まとめのリズムのカード高さ 150→144px）
+- **UDデジタル教科書体を優先（2026-11-12 きあ決定）**: 入っている端末（Windows＝教室の投影PC）だけ教科書体、無い端末（学生のスマホ）は BIZ UDPGothic。**配らない**（Windows付属の教科書体はサイトに置いて配る許可がない）＝`@font-face 'SCG Kyokasho'` を `local()` だけで書き、body の font-family の先頭に置く。drill-base.css・index.html・jlpt 5本に同じ2行。**種類は NK**（かな大きめ・字間せまめ。最初に入れた NP はかなが小さく字間が広くて「固い」ときあ指摘→同日 NK に）。名前は Windows 11 が「UD Digi Kyokasho NK」「…NK Bold」、古い Windows は「…NK-R」「…NK-B」（両方書いてある）。⚠ この PC の Chrome は教科書体を持っているので、check_layout は教科書体で測る（字の幅・高さが少し違う。切りかえ時に L8-2 まとめのリズムのカード高さ 150→144px）
 - **検証済**: headless Chrome + CDP で `document.fonts.check('400/700 24px "BIZ UDPGothic"')=true`、両ウェイト loaded、body に適用を実測（2026-06-16）。
 
 ## 公開・拡散ガバナンス（ユーザーと合意・要遵守）
