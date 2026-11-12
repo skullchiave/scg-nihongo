@@ -58,7 +58,7 @@
 57	hạ xuống, làm giảm (vật)
 58	biếu, tặng (khiêm nhường)
 59	giương (ô)
-60	rủ, mời rủ
+60	rủ, mời
 61	sờ, chạm
 62	mắng
 63	thông báo, cho biết
@@ -138,7 +138,7 @@
 136	gầy đi
 137	tạnh (mưa, gió)
 138	bỏ, từ bỏ
-139	lắc, rung lắc
+139	rung lắc, lắc lư
 140	bị bẩn
 141	ghé qua
 142	vui mừng
@@ -176,7 +176,7 @@
 174	trận đấu (thể thao)
 175	kỳ thi, bài kiểm tra
 176	sửa soạn
-177	chắc chắn, đàng hoàng
+177	vững vàng, đàng hoàng
 178	thất bại, sai sót
 179	có mặt, tham dự
 180	xuất phát
@@ -251,7 +251,7 @@
 249	được, tốt (lịch sự)
 250	yên tâm
 251	an toàn
-252	hết sức, chăm chỉ
+252	hết sức mình, dốc toàn lực
 253	đầy; nhiều
 254	đơn giản, dễ
 255	nguy hiểm
@@ -259,7 +259,7 @@
 257	khỏe, năng động
 258	đáng tiếc
 259	thất lễ, bất lịch sự
-260	tử tế, nhiệt tình giúp đỡ
+260	tử tế, hay giúp đỡ người khác
 261	cản trở, vướng; sự quấy rầy
 262	đủ
 263	tự do
@@ -274,7 +274,7 @@
 272	đặc biệt
 273	nhiệt tình, hăng hái
 274	ngược lại; phản đối
-275	lâu rồi mới
+275	sau một thời gian dài
 276	cần thiết
 277	phức tạp
 278	bất tiện
@@ -290,7 +290,7 @@
 288	... trở xuống, dưới
 289	ngoài ..., trừ ...
 290	y học
-291	đá
+291	hòn đá
 292	một lần
 293	cách một ngày
 294	sợi chỉ
@@ -543,9 +543,9 @@
 541	sách giáo trình
 542	quần vợt
 543	túi xách tay
-544	thịt băm viên (hamburger)
+544	miếng thịt băm áp chảo
 545	máy tính cá nhân (PC)
-546	việc làm bán thời gian (thường của người nội trợ)
+546	việc làm bán thời gian
 547	tòa nhà
 548	đàn piano
 549	quà, món quà
@@ -568,7 +568,7 @@
 566	tương lai
 567	hoàn toàn
 568	nhất định, rất mong
-569	(không) chút nào, hoàn toàn không
+569	(không) chút nào
 570	(không) đến mức đó
 571	sắp đến lúc
 572	đến thế, nhiều như vậy
