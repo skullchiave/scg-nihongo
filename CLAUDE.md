@@ -60,7 +60,7 @@
 - `drill-ui.js` は**ドリル側の関数とidをそのまま使って DOM を組み替えるだけ**: 旧 `<nav>` は CSS で隠して裏で動かし、新ヘッダー（‹ 課一覧／課名／Aa／つぎの課）と下のタブバーを作る。`show()` `rSetAuto()` `applyZoom()` を包む／差し替える。③は `#sortq`+`#sortfb` を `.dui-qbox` に入れ、回答後は選択肢の代わりに `#sortnext` を大きく出す。④は `#rcard` の描画を MutationObserver で縦並び（↓矢印・？）に直す。**前提となる id・関数名（sortq/sortfb/sortnext/sndtoggle/flipshuffle/flipgrid/score/rcard/rsub/rplay/.rspd/show/rSetAuto/applyZoom、進捗は sortIdx/sortPool・qIdx/qPool・rIdx/rPool）を新ドリルでも変えない**。
 - 文字サイズは旧 A−/A＋ の代わりに **Aa（100→115→130%）**。`localStorage['drill_zoom']` は旧と共通。PC幅（>640px）は縦長1列のまま画面の高さに合わせて拡大（`fitF`）。
 - 「つぎの課」= catalog.js の並びで次の ready ドリル（旧「すすむ」= history.forward は廃止）。発音ボタンは作らない（きあ判断）。
-- ルール画面は L7・L8 系の `.rule.r1-3` だけ指示書の形（色ラベル＋2列の例＋注意枠）に組み替え。**その他の課のルール画面（表・品詞の枠など）は系統ごとに後で整える（未着手）**。
+- ルール画面は L7・L8 系の `.rule.r1-3` だけ指示書の形（色ラベル＋2列の例＋注意枠）に組み替え。その他の課（表・品詞の枠など）は元の形のまま、11/11〜12 の共通の直し（段・語尾・例の表を1行ずつ・ちゅうい枠の小箱・グループの色ラベル・語の途中で折り返さない・絵文字→文字）が全課に効いている。**3枚のカードへの組み替えは、きあが読みにくいと言った課だけ必要なら行う**（2026-11-12 きあ確認＝だいぶ見やすくなった）。
 - 検証: `scratch/20261111-redesign/check_all.py`（全ドリル×4モードを375px iframeで開き、エラー・はみ出し・ヘッダー/タブ/進捗・回答後の枠を機械チェック＝96/96 OK）。`shots_drill.py tsunagu/X.html` で1本の全モードを撮影。
 
 ## 見た目を1か所に（2026-11-11・問題や語彙を足してもUIがブレないように）
