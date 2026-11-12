@@ -1,5 +1,6 @@
 """JLPT 語彙ドリル（jlpt/N?_goi.html）を組み立てる。
   語のデータ: scripts/jlpt_goi/<lv>_words.txt   … 番号 / しゅるい / 語（字ごとのルビ {銀|ぎん}{行|こう}） / 英語 / にている語の印（無くてよい）
+  よみ方に出さない語: scripts/jlpt_goi/<lv>_noyomi.txt … 読みが2つ以上あって、文脈が無いと決まらない語
   型        : scripts/jlpt_goi/goi.tmpl.html     … 画面と動き。見た目の土台は jlpt/N4_bunpou.html の <style> をそのまま写す
   使い方    : py -X utf8 scripts/jlpt_goi/build_goi.py n4          （リポの一番上で）
   ★出力の HTML は手で直さない。直すのは 語のデータ（タブ区切りの .txt）か型。直したらこの道具を回す。
@@ -13,7 +14,17 @@ extra = {}
 for f in glob.glob(os.path.join(HERE, lv + '_words.*.txt')):
     code = os.path.basename(f).split('.')[1]
     extra[code] = dict(l.split('\t')[:2] for l in open(f, encoding='utf-8').read().splitlines() if l.strip())
-data = []; keys = collections.Counter(); order = 'VSIANKFX'
+# よみ方の問題に出さない語：<lv>_noyomi.txt（番号<TAB>語<TAB>ほかの読み）＋ 同じ表記で読みがちがう語（自動）
+noyomi = set(); f = os.path.join(HERE, lv + '_noyomi.txt')
+if os.path.exists(f):
+    for l in open(f, encoding='utf-8').read().splitlines():
+        if l.strip() and not l.startswith('#'):
+            c = l.split('\t'); hit = [r for r in rows if r[0] == c[0]]
+            assert len(hit) == 1 and RB.sub(r'\1', hit[0][2]) == c[1], ('noyomi の番号と語が合わない', l)
+            noyomi.add(c[0])
+yomi = collections.defaultdict(set)
+for r in rows: yomi[RB.sub(r'\1', r[2])].add(RB.sub(r'\2', r[2]))
+data = []; keys = collections.Counter(); order = 'VSIANKFX'; nny = 0
 for r in rows:
     assert len(r) in (4, 5), r
     no, cat, w, en = r[:4]; tag = r[4] if len(r) == 5 else ''
@@ -24,7 +35,8 @@ for r in rows:
     m = {'en': en.strip()}
     for code, d in extra.items():
         if d.get(no): m[code] = d[no]
-    data.append((order.index(cat), [cat, w, m if len(m) > 1 else en.strip()] + ([tag] if tag else [])))
+    ny = no in noyomi or len(yomi[RB.sub(r'\1', w)]) > 1; nny += ny
+    data.append((order.index(cat), [cat, w, m if len(m) > 1 else en.strip()] + ([tag, 1] if ny else [tag] if tag else [])))
 assert not [k for k, n in keys.items() if n > 1], [k for k, n in keys.items() if n > 1]
 data = [d for _, d in sorted(data, key=lambda x: x[0])]          # しゅるいごとにまとめる（中の順は TSV のまま）
 base = open(os.path.join(ROOT, 'jlpt', 'N4_bunpou.html'), encoding='utf-8').read()
@@ -35,4 +47,4 @@ out = t.replace('/*__BASECSS__*/', css).replace('/*__DATA__*/', js).replace('__L
 assert '__' not in re.sub(r'__drillLog|__jlptStudy', '', out), '置きかえ残り'
 p = os.path.join(ROOT, 'jlpt', LV + '_goi.html')
 open(p, 'w', encoding='utf-8', newline='\n').write(out)
-print(p, len(data), '語', collections.Counter(d[0] for d in data), '言語', ['en'] + sorted(extra))
+print(p, len(data), '語', collections.Counter(d[0] for d in data), '言語', ['en'] + sorted(extra), 'よみ方に出さない語', nny)

@@ -166,7 +166,7 @@ const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
 const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1');
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
 const ITEMS = DATA.map(d=>{ const p=plain(d[1]), y=kana(d[1]);
-  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
 const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 
 /* ---------- ルビ ---------- */
@@ -212,6 +212,7 @@ function buildKnown(){
   for(const s of KJ.steps){ s.k.split('').forEach(k=>KNOWN.add(k)); if(s.id===scope) break; }
 }
 const inKanji = it => it.ks.length>0 && scope!=='none' && (scope==='all' || it.ks.every(k=>KNOWN.has(k)));
+const canY = it => inKanji(it) && !it.ny;          // よみ方の問題に出せる語（読みが2つ以上ある語は、文脈が無いと決まらないので出さない）
 const disp = it => inKanji(it) ? it.w : it.y;          // 画面に出す形（ルビ表記のまま返す）
 const BOOKR = {"初級":"{初級|しょきゅう}","中級":"{中級|ちゅうきゅう}"};
 const stepLabel = s => (BOOKR[s.b]||s.b)+' '+s.l;
@@ -313,7 +314,7 @@ const QT_INFO={mix:'いみ・ことば・よみ<ruby>方<rt>かた</rt></ruby>�
 const catSel=$("catSel");
 catSel.innerHTML='<option value="">すべての ことば</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(catName(c))}</option>`).join("");
 // よみ方の問題は、今のはんいで漢字で出る語だけ
-function pool(){ const c=catSel.value; return ITEMS.filter(it=>(!c||it.cat===c)&&(qtype!=='y'||inKanji(it))); }
+function pool(){ const c=catSel.value; return ITEMS.filter(it=>(!c||it.cat===c)&&(qtype!=='y'||canY(it))); }
 function updateStats(){
   const p=pool();
   const seen=p.filter(it=>rec[it.id]);
@@ -328,7 +329,7 @@ function updateStats(){
   $("catRuby").innerHTML=c?catR(c):'すべての ことば';
   $("catPill").innerHTML=$("catRuby").innerHTML;
   $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
-    const n=ITEMS.filter(it=>(!k||it.cat===k)&&(qtype!=='y'||inKanji(it))).length;
+    const n=ITEMS.filter(it=>(!k||it.cat===k)&&(qtype!=='y'||canY(it))).length;
     return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):'すべての ことば'}</span><span class="n">${n}${MON}</span></button>`;
   }).join("");
   $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
@@ -382,9 +383,10 @@ document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
 
 // この問題の しゅるい（まぜる の時：いみ4・ことば4・よみ方2 の割合。よみ方は漢字で出る語だけ）
 function pickType(it){
-  if(qtype!=='mix') return (qtype==='y'&&!inKanji(it))?'m':qtype;
+  if(qtype!=='mix') return (qtype==='y'&&!canY(it))?'m':qtype;
   const r=Math.random();
-  if(inKanji(it)) return r<0.4?'m':r<0.8?'w':'y';
+  if(canY(it)) return r<0.4?'m':r<0.8?'w':'y';
+  if(inKanji(it)) return r<0.5?'m':'w';
   return r<0.5?'m':'w';
 }
 // まちがいの選択肢を3つ。同じ しゅるい の語から、答えが2つに見えるものを外してえらぶ
@@ -392,7 +394,7 @@ function pickOthers(it,t){
   const used=new Set(), out=[];
   const keyOf = x => t==='m' ? mean(x) : t==='y' ? x.y : plain(disp(x));
   used.add(keyOf(it));
-  const okx = x => x!==it && x.y!==it.y && !(t!=='y' && it.tag && x.tag===it.tag) && (t!=='y' || inKanji(x));
+  const okx = x => x!==it && x.y!==it.y && x.p!==it.p && !(t!=='y' && it.tag && x.tag===it.tag) && (t!=='y' || inKanji(x));
   const take = xs => { for(const x of shuffle(xs)){ if(out.length>=3) break; const k=keyOf(x); if(used.has(k)||!okx(x)) continue; used.add(k); out.push(x); } };
   if(t==='y'){   // よみ方：同じ漢字を使う語 → よみの長さが近い語 の順
     take(ITEMS.filter(x=>x.ks.some(k=>it.ks.includes(k))).slice(0,40));
