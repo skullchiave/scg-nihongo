@@ -57,7 +57,7 @@
 56	giảm xuống, hạ (giá, nhiệt độ)
 57	hạ xuống, làm giảm (vật)
 58	biếu, tặng (khiêm nhường)
-59	giương (ô)
+59	che ô, bật ô (dù)
 60	rủ, mời
 61	sờ, chạm
 62	mắng
@@ -236,7 +236,7 @@
 234	nghiêm khắc
 235	nhỏ, tỉ mỉ, chi tiết
 236	đáng sợ
-237	cô đơn, quạnh quẽ
+237	cô đơn, buồn
 238	tuyệt vời, ghê gớm
 239	tuyệt diệu, xuất sắc
 240	đúng
@@ -527,7 +527,7 @@
 525	xăng
 526	trạm xăng
 527	kính (thủy tinh)
-528	bánh kem
+528	bánh ngọt, bánh kem
 529	buổi hòa nhạc
 530	máy tính
 531	salad
@@ -611,9 +611,9 @@
 610	nhờ có anh/chị, nhờ trời
 611	Hãy giữ gìn sức khỏe (nói với người bệnh)
 612	Tôi hiểu rồi ạ (rất lịch sự)
-613	… quận (trong địa chỉ)
+613	quận … (trong địa chỉ)
 614	… xăng-ti-mét
-615	… khu phố (trong địa chỉ)
+615	khu phố … (trong địa chỉ)
 616	cô ấy; bạn gái
 617	anh ấy; bạn trai
 618	họ
