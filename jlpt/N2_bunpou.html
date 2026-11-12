@@ -917,7 +917,7 @@ function renderList(){
   $("listInfo").innerHTML=`${hit.length} <ruby>項目<rt>こうもく</rt></ruby>`+(kw?`（ぜんぶで ${ITEMS.length}）`:"");
   $("listBody").innerHTML=CAT_ORDER.map(c=>{
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
-    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}この<ruby>分野<rt>ぶんや</rt></ruby>を<ruby>練習<rt>れんしゅう</rt></ruby></button></div>`+
+    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>この<ruby>分野<rt>ぶんや</rt></ruby>を<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
       xs.map(it=>`<div class="gcard"><div class="gtop"><span class="gname">${ruby(it.g)}</span>${recPill(it.id)}</div>
           <div class="gmean">${ruby(it.m)}</div><div class="gform"><ruby>接続<rt>せつぞく</rt></ruby>：${ruby(it.f)}</div>
           <div class="gex">${fillAnswer(it)}</div></div>`).join("");

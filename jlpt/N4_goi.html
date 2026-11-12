@@ -1463,7 +1463,7 @@ function renderList(){
   $("listInfo").innerHTML=`${hit.length} <ruby>語<rt>ご</rt></ruby>`+(kw?`（ぜんぶで ${ITEMS.length}）`:"");
   $("listBody").innerHTML=CAT_ORDER.map(c=>{
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
-    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}これを<ruby>練習<rt>れんしゅう</rt></ruby></button></div>`+
+    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
       xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${ruby(disp(it))}</span>${recPill(it.id)}</div>
           <div class="gmean">${esc(mean(it))}</div></div>`).join("");
   }).join("");
