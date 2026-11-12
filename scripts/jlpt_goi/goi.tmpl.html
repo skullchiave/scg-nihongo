@@ -207,16 +207,20 @@ try{ rubyOn = localStorage.getItem(KEY+"_ruby")!=="0"; soundOn = localStorage.ge
      qtype = localStorage.getItem(KEY+"_qtype")||'mix'; lang = localStorage.getItem('jlpt_lang')||'en'; }catch(e){}
 if(!LANGS.some(l=>l[0]===lang)) lang='en';
 // よみ方の問題：まちがいの選択肢を語ごとに書いた語（yd がある語）だけ出す。false にすると よみ方の問題をぜんぶ外せる
-const YOMI_ON=true;
+//   よみ方の選択肢がまだ1語も無い級（<lv>_yomi.txt が無い）では、よみ方のボタンごと出さない
+const YOMI_ON=ITEMS.some(it=>it.yd);
 if(!['mix','m','w'].concat(YOMI_ON?['y']:[]).includes(qtype)) qtype='mix';
 const mean = it => it.m[lang]||it.m.en;
 
 /* ---------- 習った漢字（どこまで漢字で出すか） ---------- */
 const KJ = window.JLPT_KANJI || {base:'',n4:'',steps:[]};
-const SCOPE_KEY='jlpt_kanji_scope';
-let scope='n4';
-try{ scope=localStorage.getItem(SCOPE_KEY)||'n4'; }catch(e){}
-if(!(scope==='n4'||scope==='all'||scope==='none'||KJ.steps.some(s=>s.id===scope))) scope='n4';
+// N4 は「N4の漢字ぜんぶ」が最初の設定（えらんだ範囲は jlpt_kanji_scope）。N3 から上は級ごとに別に覚え、最初は「ぜんぶ漢字」
+// （N4 で「初級◯課まで」をえらんだ学生が N3 を開くと、ほとんどの語が ひらがなになってしまうため）
+const SCOPE_KEY='__lv__'==='n4' ? 'jlpt_kanji_scope' : 'jlpt_kanji_scope___lv__';
+const SCOPE_DEF='__lv__'==='n4' ? 'n4' : 'all';
+let scope=SCOPE_DEF;
+try{ scope=localStorage.getItem(SCOPE_KEY)||SCOPE_DEF; }catch(e){}
+if(!(scope==='n4'||scope==='all'||scope==='none'||KJ.steps.some(s=>s.id===scope))) scope=SCOPE_DEF;
 let KNOWN=new Set();
 function buildKnown(){
   KNOWN=new Set();
@@ -418,7 +422,8 @@ function pickOthers(it,t){
   const used=new Set(), out=[];
   const keyOf = x => t==='m' ? mean(x) : t==='y' ? x.y : plain(disp(x));
   used.add(keyOf(it));
-  const okx = x => x!==it && x.y!==it.y && x.p!==it.p && !(t!=='y' && it.tag && x.tag===it.tag) && (t!=='y' || inKanji(x));
+  // 訳がまったく同じ語（えらんでいる言語で）は、印が無くても いっしょに出さない（「ことば」問題で答えが2つになるため）
+  const okx = x => x!==it && x.y!==it.y && x.p!==it.p && !(t!=='y' && it.tag && x.tag===it.tag) && (t!=='y' || inKanji(x)) && (t==='y' || mean(x)!==mean(it));
   const take = xs => { for(const x of shuffle(xs)){ if(out.length>=3) break; const k=keyOf(x); if(used.has(k)||!okx(x)) continue; used.add(k); out.push(x); } };
   if(t==='y') return it.yd.map(y=>({y:y}));   // よみ方：語ごとに書いた まちがいの読み（送りがなは正解と同じ・似ているが ちがう読み）
   take(ITEMS.filter(x=>x.cat===it.cat));

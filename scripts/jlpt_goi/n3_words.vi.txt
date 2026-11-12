@@ -1,0 +1,1830 @@
+1	từ bỏ
+2	chán
+3	(trời) sáng; (thời kỳ) kết thúc
+4	rán ngập dầu
+5	giơ lên; nêu (ví dụ)
+6	giữ hộ
+7	gửi giữ; gửi (tiền)
+8	cho, trao
+9	ấm lên (phòng, không khí)
+10	ấm lên (cơ thể, đồ ăn)
+11	làm ấm (phòng, không khí)
+12	hâm nóng (đồ ăn)
+13	trúng; thành công
+14	xử lý; đối xử
+15	làm trúng; đoán
+16	gửi đến (đề tên người nhận)
+17	tranh giành; đánh nhau
+18	biểu đạt
+19	để lộ ra; làm hiện ra
+20	viết (sách)
+21	xuất hiện
+22	có; tồn tại (đồ vật)
+23	kết hợp; làm cho khớp
+24	cuống lên; vội vàng
+25	đến mức đó; đến thế
+26	làm hỏng; làm dập (trái cây)
+27	xào
+28	ấp ủ (cảm xúc, ước mơ)
+29	chúc mừng; ăn mừng
+30	nhận
+31	làm di chuyển (cái gì)
+32	mất
+33	nghi ngờ
+34	đánh bại (kẻ thù); trả thù
+35	bắn (súng)
+36	chiếu; phản chiếu
+37	hiện lên (trong ảnh)
+38	được phản chiếu; hiện lên (trên màn hình)
+39	sinh (con)
+40	chôn; lấp (hố)
+41	có thể (văn viết)
+42	bán chạy
+43	đạt được; có được
+44	đuổi kịp
+45	đuổi theo
+46	cõng; gánh (trách nhiệm)
+47	đáp lại; chấp nhận
+48	làm xong (cái gì)
+49	xảy ra
+50	được dạy; học từ ai đó
+51	nhảy, múa
+52	nảy ra (ý tưởng)
+53	dệt
+54	hạ xuống; lấy xuống
+55	cho xuống xe; dỡ hàng
+56	bán buôn
+57	nuôi (thú cưng)
+58	thay thế (bằng cái khác)
+59	thay mới; đổi (sang cái mới)
+60	đổi (trao đổi, quy đổi)
+61	mắc (bệnh)
+62	tỏa sáng
+63	giới hạn
+64	gãi
+65	thiếu; bỏ sót
+66	giấu (cái gì)
+67	trốn (bản thân)
+68	ngửi
+69	bị thiếu; bị mẻ
+70	chạy; lao đi
+71	cá cược
+72	bao quanh
+73	chồng lên; xếp chồng
+74	kiếm (tiền)
+75	đếm
+76	được dọn gọn; được giải quyết
+77	kể; nói về
+78	buồn
+79	cắt (cỏ); gặt
+80	làm khô (cái gì)
+81	khát
+82	cảm thấy
+83	có hiệu quả
+84	xây dựng; thiết lập
+85	nhận ra
+86	ghét
+87	sắc; hết
+88	thối; ôi
+89	đi xuống
+90	ghép lại; bắt chéo (tay, chân)
+91	sống (cuộc sống)
+92	lặp lại
+93	phát điên; trục trặc
+94	đau khổ
+95	thêm vào
+96	ngậm (bằng miệng)
+97	tham gia; được thêm vào
+98	đá
+99	vượt qua; băng qua
+100	vượt quá
+101	đóng băng
+102	vượt qua; chuyển nhà
+103	khác nhau
+104	từ chối
+105	thích; ưa chuộng
+106	làm đổ; làm tràn
+107	giết
+108	ngã
+109	hét
+110	tránh
+111	rách; nứt toác
+112	chỉ vào
+113	cắm vào; nhét vào
+114	nhỏ (chất lỏng); thêm (vài giọt)
+115	(ánh sáng) chiếu vào
+116	mời; rủ
+117	làm nguội (cái gì)
+118	đánh thức (ai đó)
+119	nguội đi
+120	tỉnh dậy
+121	làm ồn
+122	chìm
+123	thanh toán
+124	chỉ ra; cho thấy
+125	chiếm
+126	ẩm
+127	nói chuyện; tán gẫu
+128	tin
+129	xuất sắc; vượt trội
+130	trải qua (thời gian)
+131	tiến hành; đẩy tới
+132	khuyên; giới thiệu
+133	giải quyết xong; tạm xoay xở
+134	trở nên trong (nước, không khí)
+135	tấn công
+136	trách móc
+137	chạy dọc theo; tuân theo
+138	rót vào; đổ vào
+139	lớn lên
+140	chuẩn bị cho; được trang bị
+141	đầy đủ; tập hợp đủ
+142	sắp xếp cho đủ; làm cho đều
+143	đánh đổ; đánh bại
+144	nấu (cơm)
+145	đốt (lửa); nhóm
+146	xác nhận; kiểm tra
+147	được cứu; được giúp
+148	giúp; cứu
+149	chiến đấu
+150	gõ; vỗ
+151	gấp
+152	đứng dậy
+153	được xây
+154	cắt đứt; dứt bỏ
+155	thử; kiểm tra
+156	tích góp; để dồn lại
+157	dựa vào; nhờ cậy
+158	ôm; bế
+159	lừa
+160	im lặng
+161	rụng (cánh hoa); tản ra
+162	được hiểu; thông tới
+163	bị bắt
+164	nắm; túm
+165	hẹn hò; giao du
+166	dính vào; bám vào
+167	nhận (việc); ngồi vào (chỗ)
+168	(đèn) bật sáng
+169	rót (đồ uống)
+170	nối lại; ghép
+171	kế thừa; nối nghiệp
+172	gắn vào; thêm vào
+173	mặc; đeo vào
+174	được kết nối
+175	nối; buộc
+176	liên kết (cái gì)
+177	xếp chồng; chất lên
+178	hái
+179	nhét; đóng gói
+180	mạnh lên
+181	làm mạnh thêm
+182	tình cờ gặp
+183	hỏi; chất vấn
+184	cho đi qua; xuyên qua
+185	đi ngang qua
+186	tan chảy; hòa tan
+187	(nút) bị bung ra; (bài toán) được giải
+188	nhắm; đóng (sách, mắt)
+189	đóng thành tập; kẹp (hồ sơ)
+190	tới nơi; với tới
+191	cho (khách) ở lại qua đêm
+192	đưa ra bàn (chủ đề); tịch thu
+193	bong ra; tuột ra
+194	tránh sang một bên
+195	cho chảy; xả (nước)
+196	ngắm; nhìn ra
+197	chảy
+198	lười; bê trễ
+199	phiền não; lo nghĩ
+200	thuần hóa; huấn luyện (động vật)
+201	trở thành
+202	ra quả
+203	quen dần; được thuần
+204	hợp với; trông hợp
+205	chín (do nấu); sôi
+206	nắm chặt
+207	nấu; hầm
+208	nhổ; rút ra
+209	làm ướt
+210	bị ướt
+211	cầu mong; xin (ai đó)
+212	ngủ
+213	để lại
+214	chở (người); đặt lên trên
+215	đặt lên; đăng (báo)
+216	nhìn trộm; ngó
+217	loại bỏ; loại trừ
+218	mong; hy vọng
+219	duỗi ra; nuôi dài (tóc)
+220	kéo dài; hoãn
+221	dài ra; giãn ra
+222	bị hoãn; được kéo dài
+223	trình bày; nêu
+224	đi lên; leo
+225	mọc (mặt trời)
+226	được đăng (trên báo)
+227	mọc (cây, răng)
+228	trông đẹp; nổi bật
+229	đo (thời gian, số)
+230	cân; đo (lượng)
+231	đo (độ dài, độ sâu)
+232	hỏi ý kiến; tham vấn
+233	lên kế hoạch; mưu tính
+234	nôn; nhổ
+235	tháo ra; gỡ ra
+236	bị tuột ra; không trúng
+237	thảo luận
+238	tách ra; để cách xa
+239	thả; buông ra
+240	thoát ra; rời khỏi
+241	để (râu) mọc
+242	thịnh hành; lan (dịch bệnh)
+243	kéo
+244	làm lạnh; ướp lạnh (cái gì)
+245	lan rộng; rộng ra
+246	trải ra; mở rộng
+247	lau
+248	chứa; bao gồm
+249	tính cả vào; gộp vào
+250	phòng ngừa; chống lại
+251	làm tăng (cái gì)
+252	gây giống; làm sinh sôi (động vật, tiền)
+253	vẫy; lắc
+254	run; rung
+255	đánh; đập
+256	va vào; đâm vào
+257	đập (cái gì) vào
+258	làm giảm
+259	giảm
+260	sủa
+261	giao phó
+262	cuộn; quấn
+263	gieo (hạt)
+264	rải; rắc (nước...)
+265	bị trộn lẫn (các thứ với nhau)
+266	lẫn vào (giữa những thứ khác)
+267	bị lẫn vào; được gộp vào
+268	hòa vào; xen vào (cùng người khác)
+269	trộn; khuấy
+270	trộn thêm vào; pha lẫn
+271	được tập hợp; được thống nhất
+272	gộp lại; tóm tắt
+273	học
+274	mời đến; chuốc lấy
+275	bảo vệ; giữ (quy tắc)
+276	lạc đường; phân vân
+277	tình cờ thấy
+278	thừa nhận; công nhận; chấp thuận
+279	khám (bệnh nhân)
+280	hướng về; quay về
+281	gọt; bóc vỏ
+282	hướng (cái gì) về; chĩa vào
+283	hấp
+284	buộc; kết nối
+285	lật (trang); giở
+286	đăng ký
+287	cháy (tự cháy)
+288	nhấc lên; nâng lên
+289	đặt lại; trả lại (cái gì)
+290	đốt (cái gì)
+291	dịch
+292	thuê (nhân viên)
+293	xé; phá (quy tắc)
+294	bị rách
+295	nghỉ (việc); từ chức
+296	nhường (chỗ); chuyển nhượng
+297	luộc
+298	tha thứ; cho phép
+299	say
+300	làm bẩn
+301	thôi; bỏ (không làm nữa)
+302	do bởi; tùy thuộc vào
+303	yếu đi
+304	làm yếu đi
+305	bàn luận; tranh luận
+306	bị chia ra; tách nhánh
+307	chia; tách (cái gì)
+308	làm vỡ (đĩa...); chia
+309	học thuộc lòng
+310	sự nhất trí; sự trùng khớp
+311	đi lòng vòng; lang thang
+312	lái xe; vận hành
+313	ứng tuyển; đăng ký dự thi
+314	khai trương (cửa hàng...)
+315	sự bắt đầu
+316	cắt (tóc...)
+317	liên quan đến
+318	việc ra ngoài
+319	học tập
+320	học vấn; nghiên cứu
+321	ký ức; sự ghi nhớ
+322	kỳ vọng; hy vọng
+323	điền vào (biểu mẫu)
+324	kỷ niệm; quà lưu niệm
+325	hủy
+326	hợp tác
+327	huấn luyện; tập luyện
+328	thuê phòng trọ; ở trọ
+329	giao lưu
+330	chà; cọ
+331	chi phối, tác động; trái và phải
+332	kích thích
+333	thu hoạch
+334	tập trung
+335	đi công tác
+336	lời mời; sự mời
+337	chứng minh; chứng nhận
+338	sử dụng
+339	học lên cao
+340	nộp đơn (cho cơ quan)
+341	xuất phát; khởi đầu
+342	in
+343	làm
+344	trưởng thành; tăng trưởng
+345	chiến tranh
+346	điều chỉnh
+347	đi học (đến trường)
+348	thức trắng đêm
+349	lên sân khấu; xuất hiện (trong truyện)
+350	tim đập thình thịch
+351	đọc sách
+352	nỗ lực
+353	sống lâu
+354	vào cửa (hội trường, sự kiện)
+355	sự phát sinh; sự bùng phát
+356	bán hàng
+357	một lời; vài lời
+358	sôi
+359	choáng váng; loạng choạng
+360	đi dạo thong thả; đung đưa
+361	phân loại
+362	phát sóng
+363	tuyển (người); chiêu mộ
+364	đồng minh; người ủng hộ
+365	nhập khẩu
+366	lợi nhuận; lợi ích
+367	du học
+368	liên tiếp
+369	nói xấu
+370	giỏi; ngon (thân mật)
+371	đáng ghen tị
+372	đáng sợ; khủng khiếp
+373	hiền lành; trầm lặng
+374	thông minh; khôn ngoan
+375	cứng
+376	ấm ức; tiếc nuối
+377	khổ sở; ngột ngạt (cơ thể, tinh thần)
+378	chi tiết; am hiểu
+379	đậm; đặc
+380	thân thiết
+381	sắc bén
+382	vất vả; đau lòng
+383	dữ dội; mãnh liệt
+384	nhanh (tốc độ)
+385	nghèo
+386	chói mắt
+387	nóng ẩm; oi bức
+388	lỏng; thoai thoải (dốc, đường cong)
+389	tốt
+390	được; tốt (lịch sự)
+391	rõ ràng
+392	bất ngờ; không ngờ
+393	chung; phổ thông
+394	chính
+395	đột ngột; gấp; dốc
+396	cao tốc
+397	sôi nổi; phát triển mạnh
+398	tươi (thức ăn, không khí)
+399	thật thà; ngoan ngoãn
+400	rất; khá; khá nhiều
+401	không được; vô dụng
+402	giống hệt; đồng nhất
+403	phức tạp
+404	thiếu
+405	bất lợi
+406	đỏ rực
+407	hài lòng
+408	có lợi; thuận lợi
+409	dễ dàng; thoải mái
+410	lanh lợi; sáng dạ (trẻ em, con vật)
+411	tuyệt vời; đáng nể
+412	ánh sáng; đèn
+413	buổi họp mặt; buổi tụ họp
+414	một giờ; một lúc, tạm thời
+415	một khoảnh khắc
+416	cả đời
+417	mặt khác; trong khi đó
+418	yên (tiền Nhật); hình tròn
+419	con gái (của người khác); cô gái trẻ
+420	buổi trưa; bữa trưa
+421	hội viên
+422	nước ngoài; hải ngoại
+423	kế toán; thanh toán (hóa đơn)
+424	hóa học
+425	môn học
+426	ngoại giao
+427	học thức; kiến thức
+428	học giả
+429	học kỳ
+430	phóng viên; nhà báo
+431	bài báo; tin tức
+432	cơ bản; nền tảng
+433	sách giáo khoa
+434	nghị viện; hội đồng
+435	hội trường; giảng đường
+436	quốc ngữ; môn tiếng Nhật (ở trường)
+437	người dân; quốc dân
+438	quốc gia
+439	Quốc hội (Nhật Bản)
+440	tác phẩm
+441	chi nhánh (cửa hàng, ngân hàng)
+442	tuần (một tuần nào đó)
+443	tuần (đếm số tuần)
+444	tuần san; ấn phẩm hàng tuần
+445	thu nhập
+446	học bổng
+447	thiếu nữ; bé gái
+448	thiếu niên; cậu bé
+449	hàng hóa; sản phẩm (để bán)
+450	thực phẩm
+451	phòng đọc sách; phòng làm việc
+452	giấy tờ; tài liệu
+453	chiều cao (người)
+454	judo (nhu đạo)
+455	chính trị
+456	thanh niên
+457	sản phẩm (chế tạo)
+458	toàn quốc
+459	tốc độ
+460	đại hội, cuộc thi
+461	phần lớn
+462	nam sinh, con trai
+463	cha, bố
+464	đang …, trong lúc …
+465	trường cấp hai (THCS)
+466	bữa trưa
+467	thời gian dài, dài hạn
+468	trò ảo thuật
+469	triết học
+470	cuộc gặp gỡ
+471	đèn điện
+472	thành phố, đô thị
+473	sách vở, tài liệu
+474	đất, mảnh đất
+475	Nhật Bản
+476	năng lực
+477	viện bảo tàng
+478	sân bay (nhỏ), phi trường
+479	từng người một
+480	phần được chia; thế (lợi/bất lợi)
+481	bộ phận, phần
+482	văn minh
+483	lĩnh vực
+484	chính người đó, bản thân
+485	sức hấp dẫn, sức cuốn hút
+486	phần thừa ra, phần dư
+487	cách đọc (chữ Hán)
+488	như mọi khi, vẫn như cũ
+489	đối tác; đối phương
+490	chỗ trống
+491	bắt tay
+492	mồ hôi
+493	ấm áp (đồ vật, tình cảm)
+494	quanh đây, vùng lân cận
+495	trúng, thành công (đánh trúng)
+496	dấu vết
+497	lỗ, hố
+498	dầu
+499	mỡ (của thịt)
+500	còn thừa, dư ra
+501	chỗ sai sót nhỏ, sơ hở
+502	cơn bão
+503	mọi, tất cả
+504	biểu hiện, dấu hiệu (của cảm xúc)
+505	một … nào đó
+506	bọt
+507	phương án, ý tưởng
+508	sự ổn định
+509	dạ dày
+510	khác, sự khác biệt
+511	ý nghĩa; tấm lòng
+512	ủy viên
+513	phòng khám
+514	cơn giận
+515	lượt đi; (tàu xe) đi …
+516	hơi thở
+517	tinh tế, có gu
+518	sinh vật
+519	bác sĩ
+520	ý định, ý muốn
+521	ý chí
+522	tính bướng bỉnh; lòng tự trọng
+523	bất thường
+524	xấu bụng, hay chơi xấu
+525	trước đây
+526	vẫn còn, vẫn chưa thay đổi
+527	vội, gấp
+528	tấm ván
+529	cơn đau
+530	vĩ đại
+531	vị trí
+532	cùng một lúc
+533	chợ
+534	cả vùng
+535	anh/em họ (nam)
+536	chị/em họ (nữ)
+537	di chuyển
+538	ngủ gật
+539	sinh mạng, tính mạng
+540	vi phạm
+541	quần áo
+542	phòng khách
+543	không (từ chối)
+544	kể từ đó
+545	sự nhờ vả, yêu cầu
+546	y tế
+547	hàng may mặc
+548	tảng đá
+549	lễ mừng; quà mừng
+550	có thể nói là, nói ví như
+551	cái gọi là
+552	in ấn
+553	ấn tượng
+554	trích dẫn
+555	trồng (cây)
+556	cá
+557	nổi
+558	thỏ
+559	bò
+560	xoáy nước
+561	vũ trụ
+562	ngựa
+563	sinh ra; nơi sinh
+564	có hay không
+565	… trên, … ngoài (tiền tố)
+566	tin đồn
+567	vận, vận số (may rủi)
+568	cán (của dụng cụ)
+569	vĩnh viễn
+570	ảnh hưởng
+571	bán hàng; (cửa hàng) mở cửa
+572	vệ tinh
+573	dinh dưỡng
+574	gương mặt tươi cười
+575	thức ăn cho thú; mồi
+576	sự hoãn lại
+577	biểu diễn nhạc
+578	đuôi
+579	tuổi già
+580	vua
+581	cổ vũ, ủng hộ
+582	đức vua (cách gọi kính trọng)
+583	hoàng tử
+584	băng qua
+585	rất, hết sức
+586	giọng to
+587	chủ nhà (cho thuê)
+588	đồi
+589	phía trong, sâu bên trong
+590	sự chậm trễ
+591	lời dạy, bài học
+592	tán gẫu
+593	ăn mặc sành điệu
+594	cúi chào
+595	ô nhiễm
+596	có lẽ
+597	lẫn nhau
+598	bình tĩnh lại; ổn định chỗ ở
+599	đàn ông
+600	sự ngạc nhiên
+601	quỷ, yêu quái
+602	đai lưng kimono; dây lưng
+603	mày (thô, với bạn thân/người dưới)
+604	được gặp (khiêm nhường)
+605	kỷ niệm
+606	chủ yếu
+607	ấm áp (khí hậu)
+608	nhiệt độ
+609	ban, phòng (bộ phận)
+610	sò, vỏ sò
+611	giải quyết
+612	cách hiểu, diễn giải
+613	cải thiện
+614	hồi phục
+615	hương thơm
+616	giá cả
+617	người phụ trách
+618	khuấy, trộn
+619	hạt nhân, cốt lõi
+620	đẳng cấp, vị thế
+621	chắc chắn
+622	mở rộng, phóng to
+623	xác nhận
+624	đồ nội thất
+625	cái bóng
+626	điều chỉnh; tình trạng
+627	quá khứ
+628	giỏ; lồng
+629	hỏa hoạn
+630	đồ trang trí
+631	việc cho vay; ân huệ (người khác nợ mình)
+632	bánh kẹo
+633	ca sĩ
+634	việc nhà
+635	số, số lượng
+636	kiểu, mẫu
+637	vai
+638	các vị (lịch sự)
+639	dọn dẹp, sắp xếp
+640	chiến thắng
+641	giá trị
+642	hoạt động
+643	tỏa sáng, thể hiện xuất sắc
+644	giả định
+645	tiền
+646	chuông
+647	có thể (khả năng)
+648	phần trên; thượng nguồn
+649	thêm vào (yếu tố), tính cả vào
+650	sấm
+651	tóc
+652	bài hát, ca khúc
+653	vỏ (cứng)
+654	việc vay mượn; khoản nợ
+655	săn bắn
+656	héo, chết (cây)
+657	sông
+658	da; vỏ
+659	da thuộc
+660	đáng thương
+661	lon, hộp
+662	ống dẫn
+663	giác quan, cảm quan
+664	khoảng cách, quãng cách (thời gian)
+665	suy nghĩ, ý kiến
+666	khán giả
+667	môi trường
+668	chào đón
+669	tham quan
+670	tập quán
+671	quan sát
+672	cảm ơn, lòng biết ơn
+673	khâm phục
+674	sự quan tâm
+675	cảm giác, cảm nhận
+676	bệnh nhân
+677	thanh toán (hóa đơn); tính tiền
+678	cảm xúc
+679	hoàn thành (sản phẩm, công trình)
+680	tiếng reo hò
+681	hoàn hảo, đầy đủ
+682	sự khô; làm khô
+683	cảm tưởng
+684	đạo diễn, huấn luyện viên; giám sát
+685	xúc động
+686	quản lý
+687	hoàn tất, xong (thủ tục, công việc)
+688	tác hại, thiệt hại
+689	họa sĩ
+690	chịu đựng, nhẫn nại
+691	hoa văn (trên vải)
+692	ung thư
+693	nhiệt độ không khí
+694	máy móc
+695	khoảng thời gian, kỳ
+696	cơ quan (của cơ thể)
+697	ấn phẩm phát hành theo quý
+698	doanh nghiệp
+699	hạn chót
+700	tâm trạng
+701	khí hậu
+702	tổ chức; cơ cấu
+703	bờ
+704	vải; bột nhào
+705	vết thương; vết xước
+706	quy định, hạn chế
+707	về nhà
+708	quý giá
+709	bận tâm, lo lắng
+710	chức năng
+711	quyên góp
+712	hy vọng, mong muốn
+713	quy tắc; thông lệ
+714	kỳ lạ
+715	quyết định, chọn (ra)
+716	cấp, hạng
+717	quả bóng; hình cầu
+718	kỳ nghỉ
+719	giờ nghỉ giải lao
+720	ngày nghỉ
+721	cứu hộ
+722	nghỉ ngơi, thư giãn
+723	lương
+724	vùng đồi
+725	giáo viên
+726	giáo sư
+727	hưởng thụ; nhận (lợi ích)
+728	nhấn mạnh
+729	hợp tác, hài hòa
+730	chung, điểm chung
+731	nỗi sợ hãi
+732	cho phép, giấy phép
+733	cục; đài (truyền hình, phát thanh)
+734	khổng lồ
+735	khéo tay; khéo léo
+736	điểm dừng, chỗ kết thúc
+737	mảnh (vải); lát
+738	ghi chép; kỷ lục
+739	vàng
+740	vi khuẩn
+741	cấm hút thuốc
+742	số tiền
+743	cấm
+744	tiền bạc
+745	kim loại
+746	căng thẳng, hồi hộp
+747	tài chính
+748	nghị sĩ
+749	nghĩa vụ
+750	ngược lại
+751	phép tắc, cách cư xử
+752	thảo luận; tranh luận
+753	bạc
+754	câu thơ; vế câu
+755	nỗi khổ
+756	ăn (nói suồng sã)
+757	hôi
+758	thói quen (thường là xấu)
+759	ống (nhỏ, tròn)
+760	đi xuống; chuyến tàu đi khỏi thành phố
+761	phát, phân phát
+762	phân biệt
+763	cuộc sống, sinh hoạt
+764	cuối năm; hoàng hôn
+765	vất vả
+766	cách đọc thuần Nhật của chữ Hán
+767	tình cờ
+768	cụ thể
+769	huyện, quận (đơn vị hành chính)
+770	đàn, nhóm
+771	tổng số
+772	hình phạt
+773	điều hành (doanh nghiệp)
+774	kinh tế; tình hình kinh doanh
+775	dụng cụ đo
+776	tính toán
+777	thông báo (niêm yết)
+778	điện thoại di động; mang theo
+779	hình thái
+780	hợp đồng
+781	đi qua, quá cảnh
+782	trang điểm
+783	kết quả
+784	mạch máu
+785	rốt cuộc
+786	kiên quyết thực hiện
+787	quyết tâm
+788	vắng mặt
+789	quyết định
+790	khuyết điểm, điểm yếu
+791	máu
+792	kết luận
+793	khói
+794	vé
+795	tỉnh
+796	vụ việc
+797	khỏe mạnh
+798	kiểm tra, xét nghiệm
+799	xây dựng (công trình, đường)
+800	kiến trúc
+801	xem xét, nghiên cứu
+802	hạng dưới
+803	nghệ thuật
+804	vở kịch
+805	nhà hát
+806	giới hạn
+807	tiền mặt
+808	hiện tại
+809	giảm
+810	thực tế
+811	hiện trạng
+812	hiện đại
+813	hiện trường
+814	người yêu
+815	may mắn
+816	bài giảng, buổi diễn thuyết
+817	buổi biểu diễn công cộng
+818	hiệu quả
+819	đồng xu
+820	đắt tiền, giá cao
+821	hối hận
+822	chuyến đi biển
+823	trao đổi
+824	hàng không
+825	quảng cáo
+826	hẹn hò; giao thiệp
+827	tòa nhà trường học
+828	vế sau, cái sau
+829	trói buộc, ràng buộc
+830	hành động
+831	đàn em (khóa dưới)
+832	hoang tàn
+833	nhà máy
+834	niềm hạnh phúc
+835	đầu hàng
+836	phấn khích
+837	ứng viên
+838	cân nhắc
+839	nước đá; băng
+840	hít thở
+841	quê hương
+842	quốc tịch
+843	bảng đen
+844	từng cái, riêng lẻ
+845	giọng nhỏ
+846	thắt lưng, eo
+847	hạt tiêu
+848	cá nhân
+849	tiền lẻ
+850	gãy xương
+851	bưu kiện nhỏ
+852	đàn tranh Nhật
+853	tục ngữ
+854	sở thích, khẩu vị
+855	lúa mì
+856	đông đúc
+857	hỗn loạn
+858	cờ vây
+859	đỗ (kỳ thi)
+860	tổng cộng
+861	hiểu lầm
+862	cực kỳ, vô cùng
+863	từ và cụm từ
+864	rác
+865	chênh lệch
+866	tuyệt nhất, cao nhất
+867	cuối cùng
+868	thu thập (côn trùng, cây cỏ)
+869	mới nhất
+870	tệ nhất, thấp nhất
+871	tài năng
+872	xét xử
+873	đỉnh cao, thời kỳ đỉnh
+874	công việc, tác nghiệp
+875	tác phẩm
+876	hàng rào
+877	nông sản, hoa màu
+878	hoa anh đào
+879	rượu
+880	nhà văn
+881	sáng tác nhạc
+882	ngay lập tức
+883	tiền giấy
+884	sa mạc
+885	phân biệt đối xử
+886	đa dạng
+887	cái đĩa
+888	hơn nữa
+889	khỉ
+890	sự ồn ào, náo động
+891	tham gia
+892	oxy hóa
+893	công nghiệp
+894	tham khảo
+895	tán thành
+896	tài sản
+897	nguyên liệu
+898	chỗ ngồi
+899	ông/bà (trang trọng, đặt sau tên)
+900	bài thơ
+901	cái chết
+902	hạnh phúc
+903	hình vuông
+904	tư cách, chứng chỉ
+905	thị giác
+906	chỉ huy
+907	chi trả, cấp phát (lương, vật tư)
+908	khẩn cấp
+909	tài nguyên
+910	chi tiêu
+911	chỉ thị
+912	nhà thơ
+913	tư thế, thái độ
+914	thiên nhiên
+915	lưỡi
+916	chuẩn bị
+917	ngay khi …; tùy theo …
+918	thất nghiệp
+919	độ ẩm
+920	sự thất vọng
+921	sự hướng dẫn, huấn luyện
+922	hàng hóa, đồ vật
+923	bãi cỏ
+924	tử vong (trang trọng)
+925	chất béo, mỡ
+926	chị em gái
+927	vết bẩn
+928	hạn chót
+929	phần dưới (hạ lưu sông, cuối trang)
+930	bang, tỉnh
+931	đám đông, mọi người
+932	xung quanh
+933	tôn giáo
+934	tìm được việc, vào làm
+935	sửa chữa
+936	nghỉ trọ qua đêm
+937	thủ tướng
+938	phẫu thuật
+939	phương tiện, biện pháp
+940	khẳng định ý kiến
+941	xuất thân từ (nơi, trường)
+942	xuất bản
+943	sự tham gia (thi đấu)
+944	thủ đô
+945	phụ nữ nội trợ
+946	chính, chủ yếu
+947	loại, chủng loại
+948	nhỏ (trong lớn/vừa/nhỏ)
+949	giải thưởng
+950	cả đời, suốt đời
+951	thật thà, trung thực
+952	triệu chứng
+953	danh tính thật, bản chất thật
+954	thương nhân
+955	sự tiêu dùng
+956	phần thưởng (vật được tặng)
+957	phòng cháy chữa cháy
+958	chiếu sáng
+959	sự lược bỏ, viết tắt
+960	nghề nghiệp
+961	bàn ăn
+962	thực vật, cây cối
+963	thức ăn
+964	sự thèm ăn
+965	thực phẩm (để mua)
+966	lương thực (dự trữ)
+967	chữ ký
+968	xử lý
+969	việc riêng
+970	thông số kỹ thuật
+971	thông báo, tin tức
+972	tìm hiểu, kiểm tra
+973	mông
+974	người quen
+975	quen biết nhau
+976	dấu, ký hiệu
+977	lâu đài
+978	thần kinh
+979	nghiêm túc, chân thành
+980	sự tiến hành, diễn tiến
+981	mới nổi
+982	sự chấn hưng (công nghiệp, v.v.)
+983	đèn giao thông, tín hiệu
+984	khám bệnh
+985	họ hàng
+986	tim
+987	cơ thể
+988	làm trọng tài, phân xử
+989	sự tiến bộ
+990	bạn thân
+991	sự tin tưởng
+992	tâm lý
+993	chân lý
+994	tận tay, đích thân
+995	sắp, chẳng bao lâu nữa
+996	thời kỳ, mùa
+997	từ tính
+998	đồ sứ
+999	vụ việc
+1000	bản thân
+1001	thời điểm, giờ khắc
+1002	tự tử
+1003	sự tự tin
+1004	sự thật
+1005	hoàn cảnh, lý do
+1006	thí nghiệm
+1007	sự thực hiện
+1008	thực tế
+1009	thật ra, nói thật là
+1010	thực lực
+1011	tự động
+1012	một cách tự động
+1013	sự khoe khoang, tự hào
+1014	giản dị, không nổi bật
+1015	công việc văn phòng
+1016	việc ở (ăn – mặc – ở)
+1017	sự coi trọng
+1018	bệnh nặng, tình trạng nguy kịch
+1019	tắc đường
+1020	nhà ở, chỗ ở
+1021	nghiêm trọng, hệ trọng
+1022	cư dân
+1023	quan trọng
+1024	học phí
+1025	nhu cầu
+1026	thứ tự, trình tự
+1027	suôn sẻ, thuận lợi
+1028	lượt, thứ tự lần lượt
+1029	loại thượng hạng; tập một
+1030	tình cảm
+1031	hành khách
+1032	tình hình
+1033	điều kiện
+1034	cấp trên
+1035	thường thức, lẽ thường
+1036	tình trạng, trạng thái
+1037	sự giỏi lên (kỹ năng)
+1038	lời nói đùa
+1039	thông tin
+1040	nữ hoàng
+1041	con gái; phụ nữ
+1042	bà (cách gọi trang trọng)
+1043	trợ từ
+1044	dần dần
+1045	nữ diễn viên
+1046	nhân tạo
+1047	chủng tộc
+1048	cuộc đời
+1049	nhân loại
+1050	giấm
+1051	sự giới thiệu, tiến cử
+1052	xả nước (bồn cầu xả nước)
+1053	giấc ngủ
+1054	số lượng
+1055	con số, chữ số
+1056	dáng vẻ
+1057	vứt, bỏ đi
+1058	đã (trang trọng)
+1059	tất cả
+1060	mực tàu (viết thư pháp)
+1061	hình vẽ, sơ đồ
+1062	đau đầu
+1063	dương (số dương)
+1064	họ
+1065	do, tại (điều xấu)
+1066	tính cách
+1067	chính xác
+1068	thế kỷ
+1069	yêu cầu thanh toán
+1070	sự hạn chế, giới hạn
+1071	thành công
+1072	tinh xảo
+1073	thanh toán bù (ví dụ bù tiền vé)
+1074	chính thức
+1075	tinh thần
+1076	người lớn
+1077	thành tích, kết quả
+1078	nhiều nhất cũng chỉ
+1079	sản xuất, chế tạo
+1080	sự sinh trưởng (của cây)
+1081	chế độ
+1082	tuổi trưởng thành
+1083	ngày tháng năm sinh
+1084	chính phủ
+1085	sinh vật
+1086	sự sống, sinh mệnh
+1087	họ và tên
+1088	sắp xếp, dọn dẹp
+1089	kinh nguyệt; sinh lý
+1090	than đá
+1091	trách nhiệm
+1092	dầu mỏ
+1093	xã hội, thiên hạ
+1094	tích cực, chủ động
+1095	đoạn, mục (của văn bản)
+1096	thiết bị, cơ sở vật chất
+1097	tiết kiệm
+1098	cuộc bầu cử
+1099	chuyên ngành
+1100	sự đi trước
+1101	tuyển chọn, xét tuyển
+1102	chất tẩy rửa
+1103	vận động viên
+1104	hôm nọ
+1105	sự lựa chọn
+1106	quảng cáo, tuyên truyền
+1107	đàn anh, đàn chị
+1108	thuế
+1109	tiền thuế
+1110	xa hoa, xa xỉ
+1111	tuyệt đối
+1112	toàn …; cả …
+1113	khay cơm nhỏ
+1114	Thiền (Phật giáo)
+1115	toàn thể thành viên
+1116	toàn thân
+1117	toàn bộ, tổng thể
+1118	tướng (vẻ mặt, v.v.)
+1119	nhà sư
+1120	tiếng ồn
+1121	thao tác (máy móc)
+1122	lái, điều khiển (máy bay, tàu)
+1123	sự tưởng tượng
+1124	sự sáng tạo
+1125	thừa kế
+1126	khá, đáng kể
+1127	tổ chức
+1128	tay áo
+1129	mì kiều mạch
+1130	thiệt hại
+1131	sự tôn trọng, kính trọng
+1132	sự tồn tại
+1133	bức tượng, hình ảnh
+1134	sự gia tăng
+1135	ruộng lúa
+1136	khác, những cái khác
+1137	đội, đoàn (quân)
+1138	thể dục
+1139	thân nhiệt
+1140	bỏ học
+1141	chán, nhàm chán
+1142	sự lưu trú
+1143	đại sứ
+1144	đáng kể; (không) nhiều
+1145	đối tượng
+1146	sự đối chiếu, tương phản
+1147	cân nặng
+1148	đại chiến (thế chiến)
+1149	thái độ
+1150	bắt giữ
+1151	mặt trời
+1152	bằng phẳng
+1153	lục địa
+1154	số lượng lớn
+1155	kho báu
+1156	lẫn nhau
+1157	nhà, tư gia
+1158	trận chiến
+1159	miễn phí
+1160	chỉ, duy nhất
+1161	dừng bước
+1162	vị trí, lập trường
+1163	chỉ có (số ít)
+1164	trôi qua (thời gian)
+1165	cái khiên
+1166	dựng lên; thiết lập
+1168	thung lũng
+1169	người lạ; người khác
+1170	hạt giống
+1171	tất xỏ ngón kiểu Nhật
+1172	chuyến đi
+1173	viên, hạt (vật tròn nhỏ)
+1174	quả bóng; bóng đèn
+1175	viên đạn
+1176	thỉnh thoảng
+1177	tình cờ
+1178	thử, lần thử
+1179	thư từ, tin thăm hỏi
+1180	tín chỉ; đơn vị
+1181	ngắn hạn
+1182	đơn giản
+1183	sự ra đời, sinh ra
+1184	phụ trách
+1185	chỉ đơn thuần
+1186	đại …; lớn
+1187	đề, tiêu đề
+1188	bộ trưởng
+1189	tổng thống
+1190	đại diện
+1191	tựa đề (sách, phim)
+1192	bậc thang; cấp độ
+1193	đoàn thể
+1194	đất, mặt đất
+1195	khu vực, vùng
+1196	dưới lòng đất, tầng hầm
+1197	sự khác biệt
+1198	chắc chắn là
+1199	Trái Đất
+1200	khu (địa phận hành chính)
+1201	sự đến muộn
+1202	kiến thức
+1203	thống đốc tỉnh
+1204	trí thông minh
+1205	vùng miền; nông thôn
+1206	trà
+1207	đồ cũ, đồ đã qua sử dụng
+1208	đình chỉ, ngừng lại
+1209	đỗ xe
+1210	trung tâm
+1211	sự chú ý
+1212	đặt hàng, gọi món
+1213	điều tra, khảo sát
+1214	tình trạng (cơ thể, máy móc)
+1215	sự thử sức, thách thức
+1216	để dành tiền, tiền dành dụm
+1217	trực tiếp
+1218	tác giả
+1219	điều trị
+1220	cuối cùng
+1221	đi qua
+1222	tiền tệ
+1223	đi làm (đi lại hằng ngày)
+1224	lưu thông, qua lại
+1225	thông tin liên lạc
+1226	phiên dịch
+1227	sự mệt mỏi
+1228	sự giao thiệp, qua lại
+1229	liên tiếp, hết cái này đến cái khác
+1230	đất (thổ nhưỡng)
+1231	gói, bưu kiện
+1232	phần tiếp theo
+1233	công việc (đi làm)
+1234	nhiệm vụ, bổn phận
+1235	luôn luôn
+1236	đôi cánh (lớn)
+1237	tội
+1238	mùa mưa (đầu hè)
+1239	sương
+1240	câu cá; tiền thối lại
+1241	đề xuất
+1242	định kỳ
+1243	nộp
+1244	mức độ
+1245	trạm xe buýt
+1246	kẻ thù
+1247	sự triệt để
+1248	sắt
+1249	sự giúp đỡ; người giúp
+1250	thủ tục
+1251	đường sắt
+1252	thời tiết
+1253	chuyển trường
+1254	thiên nhiên; tự nhiên
+1255	sự ra; tốt nghiệp (từ trường)
+1256	cuộc gặp gỡ
+1257	sự việc, sự kiện
+1258	đi ra; rời đi
+1259	lời nhắn
+1260	electron; điện tử
+1261	truyền thống
+1262	tòa (đếm tòa nhà)
+1263	giấy làm bài thi
+1264	phá sản
+1265	thời đó
+1266	chính ngày hôm đó
+1267	đương nhiên
+1268	sự đến nơi
+1269	bỏ phiếu
+1270	phương Đông
+1271	giỏi; sở trường
+1272	đặc trưng
+1273	điểm mạnh, ưu điểm
+1274	leo núi
+1275	thành phố
+1276	năm tháng, thời gian dài
+1277	người già
+1278	đột nhiên
+1279	người tháp tùng
+1280	cùng (với)
+1281	hổ
+1282	hủy bỏ
+1283	lấy; nhận
+1284	đồng xu bằng đồng
+1285	động từ
+1286	những người cùng loại với nhau
+1287	đồng chí, người cùng chí hướng
+1288	cùng lúc
+1289	đạo đức
+1290	sự dao động, xao động
+1291	đồng nghiệp
+1292	đường
+1293	chất độc
+1294	độc thân
+1295	độc lập
+1296	quát tháo
+1297	bùn
+1298	bí mật
+1299	nội dung
+1300	mối quan hệ (giữa người với người)
+1301	bạn bè, đồng đội
+1302	đồ vật bên trong
+1303	ruột, phần bên trong
+1304	cảnh quan, tầm nhìn
+1305	dòng chảy
+1306	an ủi
+1307	không có
+1308	cái gì đó
+1309	nồi
+1310	sóng
+1311	trung bình, bình thường
+1312	nước mắt
+1313	nỗi phiền muộn
+1314	dây thừng
+1315	khó khăn, trở ngại
+1316	tại sao
+1317	cái gì cũng
+1318	bằng cách nào đó
+1319	kém (về), không giỏi
+1320	đời sống hằng ngày
+1321	ánh nắng
+1322	ban ngày
+1323	Nhật Bản
+1324	sự được ưa chuộng
+1325	con người
+1326	điều ước, nguyện vọng
+1327	chuột
+1328	giá cả
+1329	nhiệt đới
+1330	say mê, mải mê
+1331	trong một năm
+1332	niên giám
+1333	quãng thời gian đã qua
+1334	thập niên, thời đại
+1335	tuổi
+1336	năng lực, tài năng
+1337	nông nghiệp
+1338	phần còn lại
+1339	tro
+1340	phổi
+1341	giao hàng
+1342	diễn viên
+1343	mộ
+1344	vỗ tay
+1345	kẹp vào giữa
+1346	mép, rìa
+1347	sự bắt đầu
+1348	lá cờ
+1349	nương rẫy, ruộng cạn
+1350	tác dụng, hoạt động
+1351	da
+1352	trần truồng
+1353	phát hiện
+1354	xe khởi hành
+1355	phóng (tên lửa)
+1356	phát triển
+1357	công bố, thuyết trình
+1358	lòe loẹt, sặc sỡ
+1359	rời xa
+1360	cánh (chim, côn trùng)
+1361	lông vũ
+1362	chiều rộng
+1363	bụng
+1364	cánh đồng
+1365	kim; kim đồng hồ
+1366	nhóm, tổ
+1367	con dấu; khổ giấy
+1368	bản (in)
+1369	phạm vi
+1370	tội ác, phạm tội
+1371	sự tự kiểm điểm
+1372	phán đoán
+1373	thủ phạm
+1374	gấp đôi
+1375	mùa mưa (cách nói trang trọng)
+1376	đồ ngốc
+1377	vụ nổ
+1378	cảnh, tình huống
+1379	đèn, ánh đèn
+1380	bia đá
+1381	sự so sánh
+1382	thiệt hại
+1383	nhận (việc), đảm nhận
+1384	chuyến bay (máy bay)
+1385	hành vi phạm pháp (của thanh thiếu niên)
+1386	đầu gối
+1387	khẩn cấp; cực kỳ
+1388	liều mạng, hết sức
+1389	ngày tháng
+1390	sự phủ định
+1391	một mình
+1392	sự phê phán
+1393	bí mật
+1394	sợi dây
+1395	phiếu bầu
+1396	sự đánh giá
+1397	sự biểu đạt
+1398	sự hiển thị
+1399	danh tiếng
+1400	bề mặt
+1401	chi phí
+1402	người đẹp (phụ nữ)
+1403	tế nhị, khó nói
+1404	giây
+1405	chai, lọ
+1406	chuyến (bay, xe); dịch vụ thư
+1407	lo lắng, bất an
+1408	phong cảnh
+1409	vợ chồng
+1410	không được phép; điểm trượt
+1411	phúc, may mắn
+1412	trang phục
+1413	túi, bao
+1414	bất hạnh
+1415	đốt, mấu; giai điệu
+1416	kỳ lạ, huyền bí
+1417	bất tiện, thiếu tự do
+1418	phụ nữ (trang trọng)
+1419	gian lận, bất chính
+1420	thường ngày, bình thường
+1421	gián đoạn (giao thông, liên lạc)
+1422	bất mãn
+1423	giả vờ, làm ra vẻ
+1424	bầu không khí
+1425	bình an, vô sự
+1426	sân khấu
+1427	giá cả hàng hóa
+1428	vật lý
+1429	phần, lượng
+1430	câu
+1431	trung bình
+1432	ngày thường
+1433	hòa bình
+1434	sự thay đổi, biến đổi
+1435	sự thay đổi (kế hoạch), sửa đổi
+1436	không có gì đặc biệt
+1437	cơm hộp
+1438	phía, bên
+1439	luật, pháp luật
+1440	phương hướng
+1441	báo cáo
+1442	đá quý
+1443	việc gói, đóng gói
+1444	phong phú, dồi dào
+1445	phương pháp
+1446	khắp nơi
+1447	thăm viếng
+1448	khác
+1449	bụi
+1450	bảo đảm, bảo hành
+1451	phơi
+1452	việc lưu giữ, bảo quản
+1453	vỉa hè
+1454	xương
+1455	ngọn lửa
+1456	hào, mương quanh thành
+1457	hào nước (quanh lâu đài)
+1458	đào
+1459	sự thật; thật
+1460	cây gậy
+1461	trẻ lạc
+1462	trước, sẵn
+1463	màn (sân khấu); hồi
+1464	màng
+1465	sự thua
+1466	bẻ cong, uốn
+1467	cháu (của ông bà)
+1468	đùi; háng
+1469	phố, khu phố
+1470	sự nhầm lẫn, điều sai
+1471	nhầm, sai
+1472	hoàn toàn, thật sự
+1473	cây thông
+1474	lễ hội
+1475	sự bắt chước
+1476	đậu
+1477	hình tròn, vật tròn
+1478	đường tròn
+1479	đầy người, kín chỗ
+1480	quả; hạt
+1481	tiễn (người)
+1482	đánh bóng; đánh (răng)
+1483	tuyệt vời, đẹp mắt
+1484	dày đặc, đông đúc
+1485	học được (kỹ năng); mặc, đeo
+1486	việc thăm người bệnh
+1487	quà (mua về)
+1488	ngày kia
+1489	tương lai
+1490	đối diện
+1491	việc đón (người)
+1492	hướng; phù hợp (với)
+1493	sự phớt lờ
+1494	sâu răng
+1495	thà … còn hơn; ngược lại
+1496	vô ích, lãng phí
+1497	say mê, mê mải
+1498	ngực
+1499	miễn phí
+1500	danh thiếp
+1501	danh từ
+1502	bậc thầy, cao thủ
+1503	mệnh lệnh
+1504	phiền phức, làm phiền
+1505	nổi bật
+1506	hiếm khi
+1507	phỏng vấn (tuyển chọn)
+1508	rắc rối, phiền hà
+1509	đơn đăng ký
+1510	lời bào chữa; lời xin lỗi
+1511	chăn len
+1512	mục đích
+1513	mục tiêu
+1514	chữ cái, ký tự
+1515	có lý, hợp lẽ
+1516	nền tảng, cơ sở
+1517	nguyên liệu gốc, nguồn
+1518	câu chuyện
+1519	hoa văn
+1520	chữ viết, văn tự
+1521	khoảng, xấp xỉ
+1522	bản dịch
+1523	vai trò
+1524	tiền thuê nhà
+1525	nhà trọ
+1526	mái nhà
+1527	cách làm
+1528	làm lại
+1529	loại ưu (điểm cao nhất)
+1530	dũng khí
+1531	hữu cơ
+1532	hữu nghị
+1533	có hiệu lực, hiệu quả
+1534	ưu tú, xuất sắc
+1535	giành chức vô địch
+1536	bạn bè (trang trọng)
+1537	có năng lực, tài giỏi
+1538	bưu chính, thư từ
+1539	sàn nhà
+1540	vui vẻ, thú vị
+1541	đi … (hướng đến nơi nào)
+1542	giàu có, dồi dào
+1543	đêm
+1544	thế gian, đời
+1545	dễ dàng
+1546	đồ đựng, hộp đựng
+1547	yêu cầu, đòi hỏi
+1548	sự cẩn thận, đề phòng
+1549	vẻ ngoài, tình hình
+1550	tóm lại
+1551	điểm chính
+1552	thứ (trong tuần)
+1553	vết bẩn
+1554	ngân sách
+1555	xã hội, cuộc đời
+1556	kêu gọi
+1557	dự báo
+1558	phòng ngừa
+1559	sự dư dả, thong thả
+1560	niềm vui
+1561	bốn
+1563	sự hiểu, lý giải
+1564	đất liền
+1565	ly hôn
+1566	mốt, sự thịnh hành
+1567	lượng
+1568	ký túc xá
+1569	đổi tiền
+1570	phí; giá vé
+1571	ví dụ
+1572	lời cảm ơn; cúi chào
+1573	lễ nghi, phép lịch sự
+1574	bình tĩnh
+1575	tàu hỏa (cả đoàn tàu)
+1576	hàng, hàng người
+1577	sự liên tưởng
+1578	người già
+1579	luận văn, bài báo khoa học
+1580	vòng, vành
+1581	sự chia tay
+1582	khung; viền
+1583	chỉ một chút, ít ỏi
+1584	chuyện được bàn tới
+1585	tiếng cười; nụ cười
+1586	chúng ta (trang trọng)
+1587	vịnh
+1588	bát gỗ (đựng canh)
+1589	bát sứ (đựng cơm)
+1590	kem (ăn lạnh)
+1591	ý tưởng
+1592	out (bị loại, không được)
+1593	album; album ảnh
+1594	khảo sát; bảng câu hỏi
+1595	sự kiện
+1596	hình ảnh; ấn tượng
+1597	mực
+1598	phỏng vấn (báo chí)
+1599	rượu whisky
+1600	năng lượng
+1601	động cơ
+1602	văn phòng
+1603	vượt quá (giới hạn)
+1604	ca-ta-lô
+1605	che phủ; bù đắp (chỗ thiếu)
+1606	ô tô
+1607	thẻ
+1608	đội trưởng
+1609	cắm trại
+1610	nhạc cổ điển; kinh điển
+1611	Giáng sinh
+1612	kem tươi (nguyên liệu)
+1613	ly thủy tinh
+1614	sân vận động; sân thể thao
+1615	nhóm
+1616	trò chơi
+1617	giao tiếp
+1618	cuộc thi
+1619	khóa học; suất ăn theo thực đơn
+1620	huấn luyện viên; việc dẫn dắt
+1621	dây điện; mã
+1622	đích; bàn thắng
+1623	chữ ký; việc ký tên
+1624	dịch vụ; tặng thêm miễn phí
+1625	cú sốc
+1626	nước ép; nước ngọt
+1627	quần jean
+1628	công tắc
+1629	trượt tuyết
+1630	lịch trình
+1631	trượt băng
+1632	phong cách; dáng người
+1633	giá đỡ; đèn bàn; khán đài
+1634	ngôi sao (người nổi tiếng)
+1635	căng thẳng, stress
+1636	bài phát biểu
+1637	tốc độ
+1638	súp
+1639	việc cài đặt; bộ
+1640	ghế sofa
+1641	tiêu đề
+1642	máy đánh chữ
+1643	khăn bông (khăn mặt, khăn tắm)
+1644	lịch chạy tàu; kim cương
+1645	khiêu vũ
+1646	vé
+1647	chuông báo
+1648	cơ hội
+1649	phô mai
+1650	đội
+1651	lều
+1652	đề tài (chủ đề chính)
+1653	thiết kế
+1654	món tráng miệng
+1655	dữ liệu
+1656	hẹn hò
+1657	đứng đầu; hạng nhất
+1658	xe tải
+1659	rắc rối, sự cố
+1660	tập luyện
+1661	tấn
+1662	đường hầm
+1663	đi chơi bằng xe, lái xe dạo
+1664	phim truyền hình; kịch
+1665	váy dạ hội (trang trọng)
+1666	việc gõ cửa
+1667	không (no)
+1668	đi bộ đường dài
+1669	đẹp trai
+1670	đàn vi-ô-lông
+1671	túi xách, cặp
+1672	cân bằng
+1673	chuyền bóng; vé/thẻ đi lại; vượt qua
+1674	hộ chiếu
+1675	phần trăm
+1676	video
+1677	bia
+1678	đi dã ngoại
+1679	ghim, kẹp
+1680	phanh
+1681	dấu cộng; ưu điểm
+1682	nhựa
+1683	kế hoạch, phương án
+1684	chuyên nghiệp
+1685	thắt lưng
+1686	ghế dài
+1687	sân ga
+1688	cậu bé; bồi bàn khách sạn
+1689	thuyền nhỏ; thuyền chèo
+1690	quả bóng
+1691	micro
+1692	dấu trừ; nhược điểm
+1693	truyền thông đại chúng
+1694	mẹ (cách gọi thân mật)
+1695	chợ, thị trường
+1696	sơ suất (lỗi nhỏ)
+1697	sữa
+1698	lời nhắn
+1699	ghi chú
+1700	thành viên
+1701	sự hài hước
+1702	du thuyền buồm
+1703	châu Âu
+1704	nhãn
+1705	trình độ, cấp độ
+1706	tên lửa
+1707	rượu vang
+1708	một loại
+1709	càng thêm, hơn hẳn
+1710	rốt cuộc (nhấn mạnh câu hỏi)
+1711	chẳng bao lâu nữa
+1712	đột nhiên
+1713	lung lay, chao đảo
+1714	lần này
+1715	từ nay về sau
+1716	giữa trưa
+1717	một chút (lịch sự)
+1718	không một chút nào (đi với phủ định)
+1719	ít nhiều, phần nào
+1720	cốc cốc (tiếng gõ)
+1721	thứ Năm
+1722	tối qua; buổi tối
+1723	nửa đêm
+1724	ngày nay, hiện nay
+1725	đây đó
+1726	cảm ơn
+1727	hoặc; có lẽ
+1728	không … lắm (đi với phủ định); quá
+1729	không tốt; không được
+1730	trò nghịch ngợm
+1731	xin phép ăn (nói trước bữa ăn)
+1732	một lúc nào đó
+1733	lúc nào cũng được
+1734	không biết từ lúc nào
+1735	mãi mãi
+1736	sắp sửa; đã đến lúc
+1737	bực bội, sốt ruột
+1738	chào mừng, mời vào
+1739	lỡ, sơ ý
+1740	kỳ lạ; buồn cười
+1741	kết thúc, hết
+1742	chúc mừng
+1743	khá
+1744	có thể, có lẽ
+1745	ngứa
+1746	khô khốc (khát khô)
+1747	thất vọng
+1748	vắng tanh (không đông)
+1749	gọn gàng; đàng hoàng
+1750	chật; khắc nghiệt, vất vả
+1751	mệt mỏi, kiệt sức
+1752	(ngủ) say, ngon
+1753	keo kiệt
+1754	có khi, biết đâu
+1755	những cái này
+1756	thế này, đến mức này
+1757	xin chào (ban ngày)
+1758	xin lỗi (thân mật)
+1759	quả đúng là, không hổ danh
+1760	sảng khoái; hoàn toàn không (đi với phủ định)
+1761	vậy thì (chuyển chủ đề)
+1762	sơ qua, đại khái
+1763	hơn nữa, vả lại
+1764	do đó
+1765	thường xuyên
+1766	buộc, trói
+1767	cất đi
+1768	Chết rồi!; Ôi!
+1769	đơn giản
+1770	yên lặng không động đậy; kiên nhẫn
+1771	ít nhất
+1772	chua
+1773	đẹp, dễ thương
+1774	xin lỗi; xin phép (cho hỏi)
+1775	suốt; hơn nhiều
+1776	cất công
+1777	vì vậy, thế nên
+1778	và rồi
+1779	giống hệt
+1780	nhẹ nhàng, lặng lẽ
+1781	sớm muộn, một ngày gần đây
+1782	cứ như vậy, giữ nguyên
+1783	mỗi (cái), lần lượt
+1784	hay là
+1785	nếu tôi nhớ không nhầm
+1786	đầy ắp, nhiều
+1787	dù cho
+1788	nhiều lần
+1789	nhưng (trang trọng)
+1790	nhưng (thân mật)
+1791	nhưng mà, vì (biện hộ thân mật)
+1792	cẩn thận, đúng cách
+1793	cho tôi nhé (thân mật)
+1794	nói cách khác
+1795	nếu có thể
+1796	và (trợ từ)
+1797	thế nhưng (bất ngờ)
+1798	nhân tiện
+1799	từ lâu rồi
+1800	dù sao đi nữa
+1801	nhất định; dù thế nào cũng (không)
+1802	rất vui được gặp; mong được giúp đỡ
+1803	đâu đó
+1804	dù thế nào; biết bao
+1805	không gì cả
+1806	càng … càng tốt
+1807	mỉm cười tươi
+1808	thong thả, thư thả
+1809	hả?; tiếng thở dài
+1810	cái kéo
+1811	rời ra từng mảnh; riêng lẻ
+1812	vừa khít; đúng chuẩn
+1813	trôi chảy (ngoại ngữ)
+1814	mơ hồ; lơ đãng
+1815	thôi thì; ừm
+1816	tàm tạm, không tệ
+1817	chính là, đúng như
+1818	càng ngày càng
+1819	vẫn còn (chưa)
+1820	cứ như là
+1821	lãng phí, tiếc
+1822	cuối cùng cũng
+1823	hơn; từ (trợ từ)
+1824	xin giúp đỡ; gửi lời hỏi thăm
+1825	ích kỷ, tùy hứng
+1826	quan niệm về …
+1827	phía …
+1828	sản xuất tại …
+1829	do … chế tạo; làm bằng …
+1830	… trận thua
+1831	phí …
+1832	hàng/cột thứ …
