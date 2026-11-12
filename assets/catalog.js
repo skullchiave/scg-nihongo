@@ -33,7 +33,10 @@ window.SCG_CATALOG={
   ],
   // ===== JLPT（ホーム「ドリル」→ レベル → 文法・語彙）。ready:false＝じゅんびちゅう =====
   jlpt:[
-    {id:'n1', label:'N1', ready:false},
+    {id:'n1', label:'N1', ready:true, items:[
+      {label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 270<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N1_bunpou.html', ready:true},
+      {label:'<ruby>語彙<rt>ごい</rt></ruby>', ready:false},
+    ]},
     {id:'n2', label:'N2', ready:true, items:[
       {label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 208<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N2_bunpou.html', ready:true},
       {label:'<ruby>語彙<rt>ごい</rt></ruby>', ready:false},
