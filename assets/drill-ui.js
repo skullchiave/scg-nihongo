@@ -165,8 +165,12 @@ qa('.ru1 > h3, .ru > h3').forEach(function(h){
 // 「段・語尾・例」の表：1行ぶん（.from＋語尾＋例）を束ねる。スマホは 段＋語尾 の下に例を1つずつ縦に（PCは display:contents で元の3列のまま）
 function splitEx(el){
   var parts=el.innerHTML.split(/\s*／\s*/);
-  if(parts.length<2) return;
-  el.innerHTML=parts.map(function(x){ return '<span class="dui-exi">'+x+'</span>'; }).join('<span class="dui-exsep"> ／ </span>');
+  // 1つの例の中で折り返すなら矢印の所だけ（例の途中では折り返さない）
+  el.innerHTML=parts.map(function(x){
+    var k=x.split(/\s*→\s*/);
+    var h=k.length===2?'<span class="dui-nw">'+k[0]+'</span> → <span class="dui-nw">'+k[1]+'</span>':x;
+    return '<span class="dui-exi">'+h+'</span>';
+  }).join('<span class="dui-exsep"> ／ </span>');
 }
 qa('.onbin').forEach(function(ob){
   var kids=Array.prototype.slice.call(ob.children), row=null, hd=null;
@@ -205,7 +209,84 @@ qa('.note').forEach(function(nt){
     var hd2=D.createElement('div'); hd2.className='dui-notehd'; hd2.innerHTML=ic('warn')+'<span>ちゅうい：れいがい</span>';
     nt.replaceChild(hd2,b);
   }
-  nt.innerHTML=nt.innerHTML.replace(/([123])グループ/g,'<span class="dui-g$1">$1グループ</span>');
+  noteBoxes(nt);
+});
+// ---------- ルールの文：詰め込まない（2026-11-11 スマホ修正まとめ §0・§3） ----------
+// 文言は変えず、区切り方だけ変える：話題ごとに小箱（<br>・「…」で区切る）／例は1行に1つ（「／」「。」で区切る）／
+// 「（2グループ）」は行の右端の小さな色ラベル／矢印の前後に空白。
+function plain(h){ return h.replace(/<rt>[\s\S]*?<\/rt>/g,'').replace(/<[^>]+>/g,'').replace(/&nbsp;/g,' ').trim(); }
+function toLines(html){
+  // 「（N グループ）と」で並べた組は行を分ける。文の終わり「。」と「／」でも分ける。sep＝前の行と「。」で区切った所
+  var out=[];
+  // 「／」はかっこの外のものだけ区切りにする（（読まれます／読めます）は1つのまま）
+  var d=0, buf='';
+  for(var i=0;i<html.length;i++){
+    var c=html[i];
+    if(c==='（'||c==='(') d++; else if((c==='）'||c===')')&&d>0) d--;
+    buf+=(c==='／'&&d===0)?'\u0001':c;
+  }
+  buf.replace(/(グループ）)\s*と\s*/g,'$1\u0001').replace(/。\s*/g,'。\u0002').replace(/\s*\u0001\s*/g,'\u0001')
+    .split(/([\u0001\u0002])/).forEach(function(x,i,arr){
+      if(x==='\u0001'||x==='\u0002') return;
+      var t=x.replace(/^\s+|\s+$/g,''); if(!plain(t)) return;
+      out.push({h:t, sep:i>1&&arr[i-1]==='\u0002'});
+    });
+  return out;
+}
+function lineHTML(o){
+  var h=o.h.replace(/\s*→\s*/g,' → '), tag='';
+  var m=h.match(/（([123])グループ）\s*。?\s*$/);
+  if(m){ tag='<span class="dui-gtag dui-bg'+m[1]+'">'+m[1]+'</span>'; h=h.slice(0,m.index); }
+  // 例の行＝矢印の左右がどちらも短い（14字以内）。説明つきの長い行はふつうに折り返す
+  var p=plain(h), sides=p.split(' → '), ex=sides.length===2&&sides[0].length<=14&&sides[1].length<=14;
+  if(ex){
+    // 例の行：折り返すなら矢印の所だけ（例の途中では折り返さない）
+    var k=h.indexOf(' → ');
+    h='<span class="dui-nw">'+h.slice(0,k)+'</span> → <span class="dui-nw">'+h.slice(k+3)+'</span>';
+  }
+  return '<div class="dui-nl'+(ex?' ex':'')+'"><span class="dui-nt">'+h+'</span>'+tag+'</div>';
+}
+function noteBoxes(nt){
+  var hd=nt.querySelector(':scope > .dui-notehd'); if(hd) nt.removeChild(hd);
+  var html=nt.innerHTML.replace(/\s*…\s*/g,'<br>');
+  var topics=html.split(/<br\s*\/?>/i).map(function(x){return x.trim();}).filter(function(x){return plain(x);});
+  var boxes=topics.map(function(t){
+    var head='';
+    var m=t.match(/^<b>([\s\S]*?)[：:]\s*<\/b>\s*/);
+    if(m){ head='<div class="dui-nbh">'+m[1]+'</div>'; t=t.slice(m[0].length); }
+    var lines=toLines(t), body='', prevEx=false;
+    lines.forEach(function(o,i){
+      var l=lineHTML(o), isEx=/class="dui-nl ex"/.test(l);
+      if(o.sep&&isEx&&prevEx&&i>0) l=l.replace('class="dui-nl ex"','class="dui-nl ex sep"');
+      body+=l; prevEx=isEx;
+    });
+    return '<div class="dui-nbox">'+head+body+'</div>';
+  });
+  // 説明の1文だけの箱のすぐ後に、例だけの箱が続く時は1つにまとめて、説明を見出しにする（L7-1「い段でも 2グループ…」）
+  for(var i=boxes.length-2;i>=0;i--){
+    var a=boxes[i], b=boxes[i+1];
+    var aOne=/^<div class="dui-nbox"><div class="dui-nl"><span class="dui-nt">([\s\S]*?)<\/span><\/div><\/div>$/.exec(a);
+    var bAllEx=!/dui-nbh/.test(b)&&!/class="dui-nl"(?! ex)/.test(b.replace(/class="dui-nl ex[^"]*"/g,''));
+    if(aOne&&bAllEx) boxes.splice(i,2,b.replace('<div class="dui-nbox">','<div class="dui-nbox"><div class="dui-nbh">'+aOne[1]+'</div>'));
+  }
+  nt.innerHTML=boxes.join('');
+  if(hd) nt.insertBefore(hd,nt.firstChild);
+  nt.classList.add('dui-notes');
+}
+// ルール画面の矢印は前後に空白（「みます → みる」）
+(function(){
+  var r=$('rule'); if(!r) return;
+  var w=D.createTreeWalker(r,NodeFilter.SHOW_TEXT,null), n;
+  while((n=w.nextNode())){ if(n.nodeValue.indexOf('→')>=0) n.nodeValue=n.nodeValue.replace(/[ 　]*→[ 　]*/g,' → '); }
+})();
+// カードの中の「／」でつないだ例も1行に1つ（L7・L8 の 2/3グループ カード、L16-2 の とくべつな ことば 等）
+qa('#rule .ru > .big, #rule .ru1 > .big').forEach(function(el){
+  if(el.innerHTML.indexOf('／')<0&&el.innerHTML.indexOf('→')<0) return;
+  el.innerHTML=el.innerHTML.split(/<br\s*\/?>/i).map(function(seg){
+    if(/／/.test(seg)) return toLines(seg).map(lineHTML).join('');
+    return /→/.test(seg) ? lineHTML({h:seg.trim()}) : '<div>'+seg+'</div>';
+  }).join('');
+  el.classList.add('dui-lines');
 });
 
 // ---------- ② めくり ----------
@@ -254,6 +335,8 @@ qa('.note').forEach(function(nt){
     new IntersectionObserver(function(es){ if(es.some(function(e){return e.isIntersecting;})) relayout(); }).observe(grid);
   }
   window.addEventListener('orientationchange',relayout);
+  // カードの並び（grid）の大きさが変わったら（表示された・Aa・回転・フォントの読み込み）やり直す＝取りこぼし防止
+  if('ResizeObserver' in window) new ResizeObserver(function(){ relayout(); }).observe(grid);
   relayout();
 })();
 

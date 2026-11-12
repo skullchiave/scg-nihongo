@@ -350,8 +350,35 @@ function helloLine(){
   var n=0;
   try{ n=(JSON.parse(localStorage.getItem('drill_streak')||'{}').streak)||0; }catch(e){}
   if(n<2) return 'きょうも べんきょう、いいね！';
-  var praise=(n>=7)?' すごい！':(n>=3?' えらい！':'');
-  return '<b>'+n+'</b>にち つづけて べんきょう！'+praise;
+  // 2026-11-12 きあ指示：「二日（ふつか） つづけて勉強！ このまま毎日続けよう！」（2年生も使うので少しだけ難しく。漢字にはルビ）
+  return '<b><ruby>'+kanjiNum(n)+'日<rt>'+dayReading(n)+'</rt></ruby></b> つづけて<ruby>勉強<rt>べんきょう</rt></ruby>！ このまま<ruby>毎日<rt>まいにち</rt></ruby><ruby>続<rt>つづ</rt></ruby>けよう！';
+}
+// 日数の漢数字（二・十四・二十・百二十三…）と「〜日」の読み（ふつか・じゅうよっか・はつか・にじゅうよっか、ほかは 〜にち）
+function kanjiNum(n){
+  var D='〇一二三四五六七八九'.split(''), s='';
+  if(n>=10000) return String(n);
+  [[1000,'千'],[100,'百'],[10,'十']].forEach(function(u){
+    var q=Math.floor(n/u[0]); if(q){ s+=(q>1?D[q]:'')+u[1]; n%=u[0]; }
+  });
+  return s+(n?D[n]:'');
+}
+function dayReading(n){
+  var SP={1:'ついたち',2:'ふつか',3:'みっか',4:'よっか',5:'いつか',6:'むいか',7:'なのか',8:'ようか',9:'ここのか',10:'とおか',14:'じゅうよっか',20:'はつか',24:'にじゅうよっか'};
+  if(SP[n]) return SP[n];
+  if(n%10===4&&n<100) return numReading(n-4)+'よっか';
+  if(n%10===9) return numReading(n-9)+'くにち';     // 十九日＝じゅうくにち
+  if(n%10===7) return numReading(n-7)+'しちにち';   // 十七日＝じゅうしちにち
+  return numReading(n)+'にち';
+}
+function numReading(n){
+  var ONE=['','いち','に','さん','よん','ご','ろく','なな','はち','きゅう'];
+  var HUN={1:'ひゃく',3:'さんびゃく',6:'ろっぴゃく',8:'はっぴゃく'}, THO={1:'せん',3:'さんぜん',8:'はっせん'};
+  if(n>=10000) return String(n);
+  var s='', q;
+  q=Math.floor(n/1000); if(q){ s+=THO[q]||(ONE[q]+'せん'); n%=1000; }
+  q=Math.floor(n/100);  if(q){ s+=HUN[q]||(ONE[q]+'ひゃく'); n%=100; }
+  q=Math.floor(n/10);   if(q){ s+=(q>1?ONE[q]:'')+'じゅう'; n%=10; }
+  return s+ONE[n];
 }
 function footHTML(){
   return '<div class="foot"><div class="s"><ruby>要望<rt>ようぼう</rt></ruby>・<ruby>質問<rt>しつもん</rt></ruby>は</div>'+mailBtnHTML()+'</div>';
