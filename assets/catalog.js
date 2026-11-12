@@ -35,7 +35,10 @@ window.SCG_CATALOG={
   jlpt:[
     {id:'n1', label:'N1', ready:false},
     {id:'n2', label:'N2', ready:false},
-    {id:'n3', label:'N3', ready:false},
+    {id:'n3', label:'N3', ready:true, items:[
+      {label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 149<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N3_bunpou.html', ready:true},
+      {label:'<ruby>語彙<rt>ごい</rt></ruby>', ready:false},
+    ]},
     {id:'n4', label:'N4', ready:true, items:[
       {label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 139<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N4_bunpou.html', ready:true},
       {label:'<ruby>語彙<rt>ごい</rt></ruby>', ready:false},

@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="/scg-nihongo/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/scg-nihongo/icon-192.png">
+<link rel="manifest" href="/scg-nihongo/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="SCG日本語">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffffff">
+<title>JLPT N3 文法ドリル</title>
+<style>
+@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:400;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Regular.subset.woff2') format('woff2');}
+@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:700;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Bold.subset.woff2') format('woff2');}
+:root{
+  --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6; --hair:#dfe5ef;
+  --accentT:#b45309; --accentSoft:#fff3e0; --accentStrong:#d97706; --muted:#3c4c66;
+  --ok:#15803d; --ng:#dc2626; --okSoft:#e7f5ec; --ngSoft:#fdecec;
+  --card-shadow:0 1px 2px rgba(22,35,58,.06),0 4px 16px rgba(22,35,58,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{font-family:"BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);
+  display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;line-height:1.6;}
+button,select,input{font-family:inherit;color:inherit;}
+button{-webkit-tap-highlight-color:transparent;cursor:pointer;}
+rt{font-size:.5em;font-weight:500;color:var(--sub);}
+body.noruby rt{display:none;}
+.ic{width:22px;height:22px;flex-shrink:0;display:block;}
+.hidden{display:none !important;}
+
+/* ヘッダー */
+.hd{flex-shrink:0;background:#fff;border-bottom:1px solid var(--hair);}
+.hdrow{max-width:600px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:6px 8px;min-height:60px;}
+.ibtn{width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;border-radius:12px;border:1px solid transparent;
+  background:none;color:var(--ink);text-decoration:none;}
+.ibtn.frame{border-color:var(--line);background:#fff;}
+.ibtn:active{transform:scale(.95);}
+.ttl{flex:1;min-width:0;padding-left:2px;}
+.ttl-s{font-size:11px;color:var(--sub);font-weight:700;line-height:1.3;}
+.ttl-m{font-size:17px;font-weight:700;line-height:1.4;}
+.rubybtn{height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:700;color:var(--sub);flex-shrink:0;}
+.rubybtn[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+.aabtn{font-size:15px;font-weight:700;}
+.aabtn.on{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+.bar{flex:1;height:8px;background:#e6ebf3;border-radius:99px;overflow:hidden;}
+.bar i{display:block;height:100%;width:0;background:var(--accentStrong);border-radius:99px;transition:width .25s;}
+.qcount{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;padding-right:8px;}
+
+/* 本文 */
+main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.page{max-width:600px;margin:0 auto;padding:18px 16px 24px;}
+.h{font-size:22px;font-weight:700;line-height:1.4;}
+.lead{font-size:13px;color:var(--muted);margin-top:2px;}
+
+/* 1. 練習メニュー */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:16px;}
+.stats > div{text-align:center;padding:12px 4px;border-left:1px solid #edf1f7;}
+.stats > div:first-child{border-left:none;}
+.stats b{display:block;font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.3;}
+.stats span{font-size:11px;color:var(--sub);font-weight:700;}
+.lbl{display:block;font-size:13px;font-weight:700;margin:18px 0 6px;}
+.selwrap{position:relative;}
+.selwrap select{appearance:none;-webkit-appearance:none;width:100%;height:52px;border-radius:14px;border:1px solid var(--line);
+  background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
+.catruby{margin:6px 4px 0;font-size:15px;font-weight:700;color:var(--muted);line-height:2;}
+.selwrap .ic{position:absolute;right:14px;top:15px;pointer-events:none;color:var(--sub);}
+.bigbtn{width:100%;min-height:68px;margin-top:16px;border:none;border-radius:16px;background:var(--ink);color:#fff;
+  display:flex;align-items:center;gap:14px;padding:8px 20px;text-align:left;}
+.bigbtn b{display:block;font-size:18px;line-height:1.3;}
+.bigbtn small{display:block;font-size:12px;color:#c9d4e6;}
+.bigbtn:active,.nextbtn:active,.btn-main:active{transform:scale(.99);}
+.list{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);overflow:hidden;margin-top:12px;}
+.row{width:100%;display:flex;align-items:center;gap:8px;min-height:56px;padding:8px 12px 8px 16px;border:none;border-top:1px solid #edf1f7;
+  background:#fff;text-align:left;font-size:15px;font-weight:700;}
+.row:first-child{border-top:none;}
+.row .cnt{margin-left:auto;font-size:13px;color:var(--sub);font-weight:400;white-space:nowrap;}
+.row .go{color:#8a98b0;}
+.row:disabled{background:#f7f9fc;color:#8a98b0;cursor:default;}
+.row:disabled .cnt{color:#8a98b0;}
+.linkbtn{display:block;margin:16px auto 0;height:44px;padding:0 12px;background:none;border:none;font-size:13px;color:var(--sub);text-decoration:underline;}
+.confirm{background:var(--ngSoft);border-radius:16px;padding:14px 16px;margin-top:8px;font-size:15px;font-weight:700;text-align:center;}
+.confirm .two{display:flex;gap:8px;margin-top:10px;}
+.confirm button{flex:1;height:48px;border-radius:12px;font-size:15px;font-weight:700;}
+.btn-danger{background:#b91c1c;color:#fff;border:none;}
+.btn-plain{background:#fff;border:1px solid var(--line);}
+
+/* 2. 問題 */
+.tag{display:inline-block;font-size:12px;font-weight:700;background:#e6ebf3;color:var(--muted);border-radius:999px;padding:3px 10px;line-height:1.7;}
+.qcard{background:#fff;border-radius:20px;box-shadow:var(--card-shadow);padding:18px;margin-top:10px;font-size:22px;line-height:2.3;overflow-wrap:anywhere;}
+.blank{display:inline-block;min-width:4.5em;border-bottom:2px solid var(--ink);text-align:center;margin:0 2px;line-height:1.4;}
+.blank.filled{border-color:var(--ok);color:var(--ok);font-weight:700;}
+.choices{display:grid;gap:10px;margin-top:14px;}
+.choice{display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 14px;border:2px solid var(--hair);border-radius:16px;background:#fff;
+  font-size:19px;text-align:left;line-height:1.8;color:var(--ink);}
+.choice .n{flex:none;width:32px;height:32px;border-radius:50%;background:#eef1f7;display:grid;place-items:center;font-size:15px;font-weight:700;line-height:1;}
+.choice.ok{border-color:var(--ok);background:var(--okSoft);} .choice.ok .n{background:var(--ok);color:#fff;}
+.choice.ng{border-color:var(--ng);background:var(--ngSoft);} .choice.ng .n{background:var(--ng);color:#fff;}
+.choice.dim .n{color:#8a98b0;}
+.choice:disabled{cursor:default;}
+.fb{border-radius:16px;padding:14px 16px;margin-top:14px;font-size:14px;line-height:1.9;}
+.fb.ok{background:var(--okSoft);} .fb.ng{background:var(--ngSoft);}
+.verdict{font-size:16px;font-weight:700;margin-bottom:2px;}
+.fb.ok .verdict{color:var(--ok);} .fb.ng .verdict{color:#b91c1c;}
+.fbfoot{display:flex;align-items:center;gap:10px;margin-top:8px;}
+.fbg{flex:1;min-width:0;font-size:12px;color:var(--muted);line-height:1.8;}
+.fbg b{color:var(--ink);}
+.morebtn{flex-shrink:0;height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 12px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;font-size:13px;font-weight:700;color:var(--ink);}
+.morebtn .ic{width:18px;height:18px;}
+.kbd{font-size:12px;color:var(--sub);text-align:center;margin-top:14px;}
+@media (max-width:640px){ .kbd{display:none;} }
+
+/* 下の段（タブ／つぎへ） */
+.bottom{flex-shrink:0;background:#fff;border-top:1px solid var(--hair);padding:8px 16px max(12px, env(safe-area-inset-bottom));}
+.bottomin{max-width:568px;margin:0 auto;}
+.nextbtn{width:100%;height:60px;border:none;border-radius:16px;background:var(--ink);color:#fff;font-size:17px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:4px;}
+.waithint{height:60px;display:grid;place-items:center;font-size:13px;color:var(--sub);}
+.tabsbar{padding:6px 8px max(16px, env(safe-area-inset-bottom));}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-width:568px;margin:0 auto;}
+.tab{height:54px;border:none;background:none;border-radius:14px;color:var(--sub);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;line-height:1.2;}
+.tab rt{font-size:.6em;}
+.tab[aria-current="page"]{background:var(--accentSoft);color:var(--accentT);font-weight:700;}
+
+/* 4. けっか */
+.scorecard{background:#fff;border-radius:20px;box-shadow:var(--card-shadow);padding:24px 20px;text-align:center;}
+.big{font-size:56px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;}
+.big small{font-size:22px;font-weight:700;color:var(--sub);}
+.rbar{height:10px;border-radius:5px;background:var(--ngSoft);overflow:hidden;margin:16px 0 10px;}
+.rbar i{display:block;height:100%;background:var(--ok);}
+.r3{display:flex;justify-content:space-between;font-size:13px;gap:6px;}
+.r3 .g{color:var(--ok);font-weight:700;} .r3 .r{color:#b91c1c;font-weight:700;}
+.sech{font-size:13px;font-weight:700;margin:20px 0 8px;}
+.wrow{padding:10px 16px;min-height:56px;border-top:1px solid #edf1f7;}
+.wrow:first-child{border-top:none;}
+.wrow b{display:block;font-size:16px;line-height:1.6;} .wrow span{font-size:13px;color:var(--sub);}
+.allok{text-align:center;color:var(--sub);padding:16px;font-weight:700;}
+.btn-main{width:100%;height:60px;border:none;border-radius:16px;background:var(--ink);color:#fff;font-size:16px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;}
+.btn-main:disabled{opacity:.4;cursor:default;}
+.btn-sub{width:100%;height:52px;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:15px;font-weight:700;margin-top:10px;}
+
+/* 5. 文法リスト */
+.searchwrap{position:relative;margin-bottom:6px;}
+.searchwrap input{width:100%;height:48px;border-radius:14px;background:#f7f9fc;border:1px solid var(--line);font-size:16px;padding:0 14px 0 42px;color:var(--ink);}
+.searchwrap .ic{position:absolute;left:12px;top:13px;color:var(--sub);}
+.info{font-size:12px;color:var(--sub);}
+.cath{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:20px 0 8px;}
+.cath > span{font-size:15px;font-weight:700;color:var(--accentT);line-height:1.6;}
+.catgo{flex-shrink:0;height:44px;padding:0 14px;border:none;border-radius:22px;background:var(--ink);color:#fff;font-size:12px;font-weight:700;
+  display:inline-flex;align-items:center;gap:6px;}
+.catgo .ic{width:16px;height:16px;}
+.gcard{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);padding:14px 16px;margin-bottom:10px;}
+.gtop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+.gname{font-size:19px;font-weight:700;line-height:1.6;}
+.gmean{font-size:14px;margin-top:2px;line-height:1.8;}
+.gform{font-size:12px;color:var(--sub);margin-top:2px;line-height:1.8;}
+.gex{background:#f7f9fc;border-radius:10px;padding:8px 12px;margin-top:8px;font-size:16px;line-height:2.1;}
+.ans{color:var(--accentT);font-weight:700;}
+.del{text-decoration:line-through;text-decoration-thickness:2px;}  /* 連用形接続：ます形の「ます」をとる */
+.pill{flex-shrink:0;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;white-space:nowrap;font-variant-numeric:tabular-nums;margin-top:4px;}
+.pill.good{background:var(--okSoft);color:var(--ok);} .pill.bad{background:var(--ngSoft);color:#b91c1c;} .pill.none{background:#e6ebf3;color:var(--sub);}
+
+/* 3. 文法の説明シート */
+.shov{position:fixed;inset:0;background:rgba(22,35,58,.4);z-index:50;display:flex;align-items:flex-end;justify-content:center;}
+.sheet{background:#fff;width:100%;max-width:600px;max-height:78vh;max-height:78dvh;overflow-y:auto;border-radius:24px 24px 0 0;
+  padding:8px 16px max(16px, env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.15);}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 8px;}
+.shtop{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.shclose{border-radius:50%;background:#eef1f7;}
+.shname{font-size:26px;font-weight:700;line-height:1.5;margin-top:4px;}
+.shmean{font-size:15px;line-height:1.8;}
+.shtbl{display:grid;grid-template-columns:64px 1fr;gap:10px 8px;margin-top:14px;align-items:baseline;}
+.shtbl dt{font-size:12px;font-weight:700;color:var(--sub);}
+.shtbl dd{font-size:15px;line-height:1.8;}
+.shtbl dd.ex{font-size:16px;line-height:2.1;}
+.shsep{height:1px;background:#edf1f7;margin:16px 0 12px;}
+.shsim{font-size:12px;font-weight:700;color:var(--sub);margin-bottom:8px;line-height:1.8;}
+.sims{display:flex;flex-wrap:wrap;gap:8px;}
+.sim{min-height:44px;padding:4px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:14px;line-height:1.6;color:var(--ink);}
+.sim[aria-current="true"]{background:var(--accentSoft);border-color:#f3d9ad;color:var(--accentT);font-weight:700;}
+.shback{width:100%;height:52px;border:none;border-radius:16px;background:var(--ink);color:#fff;font-size:16px;font-weight:700;margin-top:18px;}
+
+/* 翻訳コピー対応: 本文は選択可・操作部は選択不可 */
+body{-webkit-user-select:text;user-select:text;}
+button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
+
+/* ===== PC版（641px以上）。寸法は 1920×1080 基準で書き、applyZoom() が画面に合わせて全体を縮める =====
+   スマホ版（640px以下）の見た目はここより上だけで決まる。.pconly は PC 幅でだけ出す部品 */
+.pconly{display:none;}
+@media (min-width:641px){
+  rt{font-size:.45em;}
+  /* ヘッダー */
+  .hdrow{max-width:1816px;height:104px;padding:0 48px;gap:16px;}
+  .ibtn{width:64px;height:64px;border-radius:16px;}
+  .ibtn .ic{width:32px;height:32px;}
+  .ttl{flex:none;font-size:34px;font-weight:700;padding-right:12px;white-space:nowrap;}
+  .seg{display:flex;gap:4px;background:#e6ebf3;border-radius:16px;padding:4px;}
+  .seg button{height:56px;padding:0 28px;border:none;border-radius:12px;background:none;font-size:24px;color:var(--sub);}
+  .seg button[aria-current="page"]{background:#fff;color:var(--ink);font-weight:700;box-shadow:0 1px 4px rgba(22,35,58,.15);}
+  .hdsp{flex:1;}
+  .rubybtn{height:64px;padding:0 22px;border-radius:16px;font-size:24px;}
+  .aabtn{font-size:24px;}
+  .xbtn{height:64px;display:inline-flex;align-items:center;gap:8px;padding:0 22px 0 14px;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:24px;font-weight:700;flex-shrink:0;}
+  .xbtn .ic{width:30px;height:30px;}
+  .hdrow .tag{font-size:22px;padding:6px 18px;flex-shrink:0;}
+  .bar{height:14px;margin:0 8px;}
+  .qcount{font-size:32px;padding-right:12px;}
+  .qcount + .hdsp{flex:0 0 24px;}
+  .bottom{display:none !important;}   /* PC版は下のタブ・つぎへ を使わない */
+  .page{max-width:1816px;padding:36px 48px 40px;}
+  /* 1. 練習メニュー */
+  /* 右の列は1行ずつ並べ、左の列（分野）は全行にまたがせる。最後の 1fr 行が余りを吸うので右の列の間が空かない */
+  #setup:not(.hidden){display:grid;grid-template-columns:520px minmax(0,1fr);grid-template-rows:repeat(8,auto) 1fr;column-gap:40px;align-items:start;}
+  #setup > *{grid-column:2;}
+  .catlist{display:flex;flex-direction:column;grid-column:1 !important;grid-row:1 / -1;background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:16px;gap:4px;}
+  .catlist button{min-height:52px;display:flex;align-items:center;gap:12px;padding:6px 16px;border:none;border-radius:14px;background:none;text-align:left;font-size:22px;line-height:1.5;color:var(--ink);}
+  .catlist button .n{margin-left:auto;font-size:20px;color:var(--sub);white-space:nowrap;}
+  .catlist button[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);font-weight:700;}
+  .catlist button[aria-pressed="true"] .n{color:var(--accentT);}
+  .catlist button:hover{background:#f7f9fc;} .catlist button[aria-pressed="true"]:hover{background:var(--accentSoft);}
+  .sethd{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;}
+  .h{font-size:52px;}
+  .lead{font-size:26px;}
+  .catpill{display:inline-block;flex-shrink:0;font-size:24px;font-weight:700;background:var(--accentSoft);color:var(--accentT);border-radius:999px;padding:8px 24px;line-height:1.6;}
+  .stats{border-radius:28px;margin-top:28px;}
+  .stats > div{padding:18px 8px;}
+  .stats b{font-size:64px;line-height:1.25;}
+  .stats span{font-size:22px;}
+  .lbl,.selwrap,.catruby{display:none;}
+  .bigbtn{min-height:150px;margin-top:28px;border-radius:28px;gap:28px;padding:16px 48px;}
+  .bigbtn .ic{width:64px;height:64px;}
+  .bigbtn b{font-size:48px;line-height:1.4;}
+  .bigbtn small{font-size:24px;}
+  #setup .list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;background:none;box-shadow:none;overflow:visible;margin-top:28px;}
+  #setup .row{min-height:130px;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:16px 28px;border:2px solid transparent;border-radius:24px;box-shadow:var(--card-shadow);font-size:32px;line-height:1.5;}
+  #setup .row .cnt{margin-left:0;font-size:22px;}
+  #setup .row .go{display:none;}
+  #setup .row:disabled{background:#f7f9fc;border:2px dashed var(--line);box-shadow:none;}
+  #setup .row:hover:not(:disabled){border-color:var(--line);}
+  .linkbtn{font-size:20px;height:56px;margin-top:20px;}
+  .confirm{font-size:24px;border-radius:24px;padding:20px;}
+  .confirm button{height:64px;font-size:24px;border-radius:16px;}
+  /* 2. 問題 */
+  #quiz:not(.hidden){display:grid;grid-template-columns:minmax(0,1fr) 560px;grid-template-rows:repeat(6,auto) 1fr;column-gap:36px;align-items:start;}
+  #quiz > *{grid-column:1;}
+  #qCat,.fb{display:none !important;}
+  .qcard{margin-top:0;border-radius:28px;padding:44px 52px;font-size:52px;line-height:2.1;}
+  .blank{border-bottom-width:4px;}
+  .choices{grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
+  .choice{min-height:128px;border-width:3px;border-radius:24px;gap:22px;padding:12px 28px;font-size:42px;line-height:1.6;}
+  .choice .n{width:64px;height:64px;font-size:30px;}
+  .choice:hover:not(:disabled){border-color:var(--line);}
+  .qfoot{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:24px;min-height:96px;}
+  .kbd{margin:0;font-size:20px;text-align:left;}
+  .nextpc{display:flex;align-items:center;justify-content:center;gap:8px;height:96px;min-width:340px;padding:0 48px;border:none;border-radius:24px;background:var(--ink);color:#fff;font-size:34px;font-weight:700;}
+  .nextpc .ic{width:38px;height:38px;}
+  .gpanel{display:block;grid-column:2 !important;grid-row:1 / -1;background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:28px;}
+  .gwait{border:3px dashed var(--line);border-radius:20px;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:var(--sub);font-size:24px;text-align:center;line-height:1.7;padding:24px;}
+  .gwait .ic{width:64px;height:64px;}
+  .gv{border-radius:20px;padding:18px 22px;font-size:22px;line-height:1.8;}
+  .gv.ok{background:var(--okSoft);} .gv.ng{background:var(--ngSoft);}
+  .gv .verdict{font-size:34px;margin-bottom:4px;}
+  .gv.ok .verdict{color:var(--ok);} .gv.ng .verdict{color:#b91c1c;}
+  .gpanel .gname{font-size:44px;line-height:1.5;margin-top:20px;display:block;}
+  .gpanel .gmean2{font-size:24px;line-height:1.7;}
+  .gtbl{display:grid;grid-template-columns:88px 1fr;gap:12px 12px;margin-top:18px;align-items:baseline;}
+  .gtbl dt{font-size:20px;font-weight:700;color:var(--sub);}
+  .gtbl dd{font-size:24px;line-height:1.7;}
+  .pill{font-size:20px;padding:3px 14px;}
+  .gpanel .shsep{margin:20px 0 14px;}
+  .gpanel .shsim{font-size:20px;}
+  .gpanel .sims{gap:10px;}
+  .gpanel .sim{min-height:52px;padding:4px 18px;font-size:22px;}
+  /* 4. けっか */
+  #result:not(.hidden){display:grid;grid-template-columns:1fr 1fr;column-gap:20px;max-width:1100px;margin:0 auto;}
+  #result > :not(.btn-main):not(.btn-sub){grid-column:1 / -1;}
+  .scorecard{border-radius:28px;padding:36px 48px;}
+  .big{font-size:120px;}
+  .big small{font-size:48px;}
+  .rbar{height:20px;border-radius:10px;margin:24px 0 16px;}
+  .r3{font-size:28px;}
+  .sech{font-size:24px;margin:28px 0 12px;}
+  #rWrong .list{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:none;box-shadow:none;overflow:visible;margin-top:0;}
+  .wrow{background:#fff;border:none;border-radius:20px;box-shadow:var(--card-shadow);padding:16px 24px;}
+  .wrow b{font-size:36px;line-height:1.5;} .wrow span{font-size:24px;}
+  .allok{font-size:28px;padding:28px;}
+  .btn-main,.btn-sub{height:96px;margin-top:28px;border-radius:24px;font-size:30px;}
+  .btn-main .ic{width:36px;height:36px;}
+  /* 5. 文法リスト */
+  #list:not(.hidden){display:grid;grid-template-columns:440px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:36px;align-items:start;}
+  #list > *{grid-column:2;}
+  #listBody{grid-row:2;}
+  .toc{display:flex;flex-direction:column;gap:4px;grid-column:1 !important;grid-row:1 / -1;position:sticky;top:24px;background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:16px;}
+  .toc button{min-height:52px;display:flex;align-items:center;gap:12px;padding:6px 16px;border:none;border-radius:14px;background:none;text-align:left;font-size:21px;line-height:1.5;color:var(--ink);}
+  .toc button .n{margin-left:auto;font-size:20px;color:var(--sub);}
+  .toc button.cur{background:var(--accentSoft);color:var(--accentT);font-weight:700;}
+  .toc button:disabled{color:#8a98b0;cursor:default;}
+  .searchwrap{grid-row:1;margin-bottom:0;}
+  .searchwrap input{height:76px;border:2px solid var(--line);border-radius:20px;font-size:26px;padding:0 220px 0 64px;background:#fff;}
+  .searchwrap .ic{left:20px;top:22px;width:32px;height:32px;}
+  .info{grid-row:1;justify-self:end;align-self:center;font-size:22px;padding-right:28px;position:relative;pointer-events:none;}
+  #listBody{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;}
+  .cath{grid-column:1 / -1;margin:24px 0 0;}
+  .cath > span{font-size:34px;}
+  .catgo{height:64px;padding:0 28px;border-radius:32px;font-size:22px;gap:10px;}
+  .catgo .ic{width:24px;height:24px;}
+  .gcard{margin:0;border-radius:24px;padding:28px 32px;}
+  .gname{font-size:40px;}
+  .gmean{font-size:24px;}
+  .gform{font-size:20px;}
+  .gex{font-size:30px;line-height:2;border-radius:16px;padding:12px 20px;margin-top:14px;}
+}
+</style>
+</head>
+<body>
+<header class="hd" id="hd"></header>
+
+<main id="main"><div class="page">
+  <!-- 1. 練習メニュー -->
+  <section id="setup">
+    <div class="catlist pconly" id="catList" role="group" aria-label="分野"></div>
+    <div class="sethd"><div>
+    <div class="h"><ruby>練習<rt>れんしゅう</rt></ruby>を はじめる</div>
+    <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
+    </div><span class="catpill pconly" id="catPill"></span></div>
+    <div class="stats">
+      <div><b id="sTotal">0</b><span><ruby>問題<rt>もんだい</rt></ruby><ruby>数<rt>すう</rt></ruby></span></div>
+      <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
+      <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
+    </div>
+    <label class="lbl" for="catSel"><ruby>分野<rt>ぶんや</rt></ruby></label>
+    <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="catruby" id="catRuby" aria-hidden="true"></div>
+    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b><small>まずは ここから</small></span></button>
+    <div class="list">
+      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない <ruby>問題<rt>もんだい</rt></ruby></span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた <ruby>問題<rt>もんだい</rt></ruby></span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    </div>
+    <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
+    <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
+      <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
+    </div>
+  </section>
+
+  <!-- 2. 問題 -->
+  <section id="quiz" class="hidden">
+    <span class="tag" id="qCat"></span>
+    <div class="qcard" id="qText"></div>
+    <div class="choices" id="choices"></div>
+    <div id="fb" class="fb hidden"></div>
+    <div class="qfoot"><div class="kbd">キーボード：1〜4で えらぶ ／ Enterで つぎへ</div><button class="nextpc pconly hidden" id="nextPC"></button></div>
+    <aside class="gpanel pconly" id="gPanel" aria-live="polite"></aside>
+  </section>
+
+  <!-- 4. けっか -->
+  <section id="result" class="hidden">
+    <div class="scorecard">
+      <div class="big"><span id="rOk">0</span><small id="rTot"> / 0</small></div>
+      <div class="rbar"><i id="rBar"></i></div>
+      <div class="r3"><span class="g" id="rOk2"></span><span id="rRate"></span><span class="r" id="rNg"></span></div>
+    </div>
+    <div id="rWrong"></div>
+    <button class="btn-main" id="retryWrongBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.3L3 16M3 21v-5h5"/></svg><span>まちがえた <ruby>問題<rt>もんだい</rt></ruby>を もう<ruby>一度<rt>いちど</rt></ruby></span></button>
+    <button class="btn-sub" id="backBtn">メニューへ</button>
+  </section>
+
+  <!-- 5. 文法リスト -->
+  <section id="list" class="hidden">
+    <nav class="toc pconly" id="toc" aria-label="分野"></nav>
+    <div class="searchwrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="search" placeholder="さがす（れい：ば、てしまう、けいご）" aria-label="文法を さがす"></div>
+    <div class="info" id="listInfo"></div>
+    <div id="listBody"></div>
+  </section>
+</div></main>
+
+<div class="bottom tabsbar" id="tabsbar"><div class="tabs">
+  <button class="tab" id="tab-practice" aria-current="page"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span><ruby>練習<rt>れんしゅう</rt></ruby></span></button>
+  <button class="tab" id="tab-list"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg><span><ruby>文法<rt>ぶんぽう</rt></ruby>リスト</span></button>
+</div></div>
+<div class="bottom hidden" id="nextbar"><div class="bottomin">
+  <div class="waithint" id="waitHint">こたえを タップ</div>
+  <button class="nextbtn hidden" id="nextBtn"></button>
+</div></div>
+
+<div class="shov hidden" id="shov"><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shName"></div></div>
+
+<script>
+/* ============================================================
+   データ形式: [分野, 文法, 意味, 接続, 問題文, [選択肢(先頭が正解),...], 解説]
+   {漢字|かんじ} はルビ表記。＿＿ は空欄。~~ます~~ は取り消し線＝「とって つなぐ」の表記（V-~~ます~~／い形-~~い~~／な形-~~だ~~／V-~~ない~~）。
+   ★記録(localStorage n3drill_v1)のキーは「文法」欄（ルビを外した文字）。並べ替え・追加しても記録はずれない。
+     そのため「文法」欄は重複させない／後から書き換えるとその文法の記録は0にもどる。
+   ============================================================ */
+const DATA = [
+// ---- 時間・変化 ----
+["時間・変化","〜うちに","〜している{間|あいだ}に（{状態|じょうたい}が{変|か}わる{前|まえ}に）／while, before","V-{辞書形|じしょけい}・ている・ない{形|けい}／い{形|けい}／な{形|けい}な／Nの+うちに","{熱|あつ}い＿＿、{食|た}べてください。",["うちに", "とたんに", "たびに", "{最中|さいちゅう}に"],"「{熱|あつ}いうちに」は「{冷|つめ}たくなる{前|まえ}に」という{意味|いみ}です。{状態|じょうたい}が{変|か}わる{前|まえ}にする、と{言|い}いたいときに{使|つか}います。"],
+["時間・変化","〜{最中|さいちゅう}に","ちょうど〜している{時|とき}に／in the middle of","V-ている・Nの+{最中|さいちゅう}に","{会議|かいぎ}の＿＿、{電話|でんわ}が{鳴|な}ってしまった。",["{最中|さいちゅう}に", "とたんに", "ついでに", "とおりに"],"「ちょうど〜しているとき」に、{困|こま}ることが{起|お}きた、と{言|い}うときによく{使|つか}います。"],
+["時間・変化","〜たとたん（に）","〜したらすぐ（{意外|いがい}なことが{起|お}きる）／the moment","V-た{形|けい}+とたん（に）","{立|た}ち{上|あ}がった＿＿、めまいがした。",["とたんに", "うちに", "{最中|さいちゅう}に", "たびに"],"「〜たとたん」は「〜したら、すぐ」。{後|うし}ろには、{思|おも}っていなかったことが{来|き}ます。"],
+["時間・変化","〜てからでないと","〜した{後|あと}でなければ〜できない／not until","V-て{形|けい}+からでないと","{説明|せつめい}を{聞|き}いて＿＿、{申|もう}し{込|こ}めません。",["からでないと", "からには", "ばかりで", "はじめて"],"「AてからでないとB」は「{先|さき}にAをしなければ、Bはできない」という{意味|いみ}です。{後|うし}ろは「できない」などの{否定|ひてい}の{文|ぶん}です。"],
+["時間・変化","〜たびに","〜するといつも／every time","V-{辞書形|じしょけい}・Nの+たびに","この{歌|うた}を{聞|き}く＿＿、{国|くに}の{家族|かぞく}を{思|おも}い{出|だ}す。",["たびに", "とたんに", "{最中|さいちゅう}に", "ばかりに"],"「〜たびに」は「〜するとき、いつも」。「とたん」は た{形|けい}につくので、ここでは{使|つか}えません。"],
+["時間・変化","〜{際|さい}（に）","〜する{時|とき}（{改|あらた}まった{言|い}い{方|かた}）／when, on the occasion of","V-{辞書形|じしょけい}・た{形|けい}・Nの+{際|さい}（に）","お{降|お}りの＿＿は、{足元|あしもと}にご{注意|ちゅうい}ください。",["{際|さい}", "うち", "たび", "ほど"],"「{際|さい}」は「とき」のていねいで かたい{言|い}い{方|かた}です。{駅|えき}や{店|みせ}のお{知|し}らせでよく{使|つか}います。"],
+["時間・変化","〜ようとする","〜する{直前|ちょくぜん}だ・〜しようと{努力|どりょく}する／be about to, try to","V-{意向形|いこうけい}+とする","{出|で}かけ＿＿{時|とき}、{雨|あめ}が{降|ふ}ってきた。",["ようとした", "っぱなしの", "きった", "がちな"],"「〜ようとした{時|とき}」は「〜するすぐ{前|まえ}に」という{意味|いみ}です。"],
+["時間・変化","〜につれて","{一方|いっぽう}が{変|か}わると、もう{一方|いっぽう}も{変|か}わる／as","V-{辞書形|じしょけい}・N+につれて","{年|とし}を{取|と}る＿＿、{体力|たいりょく}が{落|お}ちてきた。",["につれて", "について", "にとって", "によると"],"「AにつれてB」は、Aが{変|か}わると、いっしょにBも{変|か}わる、という{意味|いみ}です。"],
+["時間・変化","〜にしたがって","〜につれて／〜のとおりに／as, in accordance with","V-{辞書形|じしょけい}・N+にしたがって","{係|かかり}の{人|ひと}の{指示|しじ}＿＿、{順番|じゅんばん}に{入|はい}ってください。",["にしたがって", "につれて", "に{比|くら}べて", "にとって"],"「{指示|しじ}・ルール＋にしたがって」は「〜のとおりに」という{意味|いみ}です。「につれて」にはこの{使|つか}い{方|かた}はありません。"],
+["時間・変化","〜ば〜ほど","〜すればするほど、ますます／the more ~ the more","V-ば+V-{辞書形|じしょけい}+ほど／い{形|けい}-ければ+い{形|けい}+ほど","{日本語|にほんご}は{勉強|べんきょう}すれば＿＿、おもしろくなる。",["するほど", "するまで", "するなら", "するたび"],"「すればするほど」のように、{同|おな}じ{言葉|ことば}を2{回|かい}{使|つか}います。「たくさん〜すると、もっと」という{意味|いみ}です。"],
+["時間・変化","〜{一方|いっぽう}だ","ますます〜する（{多|おお}くは{悪|わる}い{方|ほう}へ）／keep ~ing","V-{辞書形|じしょけい}+{一方|いっぽう}だ","{物価|ぶっか}は{上|あ}がる＿＿で、{生活|せいかつ}が{大変|たいへん}だ。",["{一方|いっぽう}", "ところ", "つもり", "とおり"],"「〜{一方|いっぽう}だ」は、{同|おな}じ{方向|ほうこう}にどんどん{変|か}わっていく、という{意味|いみ}です。よくないことに{使|つか}うことが{多|おお}いです。"],
+["時間・変化","〜きる","{最後|さいご}まで{全部|ぜんぶ}〜する／completely","V-~~ます~~+きる","{長|なが}い{小説|しょうせつ}を、{最後|さいご}まで{全部|ぜんぶ}{読|よ}み＿＿。",["きった", "かけた", "たてた", "がちだ"],"「{読|よ}みきる」は「{最後|さいご}まで{全部|ぜんぶ}{読|よ}む」。「{読|よ}みかける」は「{途中|とちゅう}まで{読|よ}む」なので、{反対|はんたい}の{意味|いみ}です。"],
+["時間・変化","〜かけ／〜かける","{途中|とちゅう}まで〜した／half-done","V-~~ます~~+かけ（の+N）","テーブルの{上|うえ}に、{食|た}べ＿＿のパンが{置|お}いてある。",["かけ", "たて", "っぽい", "{気味|ぎみ}"],"「{食|た}べかけ」は「{食|た}べている{途中|とちゅう}で、まだ{残|のこ}っている」という{意味|いみ}です。"],
+["時間・変化","〜っぱなし","〜したまま{放|ほう}っておく／leave ~ing","V-~~ます~~+っぱなし","{電気|でんき}をつけ＿＿で、{出|で}かけてしまった。",["っぱなし", "かけ", "たて", "がち"],"「つけっぱなし」は「つけたまま、{消|け}さないでいる」という{意味|いみ}です。よくないことに{使|つか}います。"],
+["時間・変化","〜てばかりいる","〜ばかりしている（よくないこと）／do nothing but","V-て{形|けい}+ばかりいる","{弟|おとうと}は{勉強|べんきょう}しないで、ゲームをして＿＿。",["ばかりいる", "しかいない", "だけある", "ほどいる"],"「〜てばかりいる」は「いつも〜だけしている」。{話|はな}す{人|ひと}が「よくない」と{思|おも}っているときに{使|つか}います。"],
+["時間・変化","〜たて","〜したばかりで{新|あたら}しい／freshly","V-~~ます~~+たて","{焼|や}き＿＿のパンは、とてもおいしい。",["たて", "かけ", "っぱなし", "きり"],"「{焼|や}きたて」は「{今|いま}{焼|や}いたばかり」という{意味|いみ}です。「できたて」「{入|はい}りたて」などもあります。"],
+["時間・変化","〜{中|じゅう}／〜{中|ちゅう}","〜の{間|あいだ}ずっと（じゅう）／〜している{最中|さいちゅう}（ちゅう）","N+{中|じゅう}／N+{中|ちゅう}","{夏休|なつやす}みは{一日|いちにち}＿＿、アルバイトをしていた。",["{中|じゅう}", "{間|あいだ}に", "ごと", "{最中|さいちゅう}"],"「{一日中|いちにちじゅう}」は「{朝|あさ}から{夜|よる}までずっと」という{意味|いみ}です。「{会議中|かいぎちゅう}」のときは「ちゅう」と{読|よ}みます。"],
+["時間・変化","〜ごとに","〜のたびに・〜それぞれに／every, each","N・V-{辞書形|じしょけい}+ごとに","オリンピックは4{年|ねん}＿＿{開|ひら}かれる。",["ごとに", "うちに", "ほどに", "までに"],"「4{年|ねん}ごとに」は「4{年|ねん}に1{回|かい}ずつ」という{意味|いみ}です。"],
+["時間・変化","〜から〜にかけて","〜から〜までの{間|あいだ}（{範囲|はんい}）／from ~ through","N+から+N+にかけて","{今夜|こんや}から{明日|あした}の{朝|あさ}＿＿、{強|つよ}い{雨|あめ}が{降|ふ}るでしょう。",["にかけて", "について", "にとって", "に{比|くら}べて"],"「AからBにかけて」は「AからBまでの{間|あいだ}」。{時間|じかん}や{場所|ばしょ}のだいたいの{範囲|はんい}を{言|い}います。"],
+["時間・変化","〜ようとしない","〜しようとしない（その{気|き}がない）／won't try to","V-{意向形|いこうけい}+としない","{息子|むすこ}は{何度|なんど}{言|い}っても、{部屋|へや}を{片付|かたづ}け＿＿。",["ようとしない", "たばかりだ", "きっている", "かけている"],"「〜ようとしない」は「〜する{気持|きも}ちがない」という{意味|いみ}です。{自分|じぶん}のことには{使|つか}いません。"],
+["時間・変化","〜ところに／〜ところへ","ちょうどその{時|とき}に（だれかが{来|く}るなど）","V-ている・た{形|けい}・{辞書形|じしょけい}+ところに","{出|で}かけようとした＿＿、{友達|ともだち}が{訪|たず}ねてきた。",["ところに", "うちに", "たびに", "ついでに"],"「〜ところに」は「ちょうど〜のときに」。{後|うし}ろには「{来|く}る」「{電話|でんわ}がある」などが{来|き}ます。"],
+
+// ---- 原因・理由・結果 ----
+["原因・理由・結果","〜おかげで","〜のため（よい{結果|けっか}）／thanks to","{普通形|ふつうけい}（Nの／な{形|けい}な）+おかげで","{先生|せんせい}が{教|おし}えてくださった＿＿、{試験|しけん}に{合格|ごうかく}できました。",["おかげで", "せいで", "くせに", "わりに"],"よい{結果|けっか}の{理由|りゆう}には「おかげで」、{悪|わる}い{結果|けっか}の{理由|りゆう}には「せいで」を{使|つか}います。"],
+["原因・理由・結果","〜せいで／〜せいか","〜のため（{悪|わる}い{結果|けっか}）／because of","{普通形|ふつうけい}（Nの／な{形|けい}な）+せいで","{電車|でんしゃ}が{遅|おく}れた＿＿、{授業|じゅぎょう}に{間|ま}に{合|あ}わなかった。",["せいで", "おかげで", "かわりに", "ついでに"],"{悪|わる}い{結果|けっか}の{理由|りゆう}には「せいで」を{使|つか}います。「せいか」は「〜が{理由|りゆう}かもしれない」という{意味|いみ}です。"],
+["原因・理由・結果","〜ため（に）（{原因|げんいん}）","〜が{理由|りゆう}で（かたい{言|い}い{方|かた}）／because of","{普通形|ふつうけい}（Nの／な{形|けい}な）+ため（に）","{台風|たいふう}の＿＿、{新幹線|しんかんせん}が{止|と}まっています。",["ため", "くせに", "わりに", "かわりに"],"「〜ため」は{理由|りゆう}を{言|い}う かたい{言|い}い{方|かた}です。ニュースやお{知|し}らせでよく{使|つか}います。"],
+["原因・理由・結果","〜ため（に）（{目的|もくてき}）","〜する{目的|もくてき}で／in order to","V-{辞書形|じしょけい}・Nの+ため（に）","{留学|りゅうがく}する＿＿、{毎月|まいつき}{貯金|ちょきん}をしている。",["ために", "せいで", "おかげで", "とおりに"],"「〜ために」は{目的|もくてき}を{言|い}います。{前|まえ}には、{自分|じぶん}の{意志|いし}でする{動詞|どうし}が{来|き}ます。"],
+["原因・理由・結果","〜によって（{原因|げんいん}・{手段|しゅだん}）","〜が{原因|げんいん}で／〜を{使|つか}って／due to, by means of","N+によって","{地震|じしん}＿＿、{多|おお}くの{建物|たてもの}が{壊|こわ}れた。",["によって", "にとって", "について", "として"],"「Nによって」は「Nが{原因|げんいん}で」という{意味|いみ}です。かたい{言|い}い{方|かた}です。"],
+["原因・理由・結果","〜ものだから","〜なので（{言|い}いわけ）／because","{普通形|ふつうけい}（Nな／な{形|けい}な）+ものだから","A「どうして{遅|おく}れたんですか。」B「すみません。{道|みち}が{込|こ}んでいた＿＿。」",["ものですから", "ことですから", "はずですから", "ようですから"],"「〜ものだから」は、{理由|りゆう}を{説明|せつめい}して{言|い}いわけをするときに{使|つか}います。"],
+["原因・理由・結果","〜のは〜からだ","〜の{理由|りゆう}は〜だ／the reason ~ is because","{普通形|ふつうけい}+のは+{普通形|ふつうけい}+からだ","{試験|しけん}に{落|お}ちた＿＿、{勉強|べんきょう}が{足|た}りなかったからだ。",["のは", "のに", "ので", "のを"],"「AのはBからだ」は、{先|さき}に{結果|けっか}Aを{言|い}って、{後|あと}で{理由|りゆう}Bを{言|い}う{形|かたち}です。"],
+["原因・理由・結果","〜ことから","〜という{理由|りゆう}で・〜が{根拠|こんきょ}で／from the fact that","{普通形|ふつうけい}（Nである／な{形|けい}な）+ことから","この{町|まち}は{坂|さか}が{多|おお}い＿＿、「{坂|さか}の{町|まち}」と{呼|よ}ばれている。",["ことから", "ことには", "ものから", "わけから"],"「〜ことから」は、{名前|なまえ}の{理由|りゆう}や、そう{考|かんが}える{理由|りゆう}を{説明|せつめい}するときに{使|つか}います。"],
+
+// ---- 推量・判断 ----
+["推量・判断","〜に{違|ちが}いない","きっと〜だ（{強|つよ}い{確信|かくしん}）／must be","{普通形|ふつうけい}（N／な{形|けい}そのまま）+に{違|ちが}いない","{電気|でんき}が{消|き}えている。{彼|かれ}はもう{寝|ね}た＿＿。",["に{違|ちが}いない", "わけではない", "ことはない", "とは{限|かぎ}らない"],"「〜に{違|ちが}いない」は、{理由|りゆう}があって「きっと〜だ」と{強|つよ}く{思|おも}うときに{使|つか}います。"],
+["推量・判断","〜わけだ","だから〜なのだ（{当然|とうぜん}）／no wonder","{普通形|ふつうけい}（Nの／な{形|けい}な）+わけだ","A「リンさんは10{年|ねん}も{日本|にほん}に{住|す}んでいるそうです。」B「それで{日本語|にほんご}が{上手|じょうず}な＿＿。」",["わけですね", "おかげですね", "つもりですね", "せいですね"],"{理由|りゆう}を{聞|き}いて「だから〜なのか」とわかったときに「〜わけだ」を{使|つか}います。"],
+["推量・判断","〜わけではない","いつも〜というのではない／it doesn't mean","{普通形|ふつうけい}（Nの／な{形|けい}な）+わけではない","{嫌|きら}いな＿＿が、{肉|にく}はあまり{食|た}べません。",["わけではありません", "わけにはいきません", "に{違|ちが}いありません", "おそれがあります"],"「〜わけではない」は「{全部|ぜんぶ}〜だ、とは{言|い}えない」と、{一部|いちぶ}だけ{否定|ひてい}する{言|い}い{方|かた}です。"],
+["推量・判断","〜わけがない","ぜったい〜ない／there's no way","{普通形|ふつうけい}（Nの／な{形|けい}な）+わけがない","こんなに{難|むずか}しい{問題|もんだい}が、{子|こ}どもにできる＿＿。",["わけがない", "わけにはいかない", "ことになっている", "べきではない"],"「〜わけがない」は「ぜったいに〜ない」と{強|つよ}く{否定|ひてい}する{言|い}い{方|かた}です。"],
+["推量・判断","〜わけにはいかない","（{理由|りゆう}があって）〜できない／can't afford to","V-{辞書形|じしょけい}・ない{形|けい}+わけにはいかない","{明日|あした}は{大事|だいじ}な{試験|しけん}があるから、{休|やす}む＿＿。",["わけにはいかない", "わけではない", "おそれがある", "ようがない"],"したい{気持|きも}ちはあっても、{理由|りゆう}があってできないときに「〜わけにはいかない」を{使|つか}います。"],
+["推量・判断","〜とは{限|かぎ}らない","いつも〜とは{言|い}えない／not necessarily","{普通形|ふつうけい}+とは{限|かぎ}らない","{高|たか}いものが、いつもいい＿＿。",["とは{限|かぎ}らない", "わけにはいかない", "おそれがある", "ようがない"],"「〜とは{限|かぎ}らない」は「そうではないときもある」という{意味|いみ}です。「いつも」「{必|かなら}ず」といっしょによく{使|つか}います。"],
+["推量・判断","〜ないことはない","〜しないわけではない（{少|すこ}しは〜）／it's not that ~ not","V-ない{形|けい}・い{形|けい}-くない+ことはない","{納豆|なっとう}は{食|た}べ＿＿が、あまり{好|す}きではない。",["ないことはない", "るわけがない", "ようがない", "るべきではない"],"「{食|た}べないことはない」は「{食|た}べることはできる（でも…）」という{意味|いみ}です。"],
+["推量・判断","〜ような{気|き}がする","なんとなく〜と{感|かん}じる／I feel like","{普通形|ふつうけい}（Nの／な{形|けい}な）+ような{気|き}がする","あの{人|ひと}には、{前|まえ}にどこかで{会|あ}った＿＿。",["ような{気|き}がする", "ことになっている", "わけにはいかない", "べきだ"],"はっきりわからないが「たぶんそうだ」と{感|かん}じるときに{使|つか}います。"],
+["推量・判断","〜おそれがある","〜という{悪|わる}いことが{起|お}きるかもしれない／there is a risk","V-{辞書形|じしょけい}・Nの+おそれがある","{大雨|おおあめ}で、{川|かわ}の{水|みず}があふれる＿＿。",["おそれがあります", "わけにはいきません", "ことはありません", "べきです"],"「〜おそれがある」は、{悪|わる}いことが{起|お}きる{可能性|かのうせい}があるときに{使|つか}います。ニュースでよく{聞|き}きます。"],
+["推量・判断","〜のではないだろうか","〜と{思|おも}う（やわらかい{主張|しゅちょう}）／I wonder if not","{普通形|ふつうけい}（Nな／な{形|けい}な）+のではないだろうか","この{計画|けいかく}は、もう{少|すこ}し{考|かんが}えたほうがいい＿＿。",["のではないだろうか", "わけにはいかない", "ようがない", "おそれがある"],"{自分|じぶん}の{意見|いけん}を、やわらかく{言|い}うときに{使|つか}います。「〜と{思|おも}う」と{同|おな}じ{意味|いみ}です。"],
+["推量・判断","〜ようがない","〜する{方法|ほうほう}がない／there's no way to","V-~~ます~~+ようがない","{彼|かれ}の{電話番号|でんわばんごう}を{知|し}らないので、{連絡|れんらく}のし＿＿。",["ようがない", "ようとしない", "っぱなしだ", "きれない"],"「〜ようがない」は「したくても、{方法|ほうほう}がなくてできない」という{意味|いみ}です。"],
+["推量・判断","〜とみえる／〜とみえて","〜らしい（{様子|ようす}から{判断|はんだん}）／it seems","{普通形|ふつうけい}+とみえる","{田中|たなか}さんは{朝|あさ}からにこにこしている。{何|なに}かいいことがあった＿＿。",["とみえる", "おそれがある", "わけにはいかない", "ことはない"],"{見|み}た{様子|ようす}から「〜らしい」と{考|かんが}えるときに{使|つか}います。"],
+["推量・判断","〜つもりだった／〜つもりで","〜するつもりだったが／〜したつもり（{実際|じっさい}はちがう）","V-た{形|けい}・{辞書形|じしょけい}+つもり","かぎをかけた＿＿が、かかっていなかった。",["つもりだった", "おかげだった", "せいだった", "ついでだった"],"「〜たつもりだった」は「{自分|じぶん}では〜したと{思|おも}っていたが、{本当|ほんとう}はちがった」という{意味|いみ}です。"],
+["推量・判断","〜に{決|き}まっている","ぜったい〜だ／must be, surely","{普通形|ふつうけい}（N／な{形|けい}そのまま）+に{決|き}まっている","そんなに{毎日|まいにち}{遊|あそ}んでいたら、{試験|しけん}に{落|お}ちる＿＿。",["に{決|き}まっている", "わけにはいかない", "ことにしている", "ようがない"],"「〜に{決|き}まっている」は「ぜったいに〜だ」と{強|つよ}く{言|い}う{話|はな}し{言葉|ことば}です。"],
+["推量・判断","〜そうもない／〜そうにない","〜する{可能性|かのうせい}が{低|ひく}い／unlikely to","V-~~ます~~+そうもない","{仕事|しごと}が{多|おお}くて、{今日|きょう}は{早|はや}く{帰|かえ}れ＿＿。",["そうもない", "っぱなしだ", "たてだ", "きった"],"「〜そうもない」は「〜する{様子|ようす}がない、たぶん〜ない」という{意味|いみ}です。"],
+["推量・判断","〜られる（{自発|じはつ}）","{自然|しぜん}にそう{思|おも}う・{感|かん}じる／spontaneous","V-{受身形|うけみけい}（{思|おも}う・{考|かんが}える・{感|かん}じる など）","この{写真|しゃしん}を{見|み}ると、{子|こ}どものころが{思|おも}い＿＿。",["{出|だ}される", "{出|だ}させる", "{出|だ}したがる", "{出|だ}しにくい"],"「{思|おも}い{出|だ}される」は「{自然|しぜん}に{思|おも}い{出|だ}す」という{意味|いみ}です。{形|かたち}は{受身|うけみ}と{同|おな}じです。"],
+
+// ---- 様子・たとえ ----
+["様子・たとえ","まるで〜ようだ","{本当|ほんとう}は{違|ちが}うが、〜のように{見|み}える／as if","まるで+{普通形|ふつうけい}（Nの／な{形|けい}な）+ようだ","あの{二人|ふたり}は{仲|なか}がよくて、＿＿{兄弟|きょうだい}のようだ。",["まるで", "たとえ", "いくら", "めったに"],"「まるで〜ようだ」は、ほかのものにたとえて{言|い}うときに{使|つか}います。{本当|ほんとう}の{兄弟|きょうだい}ではありません。"],
+["様子・たとえ","〜っぽい","〜のような{感|かん}じだ・よく〜する／-ish","N・V-~~ます~~・い{形|けい}-~~い~~+っぽい","{弟|おとうと}は{忘|わす}れ＿＿{性格|せいかく}で、よくかさをなくす。",["っぽい", "だらけの", "たての", "{向|む}けの"],"「{忘|わす}れっぽい」は「よく{忘|わす}れる」という{意味|いみ}です。「{子|こ}どもっぽい」「{怒|おこ}りっぽい」などもあります。"],
+["様子・たとえ","〜ふりをする","{本当|ほんとう}はちがうのに〜ように{見|み}せる／pretend","V-{普通形|ふつうけい}・Nの・な{形|けい}な+ふりをする","{本当|ほんとう}は{知|し}っているのに、{知|し}らない＿＿。",["ふりをした", "とおりにした", "ついでにした", "かわりにした"],"「〜ふりをする」は、{本当|ほんとう}はそうではないのに、そのように{見|み}せることです。"],
+["様子・たとえ","〜だらけ","〜がたくさんあって{汚|きたな}い／full of","N+だらけ","{弟|おとうと}の{作文|さくぶん}は{間違|まちが}い＿＿だった。",["だらけ", "{向|む}け", "たて", "ぶり"],"「Nだらけ」は「よくないものがたくさんある」という{意味|いみ}です。「ごみだらけ」「{泥|どろ}だらけ」などと{言|い}います。"],
+["様子・たとえ","〜がち","よく〜になる（よくないこと）／tend to","V-~~ます~~・N+がち","{冬|ふゆ}は{運動不足|うんどうぶそく}になり＿＿だ。",["がち", "だらけ", "たて", "{向|む}け"],"「〜がち」は「〜になることが{多|おお}い」という{意味|いみ}で、よくないことに{使|つか}います。「{病気|びょうき}がち」「{忘|わす}れがち」など。"],
+["様子・たとえ","〜{気味|ぎみ}","{少|すこ}し〜の{感|かん}じがある／a bit, -ish","V-~~ます~~・N+{気味|ぎみ}","{最近|さいきん}{忙|いそが}しくて、ちょっと{疲|つか}れ＿＿だ。",["{気味|ぎみ}", "だらけ", "{向|む}き", "たて"],"「〜{気味|ぎみ}」は「{少|すこ}し〜の{感|かん}じがする」という{意味|いみ}です。「かぜ{気味|ぎみ}」「{太|ふと}り{気味|ぎみ}」など。"],
+["様子・たとえ","〜ぶり","〜の{様子|ようす}／（{時間|じかん}）〜ぶりに／manner; after (time)","V-~~ます~~・N+ぶり／{期間|きかん}+ぶり","{国|くに}の{友達|ともだち}に、5{年|ねん}＿＿に{会|あ}った。",["ぶり", "だらけ", "{向|む}き", "がち"],"「5{年|ねん}ぶりに」は「5{年|ねん}の{間|あいだ}なかったことを、またした」という{意味|いみ}です。"],
+["様子・たとえ","〜{向|む}け／〜{向|む}き","〜のために{作|つく}った／〜に{合|あ}っている／for, suitable for","N+{向|む}け・{向|む}き","これは{子|こ}ども＿＿に{書|か}かれた{本|ほん}だ。",["{向|む}け", "だらけ", "がち", "{気味|ぎみ}"],"「N{向|む}け」は「Nのために{作|つく}った」、「N{向|む}き」は「Nにちょうど{合|あ}っている」という{意味|いみ}です。"],
+["様子・たとえ","〜{的|てき}","〜の{性質|せいしつ}の・〜に{関|かん}する／-ic, -al","N+{的|てき}（な／に）","この{問題|もんだい}には、{国際|こくさい}＿＿な{協力|きょうりょく}が{必要|ひつよう}だ。",["{的|てき}", "{気味|ぎみ}", "{向|む}き", "がち"],"「N{的|てき}」は な{形容詞|けいようし}と{同|おな}じように{使|つか}います。「{国際的|こくさいてき}な」「{経済的|けいざいてき}に」など。"],
+["様子・たとえ","〜ように{見|み}える","〜のように{見|み}える（{見|み}た{感|かん}じ）／look like, appear","{普通形|ふつうけい}（Nの／な{形|けい}な）+ように{見|み}える","{遠|とお}くから{見|み}ると、あの{岩|いわ}は{人|ひと}の{顔|かお}の＿＿。",["ように{見|み}える", "ように{言|い}う", "ことになる", "つもりだ"],"「〜ように{見|み}える」は、{目|め}で{見|み}た{感|かん}じを{言|い}います。{本当|ほんとう}にそうかどうかは、わかりません。"],
+["様子・たとえ","〜み","{形容詞|けいようし}を{名詞|めいし}にする（{感|かん}じ）／-ness","い{形|けい}-~~い~~・な{形|けい}+み","この{料理|りょうり}は、{砂糖|さとう}を{入|い}れなくても{野菜|やさい}の{甘|あま}＿＿がある。",["み", "げ", "く", "がり"],"「{甘|あま}み」は「{甘|あま}い{感|かん}じ・{味|あじ}」。「〜さ」は{程度|ていど}、「〜み」は{感|かん}じを{表|あらわ}します。「{痛|いた}み」「{楽|たの}しみ」「{悲|かな}しみ」など。"],
+
+// ---- 程度・限定・強調 ----
+["程度・限定・強調","〜ほど（{程度|ていど}）","〜くらい（{程度|ていど}が{高|たか}い）／so ~ that","V-{辞書形|じしょけい}・ない{形|けい}・N+ほど","{今日|きょう}は{死|し}ぬ＿＿{疲|つか}れた。",["ほど", "さえ", "こそ", "しか"],"「{死|し}ぬほど」は「とても、すごく」という{意味|いみ}です。どのくらいかを、たとえで{言|い}います。"],
+["程度・限定・強調","〜ほど〜はない","〜が{一番|いちばん}だ／nothing is as ~ as","N+ほど〜はない","{健康|けんこう}＿＿{大切|たいせつ}なものはない。",["ほど", "さえ", "こそ", "だけ"],"「AほどBなものはない」は「Aが{一番|いちばん}Bだ」という{意味|いみ}です。"],
+["程度・限定・強調","〜くらい／〜ぐらい","{程度|ていど}を{表|あらわ}す・{最低限|さいていげん}／about, at least","{普通形|ふつうけい}・N+くらい","{忙|いそが}しくても、{電話|でんわ}＿＿してくれてもいいのに。",["くらい", "ほど", "こそ", "しか"],"この「くらい」は「{簡単|かんたん}なこと・{小|ちい}さいこと」という{気持|きも}ちを{表|あらわ}します。「{電話|でんわ}は{簡単|かんたん}なのに」という{意味|いみ}です。"],
+["程度・限定・強調","〜さえ","〜も（{極端|きょくたん}な{例|れい}）／even","N+さえ","{疲|つか}れていて、{立|た}っていること＿＿できなかった。",["さえ", "こそ", "ほど", "くらい"],"「Nさえ〜ない」は「Nも〜ない（だから、ほかはもちろん〜ない）」という{意味|いみ}です。"],
+["程度・限定・強調","〜さえ〜ば","〜だけあれば{十分|じゅうぶん}／if only","N+さえ+V-ば","{時間|じかん}＿＿あれば、{旅行|りょこう}に{行|い}けるのに。",["さえ", "こそ", "しか", "ほど"],"「Nさえ〜ば」は「Nだけあれば、ほかは{何|なに}もいらない」という{意味|いみ}です。"],
+["程度・限定・強調","〜こそ","ほかでもなく〜が（{強調|きょうちょう}）／precisely","N+こそ","A「よろしくお{願|ねが}いします。」B「こちら＿＿、よろしくお{願|ねが}いします。」",["こそ", "さえ", "ほど", "しか"],"「こそ」は{前|まえ}の{言葉|ことば}を{強|つよ}く{言|い}います。「こちらこそ」「{今年|ことし}こそ」のように{使|つか}います。"],
+["程度・限定・強調","〜など／〜なんか／〜なんて","〜のようなもの（{軽|かる}く{見|み}る・{意外|いがい}）","N・{普通形|ふつうけい}+なんて","{彼|かれ}が{試験|しけん}に{落|お}ちる＿＿、{信|しん}じられない。",["なんて", "こそ", "さえ", "ほど"],"「〜なんて」は、びっくりした{気持|きも}ちを{表|あらわ}します。{後|うし}ろに「{信|しん}じられない」「{思|おも}わなかった」などが{来|き}ます。"],
+["程度・限定・強調","〜しかない","〜する{以外|いがい}に{方法|ほうほう}がない／have no choice but","V-{辞書形|じしょけい}+しかない","{終電|しゅうでん}がなくなったので、{歩|ある}いて{帰|かえ}る＿＿。",["しかない", "ことはない", "わけがない", "おそれがある"],"「〜しかない」は「ほかに{方法|ほうほう}がないから、〜する」という{意味|いみ}です。"],
+["程度・限定・強調","〜だけでなく","〜だけではなく、ほかにも／not only","{普通形|ふつうけい}（N／な{形|けい}な）+だけでなく","{彼|かれ}は{英語|えいご}＿＿、{中国語|ちゅうごくご}も{話|はな}せる。",["だけでなく", "にしては", "のわりに", "のくせに"],"「AだけでなくBも」は「AもBも」という{意味|いみ}です。{後|うし}ろに「も」がよく{来|き}ます。"],
+["程度・限定・強調","〜ばかりでなく","〜だけでなく／not only","{普通形|ふつうけい}（N／な{形|けい}な）+ばかりでなく","この{店|みせ}は{安|やす}い＿＿、{味|あじ}もいい。",["ばかりでなく", "にしては", "ためには", "としても"],"「〜ばかりでなく」は「〜だけでなく」と{同|おな}じ{意味|いみ}で、{少|すこ}しかたい{言|い}い{方|かた}です。"],
+["程度・限定・強調","〜はもちろん","〜は{当然|とうぜん}、そして〜も／not to mention","N+はもちろん","この{歌|うた}は、{子|こ}ども＿＿、{大人|おとな}にも{人気|にんき}がある。",["はもちろん", "にしては", "のくせに", "のせいで"],"「AはもちろんBも」は「Aは{当然|とうぜん}そうだ。Bもそうだ」という{意味|いみ}です。"],
+["程度・限定・強調","〜も〜ば〜も","〜も〜し、〜も／both ~ and","N+も+V-ば・い{形|けい}-ければ+N+も","あの{店|みせ}は{味|あじ}も＿＿、{値段|ねだん}も{安|やす}い。",["よければ", "よくても", "よいのに", "よいと"],"「AもBば、CもD」は「AもBだし、CもDだ」という{意味|いみ}です。{同|おな}じようなことを2つ{並|なら}べます。"],
+["程度・限定・強調","〜にしては","〜から{考|かんが}えると{意外|いがい}に／for","{普通形|ふつうけい}（N／な{形|けい}そのまま）+にしては","{彼|かれ}は{初|はじ}めて＿＿、スキーが{上手|じょうず}だ。",["にしては", "だけでなく", "としたら", "のおかげで"],"「AにしてはB」は「Aから{考|かんが}えると、Bは{意外|いがい}だ」という{意味|いみ}です。"],
+["程度・限定・強調","〜わりに（は）","〜から{考|かんが}えると{思|おも}ったより／considering","{普通形|ふつうけい}（Nの／な{形|けい}な）+わりに","この{店|みせ}は{値段|ねだん}の＿＿、{量|りょう}が{少|すく}ない。",["わりに", "おかげで", "ついでに", "たびに"],"「AわりにB」は「Aから{考|かんが}えると、{思|おも}ったよりBだ」という{意味|いみ}です。「{値段|ねだん}のわりに」＝「{高|たか}いのに」。"],
+["程度・限定・強調","〜うえ（に）","〜だけでなく、さらに／on top of","{普通形|ふつうけい}（Nの／な{形|けい}な）+うえ（に）","{昨日|きのう}は{道|みち}に{迷|まよ}った＿＿、{雨|あめ}にも{降|ふ}られた。",["うえに", "わりに", "くせに", "かわりに"],"「AうえにB」は「Aだけでなく、Bも」。よいこと＋よいこと、{悪|わる}いこと＋{悪|わる}いこと、のように{同|おな}じ{方向|ほうこう}のことを{並|なら}べます。"],
+["程度・限定・強調","〜だけ（できるだけ）","できる{限|かぎ}り{全部|ぜんぶ}／as much as","V-{可能形|かのうけい}・{辞書形|じしょけい}+だけ","どうぞ、{好|す}きな＿＿{食|た}べてください。",["だけ", "さえ", "こそ", "しか"],"「{好|す}きなだけ」は「{好|す}きな{量|りょう}を{全部|ぜんぶ}」という{意味|いみ}です。「できるだけ」「{持|も}てるだけ」などもあります。"],
+
+// ---- 複合動詞 ----
+["複合動詞","〜きる（{使|つか}いきる）","{全部|ぜんぶ}{使|つか}う／use up","V-~~ます~~+きる","もらったお{金|かね}を{全部|ぜんぶ}{使|つか}い＿＿しまった。",["きって", "{直|なお}して", "かけて", "{合|あ}って"],"「{使|つか}いきる」は「{全部|ぜんぶ}{使|つか}って、{残|のこ}りがない」という{意味|いみ}です。"],
+["複合動詞","〜きれる（{売|う}り{切|き}れる）","{全部|ぜんぶ}{売|う}れて、もうない／be sold out","V-~~ます~~+{切|き}れる","{人気|にんき}のパンは、{午前中|ごぜんちゅう}に{売|う}り＿＿しまった。",["{切|き}れて", "{込|こ}んで", "{直|なお}して", "{通|とお}して"],"「{売|う}り{切|き}れる」は「{全部|ぜんぶ}{売|う}れて、もう{残|のこ}っていない」という{意味|いみ}です。「{売|う}り{切|き}れ」という{名詞|めいし}もよく{使|つか}います。"],
+["複合動詞","〜きれない（{食|た}べきれない）","{多|おお}くて{全部|ぜんぶ}は{食|た}べられない／can't finish","V-~~ます~~+きれない","{料理|りょうり}が{多|おお}すぎて、{一人|ひとり}では{食|た}べ＿＿。",["きれない", "{直|なお}せない", "{込|こ}めない", "{合|あ}えない"],"「〜きれない」は「{多|おお}すぎて、{全部|ぜんぶ}〜することができない」という{意味|いみ}です。"],
+["複合動詞","〜きれない（{数|かぞ}えきれない）","{多|おお}すぎて{数|かぞ}えられない／countless","V-~~ます~~+きれない","{空|そら}には、{数|かぞ}え＿＿ほどの{星|ほし}が{出|で}ていた。",["きれない", "{直|なお}せない", "かけない", "{出|だ}せない"],"「{数|かぞ}えきれないほど」は「とてもたくさん」という{意味|いみ}です。"],
+["複合動詞","〜{込|こ}む（{飛|と}び{込|こ}む）","{中|なか}に{入|はい}る／jump into","V-~~ます~~+{込|こ}む","{子|こ}どもたちは、プールに{飛|と}び＿＿。",["{込|こ}んだ", "{切|き}った", "{直|なお}した", "{通|とお}した"],"「〜{込|こ}む」は「{中|なか}に{入|はい}る・{入|い}れる」という{意味|いみ}です。「{飛|と}び{込|こ}む」「{書|か}き{込|こ}む」「{入|はい}り{込|こ}む」など。"],
+["複合動詞","〜{込|こ}む（{申|もう}し{込|こ}む）","{参加|さんか}したいと{伝|つた}える／apply","{申|もう}し+{込|こ}む","{来月|らいげつ}の{試験|しけん}を、インターネットで{申|もう}し＿＿。",["{込|こ}んだ", "{切|き}った", "{直|なお}した", "{合|あ}った"],"「{申|もう}し{込|こ}む」は、{試験|しけん}やイベントなどに「{参加|さんか}したい」と{伝|つた}えることです。{名詞|めいし}は「{申|もう}し{込|こ}み」。"],
+["複合動詞","〜{込|こ}む（{思|おも}い{込|こ}む）","{本当|ほんとう}だと{強|つよ}く{信|しん}じる／be convinced","{思|おも}い+{込|こ}む","{今日|きょう}は{休|やす}みだと{思|おも}い＿＿いたが、{授業|じゅぎょう}があった。",["{込|こ}んで", "{切|き}って", "{直|なお}して", "{出|だ}して"],"「{思|おも}い{込|こ}む」は「{本当|ほんとう}はちがうのに、そうだと{強|つよ}く{信|しん}じる」という{意味|いみ}です。"],
+["複合動詞","〜{直|なお}す（{書|か}き{直|なお}す）","もう{一度|いちど}{書|か}く／rewrite","V-~~ます~~+{直|なお}す","{作文|さくぶん}に{間違|まちが}いが{多|おお}かったので、{初|はじ}めから{書|か}き＿＿。",["{直|なお}した", "{切|き}れた", "{合|あ}った", "すぎた"],"「〜{直|なお}す」は「よくするために、もう{一度|いちど}〜する」という{意味|いみ}です。「やり{直|なお}す」「{考|かんが}え{直|なお}す」など。"],
+["複合動詞","〜{直|なお}す（かけ{直|なお}す）","もう{一度|いちど}{電話|でんわ}をかける／call back","V-~~ます~~+{直|なお}す","{今|いま}、{電車|でんしゃ}の{中|なか}なので、あとで{電話|でんわ}をかけ＿＿。",["{直|なお}します", "{込|こ}みます", "{切|き}ります", "{通|とお}します"],"「かけ{直|なお}す」は「もう{一度|いちど}{電話|でんわ}をかける」という{意味|いみ}です。"],
+["複合動詞","〜{直|なお}す（{見直|みなお}す）","もう{一度|いちど}{見|み}て{確|たし}かめる／check again","V-~~ます~~+{直|なお}す","テストを{出|だ}す{前|まえ}に、{答|こた}えをもう{一度|いちど}{見|み}＿＿ください。",["{直|なお}して", "{込|こ}んで", "{切|き}って", "かけて"],"「{見直|みなお}す」は「{間違|まちが}いがないか、もう{一度|いちど}{見|み}る」という{意味|いみ}です。"],
+["複合動詞","〜{通|とお}す（やり{通|とお}す）","{最後|さいご}まで〜する／carry through","V-~~ます~~+{通|とお}す","{大変|たいへん}だったが、{途中|とちゅう}でやめないで、{最後|さいご}までやり＿＿。",["{通|とお}した", "かけた", "{合|あ}った", "{出|だ}した"],"「〜{通|とお}す」は「{途中|とちゅう}でやめないで、{最後|さいご}まで〜する」という{意味|いみ}です。「{読|よ}み{通|とお}す」「{走|はし}り{通|とお}す」など。"],
+
+// ---- 逆接・仮定 ----
+["逆接・仮定","〜くせに","〜のに（{非難|ひなん}）／even though","{普通形|ふつうけい}（Nの／な{形|けい}な）+くせに","{弟|おとうと}は、{自分|じぶん}はやらない＿＿、{人|ひと}には{文句|もんく}を{言|い}う。",["くせに", "おかげで", "ために", "ついでに"],"「〜くせに」は「〜のに」と{同|おな}じですが、{相手|あいて}を{悪|わる}く{言|い}う{気持|きも}ちがあります。"],
+["逆接・仮定","〜ながら（{逆接|ぎゃくせつ}）","〜けれども／although","V-~~ます~~・い{形|けい}・N+ながら（も）","{残念|ざんねん}＿＿、{明日|あした}のパーティーには{行|い}けません。",["ながら", "くせに", "ために", "ばかり"],"この「ながら」は「〜けれども」という{意味|いみ}です。「{残念|ざんねん}ながら」「{知|し}っていながら」のように{使|つか}います。"],
+["逆接・仮定","〜としても／〜たとしても","もし〜でも／even if","{普通形|ふつうけい}+としても","{今|いま}からタクシーで{行|い}った＿＿、{間|ま}に{合|あ}わないだろう。",["としても", "おかげで", "ついでに", "とたんに"],"「〜としても」は「もし〜でも、{結果|けっか}は{同|おな}じだ」という{意味|いみ}です。"],
+["逆接・仮定","たとえ〜ても","もし〜しても（{変|か}わらない）／even if","たとえ+V-て{形|けい}+も","＿＿{両親|りょうしん}に{反対|はんたい}されても、{日本|にほん}に{留学|りゅうがく}したい。",["たとえ", "まるで", "めったに", "{決|けっ}して"],"「たとえ〜ても」は「もし〜でも、{気持|きも}ちや{結果|けっか}は{変|か}わらない」という{意味|いみ}です。"],
+["逆接・仮定","いくら〜ても","どんなに〜しても／no matter how","いくら+V-て{形|けい}・い{形|けい}-くて+も","＿＿{呼|よ}んでも、{返事|へんじ}がない。",["いくら", "まるで", "めったに", "むしろ"],"「いくら〜ても」は「{何回|なんかい}も・たくさん〜しても、だめだ」という{意味|いみ}です。"],
+["逆接・仮定","〜としたら／〜とすれば","もし〜なら（{仮定|かてい}）／if, supposing","{普通形|ふつうけい}+としたら","もし{宝|たから}くじが{当|あ}たった＿＿、{何|なに}を{買|か}いますか。",["としたら", "というより", "とともに", "とおりに"],"「〜としたら」は、{本当|ほんとう}かどうかわからないことを「もしそうなら」と{考|かんが}えるときに{使|つか}います。"],
+["逆接・仮定","〜ば〜のに／〜たらいいのに","〜すればいいのに（{不満|ふまん}・{残念|ざんねん}）","V-ば・た{形|けい}ら+いいのに","もう{少|すこ}し{安|やす}ければ{買|か}う＿＿。",["のに", "ので", "のは", "ものだ"],"「〜ば〜のに」は「{本当|ほんとう}はそうではないから、{残念|ざんねん}だ」という{気持|きも}ちを{表|あらわ}します。"],
+["逆接・仮定","〜ないと（〜ない）","〜しなければ（〜できない）","V-ない{形|けい}+と","{早|はや}く{家|いえ}を＿＿、{電車|でんしゃ}に{間|ま}に{合|あ}わないよ。",["{出|で}ないと", "{出|で}ても", "{出|で}たのに", "{出|で}るから"],"「AないとB」は「Aをしなければ、{悪|わる}い{結果|けっか}Bになる」という{意味|いみ}です。"],
+["逆接・仮定","〜てはじめて","〜してやっと（わかる）／not until","V-て{形|けい}+はじめて","{病気|びょうき}になっ＿＿、{健康|けんこう}の{大切|たいせつ}さがわかった。",["てはじめて", "てからでないと", "てばかりで", "たついでに"],"「AてはじめてB」は「Aをする{前|まえ}はBではなかった。Aをして、やっとBになった」という{意味|いみ}です。"],
+["逆接・仮定","〜といっても","〜と{言|い}うが、{実際|じっさい}は／although","{普通形|ふつうけい}（N／な{形|けい}そのまま）+といっても","{料理|りょうり}ができる＿＿、{作|つく}れるのはカレーだけです。",["といっても", "というより", "としたら", "とともに"],"「AといってもB」は「Aと{言|い}ったが、{本当|ほんとう}はそれほどではない」と{説明|せつめい}するときに{使|つか}います。"],
+["逆接・仮定","〜ことは〜が","〜することはするが（{十分|じゅうぶん}ではない）","V-{普通形|ふつうけい}+ことは+V+が","この{本|ほん}は、{読|よ}んだ＿＿{読|よ}んだが、よくわからなかった。",["ことは", "ものは", "わけは", "のに"],"「{読|よ}んだことは{読|よ}んだが」は「{読|よ}んだのは{本当|ほんとう}だが、{十分|じゅうぶん}ではない」という{意味|いみ}です。{同|おな}じ{言葉|ことば}を2{回|かい}{使|つか}います。"],
+["逆接・仮定","〜ばよかった","〜すればよかった（{後悔|こうかい}）／should have","V-ば+よかった","{試験|しけん}の{点|てん}が{悪|わる}かった。もっと{勉強|べんきょう}＿＿。",["すればよかった", "するわけがない", "することはない", "するおそれがある"],"「〜ばよかった」は「しなかったことを、{今|いま}{残念|ざんねん}に{思|おも}っている」という{気持|きも}ちを{表|あらわ}します。"],
+["逆接・仮定","〜からといって","〜という{理由|りゆう}だけで（〜ない）／just because","{普通形|ふつうけい}+からといって","{日本|にほん}に{住|す}んでいる＿＿、{日本語|にほんご}が{上手|じょうず}になるわけではない。",["からといって", "おかげで", "とたんに", "ついでに"],"「AからといってBない」は「Aという{理由|りゆう}だけでは、Bとは{言|い}えない」という{意味|いみ}です。{後|うし}ろに「わけではない」「とは{限|かぎ}らない」がよく{来|き}ます。"],
+["逆接・仮定","〜ようなら／〜ようだったら","〜のような{状態|じょうたい}なら（{条件|じょうけん}）／if it seems","{普通形|ふつうけい}（Nの／な{形|けい}な）+ようなら","{明日|あした}になっても{熱|ねつ}が{下|さ}がらない＿＿、{病院|びょういん}へ{行|い}ってください。",["ようなら", "としても", "くせに", "わりに"],"「〜ようなら」は「もし〜の{様子|ようす}だったら」という{意味|いみ}です。{後|うし}ろに、アドバイスやお{願|ねが}いがよく{来|き}ます。"],
+["逆接・仮定","〜{反面|はんめん}／〜{半面|はんめん}","〜の{一方|いっぽう}で、{反対|はんたい}に／while, on the other hand","{普通形|ふつうけい}（Nである／な{形|けい}な）+{反面|はんめん}","{都会|とかい}の{生活|せいかつ}は{便利|べんり}な＿＿、ストレスも{多|おお}い。",["{反面|はんめん}", "うちに", "おかげで", "ために"],"「A{反面|はんめん}B」は、1つのものに、よい{面|めん}Aと{反対|はんたい}の{面|めん}Bがある、と{言|い}うときに{使|つか}います。"],
+
+// ---- 関係・観点 ----
+["関係・観点","〜について","〜のことを／about","N+について","{日本|にほん}の{文化|ぶんか}＿＿、レポートを{書|か}いた。",["について", "にとって", "によって", "に{比|くら}べて"],"「Nについて」は、{話|はな}す・{書|か}く・{調|しら}べる などの{内容|ないよう}を{言|い}います。"],
+["関係・観点","〜に{関|かん}して／〜に{関|かん}する","〜について（かたい{言|い}い{方|かた}）／regarding","N+に{関|かん}して・に{関|かん}するN","この{事件|じけん}＿＿{情報|じょうほう}を{集|あつ}めています。",["に{関|かん}する", "にとっての", "としての", "に{比|くら}べた"],"「Nに{関|かん}する」は「Nについての」と{同|おな}じ{意味|いみ}で、かたい{言|い}い{方|かた}です。{後|うし}ろに{名詞|めいし}が{来|き}ます。"],
+["関係・観点","〜に{対|たい}して","〜に{向|む}けて／〜と{比|くら}べて{反対|はんたい}に／toward; in contrast","N+に{対|たい}して","{先生|せんせい}＿＿、そんな{態度|たいど}をとってはいけません。",["に{対|たい}して", "にとって", "について", "によって"],"「{人|ひと}に{対|たい}して」は、{行動|こうどう}や{気持|きも}ちが{向|む}かう{相手|あいて}を{言|い}います。"],
+["関係・観点","〜にとって","〜の{立場|たちば}から{見|み}ると／for, to","N+にとって","{私|わたし}＿＿、{家族|かぞく}が{一番|いちばん}{大切|たいせつ}です。",["にとって", "に{対|たい}して", "について", "によって"],"「Nにとって」は「Nの{立場|たちば}で{考|かんが}えると」。{後|うし}ろには「{大切|たいせつ}だ」「{難|むずか}しい」などの{評価|ひょうか}が{来|き}ます。"],
+["関係・観点","〜として","〜の{立場|たちば}・{資格|しかく}で／as","N+として","{彼|かれ}は{留学生|りゅうがくせい}＿＿{日本|にほん}に{来|き}た。",["として", "にとって", "について", "によって"],"「Nとして」は「Nの{立場|たちば}で・Nの{資格|しかく}で」という{意味|いみ}です。"],
+["関係・観点","〜によると／〜によれば","〜の{話|はなし}では（{情報源|じょうほうげん}）／according to","N+によると","{天気予報|てんきよほう}＿＿、{明日|あした}は{雪|ゆき}が{降|ふ}るそうだ。",["によると", "にとって", "として", "に{対|たい}して"],"「Nによると」は、{聞|き}いた{話|はなし}がどこから{来|き}たかを{言|い}います。{後|うし}ろに「そうだ」「らしい」がよく{来|き}ます。"],
+["関係・観点","〜によって（それぞれ）","〜それぞれで{違|ちが}う／depending on","N+によって","{国|くに}＿＿、{習慣|しゅうかん}が{違|ちが}います。",["によって", "について", "にとって", "として"],"「Nによって{違|ちが}う」は「Nが{変|か}わると、ほかのことも{変|か}わる」という{意味|いみ}です。"],
+["関係・観点","〜によって（{受身|うけみ}の{動作主|どうさぬし}）","〜が（{作|つく}った・{書|か}いた）／by","N+によって+{受身|うけみ}","この{絵|え}は、ピカソ＿＿{描|か}かれた。",["によって", "にとって", "について", "として"],"{作|つく}る・{書|か}く・{建|た}てる などの{受身|うけみ}の{文|ぶん}では、した{人|ひと}を「によって」で{表|あらわ}します。"],
+["関係・観点","〜に{比|くら}べて","〜とくらべて／compared to","N+に{比|くら}べて","{去年|きょねん}＿＿、{今年|ことし}の{夏|なつ}は{暑|あつ}い。",["に{比|くら}べて", "にとって", "について", "として"],"「Aに{比|くら}べてB」は「AとBをくらべると」という{意味|いみ}です。"],
+["関係・観点","〜とともに","〜といっしょに／〜と{同時|どうじ}に／together with","N・V-{辞書形|じしょけい}+とともに","{家族|かぞく}＿＿、{日本|にほん}で{新|あたら}しい{生活|せいかつ}を{始|はじ}めた。",["とともに", "にとって", "について", "によると"],"「Nとともに」は「Nといっしょに」の かたい{言|い}い{方|かた}です。「〜と{同時|どうじ}に」の{意味|いみ}もあります。"],
+["関係・観点","〜を{中心|ちゅうしん}に","〜をまん{中|なか}にして／centered on","N+を{中心|ちゅうしん}に","この{番組|ばんぐみ}は、{若|わか}い{人|ひと}＿＿{人気|にんき}がある。",["を{中心|ちゅうしん}に", "をこめて", "にかわって", "にしたがって"],"「Nを{中心|ちゅうしん}に」は「Nがいちばん{多|おお}い・Nが{主|おも}だ」という{意味|いみ}です。"],
+["関係・観点","〜を{通|つう}じて／〜を{通|とお}して","〜を{使|つか}って・〜の{間|あいだ}ずっと／through","N+を{通|つう}じて","インターネット＿＿、{世界中|せかいじゅう}の{人|ひと}と{話|はな}すことができる。",["を{通|つう}じて", "をこめて", "にとって", "に{比|くら}べて"],"「Nを{通|つう}じて」は「Nを{間|あいだ}に{入|い}れて・Nを{使|つか}って」という{意味|いみ}です。「1{年|ねん}を{通|つう}じて」＝「1{年|ねん}{中|じゅう}」。"],
+["関係・観点","〜をこめて","（{気持|きも}ち）を{入|い}れて／with (feeling)","N+をこめて","{母|はは}のために、{心|こころ}＿＿セーターを{編|あ}んだ。",["をこめて", "を{通|つう}じて", "を{中心|ちゅうしん}に", "にかわって"],"「{心|こころ}をこめて」「{愛|あい}をこめて」「{感謝|かんしゃ}をこめて」のように、{気持|きも}ちを{表|あらわ}す{言葉|ことば}といっしょに{使|つか}います。"],
+["関係・観点","〜にかわって／〜のかわりに","〜の{代|か}わりに／instead of","N+にかわって・Nの+かわりに","{病気|びょうき}の{社長|しゃちょう}＿＿、{部長|ぶちょう}が{会議|かいぎ}に{出|で}た。",["にかわって", "にとって", "について", "によると"],"「AにかわってB」は「いつもはAがするが、{今回|こんかい}はBがする」という{意味|いみ}です。"],
+["関係・観点","〜かわりに（{交換|こうかん}）","〜するのと{交換|こうかん}に／in exchange for","V-{普通形|ふつうけい}+かわりに","{日本語|にほんご}を{教|おし}えてもらう＿＿、{友達|ともだち}に{英語|えいご}を{教|おし}えている。",["かわりに", "とおりに", "せいで", "くせに"],"「AかわりにB」は「Aをしてもらって、お{返|かえ}しにBをする」という{意味|いみ}です。"],
+["関係・観点","〜ついでに","〜する{機会|きかい}に、いっしょに／while ~ing","V-{辞書形|じしょけい}・た{形|けい}・Nの+ついでに","{散歩|さんぽ}の＿＿、コンビニでパンを{買|か}ってきた。",["ついでに", "とおりに", "おかげで", "せいで"],"「AのついでにB」は「Aをするとき、いっしょにBもする」という{意味|いみ}です。Aがメインです。"],
+["関係・観点","〜とおり（に）／〜どおり（に）","〜と{同|おな}じように／as, according to","V-{辞書形|じしょけい}・た{形|けい}・Nの+とおり／N+どおり","{先生|せんせい}が{言|い}った＿＿、やってみてください。",["とおりに", "ついでに", "かわりに", "たびに"],"「〜とおりに」は「〜と{同|おな}じように」という{意味|いみ}です。{名詞|めいし}にすぐつくときは「{予定|よてい}どおり」のように「どおり」になります。"],
+["関係・観点","〜において／〜における","〜で（{場所|ばしょ}・{時|とき}・{分野|ぶんや}／かたい{言|い}い{方|かた}）／in, at","N+において・におけるN","{卒業式|そつぎょうしき}は、{市民|しみん}ホール＿＿{行|おこな}われます。",["において", "にとって", "について", "に{比|くら}べて"],"「Nにおいて」は{場所|ばしょ}や{時|とき}を{表|あらわ}す「で」の かたい{言|い}い{方|かた}です。お{知|し}らせや{書|か}き{言葉|ことば}で{使|つか}います。"],
+["関係・観点","〜に{反|はん}して","〜とは{反対|はんたい}に／contrary to","N+に{反|はん}して","みんなの{予想|よそう}＿＿、{弱|よわ}いチームが{勝|か}った。",["に{反|はん}して", "にとって", "について", "にしたがって"],"「{予想|よそう}・{期待|きたい}・{希望|きぼう}＋に{反|はん}して」は「〜とちがって、{反対|はんたい}の{結果|けっか}になった」という{意味|いみ}です。"],
+["関係・観点","〜は{別|べつ}として","〜は{例外|れいがい}にして・〜は{考|かんが}えないで／aside from","N+は{別|べつ}として／〜かどうかは{別|べつ}として","{値段|ねだん}＿＿、このかばんはデザインがとてもいい。",["は{別|べつ}として", "にとって", "によると", "にかわって"],"「Aは{別|べつ}として」は「Aのことは{今|いま}{考|かんが}えないで」という{意味|いみ}です。"],
+
+// ---- 引用・伝聞・定義 ----
+["引用・伝聞・定義","〜ということだ","〜と{聞|き}いた（{伝聞|でんぶん}）・つまり〜だ","{普通形|ふつうけい}+ということだ","ニュースによると、{来月|らいげつ}から{電気代|でんきだい}が{上|あ}がる＿＿。",["ということだ", "ことにする", "ものだ", "わけにはいかない"],"「〜ということだ」は「〜そうだ」と{同|おな}じで、{聞|き}いたことを{伝|つた}えます。"],
+["引用・伝聞・定義","〜とのことだ","〜と{聞|き}いた（かたい{伝聞|でんぶん}）／I hear that","{普通形|ふつうけい}+とのことだ","{田中|たなか}さんから{電話|でんわ}があって、{少|すこ}し{遅|おく}れる＿＿です。",["とのこと", "というより", "っけ", "ばかり"],"「〜とのことです」は、ほかの{人|ひと}から{聞|き}いた{話|はなし}を、ていねいに{伝|つた}えるときに{使|つか}います。"],
+["引用・伝聞・定義","〜って（{伝聞|でんぶん}）／〜んだって","〜そうだ（{話|はな}し{言葉|ことば}）／I heard","{普通形|ふつうけい}+って","A「リンさん、{来月|らいげつ}{国|くに}へ{帰|かえ}るんだ＿＿。」B「へえ、{知|し}らなかった。」",["って", "っけ", "こと", "ごらん"],"「〜んだって」は「〜そうだ」の{話|はな}し{言葉|ことば}です。{友達|ともだち}と{話|はな}すときに{使|つか}います。"],
+["引用・伝聞・定義","〜というのは／〜とは","〜の{意味|いみ}は（{定義|ていぎ}）／what ~ means is","N+というのは","「デジカメ」＿＿、デジタルカメラのことです。",["というのは", "というより", "といっても", "としたら"],"「AというのはBのことだ」は、{言葉|ことば}の{意味|いみ}を{説明|せつめい}するときに{使|つか}います。"],
+["引用・伝聞・定義","〜というより","〜と{言|い}うよりも、むしろ／rather than","{普通形|ふつうけい}（N／な{形|けい}そのまま）+というより","{今日|きょう}は{涼|すず}しい＿＿、{寒|さむ}いくらいだ。",["というより", "というのは", "といえば", "としたら"],"「AというよりB」は「Aと{言|い}うより、Bと{言|い}ったほうが{合|あ}っている」という{意味|いみ}です。"],
+["引用・伝聞・定義","〜ように（{言|い}う・{頼|たの}む）","〜するように{伝|つた}える（{間接|かんせつ}の{命令|めいれい}）","V-{辞書形|じしょけい}・ない{形|けい}+ように{言|い}う","{医者|いしゃ}に、お{酒|さけ}を{飲|の}まない＿＿{言|い}われた。",["ように", "ことに", "ために", "とおりに"],"「〜ように{言|い}う」は、{命令|めいれい}やお{願|ねが}いの{内容|ないよう}を{伝|つた}えるときに{使|つか}います。"],
+["引用・伝聞・定義","〜っけ","〜だったかな（{思|おも}い{出|だ}す・{確認|かくにん}）","{普通形|ふつうけい}（た{形|けい}が{多|おお}い）+っけ","{田中|たなか}さんの{誕生日|たんじょうび}、いつだった＿＿。",["っけ", "って", "こと", "もの"],"「〜っけ」は、{忘|わす}れたことを{思|おも}い{出|だ}そうとするとき、{相手|あいて}に{確|たし}かめるときに{使|つか}う{話|はな}し{言葉|ことば}です。"],
+["引用・伝聞・定義","〜こと（{指示|しじ}）","〜すること（{規則|きそく}・{注意書|ちゅういが}き）／must","V-{辞書形|じしょけい}・ない{形|けい}+こと","【{教室|きょうしつ}のルール】{教室|きょうしつ}でたばこを{吸|す}わない＿＿。",["こと", "もの", "わけ", "ところ"],"{文|ぶん}の{終|お}わりの「〜こと」は、ルールや{注意|ちゅうい}を{書|か}くときに{使|つか}います。「〜しなさい」という{意味|いみ}です。"],
+["引用・伝聞・定義","〜と{言|い}われている","{一般|いっぱん}に〜と{言|い}われる／it is said that","{普通形|ふつうけい}+と{言|い}われている","{日本人|にほんじん}は{昔|むかし}から{魚|さかな}をよく{食|た}べる＿＿。",["と{言|い}われている", "と{言|い}わせている", "と{言|い}ってごらん", "と{言|い}うことはない"],"「〜と{言|い}われている」は「{多|おお}くの{人|ひと}がそう{言|い}っている」という{意味|いみ}です。"],
+["引用・伝聞・定義","〜といえば／〜というと","〜を{話題|わだい}にすると（{思|おも}い{出|だ}す）／speaking of","N+といえば・というと","A「{昨日|きのう}、{京都|きょうと}へ{行|い}ってきました。」B「{京都|きょうと}＿＿、お{寺|てら}が{有名|ゆうめい}ですね。」",["といえば", "というより", "といっても", "としたら"],"「Nといえば」は、{前|まえ}に{出|で}た{言葉|ことば}から{思|おも}い{出|だ}したことを{話|はな}すときに{使|つか}います。"],
+
+// ---- 決まり・習慣・必要 ----
+["決まり・習慣・必要","〜ことになっている","（{規則|きそく}で）〜と{決|き}まっている","V-{辞書形|じしょけい}・ない{形|けい}+ことになっている","この{学校|がっこう}では、{教室|きょうしつ}で{日本語|にほんご}だけを{話|はな}す＿＿。",["ことになっている", "ことはない", "おそれがある", "ようがない"],"「〜ことになっている」は、ルールや{予定|よてい}で{決|き}まっていることを{言|い}います。"],
+["決まり・習慣・必要","〜ことはない","〜する{必要|ひつよう}はない／there's no need","V-{辞書形|じしょけい}+ことはない","{時間|じかん}は{十分|じゅうぶん}あるから、{急|いそ}ぐ＿＿よ。",["ことはない", "しかない", "べきだ", "ものだ"],"「〜ことはない」は「〜しなくてもいい」という{意味|いみ}です。{相手|あいて}にアドバイスするときによく{使|つか}います。"],
+["決まり・習慣・必要","〜べきだ／〜べきではない","〜するのが{当然|とうぜん}だ／should","V-{辞書形|じしょけい}+べきだ（する→すべき）","{借|か}りたお{金|かね}は、{必|かなら}ず{返|かえ}す＿＿。",["べきだ", "ことはない", "おそれがある", "っけ"],"「〜べきだ」は「〜するのが{正|ただ}しい・{当然|とうぜん}だ」という{意味|いみ}です。{否定|ひてい}は「〜べきではない」。"],
+["決まり・習慣・必要","〜ものだ（{当然|とうぜん}・{回想|かいそう}）","〜するのがふつうだ／よく〜したものだ","V-{辞書形|じしょけい}・た{形|けい}+ものだ","{子|こ}どものころ、よくこの{川|かわ}で{泳|およ}いだ＿＿。",["ものだ", "べきだ", "ことだ", "わけにはいかない"],"「〜たものだ」は、{昔|むかし}よくしたことを、なつかしく{思|おも}い{出|だ}して{言|い}うときに{使|つか}います。"],
+["決まり・習慣・必要","〜てもかまわない","〜してもいい／don't mind","V-て{形|けい}+もかまわない","ここにある{本|ほん}は、{自由|じゆう}に{読|よ}んで＿＿。",["もかまいません", "はいけません", "しかたがありません", "ばかりいます"],"「〜てもかまわない」は「〜てもいい」と{同|おな}じ{意味|いみ}で、{少|すこ}していねいな{言|い}い{方|かた}です。"],
+["決まり・習慣・必要","〜ばいい／〜といい／〜たらいい","〜するとよい（すすめ・{願望|がんぼう}）","V-ば・{辞書形|じしょけい}と・た{形|けい}ら+いい","A「{道|みち}がわからないんです。」B「{交番|こうばん}で＿＿よ。」",["{聞|き}けばいいです", "{聞|き}くわけがないです", "{聞|き}くおそれがあります", "{聞|き}いたものです"],"「〜ばいい」は、{相手|あいて}に{方法|ほうほう}をすすめるときに{使|つか}います。「〜といい」「〜たらいい」も{同|おな}じです。"],
+["決まり・習慣・必要","〜てしかたがない／〜てしょうがない","とても〜（がまんできない）","V-て{形|けい}・い{形|けい}-くて+しかたがない","{国|くに}の{家族|かぞく}に{会|あ}いたくて＿＿。",["しかたがない", "かまわない", "ごらん", "もらいたい"],"「〜てしかたがない」は「とても〜で、がまんできない」という{意味|いみ}です。{自分|じぶん}の{気持|きも}ちに{使|つか}います。"],
+["決まり・習慣・必要","〜てたまらない","とても〜（{気持|きも}ち・{感覚|かんかく}）／unbearably","い{形|けい}-くて・な{形|けい}で+たまらない","{薬|くすり}を{飲|の}んだら、{眠|ねむ}くて＿＿。",["たまらない", "かまわない", "ごらん", "もらいたい"],"「〜てたまらない」は「とても〜で、がまんできない」。{眠|ねむ}い・{痛|いた}い・{暑|あつ}い など、{体|からだ}で{感|かん}じることによく{使|つか}います。"],
+["決まり・習慣・必要","〜てもらいたい","〜してほしい（{相手|あいて}への{要望|ようぼう}）／I want you to","V-て{形|けい}+もらいたい","この{書類|しょるい}を、{明日|あした}までに{出|だ}して＿＿んですが。",["もらいたい", "ごらん", "たまらない", "しかたがない"],"「〜てもらいたい」は、{相手|あいて}にしてほしいことを{言|い}います。「〜てほしい」と{同|おな}じ{意味|いみ}です。"],
+
+// ---- 話し言葉・縮約 ----
+["話し言葉・縮約","〜てごらん","〜してみなさい（やさしい{命令|めいれい}）","V-て{形|けい}+ごらん","おいしいから、{一口|ひとくち}{食|た}べて＿＿。",["ごらん", "たまらない", "ばかりいる", "しかたがない"],"「〜てごらん」は「〜てみなさい」のやさしい{言|い}い{方|かた}です。{目上|めうえ}の{人|ひと}には{使|つか}いません。"],
+["話し言葉・縮約","〜ずに","〜ないで（{書|か}き{言葉|ことば}）／without","V-~~ない~~+ずに（する→せずに）","{朝|あさ}ごはんを{食|た}べ＿＿、{学校|がっこう}へ{来|き}てしまった。",["ずに", "たて", "がちに", "っぽく"],"「〜ずに」は「〜ないで」と{同|おな}じ{意味|いみ}で、{少|すこ}しかたい{言|い}い{方|かた}です。「する」は「せずに」になります。"],
+["話し言葉・縮約","〜なあ","{気持|きも}ちを{強|つよ}める・{独|ひと}り{言|ごと}（〜かなあ）／emphasis of feelings","{普通形|ふつうけい}+なあ","{試験|しけん}に{合格|ごうかく}できるか＿＿。{心配|しんぱい}だ。",["なあ", "っけ", "って", "こと"],"「〜かなあ」は、{自分|じぶん}に{聞|き}くように{言|い}う{言|い}い{方|かた}です。{心配|しんぱい}や{希望|きぼう}の{気持|きも}ちを{表|あらわ}します。"],
+
+// ---- 敬語 ----
+["敬語","お〜です","〜している（{尊敬|そんけい}）","お+V-~~ます~~+です","お{客様|きゃくさま}、どちらをお{探|さが}し＿＿か。",["です", "します", "いたします", "ございます"],"「お〜です」は{尊敬語|そんけいご}で、「〜ています」のていねいな{言|い}い{方|かた}です。「お〜します」は{自分|じぶん}がするときの{謙譲語|けんじょうご}です。"],
+["敬語","〜（さ）せていただく","〜させてもらう（{謙譲|けんじょう}）","V-{使役|しえき}て{形|けい}+いただく","{本日|ほんじつ}は、これで{失礼|しつれい}＿＿。",["させていただきます", "してくださいます", "なさいます", "でいらっしゃいます"],"「〜させていただきます」は、{自分|じぶん}がすることを、とてもていねいに{言|い}う{言|い}い{方|かた}です。"],
+["敬語","〜でいらっしゃる","〜だ（{尊敬|そんけい}）","N・な{形|けい}+でいらっしゃる","こちらは、{社長|しゃちょう}の{田中様|たなかさま}＿＿。",["でいらっしゃいます", "でおります", "といたします", "になさいます"],"「〜でいらっしゃる」は「〜です」の{尊敬語|そんけいご}です。{目上|めうえ}の{人|ひと}について{言|い}うときに{使|つか}います。"],
+
+// ---- 副詞・接続詞 ----
+["副詞・接続詞","{決|けっ}して〜ない","ぜったいに〜ない／never","{決|けっ}して+{否定|ひてい}","ご{親切|しんせつ}は＿＿{忘|わす}れません。",["{決|けっ}して", "まさか", "むしろ", "つまり"],"「{決|けっ}して〜ない」は「ぜったいに〜ない」という{強|つよ}い{否定|ひてい}です。{後|うし}ろは{必|かなら}ず{否定|ひてい}の{形|かたち}です。"],
+["副詞・接続詞","まさか","そんなことはないと{思|おも}っていた／never thought","まさか+〜とは{思|おも}わなかった・〜ないだろう","＿＿{自分|じぶん}が{一位|いちい}になるとは{思|おも}わなかった。",["まさか", "めったに", "むしろ", "つまり"],"「まさか」は「そんなことは{起|お}きないと{思|おも}っていた」という{驚|おどろ}きの{気持|きも}ちを{表|あらわ}します。"],
+["副詞・接続詞","めったに〜ない","ほとんど〜ない／rarely","めったに+{否定|ひてい}","{父|ちち}は{元気|げんき}で、＿＿{病気|びょうき}をしない。",["めったに", "まさか", "むしろ", "つまり"],"「めったに〜ない」は「ほとんど〜ない」という{意味|いみ}です。{回数|かいすう}がとても{少|すく}ないときに{使|つか}います。"],
+["副詞・接続詞","むしろ","どちらかと{言|い}えば／rather","A（という）より、むしろB","{今日|きょう}は{涼|すず}しいというより、＿＿{寒|さむ}いくらいだ。",["むしろ", "まさか", "めったに", "{決|けっ}して"],"「AよりむしろB」は「Aより、Bのほうが{合|あ}っている」という{意味|いみ}です。"],
+["副詞・接続詞","つまり","{別|べつ}の{言葉|ことば}で{言|い}うと／in other words","{文|ぶん}・N+つまり+{文|ぶん}・N","{彼|かれ}は{母|はは}の{兄|あに}の{子|こ}ども、＿＿{私|わたし}のいとこです。",["つまり", "むしろ", "まさか", "めったに"],"「つまり」は、{前|まえ}に{言|い}ったことを、{別|べつ}の{言葉|ことば}でわかりやすく{言|い}うときに{使|つか}います。"],
+["副詞・接続詞","すなわち","{言|い}いかえると（かたい{言|い}い{方|かた}）／namely","N+すなわち+N","{日本|にほん}の{首都|しゅと}、＿＿{東京|とうきょう}には、{多|おお}くの{人|ひと}が{住|す}んでいる。",["すなわち", "むしろ", "まさか", "{決|けっ}して"],"「すなわち」は「つまり」と{同|おな}じ{意味|いみ}で、かたい{書|か}き{言葉|ことば}です。"]
+];
+// 分野名のルビ（表示用。select の中はルビが出せないので分野名のまま）
+const CATR = {"時間・変化": "{時間|じかん}・{変化|へんか}", "原因・理由・結果": "{原因|げんいん}・{理由|りゆう}・{結果|けっか}", "推量・判断": "{推量|すいりょう}・{判断|はんだん}", "様子・たとえ": "{様子|ようす}・たとえ", "程度・限定・強調": "{程度|ていど}・{限定|げんてい}・{強調|きょうちょう}", "複合動詞": "{複合動詞|ふくごうどうし}", "逆接・仮定": "{逆接|ぎゃくせつ}・{仮定|かてい}", "関係・観点": "{関係|かんけい}・{観点|かんてん}", "引用・伝聞・定義": "{引用|いんよう}・{伝聞|でんぶん}・{定義|ていぎ}", "決まり・習慣・必要": "{決|き}まり・{習慣|しゅうかん}・{必要|ひつよう}", "話し言葉・縮約": "{話|はな}し{言葉|ことば}・{縮約|しゅくやく}", "敬語": "{敬語|けいご}", "副詞・接続詞": "{副詞|ふくし}・{接続詞|せつぞくし}"};
+
+const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
+const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1').replace(/~~/g,'');
+const ITEMS = DATA.map(d=>({id:plain(d[1]),cat:d[0],g:d[1],m:d[2],f:d[3],q:d[4],o:d[5],e:d[6]}));
+const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
+
+/* ---------- ルビ ---------- */
+const esc = s => s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>').replace(/~~(.+?)~~/g,'<s class="del">$1</s>');
+const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2').replace(/~~/g,'');   // ルビを読みに置きかえた文（検索用）
+const catR = c => CATR[c] ? ruby(CATR[c]) : esc(c);
+
+/* ---------- アイコン ---------- */
+const IC={
+  back:'<path d="M15 6l-6 6 6 6"/>', fwd:'<path d="M9 6l6 6-6 6"/>', x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  spk:'<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
+  spkoff:'<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M16 9l5 6M21 9l-5 6"/>',
+  book:'<path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/>',
+  play:'<path d="M7 4.5v15l12-7.5z" fill="currentColor" stroke="none"/>'
+};
+function ic(n,sw){ return '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||2)+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>'; }
+
+/* ---------- 記録（この端末だけ） ---------- */
+const KEY="n3drill_v1";
+let rec={};
+try{ rec=JSON.parse(localStorage.getItem(KEY)||"{}")||{}; }catch(e){ rec={}; }
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(rec)); }catch(e){} }
+let rubyOn=true, soundOn=true;
+try{ rubyOn = localStorage.getItem(KEY+"_ruby")!=="0"; soundOn = localStorage.getItem(KEY+"_sound")!=="0"; }catch(e){}
+
+/* ---------- 画面 ---------- */
+const $=id=>document.getElementById(id);
+const HOME='/scg-nihongo/#/drill/n3';
+let view='setup';
+function show(id){
+  view=id;
+  ["setup","quiz","result","list"].forEach(s=>$(s).classList.toggle("hidden",s!==id));
+  $("tabsbar").classList.toggle("hidden",!(id==="setup"||id==="list"));
+  $("nextbar").classList.toggle("hidden",id!=="quiz");
+  $("tab-practice").toggleAttribute("aria-current",id==="setup"); if(id==="setup") $("tab-practice").setAttribute("aria-current","page");
+  $("tab-list").toggleAttribute("aria-current",id==="list"); if(id==="list") $("tab-list").setAttribute("aria-current","page");
+  setHeader(id);
+  $("main").scrollTop=0;
+}
+const MQ=window.matchMedia('(min-width:641px)');
+const isPC=()=>MQ.matches;
+function hdTools(){   // PC版ヘッダー右端：A−／A＋・ルビ・音
+  return '<span class="hdsp"></span>'
+    +'<button class="ibtn frame aabtn" id="aMinus" aria-label="もじを ちいさく">A−</button>'
+    +'<button class="ibtn frame aabtn" id="aPlus" aria-label="もじを おおきく">A＋</button>'
+    +'<button class="rubybtn" id="rubyBtn" aria-pressed="'+rubyOn+'">ルビ</button>'
+    +'<button class="ibtn frame" id="soundBtn"></button>';
+}
+function setHeaderPC(id){
+  let h='<div class="hdrow">';
+  if(id==='quiz'){
+    h+='<button class="xbtn" id="quitBtn">'+ic('x',2.2)+'やめる</button><span class="tag" id="qCatH"></span>'
+      +'<div class="bar"><i id="qBar"></i></div><span class="qcount" id="qCount"></span>';
+  }else{
+    h+= id==='result' ? '<button class="ibtn" id="hdMenu" aria-label="メニューへ">'+ic('back',2.2)+'</button><div class="ttl">けっか</div>'
+                      : '<a class="ibtn" href="'+HOME+'" aria-label="もどる">'+ic('back',2.2)+'</a><div class="ttl">JLPT N3 <ruby>文法<rt>ぶんぽう</rt></ruby>ドリル</div>';
+    if(id!=='result') h+='<div class="seg" role="group" aria-label="きりかえ">'
+      +'<button id="segPractice"'+(id==='setup'?' aria-current="page"':'')+'><ruby>練習<rt>れんしゅう</rt></ruby></button>'
+      +'<button id="segList"'+(id==='list'?' aria-current="page"':'')+'><ruby>文法<rt>ぶんぽう</rt></ruby>リスト</button></div>';
+  }
+  $("hd").innerHTML=h+hdTools()+'</div>';
+  if($("segPractice")) $("segPractice").onclick=()=>setTab("practice");
+  if($("segList")) $("segList").onclick=()=>setTab("list");
+  $("aMinus").onclick=()=>{ uz-=0.1; saveZoom(); applyZoom(); };
+  $("aPlus").onclick=()=>{ uz+=0.1; saveZoom(); applyZoom(); };
+}
+function setHeader(id){
+  if(isPC()){ setHeaderPC(id); bindHeader(); return; }
+  let h='<div class="hdrow">';
+  if(id==='quiz'){
+    h+='<button class="ibtn" id="quitBtn" aria-label="やめる">'+ic('x',2.2)+'</button><div class="bar"><i id="qBar"></i></div><span class="qcount" id="qCount"></span>';
+  }else if(id==='result'){
+    h+='<button class="ibtn" id="hdMenu" aria-label="メニューへ">'+ic('back',2.2)+'</button><div class="ttl"><div class="ttl-m">けっか</div></div>';
+  }else{
+    h+='<a class="ibtn" href="'+HOME+'" aria-label="もどる">'+ic('back',2.2)+'</a>'
+      +'<div class="ttl"><div class="ttl-s">JLPT N3</div><div class="ttl-m">'+(id==='list'?'<ruby>文法<rt>ぶんぽう</rt></ruby>リスト':'<ruby>文法<rt>ぶんぽう</rt></ruby>ドリル')+'</div></div>'
+      +'<button class="rubybtn" id="rubyBtn" aria-pressed="'+rubyOn+'">ルビ</button>'
+      +(id==='setup'?'<button class="ibtn frame" id="soundBtn"></button>':'')
+      +'<button class="ibtn frame aabtn" id="aaBtn" aria-label="もじの おおきさ">Aa</button>';
+  }
+  $("hd").innerHTML=h+'</div>';
+  bindHeader();
+}
+function bindHeader(){
+  if($("quitBtn")) $("quitBtn").onclick=quit;
+  if($("hdMenu")) $("hdMenu").onclick=()=>{ show("setup"); updateStats(); };
+  if($("rubyBtn")) $("rubyBtn").onclick=()=>{ rubyOn=!rubyOn; try{localStorage.setItem(KEY+"_ruby",rubyOn?"1":"0");}catch(e){} applyRuby(); };
+  if($("soundBtn")){ $("soundBtn").onclick=()=>{ soundOn=!soundOn; try{localStorage.setItem(KEY+"_sound",soundOn?"1":"0");}catch(e){} paintSound(); if(soundOn) sndOK(); }; paintSound(); }
+  if($("aaBtn")){ $("aaBtn").onclick=cycleZoom; $("aaBtn").classList.toggle("on",uz>1.01); }
+}
+function applyRuby(){ document.body.classList.toggle("noruby",!rubyOn); const b=$("rubyBtn"); if(b) b.setAttribute("aria-pressed",String(rubyOn)); }
+function paintSound(){ const b=$("soundBtn"); if(!b) return; b.innerHTML=ic(soundOn?'spk':'spkoff'); b.setAttribute("aria-label",soundOn?"おと：オン":"おと：オフ"); b.setAttribute("aria-pressed",String(soundOn)); }
+
+const catSel=$("catSel");
+catSel.innerHTML='<option value="">すべての 分野（ぶんや）</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");
+function pool(){ const c=catSel.value; return ITEMS.filter(it=>!c||it.cat===c); }
+function updateStats(){
+  const p=pool();
+  const seen=p.filter(it=>rec[it.id]);
+  const wrong=p.filter(it=>rec[it.id]&&rec[it.id].last===0);
+  let ok=0,tot=0; seen.forEach(it=>{ok+=rec[it.id].ok;tot+=rec[it.id].n;});
+  $("sTotal").textContent=p.length; $("sSeen").textContent=seen.length;
+  $("sRate").textContent=tot?Math.round(ok/tot*100)+"%":"–";
+  const MON='<ruby>問<rt>もん</rt></ruby>';
+  $("allCount").innerHTML=p.length+MON;
+  $("wrongCount").innerHTML=wrong.length+MON; $("unseenCount").innerHTML=(p.length-seen.length)+MON;
+  const c=catSel.value;
+  $("catRuby").innerHTML=c?ruby(CATR[c]||c):'すべての <ruby>分野<rt>ぶんや</rt></ruby>';
+  // PC版：分野のボタン一覧（select の代わり）と、えらんでいる分野のピル
+  $("catPill").innerHTML=$("catRuby").innerHTML;
+  $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
+    const n=k?ITEMS.filter(it=>it.cat===k).length:ITEMS.length;
+    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):'すべての <ruby>分野<rt>ぶんや</rt></ruby>'}</span><span class="n">${n}${MON}</span></button>`;
+  }).join("");
+  $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
+  $("wrongBtn").disabled=!wrong.length;
+  document.querySelector('[data-mode="unseen"]').disabled=(p.length===seen.length);
+}
+catSel.onchange=updateStats;
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+/* ---------- 効果音（サイト共通：ピンポーン／ブー＝矩形波110Hz・0.9秒のまっすぐな音） ---------- */
+let actx=null;
+function ac(){ if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); return actx; }
+function tone(freq,delay,dur,type,vol){
+  const a=ac(), t=a.currentTime+delay, o=a.createOscillator(), g=a.createGain();
+  o.type=type; o.frequency.value=freq;
+  g.gain.setValueAtTime(vol,t); g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+dur);
+}
+function sndOK(){ if(!soundOn) return; try{ tone(1318.5,0,0.15,'sine',0.3); tone(1046.5,0.15,0.6,'sine',0.3); }catch(e){} }
+function sndNG(){
+  if(!soundOn) return;
+  try{
+    const a=ac(), t=a.currentTime, dur=0.9, o=a.createOscillator(), g=a.createGain();
+    o.type='square'; o.frequency.value=110;
+    g.gain.setValueAtTime(0.25,t); g.gain.setValueAtTime(0.25,t+dur-0.05); g.gain.linearRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+dur);
+  }catch(e){}
+}
+
+/* ---------- 出題 ---------- */
+let queue=[],pos=0,score=0,wrongIds=[],answered=false,cur=null,order=[];
+function start(list){
+  if(!list.length) return;
+  queue=shuffle(list); pos=0; score=0; wrongIds=[]; show("quiz"); render();
+}
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
+  const p=pool(), m=b.dataset.mode;
+  if(m==="random10") start(shuffle(p).slice(0,10));
+  if(m==="all") start(p);
+  if(m==="wrong") start(p.filter(it=>rec[it.id]&&rec[it.id].last===0));
+  if(m==="unseen") start(p.filter(it=>!rec[it.id]));
+});
+
+function render(){
+  cur=queue[pos]; answered=false;
+  paintProgress();
+  $("qCat").innerHTML=catR(cur.cat);
+  $("gPanel").innerHTML=`<div class="gwait">${ic('book')}<span>こたえると ここに<br><ruby>文法<rt>ぶんぽう</rt></ruby>の <ruby>説明<rt>せつめい</rt></ruby>が でます</span></div>`;
+  $("nextPC").classList.add("hidden");
+  $("qText").innerHTML=ruby(cur.q).replace("＿＿",'<span class="blank" id="blank">　</span>');
+  order=shuffle([0,1,2,3]);
+  $("choices").innerHTML=order.map((oi,k)=>`<button class="choice" data-oi="${oi}"><span class="n">${k+1}</span><span>${ruby(cur.o[oi])}</span></button>`).join("");
+  $("choices").querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.oi));
+  $("fb").className="fb hidden";
+  $("waitHint").classList.remove("hidden"); $("nextBtn").classList.add("hidden");
+  $("main").scrollTop=0;
+}
+function answer(oi){
+  if(answered) return; answered=true;
+  const ok=oi===0;
+  const r=rec[cur.id]||{n:0,ok:0,last:0}; r.n++; if(ok) r.ok++; r.last=ok?1:0; rec[cur.id]=r; save();
+  if(ok) score++; else wrongIds.push(cur.id);
+  if(ok) sndOK(); else sndNG();
+  try{ if(window.__drillLog) window.__drillLog(ok); }catch(e){}
+  $("choices").querySelectorAll(".choice").forEach(b=>{
+    b.disabled=true; const v=+b.dataset.oi;
+    if(v===0){ b.classList.add("ok"); b.querySelector(".n").textContent="○"; }
+    else if(v===oi){ b.classList.add("ng"); b.querySelector(".n").textContent="×"; }
+    else b.classList.add("dim");
+  });
+  const bl=$("blank"); bl.innerHTML=ruby(cur.o[0]); bl.classList.add("filled");
+  const fb=$("fb");
+  fb.className="fb "+(ok?"ok":"ng");
+  const ansNo=order.indexOf(0)+1;
+  fb.innerHTML=`<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>${ruby(cur.e)}`
+    +`<div class="fbfoot"><div class="fbg"><ruby>文法<rt>ぶんぽう</rt></ruby>：<b>${ruby(cur.g)}</b>　${ruby(cur.m)}</div>`
+    +`<button class="morebtn" id="moreBtn">${ic('book')}くわしく</button></div>`;
+  $("moreBtn").onclick=()=>openSheet(cur);
+  $("nextBtn").innerHTML=(pos+1<queue.length?"つぎへ":"けっかを <ruby>見<rt>み</rt></ruby>る")+ic('fwd');
+  $("waitHint").classList.add("hidden"); $("nextBtn").classList.remove("hidden");
+  $("nextPC").innerHTML=$("nextBtn").innerHTML; $("nextPC").classList.remove("hidden");
+  lastOk=ok; lastAnsNo=ansNo; renderPanel(cur);
+}
+$("nextBtn").onclick=()=>{ pos++; if(pos<queue.length) render(); else finish(); };
+$("nextPC").onclick=()=>$("nextBtn").click();
+function paintProgress(){
+  if(!cur) return;
+  $("qCount").textContent=`${pos+1} / ${queue.length}`;
+  $("qBar").style.width=(pos/queue.length*100)+"%";
+  if($("qCatH")) $("qCatH").innerHTML=catR(cur.cat);
+}
+/* PC版：右の「文法の説明パネル」（スマホの説明シートと同じ中身を常に出す）。正誤の枠は今の問題のまま、下は にている文法 で切りかわる */
+let lastOk=false, lastAnsNo=1;
+function renderPanel(it){
+  const sims=ITEMS.filter(x=>x.cat===it.cat);
+  $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}"><div class="verdict">${lastOk?"せいかい！":"ざんねん… せいかいは "+lastAnsNo}</div>${ruby(cur.e)}</div>
+    <span class="gname">${ruby(it.g)}</span><div class="gmean2">${ruby(it.m)}</div>
+    <dl class="gtbl"><dt><ruby>接続<rt>せつぞく</rt></ruby></dt><dd>${ruby(it.f)}</dd><dt><ruby>記録<rt>きろく</rt></ruby></dt><dd>${recPill(it.id)}</dd></dl>
+    <div class="shsep"></div>
+    <div class="shsim">にている <ruby>文法<rt>ぶんぽう</rt></ruby>（${catR(it.cat)}）</div>
+    <div class="sims">${sims.map(x=>`<button class="sim" data-id="${esc(x.id)}" aria-current="${x.id===it.id}">${ruby(x.g)}</button>`).join("")}</div>`;
+  $("gPanel").querySelectorAll(".sim").forEach(b=>b.onclick=()=>{ renderPanel(BYID[b.dataset.id]); const f=$("gPanel").querySelector('.sim[aria-current="true"]'); if(f) f.focus(); });
+}
+function quit(){ if(pos>0||answered) finish(true); else { show("setup"); updateStats(); } }
+
+function finish(early){
+  const done = answered ? pos+1 : pos;
+  const total = early ? done : queue.length;
+  show("result");
+  $("rOk").textContent=score; $("rTot").textContent=" / "+total;
+  $("rBar").style.width=(total?score/total*100:0)+"%";
+  $("rOk2").textContent="せいかい "+score;
+  $("rRate").innerHTML= total? `<ruby>正答率<rt>せいとうりつ</rt></ruby> ${Math.round(score/total*100)}%` : "";
+  $("rNg").textContent="まちがい "+(total-score);
+  const w=wrongIds.map(id=>BYID[id]);
+  $("rWrong").innerHTML = w.length
+    ? `<div class="sech">まちがえた <ruby>文法<rt>ぶんぽう</rt></ruby></div><div class="list">${w.map(it=>`<div class="wrow"><b>${ruby(it.g)}</b><span>${ruby(it.m)}</span></div>`).join("")}</div>`
+    : `<div class="allok"><ruby>全問<rt>ぜんもん</rt></ruby><ruby>正解<rt>せいかい</rt></ruby>です！</div>`;
+  $("retryWrongBtn").disabled=!w.length;
+}
+$("retryWrongBtn").onclick=()=>start(wrongIds.map(id=>BYID[id]));
+$("backBtn").onclick=()=>{ show("setup"); updateStats(); };
+
+/* ---------- 文法の説明シート ---------- */
+let sheetOpen=false;
+function recPill(id){
+  const r=rec[id];
+  return r?`<span class="pill ${r.last?"good":"bad"}">${r.last?"○":"×"} ${r.ok}/${r.n}</span>`:`<span class="pill none">まだ</span>`;
+}
+function fillAnswer(it){ return ruby(it.q).replace("＿＿",`<b class="ans">${ruby(it.o[0])}</b>`); }
+function renderSheet(it){
+  const sims=ITEMS.filter(x=>x.cat===it.cat);
+  $("sheet").innerHTML=`<div class="grab"></div>
+    <div class="shtop"><span class="tag">${catR(it.cat)}</span><button class="ibtn shclose" id="shClose" aria-label="とじる">${ic('x',2.2)}</button></div>
+    <div class="shname" id="shName">${ruby(it.g)}</div><div class="shmean">${ruby(it.m)}</div>
+    <dl class="shtbl"><dt><ruby>接続<rt>せつぞく</rt></ruby></dt><dd>${ruby(it.f)}</dd>
+      <dt>れい</dt><dd class="ex">${fillAnswer(it)}</dd>
+      <dt><ruby>記録<rt>きろく</rt></ruby></dt><dd>${recPill(it.id)}</dd></dl>
+    <div class="shsep"></div>
+    <div class="shsim">にている <ruby>文法<rt>ぶんぽう</rt></ruby>（${catR(it.cat)}）</div>
+    <div class="sims">${sims.map(x=>`<button class="sim" data-id="${esc(x.id)}" aria-current="${x.id===it.id}">${ruby(x.g)}</button>`).join("")}</div>
+    <button class="shback" id="shBack"><ruby>問題<rt>もんだい</rt></ruby>に もどる</button>`;
+  $("shClose").onclick=closeSheet; $("shBack").onclick=closeSheet;
+  $("sheet").querySelectorAll(".sim").forEach(b=>b.onclick=()=>{ renderSheet(BYID[b.dataset.id]); $("sheet").scrollTop=0; $("shClose").focus(); });
+}
+function openSheet(it){ renderSheet(it); $("shov").classList.remove("hidden"); sheetOpen=true; $("sheet").scrollTop=0; $("shClose").focus(); }
+function closeSheet(){ $("shov").classList.add("hidden"); sheetOpen=false; const m=$("moreBtn"); if(m) m.focus(); }
+$("shov").onclick=e=>{ if(e.target===$("shov")) closeSheet(); };
+
+/* ---------- キーボード ---------- */
+document.addEventListener("keydown",e=>{
+  if(sheetOpen){ if(e.key==="Escape") closeSheet(); return; }
+  if(view!=="quiz") return;
+  if(!answered && /^[1-4]$/.test(e.key)){ const b=$("choices").children[+e.key-1]; if(b) b.click(); }
+  else if(answered && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); $("nextBtn").click(); }
+});
+
+/* ---------- リセット ---------- */
+$("resetBtn").onclick=()=>$("resetConfirm").classList.remove("hidden");
+$("resetNo").onclick=()=>$("resetConfirm").classList.add("hidden");
+$("resetYes").onclick=()=>{ rec={}; save(); $("resetConfirm").classList.add("hidden"); updateStats(); };
+
+/* ---------- 文法リスト ---------- */
+function renderList(){
+  const kw=$("search").value.trim();
+  const hit=ITEMS.filter(it=>!kw||[it.g,it.m,it.f,CATR[it.cat]||it.cat,it.q].map(x=>plain(x)+" "+kana(x)).join(" ").includes(kw));   // 漢字でも ひらがな(よみ)でも さがせる
+  $("listInfo").innerHTML=`${hit.length} <ruby>項目<rt>こうもく</rt></ruby>`+(kw?`（ぜんぶで ${ITEMS.length}）`:"");
+  $("listBody").innerHTML=CAT_ORDER.map(c=>{
+    const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
+    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}この<ruby>分野<rt>ぶんや</rt></ruby>を<ruby>練習<rt>れんしゅう</rt></ruby></button></div>`+
+      xs.map(it=>`<div class="gcard"><div class="gtop"><span class="gname">${ruby(it.g)}</span>${recPill(it.id)}</div>
+          <div class="gmean">${ruby(it.m)}</div><div class="gform"><ruby>接続<rt>せつぞく</rt></ruby>：${ruby(it.f)}</div>
+          <div class="gex">${fillAnswer(it)}</div></div>`).join("");
+  }).join("");
+  $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });
+  // PC版：左の目次（押すとその分野の見出しへ。けんさくで0件の分野は押せない）
+  $("toc").innerHTML=CAT_ORDER.map(c=>{ const n=hit.filter(it=>it.cat===c).length;
+    return `<button data-go="${esc(c)}"${n?"":" disabled"}><span>${catR(c)}</span><span class="n">${n}</span></button>`; }).join("");
+  $("toc").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const h=$("listBody").querySelector(`.cath[data-h="${CSS.escape(b.dataset.go)}"]`);
+    if(h){ $("main").scrollTop=h.offsetTop-$("main").offsetTop-24; markToc(); }
+  });
+  markToc();
+}
+// 今 見えている分野を目次で強調する
+function markToc(){
+  if(view!=="list"||!isPC()) return;
+  const top=$("main").getBoundingClientRect().top+80;
+  let curH=null; $("listBody").querySelectorAll(".cath").forEach(h=>{ if(h.getBoundingClientRect().top<=top) curH=h.dataset.h; });
+  if(!curH){ const f=$("listBody").querySelector(".cath"); curH=f&&f.dataset.h; }
+  $("toc").querySelectorAll("button").forEach(b=>b.classList.toggle("cur",b.dataset.go===curH));
+}
+$("main").addEventListener("scroll",markToc,{passive:true});
+$("search").oninput=renderList;
+function setTab(t){ if(t==="list"){ show("list"); renderList(); } else { show("setup"); updateStats(); } }
+$("tab-practice").onclick=()=>setTab("practice");
+$("tab-list").onclick=()=>setTab("list");
+
+/* ---------- 文字の大きさ（Aa：100→115→130%。ドリル共通の drill_zoom）＋投影(PC幅)の拡大 ---------- */
+const STEPS=[1,1.15,1.3]; let uz=1;
+try{ uz=parseFloat(localStorage.getItem('drill_zoom'))||1; }catch(e){}
+// PC版（641px以上）は 1920×1080 基準で作ってあるので、その比率で全体を縮める（A−／A＋ はその上から効く）
+function fitF(){ const w=window.innerWidth,h=window.innerHeight; if(w<=640) return 1; return Math.max(0.45,Math.min(w/1920,h/1080,2)); }
+function applyZoom(){
+  uz=Math.min(1.6,Math.max(0.7,Math.round(uz*100)/100));
+  const z=fitF()*uz; document.body.style.zoom=z; document.body.style.height=(100/z)+'dvh';
+  const b=$("aaBtn"); if(b) b.classList.toggle("on",uz>1.01);
+  if($("aMinus")) $("aMinus").disabled=uz<=0.7; if($("aPlus")) $("aPlus").disabled=uz>=1.6;
+}
+function saveZoom(){ uz=Math.min(1.6,Math.max(0.7,Math.round(uz*100)/100)); try{localStorage.setItem('drill_zoom',uz);}catch(e){} }
+function cycleZoom(){ let i=0; STEPS.forEach((s,k)=>{ if(Math.abs(s-uz)<0.05) i=k; }); uz=STEPS[(i+1)%STEPS.length]; try{localStorage.setItem('drill_zoom',uz);}catch(e){} applyZoom(); }
+window.addEventListener('resize',applyZoom);
+// スマホ幅⇔PC幅をまたいだら、ヘッダーと右の説明パネルを作り直す
+MQ.addEventListener('change',()=>{
+  setHeader(view);
+  if(view==='quiz'){ paintProgress(); if(answered) renderPanel(cur); }
+  if(isPC() && sheetOpen) closeSheet();
+  if(view==='list') renderList();
+  applyZoom();
+});
+
+applyRuby();
+applyZoom();
+show("setup");
+updateStats();
+</script>
+<script>
+// Service Worker 登録（オフライン対応・通信節約）
+if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(){});});}
+// 利用記録（端末ローカルのみ・表示なし・ログイン不要。将来の継続表示用に貯める）
+(function(){try{
+  var id=(location.pathname.split('/').pop()||'index').replace('.html','')||'index';
+  var k='drill_stats',s=JSON.parse(localStorage.getItem(k)||'{}');
+  var d=s[id]||(s[id]={opens:0,correct:0,total:0,last:null});
+  d.opens++; d.last=new Date().toISOString();
+  localStorage.setItem(k,JSON.stringify(s));
+  window.__drillLog=function(ok){try{var s2=JSON.parse(localStorage.getItem(k)||'{}');var d2=s2[id]||(s2[id]={opens:0,correct:0,total:0,last:null});d2.total++;if(ok)d2.correct++;d2.last=new Date().toISOString();localStorage.setItem(k,JSON.stringify(s2));}catch(e){}};
+}catch(e){}})();
+</script>
+</body>
+</html>
