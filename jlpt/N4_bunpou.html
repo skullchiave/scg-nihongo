@@ -702,7 +702,12 @@ function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.flo
 
 /* ---------- 効果音（サイト共通：ピンポーン／ブー＝矩形波110Hz・0.9秒のまっすぐな音） ---------- */
 let actx=null;
-function ac(){ if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); return actx; }
+function ac(){ if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)(); if(actx.state!=="running") actx.resume(); return actx; }
+// スマホで ほかのページ・アプリに行って もどると、音の出口（AudioContext）が止まったままになり 音が出なくなる（iPhone は "interrupted" になり resume がきかない）
+//   → もどってきたら捨てる。次に答えをタップした時に 作り直す
+function acReset(){ if(actx){ try{ actx.close(); }catch(e){} actx=null; } }
+addEventListener('pageshow', e=>{ if(e.persisted) acReset(); });
+document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') acReset(); });
 function tone(freq,delay,dur,type,vol){
   const a=ac(), t=a.currentTime+delay, o=a.createOscillator(), g=a.createGain();
   o.type=type; o.frequency.value=freq;

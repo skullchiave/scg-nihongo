@@ -505,3 +505,11 @@ syncTabs(curId());
 updProg();
 relayout();
 })();
+
+/* 音：スマホで ほかのページ・アプリに行って もどると、音の出口（各ドリルの actx＝AudioContext）が止まったままになり 音が出なくなる
+   （iPhone は "interrupted" になる）→ もどってきたら捨てる。次に答えをタップした時に、ドリル側が作り直す（2026-11-14） */
+(function(){
+  function acReset(){ try{ if(actx){ actx.close(); actx=null; } }catch(e){} }
+  window.addEventListener('pageshow', function(e){ if(e.persisted) acReset(); });
+  document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='visible') acReset(); });
+})();
