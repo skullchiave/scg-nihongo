@@ -16,7 +16,6 @@
 18	V	{表|あらわ}す	to express	v-show
 19	V	{現|あらわ}す	to show; to reveal	v-show
 21	V	{現|あらわ}れる	to appear	v-appear
-22	V	ある	to be; to exist (things)
 23	V	{合|あ}わせる	to combine; to match
 24	V	{慌|あわ}てる	to panic; to be in a hurry	v-hurry
 25	F	あんなに	that much; to that degree	e-somuch
