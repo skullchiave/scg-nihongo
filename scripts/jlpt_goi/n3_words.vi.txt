@@ -282,7 +282,6 @@
 340	nộp đơn (cho cơ quan)
 341	xuất phát; khởi đầu
 342	in
-343	làm
 344	trưởng thành; tăng trưởng
 346	điều chỉnh
 347	đi học (đến trường)

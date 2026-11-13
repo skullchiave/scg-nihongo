@@ -282,7 +282,6 @@
 340	S	{申|しん}{請|せい}	application (to an office)	s-apply
 341	S	スタート	start	s-start
 342	V	{刷|す}る	to print
-343	V	する	to do
 344	S	{成|せい}{長|ちょう}	growth	s-growth
 346	S	{調|ちょう}{節|せつ}	adjustment	s-adjust
 347	S	{通|つう}{学|がく}	going to school, commuting to school	s-commute
