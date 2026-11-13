@@ -755,3 +755,33 @@
 755	K	ワンピース	dress (one-piece)
 756	X	〜{位|い}	~th place (rank)
 757	X	〜{部|ぶ}	~ department; ~ club
+758	V	{受|う}け{取|と}る	to receive
+759	V	{踊|おど}る	to dance
+760	V	{替|か}える	to change; to replace (with a new one)	change
+761	V	{切|き}れる	to be sharp; to run out
+762	V	{下|くだ}る	to go down
+763	V	{助|たす}かる	to be saved; to be helped
+764	V	{助|たす}ける	to help; to save
+765	V	{届|とど}く	to reach; to arrive
+766	V	{取|と}れる	to come off
+767	V	{流|なが}れる	to flow
+768	V	{煮|に}る	to boil; to simmer
+769	V	{乗|の}せる	to give a ride; to put on top
+770	V	{上|のぼ}る	to go up; to climb
+771	V	{外|はず}す	to take off; to remove
+772	V	{冷|ひ}やす	to cool (something)
+773	V	{減|へ}らす	to reduce
+774	V	{巻|ま}く	to wind, to roll up
+775	V	{診|み}る	to examine (a patient)
+776	V	{結|むす}ぶ	to tie; to connect
+777	V	{申|もう}し{込|こ}む	to apply for
+778	V	{破|やぶ}れる	to get torn
+779	V	{辞|や}める	to quit, to resign (from a job)	stop
+780	V	{許|ゆる}す	to forgive; to allow
+781	V	{分|わ}ける	to divide, to separate (something)
+782	S	{外|がい}{出|しゅつ}	going out
+783	S	{進|しん}{学|がく}	going on to a higher school
+784	S	{募|ぼ}{集|しゅう}	recruiting
+785	F	{随|ずい}{分|ぶん}	very, quite, considerably
+786	X	〜{中|ちゅう}	during, in the middle of
+787	N	{博|はく}{物|ぶつ}{館|かん}	museum

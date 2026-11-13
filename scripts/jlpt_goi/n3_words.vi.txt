@@ -23,7 +23,6 @@
 26	làm hỏng; làm dập (trái cây)
 27	xào
 29	chúc mừng; ăn mừng
-30	nhận
 31	làm di chuyển (cái gì)
 32	mất
 33	nghi ngờ
@@ -42,12 +41,10 @@
 48	làm xong (cái gì)
 49	xảy ra
 50	được dạy; học từ ai đó
-51	nhảy, múa
 52	nảy ra (ý tưởng)
 54	hạ xuống; lấy xuống
 55	cho xuống xe; dỡ hàng
 57	nuôi (thú cưng)
-59	thay mới; đổi (sang cái mới)
 62	tỏa sáng
 63	giới hạn
 64	gãi
@@ -70,9 +67,7 @@
 83	có hiệu quả
 85	nhận ra
 86	ghét
-87	sắc; hết
 88	thối; ôi
-89	đi xuống
 90	ghép lại; bắt chéo (tay, chân)
 91	sống (cuộc sống)
 92	lặp lại
@@ -122,8 +117,6 @@
 142	sắp xếp cho đủ; làm cho đều
 144	nấu (cơm)
 146	xác nhận; kiểm tra
-147	được cứu; được giúp
-148	giúp; cứu
 149	chiến đấu
 150	gõ; vỗ
 151	gấp
@@ -155,36 +148,29 @@
 184	cho đi qua; xuyên qua
 185	đi ngang qua
 187	(nút) bị bung ra; (bài toán) được giải
-190	tới nơi; với tới
 191	cho (khách) ở lại qua đêm
 192	đưa ra bàn (chủ đề); tịch thu
-193	bong ra; tuột ra
 195	cho chảy; xả (nước)
 196	ngắm; nhìn ra
-197	chảy
 198	lười; bê trễ
 199	phiền não; lo nghĩ
 201	trở thành
 205	chín (do nấu); sôi
 206	nắm chặt
-207	nấu; hầm
 208	nhổ; rút ra
 209	làm ướt
 210	bị ướt
 211	cầu mong; xin (ai đó)
 212	ngủ
 213	để lại
-214	chở (người); đặt lên trên
 217	loại bỏ; loại trừ
 218	mong; hy vọng
 219	duỗi ra; nuôi dài (tóc)
 221	dài ra; giãn ra
 223	trình bày; nêu
-224	đi lên; leo
 227	mọc (cây, răng)
 231	đo (độ dài, độ sâu)
 234	nôn; nhổ
-235	tháo ra; gỡ ra
 236	bị tuột ra; không trúng
 237	thảo luận
 238	tách ra; để cách xa
@@ -192,7 +178,6 @@
 241	để (râu) mọc
 242	thịnh hành; lan (dịch bệnh)
 243	kéo
-244	làm lạnh; ướp lạnh (cái gì)
 245	lan rộng; rộng ra
 246	trải ra; mở rộng
 248	chứa; bao gồm
@@ -202,11 +187,9 @@
 253	vẫy; lắc
 254	run; rung
 257	đập (cái gì) vào
-258	làm giảm
 259	giảm
 260	sủa
 261	giao phó
-262	cuộn; quấn
 265	bị trộn lẫn (các thứ với nhau)
 267	bị lẫn vào; được gộp vào
 269	trộn; khuấy
@@ -217,29 +200,22 @@
 275	bảo vệ; giữ (quy tắc)
 276	lạc đường; phân vân
 278	thừa nhận; công nhận; chấp thuận
-279	khám (bệnh nhân)
 280	hướng về; quay về
 281	gọt; bóc vỏ
 282	hướng (cái gì) về; chĩa vào
 283	hấp
-284	buộc; kết nối
 285	lật (trang); giở
-286	đăng ký
 287	cháy (tự cháy)
 288	nhấc lên; nâng lên
 290	đốt (cái gì)
 291	dịch
 292	thuê (nhân viên)
 293	xé; phá (quy tắc)
-294	bị rách
-295	nghỉ (việc); từ chức
 296	nhường (chỗ); chuyển nhượng
-298	tha thứ; cho phép
 299	say
 303	yếu đi
 304	làm yếu đi
 306	bị chia ra; tách nhánh
-307	chia; tách (cái gì)
 309	học thuộc lòng
 310	sự nhất trí; sự trùng khớp
 311	đi lòng vòng; lang thang
@@ -248,7 +224,6 @@
 315	sự bắt đầu
 316	cắt (tóc...)
 317	liên quan đến
-318	việc ra ngoài
 319	học tập
 320	học vấn; nghiên cứu
 321	ký ức; sự ghi nhớ
@@ -267,7 +242,6 @@
 334	tập trung
 337	chứng minh; chứng nhận
 338	sử dụng
-339	học lên cao
 340	nộp đơn (cho cơ quan)
 342	in
 344	trưởng thành; tăng trưởng
@@ -287,7 +261,6 @@
 360	đi dạo thong thả; đung đưa
 361	phân loại
 362	phát sóng
-363	tuyển (người); chiêu mộ
 364	đồng minh; người ủng hộ
 366	lợi nhuận; lợi ích
 367	du học
@@ -317,7 +290,6 @@
 397	sôi nổi; phát triển mạnh
 398	tươi (thức ăn, không khí)
 399	thật thà; ngoan ngoãn
-400	rất; khá; khá nhiều
 404	thiếu
 405	bất lợi
 406	đỏ rực
@@ -331,7 +303,7 @@
 415	một khoảnh khắc
 416	cả đời
 417	mặt khác; trong khi đó
-418	yên (tiền Nhật); hình tròn
+418	hình tròn
 419	con gái (của người khác); cô gái trẻ
 420	buổi trưa; bữa trưa
 421	hội viên
@@ -372,7 +344,6 @@
 461	phần lớn
 462	nam sinh, con trai
 463	cha, bố
-464	đang …, trong lúc …
 465	trường cấp hai (THCS)
 466	bữa trưa
 467	thời gian dài, dài hạn
@@ -384,7 +355,6 @@
 474	đất, mảnh đất
 475	Nhật Bản
 476	năng lực
-477	viện bảo tàng
 478	sân bay (nhỏ), phi trường
 479	từng người một
 481	bộ phận, phần

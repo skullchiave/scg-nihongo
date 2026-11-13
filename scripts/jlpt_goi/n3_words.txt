@@ -23,7 +23,6 @@
 26	V	{傷|いた}める	to damage; to spoil (fruit)
 27	V	{炒|いた}める	to stir-fry
 29	V	{祝|いわ}う	to celebrate
-30	V	{受|う}け{取|と}る	to receive	v-get
 31	V	{動|うご}かす	to move (something)	v-move
 32	V	{失|うしな}う	to lose
 33	V	{疑|うたが}う	to doubt; to suspect
@@ -42,12 +41,10 @@
 48	V	{終|お}える	to finish (something)	v-finish
 49	V	{起|お}こる	to happen; to occur
 50	V	{教|おそ}わる	to be taught; to learn from someone	v-learn
-51	V	{踊|おど}る	to dance
 52	V	{思|おも}い{付|つ}く	to think of (an idea)
 54	V	{下|お}ろす	to lower; to take down	v-lower
 55	V	{降|お}ろす	to drop off (a passenger); to unload	v-lower
 57	V	{飼|か}う	to keep (a pet)
-59	V	{替|か}える	to change; to replace (with a new one)	v-change
 62	V	{輝|かがや}く	to shine	v-shine
 63	V	{限|かぎ}る	to limit
 64	V	かく	to scratch
@@ -70,9 +67,7 @@
 83	V	{効|き}く	to be effective
 85	V	{気|き}{付|づ}く	to notice	v-notice
 86	V	{嫌|きら}う	to hate; to dislike
-87	V	{切|き}れる	to be sharp; to run out
 88	V	{腐|くさ}る	to rot; to go bad
-89	V	{下|くだ}る	to go down
 90	V	{組|く}む	to put together; to cross (arms, legs)	v-together
 91	V	{暮|く}らす	to live (one's life)
 92	V	{繰|く}り{返|かえ}す	to repeat	v-repeat
@@ -122,8 +117,6 @@
 142	V	そろえる	to arrange; to make even	v-soroeru
 144	V	{炊|た}く	to cook (rice)
 146	V	{確|たし}かめる	to make sure; to check	v-check
-147	V	{助|たす}かる	to be saved; to be helped	v-help
-148	V	{助|たす}ける	to help; to save	v-help
 149	V	{戦|たたか}う	to fight	v-fight
 150	V	たたく	to hit; to knock	v-hit
 151	V	{畳|たた}む	to fold
@@ -155,36 +148,29 @@
 184	V	{通|とお}す	to let through; to pass through	v-pass
 185	V	{通|とお}り{過|す}ぎる	to pass by; to pass through	v-pass
 187	V	{解|と}ける	to come untied; to be solved
-190	V	{届|とど}く	to reach; to arrive
 191	V	{泊|と}める	to put up (a guest) for the night
 192	V	{取|と}り{上|あ}げる	to take up (a topic); to take away	v-remove
-193	V	{取|と}れる	to come off	v-come-off
 195	V	{流|なが}す	to let flow; to flush	v-flow
 196	V	{眺|なが}める	to gaze at; to view
-197	V	{流|なが}れる	to flow	v-flow
 198	V	{怠|なま}ける	to be lazy; to neglect
 199	V	{悩|なや}む	to be troubled; to worry
 201	V	なる	to become
 205	V	{煮|に}える	to be cooked; to boil	v-boil
 206	V	{握|にぎ}る	to grip; to hold tightly	v-hold
-207	V	{煮|に}る	to boil; to simmer	v-boil
 208	V	{抜|ぬ}く	to pull out	v-pull
 209	V	ぬらす	to make wet	v-wet
 210	V	ぬれる	to get wet	v-wet
 211	V	{願|ねが}う	to wish; to request	v-wish
 212	V	{眠|ねむ}る	to sleep
 213	V	{残|のこ}す	to leave (behind)	v-leave
-214	V	{乗|の}せる	to give a ride; to put on top
 217	V	{除|のぞ}く	to remove; to exclude	v-remove
 218	V	{望|のぞ}む	to hope for	v-wish
 219	V	{伸|の}ばす	to stretch out; to grow (hair)	v-stretch
 221	V	{伸|の}びる	to grow longer; to stretch	v-stretch
 223	V	{述|の}べる	to state; to mention	v-talk
-224	V	{上|のぼ}る	to go up; to climb	v-rise
 227	V	{生|は}える	to grow (plants, teeth)	v-grow
 231	V	{測|はか}る	to measure (length, depth)	v-measure
 234	V	{吐|は}く	to vomit; to spit
-235	V	{外|はず}す	to take off; to remove	v-remove
 236	V	{外|はず}れる	to come off; to miss	v-come-off
 237	V	{話|はな}し{合|あ}う	to discuss	v-discuss
 238	V	{離|はな}す	to separate; to keep apart	v-separate
@@ -192,7 +178,6 @@
 241	V	{生|は}やす	to grow (a beard)	v-grow
 242	V	はやる	to be popular; to spread (a disease)	v-spread
 243	V	{引|ひ}っ{張|ぱ}る	to pull	v-pull
-244	V	{冷|ひ}やす	to cool (something)	v-cool
 245	V	{広|ひろ}がる	to spread; to widen	v-spread
 246	V	{広|ひろ}げる	to spread out; to widen	v-spread
 248	V	{含|ふく}む	to contain	v-include
@@ -202,11 +187,9 @@
 253	V	{振|ふ}る	to wave; to shake	v-shake
 254	V	{震|ふる}える	to shake; to tremble	v-shake
 257	V	ぶつける	to hit (something) against	v-hit
-258	V	{減|へ}らす	to reduce	v-decrease
 259	V	{減|へ}る	to decrease	v-decrease
 260	V	ほえる	to bark
 261	V	{任|まか}せる	to leave (something) to someone, to entrust	v-deposit
-262	V	{巻|ま}く	to wind, to roll up
 265	V	{混|ま}ざる	to be mixed (things together)	v-mix
 267	V	{混|ま}じる	to be mixed in, to be included	v-mix
 269	V	{混|ま}ぜる	to mix, to stir (something)	v-mix
@@ -217,29 +200,22 @@
 275	V	{守|まも}る	to protect; to keep (a rule)	v-protect
 276	V	{迷|まよ}う	to get lost; to be unable to decide
 278	V	{認|みと}める	to admit, to recognize; to approve	v-allow
-279	V	{診|み}る	to examine (a patient)
 280	V	{向|む}く	to face, to turn toward	v-face
 281	V	むく	to peel
 282	V	{向|む}ける	to turn (something) toward, to point	v-face
 283	V	{蒸|む}す	to steam (food)
-284	V	{結|むす}ぶ	to tie; to connect	v-connect
 285	V	めくる	to turn over (pages), to flip
-286	V	{申|もう}し{込|こ}む	to apply for
 287	V	{燃|も}える	to burn (by itself)	v-burn
 288	V	{持|も}ち{上|あ}げる	to lift up, to raise	v-raise
 290	V	{燃|も}やす	to burn (something)	v-burn
 291	V	{訳|やく}す	to translate
 292	V	{雇|やと}う	to hire, to employ
 293	V	{破|やぶ}る	to tear (something); to break (a rule)	v-tear
-294	V	{破|やぶ}れる	to get torn	v-tear
-295	V	{辞|や}める	to quit, to resign (from a job)	v-give-up
 296	V	{譲|ゆず}る	to give up (a seat); to hand over	v-give
-298	V	{許|ゆる}す	to forgive; to allow	v-allow
 299	V	{酔|よ}う	to get drunk
 303	V	{弱|よわ}まる	to become weak	v-weak
 304	V	{弱|よわ}める	to make weaker	v-weak
 306	V	{分|わか}れる	to be divided; to branch off	v-separate
-307	V	{分|わ}ける	to divide, to separate (something)	v-separate
 309	S	{暗|あん}{記|き}	memorizing, learning by heart	s-memorize
 310	S	{一|いっ}{致|ち}	agreement, matching	s-agree
 311	S	うろうろ	wandering around, walking about aimlessly	s-wander
@@ -248,7 +224,6 @@
 315	S	{開|かい}{始|し}	start, beginning	s-start
 316	S	カット	cutting (hair, etc.)
 317	V	{関|かん}する	to be related to, to concern
-318	S	{外|がい}{出|しゅつ}	going out
 319	S	{学|がく}{習|しゅう}	studying, learning	s-study
 320	N	{学|がく}{問|もん}	learning, academic study	n-learning
 321	S	{記|き}{憶|おく}	memory, remembering	s-memorize
@@ -267,7 +242,6 @@
 334	S	{集|しゅう}{中|ちゅう}	concentration	s-concentrate
 337	S	{証|しょう}{明|めい}	proof, certifying
 338	S	{使|し}{用|よう}	use
-339	S	{進|しん}{学|がく}	going on to a higher school
 340	S	{申|しん}{請|せい}	application (to an office)	s-apply
 342	V	{刷|す}る	to print
 344	S	{成|せい}{長|ちょう}	growth	s-growth
@@ -287,7 +261,6 @@
 360	S	ぶらぶら	wandering around; hanging and swinging	s-wander
 361	S	{分|ぶん}{類|るい}	classification, sorting	s-sort
 362	S	{放|ほう}{送|そう}	broadcasting
-363	S	{募|ぼ}{集|しゅう}	recruiting	s-apply
 364	N	{味|み}{方|かた}	ally, supporter, someone on your side	n-companion
 366	N	{利|り}{益|えき}	profit
 367	S	{留|りゅう}{学|がく}	studying abroad	s-study
@@ -317,7 +290,6 @@
 397	A	{盛|さか}ん	popular, active, thriving	e-active
 398	A	{新|しん}{鮮|せん}	fresh (food, air)
 399	A	{素|す}{直|なお}	honest, obedient	e-honest
-400	F	{随|ずい}{分|ぶん}	very, quite, considerably	e-quite
 404	S	{不|ふ}{足|そく}	shortage, lack
 405	A	{不|ふ}{利|り}	disadvantageous
 406	A	{真|ま}っ{赤|か}	bright red
@@ -331,7 +303,7 @@
 415	N	{一|いっ}{瞬|しゅん}	a moment, an instant
 416	N	{一|いっ}{生|しょう}	whole life, lifetime	n-lifetime
 417	F	{一|いっ}{方|ぽう}	on the other hand; meanwhile
-418	N	{円|えん}	yen; circle	n-circle
+418	N	{円|えん}	circle	n-circle
 419	N	お{嬢|じょう}さん	(someone else's) daughter; young lady	n-girl
 420	N	お{昼|ひる}	noon; lunch	n-lunch
 421	N	{会|かい}{員|いん}	member (of a club, etc.)	n-member
@@ -372,7 +344,6 @@
 461	N	{大|だい}{部|ぶ}{分|ぶん}	most, the majority
 462	N	{男|だん}{子|し}	boy, male (student)	n-boy
 463	N	{父|ちち}{親|おや}	father
-464	X	〜{中|ちゅう}	during, in the middle of
 465	N	{中|ちゅう}{学|がく}	junior high school
 466	N	{昼|ちゅう}{食|しょく}	lunch	n-lunch
 467	N	{長|ちょう}{期|き}	long period
@@ -384,7 +355,6 @@
 474	N	{土|と}{地|ち}	land, plot of land	n-land
 475	N	{日|にっ}{本|ぽん}	Japan	n-japan
 476	N	{能|のう}{力|りょく}	ability	n-ability
-477	N	{博|はく}{物|ぶつ}{館|かん}	museum
 478	N	{飛|ひ}{行|こう}{場|じょう}	airfield, airport
 479	N	{一|ひと}{人|り}{一|ひと}{人|り}	each person, one by one	n-individual
 481	N	{部|ぶ}{分|ぶん}	part, section	n-part

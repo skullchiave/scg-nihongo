@@ -755,3 +755,34 @@
 755	váy liền thân
 756	hạng …
 757	bộ phận …; câu lạc bộ …
+
+758	nhận
+759	nhảy, múa
+760	thay mới; đổi (sang cái mới)
+761	sắc; hết
+762	đi xuống
+763	được cứu; được giúp
+764	giúp; cứu
+765	tới nơi; với tới
+766	bong ra; tuột ra
+767	chảy
+768	nấu; hầm
+769	chở (người); đặt lên trên
+770	đi lên; leo
+771	tháo ra; gỡ ra
+772	làm lạnh; ướp lạnh (cái gì)
+773	làm giảm
+774	cuộn; quấn
+775	khám (bệnh nhân)
+776	buộc; kết nối
+777	đăng ký
+778	bị rách
+779	nghỉ (việc); từ chức
+780	tha thứ; cho phép
+781	chia; tách (cái gì)
+782	việc ra ngoài
+783	học lên cao
+784	tuyển (người); chiêu mộ
+785	rất; khá; khá nhiều
+786	đang …, trong lúc …
+787	viện bảo tàng
