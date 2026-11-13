@@ -176,7 +176,7 @@
 174	S	{試|し}{合|あい}	match, game (sports)	game
 175	S	{試|し}{験|けん}	exam, test
 176	S	{支|し}{度|たく}	getting ready	prep
-177	F	しっかり	firmly, properly
+177	F	しっかり	firmly, properly	sure
 178	S	{失|しっ}{敗|ぱい}	failure, mistake
 179	S	{出|しゅっ}{席|せき}	attendance
 180	S	{出|しゅっ}{発|ぱつ}	departure
@@ -513,7 +513,7 @@
 511	N	{歴|れき}{史|し}	history
 512	N	わけ	reason; meaning	reason
 513	N	{忘|わす}れ{物|もの}	something left behind
-514	K	アイディア	idea
+514	K	アイデア	idea
 515	K	アクセサリー	accessory
 516	K	アジア	Asia
 517	K	アナウンサー	announcer

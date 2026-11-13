@@ -29,6 +29,10 @@
 .qt button{min-height:48px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;font-weight:700;color:var(--sub);line-height:1.4;padding:4px 2px;}
 .qt button[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
 .qt button:disabled{opacity:.45;cursor:default;}
+.tr[lang="zh-CN"]{font-family:"Noto Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;}
+.tr[lang="vi"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
+.tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
+#lgSel{font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
 .lgnote{display:none;}
 .lgnote.on{display:block;}
 .choice.en,.qmean,.gmean,.gmean2,.shmean,.wrow span{overflow-wrap:anywhere;}
@@ -211,6 +215,9 @@ if(!LANGS.some(l=>l[0]===lang)) lang='en';
 const YOMI_ON=ITEMS.some(it=>it.yd);
 if(!['mix','m','w'].concat(YOMI_ON?['y']:[]).includes(qtype)) qtype='mix';
 const mean = it => it.m[lang]||it.m.en;
+// 訳には その言語の lang を付ける（中国語の字形・ベトナム語の声調記号・ビルマ文字の行間を その言語のフォントで出すため）
+const LCODE={en:'en',ne:'ne',bn:'bn',si:'si',my:'my',zh:'zh-CN',vi:'vi'};
+const trH = it => '<span class="tr" lang="'+(it.m[lang]?(LCODE[lang]||lang):'en')+'">'+esc(mean(it))+'</span>';
 
 /* ---------- 習った漢字（どこまで漢字で出すか） ---------- */
 const KJ = window.JLPT_KANJI || {base:'',n4:'',steps:[]};
@@ -431,7 +438,7 @@ function pickOthers(it,t){
   return out;
 }
 const QASK={m:'いみは どれ？', w:'ことばは どれ？', y:'よみ<ruby>方<rt>かた</rt></ruby>は どれ？'};
-function optHTML(x){ return qt==='m' ? esc(mean(x)) : qt==='y' ? esc(x.y) : ruby(disp(x)); }
+function optHTML(x){ return qt==='m' ? trH(x) : qt==='y' ? esc(x.y) : ruby(disp(x)); }
 function render(){
   cur=queue[pos]; answered=false;
   qt=pickType(cur); opts=[cur].concat(pickOthers(cur,qt));
@@ -440,7 +447,7 @@ function render(){
   $("gPanel").innerHTML=`<div class="gwait">${ic('book')}<span>こたえると ここに<br>ことばの <ruby>説明<rt>せつめい</rt></ruby>が でます</span></div>`;
   $("nextPC").classList.add("hidden");
   $("qText").innerHTML='<span class="qask">'+QASK[qt]+'</span>'
-    +(qt==='w' ? '<span class="qmean">'+esc(mean(cur))+'</span>'
+    +(qt==='w' ? '<span class="qmean">'+trH(cur)+'</span>'
                : '<span class="qword">'+(qt==='y'?esc(cur.p):ruby(disp(cur)))+'</span>');
   order=shuffle(opts.map((_,i)=>i));
   $("choices").innerHTML=order.map((oi,k)=>`<button class="choice${qt==='m'?' en':''}" data-oi="${oi}"><span class="n">${k+1}</span><span>${optHTML(opts[oi])}</span></button>`).join("");
@@ -450,7 +457,7 @@ function render(){
   $("main").scrollTop=0;
 }
 function verdictHTML(ok,ansNo){ return `<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>`; }
-function wordLine(it){ return `<span class="fbw">${ruby(disp(it))}</span>　${esc(mean(it))}`; }
+function wordLine(it){ return `<span class="fbw">${ruby(disp(it))}</span>　${trH(it)}`; }
 function answer(oi){
   if(answered) return; answered=true;
   const ok=oi===0;
@@ -505,7 +512,7 @@ function simsHTML(it){
 let lastOk=false, lastAnsNo=1;
 function renderPanel(it){
   $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}">${verdictHTML(lastOk,lastAnsNo)}${wordLine(cur)}</div>
-    <span class="gname">${ruby(disp(it))}</span><div class="gmean2">${esc(mean(it))}</div>
+    <span class="gname">${ruby(disp(it))}</span><div class="gmean2">${trH(it)}</div>
     <dl class="gtbl">${detailRows(it)}</dl>${simsHTML(it)}`;
   $("gPanel").querySelectorAll(".sim").forEach(b=>b.onclick=()=>renderPanel(BYID[b.dataset.id]));
 }
@@ -522,7 +529,7 @@ function finish(early){
   $("rNg").textContent="まちがい "+(total-score);
   const w=wrongIds.map(id=>BYID[id]);
   $("rWrong").innerHTML = w.length
-    ? `<div class="sech">まちがえた ことば</div><div class="list">${w.map(it=>`<div class="wrow"><b>${ruby(disp(it))}</b><span>${esc(mean(it))}</span></div>`).join("")}</div>`
+    ? `<div class="sech">まちがえた ことば</div><div class="list">${w.map(it=>`<div class="wrow"><b>${ruby(disp(it))}</b><span>${trH(it)}</span></div>`).join("")}</div>`
     : `<div class="allok"><ruby>全問<rt>ぜんもん</rt></ruby><ruby>正解<rt>せいかい</rt></ruby>です！</div>`;
   $("retryWrongBtn").disabled=!w.length;
 }
@@ -537,7 +544,7 @@ function recPill(id){
 function renderSheet(it){
   $("sheet").innerHTML=`<div class="grab"></div>
     <div class="shtop"><span class="tag">${catR(it.cat)}</span><button class="ibtn shclose" id="shClose" aria-label="とじる">${ic('x',2.2)}</button></div>
-    <div class="shname" id="shName">${ruby(disp(it))}</div><div class="shmean">${esc(mean(it))}</div>
+    <div class="shname" id="shName">${ruby(disp(it))}</div><div class="shmean">${trH(it)}</div>
     <dl class="shtbl">${detailRows(it)}</dl>${simsHTML(it)}
     <button class="shback" id="shBack">もどる</button>`;
   $("shClose").onclick=closeSheet; $("shBack").onclick=closeSheet;
@@ -569,7 +576,7 @@ function renderList(){
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
     return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
       xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${ruby(disp(it))}</span>${recPill(it.id)}</div>
-          <div class="gmean">${esc(mean(it))}</div></div>`).join("");
+          <div class="gmean">${trH(it)}</div></div>`).join("");
   }).join("");
   $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });
   $("listBody").querySelectorAll(".gcard").forEach(b=>b.onclick=()=>{ if(!isPC()) openSheet(BYID[b.dataset.id]); });
