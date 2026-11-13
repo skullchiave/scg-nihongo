@@ -675,3 +675,83 @@
 674	X	おめでとう	congratulations
 675	X	〜{製|せい}	made by ~; made of ~
 676	X	〜{費|ひ}	~ expenses; ~ fee
+677	V	{当|あ}てる	to hit (a target); to guess
+678	V	{蹴|け}る	to kick
+679	V	{倒|たお}す	to knock down; to defeat
+680	V	{拭|ふ}く	to wipe
+681	V	ぶつかる	to bump into; to crash
+682	V	{戻|もど}す	to put back, to return (something)
+683	V	ゆでる	to boil (food)
+684	V	{汚|よご}す	to make dirty
+685	V	{割|わ}る	to break (a plate, etc.); to divide
+686	S	{出|しゅっ}{張|ちょう}	business trip
+687	S	スタート	start
+689	I	{詳|くわ}しい	detailed; knowing a lot about
+690	A	{立|りっ}{派|ぱ}	fine, impressive
+691	N	{食|しょく}{品|ひん}	food (items), groceries
+692	N	{書|しょ}{類|るい}	documents, papers
+693	N	{祝|いわ}い	celebration; congratulatory gift
+694	N	{大|おお}{家|や}	landlord; landlady
+695	N	かご	basket; cage
+696	N	{皮|かわ}	skin; peel
+697	N	{教|きょう}{師|し}	teacher
+698	S	{経|けい}{営|えい}	management
+699	N	{恋|こい}{人|びと}	boyfriend or girlfriend, lover
+700	N	{腰|こし}	lower back, waist
+701	N	{材|ざい}{料|りょう}	ingredients, materials
+702	S	{就|しゅう}{職|しょく}	getting a job
+703	N	{城|しろ}	castle
+704	N	{生|せい}{年|ねん}{月|がっ}{日|ぴ}	date of birth
+705	N	{地|ち}{下|か}	underground, basement
+706	S	{通|つう}{訳|やく}	interpreting; interpreter
+707	N	{同|どう}{僚|りょう}	coworker, colleague
+708	N	{独|どく}{身|しん}	single, unmarried
+709	S	{発|はっ}{表|ぴょう}	announcement, presentation
+710	N	{平|へい}{日|じつ}	weekday
+711	N	{土産|みやげ}	souvenir
+712	N	{向|む}かい	opposite side, across
+713	N	{郵|ゆう}{便|びん}	mail, post
+714	S	キャンプ	camping
+715	K	グラス	glass (for drinking)
+716	S	サイン	signature; signing
+717	S	スケート	skating
+718	K	スタンド	stand; desk lamp; stadium seats
+719	K	スピーチ	speech (a talk)
+720	S	デザイン	design
+721	K	デザート	dessert
+722	K	データ	data
+723	K	プラスチック	plastic
+724	K	ベルト	belt
+725	K	ホーム	station platform
+726	F	ちゃんと	properly; as it should be
+727	I	{塩|しお}{辛|から}い	salty
+728	I	{四|し}{角|かく}い	square
+729	N	{花|はな}{火|び}	fireworks
+730	V	{受|う}ける	to receive, to take (an exam)
+731	S	お{出|で}かけ	going out
+732	V	{代|か}わる	to take the place of
+733	X	{気|き}をつける	to be careful
+734	N	{月|げつ}{末|まつ}	end of the month
+735	N	ごみ{袋|ぶくろ}	trash bag
+736	N	{資|し}{料|りょう}	materials; data
+737	N	{相撲|すもう}	sumo wrestling
+738	N	{扇|せん}{子|す}	folding fan
+739	N	{体|たい}{操|そう}	gymnastics, exercises
+740	N	{生|なま}ごみ	kitchen waste; food garbage
+741	N	{包|ほう}{丁|ちょう}	kitchen knife
+742	N	{紅葉|もみじ}	autumn leaves; maple
+743	N	{薬|やっ}{局|きょく}	pharmacy
+744	N	{浴衣|ゆかた}	summer kimono
+745	K	イラスト	illustration
+746	K	システム	system
+747	S	ショッピング	shopping
+748	K	ネックレス	necklace
+749	K	マスク	mask (face mask)
+750	K	マフラー	winter scarf
+751	K	ランチ	lunch (set meal)
+752	K	リボン	ribbon
+753	K	ロッカー	locker
+754	K	ロビー	lobby
+755	K	ワンピース	dress (one-piece)
+756	X	〜{位|い}	~th place (rank)
+757	X	〜{部|ぶ}	~ department; ~ club

@@ -423,15 +423,12 @@
 538	kín miệng
 539	lắm mồm; hớ hênh
 540	ăn nói thô lỗ
-541	tối
 542	nhiều khói; ngột khói
 543	dốc đứng; nghiêm nghị (vẻ mặt)
 544	nhớ nhung; mong nhớ
 545	tiền tiêu vặt
 546	cách nói năng; cách dùng từ
 547	ồn ào; nhốn nháo
-548	mặn
-549	vuông
 550	sự thanh toán
 551	thích và ghét; kén chọn
 553	trâng tráo; lì lợm
@@ -441,7 +438,6 @@
 557	hậu đậu; bộp chộp
 558	đáng tin cậy
 559	đầy sức lực; khiến vững dạ
-560	màu nâu
 561	việc rửa tay; bồn rửa tay
 563	xử lý; đối xử
 564	hoài niệm; nhớ về
@@ -590,7 +586,6 @@
 744	cửa hàng, cửa hiệu
 745	hiệu sách
 746	tóc bạc
-747	tàu cao tốc Shinkansen
 748	chùa, tự viện
 749	vận tốc tính theo giờ (km/h)
 750	khoa học nhân văn
@@ -603,7 +598,6 @@
 757	lối ra vào
 758	nội khoa
 759	hàng cây ven đường
-760	pháo hoa
 761	nói nhanh
 762	bán kính
 763	bán đảo
@@ -675,7 +669,6 @@
 833	năm kia
 835	đồng loạt
 836	nhất định, cố định
-838	Đi cẩn thận nhé
 839	nói chung, thông thường
 840	gen
 841	giếng nước
@@ -688,12 +681,10 @@
 849	ghét, không muốn
 850	chán, trở nên ghét
 852	đồ đựng, hộp đựng
-853	cho vào, cho phép vào
 854	lực hút, lực hấp dẫn
 855	cây cảnh (trồng ở vườn, chậu)
 856	nghe, nhận (lệnh) (khiêm nhường)
 857	biên nhận, giấy biên lai
-859	nhận, dự (thi)
 860	nhạt đi, loãng ra
 861	phóng lên (tên lửa), bắn lên
 862	cuộc họp bàn trước
@@ -772,13 +763,11 @@
 947	sợ, e sợ
 948	lá rụng
 950	người giúp việc
-951	việc ra ngoài
 952	đồ đánh rơi, đồ thất lạc
 953	đến thăm, ghé thăm
 954	kém hơn
 955	sự suy yếu, suy thoái
 956	suy yếu, yếu đi
-957	Làm ơn giúp (nhờ vả)
 958	mỗi, từng người/vật
 959	bác gái (chị của bố/mẹ)
 960	dì/cô (em của bố/mẹ)
@@ -815,7 +804,6 @@
 993	suối nước nóng
 994	ôn đới
 995	Kính gửi (công ty) (viết sau tên công ty)
-996	phụ nữ
 997	con muỗi
 999	tranh (hội họa)
 1000	cuộc họp (chính thức)
@@ -911,7 +899,6 @@
 1099	hối đoái, lệnh chuyển tiền
 1100	ngói
 1101	thay vào đó, thay vì
-1102	thay thế
 1103	trực giác, linh cảm
 1106	suy nghĩ miên man, trầm ngâm
 1107	sáng tạo ra, nghĩ cách ra
@@ -949,7 +936,6 @@
 1143	lớp học (trong trường)
 1144	ngày mùng 1 Tết dương lịch
 1145	áp suất không khí
-1146	biến mất, tắt (đèn, lửa)
 1148	cơ quan, tổ chức
 1149	đầu máy xe lửa
 1150	hợp tính nhau
@@ -1007,7 +993,6 @@
 1208	chuyển đổi, đổi sang
 1209	kỷ luật, trật tự
 1210	để ý, quan tâm đến người khác
-1211	cẩn thận, chú ý
 1212	cá vàng
 1213	két sắt
 1214	tiền bạc
@@ -1108,7 +1093,6 @@
 1317	nước thải, cống thoát nước
 1319	tủ giày (ở lối vào)
 1320	lương tháng
-1321	cuối tháng
 1324	bản thảo
 1325	ngôn ngữ
 1326	nơi xuất xứ
@@ -1183,7 +1167,6 @@
 1411	cảm ơn đã vất vả
 1412	bảng chữ cái kana
 1413	lâu không liên lạc
-1414	túi rác
 1415	xin lỗi
 1416	giải trí
 1417	xem (kính ngữ)
@@ -1329,7 +1312,6 @@
 1583	thư pháp
 1584	bước đầu; kiến thức cơ bản
 1585	tư thục
-1586	tài liệu
 1587	nước ép; nước canh
 1588	người nghiệp dư
 1589	lõi; ruột bút chì
@@ -1423,7 +1405,6 @@
 1693	đường chân trời (trên biển)
 1694	mặt nước
 1695	thứ Tư
-1696	hít vào; hút
 1697	con út
 1698	sơ hở, lúc sơ ý
 1699	sở thích mỗi người một khác
@@ -1434,7 +1415,6 @@
 1704	lời khuyên, sự đề nghị
 1707	chuông nhỏ
 1710	chỗ ở
-1713	sumo
 1714	sự đi lướt qua nhau; lỡ nhau
 1715	đi lướt qua nhau; lỡ mất nhau
 1716	kích thước
@@ -1476,7 +1456,6 @@
 1758	lời thoại
 1759	nút, nắp
 1760	thuyền viên
-1762	quạt xếp
 1764	tháng trước nữa
 1765	tuần trước nữa
 1766	tổ tiên, ông cha
@@ -1530,7 +1509,6 @@
 1826	đối chiếu, tương phản
 1827	thể chế, cơ cấu
 1828	thể tích
-1830	thể dục
 1832	phần lớn
 1833	cây to
 1835	đối lập, xung đột
@@ -1571,7 +1549,6 @@
 1880	khá, tương đối nhiều
 1881	đại từ
 1882	người thay thế, đại diện
-1883	lấy ra, gửi, nộp
 1884	trật bánh; lạc đề
 1885	thỏa đáng, phù hợp
 1886	giai đoạn, bước
@@ -1761,7 +1738,6 @@
 2102	dù sao thì, nói gì thì nói
 2103	này nọ; cái gì (vậy)?
 2104	xin vui lòng (lời nhờ lịch sự)
-2107	rác nhà bếp
 2109	reo, kêu vang
 2110	trở thành (văn viết); gồm có
 2111	sự quen dần, sự quen tay
@@ -1774,7 +1750,6 @@
 2120	hoàn toàn (không); thật sự
 2121	Nam Mỹ
 2122	nam bắc
-2123	mùi
 2124	khí cacbonic (CO2)
 2125	cầu vồng
 2126	hàng giả
@@ -1813,7 +1788,6 @@
 2174	màu xám
 2175	thơ haiku
 2176	bối cảnh, phông nền
-2177	vào; tham gia
 2178	tiến sĩ
 2179	viếng mộ
 2180	cái cân
@@ -1845,7 +1819,6 @@
 2213	sưng
 2214	sự phản ánh
 2215	phán quyết của tòa
-2216	con dấu
 2219	tay ngắn (áo)
 2220	mua bán
 2222	muôn năm!; hoan hô!
@@ -1979,7 +1952,6 @@
 2370	phương châm
 2372	quy luật, định luật
 2373	băng gạc
-2374	dao làm bếp
 2375	mặc kệ, để yên
 2376	phương trình
 2377	hướng; khu vực
@@ -2107,7 +2079,6 @@
 2514	tiếng động
 2515	sự việc
 2516	thước kẻ
-2517	lá đỏ mùa thu
 2518	sự kiện
 2519	tổ chức (sự kiện)
 2520	gần nhất
@@ -2129,7 +2100,6 @@
 2536	vết bỏng
 2537	đi đêm; tàu đêm
 2538	mũi tên chỉ hướng
-2539	hiệu thuốc
 2540	chủ nhà (cho thuê)
 2541	thua, bại trận
 2543	động lực, hứng thú làm
@@ -2142,7 +2112,6 @@
 2552	mặt trời lúc chiều tà
 2553	thong dong, ung dung
 2554	mất phí
-2555	áo kimono mùa hè (yukata)
 2556	tung tích; hướng đi
 2557	mất tích, không rõ tung tích
 2558	hơi nước
@@ -2231,7 +2200,6 @@
 2656	trọng âm; giọng
 2657	ăng-ten
 2658	bằng; dấu bằng
-2659	hình minh họa
 2661	quầy thông tin
 2662	vòng eo
 2663	nữ phục vụ bàn
@@ -2274,17 +2242,14 @@
 2702	cuộc thi
 2703	ổ cắm điện
 2704	tiệc liên hoan sinh viên
-2705	áo khoác; sân (thể thao)
 2706	cao su
 2707	còi báo động
 2708	cá mập
 2709	nhân viên văn phòng
 2710	hàng mẫu
 2711	câu lạc bộ (nhóm sinh viên)
-2712	hệ thống
 2713	ca làm việc
 2714	cửa cuốn
-2715	việc mua sắm
 2716	cửa hàng
 2717	loạt; series
 2718	lụa
@@ -2327,7 +2292,6 @@
 2758	bài tây
 2759	vải nylon; sợi nylon
 2760	con số; biển số
-2761	dây chuyền
 2762	mạng lưới
 2764	vô lăng; tay nắm
 2765	một nửa; lai (hai dòng máu)
@@ -2366,13 +2330,10 @@
 2802	người vô gia cư
 2803	tiền thưởng
 2804	áp phích
-2805	khẩu trang
-2806	khăn quàng cổ mùa đông
 2807	chạy ma-ra-tông
 2808	chung cư
 2809	máy khâu
 2810	không khí; bầu không khí
-2811	thực đơn
 2812	nhà sản xuất
 2813	đồng hồ đo
 2814	hiện đại (phong cách)
@@ -2383,12 +2344,10 @@
 2819	vợt
 2820	sự chen chúc; đông nghẹt
 2821	giờ cao điểm
-2822	bữa trưa (suất ăn)
 2823	chạy bộ
 2824	nhịp điệu
 2825	lít
 2826	phục hồi chức năng
-2827	ruy băng; nơ
 2828	bạn cùng phòng
 2829	áo mưa
 2831	hoạt động giải trí
@@ -2396,9 +2355,6 @@
 2833	ống kính
 2834	chụp X-quang
 2835	cuộc đua
-2836	tủ khóa
-2837	sảnh
-2838	váy liền thân
 2839	căn hộ một phòng
 2840	rạng sáng
 2841	tạm thời; một khi
@@ -2423,7 +2379,6 @@
 2869	được đấy; khá ngon
 2870	sớm muộn; rồi sẽ
 2871	từng cái một; mọi việc
-2872	con đi nhé (sẽ về)
 2873	con xin phép đi (lễ phép)
 2876	có thể nói là
 2878	việc súc miệng
@@ -2443,7 +2398,6 @@
 2894	bữa ăn nhẹ (giữa các bữa)
 2895	khoảng; xấp xỉ
 2896	và; cũng như (trang trọng)
-2897	mất (thời gian, tiền)
 2901	chữ Katakana
 2902	ngầu; đẹp trai
 2903	đã từng; trước đây
@@ -2464,12 +2418,10 @@
 2924	bị đổ (tự đổ)
 2925	ru rú trong phòng
 2926	lăn lóc (vật tròn nhỏ)
-2927	chào buổi tối
 2928	cảm ơn vì bữa ăn
 2929	có ai ở nhà không? (khi vào nhà)
 2930	nhanh chóng (không chần chừ)
 2931	nhanh; trong chốc lát
-2932	tạm biệt
 2933	sảng khoái; tươi mát
 2934	máy chủ
 2935	mưa như trút
@@ -2503,13 +2455,11 @@
 2967	vì lý do đó
 2968	chính nó; bản thân nó
 2970	dù vậy
-2971	và còn; thêm nữa
 2973	vậy mà
 2974	nếu vậy thì
 2975	xét việc đó thì
 2976	dẫu thế thì cũng; dù sao đi nữa
 2977	thật đáng tiếc
-2979	con về rồi đây
 2980	trong nháy mắt; tức thì
 2982	không chịu nổi; không thể không
 2983	tủ ngăn kéo
@@ -2531,11 +2481,9 @@
 3004	nếu có thể
 3005	vì vậy
 3006	bậy bạ; ngẫu nhiên
-3007	thế thì; nào (bắt đầu)
 3010	dù sao; tạm gác chuyện
 3011	trước mắt cứ; trước tiên cứ
 3012	quá đáng; không hề đâu
-3013	không có gì (đáp lời cảm ơn)
 3014	xin làm ơn; mong sao
 3015	dù sao cũng (bất lực); rốt cuộc
 3016	bằng cách nào đó; xoay xở được
@@ -2553,9 +2501,7 @@
 3032	con ốc vít
 3033	cái cưa
 3034	chậm chạp; ì ạch
-3035	vâng; có
 3036	rõ ràng nhanh nhẹn
-3037	rất vui được gặp bạn
 3038	đeo; lắp vào (găng tay, nhẫn)
 3039	dấu gạch chéo; câu sai
 3040	lò xo
@@ -2602,7 +2548,6 @@
 3085	cố ý
 3086	cất công; mất công
 3087	… liền sau (ngày, năm)
-3088	hạng …
 3089	ngoài … ra; trừ …
 3090	vài …; bao nhiêu …
 3091	… trở lên
@@ -2756,7 +2701,6 @@
 3244	kiểu …; theo lối …
 3245	phó …
 3246	… cũ (đã qua sử dụng)
-3247	bộ phận …; câu lạc bộ …
 3248	không có …; thiếu …
 3249	sau một thời gian …
 3250	… lần

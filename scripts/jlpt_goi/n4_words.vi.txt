@@ -675,3 +675,83 @@
 674	chúc mừng
 675	do … chế tạo; làm bằng …
 676	phí …
+677	làm trúng; đoán
+678	đá
+679	đánh đổ; đánh bại
+680	lau
+681	va vào; đâm vào
+682	đặt lại; trả lại (cái gì)
+683	luộc
+684	làm bẩn
+685	làm vỡ (đĩa...); chia
+686	đi công tác
+687	xuất phát; khởi đầu
+689	chi tiết; am hiểu
+690	tuyệt vời; đáng nể
+691	thực phẩm
+692	giấy tờ; tài liệu
+693	lễ mừng; quà mừng
+694	chủ nhà (cho thuê)
+695	giỏ; lồng
+696	da; vỏ
+697	giáo viên
+698	điều hành (doanh nghiệp)
+699	người yêu
+700	thắt lưng, eo
+701	nguyên liệu
+702	tìm được việc, vào làm
+703	lâu đài
+704	ngày tháng năm sinh
+705	dưới lòng đất, tầng hầm
+706	phiên dịch
+707	đồng nghiệp
+708	độc thân
+709	công bố, thuyết trình
+710	ngày thường
+711	quà (mua về)
+712	đối diện
+713	bưu chính, thư từ
+714	cắm trại
+715	ly thủy tinh
+716	chữ ký; việc ký tên
+717	trượt băng
+718	giá đỡ; đèn bàn; khán đài
+719	bài phát biểu
+720	thiết kế
+721	món tráng miệng
+722	dữ liệu
+723	nhựa
+724	thắt lưng
+725	sân ga
+726	cẩn thận, đúng cách
+727	mặn
+728	vuông
+729	pháo hoa
+730	nhận, dự (thi)
+731	việc ra ngoài
+732	thay thế
+733	cẩn thận, chú ý
+734	cuối tháng
+735	túi rác
+736	tài liệu
+737	sumo
+738	quạt xếp
+739	thể dục
+740	rác nhà bếp
+741	dao làm bếp
+742	lá đỏ mùa thu
+743	hiệu thuốc
+744	áo kimono mùa hè (yukata)
+745	hình minh họa
+746	hệ thống
+747	việc mua sắm
+748	dây chuyền
+749	khẩu trang
+750	khăn quàng cổ mùa đông
+751	bữa trưa (suất ăn)
+752	ruy băng; nơ
+753	tủ khóa
+754	sảnh
+755	váy liền thân
+756	hạng …
+757	bộ phận …; câu lạc bộ …
