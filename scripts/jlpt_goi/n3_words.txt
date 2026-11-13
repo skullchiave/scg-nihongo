@@ -137,7 +137,6 @@
 156	V	ためる	to save up; to let pile up	v-pile
 157	V	{頼|たよ}る	to depend on; to rely on	v-depend
 158	V	{抱|だ}く	to hug; to hold in one's arms	v-hold
-159	V	だます	to cheat; to trick
 160	V	{黙|だま}る	to be silent
 161	V	{散|ち}る	to fall (petals); to scatter	v-scatter
 162	V	{通|つう}じる	to be understood; to lead to
@@ -148,28 +147,24 @@
 167	V	{就|つ}く	to take (a job, a seat)
 168	V	つく	to come on (light)
 169	V	つぐ	to pour (a drink)	v-pour
-171	V	{継|つ}ぐ	to succeed; to inherit
 172	V	{付|つ}ける	to attach; to add	v-attach
 173	V	{着|つ}ける	to put on; to wear	v-wear
 174	V	つながる	to be connected	v-connect
 175	V	つなぐ	to connect (something); to tie	v-connect
 176	V	つなげる	to connect (something)	v-connect
 177	V	{積|つ}む	to pile up; to load	v-pile
-178	V	{摘|つ}む	to pick; to pluck
 179	V	{詰|つ}める	to pack; to stuff
 180	V	{強|つよ}まる	to become stronger	v-strong
 181	V	{強|つよ}める	to make stronger	v-strong
 182	V	{出|で}{会|あ}う	to meet by chance; to come across	v-meet
 184	V	{通|とお}す	to let through; to pass through	v-pass
 185	V	{通|とお}り{過|す}ぎる	to pass by; to pass through	v-pass
-186	V	{溶|と}ける	to melt; to dissolve
 187	V	{解|と}ける	to come untied; to be solved
 188	V	{閉|と}じる	to close (a book, eyes)
 190	V	{届|とど}く	to reach; to arrive
 191	V	{泊|と}める	to put up (a guest) for the night
 192	V	{取|と}り{上|あ}げる	to take up (a topic); to take away	v-remove
 193	V	{取|と}れる	to come off	v-come-off
-194	V	どく	to move aside	v-move
 195	V	{流|なが}す	to let flow; to flush	v-flow
 196	V	{眺|なが}める	to gaze at; to view
 197	V	{流|なが}れる	to flow	v-flow
@@ -187,15 +182,12 @@
 212	V	{眠|ねむ}る	to sleep
 213	V	{残|のこ}す	to leave (behind)	v-leave
 214	V	{乗|の}せる	to give a ride; to put on top
-215	V	{載|の}せる	to put on; to publish
-216	V	のぞく	to peek
 217	V	{除|のぞ}く	to remove; to exclude	v-remove
 218	V	{望|のぞ}む	to hope for	v-wish
 219	V	{伸|の}ばす	to stretch out; to grow (hair)	v-stretch
 221	V	{伸|の}びる	to grow longer; to stretch	v-stretch
 223	V	{述|の}べる	to state; to mention	v-talk
 224	V	{上|のぼ}る	to go up; to climb	v-rise
-226	V	{載|の}る	to appear (in print)	v-appear
 227	V	{生|は}える	to grow (plants, teeth)	v-grow
 231	V	{測|はか}る	to measure (length, depth)	v-measure
 234	V	{吐|は}く	to vomit; to spit
@@ -233,7 +225,6 @@
 274	V	{招|まね}く	to invite	v-invite
 275	V	{守|まも}る	to protect; to keep (a rule)	v-protect
 276	V	{迷|まよ}う	to get lost; to be unable to decide
-277	V	{見|み}{掛|か}ける	to happen to see, to notice	v-notice
 278	V	{認|みと}める	to admit, to recognize; to approve	v-allow
 279	V	{診|み}る	to examine (a patient)
 280	V	{向|む}く	to face, to turn toward	v-face
@@ -298,7 +289,6 @@
 342	V	{刷|す}る	to print
 343	V	する	to do
 344	S	{成|せい}{長|ちょう}	growth	s-growth
-345	N	{戦|せん}{争|そう}	war	n-war
 346	S	{調|ちょう}{節|せつ}	adjustment	s-adjust
 347	S	{通|つう}{学|がく}	going to school, commuting to school	s-commute
 348	S	{徹|てつ}{夜|や}	staying up all night
@@ -347,13 +337,11 @@
 392	A	{意|い}{外|がい}	unexpected, surprising
 393	A	{一|いっ}{般|ぱん}	general, ordinary
 394	X	{主|おも}な	main, chief
-395	A	{急|きゅう}	sudden; urgent; steep
 396	N	{高|こう}{速|そく}	high speed	n-speed
 397	A	{盛|さか}ん	popular, active, thriving	e-active
 398	A	{新|しん}{鮮|せん}	fresh (food, air)
 399	A	{素|す}{直|なお}	honest, obedient	e-honest
 400	F	{随|ずい}{分|ぶん}	very, quite, considerably	e-quite
-401	A	{駄|だ}{目|め}	no good, not allowed	e-nogood
 403	A	{複|ふく}{雑|ざつ}	complicated
 404	S	{不|ふ}{足|そく}	shortage, lack
 405	A	{不|ふ}{利|り}	disadvantageous
@@ -401,7 +389,6 @@
 448	N	{少|しょう}{年|ねん}	boy, young boy	n-boy
 449	N	{商|しょう}{品|ひん}	goods, product (for sale)	n-goods
 450	N	{食|しょく}{品|ひん}	food (items), groceries	n-food
-451	N	{書|しょ}{斎|さい}	study (room), den
 452	N	{書|しょ}{類|るい}	documents, papers
 453	N	{身|しん}{長|ちょう}	height (of a person)
 454	N	{柔|じゅう}{道|どう}	judo
@@ -419,7 +406,6 @@
 466	N	{昼|ちゅう}{食|しょく}	lunch	n-lunch
 467	N	{長|ちょう}{期|き}	long period
 468	N	{手品|てじな}	magic trick
-469	N	{哲|てつ}{学|がく}	philosophy
 470	N	{出|で}{会|あ}い	meeting, encounter	n-encounter
 471	N	{電|でん}{灯|とう}	electric light	n-light
 472	N	{都|と}{会|かい}	city	n-city
@@ -461,13 +447,11 @@
 514	N	{怒|いか}り	anger
 515	N	{行|い}き	going, bound for	n-bound-for
 516	N	{息|いき}	breath
-518	N	{生|い}き{物|もの}	living thing, creature	n-creature
 519	N	{医|い}{師|し}	doctor, physician
 521	N	{意|い}{志|し}	will (a strong intention)	n-will
 523	A	{異|い}{常|じょう}	abnormal; unusual	e-strange
 524	A	{意|い}{地|じ}{悪|わる}	mean; unkind
 525	N	{以|い}{前|ぜん}	before; in the past	n-past
-527	V	{急|いそ}ぐ	to hurry	v-hurry
 528	N	{板|いた}	board; plank
 529	N	{痛|いた}み	pain; ache	n-pain
 531	N	{位|い}{置|ち}	position; location	n-position
@@ -531,7 +515,6 @@
 601	N	{鬼|おに}	ogre; demon
 602	N	{帯|おび}	obi (kimono sash); belt	n-belt
 603	X	お{前|まえ}	you (rough, to a close friend or someone lower)
-604	V	お{目|め}にかかる	to meet (humble)	v-meet
 605	N	{思|おも}い{出|で}	memory
 606	F	{主|おも}に	mainly
 607	A	{温|おん}{暖|だん}	warm (climate)	e-warm
@@ -557,22 +540,15 @@
 630	N	{飾|かざ}り	decoration
 631	N	{貸|か}し	lending; a favor owed	n-lend-borrow
 632	N	{菓|か}{子|し}	sweets; snacks
-633	N	{歌|か}{手|しゅ}	singer
 634	N	{家|か}{事|じ}	housework
 635	N	{数|かず}	number; amount	n-number
 636	N	{型|かた}	type; model	n-type
-637	N	{肩|かた}	shoulder
 638	N	{方|かた}{々|がた}	people (polite)	n-people
-639	N	{片|かた}{付|づ}け	tidying up
-640	N	{勝|か}ち	win; victory
 641	N	{価|か}{値|ち}	value; worth
 642	S	{活|かつ}{動|どう}	activity	s-active
 643	S	{活|かつ}{躍|やく}	doing active work; success	s-active
-645	N	{金|かね}	money	n-money
 646	N	{鐘|かね}	bell	n-bell
-647	A	{可|か}{能|のう}	possible
 650	N	{雷|かみなり}	thunder
-651	N	{髪|かみ}の{毛|け}	hair (on the head)
 654	N	{借|か}り	borrowing; debt	n-lend-borrow
 655	N	{狩|か}り	hunting
 656	V	{枯|か}れる	to wither; to die (plants)
@@ -581,7 +557,6 @@
 661	N	{缶|かん}	can; tin
 663	N	{感|かん}{覚|かく}	sense; feeling	n-feeling
 664	N	{間|かん}{隔|かく}	interval; gap
-665	N	{考|かんが}え	idea; thought	n-idea
 666	N	{観|かん}{客|きゃく}	audience; spectators
 667	N	{環|かん}{境|きょう}	environment	n-surroundings
 668	S	{歓|かん}{迎|げい}	welcome
@@ -624,7 +599,6 @@
 711	S	{寄|き}{付|ふ}	donation
 712	S	{希|き}{望|ぼう}	hope; wish	s-hope
 713	N	{決|き}まり	rule; custom	n-rule
-715	V	{決|き}める	to decide
 716	N	{級|きゅう}	class; grade	n-rank
 718	N	{休|きゅう}{暇|か}	vacation; leave	n-holiday
 719	S	{休|きゅう}{憩|けい}	break; rest	s-rest
@@ -644,9 +618,7 @@
 738	S	{記|き}{録|ろく}	record
 739	N	{金|きん}	gold	n-metal
 740	N	{菌|きん}	germ; bacteria
-741	S	{禁|きん}{煙|えん}	no smoking	s-ban
 742	N	{金|きん}{額|がく}	amount of money	n-money
-743	S	{禁|きん}{止|し}	prohibition; ban	s-ban
 745	N	{金|きん}{属|ぞく}	metal	n-metal
 746	S	{緊|きん}{張|ちょう}	tension; nervousness	s-nervous
 748	N	{議|ぎ}{員|いん}	member of parliament	n-parliament
@@ -676,7 +648,6 @@
 784	N	{血|けっ}{管|かん}	blood vessel
 785	F	{結|けっ}{局|きょく}	after all, in the end	e-finally
 787	S	{決|けっ}{心|しん}	decision, determination	s-decide
-788	S	{欠|けっ}{席|せき}	absence
 789	S	{決|けっ}{定|てい}	decision	s-decide
 790	N	{欠|けっ}{点|てん}	fault, weak point	n-flaw
 791	N	{血|けつ}{液|えき}	blood
@@ -685,7 +656,6 @@
 794	N	{券|けん}	ticket	n-ticket
 795	N	{県|けん}	prefecture	n-admin-area
 796	N	{件|けん}	matter, case	n-case
-797	A	{健|けん}{康|こう}	healthy
 798	S	{検|けん}{査|さ}	inspection, test	s-investigate
 799	S	{建|けん}{設|せつ}	construction (of a building, road)	s-build
 800	S	{建|けん}{築|ちく}	building, architecture	s-build
@@ -694,7 +664,6 @@
 804	N	{劇|げき}	play, drama	n-drama
 805	N	{劇|げき}{場|じょう}	theater
 806	N	{限|げん}{界|かい}	limit	n-limit
-807	N	{現|げん}{金|きん}	cash	n-money
 808	N	{現|げん}{在|ざい}	present, now	n-now
 809	S	{減|げん}{少|しょう}	decrease
 810	N	{現|げん}{実|じつ}	reality	n-reality
@@ -744,7 +713,6 @@
 860	S	{合|ごう}{計|けい}	total	s-calc
 861	S	{誤|ご}{解|かい}	misunderstanding
 863	N	{語|ご}{句|く}	words and phrases	n-phrase
-864	N	ごみ	garbage, trash
 865	N	{差|さ}	difference, gap	n-difference
 866	A	{最|さい}{高|こう}	the best, the highest
 867	N	{最|さい}{終|しゅう}	final, last
@@ -754,7 +722,6 @@
 872	S	{裁|さい}{判|ばん}	trial (in court)	s-judge
 874	S	{作|さ}{業|ぎょう}	work, task
 877	N	{作|さく}{物|もつ}	crops
-878	N	{桜|さくら}	cherry blossom
 879	N	{酒|さけ}	alcohol, sake	n-alcohol
 880	N	{作|さっ}{家|か}	writer, author	n-author
 881	S	{作|さっ}{曲|きょく}	composing music
@@ -763,7 +730,6 @@
 884	N	{砂|さ}{漠|ばく}	desert
 885	S	{差|さ}{別|べつ}	discrimination
 886	A	{様|さま}{々|ざま}	various
-887	N	{皿|さら}	plate, dish
 888	F	{更|さら}に	furthermore, even more	e-evenmore
 889	N	{猿|さる}	monkey
 890	N	{騒|さわ}ぎ	uproar, commotion
@@ -786,7 +752,6 @@
 911	S	{指|し}{示|じ}	instruction	s-command
 912	N	{詩|し}{人|じん}	poet
 913	N	{姿|し}{勢|せい}	posture, attitude	n-attitude
-914	N	{自|し}{然|ぜん}	nature	n-nature
 915	N	{舌|した}	tongue
 916	S	{支|し}{度|たく}	preparation, getting ready
 917	X	{次|し}{第|だい}	as soon as ...; depending on ...
@@ -836,7 +801,6 @@
 967	S	{署|しょ}{名|めい}	signature	s-sign
 968	S	{処|しょ}{理|り}	processing, handling
 971	N	{知|し}らせ	notice, news	n-news
-972	V	{調|しら}べる	to look into, to check	v-check
 973	N	{尻|しり}	buttocks, bottom
 974	N	{知|し}り{合|あ}い	acquaintance	n-friend
 975	V	{知|し}り{合|あ}う	to get to know each other	v-meet
@@ -892,10 +856,8 @@
 1036	N	{状|じょう}{態|たい}	condition, state	n-condition
 1037	S	{上|じょう}{達|たつ}	improvement (in skill)	s-progress
 1038	N	{冗|じょう}{談|だん}	joke
-1039	N	{情|じょう}{報|ほう}	information	n-info
 1040	N	{女|じょ}{王|おう}	queen
 1041	N	{女|じょ}{子|し}	girl; woman	n-girl
-1043	N	{助|じょ}{詞|し}	particle (grammar)
 1044	F	{徐|じょ}{々|じょ}に	gradually, little by little
 1045	N	{女|じょ}{優|ゆう}	actress	n-actor
 1046	N	{人|じん}{工|こう}	artificial, man-made
@@ -908,7 +870,6 @@
 1054	N	{数|すう}	number (amount, count)	n-number
 1055	N	{数|すう}{字|じ}	number (figure), numeral	n-number
 1056	N	{姿|すがた}	figure, appearance (of a person)	n-appearance
-1057	V	{捨|す}てる	to throw away
 1058	F	{既|すで}に	already (formal)	e-already
 1059	N	{全|すべ}て	all, everything	n-all
 1061	N	{図|ず}	figure, diagram, drawing
@@ -925,7 +886,6 @@
 1074	A	{正|せい}{式|しき}	formal, official
 1075	N	{精|せい}{神|しん}	mind, spirit	n-mind
 1076	N	{成|せい}{人|じん}	adult	n-adult
-1077	N	{成|せい}{績|せき}	grades, results	n-result
 1078	F	せいぜい	at most, at best
 1079	S	{製|せい}{造|ぞう}	manufacturing
 1081	N	{制|せい}{度|ど}	system, institution
@@ -952,9 +912,7 @@
 1104	N	{先|せん}{日|じつ}	the other day
 1105	S	{選|せん}{択|たく}	choice, selection	s-choose
 1106	S	{宣|せん}{伝|でん}	advertising, publicity
-1107	N	{先|せん}{輩|ぱい}	senior (older student or colleague)
 1108	N	{税|ぜい}	tax	n-tax
-1109	N	{税|ぜい}{金|きん}	tax	n-tax
 1110	A	ぜいたく	luxurious, extravagant
 1111	F	{絶|ぜっ}{対|たい}	absolutely, definitely
 1112	X	{全|ぜん}〜	all, whole	e-all
@@ -967,13 +925,11 @@
 1126	F	{相|そう}{当|とう}	quite, considerably	e-quite
 1127	N	{組|そ}{織|しき}	organization	n-organization
 1128	N	{袖|そで}	sleeve
-1129	N	そば	soba (buckwheat noodles)
 1130	N	{損|そん}{害|がい}	damage, loss	n-harm
 1131	S	{尊|そん}{敬|けい}	respect
 1132	S	{存|そん}{在|ざい}	existence
 1133	N	{像|ぞう}	statue, image
 1134	S	{増|ぞう}{加|か}	increase	s-increase
-1136	N	{他|た}	other, others	n-other
 1138	N	{体|たい}{育|いく}	physical education (PE)
 1139	N	{体|たい}{温|おん}	body temperature	n-temperature
 1140	S	{退|たい}{学|がく}	dropping out of school
@@ -1035,7 +991,6 @@
 1205	N	{地|ち}{方|ほう}	region, countryside	n-region
 1206	N	{茶|ちゃ}	tea
 1207	N	{中|ちゅう}{古|こ}	used, second-hand
-1208	S	{中|ちゅう}{止|し}	cancellation, stopping	s-cancel
 1209	S	{駐|ちゅう}{車|しゃ}	parking (a car)
 1210	N	{中|ちゅう}{心|しん}	center
 1211	S	{注|ちゅう}{目|もく}	attention, taking notice
@@ -1063,7 +1018,6 @@
 1235	F	{常|つね}に	always	e-always
 1237	N	{罪|つみ}	crime, sin	n-crime
 1238	N	{梅雨|つゆ}	rainy season	n-rainy-season
-1240	N	{釣|つ}り	fishing; change (money back)
 1241	S	{提|てい}{案|あん}	proposal, suggestion
 1242	N	{定|てい}{期|き}	regular, fixed period
 1243	S	{提|てい}{出|しゅつ}	submission
@@ -1079,7 +1033,6 @@
 1254	N	{天|てん}{然|ねん}	nature; natural	n-nature
 1256	N	{出|で}{合|あ}い	meeting, encounter	n-encounter
 1257	N	{出来事|できごと}	event, happening	n-event
-1258	V	{出|で}る	to go out; to leave	v-leave
 1259	N	{伝|でん}{言|ごん}	verbal message	n-message
 1260	N	{電|でん}{子|し}	electron; electronic
 1261	N	{伝|でん}{統|とう}	tradition
@@ -1100,7 +1053,6 @@
 1280	F	{共|とも}に	together (with)
 1281	N	トラ	tiger
 1282	V	{取|と}り{消|け}す	to cancel
-1283	V	{取|と}る	to take; to get	v-get
 1285	N	{動|どう}{詞|し}	verb
 1286	N	{同|どう}{士|し}	fellows, each other (people of the same kind)	n-each-other
 1288	N	{同|どう}{時|じ}	same time
@@ -1120,21 +1072,16 @@
 1304	N	{眺|なが}め	view (scenery)	n-scenery
 1305	N	{流|なが}れ	flow, stream
 1306	V	{慰|なぐさ}める	to comfort
-1307	N	なし	none, without
-1308	X	{何|なに}か	something
 1309	N	{鍋|なべ}	pot (for cooking)
 1310	N	{波|なみ}	wave
 1312	N	{涙|なみだ}	tears
 1313	N	{悩|なや}み	worry, trouble	n-trouble
-1316	F	{何|なん}で	why
-1317	F	{何|なん}でも	anything, everything
 1318	F	{何|なん}とか	somehow, one way or another
 1319	A	{苦|にが}{手|て}	weak (at), not good (at)
 1320	N	{日|にち}{常|じょう}	daily life, everyday	n-living
 1321	N	{日|にっ}{光|こう}	sunlight
 1322	N	{日|にっ}{中|ちゅう}	daytime
 1323	N	{日|に}{本|ほん}	Japan	n-japan
-1324	N	{人|にん}{気|き}	popularity	n-popularity
 1325	N	{人|にん}{間|げん}	human being	n-human
 1326	N	{願|ねが}い	wish, request
 1328	N	{値|ね}{段|だん}	price	n-price
@@ -1202,7 +1149,6 @@
 1401	N	{費|ひ}{用|よう}	cost, expense	n-fee
 1402	N	{美|び}{人|じん}	beautiful woman
 1403	A	{微|び}{妙|みょう}	subtle, delicate	e-delicate
-1404	X	{秒|びょう}	second (unit of time)
 1405	N	{瓶|びん}	bottle
 1407	A	{不|ふ}{安|あん}	anxious, uneasy
 1408	N	{風|ふう}{景|けい}	scenery	n-scenery
@@ -1226,7 +1172,6 @@
 1427	N	{物|ぶっ}{価|か}	prices (of goods)	n-price
 1428	N	{物|ぶつ}{理|り}	physics
 1429	N	{分|ぶん}	share, portion, amount	n-part
-1430	N	{文|ぶん}	sentence
 1431	S	{平|へい}{均|きん}	average
 1432	N	{平|へい}{日|じつ}	weekday	n-weekday
 1433	N	{平|へい}{和|わ}	peace
@@ -1242,7 +1187,6 @@
 1443	S	{包|ほう}{装|そう}	wrapping
 1444	A	{豊|ほう}{富|ふ}	abundant, plentiful	e-plenty
 1445	N	{方|ほう}{法|ほう}	method, way	n-method
-1446	F	{方|ほう}{々|ぼう}	here and there, everywhere	e-everywhere
 1447	S	{訪|ほう}{問|もん}	visit
 1448	N	{他|ほか}	other, another	n-other
 1449	N	ほこり	dust
@@ -1252,9 +1196,7 @@
 1453	N	{歩|ほ}{道|どう}	sidewalk
 1454	N	{骨|ほね}	bone
 1455	N	{炎|ほのお}	flame
-1456	N	{堀|ほり}	moat	n-moat
 1458	V	{掘|ほ}る	to dig
-1459	N	{本|ほん}{当|とう}	truth; real	n-truth
 1460	N	{棒|ぼう}	stick, pole
 1461	N	{迷|まい}{子|ご}	lost child
 1462	F	{前|まえ}もって	in advance, beforehand
@@ -1267,20 +1209,15 @@
 1471	V	{間|まち}{違|が}う	to make a mistake, to be wrong
 1472	F	{全|まった}く	completely, really
 1473	N	{松|まつ}	pine tree
-1474	N	{祭|まつり}	festival
 1475	S	{真似|まね}	imitation, copying
 1476	N	{豆|まめ}	beans
 1477	N	{丸|まる}	circle	n-circle
 1479	N	{満|まん}{員|いん}	full, packed to capacity
 1480	N	{実|み}	fruit, nut
 1481	V	{見|み}{送|おく}る	to see (someone) off
-1482	V	{磨|みが}く	to polish, to brush (teeth)
 1483	A	{見|み}{事|ごと}	splendid, excellent	e-splendid
-1485	V	{身|み}につける	to acquire (a skill); to put on (clothes)	v-wear
-1486	N	{見|み}{舞|ま}い	visit to a sick person
 1487	N	{土産|みやげ}	souvenir
 1488	N	{明|みょう}{後|ご}{日|にち}	day after tomorrow
-1489	N	{未|み}{来|らい}	future	n-future
 1490	N	{向|む}かい	opposite side, across	n-opposite
 1491	N	{迎|むか}え	picking up (a person), welcome
 1492	N	{向|む}き	direction; suitable (for)	n-direction
@@ -1298,7 +1235,6 @@
 1504	A	{迷|めい}{惑|わく}	a nuisance, troublesome	e-bother
 1505	V	{目|め}{立|だ}つ	to stand out
 1506	F	{滅|めっ}{多|た}に	rarely
-1507	S	{面|めん}{接|せつ}	interview	s-interview
 1508	A	{面|めん}{倒|どう}	troublesome, a bother	e-bother
 1509	N	{申|もうし}{込|こみ}{書|しょ}	application form
 1510	N	{申|もう}し{訳|わけ}	excuse; apology
@@ -1312,7 +1248,6 @@
 1521	F	{約|やく}	about, approximately	e-roughly
 1522	N	{訳|やく}	translation
 1523	N	{役|やく}{割|わり}	role
-1524	N	{家|や}{賃|ちん}	rent
 1525	N	{宿|やど}	inn, lodging
 1526	N	{屋|や}{根|ね}	roof
 1527	N	やり{方|かた}	way of doing something	n-method
@@ -1329,7 +1264,6 @@
 1540	A	{愉|ゆ}{快|かい}	pleasant, fun
 1541	N	{行|ゆ}き	bound for (a place)	n-bound-for
 1542	A	{豊|ゆた}か	rich, abundant	e-plenty
-1543	N	{夜|よ}	night	n-night
 1545	A	{容|よう}{易|い}	easy, simple	e-easy
 1546	N	{容|よう}{器|き}	container
 1547	S	{要|よう}{求|きゅう}	demand, request	s-request
@@ -1346,7 +1280,6 @@
 1558	S	{予|よ}{防|ぼう}	prevention
 1559	N	{余|よ}{裕|ゆう}	room to spare, leeway
 1560	N	{喜|よろこ}び	joy
-1561	N	{四|よん}	four
 1563	S	{理|り}{解|かい}	understanding
 1564	N	{陸|りく}	land (not sea)	n-land
 1565	S	{離|り}{婚|こん}	divorce
@@ -1354,7 +1287,6 @@
 1567	N	{量|りょう}	amount	n-number
 1568	N	{寮|りょう}	dormitory
 1569	S	{両|りょう}{替|がえ}	money exchange	s-exchange
-1570	N	{料|りょう}{金|きん}	fee; fare	n-fee
 1571	N	{例|れい}	example
 1572	N	{礼|れい}	thanks; bow
 1573	N	{礼|れい}{儀|ぎ}	manners; etiquette	n-manners
@@ -1372,19 +1304,13 @@
 1585	N	{笑|わら}い	laughter; smile	n-smile
 1586	X	{我々|われわれ}	we (formal)
 1587	N	{湾|わん}	bay
-1590	K	アイスクリーム	ice cream	n-cream
-1591	K	アイディア	idea	n-idea
 1592	K	アウト	out (not allowed; in baseball)
 1593	K	アルバム	album; photo album
-1594	K	アンケート	survey; questionnaire
-1595	K	イベント	event	n-event
 1596	K	イメージ	image; impression	n-impression
 1597	K	インク	ink	n-ink
-1598	S	インタビュー	interview	s-interview
 1599	K	ウイスキー	whiskey	n-alcohol
 1600	K	エネルギー	energy
 1601	K	エンジン	engine
-1602	K	オフィス	office
 1603	S	オーバー	going over (a limit); exceeding
 1604	K	カタログ	catalog
 1605	S	カバー	covering; making up for (a shortage)
@@ -1397,20 +1323,17 @@
 1613	K	グラス	glass (for drinking)
 1614	K	グランド	sports field; ground
 1615	K	グループ	group	n-group
-1616	K	ゲーム	game
 1617	K	コミュニケーション	communication
 1618	K	コンテスト	contest	n-event
 1619	K	コース	course; set menu
 1620	S	コーチ	coaching; coach	s-coach
 1621	K	コード	electric cord; code	n-rope
-1622	K	ゴール	goal	n-goal
 1623	S	サイン	signature; signing	s-sign
 1624	S	サービス	service; free extra
 1625	K	ショック	shock	n-shock
 1626	K	ジュース	juice; soft drink
 1627	K	ジーンズ	jeans
 1628	K	スイッチ	switch
-1629	S	スキー	skiing
 1630	K	スケジュール	schedule	n-schedule
 1631	S	スケート	skating
 1632	K	スタイル	style; body shape
@@ -1423,41 +1346,31 @@
 1639	S	セット	setting; set
 1640	K	ソファー	sofa
 1641	K	タイトル	title	n-title
-1643	K	タオル	towel
 1644	K	ダイヤ	train schedule; diamond	n-schedule
-1645	K	ダンス	dance
-1646	K	チケット	ticket	n-ticket
 1647	K	チャイム	chime; bell	n-bell
 1648	K	チャンス	chance
 1649	K	チーズ	cheese
-1650	K	チーム	team	n-group
 1651	K	テント	tent
 1652	K	テーマ	theme; topic	n-topic
 1653	S	デザイン	design
 1654	K	デザート	dessert
 1655	K	データ	data	n-info
-1656	S	デート	date (romantic)	s-date
 1657	K	トップ	top; first place
 1658	K	トラック	truck	n-car
 1659	K	トラブル	trouble	n-trouble
-1660	S	トレーニング	training	s-training
 1661	K	トン	ton (1,000 kg)
 1662	K	トンネル	tunnel
 1663	S	ドライブ	driving trip (for fun)	s-operate
 1664	K	ドラマ	drama; TV drama	n-drama
 1665	K	ドレス	dress (formal)
 1666	S	ノック	knocking (on a door)
-1667	K	ノー	no
 1668	S	ハイキング	hiking	s-hike
-1669	A	ハンサム	handsome
 1670	K	バイオリン	violin
 1671	K	バッグ	bag	n-bag
 1672	K	バランス	balance
 1673	S	パス	passing; pass (ticket)	s-pass
-1674	K	パスポート	passport
 1675	K	パーセント	percent
 1676	K	ビデオ	video
-1677	K	ビール	beer	n-alcohol
 1678	K	ピクニック	picnic
 1679	K	ピン	pin
 1680	K	ブレーキ	brake
@@ -1476,8 +1389,6 @@
 1693	K	マスコミ	mass media
 1694	K	ママ	mom
 1695	K	マーケット	market	n-market
-1696	K	ミス	mistake	n-mistake
-1697	K	ミルク	milk
 1698	K	メッセージ	message	n-message
 1699	S	メモ	note; memo
 1700	K	メンバー	member	n-member
@@ -1489,7 +1400,6 @@
 1706	K	ロケット	rocket
 1707	K	ワイン	wine	n-alcohol
 1708	N	{一|いっ}{種|しゅ}	a kind; a sort	n-type
-1709	F	{一|いっ}{層|そう}	even more	e-evenmore
 1710	F	{一|いっ}{体|たい}	on earth (strong question)
 1711	F	{今|いま}に	before long; soon	e-soon
 1712	F	{急|きゅう}に	suddenly	e-suddenly
@@ -1501,19 +1411,14 @@
 1718	F	{少|すこ}しも	not at all (with negative)	e-notatall
 1719	F	{多|た}{少|しょう}	somewhat; a little	e-alittle
 1720	F	とんとん	tap tap (knocking sound)
-1721	N	{木|もく}{曜|よう}	Thursday	n-weekday
 1722	N	{夕|ゆう}べ	last night; evening	n-night
 1723	N	{夜|よ}{中|なか}	middle of the night	n-night
 1724	N	{今|こん}{日|にち}	today; nowadays	n-now
 1725	F	あちこち	here and there	e-everywhere
-1726	X	ありがとう	thank you
 1727	F	あるいは	or; perhaps	e-or
 1728	F	あんまり	not very (with negative); too much
 1729	I	いけない	bad; must not	e-nogood
 1730	S	いたずら	mischief; prank
-1731	X	いただきます	(said before eating)
-1732	F	いつか	someday; sometime	e-soon
-1733	F	いつでも	anytime	e-always
 1734	F	いつのまにか	before I knew it
 1735	F	いつまでも	forever	e-always
 1736	F	いよいよ	at last; finally	e-finally
@@ -1522,7 +1427,6 @@
 1739	F	うっかり	carelessly; absent-mindedly	e-absent
 1740	X	おかしな	strange; funny
 1741	N	おしまい	the end; finishing
-1742	X	おめでとう	congratulations
 1743	F	かなり	fairly; quite	e-quite
 1744	X	かもしれない	might; maybe
 1745	I	かゆい	itchy
@@ -1537,8 +1441,6 @@
 1754	F	ことによると	possibly; perhaps	e-perhaps
 1755	X	これら	these
 1756	F	こんなに	this much; so	e-somuch
-1757	X	こんにちは	hello (daytime)
-1758	X	ごめんなさい	I am sorry	e-sorry
 1759	F	さすが	as expected
 1760	F	さっぱり	feeling refreshed; not at all (with negative)	e-notatall
 1761	F	さて	well; now (changing the topic)	e-bytheway
@@ -1554,7 +1456,6 @@
 1771	F	すくなくとも	at least
 1772	I	すっぱい	sour
 1773	A	すてき	lovely; wonderful	e-splendid
-1774	X	すみません	sorry; excuse me	e-sorry
 1775	F	ずっと	all the time; much (more)	e-always
 1776	F	せっかく	taking the trouble (to do)
 1777	F	そこで	so; therefore	e-therefore
@@ -1576,7 +1477,6 @@
 1793	X	ちょうだい	please give me (casual)
 1794	F	つまり	in other words	e-inshort
 1795	F	できれば	if possible	e-ifpossible
-1796	X	と	and (particle)
 1797	F	ところが	but; however (unexpectedly)	e-but
 1798	F	ところで	by the way	e-bytheway
 1799	F	とっくに	long ago; already	e-already
@@ -1585,12 +1485,10 @@
 1802	X	どうぞよろしく	nice to meet you; please treat me well	e-regards
 1803	F	どこか	somewhere
 1804	F	どんなに	however much; how much
-1805	F	なにも	(not) anything; nothing
 1806	F	なるべく	as much as possible	e-ifpossible
 1807	F	にっこり	smiling sweetly
 1808	F	のんびり	relaxed; without hurry
 1809	X	はあ	(sound) huh?; sigh
-1810	N	はさみ	scissors
 1811	A	ばらばら	in pieces; separate
 1812	F	ぴったり	exactly; fitting perfectly	e-exactly
 1813	A	ぺらぺら	fluent (in a language)
@@ -1603,13 +1501,9 @@
 1820	F	まるで	just as if
 1821	I	もったいない	wasteful; too good to waste	e-waste
 1822	F	ようやく	finally; at last	e-finally
-1823	X	より	than; from (particle)
-1824	X	よろしく	best regards; please treat me well	e-regards
 1825	A	わがまま	selfish; willful
 1826	X	〜{観|かん}	view of ~; ~ outlook
 1827	X	〜{側|がわ}	~ side; side of ~
 1828	X	〜{産|さん}	made in ~; product of ~	e-madein
-1829	X	〜{製|せい}	made by ~; made of ~	e-madein
 1830	X	〜{敗|はい}	~ losses (counter)
-1831	X	〜{費|ひ}	~ expenses; ~ fee
 1832	X	〜{列|れつ}{目|め}	~th row; ~th column

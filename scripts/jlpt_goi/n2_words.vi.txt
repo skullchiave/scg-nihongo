@@ -2842,3 +2842,20 @@
 3333	sự triệt để
 3334	sự dao động, xao động
 3335	dây thừng
+
+3336	lừa
+3337	kế thừa; nối nghiệp
+3338	hái
+3339	tan chảy; hòa tan
+3340	tránh sang một bên
+3341	đặt lên; đăng (báo)
+3342	nhìn trộm; ngó
+3343	được đăng (trên báo)
+3344	tình cờ thấy
+3345	phòng đọc sách; phòng làm việc
+3346	triết học
+3347	trợ từ
+3348	khắp nơi
+3349	học được (kỹ năng); mặc, đeo
+3350	đêm
+3351	càng thêm, hơn hẳn

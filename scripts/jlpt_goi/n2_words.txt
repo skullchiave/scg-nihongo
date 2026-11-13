@@ -2842,3 +2842,19 @@
 3333	S	{徹|てっ}{底|てい}	thoroughness
 3334	S	{動|どう}{揺|よう}	being shaken, upset
 3335	N	{縄|なわ}	rope
+3336	V	だます	to cheat; to trick
+3337	V	{継|つ}ぐ	to succeed; to inherit
+3338	V	{摘|つ}む	to pick; to pluck
+3339	V	{溶|と}ける	to melt; to dissolve
+3340	V	どく	to move aside
+3341	V	{載|の}せる	to put on; to publish
+3342	V	のぞく	to peek
+3343	V	{載|の}る	to appear (in print)
+3344	V	{見|み}{掛|か}ける	to happen to see, to notice
+3345	N	{書|しょ}{斎|さい}	study (room), den
+3346	N	{哲|てつ}{学|がく}	philosophy
+3347	N	{助|じょ}{詞|し}	particle (grammar)
+3348	F	{方|ほう}{々|ぼう}	here and there, everywhere
+3349	V	{身|み}につける	to acquire (a skill); to put on (clothes)
+3350	N	{夜|よ}	night
+3351	F	{一|いっ}{層|そう}	even more
