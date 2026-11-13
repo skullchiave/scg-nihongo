@@ -674,7 +674,6 @@
 828	N	{後|こう}{者|しゃ}	the latter
 830	S	{行|こう}{動|どう}	action, behavior	s-active
 831	N	{後|こう}{輩|はい}	junior (at school or work)
-833	N	{工|こう}{場|ば}	factory
 834	N	{幸|こう}{福|ふく}	happiness
 836	S	{興|こう}{奮|ふん}	excitement	s-nervous
 837	N	{候|こう}{補|ほ}	candidate

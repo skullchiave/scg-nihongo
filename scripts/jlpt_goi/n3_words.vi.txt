@@ -674,7 +674,6 @@
 828	vế sau, cái sau
 830	hành động
 831	đàn em (khóa dưới)
-833	nhà máy
 834	niềm hạnh phúc
 836	phấn khích
 837	ứng viên
