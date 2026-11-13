@@ -1,0 +1,272 @@
+3	1	(trời) sáng, hết đêm
+3	2	(năm mới) bắt đầu, sang năm
+5	1	giơ (tay)
+5	2	đưa ra (ví dụ)
+13	1	trúng, va vào
+13	2	trúng (thưởng)
+13	3	(nắng) chiếu vào
+19	1	xuất hiện, lộ diện
+19	2	lộ ra (bộ mặt thật)
+41	1	có thể xảy ra
+41	2	có thể (trở thành)
+46	1	gánh vác (trách nhiệm)
+46	2	bị (thương)
+47	1	đáp ứng, nhận (lời)
+47	2	tùy theo, phù hợp với
+54	1	lấy xuống, hạ xuống
+54	2	rút (tiền)
+63	1	… là nhất
+63	2	chưa chắc, không hẳn là
+64	1	gãi
+64	2	đổ (mồ hôi)
+64	3	bị xấu hổ, mất mặt
+65	1	thiếu, bỏ sót
+65	2	không thể thiếu
+81	1	khát (khô cổ)
+90	1	lập (nhóm)
+90	2	bắt chéo (chân)
+90	3	sắp xếp (lịch trình)
+102	1	vượt qua (núi)
+102	2	chuyển nhà
+115	1	(ánh sáng) chiếu vào
+115	2	che ô (dù)
+115	3	nhỏ (thuốc mắt)
+118	1	thức giấc, mở mắt dậy
+120	1	tỉnh giấc (tự thức dậy)
+125	1	chiếm (chỗ)
+125	2	chiếm (tỉ lệ)
+129	1	vượt trội, tốt hơn
+129	2	xuất sắc, giỏi
+137	1	dọc theo
+137	2	theo, tuân theo
+140	1	chuẩn bị (cho), phòng bị
+140	2	được trang bị
+162	1	(người khác) hiểu được
+162	2	(điện thoại) gọi được
+162	3	dẫn tới, thông tới
+166	1	dính vào
+166	2	học được, thành thạo
+166	3	nhận ra
+167	1	làm (công việc), nhận việc
+167	2	vào (chỗ ngồi)
+184	1	cho (ai) đi qua
+184	2	thông qua (ai)
+184	3	đọc qua, xem lướt
+192	1	đưa ra (bàn), đề cập
+192	2	tịch thu, lấy đi (của ai)
+211	1	làm ơn cho (tôi) …
+211	2	cầu mong
+217	1	ngoại trừ
+217	2	trừ ra, không kể
+236	1	bị tuột, bung ra
+236	2	trượt, không trúng (xổ số)
+236	3	sai (dự báo)
+241	1	để (râu)
+280	1	quay về phía, hướng về
+280	2	phù hợp (với)
+299	1	say (rượu)
+299	2	say (xe)
+317	1	liên quan đến, về
+317	2	về (việc)
+331	1	bị ảnh hưởng, bị chi phối
+331	2	trái phải, hai bên
+393	1	phổ biến, thông thường
+393	2	nhìn chung, thường thì
+396	1	đường cao tốc
+396	2	xe buýt cao tốc
+414	1	một lúc, có lúc
+414	2	tạm thời
+423	1	kế toán
+423	2	thanh toán, tính tiền (ở quán)
+443	1	… tuần
+473	1	thư viện
+473	2	phòng thư viện (ở trường)
+495	1	trúng thưởng
+495	2	mỗi (người)
+505	1	một ngày nọ
+505	2	một người nọ, có người
+544	1	kể từ khi
+544	2	kể từ đó
+565	1	áo khoác
+565	2	giày đi trong nhà
+567	1	vận may (tốt)
+567	2	vận số (xui)
+609	1	bài (trong sách)
+609	2	phòng, ban (trong công ty)
+617	1	người phụ trách
+617	2	nhân viên lễ tân
+626	1	qua loa, cẩu thả
+626	2	độ mặn
+631	1	ơn (người khác nợ mình)
+631	2	cho vay và mượn
+632	1	bánh kẹo
+654	1	món nợ ân tình (mình nợ người)
+654	2	(trả) ơn đã nhận
+675	1	cảm giác
+675	2	ấn tượng (tốt), thái độ dễ chịu
+677	1	tính tiền, hóa đơn
+677	2	đếm (tiền)
+700	1	tâm trạng (vui)
+700	2	tâm trạng (xấu), cáu kỉnh
+704	1	vải
+704	2	bột nhào
+733	1	bưu điện
+733	2	đài truyền hình
+737	1	một miếng, một lát
+737	2	hết (thời gian)
+751	1	cách cư xử (lễ phép)
+751	2	cách cư xử (bất lịch sự)
+760	1	dốc xuống
+760	2	(tàu) chiều đi xa thành phố
+764	1	cuối (năm)
+764	2	hoàng hôn, chiều tối
+774	1	kinh tế (tốt), làm ăn thuận lợi
+774	2	kinh tế (xấu), suy thoái
+777	1	bảng thông báo
+777	2	dán (thông báo)
+778	1	điện thoại di động
+778	2	mang theo (người)
+796	1	vụ việc, chuyện
+796	2	(đơn vị đếm) … thư, … việc
+824	1	vé máy bay
+824	2	hãng hàng không
+867	1	chuyến tàu cuối
+867	2	ngày cuối cùng
+883	1	tiền giấy
+883	2	tờ 1.000 yên
+894	1	có ích (để tham khảo)
+894	2	(dùng để) tham khảo
+899	1	ông/bà (sau tên, trang trọng)
+917	1	ngay khi (đến)
+917	2	tùy vào …
+1000	1	tự giới thiệu
+1011	1	cửa tự động
+1011	2	một cách tự động
+1026	1	lần lượt, theo thứ tự
+1026	2	thứ tự (từ … đến …)
+1046	1	nhân tạo
+1046	2	trí tuệ nhân tạo (AI)
+1052	1	(bồn cầu) xả nước
+1054	1	vài ngày
+1054	2	vài người
+1065	1	tại, do (điều xấu)
+1065	2	(là) lỗi của …
+1089	1	kinh nguyệt
+1112	1	toàn quốc, khắp cả nước
+1112	2	toàn thế giới
+1126	1	khá, rất
+1126	2	tương đương
+1144	1	(không) có gì to tát
+1144	2	(không) nghiêm trọng
+1156	1	lẫn nhau
+1156	2	(cả hai) như nhau thôi
+1159	1	miễn phí
+1159	2	chỉ là (bình thường)
+1159	3	có điều, chỉ có điều
+1163	1	chỉ, vỏn vẹn
+1163	2	vừa mới
+1164	1	(thời gian) trôi
+1164	2	đã qua (… năm)
+1166	1	dựng (đứng), dựng lên
+1166	2	lập (kế hoạch)
+1166	3	gây (tiếng ồn)
+1178	1	thử
+1178	2	dùng thử
+1180	1	tín chỉ
+1180	2	đơn vị (đo)
+1186	1	rất thích
+1186	2	vấn đề lớn
+1198	1	chắc chắn là
+1206	1	trà
+1206	2	trà xanh
+1242	1	vé tháng
+1242	2	định kỳ, đều đặn
+1244	1	khoảng …
+1244	2	ở mức độ nào đó
+1260	1	điện tử (lò vi sóng)
+1260	2	từ điển điện tử
+1280	1	cùng với
+1286	1	(giữa) … với nhau
+1288	1	đồng thời, cùng lúc
+1300	1	quan hệ (thân thiết)
+1300	2	quan hệ (không hợp)
+1318	1	(xoay xở) bằng cách nào đó
+1318	2	(rồi sẽ) ổn thôi
+1331	1	… năm (trong suốt)
+1331	2	hằng năm, cả năm
+1363	1	tức giận
+1363	2	đói bụng
+1374	1	gấp … lần
+1387	1	rất, cực kỳ
+1387	2	(lối thoát) khẩn cấp
+1403	1	hơi, tinh tế
+1403	2	tạm được, không hay lắm
+1403	3	chưa chắc, khó nói
+1423	1	giả vờ (ngủ)
+1423	2	giả vờ (không biết)
+1436	1	(không) đặc biệt
+1436	2	không có gì (đáp cộc lốc)
+1438	1	(phía) … hơn (khi so sánh)
+1438	2	nên (làm) thì hơn
+1472	1	hoàn toàn
+1472	2	(không) chút nào
+1491	1	(đi) đón
+1491	2	(đến) đón
+1492	1	hướng
+1492	2	dành cho …
+1497	1	say mê
+1497	2	cuống cuồng, hết sức
+1504	1	phiền (cho người khác)
+1504	2	sự phiền hà (lịch sự)
+1506	1	hiếm khi
+1510	1	xin lỗi (trang trọng)
+1510	2	áy náy
+1515	1	đương nhiên, dễ hiểu
+1515	2	tuy vậy, nhưng mà
+1572	1	lời cảm ơn
+1572	2	cúi chào
+1603	1	vượt quá
+1603	2	phóng đại, quá lố
+1605	1	bìa bọc
+1605	2	bù đắp, hỗ trợ
+1619	1	đường chạy, lộ trình
+1619	2	(bữa ăn) theo set nhiều món
+1621	1	dây điện
+1621	2	mã số
+1632	1	kiểu dáng
+1632	2	vóc dáng
+1644	1	lịch chạy tàu
+1644	2	kim cương
+1673	1	đỗ, qua (kỳ thi)
+1673	2	vé, thẻ (đi tàu xe)
+1673	3	chuyền (bóng)
+1681	1	cộng
+1681	2	điểm cộng, lợi thế
+1692	1	trừ
+1692	2	bị trừ (điểm), bất lợi
+1710	1	rốt cuộc (cái gì)
+1710	2	rốt cuộc (làm sao)
+1718	1	(không) một chút nào
+1727	1	hoặc
+1727	2	có lẽ
+1728	1	(không) lắm
+1728	2	quá nhiều
+1729	1	không được
+1729	2	phải
+1750	1	chật
+1750	2	vất vả, cực
+1760	1	sảng khoái
+1760	2	hoàn toàn (không)
+1767	1	cất (đi)
+1767	2	(làm) xong hết
+1767	3	lỡ (làm)
+1776	1	mất công
+1776	2	hiếm có, quý giá (cơ hội)
+1787	1	cho dù
+1791	1	tại vì (bào chữa)
+1791	2	ngay cả
+1801	1	nhất định, bằng mọi giá
+1801	2	thế nào cũng (không)
+1804	1	dù … đến đâu
+1820	1	cứ như là
+1820	2	y như
