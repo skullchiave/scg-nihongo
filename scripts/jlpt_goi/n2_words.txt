@@ -352,7 +352,6 @@
 450	S	{発|はつ}{売|ばい}	release for sale	s-business
 451	S	{発|はつ}{明|めい}	invention	s-discover
 452	S	{反|はん}{抗|こう}	rebellion, defiance	s-defy
-455	X	バイバイ	bye-bye	e-bye
 456	X	ばかにする	to make fun of
 457	V	{罰|ばっ}する	to punish
 459	S	{否|ひ}{決|けつ}	rejection (by a vote)	s-deny
@@ -2222,7 +2221,6 @@
 2681	K	カルテ	medical record (chart)
 2682	K	カロリー	calorie
 2683	K	カーブ	curve (in a road)
-2684	K	ガム	chewing gum
 2685	K	ガムテープ	packing tape
 2686	K	ガードレール	guardrail
 2687	K	キャッシュ	cash
@@ -2259,7 +2257,6 @@
 2722	K	ジャングル	jungle
 2723	K	ジャンル	genre
 2724	K	ジャーナリスト	journalist
-2725	K	スイカ	watermelon
 2726	K	スカーフ	scarf	nb-scarf
 2727	K	スクール	school (for lessons)
 2728	K	スタッフ	staff member
@@ -2272,7 +2269,6 @@
 2736	K	スペース	space; room
 2737	K	スマート	smart; stylish; slim
 2738	K	スライド	slide (presentation)
-2739	K	スリッパ	slippers
 2740	K	セメント	cement	nb-cement
 2741	K	センター	center
 2742	K	ゼミ	seminar (university class)
@@ -2301,14 +2297,12 @@
 2770	K	パイプ	pipe
 2771	K	パスワード	password
 2772	K	パターン	pattern
-2773	K	パンツ	underpants; pants
 2774	K	ヒント	hint
 2775	K	ビジネス	business
 2776	K	ビジネスマン	businessman	nb-office-worker
 2777	K	ビタミン	vitamin
 2778	K	ビニール	vinyl; plastic (bag)	nb-plastic
 2780	K	ピストル	pistol
-2781	K	ピンク	pink
 2782	K	ピーク	peak
 2783	K	フライパン	frying pan
 2784	K	フリー	free (independent, not tied)

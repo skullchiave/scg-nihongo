@@ -352,7 +352,6 @@
 450	bán ra thị trường
 451	phát minh
 452	phản kháng
-455	tạm biệt (bye-bye)
 456	coi thường; chế giễu
 457	phạt; trừng phạt
 459	bác bỏ (bằng biểu quyết)
@@ -2222,7 +2221,6 @@
 2681	hồ sơ bệnh án
 2682	calo
 2683	khúc cua (đường)
-2684	kẹo cao su
 2685	băng keo đóng gói
 2686	lan can đường
 2687	tiền mặt
@@ -2259,7 +2257,6 @@
 2722	rừng nhiệt đới
 2723	thể loại
 2724	nhà báo
-2725	dưa hấu
 2726	khăn choàng (thời trang)
 2727	trường dạy (kỹ năng); lớp học
 2728	nhân viên
@@ -2272,7 +2269,6 @@
 2736	khoảng trống; không gian
 2737	thanh lịch; gọn gàng; mảnh mai
 2738	trang trình chiếu
-2739	dép đi trong nhà
 2740	xi măng
 2741	trung tâm
 2742	lớp hội thảo (đại học)
@@ -2301,14 +2297,12 @@
 2770	ống dẫn
 2771	mật khẩu
 2772	mẫu; kiểu mẫu
-2773	quần lót; quần dài
 2774	gợi ý
 2775	kinh doanh
 2776	doanh nhân
 2777	vitamin
 2778	nhựa vinyl; túi ni-lông
 2780	súng ngắn
-2781	màu hồng
 2782	đỉnh điểm
 2783	chảo rán
 2784	tự do (không phụ thuộc)

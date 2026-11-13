@@ -785,3 +785,101 @@
 785	F	{随|ずい}{分|ぶん}	very, quite, considerably
 786	X	〜{中|ちゅう}	during, in the middle of
 787	N	{博|はく}{物|ぶつ}{館|かん}	museum
+788	V	{炒|いた}める	to stir-fry
+789	I	{温|あたた}かい	warm (things, feelings)
+790	N	{胃|い}	stomach
+791	N	{行|い}き	going, bound for
+792	S	{印|いん}{刷|さつ}	printing
+793	V	{落|お}ち{着|つ}く	to calm down; to settle down
+794	S	{確|かく}{認|にん}	confirmation
+795	N	{家|か}{事|じ}	housework
+796	N	{環|かん}{境|きょう}	environment
+797	N	{画|が}{家|か}	painter; artist
+798	N	{気|き}{温|おん}	air temperature
+799	N	{金|きん}{額|がく}	amount of money
+800	N	{結|けっ}{果|か}	result
+801	N	{煙|けむり}	smoke
+802	S	{検|けん}{査|さ}	inspection, test
+803	N	{氷|こおり}	ice
+804	S	{合|ごう}{格|かく}	passing (an exam)
+805	S	{参|さん}{加|か}	participation
+806	A	{幸|しあわ}せ	happy
+807	N	{締|し}め{切|き}り	deadline
+808	S	{修|しゅう}{理|り}	repair
+809	N	{自|じ}{信|しん}	self-confidence
+810	F	{実|じつ}は	actually, to tell the truth
+811	N	{順|じゅん}{番|ばん}	turn, order
+812	S	{整|せい}{理|り}	sorting out, tidying up
+813	F	{絶|ぜっ}{対|たい}	absolutely, definitely
+814	N	{体|たい}{重|じゅう}	body weight
+815	S	{代|だい}{表|ひょう}	representing; representative
+816	S	{注|ちゅう}{文|もん}	order (e.g. food, goods)
+817	N	{調|ちょう}{子|し}	condition (of health or a machine)
+818	S	{貯|ちょ}{金|きん}	savings
+819	S	{通|つう}{勤|きん}	commuting to work
+820	N	{手|て}{伝|つだ}い	help; helper
+821	S	{到|とう}{着|ちゃく}	arrival
+822	S	{登|と}{山|ざん}	mountain climbing
+823	N	{鍋|なべ}	pot (for cooking)
+824	N	{波|なみ}	wave
+825	N	{針|はり}	needle, hand (of a clock)
+826	N	{膝|ひざ}	knee, lap
+827	N	{袋|ふくろ}	bag
+828	N	{分|ぶん}	share, portion, amount
+829	S	{変|へん}{更|こう}	change (of a plan), alteration
+830	S	{報|ほう}{告|こく}	report
+831	N	{方|ほう}{法|ほう}	method, way
+832	S	{保|ほ}{存|ぞん}	saving, preserving
+833	N	{街|まち}	town, street (busy area)
+834	N	{豆|まめ}	beans
+835	A	{面|めん}{倒|どう}	troublesome, a bother
+836	N	{目|もく}{標|ひょう}	goal, target
+837	N	{行|ゆ}き	bound for (a place)
+838	S	{理|り}{解|かい}	understanding
+839	N	{量|りょう}	amount
+840	K	グループ	group
+841	S	コーチ	coaching; coach
+842	S	サービス	service; free extra
+843	K	ショック	shock
+844	K	スイッチ	switch
+845	K	スケジュール	schedule
+846	S	セット	setting; set
+847	K	チャンス	chance
+848	K	プロ	professional
+849	K	ベンチ	bench
+850	K	マイク	microphone
+851	S	メモ	note; memo
+852	K	レベル	level
+853	F	{急|きゅう}に	suddenly
+854	N	{今|こん}{後|ご}	from now on
+855	N	{夕|ゆう}べ	last night; evening
+856	I	かゆい	itchy
+857	F	しかも	moreover
+858	F	ずっと	all the time; much (more)
+859	X	はあ	(sound) huh?; sigh
+860	F	まあ	well; so-so
+861	F	まあまあ	so-so; not bad
+862	F	まだまだ	still; not yet
+863	K	アルバム	album; photo album
+864	K	クリーム	cream
+865	K	ジーンズ	jeans
+866	K	ソファー	sofa
+867	K	ドラマ	drama; TV drama
+868	S	ドライブ	driving trip (for fun)
+869	S	ハイキング	hiking
+870	K	ピクニック	picnic
+871	K	テント	tent
+872	K	トラック	truck
+873	K	ドレス	dress (formal)
+874	S	ノック	knocking (on a door)
+875	K	バイオリン	violin
+876	K	ボート	small boat; rowboat
+877	K	ヨーロッパ	Europe
+878	K	スピード	speed
+879	K	チャイム	chime; bell
+880	K	メッセージ	message
+881	K	メンバー	member
+882	S	キャンセル	cancellation
+883	K	ウイスキー	whiskey
+884	K	トンネル	tunnel
+885	N	トラ	tiger

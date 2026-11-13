@@ -786,3 +786,103 @@
 785	rất; khá; khá nhiều
 786	đang …, trong lúc …
 787	viện bảo tàng
+
+788	xào
+789	ấm áp (đồ vật, tình cảm)
+790	dạ dày
+791	lượt đi; (tàu xe) đi …
+792	in ấn
+793	bình tĩnh lại; ổn định chỗ ở
+794	xác nhận
+795	việc nhà
+796	môi trường
+797	họa sĩ
+798	nhiệt độ không khí
+799	số tiền
+800	kết quả
+801	khói
+802	kiểm tra, xét nghiệm
+803	nước đá; băng
+804	đỗ (kỳ thi)
+805	tham gia
+806	hạnh phúc
+807	hạn chót
+808	sửa chữa
+809	sự tự tin
+810	thật ra, nói thật là
+811	lượt, thứ tự lần lượt
+812	sắp xếp, dọn dẹp
+813	tuyệt đối
+814	cân nặng
+815	đại diện
+816	đặt hàng, gọi món
+817	tình trạng (cơ thể, máy móc)
+818	để dành tiền, tiền dành dụm
+819	đi làm (đi lại hằng ngày)
+820	sự giúp đỡ; người giúp
+821	sự đến nơi
+822	leo núi
+823	nồi
+824	sóng
+825	kim; kim đồng hồ
+826	đầu gối
+827	túi, bao
+828	phần, lượng
+829	sự thay đổi (kế hoạch), sửa đổi
+830	báo cáo
+831	phương pháp
+832	việc lưu giữ, bảo quản
+833	phố, khu phố
+834	đậu
+835	rắc rối, phiền hà
+836	mục tiêu
+837	đi … (hướng đến nơi nào)
+838	sự hiểu, lý giải
+839	lượng
+840	nhóm
+841	huấn luyện viên; việc dẫn dắt
+842	dịch vụ; tặng thêm miễn phí
+843	cú sốc
+844	công tắc
+845	lịch trình
+846	việc cài đặt; bộ
+847	cơ hội
+848	chuyên nghiệp
+849	ghế dài
+850	micro
+851	ghi chú
+852	trình độ, cấp độ
+853	đột nhiên
+854	từ nay về sau
+855	tối qua; buổi tối
+856	ngứa
+857	hơn nữa, vả lại
+858	suốt; hơn nhiều
+859	hả?; tiếng thở dài
+860	thôi thì; ừm
+861	tàm tạm, không tệ
+862	vẫn còn (chưa)
+
+863	album; album ảnh
+864	kem tươi (nguyên liệu)
+865	quần jean
+866	ghế sofa
+867	phim truyền hình; kịch
+868	đi chơi bằng xe, lái xe dạo
+869	đi bộ đường dài
+870	đi dã ngoại
+871	lều
+872	xe tải
+873	váy dạ hội (trang trọng)
+874	việc gõ cửa
+875	đàn vi-ô-lông
+876	thuyền nhỏ; thuyền chèo
+877	châu Âu
+878	tốc độ
+879	chuông báo
+880	lời nhắn
+881	thành viên
+882	hủy
+883	rượu whisky
+884	đường hầm
+885	hổ
