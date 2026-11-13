@@ -620,3 +620,58 @@
 619	cậu (thân mật, nam dùng)
 620	như thế, kiểu như vậy
 621	tớ, tôi (nam dùng)
+622	chiến tranh
+623	không được; vô dụng
+624	sinh vật
+625	vội, gấp
+626	được gặp (khiêm nhường)
+627	ca sĩ
+628	vai
+629	dọn dẹp, sắp xếp
+630	chiến thắng
+631	có thể (khả năng)
+632	tóc
+633	suy nghĩ, ý kiến
+634	cấm hút thuốc
+635	cấm
+636	vắng mặt
+637	khỏe mạnh
+638	tiền mặt
+639	hoa anh đào
+640	thiên nhiên
+641	thông tin
+642	thành tích, kết quả
+643	tiền thuế
+644	câu cá; tiền thối lại
+645	không có
+646	tại sao
+647	cái gì cũng
+648	sự được ưa chuộng
+649	giây
+650	câu
+651	lễ hội
+652	việc thăm người bệnh
+653	tương lai
+654	phỏng vấn (tuyển chọn)
+655	tiền thuê nhà
+656	phí; giá vé
+657	kem (ăn lạnh)
+658	khảo sát; bảng câu hỏi
+659	sự kiện
+660	phỏng vấn (báo chí)
+661	văn phòng
+662	đích; bàn thắng
+663	trượt tuyết
+664	khăn bông (khăn mặt, khăn tắm)
+665	khiêu vũ
+666	đội
+667	hẹn hò
+668	tập luyện
+669	đẹp trai
+670	hộ chiếu
+671	sơ suất (lỗi nhỏ)
+672	một lúc nào đó
+673	lúc nào cũng được
+674	chúc mừng
+675	do … chế tạo; làm bằng …
+676	phí …

@@ -620,3 +620,58 @@
 619	X	{君|きみ}	you (casual, used by men)
 620	X	そんな	such, that kind of	such
 621	X	{僕|ぼく}	I (used by men and boys)
+622	N	{戦|せん}{争|そう}	war
+623	A	{駄|だ}{目|め}	no good, not allowed
+624	N	{生|い}き{物|もの}	living thing, creature
+625	V	{急|いそ}ぐ	to hurry
+626	V	お{目|め}にかかる	to meet (humble)
+627	N	{歌|か}{手|しゅ}	singer
+628	N	{肩|かた}	shoulder
+629	N	{片|かた}{付|づ}け	tidying up
+630	N	{勝|か}ち	win; victory
+631	A	{可|か}{能|のう}	possible
+632	N	{髪|かみ}の{毛|け}	hair (on the head)
+633	N	{考|かんが}え	idea; thought
+634	S	{禁|きん}{煙|えん}	no smoking
+635	S	{禁|きん}{止|し}	prohibition; ban
+636	S	{欠|けっ}{席|せき}	absence
+637	A	{健|けん}{康|こう}	healthy
+638	N	{現|げん}{金|きん}	cash
+639	N	{桜|さくら}	cherry blossom
+640	N	{自|し}{然|ぜん}	nature
+641	N	{情|じょう}{報|ほう}	information
+642	N	{成|せい}{績|せき}	grades, results
+643	N	{税|ぜい}{金|きん}	tax
+644	N	{釣|つ}り	fishing; change (money back)
+645	N	なし	none, without
+646	F	{何|なん}で	why
+647	F	{何|なん}でも	anything, everything
+648	N	{人|にん}{気|き}	popularity
+649	X	{秒|びょう}	second (unit of time)
+650	N	{文|ぶん}	sentence
+651	N	{祭|まつ}り	festival
+652	N	{見|み}{舞|ま}い	visit to a sick person
+653	N	{未|み}{来|らい}	future
+654	S	{面|めん}{接|せつ}	interview
+655	N	{家|や}{賃|ちん}	rent
+656	N	{料|りょう}{金|きん}	fee; fare
+657	K	アイスクリーム	ice cream
+658	K	アンケート	survey; questionnaire
+659	K	イベント	event
+660	S	インタビュー	interview
+661	K	オフィス	office
+662	K	ゴール	goal
+663	S	スキー	skiing
+664	K	タオル	towel
+665	K	ダンス	dance
+666	K	チーム	team
+667	S	デート	date (romantic)
+668	S	トレーニング	training
+669	A	ハンサム	handsome
+670	K	パスポート	passport
+671	K	ミス	mistake
+672	F	いつか	someday; sometime
+673	F	いつでも	anytime
+674	X	おめでとう	congratulations
+675	X	〜{製|せい}	made by ~; made of ~
+676	X	〜{費|ひ}	~ expenses; ~ fee
