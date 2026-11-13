@@ -400,7 +400,12 @@ function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.flo
 
 /* ---------- 効果音（サイト共通） ---------- */
 let actx=null;
-function ac(){ if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); return actx; }
+function ac(){ if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)(); if(actx.state!=="running") actx.resume(); return actx; }
+// スマホで ほかのページ・アプリに行って もどると、音の出口（AudioContext）が止まったままになり 音が出なくなる（iPhone は "interrupted" になり resume がきかない）
+//   → もどってきたら捨てる。次に答えをタップした時に 作り直す
+function acReset(){ if(actx){ try{ actx.close(); }catch(e){} actx=null; } }
+addEventListener('pageshow', e=>{ if(e.persisted) acReset(); });
+document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') acReset(); });
 function tone(freq,delay,dur,type,vol){
   const a=ac(), t=a.currentTime+delay, o=a.createOscillator(), g=a.createGain();
   o.type=type; o.frequency.value=freq;
@@ -461,8 +466,15 @@ function optHTML(x){ return qt==='c' ? ruby(x.c) : qt==='m' ? trH(x) : qt==='y' 
 // 例文：【 】の所を 空所（問題）／答え（答えた後）にする
 const czAns = z => (z[0].match(/【([^】]*)】/)||['',''])[1];
 //   文は 分かち書きの切れ目（半角スペース）でだけ 行を分ける（ことばの途中で切れないように、切れ目ごとに .ch で包む）
-const czCh = t => t.split(' ').filter(x=>x).map(x=>'<span class="ch">'+ruby(x)+'</span>').join(' ');
-const czSent = (z,fill) => czCh(z[0].replace(/【[^】]*】/,'\u0001')).replace('\u0001', fill ? '<span class="fill">'+czCh(czAns(z))+'</span>' : '<span class="blank">　</span>');
+// 文節（空白で分けた かたまり）ごとに .ch で包み、かたまりの中では行を分けない。
+//   答えが2文節以上の時（雨が 降り出した）は、答えの文節ごとに かたまりを分ける（1つにすると スマホで横にはみ出す）。前後の字（〜から、。）は はじめ・おわりの文節に付ける
+const czSent = (z,fill) => { const ans=czAns(z).split(' ').filter(x=>x);
+  return z[0].replace(/【[^】]*】/,'').split(' ').filter(x=>x).map(tok=>{
+    if(!tok.includes('')) return '<span class="ch">'+ruby(tok)+'</span>';
+    const pp=tok.split('');
+    if(!fill) return '<span class="ch">'+ruby(pp[0])+'<span class="blank">　</span>'+ruby(pp[1])+'</span>';
+    return ans.map((w,i)=>'<span class="ch">'+(i===0?ruby(pp[0]):'')+'<span class="fill">'+ruby(w)+'</span>'+(i===ans.length-1?ruby(pp[1]):'')+'</span>').join(' ');
+  }).join(' '); };
 function render(){
   cur=queue[pos]; answered=false;
   qt=pickType(cur);

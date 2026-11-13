@@ -69,7 +69,6 @@
 15	2	gõ (chữ)
 15	3	tiêm
 16	1	chép lại
-16	2	chụp (ảnh)
 20	1	gửi
 20	2	đưa tiễn (ai)
 31	1	đi xuống (cầu thang)
