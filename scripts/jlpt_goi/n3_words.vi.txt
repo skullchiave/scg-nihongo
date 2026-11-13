@@ -762,7 +762,6 @@
 1049	nhân loại
 1050	giấm
 1051	sự giới thiệu, tiến cử
-1052	xả nước (bồn cầu xả nước)
 1053	giấc ngủ
 1054	số lượng
 1055	con số, chữ số
@@ -791,7 +790,6 @@
 1085	sinh vật
 1086	sự sống, sinh mệnh
 1087	họ và tên
-1089	kinh nguyệt; sinh lý
 1090	than đá
 1091	trách nhiệm
 1092	dầu mỏ

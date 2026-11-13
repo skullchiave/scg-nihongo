@@ -367,7 +367,7 @@
 491	S	{握|あく}{手|しゅ}	handshake
 492	N	{汗|あせ}	sweat
 494	N	{辺|あた}り	around here, neighborhood
-495	N	{当|あた}り	hit, success
+495	N	{当|あ}たり	hit, success
 496	N	{跡|あと}	mark, trace	n-mark
 497	N	{穴|あな}	hole
 498	N	{油|あぶら}	oil	n-oil
@@ -762,7 +762,6 @@
 1049	N	{人|じん}{類|るい}	mankind, humanity	n-human
 1050	N	{酢|す}	vinegar
 1051	S	{推|すい}{薦|せん}	recommendation
-1052	N	{水|すい}{洗|せん}	flushing with water (flush toilet)
 1053	S	{睡|すい}{眠|みん}	sleep	s-sleep
 1054	N	{数|すう}	number (amount, count)	n-number
 1055	N	{数|すう}{字|じ}	number (figure), numeral	n-number
@@ -791,7 +790,6 @@
 1085	N	{生|せい}{物|ぶつ}	living thing	n-creature
 1086	N	{生|せい}{命|めい}	life (living existence)	n-life
 1087	N	{姓|せい}{名|めい}	full name	n-name
-1089	N	{生|せい}{理|り}	menstruation (period); physiology
 1090	N	{石|せき}{炭|たん}	coal
 1091	N	{責|せき}{任|にん}	responsibility	n-duty
 1092	N	{石|せき}{油|ゆ}	oil, petroleum	n-oil

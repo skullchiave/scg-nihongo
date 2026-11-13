@@ -26,8 +26,7 @@
 90	1	lập (nhóm)
 90	2	bắt chéo (chân)
 90	3	sắp xếp (lịch trình)
-102	1	vượt qua (núi)
-102	2	chuyển nhà
+102	1	chuyển nhà
 115	1	(ánh sáng) chiếu vào
 115	2	che ô (dù)
 115	3	nhỏ (thuốc mắt)
@@ -73,7 +72,6 @@
 393	1	phổ biến, thông thường
 393	2	nhìn chung, thường thì
 396	1	đường cao tốc
-396	2	xe buýt cao tốc
 414	1	một lúc, có lúc
 414	2	tạm thời
 423	1	kế toán
@@ -146,12 +144,10 @@
 1026	2	thứ tự (từ … đến …)
 1046	1	nhân tạo
 1046	2	trí tuệ nhân tạo (AI)
-1052	1	(bồn cầu) xả nước
 1054	1	vài ngày
 1054	2	vài người
 1065	1	tại, do (điều xấu)
 1065	2	(là) lỗi của …
-1089	1	kinh nguyệt
 1112	1	toàn quốc, khắp cả nước
 1112	2	toàn thế giới
 1126	1	khá, rất
