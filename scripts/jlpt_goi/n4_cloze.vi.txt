@@ -1,0 +1,147 @@
+83	1	dẫn (ai) đi
+83	2	dẫn (ai) đến
+101	1	giống
+51	1	đông (người)
+3	1	(chỗ) trống
+3	2	rảnh
+66	1	vắng (người)
+66	2	đói bụng
+50	1	trời tối
+137	1	(mưa) tạnh
+116	1	bắt đầu mưa
+33	1	đang đợi (khiêm nhường)
+9	1	xin nhờ (khiêm nhường)
+19	1	đến (tôn kính)
+340	1	cẩn thận
+340	2	nhận ra
+340	3	bận tâm; để ý
+506	1	có việc
+357	1	trong người không khỏe
+357	2	trong người khỏe hơn
+577	1	tiện; thuận tiện
+577	2	không tiện
+384	1	đành chịu; không còn cách nào
+384	2	cách (làm)
+512	1	thảo nào; hèn chi
+512	2	có lý do
+468	1	trường hợp
+338	1	thay cho
+282	1	trong suốt (thời gian)
+282	2	trong lúc
+301	1	sinh ra ở …
+333	1	ngầu; bảnh
+333	2	trang phục; cách ăn mặc
+379	1	biết (tôn kính)
+190	1	chăm sóc
+190	2	được giúp đỡ; mang ơn
+173	1	được mời (ăn)
+173	2	cảm ơn vì bữa ăn
+204	1	xem (khiêm nhường)
+194	1	sinh nhật
+206	1	ngắm hoa anh đào
+163	1	bị thương
+267	1	mong chờ
+267	2	niềm vui mong đợi
+275	1	sau một thời gian dài
+275	2	lâu rồi không gặp
+259	1	xin phép (vào/ra)
+259	2	xin lỗi, cho hỏi
+256	1	đột nhiên
+256	2	đột ngột; gấp
+266	1	chắc chắn
+266	2	nếu tôi nhớ không nhầm
+569	1	hoàn toàn không
+584	1	mãi không
+584	2	khá
+570	1	không … lắm
+595	1	nếu
+293	1	cách một ngày
+456	1	lần thứ …
+477	1	thứ … (số thứ tự)
+455	1	(nhà) … tầng
+458	1	sản xuất tại …
+2	1	đi lên
+2	2	tăng (giá)
+2	3	vào nhà
+10	1	nhận (khiêm nhường)
+10	2	xin phép ăn/uống (câu mời trước bữa ăn)
+15	1	đánh
+15	2	gõ (chữ)
+15	3	tiêm
+16	1	chép lại
+16	2	chụp (ảnh)
+20	1	gửi
+20	2	đưa tiễn (ai)
+31	1	đi xuống (cầu thang)
+31	2	xuống (núi)
+32	1	làm gãy (xương)
+32	2	gấp (giấy)
+85	1	chạy qua (ga)
+85	2	đi xuyên qua
+91	1	sửa (đồ hỏng)
+91	2	sửa (lỗi)
+111	1	mở (sách)
+111	2	tổ chức
+111	3	(hoa) nở
+122	1	quay; xoay
+122	2	đi một vòng (nhiều nơi)
+133	1	nướng (bằng lò)
+133	2	nướng (trên lửa)
+141	1	ghé qua
+141	2	xích lại gần
+65	1	qua (thời gian)
+65	2	đi qua (chỗ)
+65	3	(làm) quá nhiều
+67	1	tiến lên; đi tới
+67	2	(đồng hồ) chạy nhanh
+67	3	học lên
+126	1	đi về phía; hướng tới
+126	2	hướng về (bàn); ngồi vào
+4	1	cho; tặng
+4	2	giơ (tay)
+4	3	làm (gì) cho (người khác)
+132	1	nhận
+132	2	được (người khác) làm cho
+442	1	điểm (số)
+442	2	dấu phẩy
+442	3	điểm; mặt
+462	1	sốt
+462	2	nhiệt; hơi nóng
+471	1	ngày
+471	2	mặt trời; ánh nắng
+448	1	đường phố
+448	2	theo như
+448	3	đúng (theo)
+420	1	đường kẻ
+420	2	tuyến (tàu)
+364	1	đứa trẻ
+364	2	con (của động vật)
+428	1	loại; kiểu
+428	2	mẫu người (mình thích)
+546	1	làm bán thời gian
+546	2	phần; bè (trong nhóm nhạc)
+226	1	ngon
+226	2	giỏi
+226	3	suôn sẻ
+230	1	bất thường; lạ
+230	2	buồn cười
+235	1	nhỏ; vụn
+235	2	(tiền) lẻ
+235	3	chi tiết; tỉ mỉ
+238	1	tuyệt vời
+238	2	rất; cực kỳ
+244	1	dữ dội
+244	2	quá đáng
+244	3	nặng (bệnh)
+271	1	phù hợp
+271	2	qua loa; đại khái
+271	3	vừa phải (lượng)
+268	1	quan trọng
+268	2	giữ gìn sức khỏe nhé
+253	1	đầy; chật kín
+253	2	nhiều
+600	1	chậm rãi
+600	2	thong thả
+177	1	chắc; chặt
+177	2	đầy đủ
+177	3	chín chắn; đáng tin cậy

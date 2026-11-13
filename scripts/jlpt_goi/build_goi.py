@@ -41,6 +41,24 @@ if os.path.exists(f):
             assert shape.fullmatch(d), ('yomi 送りがなが正解とちがう', l, w)
             assert d not in yomi[RB.sub(r'\1', w)], ('yomi その語の別の読み', l)
         ydist[c[0]] = ds
+# 文の問題（空所に入る語をえらぶ）：<lv>_cloze.txt（番号<TAB>例文<TAB>まちがい1<TAB>まちがい2<TAB>まちがい3<TAB>その文での意味（英語））。
+#   例文は【 】の中が正解。1語に何行あってもよい（意味・使う形ごとに1行）。例文がある語は「いみ」「ことば」では出さず、文の問題で出す。
+#   その文での意味の訳：<lv>_cloze.<言語>.txt（番号<TAB>その語の中で何行目か（1から）<TAB>訳）。無ければ英語で出る。
+cloze = collections.defaultdict(list); f = os.path.join(HERE, lv + '_cloze.txt')
+if os.path.exists(f):
+    for l in open(f, encoding='utf-8').read().splitlines():
+        if not l.strip() or l.startswith('#'): continue
+        c = l.split('\t'); assert len(c) == 6 and c[0] in byno and all(x.strip() for x in c), ('cloze の行', l)
+        ans = re.findall(r'【([^】]*)】', c[1]); assert len(ans) == 1 and ans[0].strip(), ('cloze 【 】は1組', l)
+        assert len(set(c[2:5] + ans)) == 4, ('cloze 同じ選択肢がある', l)
+        for x in c[1:5]: assert not re.search(r'[一-龥]', RB.sub('', x)), ('cloze ルビの無い漢字', l)
+        cloze[c[0]].append([c[1], c[2], c[3], c[4], {'en': c[5].strip()}])
+    for g in glob.glob(os.path.join(HERE, lv + '_cloze.*.txt')):
+        code = os.path.basename(g).split('.')[1]
+        for l in open(g, encoding='utf-8').read().splitlines():
+            if not l.strip() or l.startswith('#'): continue
+            no, k, tr = l.split('\t')[:3]; assert no in cloze and 1 <= int(k) <= len(cloze[no]), ('cloze の訳の行', code, l)
+            cloze[no][int(k) - 1][4][code] = tr
 data = []; keys = collections.Counter(); order = 'VSIANKFX'; nny = 0
 for r in rows:
     assert len(r) in (4, 5), r
@@ -54,7 +72,8 @@ for r in rows:
         if d.get(no): m[code] = d[no]
     ny = no in noyomi or len(yomi[RB.sub(r'\1', w)]) > 1; nny += ny
     yd = None if ny else ydist.get(no)
-    data.append((order.index(cat), [cat, w, m if len(m) > 1 else en.strip()] + ([tag, 0, yd] if yd else [tag, 1] if ny else [tag] if tag else [])))
+    cz = [z[:4] + [z[4] if len(z[4]) > 1 else z[4]['en']] for z in cloze.get(no, [])]
+    data.append((order.index(cat), [cat, w, m if len(m) > 1 else en.strip()] + ([tag, 1 if ny else 0, yd, cz] if cz else [tag, 0, yd] if yd else [tag, 1] if ny else [tag] if tag else [])))
 assert not [k for k, n in keys.items() if n > 1], [k for k, n in keys.items() if n > 1]
 data = [d for _, d in sorted(data, key=lambda x: x[0])]          # しゅるいごとにまとめる（中の順は TSV のまま）
 base = open(os.path.join(ROOT, 'jlpt', 'N4_bunpou.html'), encoding='utf-8').read()

@@ -42,6 +42,12 @@
 .qmean{display:block;font-size:22px;font-weight:700;line-height:1.7;padding:10px 0;}
 .choice.en{font-size:17px;line-height:1.5;}
 .fbw{font-size:18px;font-weight:700;line-height:2;}
+.qsent{display:block;font-size:22px;font-weight:700;line-height:2.4;text-align:left;padding:6px 0 2px;overflow-wrap:anywhere;}
+.qsent .ch{display:inline-block;white-space:nowrap;}
+.qsent .ch .ch{display:inline;}
+.qsent .blank{display:inline-block;min-width:3.4em;margin:0 .15em;border-bottom:3px solid var(--accentT);color:var(--accentT);text-align:center;line-height:1.5;}
+.qsent .fill{margin:0 .1em;padding:0 .15em;border-bottom:3px solid var(--accentT);color:var(--accentT);}
+.fbs{display:block;font-size:15px;line-height:2.1;color:var(--sub);margin-top:2px;}
 #listBody .gcard{cursor:pointer;}
 .kjc{display:inline-block;margin:0 10px 2px 0;white-space:nowrap;}
 .kjc b{font-size:1.25em;margin-right:4px;}
@@ -60,6 +66,8 @@
   .qask{font-size:24px;}
   .qword{font-size:96px;line-height:1.9;}
   .qmean{font-size:52px;line-height:1.6;padding:20px 0;}
+  .qsent{font-size:44px;line-height:2.2;padding:12px 0 6px;}
+  .fbs{font-size:24px;}
   .choice.en{font-size:30px;line-height:1.4;}
   .gv .fbw{font-size:30px;}
   .kjc{margin-right:20px;}
@@ -91,7 +99,7 @@
       <div class="og">
         <span class="ol"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい</span>
         <div class="qt" id="qtBox" role="group" aria-label="問題の しゅるい">
-          <button data-qt="mix">まぜる</button><button data-qt="m">いみ</button><button data-qt="w">ことば</button><button data-qt="y" id="qtY">よみ<ruby>方<rt>かた</rt></ruby></button>
+          <button data-qt="mix">まぜる</button><button data-qt="m">いみ</button><button data-qt="w">ことば</button><button data-qt="y" id="qtY">よみ<ruby>方<rt>かた</rt></ruby></button><button data-qt="c" id="qtC"><ruby>文<rt>ぶん</rt></ruby></button>
         </div>
         <div class="kjinfo" id="qtInfo"></div>
       </div>
@@ -182,7 +190,7 @@ const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
 const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1');
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
 const ITEMS = DATA.map(d=>{ const p=plain(d[1]), y=kana(d[1]);
-  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
 const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 
 /* ---------- ルビ ---------- */
@@ -213,10 +221,15 @@ if(!LANGS.some(l=>l[0]===lang)) lang='en';
 // よみ方の問題：まちがいの選択肢を語ごとに書いた語（yd がある語）だけ出す。false にすると よみ方の問題をぜんぶ外せる
 //   よみ方の選択肢がまだ1語も無い級（<lv>_yomi.txt が無い）では、よみ方のボタンごと出さない
 const YOMI_ON=ITEMS.some(it=>it.yd);
-if(!['mix','m','w'].concat(YOMI_ON?['y']:[]).includes(qtype)) qtype='mix';
+// 文の問題（空所に入る語をえらぶ）：例文がある語（cz がある語）。その語は「いみ」「ことば」では出さず、文の問題で出す
+//   cz＝[[例文（【 】の中が正解）, まちがい1, まちがい2, まちがい3, その文での意味], …]。意味は {en:…, ne:…} か 文字列（英語だけ）
+const CLOZE_ON=ITEMS.some(it=>it.cz);
+if(!['mix','m','w'].concat(YOMI_ON?['y']:[]).concat(CLOZE_ON?['c']:[]).includes(qtype)) qtype='mix';
 const mean = it => it.m[lang]||it.m.en;
 // 訳には その言語の lang を付ける（中国語の字形・ベトナム語の声調記号・ビルマ文字の行間を その言語のフォントで出すため）
 const LCODE={en:'en',ne:'ne',bn:'bn',si:'si',my:'my',zh:'zh-CN',vi:'vi'};
+const czM = z => typeof z[4]==='string' ? {en:z[4]} : z[4];
+const czTrH = z => { const m=czM(z); return '<span class="tr" lang="'+(m[lang]?(LCODE[lang]||lang):'en')+'">'+esc(m[lang]||m.en)+'</span>'; };
 const trH = it => '<span class="tr" lang="'+(it.m[lang]?(LCODE[lang]||lang):'en')+'">'+esc(mean(it))+'</span>';
 
 /* ---------- 習った漢字（どこまで漢字で出すか） ---------- */
@@ -341,15 +354,18 @@ else{
   paintLg();
 }
 if(!YOMI_ON) $("qtY").remove();
+if(!CLOZE_ON) $("qtC").remove();
 document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
 const QT_INFO={mix:(YOMI_ON?'いみ・ことば・よみ<ruby>方<rt>かた</rt></ruby>を':'いみ・ことばを')+' まぜて <ruby>出<rt>だ</rt></ruby>します',
   m:'ことばを <ruby>見<rt>み</rt></ruby>て、いみを えらびます', w:'いみを <ruby>見<rt>み</rt></ruby>て、ことばを えらびます',
-  y:'<ruby>漢字<rt>かんじ</rt></ruby>の ことばを <ruby>見<rt>み</rt></ruby>て、よみ<ruby>方<rt>かた</rt></ruby>を えらびます'};
+  y:'<ruby>漢字<rt>かんじ</rt></ruby>の ことばを <ruby>見<rt>み</rt></ruby>て、よみ<ruby>方<rt>かた</rt></ruby>を えらびます',
+  c:'<ruby>文<rt>ぶん</rt></ruby>の （　）に <ruby>入<rt>はい</rt></ruby>る ことばを えらびます'};
 
 const catSel=$("catSel");
 catSel.innerHTML='<option value="">すべての ことば</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(catName(c))}</option>`).join("");
 // よみ方の問題は、今のはんいで漢字で出る語だけ
-function pool(){ const c=catSel.value; return ITEMS.filter(it=>(!c||it.cat===c)&&(qtype!=='y'||canY(it))); }
+const canQ = it => (qtype!=='y'||canY(it)) && (qtype!=='c'||!!it.cz);
+function pool(){ const c=catSel.value; return ITEMS.filter(it=>(!c||it.cat===c)&&canQ(it)); }
 function updateStats(){
   const p=pool();
   const seen=p.filter(it=>rec[it.id]);
@@ -364,7 +380,7 @@ function updateStats(){
   $("catRuby").innerHTML=c?catR(c):'すべての ことば';
   $("catPill").innerHTML=$("catRuby").innerHTML;
   $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
-    const n=ITEMS.filter(it=>(!k||it.cat===k)&&(qtype!=='y'||canY(it))).length;
+    const n=ITEMS.filter(it=>(!k||it.cat===k)&&canQ(it)).length;
     return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):'すべての ことば'}</span><span class="n">${n}${MON}</span></button>`;
   }).join("");
   $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
@@ -403,7 +419,7 @@ function sndNG(){
 }
 
 /* ---------- 出題 ---------- */
-let queue=[],pos=0,score=0,wrongIds=[],answered=false,cur=null,order=[],qt='m',opts=[];
+let queue=[],pos=0,score=0,wrongIds=[],answered=false,cur=null,order=[],qt='m',opts=[],cz=null;
 function start(list){
   if(!list.length) return;
   queue=shuffle(list); pos=0; score=0; wrongIds=[]; show("quiz"); render();
@@ -418,8 +434,10 @@ document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{
 
 // この問題の しゅるい（まぜる の時：いみ4・ことば4・よみ方2 の割合。よみ方は漢字で出る語だけ）
 function pickType(it){
+  if(it.cz && qtype!=='y') return 'c';          // 例文がある語は、いみ・ことば の代わりに 文の問題
   if(qtype!=='mix') return (qtype==='y'&&!canY(it))?'m':qtype;
   const r=Math.random();
+  if(it.cz) return (canY(it)&&r>=0.8)?'y':'c';
   if(canY(it)) return r<0.4?'m':r<0.8?'w':'y';
   if(inKanji(it)) return r<0.5?'m':'w';
   return r<0.5?'m':'w';
@@ -432,22 +450,32 @@ function pickOthers(it,t){
   // 訳がまったく同じ語（えらんでいる言語で）は、印が無くても いっしょに出さない（「ことば」問題で答えが2つになるため）
   const okx = x => x!==it && x.y!==it.y && x.p!==it.p && !(t!=='y' && it.tag && x.tag===it.tag) && (t!=='y' || inKanji(x)) && (t==='y' || mean(x)!==mean(it));
   const take = xs => { for(const x of shuffle(xs)){ if(out.length>=3) break; const k=keyOf(x); if(used.has(k)||!okx(x)) continue; used.add(k); out.push(x); } };
+  if(t==='c') return cz.slice(1,4).map(x=>({c:x}));   // 文の問題：例文ごとに書いた まちがいの語
   if(t==='y') return it.yd.map(y=>({y:y}));   // よみ方：語ごとに書いた まちがいの読み（送りがなは正解と同じ・似ているが ちがう読み）
   take(ITEMS.filter(x=>x.cat===it.cat));
   take(ITEMS);
   return out;
 }
-const QASK={m:'いみは どれ？', w:'ことばは どれ？', y:'よみ<ruby>方<rt>かた</rt></ruby>は どれ？'};
-function optHTML(x){ return qt==='m' ? trH(x) : qt==='y' ? esc(x.y) : ruby(disp(x)); }
+const QASK={m:'いみは どれ？', w:'ことばは どれ？', y:'よみ<ruby>方<rt>かた</rt></ruby>は どれ？', c:'（　）に <ruby>入<rt>はい</rt></ruby>る ことばは どれ？'};
+function optHTML(x){ return qt==='c' ? ruby(x.c) : qt==='m' ? trH(x) : qt==='y' ? esc(x.y) : ruby(disp(x)); }
+// 例文：【 】の所を 空所（問題）／答え（答えた後）にする
+const czAns = z => (z[0].match(/【([^】]*)】/)||['',''])[1];
+//   文は 分かち書きの切れ目（半角スペース）でだけ 行を分ける（ことばの途中で切れないように、切れ目ごとに .ch で包む）
+const czCh = t => t.split(' ').filter(x=>x).map(x=>'<span class="ch">'+ruby(x)+'</span>').join(' ');
+const czSent = (z,fill) => czCh(z[0].replace(/【[^】]*】/,'\u0001')).replace('\u0001', fill ? '<span class="fill">'+czCh(czAns(z))+'</span>' : '<span class="blank">　</span>');
 function render(){
   cur=queue[pos]; answered=false;
-  qt=pickType(cur); opts=[cur].concat(pickOthers(cur,qt));
+  qt=pickType(cur);
+  // 例文が2つ以上ある語（意味や形が2つ以上）は、解くたびに 順に出す
+  cz = qt==='c' ? cur.cz[((rec[cur.id]||{}).n||0) % cur.cz.length] : null;
+  opts=(qt==='c' ? [{c:czAns(cz)}] : [cur]).concat(pickOthers(cur,qt));
   paintProgress();
   $("qCat").innerHTML=catR(cur.cat);
   $("gPanel").innerHTML=`<div class="gwait">${ic('book')}<span>こたえると ここに<br>ことばの <ruby>説明<rt>せつめい</rt></ruby>が でます</span></div>`;
   $("nextPC").classList.add("hidden");
   $("qText").innerHTML='<span class="qask">'+QASK[qt]+'</span>'
-    +(qt==='w' ? '<span class="qmean">'+trH(cur)+'</span>'
+    +(qt==='c' ? '<span class="qsent">'+czSent(cz,false)+'</span>'
+      : qt==='w' ? '<span class="qmean">'+trH(cur)+'</span>'
                : '<span class="qword">'+(qt==='y'?esc(cur.p):ruby(disp(cur)))+'</span>');
   order=shuffle(opts.map((_,i)=>i));
   $("choices").innerHTML=order.map((oi,k)=>`<button class="choice${qt==='m'?' en':''}" data-oi="${oi}"><span class="n">${k+1}</span><span>${optHTML(opts[oi])}</span></button>`).join("");
@@ -457,7 +485,10 @@ function render(){
   $("main").scrollTop=0;
 }
 function verdictHTML(ok,ansNo){ return `<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>`; }
-function wordLine(it){ return `<span class="fbw">${ruby(disp(it))}</span>　${trH(it)}`; }
+function wordLine(it){
+  if(qt==='c') return `<span class="fbw">${ruby(czAns(cz))}</span>　${czTrH(cz)}`;   // 答えた後に、その文での意味（えらんだ言語）を出す
+  return `<span class="fbw">${ruby(disp(it))}</span>　${trH(it)}`;
+}
 function answer(oi){
   if(answered) return; answered=true;
   const ok=oi===0;
@@ -471,6 +502,7 @@ function answer(oi){
     else if(v===oi){ b.classList.add("ng"); b.querySelector(".n").textContent="×"; }
     else b.classList.add("dim");
   });
+  if(qt==='c'){ const w=$("qText").querySelector(".qsent"); if(w) w.innerHTML=czSent(cz,true); }   // 文の問題は、答えた後に 空所へ答えを入れる
   if(qt==='y'){ const w=$("qText").querySelector(".qword"); if(w) w.innerHTML=ruby(cur.w); }   // よみ方の問題は、答えた後にルビを出す
   const fb=$("fb");
   fb.className="fb "+(ok?"ok":"ng");
