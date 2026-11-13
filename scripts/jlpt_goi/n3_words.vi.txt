@@ -96,7 +96,6 @@
 110	tránh
 112	chỉ vào
 115	(ánh sáng) chiếu vào
-116	mời; rủ
 117	làm nguội (cái gì)
 118	đánh thức (ai đó)
 119	nguội đi
@@ -160,7 +159,6 @@
 184	cho đi qua; xuyên qua
 185	đi ngang qua
 187	(nút) bị bung ra; (bài toán) được giải
-188	nhắm; đóng (sách, mắt)
 190	tới nơi; với tới
 191	cho (khách) ở lại qua đêm
 192	đưa ra bàn (chủ đề); tịch thu
@@ -171,7 +169,6 @@
 198	lười; bê trễ
 199	phiền não; lo nghĩ
 201	trở thành
-204	hợp với; trông hợp
 205	chín (do nấu); sôi
 206	nắm chặt
 207	nấu; hầm
@@ -256,7 +253,6 @@
 309	học thuộc lòng
 310	sự nhất trí; sự trùng khớp
 311	đi lòng vòng; lang thang
-312	lái xe; vận hành
 313	ứng tuyển; đăng ký dự thi
 314	khai trương (cửa hàng...)
 315	sự bắt đầu
@@ -280,7 +276,6 @@
 333	thu hoạch
 334	tập trung
 335	đi công tác
-336	lời mời; sự mời
 337	chứng minh; chứng nhận
 338	sử dụng
 339	học lên cao
@@ -307,12 +302,10 @@
 362	phát sóng
 363	tuyển (người); chiêu mộ
 364	đồng minh; người ủng hộ
-365	nhập khẩu
 366	lợi nhuận; lợi ích
 367	du học
 368	liên tiếp
 369	nói xấu
-370	giỏi; ngon (thân mật)
 371	đáng ghen tị
 372	đáng sợ; khủng khiếp
 373	hiền lành; trầm lặng
@@ -332,7 +325,6 @@
 387	nóng ẩm; oi bức
 388	lỏng; thoai thoải (dốc, đường cong)
 389	tốt
-390	được; tốt (lịch sự)
 391	rõ ràng
 392	bất ngờ; không ngờ
 393	chung; phổ thông
@@ -342,7 +334,6 @@
 398	tươi (thức ăn, không khí)
 399	thật thà; ngoan ngoãn
 400	rất; khá; khá nhiều
-403	phức tạp
 404	thiếu
 405	bất lợi
 406	đỏ rực
@@ -473,19 +464,16 @@
 552	in ấn
 553	ấn tượng
 554	trích dẫn
-555	trồng (cây)
 557	nổi
 558	thỏ
 559	bò
 561	vũ trụ
 562	ngựa
-563	sinh ra; nơi sinh
 565	… trên, … ngoài (tiền tố)
 566	tin đồn
 567	vận, vận số (may rủi)
 569	vĩnh viễn
 570	ảnh hưởng
-571	bán hàng; (cửa hàng) mở cửa
 573	dinh dưỡng
 574	gương mặt tươi cười
 575	thức ăn cho thú; mồi
@@ -753,7 +741,6 @@
 912	nhà thơ
 913	tư thế, thái độ
 915	lưỡi
-916	chuẩn bị
 917	ngay khi …; tùy theo …
 918	thất nghiệp
 919	độ ẩm
@@ -861,7 +848,6 @@
 1044	dần dần
 1045	nữ diễn viên
 1046	nhân tạo
-1048	cuộc đời
 1049	nhân loại
 1050	giấm
 1051	sự giới thiệu, tiến cử
@@ -966,7 +952,6 @@
 1180	tín chỉ; đơn vị
 1181	ngắn hạn
 1182	đơn giản
-1183	sự ra đời, sinh ra
 1184	phụ trách
 1185	chỉ đơn thuần
 1186	đại …; lớn
@@ -984,7 +969,6 @@
 1198	chắc chắn là
 1199	Trái Đất
 1200	khu (địa phận hành chính)
-1201	sự đến muộn
 1202	kiến thức
 1203	thống đốc tỉnh
 1204	trí thông minh
@@ -999,7 +983,6 @@
 1214	tình trạng (cơ thể, máy móc)
 1215	sự thử sức, thách thức
 1216	để dành tiền, tiền dành dụm
-1217	trực tiếp
 1218	tác giả
 1219	điều trị
 1220	cuối cùng
@@ -1084,7 +1067,6 @@
 1323	Nhật Bản
 1325	con người
 1326	điều ước, nguyện vọng
-1328	giá cả
 1329	nhiệt đới
 1330	say mê, mải mê
 1331	trong một năm
@@ -1455,7 +1437,6 @@
 1770	yên lặng không động đậy; kiên nhẫn
 1771	ít nhất
 1772	chua
-1773	đẹp, dễ thương
 1775	suốt; hơn nhiều
 1776	cất công
 1777	vì vậy, thế nên
@@ -1485,7 +1466,6 @@
 1802	rất vui được gặp; mong được giúp đỡ
 1803	đâu đó
 1804	dù thế nào; biết bao
-1806	càng … càng tốt
 1807	mỉm cười tươi
 1808	thong thả, thư thả
 1809	hả?; tiếng thở dài

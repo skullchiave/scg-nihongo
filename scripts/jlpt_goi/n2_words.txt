@@ -2408,7 +2408,6 @@
 2849	F	{後|のち}	later; afterwards
 2850	F	ばったり	suddenly; by chance (meeting)	e-sudden
 2852	F	{元|もと}{々|もと}	originally; by nature	e-originally
-2853	K	アイデア	idea
 2854	F	あいにく	unfortunately
 2855	A	あいまい	vague; unclear
 2856	F	あえて	dare to; purposely	e-on-purpose

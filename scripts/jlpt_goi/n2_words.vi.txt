@@ -2408,7 +2408,6 @@
 2849	sau đó; về sau
 2850	tình cờ (gặp)
 2852	vốn dĩ; từ đầu
-2853	ý tưởng
 2854	tiếc là; không may
 2855	mơ hồ; không rõ ràng
 2856	dám; mạnh dạn
@@ -2842,7 +2841,6 @@
 3333	sự triệt để
 3334	sự dao động, xao động
 3335	dây thừng
-
 3336	lừa
 3337	kế thừa; nối nghiệp
 3338	hái

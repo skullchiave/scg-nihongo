@@ -96,7 +96,6 @@
 110	V	{避|さ}ける	to avoid
 112	V	{指|さ}す	to point at	v-face
 115	V	{差|さ}す	to shine in (light)	v-shine
-116	V	{誘|さそ}う	to invite	v-invite
 117	V	{冷|さ}ます	to cool (something)	v-cool
 118	V	{覚|さ}ます	to wake (someone) up	v-wake
 119	V	{冷|さ}める	to cool down	v-cool
@@ -160,7 +159,6 @@
 184	V	{通|とお}す	to let through; to pass through	v-pass
 185	V	{通|とお}り{過|す}ぎる	to pass by; to pass through	v-pass
 187	V	{解|と}ける	to come untied; to be solved
-188	V	{閉|と}じる	to close (a book, eyes)
 190	V	{届|とど}く	to reach; to arrive
 191	V	{泊|と}める	to put up (a guest) for the night
 192	V	{取|と}り{上|あ}げる	to take up (a topic); to take away	v-remove
@@ -171,7 +169,6 @@
 198	V	{怠|なま}ける	to be lazy; to neglect
 199	V	{悩|なや}む	to be troubled; to worry
 201	V	なる	to become
-204	V	{似|に}{合|あ}う	to suit; to look good on
 205	V	{煮|に}える	to be cooked; to boil	v-boil
 206	V	{握|にぎ}る	to grip; to hold tightly	v-hold
 207	V	{煮|に}る	to boil; to simmer	v-boil
@@ -256,7 +253,6 @@
 309	S	{暗|あん}{記|き}	memorizing, learning by heart	s-memorize
 310	S	{一|いっ}{致|ち}	agreement, matching	s-agree
 311	S	うろうろ	wandering around, walking about aimlessly	s-wander
-312	S	{運|うん}{転|てん}	driving, operating (a car)	s-operate
 313	S	{応|おう}{募|ぼ}	applying (for a job, contest)	s-apply
 314	S	オープン	opening (a shop, etc.)	s-start
 315	S	{開|かい}{始|し}	start, beginning	s-start
@@ -280,7 +276,6 @@
 333	S	{収|しゅう}{穫|かく}	harvest
 334	S	{集|しゅう}{中|ちゅう}	concentration	s-concentrate
 335	S	{出|しゅっ}{張|ちょう}	business trip
-336	S	{招|しょう}{待|たい}	invitation
 337	S	{証|しょう}{明|めい}	proof, certifying
 338	S	{使|し}{用|よう}	use
 339	S	{進|しん}{学|がく}	going on to a higher school
@@ -307,12 +302,10 @@
 362	S	{放|ほう}{送|そう}	broadcasting
 363	S	{募|ぼ}{集|しゅう}	recruiting	s-apply
 364	N	{味|み}{方|かた}	ally, supporter, someone on your side	n-companion
-365	S	{輸|ゆ}{入|にゅう}	importing, imports
 366	N	{利|り}{益|えき}	profit
 367	S	{留|りゅう}{学|がく}	studying abroad	s-study
 368	S	{連|れん}{続|ぞく}	continuing in a row, succession
 369	N	{悪|わる}{口|くち}	bad-mouthing, speaking ill of someone
-370	I	うまい	good at; tasty (casual)	e-goodat
 371	I	{羨|うらや}ましい	envious, to be envied
 372	I	{恐|おそ}ろしい	scary, terrible
 373	I	{大人|おとな}しい	quiet, well-behaved	e-quiet
@@ -332,7 +325,6 @@
 387	I	{蒸|む}し{暑|あつ}い	hot and humid
 388	I	{緩|ゆる}い	loose; gentle (slope, curve)
 389	I	{良|よ}い	good	e-good
-390	I	よろしい	all right, good (polite)	e-good
 391	A	{明|あき}らか	obvious, clear
 392	A	{意|い}{外|がい}	unexpected, surprising
 393	A	{一|いっ}{般|ぱん}	general, ordinary
@@ -342,7 +334,6 @@
 398	A	{新|しん}{鮮|せん}	fresh (food, air)
 399	A	{素|す}{直|なお}	honest, obedient	e-honest
 400	F	{随|ずい}{分|ぶん}	very, quite, considerably	e-quite
-403	A	{複|ふく}{雑|ざつ}	complicated
 404	S	{不|ふ}{足|そく}	shortage, lack
 405	A	{不|ふ}{利|り}	disadvantageous
 406	A	{真|ま}っ{赤|か}	bright red
@@ -473,19 +464,16 @@
 552	S	{印|いん}{刷|さつ}	printing
 553	N	{印|いん}{象|しょう}	impression	n-impression
 554	S	{引|いん}{用|よう}	quotation
-555	V	{植|う}える	to plant
 557	V	{浮|う}く	to float
 558	N	うさぎ	rabbit
 559	N	{牛|うし}	cow; cattle
 561	N	{宇|う}{宙|ちゅう}	space; the universe
 562	N	{馬|うま}	horse
-563	N	{生|う}まれ	birth; birthplace	n-origin
 565	X	{上|うわ}〜	upper; outer (prefix)
 566	N	うわさ	rumor; gossip
 567	N	{運|うん}	luck; fortune	n-luck
 569	N	{永|えい}{遠|えん}	eternity; forever
 570	S	{影|えい}{響|きょう}	influence; effect	s-influence
-571	S	{営|えい}{業|ぎょう}	business; sales work	s-sell
 573	N	{栄|えい}{養|よう}	nutrition
 574	N	{笑|え}{顔|がお}	smiling face; smile	n-smile
 575	N	{餌|えさ}	food for animals; bait
@@ -753,7 +741,6 @@
 912	N	{詩|し}{人|じん}	poet
 913	N	{姿|し}{勢|せい}	posture, attitude	n-attitude
 915	N	{舌|した}	tongue
-916	S	{支|し}{度|たく}	preparation, getting ready
 917	X	{次|し}{第|だい}	as soon as ...; depending on ...
 918	S	{失|しつ}{業|ぎょう}	unemployment
 919	N	{湿|しつ}{度|ど}	humidity
@@ -861,7 +848,6 @@
 1044	F	{徐|じょ}{々|じょ}に	gradually, little by little
 1045	N	{女|じょ}{優|ゆう}	actress	n-actor
 1046	N	{人|じん}{工|こう}	artificial, man-made
-1048	N	{人|じん}{生|せい}	life (a person's whole life)	n-lifetime
 1049	N	{人|じん}{類|るい}	mankind, humanity	n-human
 1050	N	{酢|す}	vinegar
 1051	S	{推|すい}{薦|せん}	recommendation
@@ -966,7 +952,6 @@
 1180	N	{単|たん}{位|い}	credit (school); unit
 1181	N	{短|たん}{期|き}	short term
 1182	A	{単|たん}{純|じゅん}	simple	e-simple
-1183	S	{誕|たん}{生|じょう}	birth
 1184	S	{担|たん}{当|とう}	being in charge (of)
 1185	F	{単|たん}に	simply, merely	e-only
 1186	X	{大|だい}〜	big, great	e-big
@@ -984,7 +969,6 @@
 1198	X	{違|ちが}いない	must be, no doubt
 1199	N	{地|ち}{球|きゅう}	the Earth	n-earth
 1200	N	{地|ち}{区|く}	district	n-admin-area
-1201	S	{遅|ち}{刻|こく}	being late
 1202	N	{知|ち}{識|しき}	knowledge	n-learning
 1203	N	{知|ち}{事|じ}	prefectural governor
 1204	N	{知|ち}{能|のう}	intelligence
@@ -999,7 +983,6 @@
 1214	N	{調|ちょう}{子|し}	condition (of health or a machine)	n-condition
 1215	S	{挑|ちょう}{戦|せん}	challenge
 1216	S	{貯|ちょ}{金|きん}	savings	s-save
-1217	F	{直|ちょく}{接|せつ}	directly	e-directly
 1218	N	{著|ちょ}{者|しゃ}	author	n-author
 1219	S	{治|ち}{療|りょう}	medical treatment	s-medical
 1220	F	ついに	finally, at last	e-finally
@@ -1084,7 +1067,6 @@
 1323	N	{日|に}{本|ほん}	Japan	n-japan
 1325	N	{人|にん}{間|げん}	human being	n-human
 1326	N	{願|ねが}い	wish, request
-1328	N	{値|ね}{段|だん}	price	n-price
 1329	N	{熱|ねっ}{帯|たい}	the tropics
 1330	S	{熱|ねっ}{中|ちゅう}	being absorbed (in something)	s-concentrate
 1331	N	{年|ねん}{間|かん}	period of a year (during the year)
@@ -1455,7 +1437,6 @@
 1770	F	じっと	without moving; patiently
 1771	F	すくなくとも	at least
 1772	I	すっぱい	sour
-1773	A	すてき	lovely; wonderful	e-splendid
 1775	F	ずっと	all the time; much (more)	e-always
 1776	F	せっかく	taking the trouble (to do)
 1777	F	そこで	so; therefore	e-therefore
@@ -1485,7 +1466,6 @@
 1802	X	どうぞよろしく	nice to meet you; please treat me well	e-regards
 1803	F	どこか	somewhere
 1804	F	どんなに	however much; how much
-1806	F	なるべく	as much as possible	e-ifpossible
 1807	F	にっこり	smiling sweetly
 1808	F	のんびり	relaxed; without hurry
 1809	X	はあ	(sound) huh?; sigh
