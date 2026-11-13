@@ -17,7 +17,6 @@
 17	tranh giành; đánh nhau
 18	biểu đạt
 19	để lộ ra; làm hiện ra
-20	viết (sách)
 21	xuất hiện
 22	có; tồn tại (đồ vật)
 23	kết hợp; làm cho khớp
@@ -31,7 +30,6 @@
 31	làm di chuyển (cái gì)
 32	mất
 33	nghi ngờ
-34	đánh bại (kẻ thù); trả thù
 35	bắn (súng)
 36	chiếu; phản chiếu
 37	hiện lên (trong ảnh)
@@ -53,7 +51,6 @@
 53	dệt
 54	hạ xuống; lấy xuống
 55	cho xuống xe; dỡ hàng
-56	bán buôn
 57	nuôi (thú cưng)
 58	thay thế (bằng cái khác)
 59	thay mới; đổi (sang cái mới)
@@ -151,7 +148,6 @@
 151	gấp
 152	đứng dậy
 153	được xây
-154	cắt đứt; dứt bỏ
 155	thử; kiểm tra
 156	tích góp; để dồn lại
 157	dựa vào; nhờ cậy
@@ -167,7 +163,6 @@
 167	nhận (việc); ngồi vào (chỗ)
 168	(đèn) bật sáng
 169	rót (đồ uống)
-170	nối lại; ghép
 171	kế thừa; nối nghiệp
 172	gắn vào; thêm vào
 173	mặc; đeo vào
@@ -197,9 +192,7 @@
 197	chảy
 198	lười; bê trễ
 199	phiền não; lo nghĩ
-200	thuần hóa; huấn luyện (động vật)
 201	trở thành
-202	ra quả
 203	quen dần; được thuần
 204	hợp với; trông hợp
 205	chín (do nấu); sôi
@@ -229,7 +222,6 @@
 229	đo (thời gian, số)
 230	cân; đo (lượng)
 231	đo (độ dài, độ sâu)
-232	hỏi ý kiến; tham vấn
 233	lên kế hoạch; mưu tính
 234	nôn; nhổ
 235	tháo ra; gỡ ra
@@ -237,7 +229,6 @@
 237	thảo luận
 238	tách ra; để cách xa
 239	thả; buông ra
-240	thoát ra; rời khỏi
 241	để (râu) mọc
 242	thịnh hành; lan (dịch bệnh)
 243	kéo
@@ -249,7 +240,6 @@
 249	tính cả vào; gộp vào
 250	phòng ngừa; chống lại
 251	làm tăng (cái gì)
-252	gây giống; làm sinh sôi (động vật, tiền)
 253	vẫy; lắc
 254	run; rung
 255	đánh; đập
@@ -261,13 +251,9 @@
 261	giao phó
 262	cuộn; quấn
 263	gieo (hạt)
-264	rải; rắc (nước...)
 265	bị trộn lẫn (các thứ với nhau)
-266	lẫn vào (giữa những thứ khác)
 267	bị lẫn vào; được gộp vào
-268	hòa vào; xen vào (cùng người khác)
 269	trộn; khuấy
-270	trộn thêm vào; pha lẫn
 271	được tập hợp; được thống nhất
 272	gộp lại; tóm tắt
 273	học
@@ -424,7 +410,6 @@
 424	hóa học
 425	môn học
 426	ngoại giao
-427	học thức; kiến thức
 428	học giả
 429	học kỳ
 430	phóng viên; nhà báo
@@ -477,7 +462,6 @@
 477	viện bảo tàng
 478	sân bay (nhỏ), phi trường
 479	từng người một
-480	phần được chia; thế (lợi/bất lợi)
 481	bộ phận, phần
 482	văn minh
 483	lĩnh vực
@@ -498,7 +482,6 @@
 498	dầu
 499	mỡ (của thịt)
 500	còn thừa, dư ra
-501	chỗ sai sót nhỏ, sơ hở
 502	cơn bão
 503	mọi, tất cả
 504	biểu hiện, dấu hiệu (của cảm xúc)
@@ -507,14 +490,11 @@
 507	phương án, ý tưởng
 508	sự ổn định
 509	dạ dày
-510	khác, sự khác biệt
-511	ý nghĩa; tấm lòng
 512	ủy viên
 513	phòng khám
 514	cơn giận
 515	lượt đi; (tàu xe) đi …
 516	hơi thở
-517	tinh tế, có gu
 518	sinh vật
 519	bác sĩ
 520	ý định, ý muốn
@@ -533,7 +513,6 @@
 533	chợ
 534	cả vùng
 535	anh/em họ (nam)
-536	chị/em họ (nữ)
 537	di chuyển
 538	ngủ gật
 539	sinh mạng, tính mạng
@@ -553,7 +532,6 @@
 553	ấn tượng
 554	trích dẫn
 555	trồng (cây)
-556	cá
 557	nổi
 558	thỏ
 559	bò
@@ -565,7 +543,6 @@
 565	… trên, … ngoài (tiền tố)
 566	tin đồn
 567	vận, vận số (may rủi)
-568	cán (của dụng cụ)
 569	vĩnh viễn
 570	ảnh hưởng
 571	bán hàng; (cửa hàng) mở cửa
@@ -617,7 +594,6 @@
 617	người phụ trách
 618	khuấy, trộn
 619	hạt nhân, cốt lõi
-620	đẳng cấp, vị thế
 621	chắc chắn
 622	mở rộng, phóng to
 623	xác nhận
@@ -645,7 +621,6 @@
 645	tiền
 646	chuông
 647	có thể (khả năng)
-648	phần trên; thượng nguồn
 649	thêm vào (yếu tố), tính cả vào
 650	sấm
 651	tóc
@@ -688,13 +663,11 @@
 688	tác hại, thiệt hại
 689	họa sĩ
 690	chịu đựng, nhẫn nại
-691	hoa văn (trên vải)
 692	ung thư
 693	nhiệt độ không khí
 694	máy móc
 695	khoảng thời gian, kỳ
 696	cơ quan (của cơ thể)
-697	ấn phẩm phát hành theo quý
 698	doanh nghiệp
 699	hạn chót
 700	tâm trạng
@@ -751,28 +724,18 @@
 751	phép tắc, cách cư xử
 752	thảo luận; tranh luận
 753	bạc
-754	câu thơ; vế câu
-755	nỗi khổ
 756	ăn (nói suồng sã)
 757	hôi
 758	thói quen (thường là xấu)
-759	ống (nhỏ, tròn)
 760	đi xuống; chuyến tàu đi khỏi thành phố
 761	phát, phân phát
 762	phân biệt
 763	cuộc sống, sinh hoạt
 764	cuối năm; hoàng hôn
 765	vất vả
-766	cách đọc thuần Nhật của chữ Hán
 767	tình cờ
-768	cụ thể
-769	huyện, quận (đơn vị hành chính)
-770	đàn, nhóm
-771	tổng số
-772	hình phạt
 773	điều hành (doanh nghiệp)
 774	kinh tế; tình hình kinh doanh
-775	dụng cụ đo
 776	tính toán
 777	thông báo (niêm yết)
 778	điện thoại di động; mang theo
@@ -799,7 +762,6 @@
 799	xây dựng (công trình, đường)
 800	kiến trúc
 801	xem xét, nghiên cứu
-802	hạng dưới
 803	nghệ thuật
 804	vở kịch
 805	nhà hát
@@ -849,13 +811,11 @@
 849	tiền lẻ
 850	gãy xương
 851	bưu kiện nhỏ
-852	đàn tranh Nhật
 853	tục ngữ
 854	sở thích, khẩu vị
 855	lúa mì
 856	đông đúc
 857	hỗn loạn
-858	cờ vây
 859	đỗ (kỳ thi)
 860	tổng cộng
 861	hiểu lầm
@@ -872,7 +832,6 @@
 872	xét xử
 873	đỉnh cao, thời kỳ đỉnh
 874	công việc, tác nghiệp
-875	tác phẩm
 876	hàng rào
 877	nông sản, hoa màu
 878	hoa anh đào
@@ -926,9 +885,7 @@
 926	chị em gái
 927	vết bẩn
 928	hạn chót
-929	phần dưới (hạ lưu sông, cuối trang)
 930	bang, tỉnh
-931	đám đông, mọi người
 932	xung quanh
 933	tôn giáo
 934	tìm được việc, vào làm
@@ -945,7 +902,6 @@
 945	phụ nữ nội trợ
 946	chính, chủ yếu
 947	loại, chủng loại
-948	nhỏ (trong lớn/vừa/nhỏ)
 949	giải thưởng
 950	cả đời, suốt đời
 951	thật thà, trung thực
@@ -963,7 +919,6 @@
 963	thức ăn
 964	sự thèm ăn
 965	thực phẩm (để mua)
-966	lương thực (dự trữ)
 967	chữ ký
 968	xử lý
 969	việc riêng
@@ -1013,7 +968,6 @@
 1013	sự khoe khoang, tự hào
 1014	giản dị, không nổi bật
 1015	công việc văn phòng
-1016	việc ở (ăn – mặc – ở)
 1017	sự coi trọng
 1018	bệnh nặng, tình trạng nguy kịch
 1019	tắc đường
@@ -1026,8 +980,6 @@
 1026	thứ tự, trình tự
 1027	suôn sẻ, thuận lợi
 1028	lượt, thứ tự lần lượt
-1029	loại thượng hạng; tập một
-1030	tình cảm
 1031	hành khách
 1032	tình hình
 1033	điều kiện
@@ -1039,7 +991,6 @@
 1039	thông tin
 1040	nữ hoàng
 1041	con gái; phụ nữ
-1042	bà (cách gọi trang trọng)
 1043	trợ từ
 1044	dần dần
 1045	nữ diễn viên
@@ -1060,7 +1011,6 @@
 1060	mực tàu (viết thư pháp)
 1061	hình vẽ, sơ đồ
 1062	đau đầu
-1063	dương (số dương)
 1064	họ
 1065	do, tại (điều xấu)
 1066	tính cách
@@ -1092,7 +1042,6 @@
 1092	dầu mỏ
 1093	xã hội, thiên hạ
 1094	tích cực, chủ động
-1095	đoạn, mục (của văn bản)
 1096	thiết bị, cơ sở vật chất
 1097	tiết kiệm
 1098	cuộc bầu cử
@@ -1110,13 +1059,9 @@
 1110	xa hoa, xa xỉ
 1111	tuyệt đối
 1112	toàn …; cả …
-1113	khay cơm nhỏ
-1114	Thiền (Phật giáo)
 1115	toàn thể thành viên
 1116	toàn thân
 1117	toàn bộ, tổng thể
-1118	tướng (vẻ mặt, v.v.)
-1119	nhà sư
 1120	tiếng ồn
 1121	thao tác (máy móc)
 1122	lái, điều khiển (máy bay, tàu)
@@ -1132,7 +1077,6 @@
 1132	sự tồn tại
 1133	bức tượng, hình ảnh
 1134	sự gia tăng
-1135	ruộng lúa
 1136	khác, những cái khác
 1137	đội, đoàn (quân)
 1138	thể dục
@@ -1154,7 +1098,6 @@
 1154	số lượng lớn
 1155	kho báu
 1156	lẫn nhau
-1157	nhà, tư gia
 1158	trận chiến
 1159	miễn phí
 1160	chỉ, duy nhất
@@ -1162,16 +1105,12 @@
 1162	vị trí, lập trường
 1163	chỉ có (số ít)
 1164	trôi qua (thời gian)
-1165	cái khiên
 1166	dựng lên; thiết lập
 1168	thung lũng
 1169	người lạ; người khác
 1170	hạt giống
-1171	tất xỏ ngón kiểu Nhật
 1172	chuyến đi
 1173	viên, hạt (vật tròn nhỏ)
-1174	quả bóng; bóng đèn
-1175	viên đạn
 1176	thỉnh thoảng
 1177	tình cờ
 1178	thử, lần thử
@@ -1235,7 +1174,6 @@
 1236	đôi cánh (lớn)
 1237	tội
 1238	mùa mưa (đầu hè)
-1239	sương
 1240	câu cá; tiền thối lại
 1241	đề xuất
 1242	định kỳ
@@ -1251,14 +1189,12 @@
 1252	thời tiết
 1253	chuyển trường
 1254	thiên nhiên; tự nhiên
-1255	sự ra; tốt nghiệp (từ trường)
 1256	cuộc gặp gỡ
 1257	sự việc, sự kiện
 1258	đi ra; rời đi
 1259	lời nhắn
 1260	electron; điện tử
 1261	truyền thống
-1262	tòa (đếm tòa nhà)
 1263	giấy làm bài thi
 1264	phá sản
 1265	thời đó
@@ -1272,18 +1208,14 @@
 1273	điểm mạnh, ưu điểm
 1274	leo núi
 1275	thành phố
-1276	năm tháng, thời gian dài
 1277	người già
 1278	đột nhiên
-1279	người tháp tùng
 1280	cùng (với)
 1281	hổ
 1282	hủy bỏ
 1283	lấy; nhận
-1284	đồng xu bằng đồng
 1285	động từ
 1286	những người cùng loại với nhau
-1287	đồng chí, người cùng chí hướng
 1288	cùng lúc
 1289	đạo đức
 1290	sự dao động, xao động
@@ -1299,7 +1231,6 @@
 1300	mối quan hệ (giữa người với người)
 1301	bạn bè, đồng đội
 1302	đồ vật bên trong
-1303	ruột, phần bên trong
 1304	cảnh quan, tầm nhìn
 1305	dòng chảy
 1306	an ủi
@@ -1307,11 +1238,9 @@
 1308	cái gì đó
 1309	nồi
 1310	sóng
-1311	trung bình, bình thường
 1312	nước mắt
 1313	nỗi phiền muộn
 1314	dây thừng
-1315	khó khăn, trở ngại
 1316	tại sao
 1317	cái gì cũng
 1318	bằng cách nào đó
@@ -1328,11 +1257,9 @@
 1329	nhiệt đới
 1330	say mê, mải mê
 1331	trong một năm
-1332	niên giám
 1333	quãng thời gian đã qua
 1334	thập niên, thời đại
 1335	tuổi
-1336	năng lực, tài năng
 1337	nông nghiệp
 1338	phần còn lại
 1339	tro
@@ -1357,26 +1284,19 @@
 1358	lòe loẹt, sặc sỡ
 1359	rời xa
 1360	cánh (chim, côn trùng)
-1361	lông vũ
 1362	chiều rộng
 1363	bụng
-1364	cánh đồng
 1365	kim; kim đồng hồ
 1366	nhóm, tổ
-1367	con dấu; khổ giấy
-1368	bản (in)
 1369	phạm vi
 1370	tội ác, phạm tội
 1371	sự tự kiểm điểm
 1372	phán đoán
 1373	thủ phạm
 1374	gấp đôi
-1375	mùa mưa (cách nói trang trọng)
 1376	đồ ngốc
 1377	vụ nổ
 1378	cảnh, tình huống
-1379	đèn, ánh đèn
-1380	bia đá
 1381	sự so sánh
 1382	thiệt hại
 1383	nhận (việc), đảm nhận
@@ -1402,7 +1322,6 @@
 1403	tế nhị, khó nói
 1404	giây
 1405	chai, lọ
-1406	chuyến (bay, xe); dịch vụ thư
 1407	lo lắng, bất an
 1408	phong cảnh
 1409	vợ chồng
@@ -1411,7 +1330,6 @@
 1412	trang phục
 1413	túi, bao
 1414	bất hạnh
-1415	đốt, mấu; giai điệu
 1416	kỳ lạ, huyền bí
 1417	bất tiện, thiếu tự do
 1418	phụ nữ (trang trọng)
@@ -1453,7 +1371,6 @@
 1454	xương
 1455	ngọn lửa
 1456	hào, mương quanh thành
-1457	hào nước (quanh lâu đài)
 1458	đào
 1459	sự thật; thật
 1460	cây gậy
@@ -1474,13 +1391,11 @@
 1475	sự bắt chước
 1476	đậu
 1477	hình tròn, vật tròn
-1478	đường tròn
 1479	đầy người, kín chỗ
 1480	quả; hạt
 1481	tiễn (người)
 1482	đánh bóng; đánh (răng)
 1483	tuyệt vời, đẹp mắt
-1484	dày đặc, đông đúc
 1485	học được (kỹ năng); mặc, đeo
 1486	việc thăm người bệnh
 1487	quà (mua về)
@@ -1512,11 +1427,8 @@
 1513	mục tiêu
 1514	chữ cái, ký tự
 1515	có lý, hợp lẽ
-1516	nền tảng, cơ sở
-1517	nguyên liệu gốc, nguồn
 1518	câu chuyện
 1519	hoa văn
-1520	chữ viết, văn tự
 1521	khoảng, xấp xỉ
 1522	bản dịch
 1523	vai trò
@@ -1525,7 +1437,6 @@
 1526	mái nhà
 1527	cách làm
 1528	làm lại
-1529	loại ưu (điểm cao nhất)
 1530	dũng khí
 1531	hữu cơ
 1532	hữu nghị
@@ -1540,7 +1451,6 @@
 1541	đi … (hướng đến nơi nào)
 1542	giàu có, dồi dào
 1543	đêm
-1544	thế gian, đời
 1545	dễ dàng
 1546	đồ đựng, hộp đựng
 1547	yêu cầu, đòi hỏi
@@ -1583,8 +1493,6 @@
 1585	tiếng cười; nụ cười
 1586	chúng ta (trang trọng)
 1587	vịnh
-1588	bát gỗ (đựng canh)
-1589	bát sứ (đựng cơm)
 1590	kem (ăn lạnh)
 1591	ý tưởng
 1592	out (bị loại, không được)
@@ -1601,7 +1509,6 @@
 1603	vượt quá (giới hạn)
 1604	ca-ta-lô
 1605	che phủ; bù đắp (chỗ thiếu)
-1606	ô tô
 1607	thẻ
 1608	đội trưởng
 1609	cắm trại
@@ -1637,7 +1544,6 @@
 1639	việc cài đặt; bộ
 1640	ghế sofa
 1641	tiêu đề
-1642	máy đánh chữ
 1643	khăn bông (khăn mặt, khăn tắm)
 1644	lịch chạy tàu; kim cương
 1645	khiêu vũ
