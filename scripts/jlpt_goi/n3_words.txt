@@ -213,7 +213,7 @@
 299	V	{酔|よ}う	to get drunk
 303	V	{弱|よわ}まる	to become weak	v-weak
 304	V	{弱|よわ}める	to make weaker	v-weak
-306	V	{分|わか}れる	to be divided; to branch off	v-separate
+306	V	{分|わ}かれる	to be divided; to branch off	v-separate
 309	S	{暗|あん}{記|き}	memorizing, learning by heart	s-memorize
 310	S	{一|いっ}{致|ち}	agreement, matching	s-agree
 311	S	うろうろ	wandering around, walking about aimlessly	s-wander
