@@ -2706,3 +2706,40 @@
 3349	P	{身|み}につける	to acquire (a skill); to put on (clothes)
 3350	N	{夜|よ}	night
 3351	F	{一|いっ}{層|そう}	even more
+3352	N	{食|た}べ{放|ほう}{題|だい}	all-you-can-eat
+3353	N	{飲|の}み{放|ほう}{題|だい}	all-you-can-drink
+3354	N	{金|かね}{持|も}ち	rich person
+3355	N	{力|ちから}{持|も}ち	strong person (physically)
+3356	N	{風邪|かぜ}{気|ぎ}{味|み}	having a slight cold
+3357	N	{疲|つか}れ{気|ぎ}{味|み}	a little tired, somewhat worn out
+3358	N	{焼|や}きたて	freshly baked
+3359	N	できたて	freshly made, just finished
+3360	N	{使|し}{用|よう}{済|ず}み	used, already used
+3361	I	{子|こ}{供|ども}っぽい	childish
+3362	I	{忘|わす}れっぽい	forgetful
+3363	I	{怒|おこ}りっぽい	short-tempered, quick to get angry
+3364	N	{食|た}べ{過|す}ぎ	overeating
+3365	N	{飲|の}み{過|す}ぎ	drinking too much
+3366	A	{前|まえ}{向|む}き	positive, forward-looking
+3367	N	{子|こ}{供|ども}{向|む}け	for children, aimed at children
+3368	A	{多|おお}め	a little more than usual
+3369	A	{早|はや}め	a little early, earlier than usual
+3370	A	ありがち	common, typical (often of something not good)
+3371	A	{遠|えん}{慮|りょ}がち	reserved, hesitant
+3372	A	{病|びょう}{気|き}がち	prone to illness, often sick
+3373	N	{傷|きず}だらけ	covered in scratches or wounds
+3374	N	{泥|どろ}だらけ	covered in mud, muddy all over
+3375	N	{泥|どろ}まみれ	smeared with mud
+3376	I	{使|つか}いづらい	hard to use
+3377	V	{降|ふ}り{続|つづ}く	to keep falling (rain, snow)
+3378	V	{使|つか}い{切|き}る	to use up
+3379	V	{追|お}いつく	to catch up (with)
+3380	V	{言|い}い{換|か}える	to say in other words, to rephrase
+3381	V	{書|か}き{換|か}える	to rewrite
+3382	V	{取|と}り{換|か}える	to exchange, to replace
+3383	V	{落|お}ち{込|こ}む	to feel down, to get depressed
+3384	A	{楽|たの}しげ	looking happy, cheerful-looking
+3385	A	{悲|かな}しげ	looking sad
+3386	V	{見|み}なす	to regard as, to consider (A to be B)
+3387	F	そう	(not) so, (not) that (used with a negative)
+3388	F	ろくな	(not) decent, (not) proper (used with a negative)
