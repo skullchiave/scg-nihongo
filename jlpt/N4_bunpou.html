@@ -319,6 +319,16 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   .gform{font-size:20px;}
   .gex{font-size:30px;line-height:2;border-radius:16px;padding:12px 20px;margin-top:14px;}
 }
+/* ---- 意味・説明の訳（えらんだ言語）---- */
+.tr[lang="zh-CN"]{font-family:"Noto Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;}
+.tr[lang="vi"],.tr[lang="en"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
+.tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
+.etr{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.94em;font-weight:500;line-height:1.75;color:var(--sub);}
+#lgBox{margin-top:14px;}
+#lgSel{font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
+.lgnote{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px;}
+@media (min-width:641px){ .lgnote{font-size:18px;} #lgBox{margin-top:20px;display:flex;align-items:center;gap:8px 24px;flex-wrap:wrap;} #lgBox.hidden{display:none;} #lgBox .lbl{display:block;font-size:22px;margin:0;} #lgBox .selwrap{display:block;width:460px;} .lgnote{flex-basis:100%;margin-top:0;}
+  #lgBox select{height:60px;border-radius:14px;font-size:22px;padding:0 56px 0 18px;} #lgBox .selwrap .ic{right:18px;top:16px;width:28px;height:28px;} }
 </style>
 </head>
 <body>
@@ -340,6 +350,11 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
     <label class="lbl" for="catSel">グループ</label>
     <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
     <div class="catruby" id="catRuby" aria-hidden="true"></div>
+    <div id="lgBox" class="hidden">
+      <label class="lbl" for="lgSel">せつめいの ことば（Language）</label>
+      <div class="selwrap"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="lgnote hidden" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
+    </div>
     <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
     <div class="list">
       <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
@@ -578,6 +593,26 @@ const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 /* ---------- ルビ ---------- */
 const esc = s => s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>').replace(/~~(.+?)~~/g,'<s class="del">$1</s>');
+
+/* ---------- 意味・説明の訳（えらんだ言語。語彙ドリルと同じ設定 jlpt_lang を使う） ----------
+   訳のデータ：jlpt/tr/N4_bunpou.<言語>.js（文法の id → [意味の訳, 説明の訳]。説明の訳が無い級は意味だけ）。えらんだ言語のファイルだけ読みこむ。
+   TR_AVAIL＝訳がある言語（make_tr.py が書きかえる）。空なら えらぶ所を出さない。訳が無い・読みこめない時は 今までどおり（日本語＋英語）。 */
+const TR_AVAIL=["ne", "bn", "si", "my", "zh", "vi"];/*__TR_AVAIL__*/
+const TR_NAMES={en:"English",ne:"नेपाली",bn:"বাংলা",si:"සිංහල",my:"မြန်မာ",zh:"中文",vi:"Tiếng Việt"};
+const LCODE={en:'en',ne:'ne',bn:'bn',si:'si',my:'my',zh:'zh-CN',vi:'vi'};
+const TR={};
+window.__bunpouTr=(code,obj)=>{ TR[code]=obj; };
+let lang='en'; try{ lang=localStorage.getItem('jlpt_lang')||'en'; }catch(e){}
+const trLang = () => TR_AVAIL.includes(lang) ? lang : 'en';
+function loadTr(cb){ const l=trLang(); if(l==='en'||TR[l]){ if(cb) cb(); return; }
+  const s=document.createElement('script'); s.src='tr/N4_bunpou.'+l+'.js'; s.onload=s.onerror=()=>{ if(cb) cb(); }; document.head.appendChild(s); }
+const trOf = it => { const l=trLang(); return (l!=='en'&&TR[l]&&TR[l][it.id])||null; };
+// 意味：「日本語の言いかえ／英語」の英語の所を、えらんだ言語の訳にかえる（英語が無い行は うしろに足す）
+const mH = it => { const t=trOf(it); if(!t||!t[0]) return ruby(it.m);
+  const p=it.m.split('／'), last=p[p.length-1], hasEn=p.length>1&&/[A-Za-z]/.test(last)&&!/[ぁ-んァ-ヶ一-龥]/.test(last);
+  return ruby(hasEn?p.slice(0,-1).join('／'):it.m)+'／<span class="tr" lang="'+LCODE[trLang()]+'">'+esc(t[0])+'</span>'; };
+// 説明：日本語の説明の下に、えらんだ言語の訳を出す
+const eH = it => { const t=trOf(it); return ruby(it.e)+((t&&t[1])?'<span class="etr tr" lang="'+LCODE[trLang()]+'">'+esc(t[1])+'</span>':''); };
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2').replace(/~~/g,'');   // ルビを読みに置きかえた文（検索用）
 const catR = c => CATR[c] ? ruby(CATR[c]) : esc(c);
 // 分野の表示名：学生が見分けられる「形」を主役にし、用語は小さく添える（中身は scripts/jlpt_catforms.py の表）
@@ -770,8 +805,8 @@ function answer(oi){
   const fb=$("fb");
   fb.className="fb "+(ok?"ok":"ng");
   const ansNo=order.indexOf(0)+1;
-  fb.innerHTML=`<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>${ruby(cur.e)}`
-    +`<div class="fbfoot"><div class="fbg"><ruby>文法<rt>ぶんぽう</rt></ruby>：<b>${ruby(cur.g)}</b>　${ruby(cur.m)}</div>`
+  fb.innerHTML=`<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>${eH(cur)}`
+    +`<div class="fbfoot"><div class="fbg"><ruby>文法<rt>ぶんぽう</rt></ruby>：<b>${ruby(cur.g)}</b>　${mH(cur)}</div>`
     +`<button class="morebtn" id="moreBtn">${ic('book')}くわしく</button></div>`;
   $("moreBtn").onclick=()=>openSheet(cur);
   $("nextBtn").innerHTML=(pos+1<queue.length?"つぎへ":"けっかを <ruby>見<rt>み</rt></ruby>る")+ic('fwd');
@@ -791,8 +826,8 @@ function paintProgress(){
 let lastOk=false, lastAnsNo=1;
 function renderPanel(it){
   const sims=ITEMS.filter(x=>x.cat===it.cat);
-  $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}"><div class="verdict">${lastOk?"せいかい！":"ざんねん… せいかいは "+lastAnsNo}</div>${ruby(cur.e)}</div>
-    <span class="gname">${ruby(it.g)}</span><div class="gmean2">${ruby(it.m)}</div>
+  $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}"><div class="verdict">${lastOk?"せいかい！":"ざんねん… せいかいは "+lastAnsNo}</div>${eH(cur)}</div>
+    <span class="gname">${ruby(it.g)}</span><div class="gmean2">${mH(it)}</div>
     <dl class="gtbl"><dt><ruby>接続<rt>せつぞく</rt></ruby></dt><dd>${ruby(it.f)}</dd><dt><ruby>記録<rt>きろく</rt></ruby></dt><dd>${recPill(it.id)}</dd></dl>
     <div class="shsep"></div>
     <div class="shsim">にている <ruby>文法<rt>ぶんぽう</rt></ruby>（${catR(it.cat)}）</div>
@@ -812,7 +847,7 @@ function finish(early){
   $("rNg").textContent="まちがい "+(total-score);
   const w=wrongIds.map(id=>BYID[id]);
   $("rWrong").innerHTML = w.length
-    ? `<div class="sech">まちがえた <ruby>文法<rt>ぶんぽう</rt></ruby></div><div class="list">${w.map(it=>`<div class="wrow"><b>${ruby(it.g)}</b><span>${ruby(it.m)}</span></div>`).join("")}</div>`
+    ? `<div class="sech">まちがえた <ruby>文法<rt>ぶんぽう</rt></ruby></div><div class="list">${w.map(it=>`<div class="wrow"><b>${ruby(it.g)}</b><span>${mH(it)}</span></div>`).join("")}</div>`
     : `<div class="allok"><ruby>全問<rt>ぜんもん</rt></ruby><ruby>正解<rt>せいかい</rt></ruby>です！</div>`;
   $("retryWrongBtn").disabled=!w.length;
 }
@@ -830,7 +865,7 @@ function renderSheet(it){
   const sims=ITEMS.filter(x=>x.cat===it.cat);
   $("sheet").innerHTML=`<div class="grab"></div>
     <div class="shtop"><span class="tag">${catR(it.cat)}</span><button class="ibtn shclose" id="shClose" aria-label="とじる">${ic('x',2.2)}</button></div>
-    <div class="shname" id="shName">${ruby(it.g)}</div><div class="shmean">${ruby(it.m)}</div>
+    <div class="shname" id="shName">${ruby(it.g)}</div><div class="shmean">${mH(it)}</div>
     <dl class="shtbl"><dt><ruby>接続<rt>せつぞく</rt></ruby></dt><dd>${ruby(it.f)}</dd>
       <dt>れい</dt><dd class="ex">${fillAnswer(it)}</dd>
       <dt><ruby>記録<rt>きろく</rt></ruby></dt><dd>${recPill(it.id)}</dd></dl>
@@ -867,7 +902,7 @@ function renderList(){
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
     return `<div class="cath" data-h="${esc(c)}"><span>${catF(c)}<small class="ct">${catR(c)}（${xs.length}）</small></span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
       xs.map(it=>`<div class="gcard"><div class="gtop"><span class="gname">${ruby(it.g)}</span>${recPill(it.id)}</div>
-          <div class="gmean">${ruby(it.m)}</div><div class="gform"><ruby>接続<rt>せつぞく</rt></ruby>：${ruby(it.f)}</div>
+          <div class="gmean">${mH(it)}</div><div class="gform"><ruby>接続<rt>せつぞく</rt></ruby>：${ruby(it.f)}</div>
           <div class="gex">${fillAnswer(it)}</div></div>`).join("");
   }).join("");
   $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });
@@ -921,6 +956,14 @@ applyRuby();
 applyZoom();
 show("setup");
 updateStats();
+/* ---------- 訳の言語を えらぶ ---------- */
+(function(){ const box=$("lgBox"), sel=$("lgSel"); if(!box||!TR_AVAIL.length) return;
+  box.classList.remove("hidden");
+  sel.innerHTML=['en'].concat(TR_AVAIL).map(c=>'<option value="'+c+'">'+esc(TR_NAMES[c]||c)+(c==='en'?'':'（draft）')+'</option>').join('');
+  const paint=()=>{ sel.value=trLang(); $("lgInfo").classList.toggle("hidden", trLang()==='en'); };
+  sel.onchange=()=>{ lang=sel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paint(); loadTr(()=>{ if(typeof renderList==='function') renderList(); }); };
+  paint(); loadTr(()=>{ if(typeof renderList==='function') renderList(); });
+})();
 </script>
 <script src="/scg-nihongo/assets/jlpt-study.js"></script>
 <script>
