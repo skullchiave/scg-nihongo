@@ -341,70 +341,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 .setsec{font-size:13px;font-weight:700;color:var(--sub);margin:26px 0 0;}
 @media (min-width:641px){ .lgfirst{border-radius:28px;margin-top:24px;padding:24px 32px;} .lgfh{font-size:26px;margin-bottom:16px;} .lgfh span{font-size:20px;}
   .lgfb{grid-template-columns:repeat(4,1fr);gap:16px;} .lgfb button{min-height:72px;border-radius:16px;font-size:24px;} .setsec{font-size:22px;margin-top:44px;} }
-
-/* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
-.selwrap2{position:relative;}
-.selwrap2 select{appearance:none;-webkit-appearance:none;width:100%;height:48px;border-radius:12px;border:1px solid var(--line);
-  background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
-.selwrap2 .ic{position:absolute;right:14px;top:13px;pointer-events:none;color:var(--sub);}
-.kjinfo{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.9;}
-.kjinfo b{color:var(--ink);font-variant-numeric:tabular-nums;}
-.tr[lang="zh-CN"]{font-family:"Noto Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;}
-.tr[lang="vi"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
-.tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
-#lgSel{font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
-.lgnote{display:none;}
-.lgnote.on{display:block;}
-.choice.en,.qmean,.gmean,.gmean2,.shmean,.wrow span{overflow-wrap:anywhere;}
-.qask{display:block;font-size:13px;font-weight:700;color:var(--sub);line-height:1.6;text-align:left;}
-.qcard.word{text-align:center;}
-.qword{display:block;font-size:36px;font-weight:700;line-height:2;}
-.fr{font-size:.7em;font-weight:500;opacity:.6;margin-right:.35em;white-space:nowrap;}
-.qword .fr{font-size:.45em;}
-.fr.su{margin:0 0 0 .2em;}
-body.noruby .frb rt{display:revert;}
-.cattr{font-size:.8em;font-weight:500;opacity:.75;margin-left:.3em;}
-.qmean{display:block;font-size:22px;font-weight:700;line-height:1.7;padding:10px 0;}
-.choice.en{font-size:17px;line-height:1.5;}
-.fbw{font-size:18px;font-weight:700;line-height:2;}
-.qsent{display:block;font-size:22px;font-weight:700;line-height:2.4;text-align:left;padding:6px 0 2px;overflow-wrap:anywhere;}
-.qsent .ch{display:inline-block;white-space:nowrap;}
-.qsent .ch .ch{display:inline;}
-.qsent .blank{display:inline-block;min-width:3.4em;margin:0 .15em;border-bottom:3px solid var(--accentT);color:var(--accentT);text-align:center;line-height:1.5;}
-.qsent .fill{margin:0 .1em;padding:0 .15em;border-bottom:3px solid var(--accentT);color:var(--accentT);}
-.fbs{display:block;font-size:15px;line-height:2.1;color:var(--sub);margin-top:2px;}
-#listBody .gcard{cursor:pointer;}
-.kjc{display:inline-block;margin:0 10px 2px 0;white-space:nowrap;}
-.kjc b{font-size:1.25em;margin-right:4px;}
-.kjc span{font-size:.85em;color:var(--sub);}
-/* 語の音声（スピーカーのボタン）。メニューの「ことばの おんせい」がオフの時は 出さない */
-.aud{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid #f3d9ad;background:var(--accentSoft);
-  color:var(--accentT);vertical-align:middle;margin:0 0 0 8px;padding:0;flex:none;cursor:pointer;-webkit-tap-highlight-color:transparent;}
-.aud .ic{width:22px;height:22px;position:static;}
-.aud.playing{background:var(--accentT);color:#fff;border-color:var(--accentT);}
-.aud.err{opacity:.4;}
-body.novoice .aud{display:none;}
-.vcic{display:inline-block;vertical-align:-4px;color:var(--accentT);}
-.vcic .ic{width:18px;height:18px;position:static;display:inline-block;}
-.gtop .gname{flex:1;min-width:0;}
-@media (min-width:641px){
-  .aud{width:64px;height:64px;margin-left:14px;}
-  .aud .ic{width:34px;height:34px;}
-  .qword .aud{width:84px;height:84px;}
-  .qword .aud .ic{width:44px;height:44px;}
-  .vcic .ic{width:28px;height:28px;}
-  .selwrap2 select{height:72px;border-radius:16px;font-size:24px;padding:0 60px 0 20px;}
-  .selwrap2 .ic{right:20px;top:22px;width:28px;height:28px;}
-  .kjinfo{font-size:20px;margin-top:8px;}
-  .qask{font-size:24px;}
-  .qword{font-size:96px;line-height:1.9;}
-  .qmean{font-size:52px;line-height:1.6;padding:20px 0;}
-  .qsent{font-size:44px;line-height:2.2;padding:12px 0 6px;}
-  .fbs{font-size:24px;}
-  .choice.en{font-size:30px;line-height:1.4;}
-  .gv .fbw{font-size:30px;}
-  .kjc{margin-right:20px;}
-}
+/* ★ここから下（ホーム・せってい・PC 3列）は、語彙ドリルと文法ドリルで共通。語彙のページは このページの <style> を土台に写すので、直す時は 文法4ページを同じに直してから 語彙を組み立て直す */
 /* ===== ホーム（2026-11-15 きあのデザイン）：ことばの グループ（チップ）／スタートカード／きろくカード ===== */
 .hmgrp{background:#fff;margin:-18px -16px 0;padding:8px 0 8px 16px;border-bottom:1px solid var(--hair);}
 .hmgl{font-size:12px;font-weight:700;color:#4A5670;}
@@ -616,6 +553,74 @@ body.novoice .aud{display:none;}
   .pcset .lgnote{font-size:16px;} .pcset .stcr{font-size:16px;}
   .pcset .stsep{margin-top:28px;}
 }
+/* 文法：グループの名前（〜ば・〜たら など／条件）。スマホのチップは 上の形だけ、PC のリストは 2行 */
+.hmchips .cf{display:inline;} .hmchips .ct{display:none;}
+@media (min-width:641px){ #catChips .cf{display:block;font-size:20px;line-height:1.7;} #catChips .ct{display:block;font-size:18px;} #catChips button[aria-pressed="true"] .ct{color:#c9d4e6;} #catChips button{padding:8px 18px;} }
+
+/* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
+.selwrap2{position:relative;}
+.selwrap2 select{appearance:none;-webkit-appearance:none;width:100%;height:48px;border-radius:12px;border:1px solid var(--line);
+  background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
+.selwrap2 .ic{position:absolute;right:14px;top:13px;pointer-events:none;color:var(--sub);}
+.kjinfo{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.9;}
+.kjinfo b{color:var(--ink);font-variant-numeric:tabular-nums;}
+.tr[lang="zh-CN"]{font-family:"Noto Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;}
+.tr[lang="vi"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
+.tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
+#lgSel{font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
+.lgnote{display:none;}
+.lgnote.on{display:block;}
+.choice.en,.qmean,.gmean,.gmean2,.shmean,.wrow span{overflow-wrap:anywhere;}
+.qask{display:block;font-size:13px;font-weight:700;color:var(--sub);line-height:1.6;text-align:left;}
+.qcard.word{text-align:center;}
+.qword{display:block;font-size:36px;font-weight:700;line-height:2;}
+.fr{font-size:.7em;font-weight:500;opacity:.6;margin-right:.35em;white-space:nowrap;}
+.qword .fr{font-size:.45em;}
+.fr.su{margin:0 0 0 .2em;}
+body.noruby .frb rt{display:revert;}
+.cattr{font-size:.8em;font-weight:500;opacity:.75;margin-left:.3em;}
+.qmean{display:block;font-size:22px;font-weight:700;line-height:1.7;padding:10px 0;}
+.choice.en{font-size:17px;line-height:1.5;}
+.fbw{font-size:18px;font-weight:700;line-height:2;}
+.qsent{display:block;font-size:22px;font-weight:700;line-height:2.4;text-align:left;padding:6px 0 2px;overflow-wrap:anywhere;}
+.qsent .ch{display:inline-block;white-space:nowrap;}
+.qsent .ch .ch{display:inline;}
+.qsent .blank{display:inline-block;min-width:3.4em;margin:0 .15em;border-bottom:3px solid var(--accentT);color:var(--accentT);text-align:center;line-height:1.5;}
+.qsent .fill{margin:0 .1em;padding:0 .15em;border-bottom:3px solid var(--accentT);color:var(--accentT);}
+.fbs{display:block;font-size:15px;line-height:2.1;color:var(--sub);margin-top:2px;}
+#listBody .gcard{cursor:pointer;}
+.kjc{display:inline-block;margin:0 10px 2px 0;white-space:nowrap;}
+.kjc b{font-size:1.25em;margin-right:4px;}
+.kjc span{font-size:.85em;color:var(--sub);}
+/* 語の音声（スピーカーのボタン）。メニューの「ことばの おんせい」がオフの時は 出さない */
+.aud{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid #f3d9ad;background:var(--accentSoft);
+  color:var(--accentT);vertical-align:middle;margin:0 0 0 8px;padding:0;flex:none;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.aud .ic{width:22px;height:22px;position:static;}
+.aud.playing{background:var(--accentT);color:#fff;border-color:var(--accentT);}
+.aud.err{opacity:.4;}
+body.novoice .aud{display:none;}
+.vcic{display:inline-block;vertical-align:-4px;color:var(--accentT);}
+.vcic .ic{width:18px;height:18px;position:static;display:inline-block;}
+.gtop .gname{flex:1;min-width:0;}
+@media (min-width:641px){
+  .aud{width:64px;height:64px;margin-left:14px;}
+  .aud .ic{width:34px;height:34px;}
+  .qword .aud{width:84px;height:84px;}
+  .qword .aud .ic{width:44px;height:44px;}
+  .vcic .ic{width:28px;height:28px;}
+  .selwrap2 select{height:72px;border-radius:16px;font-size:24px;padding:0 60px 0 20px;}
+  .selwrap2 .ic{right:20px;top:22px;width:28px;height:28px;}
+  .kjinfo{font-size:20px;margin-top:8px;}
+  .qask{font-size:24px;}
+  .qword{font-size:96px;line-height:1.9;}
+  .qmean{font-size:52px;line-height:1.6;padding:20px 0;}
+  .qsent{font-size:44px;line-height:2.2;padding:12px 0 6px;}
+  .fbs{font-size:24px;}
+  .choice.en{font-size:30px;line-height:1.4;}
+  .gv .fbw{font-size:30px;}
+  .kjc{margin-right:20px;}
+}
+/* ホーム・せってい・PC 3列 の決まりは、土台（jlpt/N4_bunpou.html の <style>）の終わりにある（文法ドリルと共通） */
 </style>
 </head>
 <body>

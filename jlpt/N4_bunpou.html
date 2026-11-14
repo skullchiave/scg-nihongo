@@ -341,6 +341,221 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 .setsec{font-size:13px;font-weight:700;color:var(--sub);margin:26px 0 0;}
 @media (min-width:641px){ .lgfirst{border-radius:28px;margin-top:24px;padding:24px 32px;} .lgfh{font-size:26px;margin-bottom:16px;} .lgfh span{font-size:20px;}
   .lgfb{grid-template-columns:repeat(4,1fr);gap:16px;} .lgfb button{min-height:72px;border-radius:16px;font-size:24px;} .setsec{font-size:22px;margin-top:44px;} }
+/* ★ここから下（ホーム・せってい・PC 3列）は、語彙ドリルと文法ドリルで共通。語彙のページは このページの <style> を土台に写すので、直す時は 文法4ページを同じに直してから 語彙を組み立て直す */
+/* ===== ホーム（2026-11-15 きあのデザイン）：ことばの グループ（チップ）／スタートカード／きろくカード ===== */
+.hmgrp{background:#fff;margin:-18px -16px 0;padding:8px 0 8px 16px;border-bottom:1px solid var(--hair);}
+.hmgl{font-size:12px;font-weight:700;color:#4A5670;}
+.hmchips{display:flex;gap:8px;overflow-x:auto;padding:6px 16px 6px 0;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+.hmchips button{flex:none;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #CBD5E3;background:#fff;font-size:15px;font-weight:700;color:#1B2540;white-space:nowrap;line-height:2;}
+.hmchips button[aria-pressed="true"]{background:#1B2540;color:#fff;border-color:#1B2540;}
+.hmgl.g2{margin-top:6px;}
+.hmex{padding:2px 16px 2px 0;min-height:32px;}
+.hmex .t{color:#4A5670;line-height:2.1;}
+.hmex .t.n{flex-basis:100%;font-size:12px;line-height:1.9;} .hmex .t.n b{color:#1B2540;}
+.hmcard{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:16px;padding:14px 16px 16px;}
+.hmexam{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:15px;font-weight:700;line-height:2;margin-bottom:6px;}
+.hmexam b{font-size:22px;color:#B45309;margin:0 3px;font-variant-numeric:tabular-nums;}
+.hmexam .d{font-size:13px;font-weight:500;color:#4A5670;white-space:nowrap;}
+.pi{flex:none;display:grid;place-items:center;}
+.hmtoday{width:100%;min-height:88px;border:none;border-radius:14px;background:#B45309;color:#fff;display:flex;align-items:center;gap:14px;padding:10px 20px;text-align:left;}
+.hmtoday .pi .ic{width:22px;height:22px;}
+.hmtoday b{display:block;font-size:22px;line-height:1.9;}
+.hmtoday small{display:block;font-size:13px;font-weight:700;line-height:1.9;}
+.hmtoday:disabled{background:#c2cad8;}
+.hmtoday:active,.hmb:active{transform:scale(.99);}
+.hmgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.hmb{min-height:64px;display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;text-align:left;color:#1B2540;}
+.hmb .pi{width:32px;height:32px;border-radius:50%;background:#1B2540;color:#fff;}
+.hmb .pi .ic{width:16px;height:16px;}
+.hmb b{display:block;font-size:15px;line-height:1.8;}
+.nb{display:inline-block;white-space:nowrap;}
+.hmb small{display:block;font-size:13px;color:#4A5670;line-height:1.9;}
+.hmb.ng{background:#FFF5F3;border-color:#E7B4AE;color:#A1271B;}
+.hmb.ng .pi{background:#A1271B;}
+.hmb.ng small{color:#A1271B;}
+.hmb:disabled{background:#f1f3f7;border-color:#e1e6ee;color:#8a98b0;cursor:default;}
+.hmb:disabled .pi{background:#c2cad8;}
+.hmb:disabled small{color:#8a98b0;}
+.hmset{margin-top:14px;padding-top:12px;border-top:1px solid #e6ebf3;}
+.hmsetl{font-size:12px;font-weight:700;color:#4A5670;line-height:1.9;}
+.hmtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.hmtags span{font-size:13px;font-weight:700;background:#EDF0F7;color:#1B2540;border-radius:8px;padding:2px 10px;line-height:2;}
+.hmsetbtn{margin-top:10px;min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 16px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;font-size:15px;font-weight:700;color:#1B2540;}
+.hmsetbtn .ic{width:18px;height:18px;}
+.hmsetbtn + .hmsetbtn{margin-left:8px;}
+.hmsetbtn[aria-expanded="true"]{background:#EDF0F7;}
+.hmweek{margin-top:10px;background:#EDF0F7;border-radius:12px;padding:10px 14px;}
+.hmwd{display:flex;justify-content:space-between;max-width:320px;}
+.hmwd span{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:700;color:#4A5670;line-height:1.6;}
+.hmwd i{width:20px;height:20px;border-radius:50%;background:#fff;border:1px solid #CBD5E3;}
+.hmwd .on i{background:var(--ok);border-color:var(--ok);}
+.hmwd .now i{outline:2px solid #B45309;outline-offset:1px;}
+.hmwt{margin-top:6px;font-size:14px;font-weight:700;line-height:2;}
+.hmwt b{font-size:18px;font-variant-numeric:tabular-nums;} .hmwt b.g{font-size:14px;color:var(--ok);}
+.hmwt small{display:block;font-size:12px;font-weight:500;color:#4A5670;}
+.hmrech{font-size:15px;font-weight:700;margin:22px 4px 0;line-height:2;}
+.hmcard.hmrec{margin-top:6px;}
+.hmbar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:#e1e6ee;}
+.hmbar i{display:block;height:100%;}
+.hmbar .a{background:var(--ok);} .hmbar .b{background:var(--accentStrong);}
+.hm3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+.hm3 span{display:block;font-size:13px;font-weight:700;line-height:2;white-space:nowrap;}
+.hm3 span i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:#8a98b0;}
+.hm3 .a span{color:var(--ok);} .hm3 .a span i{background:var(--ok);}
+.hm3 .b span{color:#B45309;} .hm3 .b span i{background:var(--accentStrong);}
+.hm3 b{display:block;font-size:24px;line-height:1.3;font-variant-numeric:tabular-nums;}
+.hmrate{margin-top:10px;padding-top:8px;border-top:1px solid #e6ebf3;font-size:13px;color:#4A5670;line-height:2;}
+.hmrate b{color:#1B2540;}
+/* せってい のシート（2026-11-15 きあのデザイン）。中身（.setin）だけが動き、「できた」は いつも下に出る */
+#setSheet{background:#EDF0F7;max-height:90vh;max-height:90dvh;padding:0;display:flex;flex-direction:column;overflow:hidden;}
+.sethead{flex:none;padding:8px 16px 8px;border-bottom:1px solid #CBD5E3;}
+.setin{flex:1;min-height:0;overflow-y:auto;padding:4px 16px 20px;}
+.setttl{font-size:18px;font-weight:700;line-height:2;}
+.setclose{min-height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;font-size:15px;font-weight:700;color:#1B2540;}
+.setclose .ic{width:18px;height:18px;}
+.setdone{flex:none;padding:10px 16px max(12px, env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--hair);}
+.setdone button{width:100%;min-height:52px;border:none;border-radius:14px;background:#1B2540;color:#fff;font-size:17px;font-weight:700;}
+.sth{font-size:15px;font-weight:700;color:#1B2540;margin:22px 2px 0;line-height:2;}
+.sth.first{margin-top:6px;}
+.sth small{font-size:11px;font-weight:500;color:#4A5670;margin-left:8px;}
+.sth.sm{font-size:13px;color:#4A5670;margin-top:12px;}
+.std{font-size:12px;color:#4A5670;margin:0 2px;line-height:2;}
+.stlg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+.stlg button{min-height:60px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;text-align:left;padding:6px 14px;color:#1B2540;}
+.stlg b{display:block;font-size:17px;line-height:1.7;}
+.stlg small{display:block;font-size:11px;color:#4A5670;line-height:2;}
+.stlg button[aria-checked="true"],.st2 button[aria-pressed="true"]{background:#FDF0DC;border-color:#B45309;box-shadow:inset 0 0 0 1px #B45309;}
+.setin .lgnote{font-size:12px;line-height:1.7;color:#4A5670;margin:8px 2px 0;}
+.stcard{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:6px;overflow:hidden;}
+.stcard.pad{padding:12px 14px;}
+.stqt button{width:100%;display:flex;align-items:center;gap:12px;min-height:68px;padding:10px 14px;border:none;border-top:1px solid #e6ebf3;background:#fff;text-align:left;color:#1B2540;}
+.stqt button:first-child{border-top:none;}
+.stqt button[aria-checked="true"]{background:#FDF0DC;}
+.rd{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid #8a98b0;background:#fff;display:grid;place-items:center;}
+.rd::after{content:"";width:10px;height:10px;border-radius:50%;background:#B45309;display:none;}
+.stqt button[aria-checked="true"] .rd{border-color:#B45309;}
+.stqt button[aria-checked="true"] .rd::after{display:block;}
+.rb{min-width:0;}
+.rb b{display:block;font-size:16px;line-height:2;}
+.ex{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;}
+.ex i{font-style:normal;border:1px solid #CBD5E3;border-radius:8px;padding:0 8px;background:#fff;line-height:2.1;overflow-wrap:anywhere;}
+.ex i.pk{border:1px dashed #B45309;background:#FDF0DC;color:#B45309;font-weight:700;}
+.ex em{font-style:normal;color:#4A5670;}
+.ex.t{display:block;color:#4A5670;line-height:2;}
+.st2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+.st2 button{min-height:52px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;font-size:16px;font-weight:700;color:#1B2540;}
+.st2 button[aria-pressed="true"]{color:#B45309;}
+.stsep{border-top:1px solid #CBD5E3;margin-top:24px;}
+.strst{width:100%;min-height:48px;margin-top:6px;border:1px solid #E7B4AE;border-radius:12px;background:#FFF5F3;color:#A1271B;font-size:15px;font-weight:700;}
+.stcr{font-size:11px;color:#4A5670;margin:10px 2px 0;line-height:2;}
+.setin [data-ui]:empty{display:none;}
+.std[data-ui]{margin-top:-2px;line-height:1.7;}
+.ex.t[data-ui]{font-size:12px;line-height:1.7;}
+.strst small{display:block;font-size:11px;font-weight:500;line-height:1.6;padding-bottom:4px;}
+.setin .confirm{margin-top:8px;}
+.setin .confirm button{height:auto;min-height:52px;padding:4px 6px;}
+.setin .confirm small{display:block;font-size:11px;font-weight:500;line-height:1.5;}
+.uis{font-size:12px;font-weight:500;line-height:1.7;}
+@media (min-width:641px){
+  #setup:not(.hidden){display:block;max-width:1160px;margin:0 auto;}
+  .hmgrp{margin:0;padding:16px 32px 18px;border:none;border-radius:28px;box-shadow:var(--card-shadow);}
+  .hmgl{font-size:20px;} .hmgl.g2{margin-top:18px;} .hmex{padding:10px 0 0;min-height:54px;} .hmex .t.n{font-size:20px;}
+  .hmchips{flex-wrap:wrap;overflow:visible;gap:12px;padding:10px 0 0;}
+  .hmchips button{min-height:64px;padding:0 26px;font-size:24px;}
+  .hmcard{border-radius:28px;margin-top:24px;padding:24px 32px 28px;}
+  .hmexam{font-size:26px;margin-bottom:12px;} .hmexam b{font-size:40px;} .hmexam .d{font-size:22px;}
+  .hmtoday{min-height:150px;border-radius:24px;gap:28px;padding:16px 48px;}
+  .hmtoday .pi .ic{width:48px;height:48px;}
+  .hmtoday b{font-size:44px;line-height:1.7;} .hmtoday small{font-size:24px;}
+  .hmgrid{grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px;}
+  .hmb{min-height:110px;gap:16px;padding:12px 20px;border-radius:20px;border-width:2px;}
+  .hmb .pi{width:52px;height:52px;} .hmb .pi .ic{width:26px;height:26px;}
+  .hmb b{font-size:26px;} .hmb small{font-size:22px;}
+  .hmset{margin-top:24px;padding-top:20px;}
+  .hmsetl{font-size:20px;}
+  .hmtags{gap:10px;margin-top:8px;} .hmtags span{font-size:22px;border-radius:12px;padding:2px 18px;}
+  .hmsetbtn{margin-top:16px;min-height:64px;padding:0 28px;border-radius:16px;font-size:24px;gap:12px;} .hmsetbtn .ic{width:28px;height:28px;}
+  .hmsetbtn + .hmsetbtn{margin-left:16px;}
+  .hmweek{margin-top:16px;border-radius:20px;padding:16px 24px;} .hmwd{max-width:560px;} .hmwd span{font-size:20px;} .hmwd i{width:34px;height:34px;}
+  .hmwt{font-size:24px;margin-top:10px;} .hmwt b{font-size:32px;} .hmwt b.g{font-size:24px;} .hmwt small{font-size:20px;}
+  .hmrech{font-size:26px;margin-top:36px;}
+  .hmcard.hmrec{margin-top:10px;}
+  .hmbar{height:20px;}
+  .hm3{margin-top:20px;} .hm3 span{font-size:22px;} .hm3 span i{width:16px;height:16px;margin-right:8px;} .hm3 b{font-size:56px;}
+  .hmrate{font-size:22px;margin-top:16px;padding-top:12px;}
+  #setSheet{max-width:1160px;}
+  .sethead{padding:12px 40px 12px;}
+  .setin{padding:8px 40px 28px;}
+  .setttl{font-size:30px;} .setclose{min-height:64px;font-size:24px;padding:0 24px;border-radius:16px;border-width:2px;gap:10px;} .setclose .ic{width:28px;height:28px;}
+  .setdone{padding:16px 40px 20px;} .setdone button{min-height:72px;border-radius:18px;font-size:26px;}
+  .sth{font-size:26px;margin-top:36px;} .sth.first{margin-top:10px;} .sth small{font-size:20px;margin-left:14px;} .sth.sm{font-size:22px;margin-top:20px;}
+  .std{font-size:20px;}
+  .stlg{grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px;}
+  .stlg button{min-height:96px;border-radius:18px;padding:10px 22px;border-width:2px;}
+  .stlg b{font-size:28px;} .stlg small{font-size:19px;}
+  .setin .lgnote{font-size:18px;}
+  .stcard{border-radius:24px;margin-top:10px;} .stcard.pad{padding:20px 24px;}
+  .stqt{display:grid;grid-template-columns:1fr 1fr;}
+  .stqt button{min-height:110px;gap:20px;padding:14px 24px;border-top:none;border-bottom:1px solid #e6ebf3;}
+  .stqt button:nth-child(odd){border-right:1px solid #e6ebf3;}
+  .rd{width:34px;height:34px;border-width:3px;} .rd::after{width:16px;height:16px;}
+  .rb b{font-size:26px;}
+  .ex{font-size:21px;gap:10px;} .ex i{border-radius:12px;padding:0 14px;border-width:2px;} .ex i.pk{border-width:2px;}
+  .st2{gap:14px;margin-top:10px;max-width:560px;} .st2 button{min-height:76px;border-radius:18px;font-size:26px;border-width:2px;}
+  .stsep{margin-top:36px;}
+  .strst{max-width:560px;min-height:68px;border-radius:18px;font-size:24px;border-width:2px;margin-top:10px;}
+  .stcr{font-size:18px;margin-top:14px;}
+  .ex.t[data-ui]{font-size:19px;} .strst small{font-size:18px;} .uis{font-size:20px;}
+  .setin .confirm{max-width:560px;} .setin .confirm button{min-height:76px;} .setin .confirm small{font-size:18px;}
+}
+/* ===== PC 幅のホーム（2026-11-15 きあのデザイン）：左＝ことばの グループ／まん中＝しゅるい・はじめる・きろく／右＝せってい（いつも出ている。シートは使わない）
+   部品の置き場所は placePC() が PC 幅の時に入れかえる（しゅるい のチップ → スタートカードの上、せってい の中身 → 右の箱、「今週」→ 試験日の行の右） ===== */
+.pcset{display:none;}
+.hmchips .n{display:none;}
+@media (min-width:641px){
+  #setup:not(.hidden){display:grid;grid-template-columns:320px minmax(0,1fr) 500px;grid-template-rows:repeat(5,auto) 1fr;column-gap:36px;max-width:none;margin:0;align-items:start;}
+  #setup > .hmgrp{grid-column:1;grid-row:1 / -1;margin:0;padding:20px 16px;}
+  #setup > .pcset{grid-column:3;grid-row:1 / -1;}
+  #setup .lgfirst{margin:0 0 24px;}
+  #hmStart{margin-top:0;}
+  .hmgl{font-size:19px;padding:0 8px;}
+  #catChips{flex-direction:column;flex-wrap:nowrap;gap:6px;padding:10px 0 0;}
+  #catChips button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding:4px 18px;border-radius:14px;border-color:transparent;font-size:22px;text-align:left;white-space:normal;line-height:1.7;}
+  #catChips button .n{display:inline;font-size:19px;font-weight:500;opacity:.75;font-variant-numeric:tabular-nums;}
+  #catChips button:hover{background:#EDF0F7;} #catChips button[aria-pressed="true"]:hover{background:#1B2540;}
+  .hmg2{padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid #e6ebf3;}
+  .hmg2 .hmgl{padding:0;margin-top:0;}
+  .hmg2 .hmchips button{min-height:60px;font-size:22px;padding:0 24px;}
+  .hmex{min-height:48px;padding-top:8px;}
+  .hmtop{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;}
+  .hmexam{justify-content:flex-start;gap:20px;margin-bottom:0;}
+  .hmtop .hmsetbtn{margin:0;min-height:60px;}
+  #hmStart > .hmweek{margin:0 0 16px;}
+  .hmset{display:none;}
+  .hmb{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;min-height:170px;padding:18px 20px;}
+  .hmrech{background:#fff;border-radius:28px 28px 0 0;margin:24px 0 0;padding:22px 32px 0;}
+  .hmcard.hmrec{margin-top:0;border-radius:0 0 28px 28px;padding-top:10px;display:grid;grid-template-columns:3fr 1fr;column-gap:24px;box-shadow:0 4px 16px rgba(22,35,58,.06);}
+  .hmrec .hmbar{grid-column:1 / -1;}
+  .hmrec .hmrate{margin-top:20px;padding:0 0 0 24px;border-top:none;border-left:1px solid #e6ebf3;}
+  .hmrate .l,.hmrate .s{display:block;} .hmrate .pr{display:none;} .hmrate b{display:block;font-size:56px;line-height:1.3;}
+  .pcset{display:block;background:#fff;border-radius:28px;box-shadow:var(--card-shadow);padding:22px 28px 26px;}
+  .pcsetttl{font-size:26px;font-weight:700;line-height:2;} .pcsetttl small{font-size:19px;font-weight:500;color:#4A5670;margin-left:12px;}
+  .pcset .setin{overflow:visible;padding:0;}
+  .pcset .sth{margin-top:26px;font-size:23px;} .pcset .sth.first{margin-top:8px;} .pcset .sth small{font-size:18px;} .pcset .sth.sm{font-size:20px;margin-top:16px;}
+  .pcset .std{font-size:18px;}
+  .pcset .stcard{box-shadow:none;border-radius:0;padding:0;overflow:visible;margin-top:8px;}
+  .pcset .selwrap2 select{height:64px;font-size:22px;}
+  .pcset .selwrap2 .ic{top:18px;}
+  .pcset .kjinfo{font-size:18px;}
+  .pcset .stlg{grid-template-columns:1fr 1fr;gap:10px;} .pcset .stlg button{min-height:80px;padding:8px 18px;} .pcset .stlg b{font-size:24px;} .pcset .stlg small{font-size:17px;}
+  .pcset .st2 button{min-height:64px;font-size:22px;}
+  .pcset .strst{min-height:64px;font-size:22px;}
+  .pcset .lgnote{font-size:16px;} .pcset .stcr{font-size:16px;}
+  .pcset .stsep{margin-top:28px;}
+}
+/* 文法：グループの名前（〜ば・〜たら など／条件）。スマホのチップは 上の形だけ、PC のリストは 2行 */
+.hmchips .cf{display:inline;} .hmchips .ct{display:none;}
+@media (min-width:641px){ #catChips .cf{display:block;font-size:20px;line-height:1.7;} #catChips .ct{display:block;font-size:18px;} #catChips button[aria-pressed="true"] .ct{color:#c9d4e6;} #catChips button{padding:8px 18px;} }
 </style>
 </head>
 <body>
@@ -349,37 +564,56 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 <main id="main"><div class="page">
   <!-- 1. 練習メニュー -->
   <section id="setup">
-    <div class="catlist pconly" id="catList" role="group" aria-label="分野"></div>
-    <div class="sethd"><div>
-    <div class="h"><ruby>練習<rt>れんしゅう</rt></ruby>を はじめる</div>
-    <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
-    </div><span class="catpill pconly" id="catPill"></span></div>
-    <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">ことばを えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
-    <div id="lgBox" class="hidden">
-      <label class="lbl" for="lgSel">せつめいの ことば（Language）</label>
-      <div class="selwrap"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
-      <div class="lgnote hidden" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
+    <div class="hmgrp" id="hmgrp">
+      <div class="hmg1"><div class="hmgl"><ruby>文法<rt>ぶんぽう</rt></ruby>の グループ</div>
+      <div class="hmchips" id="catChips" role="group" aria-label="文法の グループ"></div></div>
     </div>
-    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
-    <div class="stats">
-      <div><b id="sTotal">0</b><span><ruby>問題<rt>もんだい</rt></ruby><ruby>数<rt>すう</rt></ruby></span></div>
-      <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
-      <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
+    <select id="catSel" hidden aria-hidden="true"></select>
+    <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">わたしの <ruby>言語<rt>げんご</rt></ruby>を えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
+    <div class="hmcard" id="hmStart">
+      <div class="hmtop" id="hmTop"><div class="hmexam hidden" id="hmExam"></div><span id="pcWeekSlot"></span></div>
+      <button class="hmtoday" id="hmToday"><span class="pi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span><span><b>きょうの 10<ruby>問<rt>もん</rt></ruby></b><small id="hmTodaySub"></small></span></button>
+      <div class="hmgrid">
+        <button class="hmb ng" data-mode="wrong"><span class="pi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span><span><b>まちがえた</b><small></small></span></button>
+        <button class="hmb" data-mode="all"><span class="pi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span><span><b>ぜんぶ</b><small></small></span></button>
+        <button class="hmb" data-mode="unseen"><span class="pi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span><span><b>まだ <span class="nb"><ruby>解<rt>と</rt></ruby>いて</span><span class="nb">いない</span></b><small></small></span></button>
+        <button class="hmb" data-mode="random10"><span class="pi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span><span><b>ランダム</b><small></small></span></button>
+      </div>
+      <div class="hmset">
+        <div class="hmsetl">この せっていで <ruby>出<rt>で</rt></ruby>ます</div>
+        <div class="hmtags" id="hmTags"></div>
+        <button class="hmsetbtn" id="hmSetBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>せっていを かえる</span></button>
+        <button class="hmsetbtn hidden" id="hmWeekBtn" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><ruby>今週<rt>こんしゅう</rt></ruby></span></button>
+        <div class="hmweek hidden" id="hmWeek"></div>
+      </div>
     </div>
-    <div class="list">
-      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない <ruby>問題<rt>もんだい</rt></ruby></span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた <ruby>問題<rt>もんだい</rt></ruby></span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-    </div>
-    <div class="setsec">せってい</div>
-    <label class="lbl" for="catSel">グループ</label>
-    <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
-    <div class="catruby" id="catRuby" aria-hidden="true"></div>
-    <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
-    <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
-      <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
-    </div>
+    <div class="hmrech" id="hmRecH"></div>
+    <div class="hmcard hmrec" id="hmRec"></div>
+    <aside class="pcset" id="pcSet"><div class="pcsetttl">せってい<small class="tr" data-ui="h_set"></small></div><div id="pcSetIn"></div></aside>
   </section>
+
+  <!-- せってい（スマホ＝下から出るシート／PC＝右の列に いつも出ている）。ならび：わたしの言語 → その他。語彙ドリルと同じ形（2026-11-15 きあ） -->
+  <div class="shov hidden" id="setov"><div class="sheet" id="setSheet" role="dialog" aria-modal="true" aria-labelledby="setTtl">
+    <div class="sethead"><div class="grab"></div>
+    <div class="shtop"><div class="setttl" id="setTtl">せってい</div><button class="setclose" id="setClose"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>とじる</span></button></div></div>
+    <div class="setin" id="setIn">
+    <div id="lgBox">
+      <div class="sth first">わたしの <ruby>言語<rt>げんご</rt></ruby><small class="tr" data-ui="h_lg"></small></div>
+      <div class="std">いみと <ruby>説明<rt>せつめい</rt></ruby>を この <ruby>言語<rt>げんご</rt></ruby>で <ruby>出<rt>だ</rt></ruby>します</div>
+      <div class="std tr" data-ui="d_lg"></div>
+      <div class="stlg" id="lgBtns" role="radiogroup" aria-label="わたしの 言語"></div>
+      <select id="lgSel" hidden aria-hidden="true"></select>
+      <div class="lgnote hidden" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br><span class="tr" data-ui="draft"></span></div>
+    </div>
+    <div class="stsep"></div>
+    <div class="sth sm">その<ruby>他<rt>た</rt></ruby><small class="tr" data-ui="h_ot"></small></div>
+    <button class="strst" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット<small class="tr" data-ui="rst_btn"></small></button>
+    <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？<div class="uis tr" data-ui="rst_q"></div>
+      <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す<small class="tr" data-ui="yes"></small></button><button class="btn-plain" id="resetNo">やめる<small class="tr" data-ui="no"></small></button></div>
+    </div>
+    </div>
+    <div class="setdone"><button id="setDone">できた</button></div>
+  </div></div>
 
   <!-- 2. 問題 -->
   <section id="quiz" class="hidden">
@@ -720,32 +954,84 @@ function bindHeader(){
 function applyRuby(){ document.body.classList.toggle("noruby",!rubyOn); const b=$("rubyBtn"); if(b) b.setAttribute("aria-pressed",String(rubyOn)); }
 function paintSound(){ const b=$("soundBtn"); if(!b) return; b.innerHTML=ic(soundOn?'spk':'spkoff'); b.setAttribute("aria-label",soundOn?"おと：オン":"おと：オフ"); b.setAttribute("aria-pressed",String(soundOn)); }
 
+/* ---------- ホームと せってい（2026-11-15 きあのデザイン。語彙ドリルと同じ形）----------
+   グループ：えらんだ値は 見えない select（catSel）が持つ（出題・文法リストの「これを練習」が 前と同じに読む）。画面には チップ（スマホ）／たてのリスト（PC）で出す */
 const catSel=$("catSel");
-catSel.innerHTML='<option value="">ぜんぶ</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(CATF[c]?plain(CATF[c])+' など':c)}</option>`).join("");
+catSel.innerHTML='<option value=""></option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}"></option>`).join("");
+$("catChips").innerHTML=[""].concat(CAT_ORDER).map(k=>`<button data-cat="${esc(k)}"><span>${k?catL(k):'ぜんぶ'}</span><span class="n"></span></button>`).join("");
+$("catChips").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
+const DAYR=['','ついたち','ふつか','みっか','よっか','いつか','むいか','なのか','ようか','ここのか','とおか','じゅういちにち','じゅうににち','じゅうさんにち','じゅうよっか','じゅうごにち','じゅうろくにち','じゅうしちにち','じゅうはちにち','じゅうくにち','はつか','にじゅういちにち','にじゅうににち','にじゅうさんにち','にじゅうよっか','にじゅうごにち','にじゅうろくにち','にじゅうしちにち','にじゅうはちにち','にじゅうくにち','さんじゅうにち','さんじゅういちにち'];
+const LGS=['en'].concat(TR_AVAIL);
+// せってい の 見出し・説明・リセットの確認を、えらんだ言語でも出す（日本語の横・下に小さく。ホームには出さない）。訳は Claude が書いた物（母語話者の確認なし）
+const UI = {
+  en:{h_set:"Settings", h_lg:"My language", d_lg:"Meanings and explanations are shown in this language.", h_ot:"Other", rst_btn:"Reset records", rst_q:"Delete all your records?", yes:"Delete", no:"Cancel", draft:"Draft translation. Not checked yet. It may have mistakes."},
+  ne:{h_set:"सेटिङ", h_lg:"मेरो भाषा", d_lg:"अर्थ र व्याख्या यही भाषामा देखिन्छन्।", h_ot:"अन्य", rst_btn:"रेकर्ड मेटाउने", rst_q:"सबै रेकर्ड मेटाउने हो?", yes:"मेटाउने", no:"रद्द गर्ने", draft:"यो अनुवाद मस्यौदा हो। अझै जाँच गरिएको छैन। गल्ती हुन सक्छ।"},
+  bn:{h_set:"সেটিংস", h_lg:"আমার ভাষা", d_lg:"মানে আর ব্যাখ্যা এই ভাষায় দেখাবে।", h_ot:"অন্যান্য", rst_btn:"রেকর্ড মুছে ফেলো", rst_q:"সব রেকর্ড মুছে ফেলবে?", yes:"মুছে ফেলো", no:"বাদ দাও", draft:"এই অনুবাদটা খসড়া। এখনো চেক করা হয়নি। ভুল থাকতে পারে।"},
+  si:{h_set:"සැකසුම්", h_lg:"මගේ භාෂාව", d_lg:"තේරුමයි පැහැදිලි කිරීමයි මේ භාෂාවෙන් පෙන්වනවා.", h_ot:"වෙනත්", rst_btn:"වාර්තා මකන්න", rst_q:"වාර්තා ඔක්කොම මකන්නද?", yes:"මකන්න", no:"එපා", draft:"මේ පරිවර්තනය කෙටුම්පතක්. තාම චෙක් කරලා නෑ. වැරදි තියෙන්න පුළුවන්."},
+  my:{h_set:"ဆက်တင်", h_lg:"ကျွန်ုပ်၏ ဘာသာစကား", d_lg:"အဓိပ္ပာယ်နှင့် ရှင်းလင်းချက်ကို ဤဘာသာစကားဖြင့် ပြပါမည်။", h_ot:"အခြား", rst_btn:"မှတ်တမ်း ဖျက်ရန်", rst_q:"မှတ်တမ်းအားလုံးကို ဖျက်မလား။", yes:"ဖျက်မည်", no:"မဖျက်တော့ပါ", draft:"ဤဘာသာပြန်သည် မူကြမ်းဖြစ်သည်။ မစစ်ဆေးရသေးပါ။ အမှားပါနိုင်ပါသည်။"},
+  zh:{h_set:"设置", h_lg:"我的语言", d_lg:"意思和说明用这种语言显示。", h_ot:"其他", rst_btn:"重置记录", rst_q:"要删除全部记录吗？", yes:"删除", no:"取消", draft:"此翻译为草稿，尚未检查，可能有错误。"},
+  vi:{h_set:"Cài đặt", h_lg:"Ngôn ngữ của tôi", d_lg:"Nghĩa và phần giải thích sẽ hiện bằng ngôn ngữ này.", h_ot:"Khác", rst_btn:"Xóa kết quả học", rst_q:"Xóa tất cả kết quả học?", yes:"Xóa", no:"Hủy", draft:"Bản dịch này là bản nháp. Chưa được kiểm tra. Có thể có lỗi."}
+};
+function paintUI(){ const l=trLang(), u=UI[l]||UI.en;
+  document.querySelectorAll("[data-ui]").forEach(x=>{ x.textContent=u[x.dataset.ui]||UI.en[x.dataset.ui]||''; x.lang=UI[l]?(LCODE[l]||l):'en'; }); }
 function pool(){ const c=catSel.value; return ITEMS.filter(it=>!c||it.cat===c); }
 function updateStats(){
-  const p=pool();
+  const p=pool(), c=catSel.value, MON='<ruby>問<rt>もん</rt></ruby>';
   const seen=p.filter(it=>rec[it.id]);
   const wrong=p.filter(it=>rec[it.id]&&rec[it.id].last===0);
   let ok=0,tot=0; seen.forEach(it=>{ok+=rec[it.id].ok;tot+=rec[it.id].n;});
-  $("sTotal").textContent=p.length; $("sSeen").textContent=seen.length;
-  $("sRate").textContent=tot?Math.round(ok/tot*100)+"%":"–";
-  const MON='<ruby>問<rt>もん</rt></ruby>';
-  $("allCount").innerHTML=p.length+MON;
-  $("wrongCount").innerHTML=wrong.length+MON; $("unseenCount").innerHTML=(p.length-seen.length)+MON;
-  const c=catSel.value;
-  $("catRuby").innerHTML=c?catL(c):'ぜんぶ';
-  // PC版：分野のボタン一覧（select の代わり）と、えらんでいる分野のピル
-  $("catPill").innerHTML=c?catF(c):'ぜんぶ';
-  $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
-    const n=k?ITEMS.filter(it=>it.cat===k).length:ITEMS.length;
-    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catL(k):'ぜんぶ'}</span><span class="n">${n}${MON}</span></button>`;
-  }).join("");
-  $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
-  $("wrongBtn").disabled=!wrong.length;
-  document.querySelector('[data-mode="unseen"]').disabled=(p.length===seen.length);
+  // グループ（えらんだ物が、下の数字ぜんぶの はんい）。数は PC 幅の時だけ見える
+  $("catChips").querySelectorAll("button").forEach(b=>{ const k=b.dataset.cat, on=k===c, was=b.getAttribute("aria-pressed")==="true";
+    b.setAttribute("aria-pressed",String(on)); if(on&&!was&&b.scrollIntoView&&!isPC()) b.scrollIntoView({block:'nearest',inline:'nearest'});
+    b.querySelector(".n").textContent=k?ITEMS.filter(it=>it.cat===k).length:ITEMS.length; });
+  // スタートカード：4つのボタン（おすと すぐ はじまる。0問は おせない）
+  const setB=(m,n)=>{ const b=document.querySelector('#setup [data-mode="'+m+'"]'); b.querySelector('small').innerHTML=n+MON; b.disabled=!n; };
+  setB('wrong',wrong.length); setB('all',p.length); setB('unseen',p.length-seen.length); setB('random10',Math.min(10,p.length));
+  // きょうの10問・試験日・今週（assets/jlpt-study.js が読めた時。読めない時は ランダム10問 として動く）
+  const S=window.__jlptStudy;
+  const stg=it=>{ if(S) return S.stageOf(it.id); const r=rec[it.id]; return !r?0:((typeof r.box==='number'?r.box:(r.last===1?1:0))>=2?2:1); };
+  let sub='';
+  if(S){ const x=S.pickToday();
+    sub = x.due ? 'ふくしゅう '+x.due+MON+(x.fresh?'　あたらしい <ruby>問題<rt>もんだい</rt></ruby> '+x.fresh+MON:'') : x.fresh ? 'あたらしい <ruby>問題<rt>もんだい</rt></ruby> '+x.fresh+MON : 'もう<ruby>一度<rt>いちど</rt></ruby> れんしゅう';
+    $("hmToday").disabled=!x.list.length; }
+  else $("hmToday").disabled=!p.length;
+  $("hmTodaySub").innerHTML=sub;
+  const ex=S&&S.exam?S.exam():null;
+  $("hmExam").classList.toggle("hidden",!ex);
+  if(ex){ const a=ex.date.split('-');
+    $("hmExam").innerHTML='<span>JLPTまで あと<b>'+ex.left+'</b><ruby>日<rt>にち</rt></ruby></span><span class="d">'+(+a[1])+'<ruby>月<rt>がつ</rt></ruby><ruby>'+(+a[2])+'日<rt>'+DAYR[+a[2]]+'</rt></ruby></span>'; }
+  const wk=S&&S.week?S.week():null;
+  $("hmWeekBtn").classList.toggle("hidden",!wk);
+  if(wk) $("hmWeek").innerHTML='<div class="hmwd">'+wk.days.map((d,i)=>'<span class="'+(d.on?'on':'')+(d.now?' now':'')+'"><i></i>'+'月火水木金土日'[i]+'</span>').join('')+'</div>'
+    +'<div class="hmwt">'+(wk.done>=wk.goal?'<b class="g"><ruby>今週<rt>こんしゅう</rt></ruby>の もくひょう たっせい！</b>':'<ruby>今週<rt>こんしゅう</rt></ruby> <b>'+wk.done+'</b> / '+wk.goal+'<ruby>日<rt>にち</rt></ruby>')
+    +'<small>（<ruby>1日<rt>いちにち</rt></ruby>に '+wk.line+'<ruby>問<rt>もん</rt></ruby> <ruby>解<rt>と</rt></ruby>いた <ruby>日<rt>ひ</rt></ruby>を かぞえます）</small></div>';
+  // この せっていで 出ます（文法の せってい は 言語だけ）
+  $("hmTags").innerHTML=LGS.length>1?'<span class="tr" lang="'+(LCODE[trLang()]||'en')+'">'+esc(TR_NAMES[trLang()]||'English')+'</span>':'';
+  // きろくカード
+  const n=[0,0,0]; p.forEach(it=>{ n[stg(it)]++; }); const T=p.length||1;
+  $("hmRecH").innerHTML=(c?catF(c):'ぜんぶ')+' '+p.length+MON+'の きろく';
+  $("hmRec").innerHTML='<div class="hmbar" role="img" aria-label="おぼえた '+n[2]+'、れんしゅうちゅう '+n[1]+'、まだ '+n[0]+'"><i class="a" style="width:'+(n[2]/T*100)+'%"></i><i class="b" style="width:'+(n[1]/T*100)+'%"></i></div>'
+    +'<div class="hm3"><div class="a"><span><i></i>おぼえた</span><b>'+n[2]+'</b></div><div class="b"><span><i></i>れんしゅう<ruby>中<rt>ちゅう</rt></ruby></span><b>'+n[1]+'</b></div><div><span><i></i>まだ</span><b>'+n[0]+'</b></div></div>'
+    +'<div class="hmrate"><span class="l"><ruby>正答率<rt>せいとうりつ</rt></ruby></span> <b>'+(tot?Math.round(ok/tot*100)+'%':'–')+'</b><span class="s"><span class="pr">（</span><ruby>解<rt>と</rt></ruby>いた '+seen.length+MON+'<span class="pr">）</span></span></div>';
+  paintUI();
 }
 catSel.onchange=updateStats;
+// きょうの10問（えらび方は assets/jlpt-study.js）
+$("hmToday").onclick=()=>{ const S=window.__jlptStudy; const x=S?S.pickToday().list:shuffle(pool()).slice(0,10); if(x.length) start(x); };
+// せってい のシート（スマホ幅だけ。PC 幅は 右の列に いつも出ている）
+let setOpen=false;
+function openSet(){ $("setov").classList.remove("hidden"); setOpen=true; $("setIn").scrollTop=0; $("setClose").focus(); }
+function closeSet(){ $("setov").classList.add("hidden"); $("resetConfirm").classList.add("hidden"); setOpen=false; updateStats(); $("hmSetBtn").focus(); }
+$("hmWeekBtn").onclick=()=>{ const o=$("hmWeek").classList.toggle("hidden"); $("hmWeekBtn").setAttribute("aria-expanded",String(!o)); };
+$("hmSetBtn").onclick=openSet; $("setClose").onclick=closeSet; $("setDone").onclick=closeSet;
+$("setov").onclick=e=>{ if(e.target===$("setov")) closeSet(); };
+// PC 幅（3列）と スマホ幅で、同じ部品の置き場所を入れかえる
+function placePC(){
+  if(isPC()){ if(setOpen) closeSet();
+    $("pcSetIn").appendChild($("setIn")); $("pcWeekSlot").appendChild($("hmWeekBtn")); $("hmTop").after($("hmWeek")); }
+  else{ $("setSheet").insertBefore($("setIn"),$("setSheet").querySelector(".setdone"));
+    $("hmSetBtn").after($("hmWeekBtn")); $("hmWeekBtn").after($("hmWeek")); }
+}
 
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
 
@@ -896,6 +1182,7 @@ $("shov").onclick=e=>{ if(e.target===$("shov")) closeSheet(); };
 
 /* ---------- キーボード ---------- */
 document.addEventListener("keydown",e=>{
+  if(setOpen){ if(e.key==="Escape") closeSet(); return; }
   if(sheetOpen){ if(e.key==="Escape") closeSheet(); return; }
   if(view!=="quiz") return;
   if(!answered && /^[1-4]$/.test(e.key)){ const b=$("choices").children[+e.key-1]; if(b) b.click(); }
@@ -959,29 +1246,34 @@ function cycleZoom(){ let i=0; STEPS.forEach((s,k)=>{ if(Math.abs(s-uz)<0.05) i=
 window.addEventListener('resize',applyZoom);
 // スマホ幅⇔PC幅をまたいだら、ヘッダーと右の説明パネルを作り直す
 MQ.addEventListener('change',()=>{
-  setHeader(view);
+  placePC(); setHeader(view);
   if(view==='quiz'){ paintProgress(); if(answered) renderPanel(cur); }
   if(isPC() && sheetOpen) closeSheet();
   if(view==='list') renderList();
   applyZoom();
 });
 
+placePC();
 applyRuby();
 applyZoom();
 show("setup");
 updateStats();
-/* ---------- 訳の言語を えらぶ ---------- */
-(function(){ const box=$("lgBox"), sel=$("lgSel"); if(!box||!TR_AVAIL.length) return;
-  box.classList.remove("hidden");
-  sel.innerHTML=['en'].concat(TR_AVAIL).map(c=>'<option value="'+c+'">'+esc(TR_NAMES[c]||c)+(c==='en'?'':'（draft）')+'</option>').join('');
-  const paint=()=>{ sel.value=trLang(); $("lgInfo").classList.toggle("hidden", trLang()==='en'); };
-  sel.onchange=()=>{ lang=sel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paint(); loadTr(()=>{ if(typeof renderList==='function') renderList(); }); };
+/* ---------- 訳の言語を えらぶ（せってい の中の 2列のボタン。えらんだ値は 見えない select＝lgSel が持つ） ---------- */
+(function(){ const box=$("lgBox"), sel=$("lgSel"); if(!box) return;
+  if(!TR_AVAIL.length){ box.remove(); return; }
+  const LGJ={en:'{英語|えいご}', ne:'ネパール{語|ご}', bn:'ベンガル{語|ご}', si:'シンハラ{語|ご}', my:'ミャンマー{語|ご}', zh:'{中国語|ちゅうごくご}', vi:'ベトナム{語|ご}'};
+  sel.innerHTML=LGS.map(c=>'<option value="'+c+'"></option>').join('');
+  $("lgBtns").innerHTML=LGS.map(c=>'<button role="radio" data-lg="'+c+'"><b class="tr" lang="'+(LCODE[c]||c)+'">'+esc(TR_NAMES[c]||c)+'</b><small>'+ruby(LGJ[c]||'')+'</small></button>').join('');
+  const paint=()=>{ sel.value=trLang(); $("lgInfo").classList.toggle("hidden", trLang()==='en');
+    $("lgBtns").querySelectorAll("button").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.lg===trLang()))); };
+  sel.onchange=()=>{ lang=sel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paint(); updateStats(); loadTr(()=>{ if(typeof renderList==='function') renderList(); }); };
+  $("lgBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ sel.value=b.dataset.lg; sel.onchange(); });
   paint(); loadTr(()=>{ if(typeof renderList==='function') renderList(); });
-  // はじめて開いた時だけ：ことば（Language）を いちばん上で えらんでもらう。えらんだら 次からは せってい の中だけ
+  // はじめて開いた時だけ：わたしの言語を ホームの上で えらんでもらう。えらんだ後は せってい で変える
   const fb=$("lgFirst"); let has='x'; try{ has=localStorage.getItem('jlpt_lang'); }catch(e){}
-  if(fb&&!has){ fb.classList.remove("hidden"); box.classList.add("hidden");
-    $("lgFirstBtns").innerHTML=['en'].concat(TR_AVAIL).map(c=>'<button data-lg="'+c+'">'+esc(TR_NAMES[c]||c)+'</button>').join('');
-    $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ sel.value=b.dataset.lg; sel.onchange(); fb.classList.add("hidden"); box.classList.remove("hidden"); }); }
+  if(fb&&!has){ fb.classList.remove("hidden");
+    $("lgFirstBtns").innerHTML=LGS.map(c=>'<button data-lg="'+c+'">'+esc(TR_NAMES[c]||c)+'</button>').join('');
+    $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ sel.value=b.dataset.lg; sel.onchange(); fb.classList.add("hidden"); }); }
 })();
 </script>
 <script src="/scg-nihongo/assets/jlpt-study.js"></script>
