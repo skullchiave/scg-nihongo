@@ -1094,7 +1094,7 @@
 1329	N	{現|げん}{象|しょう}	phenomenon
 1332	N	{限|げん}{度|ど}	limit	na-limit
 1333	F	{現|げん}に	actually; in fact	e-actually
-1334	N	{原|げん}{爆|ぱく}	atomic bomb
+1334	N	{原|げん}{爆|ばく}	atomic bomb
 1335	N	{原|げん}{理|り}	principle (basic rule)	na-principle
 1336	N	{原|げん}{料|りょう}	raw materials	na-material
 1337	N	{工|こう}{員|いん}	factory worker
