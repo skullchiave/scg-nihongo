@@ -11,6 +11,18 @@
   'use strict';
   if(typeof ITEMS==='undefined' || typeof rec==='undefined' || typeof answer!=='function') return;
 
+  /* ---- 答えの選択肢：指を おいた場所から ずらして はなした時は、答えた事に しない（2026-11-15 きあ）
+         問題の画面は スクロールしない事が多く、「まちがえた」と思って指を動かしても そのまま答えになっていた。
+         おいた場所と はなした場所が SLIP より はなれていたら、その タップは 取り消す。キーボード（1〜4）は そのまま ---- */
+  var SLIP=8, dn=null;
+  document.addEventListener('pointerdown',function(e){ dn={x:e.clientX,y:e.clientY}; },true);
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest&&e.target.closest('.choice'), d=dn; dn=null;
+    if(!b||!d||e.detail===0) return;
+    var dx=e.clientX-d.x, dy=e.clientY-d.y;
+    if(dx*dx+dy*dy>SLIP*SLIP){ e.stopPropagation(); e.preventDefault(); }
+  },true);
+
   /* ---- きあが後で動かせる数字 ---- */
   var GAP=[1,1,3,7,14,30];        // box 0〜5 → 次に出すまでの日数（まちがい＝明日）。はじめての正解（box 1）も明日＝4択は知らなくても当たるので、2回つづけて正解してから間をあける（2026-11-14）
   var MASTER=2;                   // 「おぼえた」＝ box がこれ以上
