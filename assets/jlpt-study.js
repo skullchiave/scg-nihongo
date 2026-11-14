@@ -198,11 +198,7 @@
   var _upd=updateStats;
   window.updateStats=function(){ _upd(); try{ paint(); }catch(e){} };
 
-  /* ---- 3：文法リスト・くわしく の各行に段階の印 ---- */
-  if(typeof recPill==='function'){
-    var _pill=recPill, LBL=['まだ','れんしゅうちゅう','おぼえた'];
-    window.recPill=function(id){ var s=stageOf(id); return '<i class="jsm-dot jsm-st s'+s+'" role="img" aria-label="'+LBL[s]+'" title="'+LBL[s]+'"></i>'+_pill(id); };
-  }
+  // リスト・くわしく の各行の 段階のドットは外した（2026-11-15 きあ：状態は バッジ1つにまとめる。段階は ホームの きろく で見る）
 
   // 分野を変えた時（select の onchange は本体が古い updateStats を直接つかんでいる）
   var sel=document.getElementById('catSel'); if(sel) sel.onchange=function(){ updateStats(); };

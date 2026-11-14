@@ -532,7 +532,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   .hmtop .hmsetbtn{margin:0;min-height:60px;}
   #hmStart > .hmweek{margin:0 0 16px;}
   .hmset{display:none;}
-  .hmb{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;min-height:170px;padding:18px 20px;}
+  .hmb{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;min-height:170px;padding:18px 12px 18px 14px;} .hmb b{font-size:21px;white-space:nowrap;}
   .hmrech{background:#fff;border-radius:28px 28px 0 0;margin:24px 0 0;padding:22px 32px 0;}
   .hmcard.hmrec{margin-top:0;border-radius:0 0 28px 28px;padding-top:10px;display:grid;grid-template-columns:3fr 1fr;column-gap:24px;box-shadow:0 4px 16px rgba(22,35,58,.06);}
   .hmrec .hmbar{grid-column:1 / -1;}
@@ -558,6 +558,41 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 /* 文法のグループは 名前が長く 数も多いので、スマホ幅では 2段にして 横に動かす（1段だと 左右に長すぎる。きあ 2026-11-15） */
 @media (max-width:640px){ .hmchips.rows2{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);justify-content:start;gap:6px 8px;} .hmchips.rows2 button{padding:0 12px;font-size:14px;} }
 @media (min-width:641px){ #catChips .cf{display:block;font-size:20px;line-height:1.7;} #catChips .ct{display:block;font-size:18px;} #catChips button[aria-pressed="true"] .ct{color:#c9d4e6;} #catChips button{padding:8px 18px;} }
+/* ===== リスト（2026-11-15 きあのデザイン）：状態のバッジ／スマホ幅の 固定バー・もくじ のシート・グループの区切り
+   スマホ幅の決まりは「#list.lv2」の中だけに当てる（文法リスト・ことばリストとも、新しい形にしたページの印） ===== */
+.pill.good{background:#E3F3E8;color:#15803D;} .pill.bad{background:#FDECEA;color:#A1271B;} .pill.none{background:#E6EAF1;color:#4A5670;}
+.gm1{display:block;} .gm2{display:block;font-size:.9em;color:#4A5670;line-height:1.7;}
+.lbar{display:none;}
+.cath .nx{display:none;}
+@media (max-width:640px){
+  #list.lv2 .lbar{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:5;background:#fff;margin:8px -16px 0;padding:6px 12px;border-bottom:1px solid var(--hair);box-shadow:0 2px 6px rgba(22,35,58,.06);}
+  .lbtoc{flex:1;min-width:0;min-height:48px;display:flex;align-items:center;gap:8px;border:none;background:none;text-align:left;padding:2px 4px;color:#1B2540;}
+  .lbtoc .ic{width:20px;height:20px;color:#4A5670;}
+  .lbt{flex:1;min-width:0;}
+  .lbt b{display:block;font-size:16px;color:#B45309;line-height:1.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .lbt small{display:block;font-size:11px;color:#4A5670;line-height:1.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .lbgo{flex:none;min-height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border:none;border-radius:22px;background:#1B2540;color:#fff;font-size:13px;font-weight:700;line-height:1.9;}
+  .lbgo .ic{width:14px;height:14px;}
+  .lbgo:disabled{background:#c2cad8;}
+  #list.lv2 #listBody{padding-top:12px;padding-bottom:55vh;}
+  #list.lv2 #listBody .cath{display:block;margin:26px 0 10px;padding-top:12px;border-top:3px solid #CBD5E3;}
+  #list.lv2 #listBody .cath:first-child{display:none;}
+  #list.lv2 .cath .nx{display:block;font-size:11px;font-weight:700;color:#4A5670;line-height:1.8;}
+  #list.lv2 .cath .catgo{display:none;}
+  /* 件数（◯語・◯項目）は さがす欄の中の右に出す（1行ぶん 高さをかせぐ） */
+  #list.lv2 .searchwrap input{padding-right:96px;}
+  #list.lv2 .info{position:relative;margin:-40px 14px 20px 0;height:20px;line-height:20px;text-align:right;pointer-events:none;}
+  #list.lv2 .lbar{margin-top:0;} #list.lv2{margin-top:-8px;}
+}
+/* もくじ のシート（スマホ幅） */
+#tocSheet{padding:0;display:flex;flex-direction:column;overflow:hidden;max-height:86vh;max-height:86dvh;}
+.tochead{flex:none;padding:8px 16px;border-bottom:1px solid #CBD5E3;}
+.tocttl{font-size:18px;font-weight:700;line-height:2;} .tocttl small{font-size:12px;font-weight:500;color:#4A5670;margin-left:10px;}
+.toclist{flex:1;min-height:0;overflow-y:auto;padding:8px 12px 20px;}
+.tocrow{width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 12px;border:none;border-radius:12px;background:none;text-align:left;color:#1B2540;font-size:16px;font-weight:700;line-height:1.7;}
+.tocrow .n{flex:none;font-size:14px;font-weight:500;color:#4A5670;font-variant-numeric:tabular-nums;}
+.tocrow .cf,.tocrow .ct{display:block;}
+.tocrow.cur{background:#FDF0DC;} .tocrow.cur .cf{color:#B45309;}
 </style>
 </head>
 <body>
@@ -640,10 +675,14 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   </section>
 
   <!-- 5. 文法リスト -->
-  <section id="list" class="hidden">
+  <section id="list" class="hidden lv2">
     <nav class="toc pconly" id="toc" aria-label="分野"></nav>
     <div class="searchwrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="search" placeholder="さがす（れい：ば、てしまう、けいご）" aria-label="文法を さがす"></div>
     <div class="info" id="listInfo"></div>
+    <div class="lbar" id="lBar">
+      <button class="lbtoc" id="lbToc" aria-haspopup="dialog" aria-label="もくじ"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span class="lbt"><b id="lbName"></b><small id="lbSub"></small></span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <button class="lbgo" id="lbGo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button>
+    </div>
     <div id="listBody"></div>
   </section>
 </div></main>
@@ -657,6 +696,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   <button class="nextbtn hidden" id="nextBtn"></button>
 </div></div>
 
+<div class="shov hidden" id="tocov"><div class="sheet" id="tocSheet" role="dialog" aria-modal="true" aria-labelledby="tocTtl"></div></div>
 <div class="shov hidden" id="shov"><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shName"></div></div>
 
 <script>
@@ -842,7 +882,6 @@ const DATA = [
 ["必要・可能・義務","〜ずに{済|す}む","〜しないで{済|す}む／get by without doing","V-~~ない~~+ずに{済|す}む（する→せずに{済|す}む）","{早|はや}く{病院|びょういん}へ{行|い}ったので、{入院|にゅういん}せ＿＿。",["ずに{済|す}んだ", "ざるを{得|え}なかった", "ねばならなかった", "ずにはいられなかった"],"「〜ずに{済|す}む」は「〜なくて{済|す}む」と{同|おな}じ{意味|いみ}です。{悪|わる}いことをしなくてよくなったときに{使|つか}います。"],
 ["必要・可能・義務","〜なくはない／〜なくもない","まったく〜ないわけではない／it's not that ~ not","V-~~ない~~+なくはない","お{酒|さけ}は{飲|の}め＿＿が、あまり{好|す}きではない。",["なくはない", "っこない", "かねない", "ざるを{得|え}ない"],"「{飲|の}めなくはない」は「{少|すこ}しは{飲|の}める」という{意味|いみ}です。{否定|ひてい}を2{回|かい}{使|つか}って、{弱|よわ}く{肯定|こうてい}します。"],
 ["必要・可能・義務","〜てこそ","〜してはじめて／only when","V-て{形|けい}+こそ","{自分|じぶん}でやってみ＿＿、{本当|ほんとう}の{難|むずか}しさがわかる。",["てこそ", "てまで", "ては", "てでも"],"「AてこそB」は「Aをして、はじめてBになる」という{意味|いみ}です。"],
-["必要・可能・義務","〜{抜|ぬ}く","{最後|さいご}まで〜する／do to the end","V-~~ます~~+{抜|ぬ}く","{苦|くる}しかったが、42キロを{最後|さいご}まで{走|はし}り＿＿。",["{抜|ぬ}いた", "かねた", "{得|え}た", "がたかった"],"「〜{抜|ぬ}く」は「{大変|たいへん}でも、{最後|さいご}まで〜する」という{意味|いみ}です。「がんばり{抜|ぬ}く」「{考|かんが}え{抜|ぬ}く」など。"],
 ["必要・可能・義務","〜{上|うえ}で（{目的|もくてき}）","〜するために{必要|ひつよう}な／in order to, in doing","V-{辞書形|じしょけい}・Nの+{上|うえ}で","{日本|にほん}で{生活|せいかつ}する＿＿、{日本語|にほんご}は{必要|ひつよう}だ。",["{上|うえ}で", "{末|すえ}に", "あげく", "{以来|いらい}"],"「{辞書形|じしょけい}＋{上|うえ}で」は「〜するときに・〜するために」という{意味|いみ}です。{後|うし}ろに「{必要|ひつよう}だ」「{大切|たいせつ}だ」がよく{来|き}ます。"],
 ["必要・可能・義務","〜{次第|しだい}で","〜によって{決|き}まる／depending on","N+{次第|しだい}で","{結果|けっか}は、あなたの{努力|どりょく}＿＿{変|か}わります。",["{次第|しだい}で", "{抜|ぬ}きで", "{以外|いがい}で", "{向|む}けで"],"「N{次第|しだい}で」は「Nによって、{結果|けっか}が{変|か}わる」という{意味|いみ}です。"],
 ["必要・可能・義務","〜ぬ","〜ない（{古|ふる}い{言|い}い{方|かた}）／not (classical)","V-~~ない~~+ぬ","{知|し}ら＿＿{間|ま}に、{外|そと}は{暗|くら}くなっていた。",["ぬ", "ざる", "ねば", "まい"],"「〜ぬ」は「〜ない」の{古|ふる}い{形|かたち}です。「{知|し}らぬ{間|ま}に」「{思|おも}わぬ{結果|けっか}」のような{決|き}まった{言|い}い{方|かた}で{使|つか}います。"],
@@ -895,10 +934,15 @@ const DATA = [
 ["副詞・接続詞","やがて","そのうち／before long","{副詞|ふくし}","{雨|あめ}がやんで、＿＿{空|そら}が{明|あか}るくなってきた。",["やがて", "とっくに", "せめて", "ろくに"],"「やがて」は「{少|すこ}し{時間|じかん}がたって」という{意味|いみ}です。"],
 ["副詞・接続詞","よほど／よっぽど","とても・かなり／very, considerably","{副詞|ふくし}","{彼|かれ}は{何|なに}も{言|い}わずに{帰|かえ}ってしまった。＿＿{怒|おこ}っていたのだろう。",["よほど", "せめて", "ろくに", "あるいは"],"「よほど」は「ふつうよりずっと」という{意味|いみ}です。{後|うし}ろに「だろう」「らしい」がよく{来|き}ます。"],
 ["副詞・接続詞","{要|よう}するに","つまり／in short","{接続詞|せつぞくし}","{長|なが}い{説明|せつめい}だったが、＿＿、お{金|かね}が{足|た}りないということだ。",["{要|よう}するに", "おまけに", "それなのに", "あるいは"],"「{要|よう}するに」は、{長|なが}い{話|はなし}を{短|みじか}くまとめるときに{使|つか}います。"],
-["副詞・接続詞","ということは","つまり／so that means","{接続詞|せつぞくし}","A「{明日|あした}は{台風|たいふう}が{来|く}るそうです。」B「＿＿、{試合|しあい}は{中止|ちゅうし}ですね。」",["ということは", "それなのに", "その{上|うえ}", "あるいは"],"「ということは」は、{聞|き}いた{話|はなし}から「つまり〜だ」と{結論|けつろん}を{言|い}うときに{使|つか}います。"]
+["副詞・接続詞","ということは","つまり／so that means","{接続詞|せつぞくし}","A「{明日|あした}は{台風|たいふう}が{来|く}るそうです。」B「＿＿、{試合|しあい}は{中止|ちゅうし}ですね。」",["ということは", "それなのに", "その{上|うえ}", "あるいは"],"「ということは」は、{聞|き}いた{話|はなし}から「つまり〜だ」と{結論|けつろん}を{言|い}うときに{使|つか}います。"],
+["複合動詞","〜{抜|ぬ}く","{最後|さいご}まで〜する／do to the end","V-~~ます~~+{抜|ぬ}く","{苦|くる}しかったが、42キロを{最後|さいご}まで{走|はし}り＿＿。",["{抜|ぬ}いた", "かねた", "{得|え}た", "がたかった"],"「〜{抜|ぬ}く」は「{大変|たいへん}でも、{最後|さいご}まで〜する」という{意味|いみ}です。「がんばり{抜|ぬ}く」「{考|かんが}え{抜|ぬ}く」など。"],
+["複合動詞","{追|お}い〜（{追|お}い{越|こ}す）","あとから{行|い}って、〜する／go after and ~","{追|お}い+V","{前|まえ}を{走|はし}っている{人|ひと}を、ゴールの{前|まえ}で＿＿{越|こ}した。",["{追|お}い", "{引|ひ}き", "{取|と}り", "{受|う}け"],"「{追|お}い〜」は「あとから{行|い}って、〜する」という{意味|いみ}です。「{追|お}い{越|こ}す」（{前|まえ}に{出|で}る）「{追|お}いつく」（{同|おな}じ{所|ところ}まで{行|い}く）「{追|お}いかける」（あとを{追|お}う）など。"],
+["複合動詞","〜{替|か}える・〜{換|か}える（{買|か}い{替|か}える）","{今|いま}の{物|もの}をやめて、ほかの{物|もの}にする／change to another","V-~~ます~~+{替|か}える","{古|ふる}いパソコンが{壊|こわ}れたので、{新|あたら}しいのに{買|か}い＿＿。",["{替|か}えた", "{込|こ}んだ", "{切|き}った", "{通|とお}した"],"「〜かえる」は「{今|いま}の{物|もの}をやめて、ほかの{物|もの}にする」という{意味|いみ}です。「{乗|の}り{換|か}える」「{取|と}り{替|か}える」「{着|き}{替|が}える」など。"],
+["複合動詞","〜{続|つづ}く（{降|ふ}り{続|つづ}く）","ずっと〜している／keep on (rain, snow)","V-~~ます~~+{続|つづ}く","{雨|あめ}は{三日間|みっかかん}{降|ふ}り＿＿。",["{続|つづ}いた", "{始|はじ}めた", "{出|だ}した", "{終|お}わった"],"「〜{続|つづ}く」は、{雨|あめ}や{雪|ゆき}などがずっと{続|つづ}く{時|とき}に{使|つか}います。{人|ひと}がすることは「〜{続|つづ}ける」です（{走|はし}り{続|つづ}ける）。「{降|ふ}り{続|つづ}く」のほかは、あまり{使|つか}いません。"],
+["複合動詞","〜{済|ず}み（{使用|しよう}{済|ず}み）","もう〜した／already done","N+{済|ず}み","{使用|しよう}＿＿の{切手|きって}は、もう{使|つか}えません。",["{済|ず}み", "{中|ちゅう}", "{前|まえ}", "{用|よう}"],"「〜{済|ず}み」は「もう〜した」という{意味|いみ}です。「{予約|よやく}{済|ず}み」「{支払|しはら}い{済|ず}み」など。「ずみ」と{読|よ}みます。"]
 ];
 // 分野名のルビ（表示用。select の中はルビが出せないので分野名のまま）
-const CATR = {"時間・変化": "{時間|じかん}・{変化|へんか}", "原因・理由・結果": "{原因|げんいん}・{理由|りゆう}・{結果|けっか}", "推量・判断": "{推量|すいりょう}・{判断|はんだん}", "様子・たとえ": "{様子|ようす}・たとえ", "程度・限定・強調": "{程度|ていど}・{限定|げんてい}・{強調|きょうちょう}", "逆接・仮定・条件": "{逆接|ぎゃくせつ}・{仮定|かてい}・{条件|じょうけん}", "関係・観点": "{関係|かんけい}・{観点|かんてん}", "主張・評価・感情": "{主張|しゅちょう}・{評価|ひょうか}・{感情|かんじょう}", "必要・可能・義務": "{必要|ひつよう}・{可能|かのう}・{義務|ぎむ}", "副詞・接続詞": "{副詞|ふくし}・{接続詞|せつぞくし}", "敬語": "{敬語|けいご}"};
+const CATR = {"時間・変化": "{時間|じかん}・{変化|へんか}", "原因・理由・結果": "{原因|げんいん}・{理由|りゆう}・{結果|けっか}", "推量・判断": "{推量|すいりょう}・{判断|はんだん}", "様子・たとえ": "{様子|ようす}・たとえ", "程度・限定・強調": "{程度|ていど}・{限定|げんてい}・{強調|きょうちょう}", "逆接・仮定・条件": "{逆接|ぎゃくせつ}・{仮定|かてい}・{条件|じょうけん}", "関係・観点": "{関係|かんけい}・{観点|かんてん}", "主張・評価・感情": "{主張|しゅちょう}・{評価|ひょうか}・{感情|かんじょう}", "必要・可能・義務": "{必要|ひつよう}・{可能|かのう}・{義務|ぎむ}", "副詞・接続詞": "{副詞|ふくし}・{接続詞|せつぞくし}", "敬語": "{敬語|けいご}", "複合動詞": "{複合動詞|ふくごうどうし}"};
 
 const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
 const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1').replace(/~~/g,'');
@@ -926,12 +970,16 @@ const trOf = it => { const l=trLang(); return (l!=='en'&&TR[l]&&TR[l][it.id])||n
 const mH = it => { const t=trOf(it); if(!t||!t[0]) return ruby(it.m);
   const p=it.m.split('／'), last=p[p.length-1], hasEn=p.length>1&&/[A-Za-z]/.test(last)&&!/[ぁ-んァ-ヶ一-龥]/.test(last);
   return ruby(hasEn?p.slice(0,-1).join('／'):it.m)+'／<span class="tr" lang="'+LCODE[trLang()]+'">'+esc(t[0])+'</span>'; };
+// 文法リストの意味：1行目＝日本語の説明、2行目＝えらんだ言語の訳（無ければ 英語）。「／」でつないで折り返す形は リストでは使わない
+const mL = it => { const t=trOf(it), p=it.m.split('／'), last=p[p.length-1], hasEn=p.length>1&&/[A-Za-z]/.test(last)&&!/[ぁ-んァ-ヶ一-龥]/.test(last);
+  const tr=(t&&t[0])?t[0]:(hasEn?last:'');
+  return '<span class="gm1">'+ruby(hasEn?p.slice(0,-1).join('／'):it.m)+'</span>'+(tr?'<span class="gm2 tr" lang="'+((t&&t[0])?LCODE[trLang()]:'en')+'">'+esc(tr)+'</span>':''); };
 // 説明：日本語の説明の下に、えらんだ言語の訳を出す
 const eH = it => { const t=trOf(it); return ruby(it.e)+((t&&t[1])?'<span class="etr tr" lang="'+LCODE[trLang()]+'">'+esc(t[1])+'</span>':''); };
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2').replace(/~~/g,'');   // ルビを読みに置きかえた文（検索用）
 const catR = c => CATR[c] ? ruby(CATR[c]) : esc(c);
 // 分野の表示名：学生が見分けられる「形」を主役にし、用語は小さく添える（中身は scripts/jlpt_catforms.py の表）
-const CATF = {"時間・変化": "〜あげく・〜かと{思|おも}ったら", "原因・理由・結果": "〜ばかりに・〜からこそ", "推量・判断": "〜かねない・〜っこない", "様子・たとえ": "〜げ・〜かのように", "程度・限定・強調": "〜ばかりか・〜どころか", "逆接・仮定・条件": "〜ものの・〜にもかかわらず", "関係・観点": "〜から{言|い}うと・〜からして", "主張・評価・感情": "〜ことだ・〜ものではない", "必要・可能・義務": "〜ざるを{得|え}ない・〜よりほかない", "敬語": "お〜{願|ねが}う", "副詞・接続詞": "あるいは・ちなみに"};
+const CATF = {"時間・変化": "〜あげく・〜かと{思|おも}ったら", "原因・理由・結果": "〜ばかりに・〜からこそ", "推量・判断": "〜かねない・〜っこない", "様子・たとえ": "〜げ・〜かのように", "程度・限定・強調": "〜ばかりか・〜どころか", "逆接・仮定・条件": "〜ものの・〜にもかかわらず", "関係・観点": "〜から{言|い}うと・〜からして", "主張・評価・感情": "〜ことだ・〜ものではない", "必要・可能・義務": "〜ざるを{得|え}ない・〜よりほかない", "敬語": "お〜{願|ねが}う", "副詞・接続詞": "あるいは・ちなみに", "複合動詞": "〜{抜|ぬ}く・{追|お}い〜・〜{替|か}える"};
 const catF = c => CATF[c] ? ruby(CATF[c])+' など' : catR(c);
 const catL = c => CATF[c] ? '<span class="cf">'+ruby(CATF[c])+' など</span><small class="ct">'+catR(c)+'</small>' : catR(c);
 
@@ -1249,6 +1297,7 @@ $("shov").onclick=e=>{ if(e.target===$("shov")) closeSheet(); };
 
 /* ---------- キーボード ---------- */
 document.addEventListener("keydown",e=>{
+  if(tocOpen){ if(e.key==="Escape") closeToc(); return; }
   if(setOpen){ if(e.key==="Escape") closeSet(); return; }
   if(sheetOpen){ if(e.key==="Escape") closeSheet(); return; }
   if(view!=="quiz") return;
@@ -1268,9 +1317,9 @@ function renderList(){
   $("listInfo").innerHTML=`${hit.length} <ruby>項目<rt>こうもく</rt></ruby>`+(kw?`（ぜんぶで ${ITEMS.length}）`:"");
   $("listBody").innerHTML=CAT_ORDER.map(c=>{
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
-    return `<div class="cath" data-h="${esc(c)}"><span>${catF(c)}<small class="ct">${catR(c)}（${xs.length}）</small></span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
+    return `<div class="cath" data-h="${esc(c)}" data-n="${xs.length}"><span><small class="nx">つぎの グループ</small>${catF(c)}<small class="ct">${catR(c)}（${xs.length}）</small></span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
       xs.map(it=>`<div class="gcard"><div class="gtop"><span class="gname">${ruby(it.g)}</span>${recPill(it.id)}</div>
-          <div class="gmean">${mH(it)}</div><div class="gform"><ruby>接続<rt>せつぞく</rt></ruby>：${ruby(it.f)}</div>
+          <div class="gmean">${mL(it)}</div><div class="gform"><ruby>接続<rt>せつぞく</rt></ruby>：${ruby(it.f)}</div>
           <div class="gex">${fillAnswer(it)}</div></div>`).join("");
   }).join("");
   $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });
@@ -1281,7 +1330,7 @@ function renderList(){
     const h=$("listBody").querySelector(`.cath[data-h="${CSS.escape(b.dataset.go)}"]`);
     if(h){ $("main").scrollTop=h.offsetTop-$("main").offsetTop-24; markToc(); }
   });
-  markToc();
+  markToc(); markBar();
 }
 // 今 見えている分野を目次で強調する
 function markToc(){
@@ -1293,6 +1342,35 @@ function markToc(){
 }
 $("main").addEventListener("scroll",markToc,{passive:true});
 $("search").oninput=renderList;
+/* ---------- スマホ幅のリスト：固定バー（今いるグループ・これを練習）と もくじ のシート（2026-11-15 きあのデザイン）----------
+   リストは グループの区切り（.cath）でつながった1本のまま。スクロールして 次のグループに入ったら、バーの表示を そのグループに変える */
+let listCur='', tocOpen=false;
+const cathAll=()=>[...$("listBody").querySelectorAll(".cath")];
+function markBar(){
+  if(view!=="list"||isPC()) return;
+  const hs=cathAll(), line=$("lBar").getBoundingClientRect().bottom+8; let h=hs[0]||null;
+  hs.forEach((x,i)=>{ if(i>0&&x.getBoundingClientRect().top<=line) h=x; });   // 1つ目の区切りは 画面に出していない（バーが その代わり）
+  const c=h?h.dataset.h:'', n=h?h.dataset.n:'';
+  $("lbGo").disabled=!h; $("lbToc").disabled=!h;
+  if(c===listCur&&$("lbName").dataset.n===n) return;
+  listCur=c; $("lbName").dataset.n=n;
+  $("lbName").innerHTML=h?catF(c):'―'; $("lbSub").innerHTML=h?catR(c)+'（'+n+'）':'';
+}
+function goGroup(c){ const hs=cathAll(), i=hs.findIndex(x=>x.dataset.h===c); if(i<0) return;
+  $("main").scrollTop = i===0 ? 0 : hs[i].offsetTop-$("main").offsetTop-$("lBar").offsetHeight-4; markBar(); }
+function openToc(){ const hs=cathAll(), tot=hs.reduce((a,x)=>a+(+x.dataset.n),0);
+  $("tocSheet").innerHTML='<div class="tochead"><div class="grab"></div><div class="shtop"><div class="tocttl" id="tocTtl">もくじ<small>'+tot+' <ruby>項目<rt>こうもく</rt></ruby></small></div><button class="setclose" id="tocClose">'+ic('x',2.2)+'<span>とじる</span></button></div></div>'
+    +'<div class="toclist">'+hs.map(x=>'<button class="tocrow'+(x.dataset.h===listCur?' cur':'')+'" data-go="'+esc(x.dataset.h)+'"><span>'+catL(x.dataset.h)+'</span><span class="n">'+x.dataset.n+'</span></button>').join('')+'</div>';
+  $("tocClose").onclick=closeToc;
+  $("tocSheet").querySelectorAll(".tocrow").forEach(b=>b.onclick=()=>{ closeToc(); goGroup(b.dataset.go); });
+  $("tocov").classList.remove("hidden"); tocOpen=true;
+  const cur=$("tocSheet").querySelector(".cur"); if(cur&&cur.scrollIntoView) cur.scrollIntoView({block:'center'});
+  $("tocClose").focus(); }
+function closeToc(){ $("tocov").classList.add("hidden"); tocOpen=false; }
+$("tocov").onclick=e=>{ if(e.target===$("tocov")) closeToc(); };
+$("lbToc").onclick=openToc;
+$("lbGo").onclick=()=>{ if(!listCur) return; catSel.value=listCur; setTab("practice"); };
+$("main").addEventListener("scroll",markBar,{passive:true});
 function setTab(t){ if(t==="list"){ show("list"); renderList(); } else { show("setup"); updateStats(); } }
 $("tab-practice").onclick=()=>setTab("practice");
 $("tab-list").onclick=()=>setTab("list");

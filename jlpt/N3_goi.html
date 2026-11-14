@@ -532,7 +532,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   .hmtop .hmsetbtn{margin:0;min-height:60px;}
   #hmStart > .hmweek{margin:0 0 16px;}
   .hmset{display:none;}
-  .hmb{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;min-height:170px;padding:18px 20px;}
+  .hmb{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;min-height:170px;padding:18px 12px 18px 14px;} .hmb b{font-size:21px;white-space:nowrap;}
   .hmrech{background:#fff;border-radius:28px 28px 0 0;margin:24px 0 0;padding:22px 32px 0;}
   .hmcard.hmrec{margin-top:0;border-radius:0 0 28px 28px;padding-top:10px;display:grid;grid-template-columns:3fr 1fr;column-gap:24px;box-shadow:0 4px 16px rgba(22,35,58,.06);}
   .hmrec .hmbar{grid-column:1 / -1;}
@@ -558,6 +558,41 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 /* 文法のグループは 名前が長く 数も多いので、スマホ幅では 2段にして 横に動かす（1段だと 左右に長すぎる。きあ 2026-11-15） */
 @media (max-width:640px){ .hmchips.rows2{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);justify-content:start;gap:6px 8px;} .hmchips.rows2 button{padding:0 12px;font-size:14px;} }
 @media (min-width:641px){ #catChips .cf{display:block;font-size:20px;line-height:1.7;} #catChips .ct{display:block;font-size:18px;} #catChips button[aria-pressed="true"] .ct{color:#c9d4e6;} #catChips button{padding:8px 18px;} }
+/* ===== リスト（2026-11-15 きあのデザイン）：状態のバッジ／スマホ幅の 固定バー・もくじ のシート・グループの区切り
+   スマホ幅の決まりは「#list.lv2」の中だけに当てる（文法リスト・ことばリストとも、新しい形にしたページの印） ===== */
+.pill.good{background:#E3F3E8;color:#15803D;} .pill.bad{background:#FDECEA;color:#A1271B;} .pill.none{background:#E6EAF1;color:#4A5670;}
+.gm1{display:block;} .gm2{display:block;font-size:.9em;color:#4A5670;line-height:1.7;}
+.lbar{display:none;}
+.cath .nx{display:none;}
+@media (max-width:640px){
+  #list.lv2 .lbar{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:5;background:#fff;margin:8px -16px 0;padding:6px 12px;border-bottom:1px solid var(--hair);box-shadow:0 2px 6px rgba(22,35,58,.06);}
+  .lbtoc{flex:1;min-width:0;min-height:48px;display:flex;align-items:center;gap:8px;border:none;background:none;text-align:left;padding:2px 4px;color:#1B2540;}
+  .lbtoc .ic{width:20px;height:20px;color:#4A5670;}
+  .lbt{flex:1;min-width:0;}
+  .lbt b{display:block;font-size:16px;color:#B45309;line-height:1.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .lbt small{display:block;font-size:11px;color:#4A5670;line-height:1.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .lbgo{flex:none;min-height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border:none;border-radius:22px;background:#1B2540;color:#fff;font-size:13px;font-weight:700;line-height:1.9;}
+  .lbgo .ic{width:14px;height:14px;}
+  .lbgo:disabled{background:#c2cad8;}
+  #list.lv2 #listBody{padding-top:12px;padding-bottom:55vh;}
+  #list.lv2 #listBody .cath{display:block;margin:26px 0 10px;padding-top:12px;border-top:3px solid #CBD5E3;}
+  #list.lv2 #listBody .cath:first-child{display:none;}
+  #list.lv2 .cath .nx{display:block;font-size:11px;font-weight:700;color:#4A5670;line-height:1.8;}
+  #list.lv2 .cath .catgo{display:none;}
+  /* 件数（◯語・◯項目）は さがす欄の中の右に出す（1行ぶん 高さをかせぐ） */
+  #list.lv2 .searchwrap input{padding-right:96px;}
+  #list.lv2 .info{position:relative;margin:-40px 14px 20px 0;height:20px;line-height:20px;text-align:right;pointer-events:none;}
+  #list.lv2 .lbar{margin-top:0;} #list.lv2{margin-top:-8px;}
+}
+/* もくじ のシート（スマホ幅） */
+#tocSheet{padding:0;display:flex;flex-direction:column;overflow:hidden;max-height:86vh;max-height:86dvh;}
+.tochead{flex:none;padding:8px 16px;border-bottom:1px solid #CBD5E3;}
+.tocttl{font-size:18px;font-weight:700;line-height:2;} .tocttl small{font-size:12px;font-weight:500;color:#4A5670;margin-left:10px;}
+.toclist{flex:1;min-height:0;overflow-y:auto;padding:8px 12px 20px;}
+.tocrow{width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 12px;border:none;border-radius:12px;background:none;text-align:left;color:#1B2540;font-size:16px;font-weight:700;line-height:1.7;}
+.tocrow .n{flex:none;font-size:14px;font-weight:500;color:#4A5670;font-variant-numeric:tabular-nums;}
+.tocrow .cf,.tocrow .ct{display:block;}
+.tocrow.cur{background:#FDF0DC;} .tocrow.cur .cf{color:#B45309;}
 
 /* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
 .selwrap2{position:relative;}
@@ -623,6 +658,27 @@ body.novoice .aud{display:none;}
   .kjc{margin-right:20px;}
 }
 /* ホーム・せってい・PC 3列 の決まりは、土台（jlpt/N4_bunpou.html の <style>）の終わりにある（文法ドリルと共通） */
+/* ===== ことばリスト（スマホ幅・2026-11-15 きあのデザイン）：固定バーのチップ／1語1行（グループごとに 白い箱）／小さいスピーカー
+   区切り・バッジ・固定バーの土台（.lbar・.lbgo・.cath の区切り）は、土台（文法ページの <style>）の「リスト」の決まりを使う ===== */
+.aud.sm{width:44px;height:44px;border:none;background:none;margin:0;border-radius:12px;}
+.aud.sm .ic{width:22px;height:22px;}
+.aud.sm.playing{background:none;color:#1B2540;}
+@media (max-width:640px){
+  .lbchips{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;position:relative;padding:2px 0;}
+  .lbchips::-webkit-scrollbar{display:none;}
+  .lbchips button{flex:none;min-height:44px;padding:0 12px;border-radius:999px;border:1px solid #CBD5E3;background:#fff;font-size:14px;font-weight:700;color:#1B2540;white-space:nowrap;line-height:2;}
+  .lbchips button .n{display:none;margin-left:6px;font-variant-numeric:tabular-nums;}
+  .lbchips button[aria-pressed="true"]{background:#1B2540;color:#fff;border-color:#1B2540;}
+  .lbchips button[aria-pressed="true"] .n{display:inline;}
+  .lbox{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);padding:0 2px 0 14px;}
+  .lrow{display:flex;align-items:center;gap:6px;min-height:52px;padding:0;border-top:1px solid #e6ebf3;cursor:pointer;}
+  .lrow:first-child{border-top:none;}
+  .lrow .wl{flex:1;min-width:0;}
+  .lrow .ww{font-size:20px;font-weight:700;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .lrow .ww .fr{font-size:12px;font-weight:500;color:#4A5670;opacity:1;}
+  .lrow .wm{font-size:12.5px;color:#4A5670;line-height:1.35;margin-top:-1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .lrow .pill{margin-top:0;}
+}
 </style>
 </head>
 <body>
@@ -724,10 +780,14 @@ body.novoice .aud{display:none;}
   </section>
 
   <!-- 5. ことばリスト -->
-  <section id="list" class="hidden">
+  <section id="list" class="hidden lv2">
     <nav class="toc pconly" id="toc" aria-label="しゅるい"></nav>
     <div class="searchwrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="search" placeholder="さがす（れい：あつまる、会、gift）" aria-label="ことばを さがす"></div>
     <div class="info" id="listInfo"></div>
+    <div class="lbar" id="lBar">
+      <div class="lbchips" id="lbChips" role="group" aria-label="ことばの グループ"></div>
+      <button class="lbgo" id="lbGo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><ruby>練習<rt>れんしゅう</rt></ruby></span></button>
+    </div>
     <div id="listBody"></div>
   </section>
 </div></main>
@@ -2153,6 +2213,7 @@ let voiceOn = true;
 try{ voiceOn = localStorage.getItem('jlpt_voice')!=="0"; }catch(e){}
 const AUD_URL = no => '/scg-nihongo/jlpt/audio/n3/kenzaki/'+no+'.mp3';
 const audH = it => (HAS_VOICE && it.au) ? '<button type="button" class="aud" data-au="'+esc(it.au)+'" aria-label="おとを きく">'+ic('spk')+'</button>' : '';
+const audS = it => (HAS_VOICE && it.au) ? '<button type="button" class="aud sm" data-au="'+esc(it.au)+'" aria-label="おとを きく">'+ic('spk')+'</button>' : '';   // ことばリスト（スマホ幅）の 小さいスピーカー
 const vBlob = {}; let vAu=null, vBtn=null;
 function voiceFetch(no){   // 取っておく（次に押した時に すぐ鳴る。Service Worker が端末に残す）
   if(!no || vBlob[no]) return vBlob[no]||Promise.resolve(null);
@@ -2636,21 +2697,27 @@ function renderList(){
   const kw=$("search").value.trim().toLowerCase();
   const hit=ITEMS.filter(it=>!kw||[it.p,it.y,mean(it),catName(it.cat)].join(" ").toLowerCase().includes(kw));   // 漢字でも よみでも 意味でも さがせる
   $("listInfo").innerHTML=`${hit.length} <ruby>語<rt>ご</rt></ruby>`+(kw?`（ぜんぶで ${ITEMS.length}）`:"");
+  const pc=isPC();   // PC 幅＝カード（前のまま）／スマホ幅＝1語1行（グループごとに 白い箱）
   $("listBody").innerHTML=CAT_ORDER.map(c=>{
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
-    return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
-      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${wordH(it)}${audH(it)}</span>${recPill(it.id)}</div>
+    const head=`<div class="cath" data-h="${esc(c)}" data-n="${xs.length}"><span><small class="nx">つぎの グループ</small>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`;
+    if(pc) return head+xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${wordH(it)}${audH(it)}</span>${recPill(it.id)}</div>
           <div class="gmean">${trH(it)}</div></div>`).join("");
+    return head+'<div class="lbox">'+xs.map(it=>`<div class="lrow" data-id="${esc(it.id)}"><div class="wl"><div class="ww">${wordH(it)}</div><div class="wm">${trH(it)}</div></div>${recPill(it.id)}${audS(it)}</div>`).join("")+'</div>';
   }).join("");
   $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });
-  $("listBody").querySelectorAll(".gcard").forEach(b=>b.onclick=()=>{ if(!isPC()) openSheet(BYID[b.dataset.id]); });
+  $("listBody").querySelectorAll(".lrow").forEach(b=>b.onclick=()=>openSheet(BYID[b.dataset.id]));
+  // スマホ幅の固定バー：今 出ているグループのチップ（さがして 0語のグループは 出さない）
+  $("lbChips").innerHTML=cathAll().map(h=>`<button data-go="${esc(h.dataset.h)}">${ruby(CATN[h.dataset.h]||h.dataset.h)}<span class="n">${h.dataset.n}</span></button>`).join("");
+  $("lbChips").dataset.ok='';
+  $("lbChips").querySelectorAll("button").forEach(b=>b.onclick=()=>goGroup(b.dataset.go));
   $("toc").innerHTML=CAT_ORDER.map(c=>{ const n=hit.filter(it=>it.cat===c).length;
     return `<button data-go="${esc(c)}"${n?"":" disabled"}><span>${catR(c)}</span><span class="n">${n}</span></button>`; }).join("");
   $("toc").querySelectorAll("button").forEach(b=>b.onclick=()=>{
     const h=$("listBody").querySelector(`.cath[data-h="${CSS.escape(b.dataset.go)}"]`);
     if(h){ $("main").scrollTop=h.offsetTop-$("main").offsetTop-24; markToc(); }
   });
-  markToc();
+  markToc(); markBar();
 }
 function markToc(){
   if(view!=="list"||!isPC()) return;
@@ -2661,6 +2728,24 @@ function markToc(){
 }
 $("main").addEventListener("scroll",markToc,{passive:true});
 $("search").oninput=renderList;
+/* ---------- スマホ幅の ことばリスト：固定バー（グループのチップ・練習）（2026-11-15 きあのデザイン）----------
+   リストは グループの区切り（.cath）でつながった1本。チップを おすと そのグループの先頭へ。スクロールして 次のグループに入ったら、えらんだチップが変わり、チップの列も 横に ついていく */
+let listCur='';
+const cathAll=()=>[...$("listBody").querySelectorAll(".cath")];
+function markBar(){
+  if(view!=="list"||isPC()) return;
+  const hs=cathAll(), line=$("lBar").getBoundingClientRect().bottom+8; let h=hs[0]||null;
+  hs.forEach((x,i)=>{ if(i>0&&x.getBoundingClientRect().top<=line) h=x; });   // 1つ目の区切りは 画面に出していない（バーが その代わり）
+  const c=h?h.dataset.h:''; $("lbGo").disabled=!h;
+  if(c===listCur&&$("lbChips").dataset.ok==='1') return;
+  listCur=c; $("lbChips").dataset.ok='1';
+  $("lbChips").querySelectorAll("button").forEach(b=>{ const on=b.dataset.go===c; b.setAttribute("aria-pressed",String(on));
+    if(on) $("lbChips").scrollTo({left:Math.max(0,b.offsetLeft-12),behavior:'smooth'}); });
+}
+function goGroup(c){ const hs=cathAll(), i=hs.findIndex(x=>x.dataset.h===c); if(i<0) return;
+  $("main").scrollTop = i===0 ? 0 : hs[i].offsetTop-$("main").offsetTop-$("lBar").offsetHeight-4; markBar(); }
+$("lbGo").onclick=()=>{ if(!listCur) return; catSel.value=listCur; setTab("practice"); };
+$("main").addEventListener("scroll",markBar,{passive:true});
 function setTab(t){ if(t==="list"){ show("list"); renderList(); } else { show("setup"); updateStats(); } }
 $("tab-practice").onclick=()=>setTab("practice");
 $("tab-list").onclick=()=>setTab("list");
