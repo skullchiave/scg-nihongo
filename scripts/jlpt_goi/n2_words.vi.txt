@@ -787,6 +787,7 @@
 981	vô tình, không kìm được
 982	bố mẹ, phụ huynh
 983	ngày nghỉ, kỳ nghỉ
+984	nghỉ ngơi, đi ngủ (kính ngữ)
 985	ngón cái
 986	bơi lội
 987	gây ra, ảnh hưởng đến
@@ -858,6 +859,7 @@
 1061	tiền kiếm được, thu nhập
 1062	gạch chân
 1063	việc đánh thuế
+1064	không đếm xuể
 1065	thanh kiếm
 1066	cục, khối
 1067	một chiều (đi một lượt)
@@ -2360,7 +2362,6 @@
 2889	xin đừng bận tâm
 2890	trán
 2891	chào buổi sáng (thân mật)
-2893	đáng mừng; vui mừng
 2894	bữa ăn nhẹ (giữa các bữa)
 2895	khoảng; xấp xỉ
 2896	và; cũng như (trang trọng)

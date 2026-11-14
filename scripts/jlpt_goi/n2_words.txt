@@ -787,6 +787,7 @@
 981	F	{思|おも}わず	without thinking, unintentionally	e-unintentionally
 982	N	{親|おや}	parent	na-parent
 983	N	お{休|やす}み	day off, holiday	na-holiday
+984	V	お{休|やす}みになる	(honorific) to rest, to go to bed
 985	N	{親|おや}{指|ゆび}	thumb
 986	N	{泳|およ}ぎ	swimming	na-swim
 987	V	{及|およ}ぼす	to cause, to have (an effect on)
@@ -858,6 +859,7 @@
 1061	N	{稼|かせ}ぎ	earnings, income	na-income
 1062	N	{下|か}{線|せん}	underline
 1063	S	{課|か}{税|ぜい}	taxation
+1064	I	{数|かぞ}え{切|き}れない	countless
 1065	N	{刀|かたな}	sword
 1066	N	{塊|かたまり}	lump
 1067	N	{片|かた}{道|みち}	one-way (trip)
@@ -2360,7 +2362,6 @@
 2889	G	おかまいなく	please don't go to any trouble
 2890	N	おでこ	forehead	nb-forehead
 2891	G	おはよう	good morning (casual)
-2893	I	おめでたい	happy / worth celebrating	e-medetai
 2894	N	おやつ	snack (between meals)
 2895	F	およそ	about / approximately	e-approx
 2896	F	{及|およ}び	and (formal) / as well as	e-and
