@@ -106,11 +106,19 @@ body.novoice .aud{display:none;}
     <div class="h"><ruby>練習<rt>れんしゅう</rt></ruby>を はじめる</div>
     <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
     </div><span class="catpill pconly" id="catPill"></span></div>
+    <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">ことばを えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
+    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
     <div class="stats">
       <div><b id="sTotal">0</b><span>ことばの <ruby>数<rt>かず</rt></ruby></span></div>
       <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
       <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
     </div>
+    <div class="list">
+      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない ことば</span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた ことば</span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    </div>
+    <div class="setsec">せってい</div>
     <div class="opts">
       <div class="og">
         <label class="ol" for="kjSel"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい（<ruby>習<rt>なら</rt></ruby>った ところまで）</label>
@@ -138,12 +146,6 @@ body.novoice .aud{display:none;}
     <label class="lbl" for="catSel">ことばの しゅるい</label>
     <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
     <div class="catruby" id="catRuby" aria-hidden="true"></div>
-    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
-    <div class="list">
-      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない ことば</span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた ことば</span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-    </div>
     <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
     <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
       <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
@@ -430,6 +432,13 @@ else{
   lgSel.onchange=()=>{ lang=lgSel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paintLg(); fillCatSel(); updateStats(); };
   paintLg();
 }
+// はじめて開いた時だけ：ことば（Language）を いちばん上で えらんでもらう（はじめは英語なので、えらばずに始めると英語の意味で出る）。えらんだら 次からは せってい の中だけ
+(function(){ const box=$("lgFirst"); let has='x'; try{ has=localStorage.getItem('jlpt_lang'); }catch(e){}
+  if(!box||has||LANGS.length<2) return;
+  box.classList.remove("hidden");
+  $("lgFirstBtns").innerHTML=LANGS.map(l=>'<button data-lg="'+l[0]+'">'+esc(l[1])+'</button>').join('');
+  $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ lgSel.value=b.dataset.lg; lgSel.onchange(); box.classList.add("hidden"); });
+})();
 // ことばの おんせい（オン／オフ。級をまたいで同じ設定＝jlpt_voice）。音声が無い級では 設定ごと出さない
 function paintVoice(){ document.body.classList.toggle('novoice',!voiceOn);
   document.querySelectorAll("#vcBtns button").forEach(b=>b.setAttribute("aria-pressed",String((b.dataset.vc==='1')===voiceOn))); }

@@ -319,6 +319,25 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   .gform{font-size:20px;}
   .gex{font-size:30px;line-height:2;border-radius:16px;padding:12px 20px;margin-top:14px;}
 }
+/* ---- 意味・説明の訳（えらんだ言語）---- ★語彙ドリルは このページの <style> を土台に写すので、えらぶ欄の決まりは「#setup > #lgBox」に限る（語彙の #lgBox は .opts の中＝当たらない） */
+.tr[lang="zh-CN"]{font-family:"Noto Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;}
+.tr[lang="vi"],.tr[lang="en"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
+.tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
+.etr{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.94em;font-weight:500;line-height:1.75;color:var(--sub);}
+#setup > #lgBox{margin-top:14px;}
+#lgSel{font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
+#setup > #lgBox .lgnote{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px;}
+@media (min-width:641px){ #setup > #lgBox .lgnote{font-size:18px;} #setup > #lgBox{margin-top:20px;display:flex;align-items:center;gap:8px 24px;flex-wrap:wrap;} #setup > #lgBox.hidden{display:none;} #setup > #lgBox .lbl{display:block;font-size:22px;margin:0;} #setup > #lgBox .selwrap{display:block;width:460px;} #setup > #lgBox .lgnote{flex-basis:100%;margin-top:0;}
+  #setup > #lgBox select{height:60px;border-radius:14px;font-size:22px;padding:0 56px 0 18px;} #setup > #lgBox .selwrap .ic{right:18px;top:16px;width:28px;height:28px;} }
+/* ---- はじめて開いた時の ことばえらび（.lgfirst）と、せってい の見出し（.setsec）。語彙ドリルも この決まりを写して使う ---- */
+.lgfirst{background:#fff;border:2px solid #f3d9ad;border-radius:16px;box-shadow:var(--card-shadow);margin-top:12px;padding:14px 16px;}
+.lgfh{font-size:15px;font-weight:700;line-height:1.6;margin-bottom:10px;}
+.lgfh span{display:block;font-weight:500;font-size:13px;color:var(--sub);font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
+.lgfb{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.lgfb button{min-height:48px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:16px;font-weight:700;color:var(--ink);font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
+.setsec{font-size:13px;font-weight:700;color:var(--sub);margin:26px 0 0;}
+@media (min-width:641px){ .lgfirst{border-radius:28px;margin-top:24px;padding:24px 32px;} .lgfh{font-size:26px;margin-bottom:16px;} .lgfh span{font-size:20px;}
+  .lgfb{grid-template-columns:repeat(4,1fr);gap:16px;} .lgfb button{min-height:72px;border-radius:16px;font-size:24px;} .setsec{font-size:22px;margin-top:44px;} }
 
 /* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
 .opts{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:12px;padding:12px 16px;}
@@ -361,7 +380,24 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 .kjc{display:inline-block;margin:0 10px 2px 0;white-space:nowrap;}
 .kjc b{font-size:1.25em;margin-right:4px;}
 .kjc span{font-size:.85em;color:var(--sub);}
+/* 語の音声（スピーカーのボタン）。メニューの「ことばの おんせい」がオフの時は 出さない */
+.aud{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid #f3d9ad;background:var(--accentSoft);
+  color:var(--accentT);vertical-align:middle;margin:0 0 0 8px;padding:0;flex:none;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.aud .ic{width:22px;height:22px;position:static;}
+.aud.playing{background:var(--accentT);color:#fff;border-color:var(--accentT);}
+.aud.err{opacity:.4;}
+body.novoice .aud{display:none;}
+.qt.vc{grid-template-columns:repeat(2,1fr);}
+.vcic{display:inline-block;vertical-align:-4px;color:var(--accentT);}
+.vcic .ic{width:18px;height:18px;position:static;display:inline-block;}
+.gtop .gname{flex:1;min-width:0;}
 @media (min-width:641px){
+  .opts #lgBox{margin-top:0;}
+  .aud{width:64px;height:64px;margin-left:14px;}
+  .aud .ic{width:34px;height:34px;}
+  .qword .aud{width:84px;height:84px;}
+  .qword .aud .ic{width:44px;height:44px;}
+  .vcic .ic{width:28px;height:28px;}
   #setup:not(.hidden){grid-template-rows:repeat(10,auto) 1fr;}
   .opts{border-radius:28px;margin-top:24px;padding:20px 32px;display:grid;grid-template-columns:1fr 1fr;column-gap:32px;align-items:start;}
   .opts .og + .og{margin-top:0;}
@@ -394,11 +430,19 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
     <div class="h"><ruby>練習<rt>れんしゅう</rt></ruby>を はじめる</div>
     <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
     </div><span class="catpill pconly" id="catPill"></span></div>
+    <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">ことばを えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
+    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
     <div class="stats">
       <div><b id="sTotal">0</b><span>ことばの <ruby>数<rt>かず</rt></ruby></span></div>
       <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
       <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
     </div>
+    <div class="list">
+      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない ことば</span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた ことば</span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    </div>
+    <div class="setsec">せってい</div>
     <div class="opts">
       <div class="og">
         <label class="ol" for="kjSel"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい（<ruby>習<rt>なら</rt></ruby>った ところまで）</label>
@@ -417,16 +461,15 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
         <div class="selwrap2"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
         <div class="kjinfo lgnote" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
       </div>
+      <div class="og" id="vcBox">
+        <span class="ol">ことばの おんせい（<span class="vcic" id="vcIc"></span> を おすと きこえます）</span>
+        <div class="qt vc" id="vcBtns" role="group" aria-label="ことばの おんせい"><button data-vc="1">オン</button><button data-vc="0">オフ</button></div>
+        <div class="kjinfo">おんせい：VOICEVOX:<ruby>剣崎雌雄<rt>けんざきめすお</rt></ruby>（コンピューターが つくった こえです）</div>
+      </div>
     </div>
     <label class="lbl" for="catSel">ことばの しゅるい</label>
     <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
     <div class="catruby" id="catRuby" aria-hidden="true"></div>
-    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
-    <div class="list">
-      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない ことば</span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた ことば</span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-    </div>
     <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
     <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
       <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
@@ -1788,8 +1831,10 @@ const LANGS = [["en","English",0],["ne","नेपाली",1],["bn","বাং
 const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
 const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1');
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
-const ITEMS = DATA.map(d=>{ const p=plain(d[1]), y=kana(d[1]);
-  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, fr:d[7]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+// 語の音声：DATA と同じ順の 番号（jlpt/audio/n3/kenzaki/<番号>.mp3）。無い語は 0。音声が無い級は 空＝スピーカーのボタンも設定も出ない
+const AUDIO = [];
+const ITEMS = DATA.map((d,i)=>{ const p=plain(d[1]), y=kana(d[1]);
+  return {au:AUDIO[i]||'', id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, fr:d[7]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
 const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 
 /* ---------- ルビ ---------- */
@@ -1870,6 +1915,36 @@ const disp = it => inKanji(it) ? it.w : it.y;
 const frH = it => (it.fr && it.fr!=='する') ?'<span class="fr">'+esc(it.fr)+'</span>' : '';
 const suH = it => (it.fr && it.cat==='S') ? '<span class="fr su">する</span>' : '';   // する名詞は、型がある時だけ「する」も小さく出す（〜に 応募する）
 const wordH = it => frH(it)+ruby(disp(it))+suH(it);          // 画面に出す形（ルビ表記のまま返す）
+/* ---------- 語の音声（スピーカーのボタン） ----------
+   出す所＝いみ の問題の語（答える前から）／答えた後の語の行／くわしく／ことばリスト。
+   ★よみ方の問題は、答える前には どこにも出さない（音で答えが分かるため）。文の問題の答えの行にも出さない（活用した形で、音声は辞書の形のため）。
+   鳴らし方＝<audio>（iPhone の消音スイッチでも鳴る。効果音の Web Audio とは別）。先に取っておいた物（blob）があれば それを鳴らす。
+   無ければ そのままの住所で鳴らし、だめなら 取ってから鳴らす（Safari は Service Worker が返す音を鳴らせない事があるため）。 */
+const HAS_VOICE = AUDIO.some(x=>x);
+let voiceOn = true;
+try{ voiceOn = localStorage.getItem('jlpt_voice')!=="0"; }catch(e){}
+const AUD_URL = no => '/scg-nihongo/jlpt/audio/n3/kenzaki/'+no+'.mp3';
+const audH = it => (HAS_VOICE && it.au) ? '<button type="button" class="aud" data-au="'+esc(it.au)+'" aria-label="おとを きく">'+ic('spk')+'</button>' : '';
+const vBlob = {}; let vAu=null, vBtn=null;
+function voiceFetch(no){   // 取っておく（次に押した時に すぐ鳴る。Service Worker が端末に残す）
+  if(!no || vBlob[no]) return vBlob[no]||Promise.resolve(null);
+  return vBlob[no]=fetch(AUD_URL(no)).then(r=>{ if(!r.ok) throw 0; return r.blob(); }).then(b=>URL.createObjectURL(b)).catch(()=>{ delete vBlob[no]; return null; });
+}
+function voiceMark(b,cls){ if(vBtn) vBtn.classList.remove('playing'); vBtn=null; if(b){ b.classList.remove('err'); if(cls==='playing') vBtn=b; if(cls) b.classList.add(cls); } }
+function playVoice(no,b){
+  if(!vAu){ vAu=new Audio(); vAu.preload='auto'; vAu.onended=()=>voiceMark(null); }
+  vAu.pause(); vAu.onerror=null; voiceMark(b,'playing');
+  const fail=()=>{ if(vBtn===b) voiceMark(b,'err'); };
+  const viaBlob=()=>voiceFetch(no).then(u=>{ if(!u) return fail(); if(vBtn!==b) return; vAu.src=u; const p=vAu.play(); if(p&&p.catch) p.catch(fail); });
+  const ready=vBlob[no];
+  if(typeof ready==='string'){ vAu.src=ready; const p=vAu.play(); if(p&&p.catch) p.catch(fail); return; }
+  vAu.onerror=()=>{ vAu.onerror=null; viaBlob(); };
+  vAu.src=AUD_URL(no); const p=vAu.play(); if(p&&p.catch) p.catch(()=>{ if(vAu.onerror){ vAu.onerror=null; viaBlob(); } });
+}
+document.addEventListener('click',e=>{   // どこに出たボタンでも ここで受ける（ことばリストの行を押した事に しない）
+  const b=e.target.closest&&e.target.closest('.aud'); if(!b) return;
+  e.stopPropagation(); e.preventDefault(); playVoice(b.dataset.au,b);
+},true);
 const BOOKR = {"初級":"{初級|しょきゅう}","中級":"{中級|ちゅうきゅう}"};
 const stepLabel = s => (BOOKR[s.b]||s.b)+' '+s.l;
 function whereKanji(k){   // その字をどこで習うか
@@ -1971,6 +2046,22 @@ else{
   lgSel.onchange=()=>{ lang=lgSel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paintLg(); fillCatSel(); updateStats(); };
   paintLg();
 }
+// はじめて開いた時だけ：ことば（Language）を いちばん上で えらんでもらう（はじめは英語なので、えらばずに始めると英語の意味で出る）。えらんだら 次からは せってい の中だけ
+(function(){ const box=$("lgFirst"); let has='x'; try{ has=localStorage.getItem('jlpt_lang'); }catch(e){}
+  if(!box||has||LANGS.length<2) return;
+  box.classList.remove("hidden");
+  $("lgFirstBtns").innerHTML=LANGS.map(l=>'<button data-lg="'+l[0]+'">'+esc(l[1])+'</button>').join('');
+  $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ lgSel.value=b.dataset.lg; lgSel.onchange(); box.classList.add("hidden"); });
+})();
+// ことばの おんせい（オン／オフ。級をまたいで同じ設定＝jlpt_voice）。音声が無い級では 設定ごと出さない
+function paintVoice(){ document.body.classList.toggle('novoice',!voiceOn);
+  document.querySelectorAll("#vcBtns button").forEach(b=>b.setAttribute("aria-pressed",String((b.dataset.vc==='1')===voiceOn))); }
+if(!HAS_VOICE) $("vcBox").remove();
+else{
+  $("vcIc").innerHTML=ic('spk');
+  document.querySelectorAll("#vcBtns button").forEach(b=>b.onclick=()=>{ voiceOn=b.dataset.vc==='1'; try{localStorage.setItem('jlpt_voice',voiceOn?"1":"0");}catch(e){} if(!voiceOn&&vAu) vAu.pause(); paintVoice(); });
+}
+paintVoice();
 if(!YOMI_ON) $("qtY").remove();
 if(!CLOZE_ON) $("qtC").remove();
 document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
@@ -2108,7 +2199,8 @@ function render(){
   $("qText").innerHTML='<span class="qask">'+QASK[qt]+'</span>'
     +(qt==='c' ? '<span class="qsent">'+czSent(cz,false)+'</span>'
       : qt==='w' ? '<span class="qmean">'+trH(cur)+'</span>'
-               : '<span class="qword">'+(qt==='y'?frH(cur)+esc(cur.p)+suH(cur):wordH(cur))+'</span>');
+               : '<span class="qword">'+(qt==='y'?frH(cur)+esc(cur.p)+suH(cur):wordH(cur)+audH(cur))+'</span>');   // よみ方の問題は 答える前に 音声のボタンを出さない
+  if(voiceOn && HAS_VOICE && cur.au) voiceFetch(cur.au);   // 先に取っておく（押した時に すぐ鳴る）
   order=shuffle(opts.map((_,i)=>i));
   $("choices").innerHTML=order.map((oi,k)=>`<button class="choice${qt==='m'?' en':''}" data-oi="${oi}"><span class="n">${k+1}</span><span>${optHTML(opts[oi])}</span></button>`).join("");
   $("choices").querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.oi));
@@ -2119,7 +2211,7 @@ function render(){
 function verdictHTML(ok,ansNo){ return `<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>`; }
 function wordLine(it){
   if(qt==='c') return `<span class="fbw">${ruby(czAns(cz))}</span>　${czTrH(cz)}`;   // 答えた後に、その文での意味（えらんだ言語）を出す
-  return `<span class="fbw">${wordH(it)}</span>　${trH(it)}`;
+  return `<span class="fbw">${wordH(it)}${audH(it)}</span>　${trH(it)}`;
 }
 function answer(oi){
   if(answered) return; answered=true;
@@ -2176,7 +2268,7 @@ function simsHTML(it){
 let lastOk=false, lastAnsNo=1;
 function renderPanel(it){
   $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}">${verdictHTML(lastOk,lastAnsNo)}${wordLine(cur)}</div>
-    <span class="gname">${wordH(it)}</span><div class="gmean2">${trH(it)}</div>
+    <span class="gname">${wordH(it)}${audH(it)}</span><div class="gmean2">${trH(it)}</div>
     <dl class="gtbl">${detailRows(it)}</dl>${simsHTML(it)}`;
   $("gPanel").querySelectorAll(".sim").forEach(b=>b.onclick=()=>renderPanel(BYID[b.dataset.id]));
 }
@@ -2208,7 +2300,7 @@ function recPill(id){
 function renderSheet(it){
   $("sheet").innerHTML=`<div class="grab"></div>
     <div class="shtop"><span class="tag">${catR(it.cat)}</span><button class="ibtn shclose" id="shClose" aria-label="とじる">${ic('x',2.2)}</button></div>
-    <div class="shname" id="shName">${wordH(it)}</div><div class="shmean">${trH(it)}</div>
+    <div class="shname" id="shName">${wordH(it)}${audH(it)}</div><div class="shmean">${trH(it)}</div>
     <dl class="shtbl">${detailRows(it)}</dl>${simsHTML(it)}
     <button class="shback" id="shBack">もどる</button>`;
   $("shClose").onclick=closeSheet; $("shBack").onclick=closeSheet;
@@ -2239,7 +2331,7 @@ function renderList(){
   $("listBody").innerHTML=CAT_ORDER.map(c=>{
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
     return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
-      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${wordH(it)}</span>${recPill(it.id)}</div>
+      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${wordH(it)}${audH(it)}</span>${recPill(it.id)}</div>
           <div class="gmean">${trH(it)}</div></div>`).join("");
   }).join("");
   $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });

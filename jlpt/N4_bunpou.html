@@ -329,6 +329,15 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 #setup > #lgBox .lgnote{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px;}
 @media (min-width:641px){ #setup > #lgBox .lgnote{font-size:18px;} #setup > #lgBox{margin-top:20px;display:flex;align-items:center;gap:8px 24px;flex-wrap:wrap;} #setup > #lgBox.hidden{display:none;} #setup > #lgBox .lbl{display:block;font-size:22px;margin:0;} #setup > #lgBox .selwrap{display:block;width:460px;} #setup > #lgBox .lgnote{flex-basis:100%;margin-top:0;}
   #setup > #lgBox select{height:60px;border-radius:14px;font-size:22px;padding:0 56px 0 18px;} #setup > #lgBox .selwrap .ic{right:18px;top:16px;width:28px;height:28px;} }
+/* ---- はじめて開いた時の ことばえらび（.lgfirst）と、せってい の見出し（.setsec）。語彙ドリルも この決まりを写して使う ---- */
+.lgfirst{background:#fff;border:2px solid #f3d9ad;border-radius:16px;box-shadow:var(--card-shadow);margin-top:12px;padding:14px 16px;}
+.lgfh{font-size:15px;font-weight:700;line-height:1.6;margin-bottom:10px;}
+.lgfh span{display:block;font-weight:500;font-size:13px;color:var(--sub);font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
+.lgfb{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.lgfb button{min-height:48px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:16px;font-weight:700;color:var(--ink);font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
+.setsec{font-size:13px;font-weight:700;color:var(--sub);margin:26px 0 0;}
+@media (min-width:641px){ .lgfirst{border-radius:28px;margin-top:24px;padding:24px 32px;} .lgfh{font-size:26px;margin-bottom:16px;} .lgfh span{font-size:20px;}
+  .lgfb{grid-template-columns:repeat(4,1fr);gap:16px;} .lgfb button{min-height:72px;border-radius:16px;font-size:24px;} .setsec{font-size:22px;margin-top:44px;} }
 </style>
 </head>
 <body>
@@ -342,11 +351,19 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
     <div class="h"><ruby>練習<rt>れんしゅう</rt></ruby>を はじめる</div>
     <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
     </div><span class="catpill pconly" id="catPill"></span></div>
+    <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">ことばを えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
+    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
     <div class="stats">
       <div><b id="sTotal">0</b><span><ruby>問題<rt>もんだい</rt></ruby><ruby>数<rt>すう</rt></ruby></span></div>
       <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
       <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
     </div>
+    <div class="list">
+      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない <ruby>問題<rt>もんだい</rt></ruby></span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた <ruby>問題<rt>もんだい</rt></ruby></span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    </div>
+    <div class="setsec">せってい</div>
     <label class="lbl" for="catSel">グループ</label>
     <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
     <div class="catruby" id="catRuby" aria-hidden="true"></div>
@@ -354,12 +371,6 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
       <label class="lbl" for="lgSel">せつめいの ことば（Language）</label>
       <div class="selwrap"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
       <div class="lgnote hidden" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
-    </div>
-    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
-    <div class="list">
-      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない <ruby>問題<rt>もんだい</rt></ruby></span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた <ruby>問題<rt>もんだい</rt></ruby></span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     </div>
     <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
     <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
@@ -963,6 +974,11 @@ updateStats();
   const paint=()=>{ sel.value=trLang(); $("lgInfo").classList.toggle("hidden", trLang()==='en'); };
   sel.onchange=()=>{ lang=sel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paint(); loadTr(()=>{ if(typeof renderList==='function') renderList(); }); };
   paint(); loadTr(()=>{ if(typeof renderList==='function') renderList(); });
+  // はじめて開いた時だけ：ことば（Language）を いちばん上で えらんでもらう。えらんだら 次からは せってい の中だけ
+  const fb=$("lgFirst"); let has='x'; try{ has=localStorage.getItem('jlpt_lang'); }catch(e){}
+  if(fb&&!has){ fb.classList.remove("hidden");
+    $("lgFirstBtns").innerHTML=['en'].concat(TR_AVAIL).map(c=>'<button data-lg="'+c+'">'+esc(TR_NAMES[c]||c)+'</button>').join('');
+    $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ sel.value=b.dataset.lg; sel.onchange(); fb.classList.add("hidden"); }); }
 })();
 </script>
 <script src="/scg-nihongo/assets/jlpt-study.js"></script>
