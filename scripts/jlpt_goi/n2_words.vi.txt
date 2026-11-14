@@ -38,7 +38,6 @@
 46	đinh ninh; yên trí
 47	hết sức; thỏa thích
 49	gặm; cắn nhỏ
-50	được dọn gọn; được giải quyết xong
 51	cứng lại; đông lại
 52	nghiêng
 54	vác (trên vai)
@@ -86,7 +85,6 @@
 101	héo; teo lại (hoa, bóng bay)
 103	vắt; vặn cho ráo nước
 104	chốt (hạn đăng ký); đóng chặt
-105	bị ẩm
 106	ngồi xổm
 107	mút; ngậm mút
 108	nảy sinh; xảy ra
@@ -170,7 +168,6 @@
 206	vặn; xoay
 207	vang vọng; ảnh hưởng
 208	sâu sắc hơn
-209	bao gồm
 210	làm phồng lên
 211	phồng lên; nở ra
 212	bị chặn; bị chiếm (kín chỗ)
@@ -186,7 +183,6 @@
 223	chạm khắc; khắc
 224	quấn; cuộn
 225	bị trộn (vào)
-226	lẫn vào; xen lẫn
 227	trộn; khuấy
 228	bước qua
 230	hẹn gặp (đúng giờ và nơi)
@@ -791,7 +787,6 @@
 981	vô tình, không kìm được
 982	bố mẹ, phụ huynh
 983	ngày nghỉ, kỳ nghỉ
-984	nghỉ ngơi, đi ngủ (kính ngữ)
 985	ngón cái
 986	bơi lội
 987	gây ra, ảnh hưởng đến
@@ -863,7 +858,6 @@
 1061	tiền kiếm được, thu nhập
 1062	gạch chân
 1063	việc đánh thuế
-1064	không đếm xuể
 1065	thanh kiếm
 1066	cục, khối
 1067	một chiều (đi một lượt)
@@ -1030,7 +1024,6 @@
 1248	lớp, nhóm, bộ
 1249	công đoàn, hiệp hội
 1250	sự kết hợp
-1251	sự lắp ráp
 1252	múc (nước)
 1254	sự lặp lại
 1255	làm ai đó đau khổ
@@ -1414,7 +1407,6 @@
 1704	lời khuyên, sự đề nghị
 1707	chuông nhỏ
 1710	chỗ ở
-1714	sự đi lướt qua nhau; lỡ nhau
 1715	đi lướt qua nhau; lỡ mất nhau
 1716	kích thước
 1717	tùy bút
@@ -1519,7 +1511,6 @@
 1843	tăng lên (sự quan tâm)
 1845	thác nước
 1846	tre
-1847	kiểm tra, xác nhận (giá)
 1848	phép cộng
 1849	công ty khác
 1851	sự giúp đỡ
@@ -1621,8 +1612,6 @@
 1967	độ bóng
 1968	hết mùa mưa
 1969	tự tin, cứng rắn
-1970	mạnh lên (gió)
-1971	củng cố (quan hệ)
 1972	tay nắm treo (trên tàu)
 1974	số người quy định
 1975	giá niêm yết
@@ -1709,11 +1698,8 @@
 2070	đi kèm, kéo theo
 2071	xử lý, đối đãi
 2072	nỗ lực giải quyết
-2073	sự hủy bỏ
 2074	chuyển lời, báo cho (khách, tin nhắn)
 2075	loại bỏ
-2076	sự tháo ra
-2077	bất kể, không phân biệt
 2078	đồng (kim loại)
 2080	bạn cùng lớp
 2081	động tác
@@ -1744,7 +1730,6 @@
 2114	không hiểu sao; hơi
 2115	…làm sao! (văn nói); (nói) gì cơ
 2116	biết bao…!; thế mà (bất ngờ)
-2117	thật là một…!
 2119	bằng mọi giá
 2120	hoàn toàn (không); thật sự
 2121	Nam Mỹ
@@ -1792,17 +1777,14 @@
 2180	cái cân
 2181	cảm giác buồn nôn
 2183	bánh răng
-2184	lời động viên
 2185	động viên
 2186	cái thang
 2189	quả nhiên; đúng như dự đoán
-2191	sự tác động, thuyết phục (ai đó)
 2192	đồ lót
 2193	chậu (cây); tô
 2194	sự phát huy (năng lực)
 2195	ý tưởng; cách nghĩ
 2196	phát điện
-2197	cuộc thảo luận
 2199	bắt chuyện
 2200	máy bận (điện thoại)
 2202	cô dâu
@@ -1814,7 +1796,6 @@
 2208	dời (việc) sớm lên
 2210	dây thép
 2211	căng ra; dán lên
-2212	chỗ sưng
 2213	sưng
 2214	sự phản ánh
 2215	phán quyết của tòa
@@ -1841,7 +1822,6 @@
 2244	bị mắc vào
 2245	móc vào; làm cho mắc vào
 2246	ghi chép
-2247	lật ngược; làm đổ
 2248	bị lật ngược; ngã nhào
 2249	chuyển nhà
 2250	tác giả (người viết bài)
@@ -1942,7 +1922,6 @@
 2360	biên tập
 2361	nhà nghỉ dưỡng
 2362	riêng từng cái
-2363	riêng rẽ (tách ra)
 2364	luật sư
 2366	phương hướng (bắc, nam...)
 2367	cái chổi
@@ -2012,9 +1991,7 @@
 2440	tiêu đề (bài báo)
 2441	lộ trình, đường đi
 2442	đầy
-2445	nhìn chằm chằm
 2446	bỏ lỡ, bỏ sót
-2447	thu hoạch; thành quả
 2448	thân phận, địa vị xã hội
 2449	hàng mẫu
 2451	dưới (chưa đến)
@@ -2071,9 +2048,7 @@
 2507	việc mang vào
 2508	mang vào
 2509	dựa trên
-2510	yêu cầu, đòi hỏi
 2511	tìm kiếm; yêu cầu
-2512	sự quay lại
 2513	nhà kho
 2514	tiếng động
 2515	sự việc
@@ -2365,7 +2340,6 @@
 2858	cằm
 2859	đây đó; chỗ này chỗ kia
 2860	dễ dàng; đơn giản
-2861	vết; dấu vết
 2862	cuộc hẹn
 2866	cái này cái kia
 2867	bất thình lình
@@ -2382,12 +2356,10 @@
 2883	đại khái; sơ sài
 2884	xin mời ngồi (lịch sự)
 2885	ơn; sự giúp đỡ
-2887	nhờ có (kết quả tốt)
 2888	món ăn kèm cơm
 2889	xin đừng bận tâm
 2890	trán
 2891	chào buổi sáng (thân mật)
-2892	xin lỗi đã để chờ lâu
 2893	đáng mừng; vui mừng
 2894	bữa ăn nhẹ (giữa các bữa)
 2895	khoảng; xấp xỉ
@@ -2408,7 +2380,6 @@
 2919	tôi mới là người nên nói vậy; cũng vậy nhé
 2920	lén lút; âm thầm
 2921	bí quyết; mẹo
-2922	hôm nọ
 2924	bị đổ (tự đổ)
 2925	ru rú trong phòng
 2926	lăn lóc (vật tròn nhỏ)
@@ -2437,7 +2408,6 @@
 2952	tức là
 2953	xin lỗi (vì làm phiền)
 2954	điện thoại thông minh
-2955	suốt; hơn hẳn
 2956	thành hàng dài
 2957	bị lệch; chệch khỏi vị trí
 2959	chăm chỉ; hối hả
@@ -2458,7 +2428,6 @@
 2982	không chịu nổi; không thể không
 2983	tủ ngăn kéo
 2984	trước hết; quan trọng nhất
-2985	nhưng không có nghĩa là
 2986	nếu là vậy thì (thân mật)
 2988	luộm thuộm; cẩu thả
 2989	một chút cũng không
@@ -2481,7 +2450,6 @@
 3014	xin làm ơn; mong sao
 3015	dù sao cũng (bất lực); rốt cuộc
 3016	bằng cách nào đó; xoay xở được
-3017	hình như; có vẻ
 3019	ào ào cùng lúc (đám đông, tiếng cười)
 3021	hơn nữa; vẫn còn
 3022	làm (kính ngữ)
@@ -2489,7 +2457,6 @@
 3024	bởi vì
 3025	dù sao đi nữa; rốt cuộc
 3028	vu vơ; không vì lý do cụ thể
-3029	(không) thật sự; khá
 3030	cười tươi
 3031	âm ấm; nguội
 3032	con ốc vít
@@ -2516,7 +2483,6 @@
 3057	sự bối rối; luống cuống
 3058	không lẽ nào; chẳng lẽ
 3059	mí mắt
-3060	thảm hại; đáng thương
 3061	đáng xấu hổ; khó coi
 3062	milimét
 3064	hỗn loạn; vô lý
@@ -2546,14 +2512,11 @@
 3090	vài …; bao nhiêu …
 3091	… trở lên
 3092	số một …
-3093	một khi … thì
 3094	trong vòng …
 3095	công viên …; vườn …
-3096	(tiền tố) đuổi theo; thêm nữa
 3097	…hóa
 3098	khoa …; ngành …
 3099	bài hát …
-3100	đổi …; thay …
 3101	từng …; mỗi một …
 3102	làm dở …; bỏ dở
 3103	nấm mốc
@@ -2564,19 +2527,13 @@
 3108	tranh …
 3109	ngoài phạm vi …
 3110	… nước ngoài; … bên ngoài
-3111	khó mà …
-3112	dễ … (thường là xấu)
-3113	nhân tiện … (trên đường)
 3114	thời kỳ …
 3115	thiết bị …; khí cụ …
 3116	máy …
-3117	có cảm giác là …
 3118	… cũ (trước kia)
 3119	… giáo (tôn giáo)
 3120	… cộng sản
-3121	… hết toàn bộ; … xong hẳn
 3122	hết …; cạn …
-3123	hơi …; có chút …
 3124	dòng (văn bản)
 3125	ngành …; nghề …
 3126	… trống; … rỗng
@@ -2584,13 +2541,11 @@
 3128	loại …; nhóm …
 3129	vùng …; khu vực …
 3130	(đếm nhà, cửa hàng)
-3131	trông có vẻ …
 3132	hiện …; hiện nay
 3133	cố …; quá cố
 3134	trường …
 3135	… cao
 3136	nước …
-3137	… vào; … kỹ
 3138	… này (năm nay, tuần này)
 3139	số …; kỳ …
 3140	nguyên cả …
@@ -2622,8 +2577,6 @@
 3166	phụ …; hỗ trợ …
 3167	điều … (của luật)
 3168	sân …; bãi …
-3169	quá …; hơn …
-3170	đã … xong
 3171	tính …
 3174	tàu …
 3175	trận …
@@ -2631,15 +2584,10 @@
 3177	tiền …; … tiền nhiệm
 3178	dọc theo …
 3180	tổng …
-3181	không có vẻ …
 3182	(đếm đôi giày, tất)
 3183	… đấu với …
-3184	không … lắm
-3185	vừa mới …
-3186	mỗi lần …
 3187	… ngắn
 3188	thứ …; số …
-3189	đầy …; toàn …
 3190	đoàn …; nhóm …
 3191	đến …; (đếm bộ quần áo)
 3192	cơ quan …; cục …
@@ -2649,45 +2597,25 @@
 3196	trường …; … dài (khoảng cách, thời gian)
 3197	siêu …; cực …
 3198	khu phố … (chome)
-3199	trông như …; hay …
 3200	(đếm lá thư)
 3201	kèm …; có …
-3202	liên tục …; … liền
 3203	cách dùng …; sự tiêu …
-3204	khó …; … vất vả
 3205	dẫn theo …
 3206	… thấp
 3207	giọt …
 3208	(đếm gia súc lớn)
 3209	giải …; loại …
 3210	theo …; đường …
-3211	vừa định …; vừa mới …
-3212	với tư cách …
-3213	ngay khi …
-3214	không nhất thiết …
-3215	coi … là …
 3216	… độ; mức …
 3217	đạo …; con đường …
 3218	… đó; cùng …
 3219	… dài (lâu)
-3220	không hẳn … (không thể nói …)
-3221	ở …; tại …
-3222	tùy theo …; ứng với …
-3223	chẳng qua chỉ là …
-3224	làm theo …; men theo …
-3225	đối với …; chống lại …; với …
-3226	đối với … (trước danh từ)
-3227	chắc chắn là …; không nghi ngờ gì …
-3228	với … mà nói; theo góc nhìn của …
-3229	bằng …; tùy theo …
-3230	theo … thì (nghe nói)
 3231	học sinh năm thứ …
 3232	… đêm (lưu trú)
 3234	phản …; chống …
 3235	nửa …
 3236	thứ … (thứ tự)
 3238	phi …; không …
-3239	kéo …; lôi …
 3240	một …
 3241	… một mình; của một người
 3242	bệnh …
@@ -2696,28 +2624,19 @@
 3245	phó …
 3246	… cũ (đã qua sử dụng)
 3248	không có …; thiếu …
-3249	sau một thời gian …
 3250	… lần
 3251	theo …; phân loại theo …
 3252	phương ngữ …
 3253	… bước
-3254	về phía …; bên …
-3255	thoải mái … (bao nhiêu tùy thích)
 3256	chỉ …; chỉ là …
 3257	phòng …; phòng ngừa …
 3259	hằng … (hằng ngày)
 3260	… trước đó
 3261	cuối …
-3262	dính đầy …; nhem nhuốc …
 3263	chưa …
 3264	độ …; vị …
-3265	như …; có vẻ như …
 3266	dân chủ …
-3267	phù hợp với …; hướng về …
-3268	dành cho …
-3269	thứ …; hơi … hơn
 3270	(đếm người)
-3271	người có …
 3272	cựu …
 3273	câu hỏi …
 3274	… kế tiếp; … sau đó
@@ -2728,16 +2647,9 @@
 3279	tiền …; lệ phí …
 3281	cả hai …
 3282	năng lực …; sức …
-3283	chẳng có … nào ra hồn
 3284	lý thuyết …; bàn luận …
 3285	kiểu Nhật …
 3286	… của chúng tôi; … của riêng tôi
-3287	thông qua …; suốt …
-3288	nhờ …; qua …
-3289	bất kể …
-3290	bắt đầu từ …; bao gồm …
-3291	trải qua …; sau khi …
-3292	xoay quanh …; về …
 3293	gửi đến (đề tên người nhận)
 3294	bắn (súng)
 3295	cá cược
@@ -2787,7 +2699,6 @@
 3341	đặt lên; đăng (báo)
 3342	nhìn trộm; ngó
 3343	được đăng (trên báo)
-3344	tình cờ thấy
 3345	phòng đọc sách; phòng làm việc
 3346	triết học
 3347	trợ từ
