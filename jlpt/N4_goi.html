@@ -319,6 +319,16 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   .gform{font-size:20px;}
   .gex{font-size:30px;line-height:2;border-radius:16px;padding:12px 20px;margin-top:14px;}
 }
+/* ---- 意味・説明の訳（えらんだ言語）---- ★語彙ドリルは このページの <style> を土台に写すので、えらぶ欄の決まりは「#setup > #lgBox」に限る（語彙の #lgBox は .opts の中＝当たらない） */
+.tr[lang="zh-CN"]{font-family:"Noto Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;}
+.tr[lang="vi"],.tr[lang="en"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
+.tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
+.etr{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.94em;font-weight:500;line-height:1.75;color:var(--sub);}
+#setup > #lgBox{margin-top:14px;}
+#lgSel{font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
+#setup > #lgBox .lgnote{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px;}
+@media (min-width:641px){ #setup > #lgBox .lgnote{font-size:18px;} #setup > #lgBox{margin-top:20px;display:flex;align-items:center;gap:8px 24px;flex-wrap:wrap;} #setup > #lgBox.hidden{display:none;} #setup > #lgBox .lbl{display:block;font-size:22px;margin:0;} #setup > #lgBox .selwrap{display:block;width:460px;} #setup > #lgBox .lgnote{flex-basis:100%;margin-top:0;}
+  #setup > #lgBox select{height:60px;border-radius:14px;font-size:22px;padding:0 56px 0 18px;} #setup > #lgBox .selwrap .ic{right:18px;top:16px;width:28px;height:28px;} }
 
 /* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
 .opts{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:12px;padding:12px 16px;}
@@ -361,7 +371,24 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 .kjc{display:inline-block;margin:0 10px 2px 0;white-space:nowrap;}
 .kjc b{font-size:1.25em;margin-right:4px;}
 .kjc span{font-size:.85em;color:var(--sub);}
+/* 語の音声（スピーカーのボタン）。メニューの「ことばの おんせい」がオフの時は 出さない */
+.aud{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid #f3d9ad;background:var(--accentSoft);
+  color:var(--accentT);vertical-align:middle;margin:0 0 0 8px;padding:0;flex:none;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.aud .ic{width:22px;height:22px;position:static;}
+.aud.playing{background:var(--accentT);color:#fff;border-color:var(--accentT);}
+.aud.err{opacity:.4;}
+body.novoice .aud{display:none;}
+.qt.vc{grid-template-columns:repeat(2,1fr);}
+.vcic{display:inline-block;vertical-align:-4px;color:var(--accentT);}
+.vcic .ic{width:18px;height:18px;position:static;display:inline-block;}
+.gtop .gname{flex:1;min-width:0;}
 @media (min-width:641px){
+  .opts #lgBox{margin-top:0;}
+  .aud{width:64px;height:64px;margin-left:14px;}
+  .aud .ic{width:34px;height:34px;}
+  .qword .aud{width:84px;height:84px;}
+  .qword .aud .ic{width:44px;height:44px;}
+  .vcic .ic{width:28px;height:28px;}
   #setup:not(.hidden){grid-template-rows:repeat(10,auto) 1fr;}
   .opts{border-radius:28px;margin-top:24px;padding:20px 32px;display:grid;grid-template-columns:1fr 1fr;column-gap:32px;align-items:start;}
   .opts .og + .og{margin-top:0;}
@@ -416,6 +443,11 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
         <label class="ol" for="lgSel">いみの ことば（Language）</label>
         <div class="selwrap2"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
         <div class="kjinfo lgnote" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
+      </div>
+      <div class="og" id="vcBox">
+        <span class="ol">ことばの おんせい（<span class="vcic" id="vcIc"></span> を おすと きこえます）</span>
+        <div class="qt vc" id="vcBtns" role="group" aria-label="ことばの おんせい"><button data-vc="1">オン</button><button data-vc="0">オフ</button></div>
+        <div class="kjinfo">おんせい：VOICEVOX:<ruby>剣崎雌雄<rt>けんざきめすお</rt></ruby>（コンピューターが つくった こえです）</div>
       </div>
     </div>
     <label class="lbl" for="catSel">ことばの しゅるい</label>
@@ -1384,8 +1416,10 @@ const LANGS = [["en","English",0],["ne","नेपाली",1],["bn","বাং
 const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
 const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1');
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
-const ITEMS = DATA.map(d=>{ const p=plain(d[1]), y=kana(d[1]);
-  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, fr:d[7]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+// 語の音声：DATA と同じ順の 番号（jlpt/audio/n4/kenzaki/<番号>.mp3）。無い語は 0。音声が無い級は 空＝スピーカーのボタンも設定も出ない
+const AUDIO = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","50p","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","122p","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","207","625","626","677","678","679","680","681","682","683","684","685","730","732","758","759","760","761","762","763","764","765","766","767","768","769","770","771","772","773","774","775","776","777","778","779","780","781","788","793","147","148","149","151","152","153","154","155","156","157","158","160","161","162","163","164","165","166","167","170","171","172","173","174","175","176","178","179","180","181","182","183","184","185","187","188","189","190","191","192","193","194","196","197","198","199","200","201","202","203","204","205","206","208","209","210","211","212","213","214","215","216","217","218","219","220","223","274","634","635","636","654","660","663","667","668","686","687","698","702","706","709","714","716","717","720","731","747","782","783","784","792","794","802","804","805","808","812","815","816","818","819","821","822","829","830","832","838","841","842","846","851","868","869","874","882","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","689","727","728","789","856","250","251","252","254","255","256","257","258","259","260","261","262","263","264","266","267","268","269","270","271","272","273","275","276","277","278","279","280","281","589","623","631","637","669","690","806","835","150","159","168","186","195","221","222","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342","343","344","345","346","347","348","349","350","351","352","353","354","355","356","357","358","359","360","361","362","363","364","365","366","367","368","369","370","371","372","373","374","375","376","377","378","379","380","381","382","383","384","385","386","387","388","389","390","391","392","393","394","395","396","397","398","399","400","401","402","403","404","405","406","407","408","409","410","411","412","413","414","416","417","418","419","420","421","422","423","424","425","426","427","429","430","431","433","434","435","436","437","438","439","440","441","442","443","444","445","446","447","448","449","450","451","452","453","454","455","456","457","458","459","460","461","462","463","464","465","466","467","468","469","470","471","472","473","474","475","476","477","478","479","480","481","482","483","484","485","486","487","488","489","490","491","492","493","494","495","496","497","498","499","500","501","502","503","504","505","506","507","508","509","510","511","512","513","555","563","564","566","577","580","582","592","622","624","627","628","629","630","632","633","638","639","640","641","642","643","644","645","648","650","651","652","653","655","656","691","692","693","694","695","696","697","699","700","701","703","704","705","707","708","710","711","712","713","729","734","735","736","737","738","739","740","741","742","743","744","787","790","791","795","796","797","798","799","800","801","803","807","809","811","814","817","820","823","824","825","826","827","828","831","833","834","836","837","839","854","855","885","169","415","428","514","515","516","517","518","519","520","521","522","523","524","525","526","527","528","529","530","531","532","533","534","535","536","537","538","539","540","541","542","543","544","545","546","547","548","549","550","551","552","553","554","657","658","659","661","662","664","665","666","670","671","715","718","719","721","722","723","724","725","745","746","748","749","750","751","752","753","754","755","840","843","844","845","847","848","849","850","852","863","864","865","866","867","870","871","872","873","875","876","877","878","879","880","881","883","884","177","253","265","432","556","557","558","559","560","561","562","565","567","568","569","570","571","572","573","574","575","576","578","579","581","583","584","585","586","587","588","590","591","593","594","595","596","597","598","599","600","601","602","603","604","605","606","607","646","647","672","673","726","785","810","813","853","857","858","860","861","862","609","610","611","612","613","614","615","616","617","618","619","620","621","649","674","675","676","733","756","757","786","859"];
+const ITEMS = DATA.map((d,i)=>{ const p=plain(d[1]), y=kana(d[1]);
+  return {au:AUDIO[i]||'', id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, fr:d[7]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
 const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 
 /* ---------- ルビ ---------- */
@@ -1466,6 +1500,36 @@ const disp = it => inKanji(it) ? it.w : it.y;
 const frH = it => (it.fr && it.fr!=='する') ?'<span class="fr">'+esc(it.fr)+'</span>' : '';
 const suH = it => (it.fr && it.cat==='S') ? '<span class="fr su">する</span>' : '';   // する名詞は、型がある時だけ「する」も小さく出す（〜に 応募する）
 const wordH = it => frH(it)+ruby(disp(it))+suH(it);          // 画面に出す形（ルビ表記のまま返す）
+/* ---------- 語の音声（スピーカーのボタン） ----------
+   出す所＝いみ の問題の語（答える前から）／答えた後の語の行／くわしく／ことばリスト。
+   ★よみ方の問題は、答える前には どこにも出さない（音で答えが分かるため）。文の問題の答えの行にも出さない（活用した形で、音声は辞書の形のため）。
+   鳴らし方＝<audio>（iPhone の消音スイッチでも鳴る。効果音の Web Audio とは別）。先に取っておいた物（blob）があれば それを鳴らす。
+   無ければ そのままの住所で鳴らし、だめなら 取ってから鳴らす（Safari は Service Worker が返す音を鳴らせない事があるため）。 */
+const HAS_VOICE = AUDIO.some(x=>x);
+let voiceOn = true;
+try{ voiceOn = localStorage.getItem('jlpt_voice')!=="0"; }catch(e){}
+const AUD_URL = no => '/scg-nihongo/jlpt/audio/n4/kenzaki/'+no+'.mp3';
+const audH = it => (HAS_VOICE && it.au) ? '<button type="button" class="aud" data-au="'+esc(it.au)+'" aria-label="おとを きく">'+ic('spk')+'</button>' : '';
+const vBlob = {}; let vAu=null, vBtn=null;
+function voiceFetch(no){   // 取っておく（次に押した時に すぐ鳴る。Service Worker が端末に残す）
+  if(!no || vBlob[no]) return vBlob[no]||Promise.resolve(null);
+  return vBlob[no]=fetch(AUD_URL(no)).then(r=>{ if(!r.ok) throw 0; return r.blob(); }).then(b=>URL.createObjectURL(b)).catch(()=>{ delete vBlob[no]; return null; });
+}
+function voiceMark(b,cls){ if(vBtn) vBtn.classList.remove('playing'); vBtn=null; if(b){ b.classList.remove('err'); if(cls==='playing') vBtn=b; if(cls) b.classList.add(cls); } }
+function playVoice(no,b){
+  if(!vAu){ vAu=new Audio(); vAu.preload='auto'; vAu.onended=()=>voiceMark(null); }
+  vAu.pause(); vAu.onerror=null; voiceMark(b,'playing');
+  const fail=()=>{ if(vBtn===b) voiceMark(b,'err'); };
+  const viaBlob=()=>voiceFetch(no).then(u=>{ if(!u) return fail(); if(vBtn!==b) return; vAu.src=u; const p=vAu.play(); if(p&&p.catch) p.catch(fail); });
+  const ready=vBlob[no];
+  if(typeof ready==='string'){ vAu.src=ready; const p=vAu.play(); if(p&&p.catch) p.catch(fail); return; }
+  vAu.onerror=()=>{ vAu.onerror=null; viaBlob(); };
+  vAu.src=AUD_URL(no); const p=vAu.play(); if(p&&p.catch) p.catch(()=>{ if(vAu.onerror){ vAu.onerror=null; viaBlob(); } });
+}
+document.addEventListener('click',e=>{   // どこに出たボタンでも ここで受ける（ことばリストの行を押した事に しない）
+  const b=e.target.closest&&e.target.closest('.aud'); if(!b) return;
+  e.stopPropagation(); e.preventDefault(); playVoice(b.dataset.au,b);
+},true);
 const BOOKR = {"初級":"{初級|しょきゅう}","中級":"{中級|ちゅうきゅう}"};
 const stepLabel = s => (BOOKR[s.b]||s.b)+' '+s.l;
 function whereKanji(k){   // その字をどこで習うか
@@ -1567,6 +1631,15 @@ else{
   lgSel.onchange=()=>{ lang=lgSel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paintLg(); fillCatSel(); updateStats(); };
   paintLg();
 }
+// ことばの おんせい（オン／オフ。級をまたいで同じ設定＝jlpt_voice）。音声が無い級では 設定ごと出さない
+function paintVoice(){ document.body.classList.toggle('novoice',!voiceOn);
+  document.querySelectorAll("#vcBtns button").forEach(b=>b.setAttribute("aria-pressed",String((b.dataset.vc==='1')===voiceOn))); }
+if(!HAS_VOICE) $("vcBox").remove();
+else{
+  $("vcIc").innerHTML=ic('spk');
+  document.querySelectorAll("#vcBtns button").forEach(b=>b.onclick=()=>{ voiceOn=b.dataset.vc==='1'; try{localStorage.setItem('jlpt_voice',voiceOn?"1":"0");}catch(e){} if(!voiceOn&&vAu) vAu.pause(); paintVoice(); });
+}
+paintVoice();
 if(!YOMI_ON) $("qtY").remove();
 if(!CLOZE_ON) $("qtC").remove();
 document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
@@ -1704,7 +1777,8 @@ function render(){
   $("qText").innerHTML='<span class="qask">'+QASK[qt]+'</span>'
     +(qt==='c' ? '<span class="qsent">'+czSent(cz,false)+'</span>'
       : qt==='w' ? '<span class="qmean">'+trH(cur)+'</span>'
-               : '<span class="qword">'+(qt==='y'?frH(cur)+esc(cur.p)+suH(cur):wordH(cur))+'</span>');
+               : '<span class="qword">'+(qt==='y'?frH(cur)+esc(cur.p)+suH(cur):wordH(cur)+audH(cur))+'</span>');   // よみ方の問題は 答える前に 音声のボタンを出さない
+  if(voiceOn && HAS_VOICE && cur.au) voiceFetch(cur.au);   // 先に取っておく（押した時に すぐ鳴る）
   order=shuffle(opts.map((_,i)=>i));
   $("choices").innerHTML=order.map((oi,k)=>`<button class="choice${qt==='m'?' en':''}" data-oi="${oi}"><span class="n">${k+1}</span><span>${optHTML(opts[oi])}</span></button>`).join("");
   $("choices").querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.oi));
@@ -1715,7 +1789,7 @@ function render(){
 function verdictHTML(ok,ansNo){ return `<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>`; }
 function wordLine(it){
   if(qt==='c') return `<span class="fbw">${ruby(czAns(cz))}</span>　${czTrH(cz)}`;   // 答えた後に、その文での意味（えらんだ言語）を出す
-  return `<span class="fbw">${wordH(it)}</span>　${trH(it)}`;
+  return `<span class="fbw">${wordH(it)}${audH(it)}</span>　${trH(it)}`;
 }
 function answer(oi){
   if(answered) return; answered=true;
@@ -1772,7 +1846,7 @@ function simsHTML(it){
 let lastOk=false, lastAnsNo=1;
 function renderPanel(it){
   $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}">${verdictHTML(lastOk,lastAnsNo)}${wordLine(cur)}</div>
-    <span class="gname">${wordH(it)}</span><div class="gmean2">${trH(it)}</div>
+    <span class="gname">${wordH(it)}${audH(it)}</span><div class="gmean2">${trH(it)}</div>
     <dl class="gtbl">${detailRows(it)}</dl>${simsHTML(it)}`;
   $("gPanel").querySelectorAll(".sim").forEach(b=>b.onclick=()=>renderPanel(BYID[b.dataset.id]));
 }
@@ -1804,7 +1878,7 @@ function recPill(id){
 function renderSheet(it){
   $("sheet").innerHTML=`<div class="grab"></div>
     <div class="shtop"><span class="tag">${catR(it.cat)}</span><button class="ibtn shclose" id="shClose" aria-label="とじる">${ic('x',2.2)}</button></div>
-    <div class="shname" id="shName">${wordH(it)}</div><div class="shmean">${trH(it)}</div>
+    <div class="shname" id="shName">${wordH(it)}${audH(it)}</div><div class="shmean">${trH(it)}</div>
     <dl class="shtbl">${detailRows(it)}</dl>${simsHTML(it)}
     <button class="shback" id="shBack">もどる</button>`;
   $("shClose").onclick=closeSheet; $("shBack").onclick=closeSheet;
@@ -1835,7 +1909,7 @@ function renderList(){
   $("listBody").innerHTML=CAT_ORDER.map(c=>{
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
     return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
-      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${wordH(it)}</span>${recPill(it.id)}</div>
+      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${wordH(it)}${audH(it)}</span>${recPill(it.id)}</div>
           <div class="gmean">${trH(it)}</div></div>`).join("");
   }).join("");
   $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });

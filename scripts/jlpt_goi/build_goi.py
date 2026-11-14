@@ -7,6 +7,7 @@
   よみ方のまちがいの選択肢: scripts/jlpt_goi/<lv>_yomi.txt … 番号 / まちがい1 / まちがい2 / まちがい3（語ごと。無い語は よみ方の問題に出さない）
   訳を足す時: <lv>_words.<言語>.txt（番号<TAB>訳）を置くと、その言語を意味に入れる（型の LANGS にも言語を足す）。
   助詞の型（動詞）: <lv>_frame.txt（番号<TAB>語<TAB>型）。型は「〜を」「〜に 〜を」など。する名詞で助詞が決まらない語は「する」（語のあとに する だけ出る）。語の前に小さく出る。無い語・「-」の語は出さない。
+  語の音声: <lv>_audio.txt（台帳）と jlpt/audio/<lv>/kenzaki/<番号>.mp3 がある級だけ、語にスピーカーのボタンが出る。音は きあが全部聞いて決めた物＝作り直さない（CLAUDE.md）。
   番号は語ごとに1つ（重ねない）。Claude が足した行は「50+」のように、前の行の番号に + を付ける。"""
 import sys, re, json, os, glob, collections
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -68,6 +69,13 @@ if os.path.exists(f):
         c = l.split('\t'); assert len(c) >= 3 and c[0] in byno and c[0] not in frame and RB.sub(r'\1', byno[c[0]][2]) == c[1], ('frame の行', l)
         assert c[2] == '-' or (c[2] == 'する' and byno[c[0]][1] == 'S') or re.fullmatch(r'〜[ぁ-ん]{1,3}(/〜[ぁ-ん]{1,3})?( 〜[ぁ-ん]{1,3})?', c[2]), ('frame の型', l)
         if c[2] != '-': frame[c[0]] = c[2]
+# 語の音声：<lv>_audio.txt（台帳。番号<TAB>しゅるい<TAB>語<TAB>読み<TAB>作り方…。音を作った時の記録）＋ jlpt/audio/<lv>/kenzaki/<番号>.mp3（+ は p）
+#   台帳の読み＝今の読み で、ファイルがある語だけ 音声を付ける。合わない語は 音声なし（スピーカーのボタンが出ない）＝まちがった音を鳴らさない
+audio = {}; f = os.path.join(HERE, lv + '_audio.txt'); adir = os.path.join(ROOT, 'jlpt', 'audio', lv, 'kenzaki'); anone = []
+if os.path.exists(f):
+    for l in open(f, encoding='utf-8').read().splitlines()[1:]:
+        c = l.split('\t')
+        if len(c) >= 4: audio[c[0]] = c[3]
 data = []; keys = collections.Counter(); order = 'VSIANKFX'; nny = 0
 for r in rows:
     assert len(r) in (4, 5), r
@@ -84,18 +92,23 @@ for r in rows:
     cz = [z[:4] + [z[4] if len(z[4]) > 1 else z[4]['en']] for z in cloze.get(no, [])]
     d = [cat, w, m if len(m) > 1 else en.strip()] + ([tag, 1 if ny else 0, yd, cz] if cz else [tag, 0, yd] if yd else [tag, 1] if ny else [tag] if tag else [])
     if no in frame: d = d + [0] * (7 - len(d)) + [frame[no]]
-    data.append((order.index(cat), d))
+    an = no.replace('+', 'p')
+    if audio and not (audio.get(no) == RB.sub(r'\2', w) and os.path.exists(os.path.join(adir, an + '.mp3'))): anone.append(no); an = 0
+    data.append((order.index(cat), d, an if audio else 0))
 assert not [k for k, n in keys.items() if n > 1], [k for k, n in keys.items() if n > 1]
-data = [d for _, d in sorted(data, key=lambda x: x[0])]          # しゅるいごとにまとめる（中の順は TSV のまま）
+data.sort(key=lambda x: x[0])                                   # しゅるいごとにまとめる（中の順は TSV のまま）
+aud = [a for _, _, a in data] if audio else []                  # DATA と同じ順の 音声の番号（無い語は 0）。音声が無い級は 空
+data = [d for _, d, _ in data]
 base = open(os.path.join(ROOT, 'jlpt', 'N4_bunpou.html'), encoding='utf-8').read()
 css = base[base.index('<style>') + 7: base.index('</style>')].strip('\n')
 t = open(os.path.join(HERE, 'goi.tmpl.html'), encoding='utf-8').read()
 js = '[\n' + ',\n'.join(json.dumps(d, ensure_ascii=False) for d in data) + '\n]'
-out = t.replace('/*__BASECSS__*/', css).replace('/*__DATA__*/', js).replace('__LV__', LV).replace('__lv__', lv)
+out = t.replace('/*__BASECSS__*/', css).replace('/*__DATA__*/', js).replace('/*__AUDIO__*/', json.dumps(aud, separators=(',', ':'))).replace('__LV__', LV).replace('__lv__', lv)
 assert '__' not in re.sub(r'__drillLog|__jlptStudy', '', out), '置きかえ残り'
 p = os.path.join(ROOT, 'jlpt', LV + '_goi.html')
 open(p, 'w', encoding='utf-8', newline='\n').write(out)
 for code, d in extra.items():
     assert not set(d) - set(byno), ('訳の番号が語のデータに無い', code, sorted(set(d) - set(byno))[:5])
     print('  訳', code, len([n for n in byno if d.get(n)]), '/', len(rows), '（無い語は英語で出る）')
+if audio: print('  音声', len(rows) - len(anone), '/', len(rows), '（台帳の読みと合わない・ファイルが無い語は 音声なし）', anone[:20])
 print(p, len(data), '語', collections.Counter(d[0] for d in data), '言語', ['en'] + sorted(extra), 'よみ方に出さない語', nny, 'よみ方の選択肢がある語', sum(1 for d in data if len(d) > 5 and d[5]), '助詞の型', len(frame))
