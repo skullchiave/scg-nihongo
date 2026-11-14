@@ -2735,12 +2735,11 @@
 3377	rơi liên tục (mưa, tuyết)
 3378	dùng hết
 3379	đuổi kịp
-3380	nói cách khác
 3381	viết lại
-3382	đổi, thay thế
 3383	chán nản, suy sụp
 3384	trông vui vẻ
 3385	trông buồn bã
 3386	coi là, xem như
 3387	lắm (dùng với phủ định)
 3388	ra hồn, tử tế (dùng với phủ định)
+3389	mua cái mới thay cái cũ

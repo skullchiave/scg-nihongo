@@ -2735,12 +2735,11 @@
 3377	V	{降|ふ}り{続|つづ}く	to keep falling (rain, snow)
 3378	V	{使|つか}い{切|き}る	to use up
 3379	V	{追|お}いつく	to catch up (with)
-3380	V	{言|い}い{換|か}える	to say in other words, to rephrase
 3381	V	{書|か}き{換|か}える	to rewrite
-3382	V	{取|と}り{換|か}える	to exchange, to replace
 3383	V	{落|お}ち{込|こ}む	to feel down, to get depressed
 3384	A	{楽|たの}しげ	looking happy, cheerful-looking
 3385	A	{悲|かな}しげ	looking sad
 3386	V	{見|み}なす	to regard as, to consider (A to be B)
 3387	F	そう	(not) so, (not) that (used with a negative)
 3388	F	ろくな	(not) decent, (not) proper (used with a negative)
+3389	V	{買|か}い{替|か}える	to replace by buying a new one
