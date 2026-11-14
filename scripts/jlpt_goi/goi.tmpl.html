@@ -256,7 +256,7 @@ const inKanji = it => it.ks.length>0 && scope!=='none' && (scope==='all' || it.k
 const canY = it => YOMI_ON && inKanji(it) && !it.ny && !!it.yd;   // よみ方の問題に出せる語（読みが2つ以上ある語は、文脈が無いと決まらないので出さない）
 const disp = it => inKanji(it) ? it.w : it.y;
 // 動詞の 助詞の型（〜を・〜に・〜が）を、語の前に小さく出す
-const frH = it => it.fr ? '<span class="fr">'+esc(it.fr)+'</span>' : '';
+const frH = it => (it.fr && it.fr!=='する') ?'<span class="fr">'+esc(it.fr)+'</span>' : '';
 const suH = it => (it.fr && it.cat==='S') ? '<span class="fr su">する</span>' : '';   // する名詞は、型がある時だけ「する」も小さく出す（〜に 応募する）
 const wordH = it => frH(it)+ruby(disp(it))+suH(it);          // 画面に出す形（ルビ表記のまま返す）
 const BOOKR = {"初級":"{初級|しょきゅう}","中級":"{中級|ちゅうきゅう}"};

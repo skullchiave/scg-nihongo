@@ -6,7 +6,7 @@
   ★出力の HTML は手で直さない。直すのは 語のデータ（タブ区切りの .txt）か型。直したらこの道具を回す。
   よみ方のまちがいの選択肢: scripts/jlpt_goi/<lv>_yomi.txt … 番号 / まちがい1 / まちがい2 / まちがい3（語ごと。無い語は よみ方の問題に出さない）
   訳を足す時: <lv>_words.<言語>.txt（番号<TAB>訳）を置くと、その言語を意味に入れる（型の LANGS にも言語を足す）。
-  助詞の型（動詞）: <lv>_frame.txt（番号<TAB>語<TAB>型）。型は「〜を」「〜に 〜を」など。語の前に小さく出る。無い語・「-」の語は出さない。
+  助詞の型（動詞）: <lv>_frame.txt（番号<TAB>語<TAB>型）。型は「〜を」「〜に 〜を」など。する名詞で助詞が決まらない語は「する」（語のあとに する だけ出る）。語の前に小さく出る。無い語・「-」の語は出さない。
   番号は語ごとに1つ（重ねない）。Claude が足した行は「50+」のように、前の行の番号に + を付ける。"""
 import sys, re, json, os, glob, collections
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -66,7 +66,7 @@ if os.path.exists(f):
     for l in open(f, encoding='utf-8').read().splitlines():
         if not l.strip() or l.startswith('#'): continue
         c = l.split('\t'); assert len(c) >= 3 and c[0] in byno and c[0] not in frame and RB.sub(r'\1', byno[c[0]][2]) == c[1], ('frame の行', l)
-        assert c[2] == '-' or re.fullmatch(r'〜[ぁ-ん]{1,3}(/〜[ぁ-ん]{1,3})?( 〜[ぁ-ん]{1,3})?', c[2]), ('frame の型', l)
+        assert c[2] == '-' or (c[2] == 'する' and byno[c[0]][1] == 'S') or re.fullmatch(r'〜[ぁ-ん]{1,3}(/〜[ぁ-ん]{1,3})?( 〜[ぁ-ん]{1,3})?', c[2]), ('frame の型', l)
         if c[2] != '-': frame[c[0]] = c[2]
 data = []; keys = collections.Counter(); order = 'VSIANKFX'; nny = 0
 for r in rows:
