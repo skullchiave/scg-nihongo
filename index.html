@@ -530,11 +530,19 @@ function viewDrill(){
   });
   return h+'</div></section></main>';
 }
+const JLPT_KIND={
+  bunpou:{en:'Grammar',ne:'व्याकरण',bn:'ব্যাকরণ',si:'ව්‍යාකරණ',my:'သဒ္ဒါ',zh:'语法',vi:'Ngữ pháp'},
+  goi:{en:'Vocabulary',ne:'शब्दावली',bn:'শব্দভাণ্ডার',si:'වචන මාලාව',my:'ဝေါဟာရ',zh:'词汇',vi:'Từ vựng'}
+};
 function viewDrillLevel(id){
   const lv=(window.SCG_CATALOG.jlpt||[]).find(function(x){return x.id===id && x.ready;});
   if(!lv) return viewDrill();
   let h=hdSub('#/drill','ドリル','JLPT '+lv.label)+'<main class="page narrow"><div class="list">';
+  // 文法・語彙 の下に、その意味を小さく出す（N4 の学生には「文法」「語彙」の字がむずかしい）。ドリルでえらんだ言語（jlpt_lang）があれば その言語、無ければ英語
+  let lg='en'; try{ lg=localStorage.getItem('jlpt_lang')||'en'; }catch(e){}
   (lv.items||[]).forEach(function(it){
+    const k=JLPT_KIND[it.kind]; if(k&&!it.sub) it=Object.assign({},it,{sub:k[lg]||k.en});
+    if(!it.ready && it.sub){ h+='<div class="row soon" aria-disabled="true"><span class="nm">'+it.label+'<span class="badge">じゅんびちゅう</span><span class="sub">'+it.sub+'</span></span></div>'; return; }
     h+= it.ready ? '<a class="row" href="'+it.file+'"><span class="nm">'+it.label+(it.sub?'<span class="sub">'+it.sub+'</span>':'')+'</span>'+(it.count?'<span class="cnt">'+it.count+'</span>':'')+'<span class="go">'+ic('fwd')+'</span></a>' : soonRow(it.label);
   });
   return h+'</div></main>';
@@ -564,6 +572,7 @@ function fitZoom(){
 }
 window.addEventListener('resize',fitZoom);
 window.addEventListener('hashchange',render);
+window.addEventListener('pageshow',function(e){ if(e.persisted) render(); });   // ドリルで言語をえらんでから「もどる」で来た時に、文法・語彙の意味の言語を出し直す
 updateStreak();
 fitZoom();
 render();
