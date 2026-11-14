@@ -39,6 +39,9 @@
 .qask{display:block;font-size:13px;font-weight:700;color:var(--sub);line-height:1.6;text-align:left;}
 .qcard.word{text-align:center;}
 .qword{display:block;font-size:36px;font-weight:700;line-height:2;}
+.fr{font-size:.7em;font-weight:500;opacity:.6;margin-right:.35em;white-space:nowrap;}
+.qword .fr{font-size:.45em;}
+.fr.su{margin:0 0 0 .2em;}
 .qmean{display:block;font-size:22px;font-weight:700;line-height:1.7;padding:10px 0;}
 .choice.en{font-size:17px;line-height:1.5;}
 .fbw{font-size:18px;font-weight:700;line-height:2;}
@@ -190,7 +193,7 @@ const CAT_ORDER=[...new Set(DATA.map(d=>d[0]))];
 const plain = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$1');
 const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
 const ITEMS = DATA.map(d=>{ const p=plain(d[1]), y=kana(d[1]);
-  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+  return {id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, fr:d[7]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
 const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 
 /* ---------- ルビ ---------- */
@@ -251,7 +254,11 @@ function buildKnown(){
 }
 const inKanji = it => it.ks.length>0 && scope!=='none' && (scope==='all' || it.ks.every(k=>KNOWN.has(k)));
 const canY = it => YOMI_ON && inKanji(it) && !it.ny && !!it.yd;   // よみ方の問題に出せる語（読みが2つ以上ある語は、文脈が無いと決まらないので出さない）
-const disp = it => inKanji(it) ? it.w : it.y;          // 画面に出す形（ルビ表記のまま返す）
+const disp = it => inKanji(it) ? it.w : it.y;
+// 動詞の 助詞の型（〜を・〜に・〜が）を、語の前に小さく出す
+const frH = it => it.fr ? '<span class="fr">'+esc(it.fr)+'</span>' : '';
+const suH = it => (it.fr && it.cat==='S') ? '<span class="fr su">する</span>' : '';   // する名詞は、型がある時だけ「する」も小さく出す（〜に 応募する）
+const wordH = it => frH(it)+ruby(disp(it))+suH(it);          // 画面に出す形（ルビ表記のまま返す）
 const BOOKR = {"初級":"{初級|しょきゅう}","中級":"{中級|ちゅうきゅう}"};
 const stepLabel = s => (BOOKR[s.b]||s.b)+' '+s.l;
 function whereKanji(k){   // その字をどこで習うか
@@ -488,7 +495,7 @@ function render(){
   $("qText").innerHTML='<span class="qask">'+QASK[qt]+'</span>'
     +(qt==='c' ? '<span class="qsent">'+czSent(cz,false)+'</span>'
       : qt==='w' ? '<span class="qmean">'+trH(cur)+'</span>'
-               : '<span class="qword">'+(qt==='y'?esc(cur.p):ruby(disp(cur)))+'</span>');
+               : '<span class="qword">'+(qt==='y'?frH(cur)+esc(cur.p)+suH(cur):wordH(cur))+'</span>');
   order=shuffle(opts.map((_,i)=>i));
   $("choices").innerHTML=order.map((oi,k)=>`<button class="choice${qt==='m'?' en':''}" data-oi="${oi}"><span class="n">${k+1}</span><span>${optHTML(opts[oi])}</span></button>`).join("");
   $("choices").querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.oi));
@@ -499,7 +506,7 @@ function render(){
 function verdictHTML(ok,ansNo){ return `<div class="verdict">${ok?"せいかい！":"ざんねん… せいかいは "+ansNo}</div>`; }
 function wordLine(it){
   if(qt==='c') return `<span class="fbw">${ruby(czAns(cz))}</span>　${czTrH(cz)}`;   // 答えた後に、その文での意味（えらんだ言語）を出す
-  return `<span class="fbw">${ruby(disp(it))}</span>　${trH(it)}`;
+  return `<span class="fbw">${wordH(it)}</span>　${trH(it)}`;
 }
 function answer(oi){
   if(answered) return; answered=true;
@@ -515,7 +522,7 @@ function answer(oi){
     else b.classList.add("dim");
   });
   if(qt==='c'){ const w=$("qText").querySelector(".qsent"); if(w) w.innerHTML=czSent(cz,true); }   // 文の問題は、答えた後に 空所へ答えを入れる
-  if(qt==='y'){ const w=$("qText").querySelector(".qword"); if(w) w.innerHTML=ruby(cur.w); }   // よみ方の問題は、答えた後にルビを出す
+  if(qt==='y'){ const w=$("qText").querySelector(".qword"); if(w) w.innerHTML=frH(cur)+ruby(cur.w)+suH(cur); }   // よみ方の問題は、答えた後にルビを出す
   const fb=$("fb");
   fb.className="fb "+(ok?"ok":"ng");
   const ansNo=order.indexOf(0)+1;
@@ -556,7 +563,7 @@ function simsHTML(it){
 let lastOk=false, lastAnsNo=1;
 function renderPanel(it){
   $("gPanel").innerHTML=`<div class="gv ${lastOk?"ok":"ng"}">${verdictHTML(lastOk,lastAnsNo)}${wordLine(cur)}</div>
-    <span class="gname">${ruby(disp(it))}</span><div class="gmean2">${trH(it)}</div>
+    <span class="gname">${wordH(it)}</span><div class="gmean2">${trH(it)}</div>
     <dl class="gtbl">${detailRows(it)}</dl>${simsHTML(it)}`;
   $("gPanel").querySelectorAll(".sim").forEach(b=>b.onclick=()=>renderPanel(BYID[b.dataset.id]));
 }
@@ -573,7 +580,7 @@ function finish(early){
   $("rNg").textContent="まちがい "+(total-score);
   const w=wrongIds.map(id=>BYID[id]);
   $("rWrong").innerHTML = w.length
-    ? `<div class="sech">まちがえた ことば</div><div class="list">${w.map(it=>`<div class="wrow"><b>${ruby(disp(it))}</b><span>${trH(it)}</span></div>`).join("")}</div>`
+    ? `<div class="sech">まちがえた ことば</div><div class="list">${w.map(it=>`<div class="wrow"><b>${wordH(it)}</b><span>${trH(it)}</span></div>`).join("")}</div>`
     : `<div class="allok"><ruby>全問<rt>ぜんもん</rt></ruby><ruby>正解<rt>せいかい</rt></ruby>です！</div>`;
   $("retryWrongBtn").disabled=!w.length;
 }
@@ -588,7 +595,7 @@ function recPill(id){
 function renderSheet(it){
   $("sheet").innerHTML=`<div class="grab"></div>
     <div class="shtop"><span class="tag">${catR(it.cat)}</span><button class="ibtn shclose" id="shClose" aria-label="とじる">${ic('x',2.2)}</button></div>
-    <div class="shname" id="shName">${ruby(disp(it))}</div><div class="shmean">${trH(it)}</div>
+    <div class="shname" id="shName">${wordH(it)}</div><div class="shmean">${trH(it)}</div>
     <dl class="shtbl">${detailRows(it)}</dl>${simsHTML(it)}
     <button class="shback" id="shBack">もどる</button>`;
   $("shClose").onclick=closeSheet; $("shBack").onclick=closeSheet;
@@ -619,7 +626,7 @@ function renderList(){
   $("listBody").innerHTML=CAT_ORDER.map(c=>{
     const xs=hit.filter(it=>it.cat===c); if(!xs.length) return "";
     return `<div class="cath" data-h="${esc(c)}"><span>${catR(c)}（${xs.length}）</span><button class="catgo" data-cat="${esc(c)}">${ic('play')}<span>これを<ruby>練習<rt>れんしゅう</rt></ruby></span></button></div>`+
-      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${ruby(disp(it))}</span>${recPill(it.id)}</div>
+      xs.map(it=>`<div class="gcard" data-id="${esc(it.id)}"><div class="gtop"><span class="gname">${wordH(it)}</span>${recPill(it.id)}</div>
           <div class="gmean">${trH(it)}</div></div>`).join("");
   }).join("");
   $("listBody").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; setTab("practice"); });

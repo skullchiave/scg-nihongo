@@ -144,3 +144,8 @@
 177	1	chắc; chặt
 177	2	đầy đủ
 177	3	chín chắn; đáng tin cậy
+568	1	nhất định (hãy …)
+572	1	(không) … đến thế
+590	1	hầu như (không …)
+813	1	tuyệt đối (không được …)
+862	1	vẫn còn kém lắm

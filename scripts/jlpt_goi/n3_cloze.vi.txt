@@ -266,3 +266,13 @@
 1804	1	dù … đến đâu
 1820	1	cứ như là
 1820	2	y như
+596	1	có lẽ (… sẽ)
+1785	1	nếu tôi nhớ không nhầm
+1754	1	biết đâu; không chừng (…)
+1078	1	cùng lắm; nhiều nhất
+1771	1	ít nhất
+1795	1	nếu có thể
+1711	1	sớm muộn gì (cũng …)
+1799	1	đã … từ lâu
+1185	1	đơn giản chỉ là (… thôi)
+1160	1	chỉ (… thôi)
