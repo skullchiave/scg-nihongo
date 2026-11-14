@@ -12,11 +12,12 @@
   if(typeof ITEMS==='undefined' || typeof rec==='undefined' || typeof answer!=='function') return;
 
   /* ---- きあが後で動かせる数字 ---- */
-  var GAP=[1,3,7,14,30];          // box 0〜4 → 次に出すまでの日数（まちがい＝明日）
+  var GAP=[1,1,3,7,14,30];        // box 0〜5 → 次に出すまでの日数（まちがい＝明日）。はじめての正解（box 1）も明日＝4択は知らなくても当たるので、2回つづけて正解してから間をあける（2026-11-14）
   var MASTER=2;                   // 「おぼえた」＝ box がこれ以上
   var DAY_LINE=10;                // 「やった日」＝ 1日にこれ以上解いた日
   var WEEK_GOAL=4;                // 週の目標（日）
   var TODAY_N=10;                 // きょうの◯問
+  var NEW_MIN=3;                  // きょうの◯問に、新しい問題を少なくともこの数だけ入れる（復習がたまっても進むように）
   var EXAMS=['2026-12-06','2027-07-04','2027-12-05'];   // 2026-12-06 は確定。★2027年の2つは未発表＝第1日曜で計算した仮の日付（きあ 11/12）。発表されたら直す
   var DAYS_KEY='drill_days';
 
@@ -54,7 +55,7 @@
     _answer(oi);
     var r=rec[id]; if(!r) return;
     var ok=r.last===1, t=today();
-    r.box=ok?Math.min(4,pb+1):0;
+    r.box=ok?Math.min(GAP.length-1,pb+1):0;
     r.t=t;
     r.due=addDays(t, ok?GAP[r.box]:1);
     save(); bumpDay();
@@ -66,8 +67,12 @@
     function take(xs){ for(var i=0;i<xs.length&&out.length<TODAY_N;i++){ if(!used[xs[i].id]){ used[xs[i].id]=1; out.push(xs[i]); } } }
     var due=p.filter(function(it){ return rec[it.id] && dueOf(rec[it.id])<=t; })
              .sort(function(a,b){ var x=dueOf(rec[a.id]), y=dueOf(rec[b.id]); return x<y?-1:x>y?1:0; });
-    take(due); var nDue=out.length;
-    take(p.filter(function(it){ return !rec[it.id]; })); var nNew=out.length-nDue;
+    // 新しい問題は まぜて出す（リストの順＝動詞ばかり、にしない）。復習が多い日も NEW_MIN 問は新しい問題にする
+    var fresh=p.filter(function(it){ return !rec[it.id]; });
+    for(var i=fresh.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), x=fresh[i]; fresh[i]=fresh[j]; fresh[j]=x; }
+    take(due.slice(0, TODAY_N-Math.min(NEW_MIN,fresh.length))); var nDue=out.length;
+    take(fresh); var nNew=out.length-nDue;
+    take(due); nDue=out.length-nNew;
     take(p.filter(function(it){ return rec[it.id]; })
           .sort(function(a,b){ var x=boxOf(rec[a.id])-boxOf(rec[b.id]); if(x) return x; var c=dueOf(rec[a.id]), d=dueOf(rec[b.id]); return c<d?-1:c>d?1:0; }));
     return {list:out, due:nDue, fresh:nNew};
