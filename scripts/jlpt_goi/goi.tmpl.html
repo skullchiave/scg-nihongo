@@ -42,6 +42,7 @@
 .fr{font-size:.7em;font-weight:500;opacity:.6;margin-right:.35em;white-space:nowrap;}
 .qword .fr{font-size:.45em;}
 .fr.su{margin:0 0 0 .2em;}
+body.noruby .frb rt{display:revert;}
 .cattr{font-size:.8em;font-weight:500;opacity:.75;margin-left:.3em;}
 .qmean{display:block;font-size:22px;font-weight:700;line-height:1.7;padding:10px 0;}
 .choice.en{font-size:17px;line-height:1.5;}
@@ -107,6 +108,11 @@ body.novoice .aud{display:none;}
     <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
     </div><span class="catpill pconly" id="catPill"></span></div>
     <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">ことばを えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
+    <div id="lgBox">
+      <label class="lbl" for="lgSel">いみの ことば（Language）</label>
+      <div class="selwrap"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="lgnote" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
+    </div>
     <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
     <div class="stats">
       <div><b id="sTotal">0</b><span>ことばの <ruby>数<rt>かず</rt></ruby></span></div>
@@ -131,11 +137,6 @@ body.novoice .aud{display:none;}
           <button data-qt="mix">まぜる</button><button data-qt="m">いみ</button><button data-qt="w">ことば</button><button data-qt="y" id="qtY">よみ<ruby>方<rt>かた</rt></ruby></button><button data-qt="c" id="qtC"><ruby>文<rt>ぶん</rt></ruby></button>
         </div>
         <div class="kjinfo" id="qtInfo"></div>
-      </div>
-      <div class="og" id="lgBox">
-        <label class="ol" for="lgSel">いみの ことば（Language）</label>
-        <div class="selwrap2"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="kjinfo lgnote" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
       </div>
       <div class="og" id="vcBox">
         <span class="ol">ことばの おんせい（<span class="vcic" id="vcIc"></span> を おすと きこえます）</span>
@@ -220,7 +221,7 @@ const kana = s => s.replace(/\{([^|{}]+)\|([^{}]+)\}/g,'$2');
 // 語の音声：DATA と同じ順の 番号（jlpt/audio/__lv__/kenzaki/<番号>.mp3）。無い語は 0。音声が無い級は 空＝スピーカーのボタンも設定も出ない
 const AUDIO = /*__AUDIO__*/;
 const ITEMS = DATA.map((d,i)=>{ const p=plain(d[1]), y=kana(d[1]);
-  return {au:AUDIO[i]||'', id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, fr:d[7]||'', ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
+  return {au:AUDIO[i]||'', id:p+'/'+y, cat:d[0], w:d[1], p:p, y:y, m:(typeof d[2]==='string'?{en:d[2]}:d[2]), tag:d[3]||'', ny:!!d[4], yd:d[5]||null, cz:d[6]||null, fr:d[7]||'', hk:!!d[8], ks:[...new Set(p.match(/[一-龥々]/g)||[])]}; });
 const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 
 /* ---------- ルビ ---------- */
@@ -296,11 +297,14 @@ function buildKnown(){
 }
 const inKanji = it => it.ks.length>0 && scope!=='none' && (scope==='all' || it.ks.every(k=>KNOWN.has(k)));
 const canY = it => YOMI_ON && inKanji(it) && !it.ny && !!it.yd;   // よみ方の問題に出せる語（読みが2つ以上ある語は、文脈が無いと決まらないので出さない）
-const disp = it => inKanji(it) ? it.w : it.y;
+// hk＝読みが同じ別の語がある語（合う／会う）。ひらがなだけだと取りちがえるので、漢字のはんいの外でも 漢字＋ふりがな で出す
+const disp = it => (inKanji(it)||it.hk) ? it.w : it.y;
+//   はんいの外の hk の語は、ルビをオフにしていても ふりがなを出す（.frb。読めない漢字だけが出るのをふせぐ）
+const dispH = it => (it.hk && !inKanji(it)) ? '<span class="frb">'+ruby(it.w)+'</span>' : ruby(disp(it));
 // 動詞の 助詞の型（〜を・〜に・〜が）を、語の前に小さく出す
 const frH = it => (it.fr && it.fr!=='する') ?'<span class="fr">'+esc(it.fr)+'</span>' : '';
 const suH = it => (it.fr && it.cat==='S') ? '<span class="fr su">する</span>' : '';   // する名詞は、型がある時だけ「する」も小さく出す（〜に 応募する）
-const wordH = it => frH(it)+ruby(disp(it))+suH(it);          // 画面に出す形（ルビ表記のまま返す）
+const wordH = it => frH(it)+dispH(it)+suH(it);          // 画面に出す形（ルビ表記のまま返す）
 /* ---------- 語の音声（スピーカーのボタン） ----------
    出す所＝いみ の問題の語（答える前から）／答えた後の語の行／くわしく／ことばリスト。
    ★よみ方の問題は、答える前には どこにも出さない（音で答えが分かるため）。文の問題の答えの行にも出さない（活用した形で、音声は辞書の形のため）。
@@ -435,9 +439,9 @@ else{
 // はじめて開いた時だけ：ことば（Language）を いちばん上で えらんでもらう（はじめは英語なので、えらばずに始めると英語の意味で出る）。えらんだら 次からは せってい の中だけ
 (function(){ const box=$("lgFirst"); let has='x'; try{ has=localStorage.getItem('jlpt_lang'); }catch(e){}
   if(!box||has||LANGS.length<2) return;
-  box.classList.remove("hidden");
+  box.classList.remove("hidden"); $("lgBox").classList.add("hidden");   // えらぶまでは 大きいボタンの箱だけ。えらんだら 同じ場所に えらぶ欄
   $("lgFirstBtns").innerHTML=LANGS.map(l=>'<button data-lg="'+l[0]+'">'+esc(l[1])+'</button>').join('');
-  $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ lgSel.value=b.dataset.lg; lgSel.onchange(); box.classList.add("hidden"); });
+  $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ lgSel.value=b.dataset.lg; lgSel.onchange(); box.classList.add("hidden"); $("lgBox").classList.remove("hidden"); });
 })();
 // ことばの おんせい（オン／オフ。級をまたいで同じ設定＝jlpt_voice）。音声が無い級では 設定ごと出さない
 function paintVoice(){ document.body.classList.toggle('novoice',!voiceOn);
@@ -559,7 +563,7 @@ function pickOthers(it,t){
   return out;
 }
 const QASK={m:'いみは どれ？', w:'ことばは どれ？', y:'よみ<ruby>方<rt>かた</rt></ruby>は どれ？', c:'（　）に <ruby>入<rt>はい</rt></ruby>る ことばは どれ？'};
-function optHTML(x){ return qt==='c' ? ruby(x.c) : qt==='m' ? trH(x) : qt==='y' ? esc(x.y) : ruby(disp(x)); }
+function optHTML(x){ return qt==='c' ? ruby(x.c) : qt==='m' ? trH(x) : qt==='y' ? esc(x.y) : dispH(x); }
 // 例文：【 】の所を 空所（問題）／答え（答えた後）にする
 const czAns = z => (z[0].match(/【([^】]*)】/)||['',''])[1];
 //   文は 分かち書きの切れ目（半角スペース）でだけ 行を分ける（ことばの途中で切れないように、切れ目ごとに .ch で包む）

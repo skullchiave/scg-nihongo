@@ -324,10 +324,13 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 .tr[lang="vi"],.tr[lang="en"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
 .tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
 .etr{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.94em;font-weight:500;line-height:1.75;color:var(--sub);}
-#setup > #lgBox{margin-top:14px;}
+/* lgtop-done：えらぶ欄は 一番上の小さいカード */
+#setup > #lgBox{margin-top:12px;background:#fff;border-radius:16px;box-shadow:var(--card-shadow);padding:10px 16px 12px;}
+#setup > #lgBox .lbl{margin:0 0 6px;}
 #lgSel{font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
 #setup > #lgBox .lgnote{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px;}
 @media (min-width:641px){ #setup > #lgBox .lgnote{font-size:18px;} #setup > #lgBox{margin-top:20px;display:flex;align-items:center;gap:8px 24px;flex-wrap:wrap;} #setup > #lgBox.hidden{display:none;} #setup > #lgBox .lbl{display:block;font-size:22px;margin:0;} #setup > #lgBox .selwrap{display:block;width:460px;} #setup > #lgBox .lgnote{flex-basis:100%;margin-top:0;}
+  #setup > #lgBox{border-radius:28px;padding:16px 32px;margin-top:24px;}
   #setup > #lgBox select{height:60px;border-radius:14px;font-size:22px;padding:0 56px 0 18px;} #setup > #lgBox .selwrap .ic{right:18px;top:16px;width:28px;height:28px;} }
 /* ---- はじめて開いた時の ことばえらび（.lgfirst）と、せってい の見出し（.setsec）。語彙ドリルも この決まりを写して使う ---- */
 .lgfirst{background:#fff;border:2px solid #f3d9ad;border-radius:16px;box-shadow:var(--card-shadow);margin-top:12px;padding:14px 16px;}
@@ -352,6 +355,11 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
     <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
     </div><span class="catpill pconly" id="catPill"></span></div>
     <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">ことばを えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
+    <div id="lgBox" class="hidden">
+      <label class="lbl" for="lgSel">せつめいの ことば（Language）</label>
+      <div class="selwrap"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="lgnote hidden" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
+    </div>
     <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
     <div class="stats">
       <div><b id="sTotal">0</b><span><ruby>問題<rt>もんだい</rt></ruby><ruby>数<rt>すう</rt></ruby></span></div>
@@ -367,11 +375,6 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
     <label class="lbl" for="catSel">グループ</label>
     <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
     <div class="catruby" id="catRuby" aria-hidden="true"></div>
-    <div id="lgBox" class="hidden">
-      <label class="lbl" for="lgSel">せつめいの ことば（Language）</label>
-      <div class="selwrap"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
-      <div class="lgnote hidden" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
-    </div>
     <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
     <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
       <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
@@ -986,9 +989,9 @@ updateStats();
   paint(); loadTr(()=>{ if(typeof renderList==='function') renderList(); });
   // はじめて開いた時だけ：ことば（Language）を いちばん上で えらんでもらう。えらんだら 次からは せってい の中だけ
   const fb=$("lgFirst"); let has='x'; try{ has=localStorage.getItem('jlpt_lang'); }catch(e){}
-  if(fb&&!has){ fb.classList.remove("hidden");
+  if(fb&&!has){ fb.classList.remove("hidden"); box.classList.add("hidden");
     $("lgFirstBtns").innerHTML=['en'].concat(TR_AVAIL).map(c=>'<button data-lg="'+c+'">'+esc(TR_NAMES[c]||c)+'</button>').join('');
-    $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ sel.value=b.dataset.lg; sel.onchange(); fb.classList.add("hidden"); }); }
+    $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ sel.value=b.dataset.lg; sel.onchange(); fb.classList.add("hidden"); box.classList.remove("hidden"); }); }
 })();
 </script>
 <script src="/scg-nihongo/assets/jlpt-study.js"></script>

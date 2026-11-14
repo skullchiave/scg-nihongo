@@ -76,6 +76,16 @@ if os.path.exists(f):
     for l in open(f, encoding='utf-8').read().splitlines()[1:]:
         c = l.split('\t')
         if len(c) >= 4: audio[c[0]] = c[3]
+# 読みが同じ別の語がある語（合う／会う）：この級と下の級（N5 まで）の語のデータから さがす。画面では、漢字のはんいの外でも 漢字＋ふりがな で出す
+#   上の級の語とは比べない（学生がまだ知らない語とは取りちがえない）
+LVS = ['n5', 'n4', 'n3', 'n2', 'n1']; byyomi = collections.defaultdict(set)
+for l2 in LVS[:LVS.index(lv) + 1]:
+    f = os.path.join(HERE, l2 + '_words.txt')
+    if not os.path.exists(f): continue
+    for l in open(f, encoding='utf-8').read().splitlines():
+        c = l.split('\t')
+        if len(c) >= 3 and not l.startswith('#'): byyomi[RB.sub(r'\2', c[2])].add(RB.sub(r'\1', c[2]))
+homo = set()
 data = []; keys = collections.Counter(); order = 'VSIANKFX'; nny = 0
 for r in rows:
     assert len(r) in (4, 5), r
@@ -92,6 +102,8 @@ for r in rows:
     cz = [z[:4] + [z[4] if len(z[4]) > 1 else z[4]['en']] for z in cloze.get(no, [])]
     d = [cat, w, m if len(m) > 1 else en.strip()] + ([tag, 1 if ny else 0, yd, cz] if cz else [tag, 0, yd] if yd else [tag, 1] if ny else [tag] if tag else [])
     if no in frame: d = d + [0] * (7 - len(d)) + [frame[no]]
+    if RB.search(w) and len(byyomi[RB.sub(r'\2', w)]) > 1:
+        homo.add(no); d = d + [0] * (8 - len(d)) + [1]
     an = no.replace('+', 'p')
     if audio and not (audio.get(no) == RB.sub(r'\2', w) and os.path.exists(os.path.join(adir, an + '.mp3'))): anone.append(no); an = 0
     data.append((order.index(cat), d, an if audio else 0))
@@ -111,4 +123,4 @@ for code, d in extra.items():
     assert not set(d) - set(byno), ('訳の番号が語のデータに無い', code, sorted(set(d) - set(byno))[:5])
     print('  訳', code, len([n for n in byno if d.get(n)]), '/', len(rows), '（無い語は英語で出る）')
 if audio: print('  音声', len(rows) - len(anone), '/', len(rows), '（台帳の読みと合わない・ファイルが無い語は 音声なし）', anone[:20])
-print(p, len(data), '語', collections.Counter(d[0] for d in data), '言語', ['en'] + sorted(extra), 'よみ方に出さない語', nny, 'よみ方の選択肢がある語', sum(1 for d in data if len(d) > 5 and d[5]), '助詞の型', len(frame))
+print(p, len(data), '語', collections.Counter(d[0] for d in data), '言語', ['en'] + sorted(extra), 'よみ方に出さない語', nny, 'よみ方の選択肢がある語', sum(1 for d in data if len(d) > 5 and d[5]), '助詞の型', len(frame), '読みが同じ別の語がある語', len(homo))
