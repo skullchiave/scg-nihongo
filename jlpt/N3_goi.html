@@ -411,6 +411,9 @@ body.novoice .aud{display:none;}
 .hmchips{display:flex;gap:8px;overflow-x:auto;padding:6px 16px 6px 0;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
 .hmchips button{flex:none;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #CBD5E3;background:#fff;font-size:15px;font-weight:700;color:#1B2540;white-space:nowrap;line-height:2;}
 .hmchips button[aria-pressed="true"]{background:#1B2540;color:#fff;border-color:#1B2540;}
+.hmgl.g2{margin-top:6px;}
+.hmex{padding:2px 16px 2px 0;min-height:32px;}
+.hmex .t{color:#4A5670;line-height:2.1;}
 .hmcard{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:16px;padding:14px 16px 16px;}
 .hmexam{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:15px;font-weight:700;line-height:2;margin-bottom:6px;}
 .hmexam b{font-size:22px;color:#B45309;margin:0 3px;font-variant-numeric:tabular-nums;}
@@ -518,7 +521,7 @@ body.novoice .aud{display:none;}
 @media (min-width:641px){
   #setup:not(.hidden){display:block;max-width:1160px;margin:0 auto;}
   .hmgrp{margin:0;padding:16px 32px 18px;border:none;border-radius:28px;box-shadow:var(--card-shadow);}
-  .hmgl{font-size:20px;}
+  .hmgl{font-size:20px;} .hmgl.g2{margin-top:18px;} .hmex{padding:10px 0 0;min-height:54px;}
   .hmchips{flex-wrap:wrap;overflow:visible;gap:12px;padding:10px 0 0;}
   .hmchips button{min-height:64px;padding:0 26px;font-size:24px;}
   .hmcard{border-radius:28px;margin-top:24px;padding:24px 32px 28px;}
@@ -578,6 +581,9 @@ body.novoice .aud{display:none;}
     <div class="hmgrp">
       <div class="hmgl">ことばの グループ</div>
       <div class="hmchips" id="catChips" role="group" aria-label="ことばの グループ"></div>
+      <div class="hmgl g2"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい</div>
+      <div class="hmchips" id="qtBox" role="group" aria-label="問題の しゅるい"><button data-qt="mix">まぜる</button><button data-qt="m">いみ</button><button data-qt="w"><ruby>日本語<rt>にほんご</rt></ruby></button><button data-qt="y" id="qtY">よみ<ruby>方<rt>かた</rt></ruby></button><button data-qt="c" id="qtC">（　）に <ruby>入<rt>い</rt></ruby>れる</button></div>
+      <div class="ex hmex" id="qtEx"></div>
     </div>
     <select id="catSel" hidden aria-hidden="true"></select>
     <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">わたしの <ruby>言語<rt>げんご</rt></ruby>を えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
@@ -602,20 +608,12 @@ body.novoice .aud{display:none;}
     <div class="hmcard hmrec" id="hmRec"></div>
   </section>
 
-  <!-- せってい（下から出るシート）。ならび：問題のしゅるい → 漢字のはんい → おんせい → わたしの言語 → その他（言語は 1回えらべば ほとんど変えないので 下。きあ 2026-11-15） -->
+  <!-- せってい（下から出るシート）。ならび：漢字のはんい → おんせい → わたしの言語 → その他。問題のしゅるい は よく変えるので ホームのチップ（きあ 2026-11-15）（言語は 1回えらべば ほとんど変えないので 下。きあ 2026-11-15） -->
   <div class="shov hidden" id="setov"><div class="sheet" id="setSheet" role="dialog" aria-modal="true" aria-labelledby="setTtl">
     <div class="sethead"><div class="grab"></div>
     <div class="shtop"><div class="setttl" id="setTtl">せってい</div><button class="setclose" id="setClose"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>とじる</span></button></div></div>
     <div class="setin" id="setIn">
-    <div class="sth first"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい<small class="tr" data-ui="h_qt"></small></div>
-    <div class="stcard stqt" id="qtBox" role="radiogroup" aria-label="問題の しゅるい">
-      <button role="radio" data-qt="m"><span class="rd"></span><span class="rb"><b>いみを えらぶ</b><span class="ex"><i><ruby>食<rt>た</rt></ruby>べる</i><em>→</em><i class="pk tr" data-ex="tr"></i></span></span></button>
-      <button role="radio" data-qt="w"><span class="rd"></span><span class="rb"><b><ruby>日本語<rt>にほんご</rt></ruby>を えらぶ</b><span class="ex"><i class="tr" data-ex="tr"></i><em>→</em><i class="pk"><ruby>食<rt>た</rt></ruby>べる</i></span></span></button>
-      <button role="radio" data-qt="y" id="qtY"><span class="rd"></span><span class="rb"><b>よみ<ruby>方<rt>かた</rt></ruby>を えらぶ</b><span class="ex"><i>食べる</i><em>→</em><i class="pk">たべる</i></span></span></button>
-      <button role="radio" data-qt="c" id="qtC"><span class="rd"></span><span class="rb"><b>（　）に <ruby>入<rt>い</rt></ruby>れる</b><span class="ex"><i><ruby>毎朝<rt>まいあさ</rt></ruby> パンを（　）</i><em>→</em><i class="pk"><ruby>食<rt>た</rt></ruby>べる</i></span></span></button>
-      <button role="radio" data-qt="mix"><span class="rd"></span><span class="rb"><b>ぜんぶ まぜる</b><span class="ex t"><ruby>上<rt>うえ</rt></ruby>の <span id="qtMixN">4</span>つが まざって <ruby>出<rt>で</rt></ruby>ます</span><span class="ex t tr" data-ui="mix"></span></span></button>
-    </div>
-    <div class="sth"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい<small class="tr" data-ui="h_kj"></small></div>
+    <div class="sth first"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい<small class="tr" data-ui="h_kj"></small></div>
     <div class="std"><ruby>習<rt>なら</rt></ruby>った ところまで <ruby>漢字<rt>かんじ</rt></ruby>、ほかは ひらがなで <ruby>出<rt>で</rt></ruby>ます</div>
     <div class="std tr" data-ui="d_kj"></div>
     <div class="stcard pad">
@@ -2243,9 +2241,12 @@ else{
 paintVoice();
 if(!YOMI_ON) $("qtY").remove();
 if(!CLOZE_ON) $("qtC").remove();
-$("qtMixN").textContent=document.querySelectorAll("#qtBox button").length-1;
 // 問題のしゅるい の例（食べる → eat）に出す、えらんだ言語の「食べる」。無い言語は 英語
 const EXT={en:'eat', ne:'खानु', bn:'খাওয়া', si:'කනවා', my:'စားတယ်', zh:'吃', vi:'ăn'};
+const exT=pk=>'<i class="tr'+(pk?' pk':'')+'" lang="'+(EXT[lang]?(LCODE[lang]||lang):'en')+'">'+esc(EXT[lang]||EXT.en)+'</i>';   // 例は「出るもの → えらぶもの」。えらぶ側（pk）は 点線の枠
+const EXJ=ruby('{食|た}べる'), EXA='<em>→</em>';
+const EXH={ m:()=>'<i>'+EXJ+'</i>'+EXA+exT(true), w:()=>exT(false)+EXA+'<i class="pk">'+EXJ+'</i>', y:()=>'<i>食べる</i>'+EXA+'<i class="pk">たべる</i>',
+  c:()=>'<i>'+ruby('{毎朝|まいあさ} パンを（　）')+'</i>'+EXA+'<i class="pk">'+EXJ+'</i>', mix:()=>'<span class="t">'+ruby('ぜんぶの しゅるいが まざって {出|で}ます')+'</span>' };
 document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
 
 // せってい のシートの 見出し・説明・リセットの確認を、えらんだ言語でも出す（日本語の下・横に小さく。ホームには出さない＝きあ 2026-11-15）
@@ -2315,9 +2316,9 @@ function updateStats(){
   if(wk) $("hmWeek").innerHTML='<div class="hmwd">'+wk.days.map((d,i)=>'<span class="'+(d.on?'on':'')+(d.now?' now':'')+'"><i></i>'+'月火水木金土日'[i]+'</span>').join('')+'</div>'
     +'<div class="hmwt">'+(wk.done>=wk.goal?'<b class="g"><ruby>今週<rt>こんしゅう</rt></ruby>の もくひょう たっせい！</b>':'<ruby>今週<rt>こんしゅう</rt></ruby> <b>'+wk.done+'</b> / '+wk.goal+'<ruby>日<rt>にち</rt></ruby>')
     +'<small>（<ruby>1日<rt>いちにち</rt></ruby>に '+wk.line+'<ruby>問<rt>もん</rt></ruby> <ruby>解<rt>と</rt></ruby>いた <ruby>日<rt>ひ</rt></ruby>を かぞえます）</small></div>';
-  // この せっていで 出ます（ならびは せってい と同じ：問題のしゅるい → 漢字のはんい → おんせい → 言語）
+  // この せっていで 出ます（ならびは せってい と同じ：漢字のはんい → おんせい → 言語。問題のしゅるい は ホームのチップで えらぶ）
   const lgN=(LANGS.find(l=>l[0]===lang)||LANGS[0])[1];
-  $("hmTags").innerHTML=[ '<span>'+ruby(QTN[qtype])+'</span>', '<span>'+ruby(kjTag())+'</span>', HAS_VOICE?'<span>おんせい '+(voiceOn?'オン':'オフ')+'</span>':'',
+  $("hmTags").innerHTML=[ '<span>'+ruby(kjTag())+'</span>', HAS_VOICE?'<span>おんせい '+(voiceOn?'オン':'オフ')+'</span>':'',
     LANGS.length>1?'<span class="tr" lang="'+(LCODE[lang]||lang)+'">'+esc(lgN)+'</span>':'' ].join('');
   // きろくカード
   const n=[0,0,0]; p.forEach(it=>{ n[stg(it)]++; }); const T=p.length||1;
@@ -2329,8 +2330,9 @@ function updateStats(){
   // 漢字のはんい・問題のしゅるい（せってい のシート）
   const withK=ITEMS.filter(it=>it.ks.length), inK=withK.filter(inKanji);
   $("kjInfo").innerHTML='<ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>で</rt></ruby>る ことば <b>'+inK.length+'</b> / '+withK.length;
-  document.querySelectorAll("#qtBox button").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.qt===qtype)));
-  document.querySelectorAll('#qtBox [data-ex="tr"]').forEach(x=>{ x.textContent=EXT[lang]||EXT.en; x.lang=EXT[lang]?(LCODE[lang]||lang):'en'; });
+  document.querySelectorAll("#qtBox button").forEach(b=>{ const on=b.dataset.qt===qtype, was=b.getAttribute("aria-pressed")==="true";
+    b.setAttribute("aria-pressed",String(on)); if(on&&!was&&b.scrollIntoView) b.scrollIntoView({block:'nearest',inline:'nearest'}); });
+  $("qtEx").innerHTML=EXH[qtype]();
 }
 catSel.onchange=updateStats;
 // きょうの10問（えらび方は assets/jlpt-study.js）
