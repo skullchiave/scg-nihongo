@@ -90,7 +90,13 @@ P10 = {'切る少し': '2 4', '切る大きく': '12 20 21', '語だけ': '40 55
 # 11/14 新しい語（623〜）の検分で印29語 → 聞きくらべ（out/listen11.html）で えらんだ24語。お目にかかる・祝い・大家・経営 は どれもだめ、現金 は 未選択
 P11 = {'最後の音を短く': '623 630 639 644 696 700 717 791 824', '1音目を低く': '643 652 658', '語だけ・低め': '683 686 687 739 782 879',
        '語だけ': '797 833 837 885', '写す': '806', '子音を短く': '840'}
-PICK10 = {no: k for P in (P10, P11) for k, v in P.items() for no in v.split()}
+# 11/14 公開の後：最初の622語で 今も「切る」のままだった127語を 聞きくらべ（out/listen13.html）に出し、きあが 96語を えらび直した（25語は今のまま・6語は どれもだめ→listen14）
+P13 = {'語だけ': '286 314 342 355 375 224 232 164 166 172 192 203 205 206 209',
+       '写す': '348 380 382 412 430 442 469 475 490 498 501 503 505 3 105 106 173 180 183 187 188 210 211 212 213 214 223 268 269 274 275 280',
+       '語だけ・低め': '10 13 35 45 47 49 50 50+ 77 78 94 95 96 112 119 122 122+ 124 125 127 135 136 138 139 140 141 143 144 145 146 247 157 158 163 165 167 176 178 179 184 189 197 219 222 271 272 276 277 589'}
+# 11/14 listen14（どれもだめの6語＋冷える・増える）で きあが えらんだ物。入院（201）は listen15 で えらんだ（OVR）
+P14 = {'全体を短く': '438 174 186', '1音目を低く（大きく）': '108 113'}   # 冷える・増える：ひえ＼る の型なのに 1音目が2音目より高く作られ、ひ＼える に聞こえていた
+PICK10 = {no: k for P in (P10, P11, P13, P14) for k, v in P.items() for no in v.split()}
 def pick10(kind, a, text, cat, n):   # 返す：(解析, 切る秒, 母音を最後まで鳴らすか)
     tail = 'の' if cat in 'VI' else 'が'; c = copy.deepcopy(a); ms = moras(c)
     if kind in ('語だけ', '語だけ・低め'):
@@ -98,9 +104,9 @@ def pick10(kind, a, text, cat, n):   # 返す：(解析, 切る秒, 母音を最
         if kind == '語だけ・低め': _shift(ms, -0.08)
         return c, None, False
     if kind == '最後の音を短く': ms[-1]['vowel_length'] *= 0.7; o_cap(ms, 5.00); return c, None, False
-    if kind == '1音目を低く':
+    if kind.startswith('1音目を低く'):
         o_cap(ms, 5.00)
-        if ms[0]['pitch'] > 0: ms[0]['pitch'] -= 0.10
+        if ms[0]['pitch'] > 0: ms[0]['pitch'] -= 0.25 if '大きく' in kind else 0.10
         return c, None, False
     if kind == '子音を短く':
         for m in ms[1:]:
@@ -125,11 +131,20 @@ def pick10(kind, a, text, cat, n):   # 返す：(解析, 切る秒, 母音を最
 # 11/14 listen11 で どれもだめ だった4語 → listen12.html（fix12.py）で えらんだ作り方
 def o_k(k, d=0.0): a = kq(k); o_cap(moras(a), 5.00); _shift(moras(a), d); return a, None
 def o_hi(w, d): a, _ = o_iso(w); _shift(moras(a), d); return a, None
+def o_copy_hi(w, tail, d):   # fix10.py の 写す（最後の音は さわらない）＋全体を高く
+    a = query(w); b = query(w + tail); x = copy.deepcopy(a)
+    va = [m['pitch'] for m in moras(a) if m['pitch'] > 0][0]; vb = [m['pitch'] for m in moras(b) if m['pitch'] > 0][0]; sh = min(0, va - vb)
+    for m, mb in zip(moras(x), moras(b)):
+        if mb['pitch'] > 0: m['pitch'] = mb['pitch'] + sh
+    o_cap(moras(x), 5.00); _shift(moras(x), d); return x, None
 OVR.update({
     '626': ('おめに・かか＼る（2つに分ける）', lambda: o_k("オメニ'/カカ'ル")),
     '693': ('平ら・切る（が）',               lambda: o_cut(kq("イワイガ'"), 3)),
     '694': ('語だけ・全体を高く +0.10',       lambda: o_hi('大家', 0.10)),
     '698': ('ケイエイ（イをはっきり）',       lambda: o_k("ケイエイ'")),
+    '285': ('切る（が・0.09）',               lambda: o_cut(query('味が'), 2, 0.09), 'late'),   # 3つ目がある語は 母音を最後まで鳴らしてから消す
+    '256': ('切る（が・0.12）',               lambda: o_cut(query('急が'), 2, 0.12)),
+    '201': ('写す（が）・全体を高く +0.20',   lambda: o_copy_hi('入院', 'が', 0.20)),   # 低い高さだと「う」の声が弱くなり、ニュウ と イン の間が切れる（probe_nyuuin.py で測った）。高くすると切れない
 })
 # 音を作る時だけの しゅるい。きあが聞いた後（11/14 13:17）に 語の表で S→N に変わった3語（水泳・暖房・冷房）。聞いた時の作り方（S＝切る）のままにする
 ACAT = {'186': 'S', '195': 'S', '222': 'S'}
@@ -252,9 +267,10 @@ for r in rows:
             if cut: cut += PAU / SPEED
         note.append('語ごとの直し')
     if no in OVR:
-        name, fn = OVR[no]; aq, cut = fn(); how = 'きあがえらんだ：' + name; note = ['聞きくらべで えらんだ作り方']; flag = []
+        name, fn = OVR[no][:2]; aq, cut = fn(); how = 'きあがえらんだ：' + name; note = ['聞きくらべで えらんだ作り方']; flag = []
         assert len(moras(aq)) - (1 if cut else 0) == n, ('えらんだ作り方の音の数が合わない', no)
     late = bool(cut) and cat in 'NK' and n == 2 and no not in OVR
+    if no in OVR and len(OVR[no]) > 2: late = True
     if no in PICK10:
         aq, cut, late = pick10(PICK10[no], a, text, cat, n); how = 'きあがえらんだ：' + PICK10[no]; note = ['聞きくらべ2で えらんだ作り方']; flag = []
     elif lowv:
