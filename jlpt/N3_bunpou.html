@@ -607,7 +607,7 @@ const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<ruby>$1<rt>$2</rt>
 /* ---------- 意味・説明の訳（えらんだ言語。語彙ドリルと同じ設定 jlpt_lang を使う） ----------
    訳のデータ：jlpt/tr/N3_bunpou.<言語>.js（文法の id → [意味の訳, 説明の訳]。説明の訳が無い級は意味だけ）。えらんだ言語のファイルだけ読みこむ。
    TR_AVAIL＝訳がある言語（make_tr.py が書きかえる）。空なら えらぶ所を出さない。訳が無い・読みこめない時は 今までどおり（日本語＋英語）。 */
-const TR_AVAIL=[];/*__TR_AVAIL__*/
+const TR_AVAIL=["ne", "bn", "si", "my", "zh", "vi"];/*__TR_AVAIL__*/
 const TR_NAMES={en:"English",ne:"नेपाली",bn:"বাংলা",si:"සිංහල",my:"မြန်မာ",zh:"中文",vi:"Tiếng Việt"};
 const LCODE={en:'en',ne:'ne',bn:'bn',si:'si',my:'my',zh:'zh-CN',vi:'vi'};
 const TR={};
