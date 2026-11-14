@@ -319,16 +319,16 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   .gform{font-size:20px;}
   .gex{font-size:30px;line-height:2;border-radius:16px;padding:12px 20px;margin-top:14px;}
 }
-/* ---- 意味・説明の訳（えらんだ言語）---- */
+/* ---- 意味・説明の訳（えらんだ言語）---- ★語彙ドリルは このページの <style> を土台に写すので、えらぶ欄の決まりは「#setup > #lgBox」に限る（語彙の #lgBox は .opts の中＝当たらない） */
 .tr[lang="zh-CN"]{font-family:"Noto Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;}
 .tr[lang="vi"],.tr[lang="en"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
 .tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
 .etr{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.94em;font-weight:500;line-height:1.75;color:var(--sub);}
-#lgBox{margin-top:14px;}
+#setup > #lgBox{margin-top:14px;}
 #lgSel{font-family:"Segoe UI","Roboto","Noto Sans",system-ui,sans-serif;}
-.lgnote{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px;}
-@media (min-width:641px){ .lgnote{font-size:18px;} #lgBox{margin-top:20px;display:flex;align-items:center;gap:8px 24px;flex-wrap:wrap;} #lgBox.hidden{display:none;} #lgBox .lbl{display:block;font-size:22px;margin:0;} #lgBox .selwrap{display:block;width:460px;} .lgnote{flex-basis:100%;margin-top:0;}
-  #lgBox select{height:60px;border-radius:14px;font-size:22px;padding:0 56px 0 18px;} #lgBox .selwrap .ic{right:18px;top:16px;width:28px;height:28px;} }
+#setup > #lgBox .lgnote{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px;}
+@media (min-width:641px){ #setup > #lgBox .lgnote{font-size:18px;} #setup > #lgBox{margin-top:20px;display:flex;align-items:center;gap:8px 24px;flex-wrap:wrap;} #setup > #lgBox.hidden{display:none;} #setup > #lgBox .lbl{display:block;font-size:22px;margin:0;} #setup > #lgBox .selwrap{display:block;width:460px;} #setup > #lgBox .lgnote{flex-basis:100%;margin-top:0;}
+  #setup > #lgBox select{height:60px;border-radius:14px;font-size:22px;padding:0 56px 0 18px;} #setup > #lgBox .selwrap .ic{right:18px;top:16px;width:28px;height:28px;} }
 </style>
 </head>
 <body>
