@@ -414,6 +414,7 @@ body.novoice .aud{display:none;}
 .hmgl.g2{margin-top:6px;}
 .hmex{padding:2px 16px 2px 0;min-height:32px;}
 .hmex .t{color:#4A5670;line-height:2.1;}
+.hmex .t.n{flex-basis:100%;font-size:12px;line-height:1.9;} .hmex .t.n b{color:#1B2540;}
 .hmcard{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:16px;padding:14px 16px 16px;}
 .hmexam{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:15px;font-weight:700;line-height:2;margin-bottom:6px;}
 .hmexam b{font-size:22px;color:#B45309;margin:0 3px;font-variant-numeric:tabular-nums;}
@@ -521,7 +522,7 @@ body.novoice .aud{display:none;}
 @media (min-width:641px){
   #setup:not(.hidden){display:block;max-width:1160px;margin:0 auto;}
   .hmgrp{margin:0;padding:16px 32px 18px;border:none;border-radius:28px;box-shadow:var(--card-shadow);}
-  .hmgl{font-size:20px;} .hmgl.g2{margin-top:18px;} .hmex{padding:10px 0 0;min-height:54px;}
+  .hmgl{font-size:20px;} .hmgl.g2{margin-top:18px;} .hmex{padding:10px 0 0;min-height:54px;} .hmex .t.n{font-size:20px;}
   .hmchips{flex-wrap:wrap;overflow:visible;gap:12px;padding:10px 0 0;}
   .hmchips button{min-height:64px;padding:0 26px;font-size:24px;}
   .hmcard{border-radius:28px;margin-top:24px;padding:24px 32px 28px;}
@@ -2199,13 +2200,13 @@ function paintSound(){ const b=$("soundBtn"); if(!b) return; b.innerHTML=ic(soun
 /* ---------- ホームと せってい：漢字のはんい・言語・おんせい・問題のしゅるい・ことばの グループ ---------- */
 const kjSel=$("kjSel");
 (function(){
-  let h='<option value="none">ぜんぶ ひらがな</option>', book='';
+  let h='', book='';
   KJ.steps.forEach(s=>{
     if(s.b!==book){ if(book) h+='</optgroup>'; book=s.b; h+='<optgroup label="どんどん 漢字 '+esc(book)+'">'; }
     h+='<option value="'+s.id+'">'+esc(s.b+' '+plain(s.l))+' まで</option>';
   });
   if(book) h+='</optgroup>';
-  h+='<optgroup label="そのほか"><option value="n4">N4の 漢字 ぜんぶ</option><option value="all">ぜんぶ 漢字</option></optgroup>';
+  h+='<optgroup label="そのほか"><option value="none">かんじを つかわない</option><option value="n4">N4の 漢字まで</option><option value="all">漢字を 全部 使う</option></optgroup>';
   kjSel.innerHTML=h; kjSel.value=scope;
 })();
 kjSel.onchange=()=>{ scope=kjSel.value; try{localStorage.setItem(SCOPE_KEY,scope);}catch(e){} buildKnown(); updateStats(); };
@@ -2278,7 +2279,7 @@ document.querySelectorAll("#setup .pi").forEach(x=>{ x.innerHTML=ic('play'); });
 // ホームの「この せっていで 出ます」に出す名前
 const QTN={mix:'ぜんぶ まぜる', m:'いみを えらぶ', w:'{日本語|にほんご}を えらぶ', y:'よみ{方|かた}を えらぶ', c:'（　）に {入|い}れる'};
 function kjTag(){
-  if(scope==='all') return '{漢字|かんじ} ぜんぶ'; if(scope==='none') return 'ぜんぶ ひらがな'; if(scope==='n4') return 'N4の {漢字|かんじ}';
+  if(scope==='all') return '{漢字|かんじ}を {全部|ぜんぶ} {使|つか}う'; if(scope==='none') return 'かんじを つかわない'; if(scope==='n4') return 'N4の {漢字|かんじ}まで';
   const s=KJ.steps.find(x=>x.id===scope); return s ? '{漢字|かんじ} '+stepLabel(s)+' まで' : '';
 }
 const DAYR=['','ついたち','ふつか','みっか','よっか','いつか','むいか','なのか','ようか','ここのか','とおか','じゅういちにち','じゅうににち','じゅうさんにち','じゅうよっか','じゅうごにち','じゅうろくにち','じゅうしちにち','じゅうはちにち','じゅうくにち','はつか','にじゅういちにち','にじゅうににち','にじゅうさんにち','にじゅうよっか','にじゅうごにち','にじゅうろくにち','にじゅうしちにち','にじゅうはちにち','にじゅうくにち','さんじゅうにち','さんじゅういちにち'];
@@ -2332,7 +2333,11 @@ function updateStats(){
   $("kjInfo").innerHTML='<ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>で</rt></ruby>る ことば <b>'+inK.length+'</b> / '+withK.length;
   document.querySelectorAll("#qtBox button").forEach(b=>{ const on=b.dataset.qt===qtype, was=b.getAttribute("aria-pressed")==="true";
     b.setAttribute("aria-pressed",String(on)); if(on&&!was&&b.scrollIntoView) b.scrollIntoView({block:'nearest',inline:'nearest'}); });
-  $("qtEx").innerHTML=EXH[qtype]();
+  // よみ方 は、今の 漢字のはんい で 漢字で出る語だけ（試験と同じ）。はんいの外で 出ない語がある時は、数と ふやし方を 例の下に出す
+  let exN='';
+  if(qtype==='y'){ const all=ITEMS.filter(it=>(!c||it.cat===c)&&!it.ny&&!!it.yd).length;
+    if(p.length<all) exN='<span class="t n"><b>'+p.length+'</b> / '+all+' ことば（<ruby>漢字<rt>かんじ</rt></ruby>の はんいを ひろげると ふえます）</span>'; }
+  $("qtEx").innerHTML=EXH[qtype]()+exN;
 }
 catSel.onchange=updateStats;
 // きょうの10問（えらび方は assets/jlpt-study.js）
