@@ -467,9 +467,11 @@ body.novoice .aud{display:none;}
 .hmrate b{color:#1B2540;}
 /* せってい のシート（2026-11-15 きあのデザイン）。中身（.setin）だけが動き、「できた」は いつも下に出る */
 #setSheet{background:#EDF0F7;max-height:90vh;max-height:90dvh;padding:0;display:flex;flex-direction:column;overflow:hidden;}
-.setin{flex:1;min-height:0;overflow-y:auto;padding:8px 16px 20px;}
+.sethead{flex:none;padding:8px 16px 8px;border-bottom:1px solid #CBD5E3;}
+.setin{flex:1;min-height:0;overflow-y:auto;padding:4px 16px 20px;}
 .setttl{font-size:18px;font-weight:700;line-height:2;}
-.setclose{min-height:44px;padding:0 12px;border:none;background:none;font-size:15px;font-weight:700;color:#1B2540;}
+.setclose{min-height:44px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;font-size:15px;font-weight:700;color:#1B2540;}
+.setclose .ic{width:18px;height:18px;}
 .setdone{flex:none;padding:10px 16px max(12px, env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--hair);}
 .setdone button{width:100%;min-height:52px;border:none;border-radius:14px;background:#1B2540;color:#fff;font-size:17px;font-weight:700;}
 .sth{font-size:15px;font-weight:700;color:#1B2540;margin:22px 2px 0;line-height:2;}
@@ -505,6 +507,14 @@ body.novoice .aud{display:none;}
 .stsep{border-top:1px solid #CBD5E3;margin-top:24px;}
 .strst{width:100%;min-height:48px;margin-top:6px;border:1px solid #E7B4AE;border-radius:12px;background:#FFF5F3;color:#A1271B;font-size:15px;font-weight:700;}
 .stcr{font-size:11px;color:#4A5670;margin:10px 2px 0;line-height:2;}
+#setSheet [data-ui]:empty{display:none;}
+.std[data-ui]{margin-top:-2px;line-height:1.7;}
+.ex.t[data-ui]{font-size:12px;line-height:1.7;}
+.strst small{display:block;font-size:11px;font-weight:500;line-height:1.6;padding-bottom:4px;}
+#setSheet .confirm{margin-top:8px;}
+#setSheet .confirm button{height:auto;min-height:52px;padding:4px 6px;}
+#setSheet .confirm small{display:block;font-size:11px;font-weight:500;line-height:1.5;}
+.uis{font-size:12px;font-weight:500;line-height:1.7;}
 @media (min-width:641px){
   #setup:not(.hidden){display:block;max-width:1160px;margin:0 auto;}
   .hmgrp{margin:0;padding:16px 32px 18px;border:none;border-radius:28px;box-shadow:var(--card-shadow);}
@@ -533,8 +543,9 @@ body.novoice .aud{display:none;}
   .hm3{margin-top:20px;} .hm3 span{font-size:22px;} .hm3 span i{width:16px;height:16px;margin-right:8px;} .hm3 b{font-size:56px;}
   .hmrate{font-size:22px;margin-top:16px;padding-top:12px;}
   #setSheet{max-width:1160px;}
-  .setin{padding:12px 40px 28px;}
-  .setttl{font-size:30px;} .setclose{min-height:64px;font-size:24px;}
+  .sethead{padding:12px 40px 12px;}
+  .setin{padding:8px 40px 28px;}
+  .setttl{font-size:30px;} .setclose{min-height:64px;font-size:24px;padding:0 24px;border-radius:16px;border-width:2px;gap:10px;} .setclose .ic{width:28px;height:28px;}
   .setdone{padding:16px 40px 20px;} .setdone button{min-height:72px;border-radius:18px;font-size:26px;}
   .sth{font-size:26px;margin-top:36px;} .sth.first{margin-top:10px;} .sth small{font-size:20px;margin-left:14px;} .sth.sm{font-size:22px;margin-top:20px;}
   .std{font-size:20px;}
@@ -553,6 +564,8 @@ body.novoice .aud{display:none;}
   .stsep{margin-top:36px;}
   .strst{max-width:560px;min-height:68px;border-radius:18px;font-size:24px;border-width:2px;margin-top:10px;}
   .stcr{font-size:18px;margin-top:14px;}
+  .ex.t[data-ui]{font-size:19px;} .strst small{font-size:18px;} .uis{font-size:20px;}
+  #setSheet .confirm{max-width:560px;} #setSheet .confirm button{min-height:76px;} #setSheet .confirm small{font-size:18px;}
 }
 </style>
 </head>
@@ -589,42 +602,45 @@ body.novoice .aud{display:none;}
     <div class="hmcard hmrec" id="hmRec"></div>
   </section>
 
-  <!-- せってい（下から出るシート）。ならび：わたしの言語 → 問題のしゅるい → 漢字のはんい → おんせい → その他 -->
+  <!-- せってい（下から出るシート）。ならび：問題のしゅるい → 漢字のはんい → おんせい → わたしの言語 → その他（言語は 1回えらべば ほとんど変えないので 下。きあ 2026-11-15） -->
   <div class="shov hidden" id="setov"><div class="sheet" id="setSheet" role="dialog" aria-modal="true" aria-labelledby="setTtl">
+    <div class="sethead"><div class="grab"></div>
+    <div class="shtop"><div class="setttl" id="setTtl">せってい</div><button class="setclose" id="setClose"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>とじる</span></button></div></div>
     <div class="setin" id="setIn">
-    <div class="grab"></div>
-    <div class="shtop"><div class="setttl" id="setTtl">せってい</div><button class="setclose" id="setClose">とじる</button></div>
-    <div id="lgBox">
-      <div class="sth first">わたしの <ruby>言語<rt>げんご</rt></ruby><small>My language</small></div>
-      <div class="std"><ruby>日本語<rt>にほんご</rt></ruby>の いみを この <ruby>言語<rt>げんご</rt></ruby>で <ruby>出<rt>だ</rt></ruby>します</div>
-      <div class="stlg" id="lgBtns" role="radiogroup" aria-label="わたしの 言語"></div>
-      <select id="lgSel" hidden aria-hidden="true"></select>
-      <div class="lgnote" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
-    </div>
-    <div class="sth"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい</div>
+    <div class="sth first"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい<small class="tr" data-ui="h_qt"></small></div>
     <div class="stcard stqt" id="qtBox" role="radiogroup" aria-label="問題の しゅるい">
       <button role="radio" data-qt="m"><span class="rd"></span><span class="rb"><b>いみを えらぶ</b><span class="ex"><i><ruby>食<rt>た</rt></ruby>べる</i><em>→</em><i class="pk tr" data-ex="tr"></i></span></span></button>
       <button role="radio" data-qt="w"><span class="rd"></span><span class="rb"><b><ruby>日本語<rt>にほんご</rt></ruby>を えらぶ</b><span class="ex"><i class="tr" data-ex="tr"></i><em>→</em><i class="pk"><ruby>食<rt>た</rt></ruby>べる</i></span></span></button>
       <button role="radio" data-qt="y" id="qtY"><span class="rd"></span><span class="rb"><b>よみ<ruby>方<rt>かた</rt></ruby>を えらぶ</b><span class="ex"><i>食べる</i><em>→</em><i class="pk">たべる</i></span></span></button>
       <button role="radio" data-qt="c" id="qtC"><span class="rd"></span><span class="rb"><b>（　）に <ruby>入<rt>い</rt></ruby>れる</b><span class="ex"><i><ruby>毎朝<rt>まいあさ</rt></ruby> パンを（　）</i><em>→</em><i class="pk"><ruby>食<rt>た</rt></ruby>べる</i></span></span></button>
-      <button role="radio" data-qt="mix"><span class="rd"></span><span class="rb"><b>ぜんぶ まぜる</b><span class="ex t"><ruby>上<rt>うえ</rt></ruby>の <span id="qtMixN">4</span>つが まざって <ruby>出<rt>で</rt></ruby>ます</span></span></button>
+      <button role="radio" data-qt="mix"><span class="rd"></span><span class="rb"><b>ぜんぶ まぜる</b><span class="ex t"><ruby>上<rt>うえ</rt></ruby>の <span id="qtMixN">4</span>つが まざって <ruby>出<rt>で</rt></ruby>ます</span><span class="ex t tr" data-ui="mix"></span></span></button>
     </div>
-    <div class="sth"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい</div>
+    <div class="sth"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい<small class="tr" data-ui="h_kj"></small></div>
     <div class="std"><ruby>習<rt>なら</rt></ruby>った ところまで <ruby>漢字<rt>かんじ</rt></ruby>、ほかは ひらがなで <ruby>出<rt>で</rt></ruby>ます</div>
+    <div class="std tr" data-ui="d_kj"></div>
     <div class="stcard pad">
       <div class="selwrap2"><select id="kjSel" aria-label="漢字で 出す はんい"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
       <div class="kjinfo" id="kjInfo"></div>
     </div>
     <div id="vcBox">
-      <div class="sth">おんせい</div>
+      <div class="sth">おんせい<small class="tr" data-ui="h_vc"></small></div>
       <div class="std"><span class="vcic" id="vcIc"></span> を おすと、<ruby>問題<rt>もんだい</rt></ruby>の ことばを よみあげます</div>
+      <div class="std tr" data-ui="d_vc"></div>
       <div class="st2" id="vcBtns" role="group" aria-label="おんせい"><button data-vc="1">オン</button><button data-vc="0">オフ</button></div>
     </div>
+    <div id="lgBox">
+      <div class="sth">わたしの <ruby>言語<rt>げんご</rt></ruby><small class="tr" data-ui="h_lg"></small></div>
+      <div class="std"><ruby>日本語<rt>にほんご</rt></ruby>の いみを この <ruby>言語<rt>げんご</rt></ruby>で <ruby>出<rt>だ</rt></ruby>します</div>
+      <div class="std tr" data-ui="d_lg"></div>
+      <div class="stlg" id="lgBtns" role="radiogroup" aria-label="わたしの 言語"></div>
+      <select id="lgSel" hidden aria-hidden="true"></select>
+      <div class="lgnote" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br><span class="tr" data-ui="draft"></span></div>
+    </div>
     <div class="stsep"></div>
-    <div class="sth sm">その<ruby>他<rt>た</rt></ruby></div>
-    <button class="strst" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
-    <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
-      <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
+    <div class="sth sm">その<ruby>他<rt>た</rt></ruby><small class="tr" data-ui="h_ot"></small></div>
+    <button class="strst" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット<small class="tr" data-ui="rst_btn"></small></button>
+    <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？<div class="uis tr" data-ui="rst_q"></div>
+      <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す<small class="tr" data-ui="yes"></small></button><button class="btn-plain" id="resetNo">やめる<small class="tr" data-ui="no"></small></button></div>
     </div>
     <div class="stcr" id="vcCredit">おんせい：VOICEVOX:<ruby>剣崎雌雄<rt>けんざきめすお</rt></ruby>（コンピューターが つくった こえ）</div>
     </div>
@@ -1828,6 +1844,26 @@ $("qtMixN").textContent=document.querySelectorAll("#qtBox button").length-1;
 const EXT={en:'eat', ne:'खानु', bn:'খাওয়া', si:'කනවා', my:'စားတယ်', zh:'吃', vi:'ăn'};
 document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
 
+// せってい のシートの 見出し・説明・リセットの確認を、えらんだ言語でも出す（日本語の下・横に小さく。ホームには出さない＝きあ 2026-11-15）
+//   訳は Claude が書いた物（母語話者の確認なし）。ベンガル語・シンハラ語は 話しことばに寄せた。{n} は 数字に入れかわる
+const UI = {
+  en:{h_qt:"Question type", h_kj:"Kanji range", d_kj:"Words up to the level you have learned are shown in kanji. Other words are shown in hiragana.", h_vc:"Audio", d_vc:"Tap the speaker to hear the word.",
+      h_lg:"My language", d_lg:"Meanings are shown in this language.", mix:"The {n} types above are mixed.", h_ot:"Other", rst_btn:"Reset records", rst_q:"Delete all your records?", yes:"Delete", no:"Cancel", draft:"Draft translation. Not checked yet. It may have mistakes."},
+  ne:{h_qt:"प्रश्नको प्रकार", h_kj:"खान्जीमा देखाउने दायरा", d_kj:"सिकेको ठाउँसम्मका शब्द खान्जीमा, अरू शब्द हिरागानामा देखिन्छन्।", h_vc:"आवाज", d_vc:"स्पिकर थिच्दा शब्दको आवाज सुनिन्छ।",
+      h_lg:"मेरो भाषा", d_lg:"जापानी शब्दको अर्थ यही भाषामा देखिन्छ।", mix:"माथिका {n} वटा प्रकार मिसिएर आउँछन्।", h_ot:"अन्य", rst_btn:"रेकर्ड मेटाउने", rst_q:"सबै रेकर्ड मेटाउने हो?", yes:"मेटाउने", no:"रद्द गर्ने", draft:"यो अनुवाद मस्यौदा हो। अझै जाँच गरिएको छैन। गल्ती हुन सक्छ।"},
+  bn:{h_qt:"প্রশ্নের ধরন", h_kj:"কোন পর্যন্ত কানজিতে দেখাবে", d_kj:"যতটুকু শিখেছ ততটুকু কানজিতে, বাকি শব্দ হিরাগানায় দেখাবে।", h_vc:"আওয়াজ", d_vc:"স্পিকারে চাপ দিলে শব্দটা শোনা যাবে।",
+      h_lg:"আমার ভাষা", d_lg:"জাপানি শব্দের মানে এই ভাষায় দেখাবে।", mix:"উপরের {n}টা ধরন মিলিয়ে আসবে।", h_ot:"অন্যান্য", rst_btn:"রেকর্ড মুছে ফেলো", rst_q:"সব রেকর্ড মুছে ফেলবে?", yes:"মুছে ফেলো", no:"বাদ দাও", draft:"এই অনুবাদটা খসড়া। এখনো চেক করা হয়নি। ভুল থাকতে পারে।"},
+  si:{h_qt:"ප්‍රශ්න වර්ගය", h_kj:"කන්ජි වලින් පෙන්වන සීමාව", d_kj:"ඉගෙන ගත්ත තැන වෙනකම් වචන කන්ජි වලින්, අනිත් වචන හිරගනා වලින් පෙන්වනවා.", h_vc:"ශබ්දය", d_vc:"ස්පීකර් එක එබුවම වචනය ඇහෙනවා.",
+      h_lg:"මගේ භාෂාව", d_lg:"ජපන් වචනවල තේරුම මේ භාෂාවෙන් පෙන්වනවා.", mix:"උඩ තියෙන වර්ග {n}ම කලවම් වෙලා එනවා.", h_ot:"වෙනත්", rst_btn:"වාර්තා මකන්න", rst_q:"වාර්තා ඔක්කොම මකන්නද?", yes:"මකන්න", no:"එපා", draft:"මේ පරිවර්තනය කෙටුම්පතක්. තාම චෙක් කරලා නෑ. වැරදි තියෙන්න පුළුවන්."},
+  my:{h_qt:"မေးခွန်းအမျိုးအစား", h_kj:"ခန်းဂျီးဖြင့် ပြမည့် အတိုင်းအတာ", d_kj:"သင်ပြီးသည့်နေရာအထိ စကားလုံးများကို ခန်းဂျီးဖြင့်၊ ကျန်စကားလုံးများကို ဟီရဂနဖြင့် ပြပါမည်။", h_vc:"အသံ", d_vc:"စပီကာကို နှိပ်လျှင် စကားလုံး၏ အသံကို ကြားရပါမည်။",
+      h_lg:"ကျွန်ုပ်၏ ဘာသာစကား", d_lg:"ဂျပန်စကားလုံး၏ အဓိပ္ပာယ်ကို ဤဘာသာစကားဖြင့် ပြပါမည်။", mix:"အထက်ပါ {n} မျိုးကို ရောပြီး မေးပါမည်။", h_ot:"အခြား", rst_btn:"မှတ်တမ်း ဖျက်ရန်", rst_q:"မှတ်တမ်းအားလုံးကို ဖျက်မလား။", yes:"ဖျက်မည်", no:"မဖျက်တော့ပါ", draft:"ဤဘာသာပြန်သည် မူကြမ်းဖြစ်သည်။ မစစ်ဆေးရသေးပါ။ အမှားပါနိုင်ပါသည်။"},
+  zh:{h_qt:"问题类型", h_kj:"用汉字显示的范围", d_kj:"学过的部分用汉字显示，其他用平假名显示。", h_vc:"语音", d_vc:"点击喇叭可以听到单词的读音。",
+      h_lg:"我的语言", d_lg:"日语的意思用这种语言显示。", mix:"上面{n}种混合出题。", h_ot:"其他", rst_btn:"重置记录", rst_q:"要删除全部记录吗？", yes:"删除", no:"取消", draft:"此翻译为草稿，尚未检查，可能有错误。"},
+  vi:{h_qt:"Loại câu hỏi", h_kj:"Phạm vi hiển thị bằng kanji", d_kj:"Những từ có kanji đã học sẽ hiện bằng kanji, các từ khác hiện bằng hiragana.", h_vc:"Âm thanh", d_vc:"Bấm vào loa để nghe từ.",
+      h_lg:"Ngôn ngữ của tôi", d_lg:"Nghĩa của từ tiếng Nhật sẽ hiện bằng ngôn ngữ này.", mix:"{n} loại ở trên sẽ được trộn lẫn.", h_ot:"Khác", rst_btn:"Xóa kết quả học", rst_q:"Xóa tất cả kết quả học?", yes:"Xóa", no:"Hủy", draft:"Bản dịch này là bản nháp. Chưa được kiểm tra. Có thể có lỗi."}
+};
+function paintUI(){ const u=UI[lang]||UI.en, n=document.querySelectorAll("#qtBox button").length-1;
+  document.querySelectorAll("#setSheet [data-ui]").forEach(x=>{ x.textContent=(u[x.dataset.ui]||UI.en[x.dataset.ui]||'').replace('{n}',n); x.lang=UI[lang]?(LCODE[lang]||lang):'en'; }); }
 const catSel=$("catSel");
 // ことばの グループ：えらんだ値は 見えない select（catSel）が持つ（出題・ことばリストの「これを練習」が 前と同じに読む）。画面には 横にならぶチップで出す
 catSel.innerHTML='<option value=""></option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}"></option>`).join("");
@@ -1875,16 +1911,17 @@ function updateStats(){
   if(wk) $("hmWeek").innerHTML='<div class="hmwd">'+wk.days.map((d,i)=>'<span class="'+(d.on?'on':'')+(d.now?' now':'')+'"><i></i>'+'月火水木金土日'[i]+'</span>').join('')+'</div>'
     +'<div class="hmwt">'+(wk.done>=wk.goal?'<b class="g"><ruby>今週<rt>こんしゅう</rt></ruby>の もくひょう たっせい！</b>':'<ruby>今週<rt>こんしゅう</rt></ruby> <b>'+wk.done+'</b> / '+wk.goal+'<ruby>日<rt>にち</rt></ruby>')
     +'<small>（<ruby>1日<rt>いちにち</rt></ruby>に '+wk.line+'<ruby>問<rt>もん</rt></ruby> <ruby>解<rt>と</rt></ruby>いた <ruby>日<rt>ひ</rt></ruby>を かぞえます）</small></div>';
-  // この せっていで 出ます（ならびは せってい と同じ：言語 → 問題のしゅるい → 漢字のはんい → おんせい）
+  // この せっていで 出ます（ならびは せってい と同じ：問題のしゅるい → 漢字のはんい → おんせい → 言語）
   const lgN=(LANGS.find(l=>l[0]===lang)||LANGS[0])[1];
-  $("hmTags").innerHTML=[ LANGS.length>1?'<span class="tr" lang="'+(LCODE[lang]||lang)+'">'+esc(lgN)+'</span>':'', '<span>'+ruby(QTN[qtype])+'</span>', '<span>'+ruby(kjTag())+'</span>',
-    HAS_VOICE?'<span>おんせい '+(voiceOn?'オン':'オフ')+'</span>':'' ].join('');
+  $("hmTags").innerHTML=[ '<span>'+ruby(QTN[qtype])+'</span>', '<span>'+ruby(kjTag())+'</span>', HAS_VOICE?'<span>おんせい '+(voiceOn?'オン':'オフ')+'</span>':'',
+    LANGS.length>1?'<span class="tr" lang="'+(LCODE[lang]||lang)+'">'+esc(lgN)+'</span>':'' ].join('');
   // きろくカード
   const n=[0,0,0]; p.forEach(it=>{ n[stg(it)]++; }); const T=p.length||1;
   $("hmRecH").innerHTML=(c?ruby(CATN[c]||c):'ぜんぶ')+' '+p.length+'ことばの きろく';
   $("hmRec").innerHTML='<div class="hmbar" role="img" aria-label="おぼえた '+n[2]+'、れんしゅうちゅう '+n[1]+'、まだ '+n[0]+'"><i class="a" style="width:'+(n[2]/T*100)+'%"></i><i class="b" style="width:'+(n[1]/T*100)+'%"></i></div>'
     +'<div class="hm3"><div class="a"><span><i></i>おぼえた</span><b>'+n[2]+'</b></div><div class="b"><span><i></i>れんしゅう<ruby>中<rt>ちゅう</rt></ruby></span><b>'+n[1]+'</b></div><div><span><i></i>まだ</span><b>'+n[0]+'</b></div></div>'
     +'<div class="hmrate"><ruby>正答率<rt>せいとうりつ</rt></ruby> <b>'+(tot?Math.round(ok/tot*100)+'%':'–')+'</b>（<ruby>解<rt>と</rt></ruby>いた '+seen.length+'ことば）</div>';
+  paintUI();
   // 漢字のはんい・問題のしゅるい（せってい のシート）
   const withK=ITEMS.filter(it=>it.ks.length), inK=withK.filter(inKanji);
   $("kjInfo").innerHTML='<ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>で</rt></ruby>る ことば <b>'+inK.length+'</b> / '+withK.length;
