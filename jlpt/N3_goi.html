@@ -347,6 +347,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 .fr{font-size:.7em;font-weight:500;opacity:.6;margin-right:.35em;white-space:nowrap;}
 .qword .fr{font-size:.45em;}
 .fr.su{margin:0 0 0 .2em;}
+.cattr{font-size:.8em;font-weight:500;opacity:.75;margin-left:.3em;}
 .qmean{display:block;font-size:22px;font-weight:700;line-height:1.7;padding:10px 0;}
 .choice.en{font-size:17px;line-height:1.5;}
 .fbw{font-size:18px;font-weight:700;line-height:2;}
@@ -1794,8 +1795,23 @@ const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 /* ---------- ルビ ---------- */
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>');
+// しゅるいの名前の訳（えらんだ「いみの ことば」で、日本語の名前のうしろに小さく出す。動詞・形容詞 などの日本語は N4 の学生にはむずかしいため）。all＝「すべての ことば」
+const CATT = {
+  V:{en:"verb", ne:"क्रिया", bn:"ক্রিয়া", si:"ක්‍රියා පදය", my:"ကြိယာ", zh:"动词", vi:"động từ"},
+  S:{en:"noun + suru (verb)", ne:"नाम + する (क्रिया)", bn:"বিশেষ্য + する (ক্রিয়া)", si:"නාම පදය + する (ක්‍රියා)", my:"နာမ် + する (ကြိယာ)", zh:"名词+する（动词）", vi:"danh từ + する (động từ)"},
+  N:{en:"noun", ne:"नाम", bn:"বিশেষ্য", si:"නාම පදය", my:"နာမ်", zh:"名词", vi:"danh từ"},
+  K:{en:"katakana word", ne:"काताकाना शब्द", bn:"কাতাকানা শব্দ", si:"කතකනා වචන", my:"ကတကန စကားလုံး", zh:"片假名词", vi:"từ katakana"},
+  I:{en:"i-adjective", ne:"い-विशेषण", bn:"い-বিশেষণ", si:"い-නාම විශේෂණ", my:"い-နာမဝိသေသန", zh:"い形容词", vi:"tính từ い"},
+  A:{en:"na-adjective", ne:"な-विशेषण", bn:"な-বিশেষণ", si:"な-නාම විශේෂණ", my:"な-နာမဝိသေသန", zh:"な形容词", vi:"tính từ な"},
+  F:{en:"adverb / conjunction", ne:"क्रियाविशेषण / संयोजक", bn:"ক্রিয়াবিশেষণ / সংযোজক", si:"ක්‍රියා විශේෂණ / සම්බන්ධක පද", my:"ကြိယာဝိသေသန / သမ္ဗန္ဓ", zh:"副词・连词", vi:"phó từ / liên từ"},
+  X:{en:"other", ne:"अन्य", bn:"অন্যান্য", si:"වෙනත්", my:"အခြား", zh:"其他", vi:"khác"},
+  all:{en:"all", ne:"सबै", bn:"সব", si:"සියල්ල", my:"အားလုံး", zh:"全部", vi:"tất cả"}
+};
+const catT = c => { const t=CATT[c||'all']; return t ? (t[lang]||t.en) : ''; };
+const catTH = c => { const t=CATT[c||'all']; if(!t) return ''; return ' <span class="tr cattr" lang="'+(t[lang]?(LCODE[lang]||lang):'en')+'">'+esc(t[lang]||t.en)+'</span>'; };
 const catName = c => plain(CATN[c]||c);
-const catR = c => ruby(CATN[c]||c);
+const catR = c => ruby(CATN[c]||c)+catTH(c);
+const ALLH = () => 'すべての ことば'+catTH('');
 
 /* ---------- アイコン ---------- */
 const IC={
@@ -1952,7 +1968,7 @@ else{
   lgSel.innerHTML=LANGS.map(l=>'<option value="'+l[0]+'">'+esc(l[1])+(l[2]?'（draft）':'')+'</option>').join('');
   lgSel.value=lang;
   const paintLg=()=>$("lgInfo").classList.toggle("on",!!(LANGS.find(l=>l[0]===lang)||[])[2]);
-  lgSel.onchange=()=>{ lang=lgSel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paintLg(); updateStats(); };
+  lgSel.onchange=()=>{ lang=lgSel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paintLg(); fillCatSel(); updateStats(); };
   paintLg();
 }
 if(!YOMI_ON) $("qtY").remove();
@@ -1964,7 +1980,9 @@ const QT_INFO={mix:(YOMI_ON?'いみ・ことば・よみ<ruby>方<rt>かた</rt>
   c:'<ruby>文<rt>ぶん</rt></ruby>の （　）に <ruby>入<rt>はい</rt></ruby>る ことばを えらびます'};
 
 const catSel=$("catSel");
-catSel.innerHTML='<option value="">すべての ことば</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(catName(c))}</option>`).join("");
+function fillCatSel(){ const v=catSel.value;   // スマホの えらぶ所（select）。訳は かっこで付ける
+  catSel.innerHTML='<option value="">すべての ことば（'+esc(catT(''))+'）</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(catName(c))}（${esc(catT(c))}）</option>`).join(""); catSel.value=v; }
+fillCatSel();
 // よみ方の問題は、今のはんいで漢字で出る語だけ
 const canQ = it => (qtype!=='y'||canY(it)) && (qtype!=='c'||!!it.cz);
 function pool(){ const c=catSel.value; return ITEMS.filter(it=>(!c||it.cat===c)&&canQ(it)); }
@@ -1979,11 +1997,11 @@ function updateStats(){
   $("allCount").innerHTML=p.length+MON;
   $("wrongCount").innerHTML=wrong.length+MON; $("unseenCount").innerHTML=(p.length-seen.length)+MON;
   const c=catSel.value;
-  $("catRuby").innerHTML=c?catR(c):'すべての ことば';
+  $("catRuby").innerHTML=c?catR(c):ALLH();
   $("catPill").innerHTML=$("catRuby").innerHTML;
   $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
     const n=ITEMS.filter(it=>(!k||it.cat===k)&&canQ(it)).length;
-    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):'すべての ことば'}</span><span class="n">${n}${MON}</span></button>`;
+    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):ALLH()}</span><span class="n">${n}${MON}</span></button>`;
   }).join("");
   $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
   $("wrongBtn").disabled=!wrong.length;
