@@ -119,18 +119,33 @@
   var st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
 
   var setup=document.getElementById('setup'), stats=setup.querySelector('.stats'), rnd=setup.querySelector('[data-mode="random10"]');
-  if(!stats||!rnd) return;
-  var card=document.createElement('div'); card.className='jsm-card'; card.id='jsmCard';
+  // 語彙ドリルの新しいホーム（2026-11-15）は、部品をページの側が持つ（.stats が無い）。ここからは 部品を足さず、数え方だけ渡す（__jlptStudy）
+  var OWN=!stats||!rnd, card, prog, tb;
+  if(!OWN){
+  card=document.createElement('div'); card.className='jsm-card'; card.id='jsmCard';
   setup.insertBefore(card,stats);
-  var prog=document.createElement('div'); prog.id='jsmProg';
+  prog=document.createElement('div'); prog.id='jsmProg';
   stats.parentNode.insertBefore(prog,stats.nextSibling);
-  var tb=document.createElement('button'); tb.className='bigbtn jsm-today'; tb.id='jsmToday';
+  tb=document.createElement('button'); tb.className='bigbtn jsm-today'; tb.id='jsmToday';
   tb.innerHTML=rnd.querySelector('svg').outerHTML+'<span><b>きょうの '+TODAY_N+MON+'</b><small id="jsmTodaySub"></small></span>';
   rnd.parentNode.insertBefore(tb,rnd);
   tb.onclick=function(){ var x=pickToday(); if(x.list.length) start(x.list); };
+  }
+  function exam(){   // 次の試験日と、あと何日か
+    var t=today();
+    for(var i=0;i<EXAMS.length;i++){ if(EXAMS[i]>t) return {date:EXAMS[i], left:diffDays(t,EXAMS[i])}; }
+    return null;
+  }
+
+  function week(){   // 今週（月〜日）：DAY_LINE 問以上 解いた日
+    var d=loadDays(), t=today(), mon=addDays(t,-((parse(t).getDay()+6)%7)), done=0, days=[];
+    for(var k=0;k<7;k++){ var ds=addDays(mon,k), on=(d[ds]||0)>=DAY_LINE; if(on) done++; days.push({on:on, now:ds===t}); }
+    return {done:done, goal:WEEK_GOAL, line:DAY_LINE, days:days};
+  }
 
   /* ---- 3・4・5：メニューの表示 ---- */
   function paint(){
+    if(OWN) return;
     var p=pool(), n=[0,0,0];
     p.forEach(function(it){ n[stageOf(it.id)]++; });
     var tot=p.length||1;
@@ -179,7 +194,7 @@
 
   // 分野を変えた時（select の onchange は本体が古い updateStats を直接つかんでいる）
   var sel=document.getElementById('catSel'); if(sel) sel.onchange=function(){ updateStats(); };
+  window.__jlptStudy={pickToday:pickToday,stageOf:stageOf,today:today,exam:exam,week:week};
   updateStats();
   if(typeof view!=='undefined' && view==='list' && typeof renderList==='function') renderList();
-  window.__jlptStudy={pickToday:pickToday,stageOf:stageOf,today:today};
 })();

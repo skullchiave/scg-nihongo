@@ -343,19 +343,12 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   .lgfb{grid-template-columns:repeat(4,1fr);gap:16px;} .lgfb button{min-height:72px;border-radius:16px;font-size:24px;} .setsec{font-size:22px;margin-top:44px;} }
 
 /* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
-.opts{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:12px;padding:12px 16px;}
-.opts .ol{display:block;font-size:13px;font-weight:700;margin:0 0 6px;}
-.opts .og + .og{margin-top:14px;}
 .selwrap2{position:relative;}
 .selwrap2 select{appearance:none;-webkit-appearance:none;width:100%;height:48px;border-radius:12px;border:1px solid var(--line);
   background:#fff;font-size:16px;padding:0 44px 0 14px;color:var(--ink);}
 .selwrap2 .ic{position:absolute;right:14px;top:13px;pointer-events:none;color:var(--sub);}
 .kjinfo{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.9;}
 .kjinfo b{color:var(--ink);font-variant-numeric:tabular-nums;}
-.qt{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
-.qt button{min-height:48px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;font-weight:700;color:var(--sub);line-height:1.4;padding:4px 2px;}
-.qt button[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
-.qt button:disabled{opacity:.45;cursor:default;}
 .tr[lang="zh-CN"]{font-family:"Noto Sans SC","Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;}
 .tr[lang="vi"]{font-family:"Segoe UI","Roboto","Noto Sans","Helvetica Neue",Arial,sans-serif;}
 .tr[lang="my"]{font-family:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;line-height:1.9;}
@@ -391,27 +384,18 @@ body.noruby .frb rt{display:revert;}
 .aud.playing{background:var(--accentT);color:#fff;border-color:var(--accentT);}
 .aud.err{opacity:.4;}
 body.novoice .aud{display:none;}
-.qt.vc{grid-template-columns:repeat(2,1fr);}
 .vcic{display:inline-block;vertical-align:-4px;color:var(--accentT);}
 .vcic .ic{width:18px;height:18px;position:static;display:inline-block;}
 .gtop .gname{flex:1;min-width:0;}
 @media (min-width:641px){
-  .opts #lgBox{margin-top:0;}
   .aud{width:64px;height:64px;margin-left:14px;}
   .aud .ic{width:34px;height:34px;}
   .qword .aud{width:84px;height:84px;}
   .qword .aud .ic{width:44px;height:44px;}
   .vcic .ic{width:28px;height:28px;}
-  #setup:not(.hidden){grid-template-rows:repeat(10,auto) 1fr;}
-  .opts{border-radius:28px;margin-top:24px;padding:20px 32px;display:grid;grid-template-columns:1fr 1fr;column-gap:32px;align-items:start;}
-  .opts .og + .og{margin-top:0;}
-  .opts{row-gap:20px;}
-  .opts .ol{font-size:22px;margin-bottom:10px;}
   .selwrap2 select{height:72px;border-radius:16px;font-size:24px;padding:0 60px 0 20px;}
   .selwrap2 .ic{right:20px;top:22px;width:28px;height:28px;}
   .kjinfo{font-size:20px;margin-top:8px;}
-  .qt{gap:10px;}
-  .qt button{min-height:72px;border-radius:16px;font-size:22px;}
   .qask{font-size:24px;}
   .qword{font-size:96px;line-height:1.9;}
   .qmean{font-size:52px;line-height:1.6;padding:20px 0;}
@@ -421,6 +405,155 @@ body.novoice .aud{display:none;}
   .gv .fbw{font-size:30px;}
   .kjc{margin-right:20px;}
 }
+/* ===== ホーム（2026-11-15 きあのデザイン）：ことばの グループ（チップ）／スタートカード／きろくカード ===== */
+.hmgrp{background:#fff;margin:-18px -16px 0;padding:8px 0 8px 16px;border-bottom:1px solid var(--hair);}
+.hmgl{font-size:12px;font-weight:700;color:#4A5670;}
+.hmchips{display:flex;gap:8px;overflow-x:auto;padding:6px 16px 6px 0;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+.hmchips button{flex:none;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #CBD5E3;background:#fff;font-size:15px;font-weight:700;color:#1B2540;white-space:nowrap;line-height:2;}
+.hmchips button[aria-pressed="true"]{background:#1B2540;color:#fff;border-color:#1B2540;}
+.hmcard{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:16px;padding:14px 16px 16px;}
+.hmexam{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:15px;font-weight:700;line-height:2;margin-bottom:6px;}
+.hmexam b{font-size:22px;color:#B45309;margin:0 3px;font-variant-numeric:tabular-nums;}
+.hmexam .d{font-size:13px;font-weight:500;color:#4A5670;white-space:nowrap;}
+.pi{flex:none;display:grid;place-items:center;}
+.hmtoday{width:100%;min-height:88px;border:none;border-radius:14px;background:#B45309;color:#fff;display:flex;align-items:center;gap:14px;padding:10px 20px;text-align:left;}
+.hmtoday .pi .ic{width:22px;height:22px;}
+.hmtoday b{display:block;font-size:22px;line-height:1.9;}
+.hmtoday small{display:block;font-size:13px;font-weight:700;line-height:1.9;}
+.hmtoday:disabled{background:#c2cad8;}
+.hmtoday:active,.hmb:active{transform:scale(.99);}
+.hmgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.hmb{min-height:64px;display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;text-align:left;color:#1B2540;}
+.hmb .pi{width:32px;height:32px;border-radius:50%;background:#1B2540;color:#fff;}
+.hmb .pi .ic{width:16px;height:16px;}
+.hmb b{display:block;font-size:15px;line-height:1.8;}
+.nb{display:inline-block;white-space:nowrap;}
+.hmb small{display:block;font-size:13px;color:#4A5670;line-height:1.9;}
+.hmb.ng{background:#FFF5F3;border-color:#E7B4AE;color:#A1271B;}
+.hmb.ng .pi{background:#A1271B;}
+.hmb.ng small{color:#A1271B;}
+.hmb:disabled{background:#f1f3f7;border-color:#e1e6ee;color:#8a98b0;cursor:default;}
+.hmb:disabled .pi{background:#c2cad8;}
+.hmb:disabled small{color:#8a98b0;}
+.hmset{margin-top:14px;padding-top:12px;border-top:1px solid #e6ebf3;}
+.hmsetl{font-size:12px;font-weight:700;color:#4A5670;line-height:1.9;}
+.hmtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.hmtags span{font-size:13px;font-weight:700;background:#EDF0F7;color:#1B2540;border-radius:8px;padding:2px 10px;line-height:2;}
+.hmsetbtn{margin-top:10px;min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 16px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;font-size:15px;font-weight:700;color:#1B2540;}
+.hmsetbtn .ic{width:18px;height:18px;}
+.hmsetbtn + .hmsetbtn{margin-left:8px;}
+.hmsetbtn[aria-expanded="true"]{background:#EDF0F7;}
+.hmweek{margin-top:10px;background:#EDF0F7;border-radius:12px;padding:10px 14px;}
+.hmwd{display:flex;justify-content:space-between;max-width:320px;}
+.hmwd span{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:700;color:#4A5670;line-height:1.6;}
+.hmwd i{width:20px;height:20px;border-radius:50%;background:#fff;border:1px solid #CBD5E3;}
+.hmwd .on i{background:var(--ok);border-color:var(--ok);}
+.hmwd .now i{outline:2px solid #B45309;outline-offset:1px;}
+.hmwt{margin-top:6px;font-size:14px;font-weight:700;line-height:2;}
+.hmwt b{font-size:18px;font-variant-numeric:tabular-nums;} .hmwt b.g{font-size:14px;color:var(--ok);}
+.hmwt small{display:block;font-size:12px;font-weight:500;color:#4A5670;}
+.hmrech{font-size:15px;font-weight:700;margin:22px 4px 0;line-height:2;}
+.hmcard.hmrec{margin-top:6px;}
+.hmbar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:#e1e6ee;}
+.hmbar i{display:block;height:100%;}
+.hmbar .a{background:var(--ok);} .hmbar .b{background:var(--accentStrong);}
+.hm3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+.hm3 span{display:block;font-size:13px;font-weight:700;line-height:2;white-space:nowrap;}
+.hm3 span i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background:#8a98b0;}
+.hm3 .a span{color:var(--ok);} .hm3 .a span i{background:var(--ok);}
+.hm3 .b span{color:#B45309;} .hm3 .b span i{background:var(--accentStrong);}
+.hm3 b{display:block;font-size:24px;line-height:1.3;font-variant-numeric:tabular-nums;}
+.hmrate{margin-top:10px;padding-top:8px;border-top:1px solid #e6ebf3;font-size:13px;color:#4A5670;line-height:2;}
+.hmrate b{color:#1B2540;}
+/* せってい のシート（2026-11-15 きあのデザイン）。中身（.setin）だけが動き、「できた」は いつも下に出る */
+#setSheet{background:#EDF0F7;max-height:90vh;max-height:90dvh;padding:0;display:flex;flex-direction:column;overflow:hidden;}
+.setin{flex:1;min-height:0;overflow-y:auto;padding:8px 16px 20px;}
+.setttl{font-size:18px;font-weight:700;line-height:2;}
+.setclose{min-height:44px;padding:0 12px;border:none;background:none;font-size:15px;font-weight:700;color:#1B2540;}
+.setdone{flex:none;padding:10px 16px max(12px, env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--hair);}
+.setdone button{width:100%;min-height:52px;border:none;border-radius:14px;background:#1B2540;color:#fff;font-size:17px;font-weight:700;}
+.sth{font-size:15px;font-weight:700;color:#1B2540;margin:22px 2px 0;line-height:2;}
+.sth.first{margin-top:6px;}
+.sth small{font-size:11px;font-weight:500;color:#4A5670;margin-left:8px;}
+.sth.sm{font-size:13px;color:#4A5670;margin-top:12px;}
+.std{font-size:12px;color:#4A5670;margin:0 2px;line-height:2;}
+.stlg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+.stlg button{min-height:60px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;text-align:left;padding:6px 14px;color:#1B2540;}
+.stlg b{display:block;font-size:17px;line-height:1.7;}
+.stlg small{display:block;font-size:11px;color:#4A5670;line-height:2;}
+.stlg button[aria-checked="true"],.st2 button[aria-pressed="true"]{background:#FDF0DC;border-color:#B45309;box-shadow:inset 0 0 0 1px #B45309;}
+#setSheet .lgnote{font-size:12px;line-height:1.7;color:#4A5670;margin:8px 2px 0;}
+.stcard{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);margin-top:6px;overflow:hidden;}
+.stcard.pad{padding:12px 14px;}
+.stqt button{width:100%;display:flex;align-items:center;gap:12px;min-height:68px;padding:10px 14px;border:none;border-top:1px solid #e6ebf3;background:#fff;text-align:left;color:#1B2540;}
+.stqt button:first-child{border-top:none;}
+.stqt button[aria-checked="true"]{background:#FDF0DC;}
+.rd{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid #8a98b0;background:#fff;display:grid;place-items:center;}
+.rd::after{content:"";width:10px;height:10px;border-radius:50%;background:#B45309;display:none;}
+.stqt button[aria-checked="true"] .rd{border-color:#B45309;}
+.stqt button[aria-checked="true"] .rd::after{display:block;}
+.rb{min-width:0;}
+.rb b{display:block;font-size:16px;line-height:2;}
+.ex{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;}
+.ex i{font-style:normal;border:1px solid #CBD5E3;border-radius:8px;padding:0 8px;background:#fff;line-height:2.1;overflow-wrap:anywhere;}
+.ex i.pk{border:1px dashed #B45309;background:#FDF0DC;color:#B45309;font-weight:700;}
+.ex em{font-style:normal;color:#4A5670;}
+.ex.t{display:block;color:#4A5670;line-height:2;}
+.st2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+.st2 button{min-height:52px;border:1px solid #CBD5E3;border-radius:12px;background:#fff;font-size:16px;font-weight:700;color:#1B2540;}
+.st2 button[aria-pressed="true"]{color:#B45309;}
+.stsep{border-top:1px solid #CBD5E3;margin-top:24px;}
+.strst{width:100%;min-height:48px;margin-top:6px;border:1px solid #E7B4AE;border-radius:12px;background:#FFF5F3;color:#A1271B;font-size:15px;font-weight:700;}
+.stcr{font-size:11px;color:#4A5670;margin:10px 2px 0;line-height:2;}
+@media (min-width:641px){
+  #setup:not(.hidden){display:block;max-width:1160px;margin:0 auto;}
+  .hmgrp{margin:0;padding:16px 32px 18px;border:none;border-radius:28px;box-shadow:var(--card-shadow);}
+  .hmgl{font-size:20px;}
+  .hmchips{flex-wrap:wrap;overflow:visible;gap:12px;padding:10px 0 0;}
+  .hmchips button{min-height:64px;padding:0 26px;font-size:24px;}
+  .hmcard{border-radius:28px;margin-top:24px;padding:24px 32px 28px;}
+  .hmexam{font-size:26px;margin-bottom:12px;} .hmexam b{font-size:40px;} .hmexam .d{font-size:22px;}
+  .hmtoday{min-height:150px;border-radius:24px;gap:28px;padding:16px 48px;}
+  .hmtoday .pi .ic{width:48px;height:48px;}
+  .hmtoday b{font-size:44px;line-height:1.7;} .hmtoday small{font-size:24px;}
+  .hmgrid{grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px;}
+  .hmb{min-height:110px;gap:16px;padding:12px 20px;border-radius:20px;border-width:2px;}
+  .hmb .pi{width:52px;height:52px;} .hmb .pi .ic{width:26px;height:26px;}
+  .hmb b{font-size:26px;} .hmb small{font-size:22px;}
+  .hmset{margin-top:24px;padding-top:20px;}
+  .hmsetl{font-size:20px;}
+  .hmtags{gap:10px;margin-top:8px;} .hmtags span{font-size:22px;border-radius:12px;padding:2px 18px;}
+  .hmsetbtn{margin-top:16px;min-height:64px;padding:0 28px;border-radius:16px;font-size:24px;gap:12px;} .hmsetbtn .ic{width:28px;height:28px;}
+  .hmsetbtn + .hmsetbtn{margin-left:16px;}
+  .hmweek{margin-top:16px;border-radius:20px;padding:16px 24px;} .hmwd{max-width:560px;} .hmwd span{font-size:20px;} .hmwd i{width:34px;height:34px;}
+  .hmwt{font-size:24px;margin-top:10px;} .hmwt b{font-size:32px;} .hmwt b.g{font-size:24px;} .hmwt small{font-size:20px;}
+  .hmrech{font-size:26px;margin-top:36px;}
+  .hmcard.hmrec{margin-top:10px;}
+  .hmbar{height:20px;}
+  .hm3{margin-top:20px;} .hm3 span{font-size:22px;} .hm3 span i{width:16px;height:16px;margin-right:8px;} .hm3 b{font-size:56px;}
+  .hmrate{font-size:22px;margin-top:16px;padding-top:12px;}
+  #setSheet{max-width:1160px;}
+  .setin{padding:12px 40px 28px;}
+  .setttl{font-size:30px;} .setclose{min-height:64px;font-size:24px;}
+  .setdone{padding:16px 40px 20px;} .setdone button{min-height:72px;border-radius:18px;font-size:26px;}
+  .sth{font-size:26px;margin-top:36px;} .sth.first{margin-top:10px;} .sth small{font-size:20px;margin-left:14px;} .sth.sm{font-size:22px;margin-top:20px;}
+  .std{font-size:20px;}
+  .stlg{grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px;}
+  .stlg button{min-height:96px;border-radius:18px;padding:10px 22px;border-width:2px;}
+  .stlg b{font-size:28px;} .stlg small{font-size:19px;}
+  #setSheet .lgnote{font-size:18px;}
+  .stcard{border-radius:24px;margin-top:10px;} .stcard.pad{padding:20px 24px;}
+  .stqt{display:grid;grid-template-columns:1fr 1fr;}
+  .stqt button{min-height:110px;gap:20px;padding:14px 24px;border-top:none;border-bottom:1px solid #e6ebf3;}
+  .stqt button:nth-child(odd){border-right:1px solid #e6ebf3;}
+  .rd{width:34px;height:34px;border-width:3px;} .rd::after{width:16px;height:16px;}
+  .rb b{font-size:26px;}
+  .ex{font-size:21px;gap:10px;} .ex i{border-radius:12px;padding:0 14px;border-width:2px;} .ex i.pk{border-width:2px;}
+  .st2{gap:14px;margin-top:10px;max-width:560px;} .st2 button{min-height:76px;border-radius:18px;font-size:26px;border-width:2px;}
+  .stsep{margin-top:36px;}
+  .strst{max-width:560px;min-height:68px;border-radius:18px;font-size:24px;border-width:2px;margin-top:10px;}
+  .stcr{font-size:18px;margin-top:14px;}
+}
 </style>
 </head>
 <body>
@@ -429,56 +562,74 @@ body.novoice .aud{display:none;}
 <main id="main"><div class="page">
   <!-- 1. 練習メニュー -->
   <section id="setup">
-    <div class="catlist pconly" id="catList" role="group" aria-label="しゅるい"></div>
-    <div class="sethd"><div>
-    <div class="h"><ruby>練習<rt>れんしゅう</rt></ruby>を はじめる</div>
-    <div class="lead">4つの <ruby>中<rt>なか</rt></ruby>から <ruby>正<rt>ただ</rt></ruby>しいものを 1つ えらぶ</div>
-    </div><span class="catpill pconly" id="catPill"></span></div>
-    <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">ことばを えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
+    <div class="hmgrp">
+      <div class="hmgl">ことばの グループ</div>
+      <div class="hmchips" id="catChips" role="group" aria-label="ことばの グループ"></div>
+    </div>
+    <select id="catSel" hidden aria-hidden="true"></select>
+    <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">わたしの <ruby>言語<rt>げんご</rt></ruby>を えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>
+    <div class="hmcard" id="hmStart">
+      <div class="hmexam hidden" id="hmExam"></div>
+      <button class="hmtoday" id="hmToday"><span class="pi"></span><span><b>きょうの 10<ruby>問<rt>もん</rt></ruby></b><small id="hmTodaySub"></small></span></button>
+      <div class="hmgrid">
+        <button class="hmb ng" data-mode="wrong"><span class="pi"></span><span><b>まちがえた</b><small></small></span></button>
+        <button class="hmb" data-mode="all"><span class="pi"></span><span><b>ぜんぶ</b><small></small></span></button>
+        <button class="hmb" data-mode="unseen"><span class="pi"></span><span><b>まだ <span class="nb"><ruby>解<rt>と</rt></ruby>いて</span><span class="nb">いない</span></b><small></small></span></button>
+        <button class="hmb" data-mode="random10"><span class="pi"></span><span><b>ランダム</b><small></small></span></button>
+      </div>
+      <div class="hmset">
+        <div class="hmsetl">この せっていで <ruby>出<rt>で</rt></ruby>ます</div>
+        <div class="hmtags" id="hmTags"></div>
+        <button class="hmsetbtn" id="hmSetBtn"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>せっていを かえる</span></button>
+        <button class="hmsetbtn hidden" id="hmWeekBtn" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><ruby>今週<rt>こんしゅう</rt></ruby></span></button>
+        <div class="hmweek hidden" id="hmWeek"></div>
+      </div>
+    </div>
+    <div class="hmrech" id="hmRecH"></div>
+    <div class="hmcard hmrec" id="hmRec"></div>
+  </section>
+
+  <!-- せってい（下から出るシート）。ならび：わたしの言語 → 問題のしゅるい → 漢字のはんい → おんせい → その他 -->
+  <div class="shov hidden" id="setov"><div class="sheet" id="setSheet" role="dialog" aria-modal="true" aria-labelledby="setTtl">
+    <div class="setin" id="setIn">
+    <div class="grab"></div>
+    <div class="shtop"><div class="setttl" id="setTtl">せってい</div><button class="setclose" id="setClose">とじる</button></div>
     <div id="lgBox">
-      <label class="lbl" for="lgSel">いみの ことば（Language）</label>
-      <div class="selwrap"><select id="lgSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="sth first">わたしの <ruby>言語<rt>げんご</rt></ruby><small>My language</small></div>
+      <div class="std"><ruby>日本語<rt>にほんご</rt></ruby>の いみを この <ruby>言語<rt>げんご</rt></ruby>で <ruby>出<rt>だ</rt></ruby>します</div>
+      <div class="stlg" id="lgBtns" role="radiogroup" aria-label="わたしの 言語"></div>
+      <select id="lgSel" hidden aria-hidden="true"></select>
       <div class="lgnote" id="lgInfo">この やくは <ruby>下書<rt>したが</rt></ruby>きです。まだ チェックして いません。まちがいが あるかもしれません。<br>Draft translation. Not checked yet. It may have mistakes.</div>
     </div>
-    <button class="bigbtn" data-mode="random10"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg><span><b>ランダム 10<ruby>問<rt>もん</rt></ruby></b></span></button>
-    <div class="stats">
-      <div><b id="sTotal">0</b><span>ことばの <ruby>数<rt>かず</rt></ruby></span></div>
-      <div><b id="sSeen">0</b><span><ruby>解<rt>と</rt></ruby>いた</span></div>
-      <div><b id="sRate">–</b><span><ruby>正答率<rt>せいとうりつ</rt></ruby></span></div>
+    <div class="sth"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい</div>
+    <div class="stcard stqt" id="qtBox" role="radiogroup" aria-label="問題の しゅるい">
+      <button role="radio" data-qt="m"><span class="rd"></span><span class="rb"><b>いみを えらぶ</b><span class="ex"><i><ruby>食<rt>た</rt></ruby>べる</i><em>→</em><i class="pk tr" data-ex="tr"></i></span></span></button>
+      <button role="radio" data-qt="w"><span class="rd"></span><span class="rb"><b><ruby>日本語<rt>にほんご</rt></ruby>を えらぶ</b><span class="ex"><i class="tr" data-ex="tr"></i><em>→</em><i class="pk"><ruby>食<rt>た</rt></ruby>べる</i></span></span></button>
+      <button role="radio" data-qt="y" id="qtY"><span class="rd"></span><span class="rb"><b>よみ<ruby>方<rt>かた</rt></ruby>を えらぶ</b><span class="ex"><i>食べる</i><em>→</em><i class="pk">たべる</i></span></span></button>
+      <button role="radio" data-qt="c" id="qtC"><span class="rd"></span><span class="rb"><b>（　）に <ruby>入<rt>い</rt></ruby>れる</b><span class="ex"><i><ruby>毎朝<rt>まいあさ</rt></ruby> パンを（　）</i><em>→</em><i class="pk"><ruby>食<rt>た</rt></ruby>べる</i></span></span></button>
+      <button role="radio" data-qt="mix"><span class="rd"></span><span class="rb"><b>ぜんぶ まぜる</b><span class="ex t"><ruby>上<rt>うえ</rt></ruby>の <span id="qtMixN">4</span>つが まざって <ruby>出<rt>で</rt></ruby>ます</span></span></button>
     </div>
-    <div class="list">
-      <button class="row" data-mode="all"><span><ruby>全問<rt>ぜんもん</rt></ruby></span><span class="cnt" id="allCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="unseen"><span>まだ <ruby>解<rt>と</rt></ruby>いていない ことば</span><span class="cnt" id="unseenCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
-      <button class="row" data-mode="wrong" id="wrongBtn"><span>まちがえた ことば</span><span class="cnt" id="wrongCount"></span><span class="go"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    <div class="sth"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい</div>
+    <div class="std"><ruby>習<rt>なら</rt></ruby>った ところまで <ruby>漢字<rt>かんじ</rt></ruby>、ほかは ひらがなで <ruby>出<rt>で</rt></ruby>ます</div>
+    <div class="stcard pad">
+      <div class="selwrap2"><select id="kjSel" aria-label="漢字で 出す はんい"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="kjinfo" id="kjInfo"></div>
     </div>
-    <div class="setsec">せってい</div>
-    <div class="opts">
-      <div class="og">
-        <label class="ol" for="kjSel"><ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>だ</rt></ruby>す はんい（<ruby>習<rt>なら</rt></ruby>った ところまで）</label>
-        <div class="selwrap2"><select id="kjSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="kjinfo" id="kjInfo"></div>
-      </div>
-      <div class="og">
-        <span class="ol"><ruby>問題<rt>もんだい</rt></ruby>の しゅるい</span>
-        <div class="qt" id="qtBox" role="group" aria-label="問題の しゅるい">
-          <button data-qt="mix">まぜる</button><button data-qt="m">いみ</button><button data-qt="w">ことば</button><button data-qt="y" id="qtY">よみ<ruby>方<rt>かた</rt></ruby></button><button data-qt="c" id="qtC"><ruby>文<rt>ぶん</rt></ruby></button>
-        </div>
-        <div class="kjinfo" id="qtInfo"></div>
-      </div>
-      <div class="og" id="vcBox">
-        <span class="ol">ことばの おんせい（<span class="vcic" id="vcIc"></span> を おすと きこえます）</span>
-        <div class="qt vc" id="vcBtns" role="group" aria-label="ことばの おんせい"><button data-vc="1">オン</button><button data-vc="0">オフ</button></div>
-        <div class="kjinfo">おんせい：VOICEVOX:<ruby>剣崎雌雄<rt>けんざきめすお</rt></ruby>（コンピューターが つくった こえです）</div>
-      </div>
+    <div id="vcBox">
+      <div class="sth">おんせい</div>
+      <div class="std"><span class="vcic" id="vcIc"></span> を おすと、<ruby>問題<rt>もんだい</rt></ruby>の ことばを よみあげます</div>
+      <div class="st2" id="vcBtns" role="group" aria-label="おんせい"><button data-vc="1">オン</button><button data-vc="0">オフ</button></div>
     </div>
-    <label class="lbl" for="catSel">ことばの しゅるい</label>
-    <div class="selwrap"><select id="catSel"></select><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></div>
-    <div class="catruby" id="catRuby" aria-hidden="true"></div>
-    <button class="linkbtn" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
+    <div class="stsep"></div>
+    <div class="sth sm">その<ruby>他<rt>た</rt></ruby></div>
+    <button class="strst" id="resetBtn"><ruby>記録<rt>きろく</rt></ruby>を リセット</button>
     <div id="resetConfirm" class="confirm hidden"><ruby>記録<rt>きろく</rt></ruby>を ぜんぶ <ruby>消<rt>け</rt></ruby>しますか？
       <div class="two"><button class="btn-danger" id="resetYes"><ruby>消<rt>け</rt></ruby>す</button><button class="btn-plain" id="resetNo">やめる</button></div>
     </div>
-  </section>
+    <div class="stcr" id="vcCredit">おんせい：VOICEVOX:<ruby>剣崎雌雄<rt>けんざきめすお</rt></ruby>（コンピューターが つくった こえ）</div>
+    </div>
+    <div class="setdone"><button id="setDone">できた</button></div>
+  </div></div>
 
   <!-- 2. 問題 -->
   <section id="quiz" class="hidden">
@@ -1440,7 +1591,7 @@ const BYID = {}; ITEMS.forEach(it=>{ BYID[it.id]=it; });
 /* ---------- ルビ ---------- */
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^{}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>');
-// しゅるいの名前の訳（えらんだ「いみの ことば」で、日本語の名前のうしろに小さく出す。動詞・形容詞 などの日本語は N4 の学生にはむずかしいため）。all＝「すべての ことば」
+// しゅるいの名前の訳（えらんだ言語で、日本語の名前のうしろに小さく出す。動詞・形容詞 などの日本語は N4 の学生にはむずかしいため）。all＝「すべての ことば」
 const CATT = {
   V:{en:"verb", ne:"क्रिया", bn:"ক্রিয়া", si:"ක්‍රියා පදය", my:"ကြိယာ", zh:"动词", vi:"động từ"},
   S:{en:"noun + suru (verb)", ne:"नाम + する (क्रिया)", bn:"বিশেষ্য + する (ক্রিয়া)", si:"නාම පදය + する (ක්‍රියා)", my:"နာမ် + する (ကြိယာ)", zh:"名词+する（动词）", vi:"danh từ + する (động từ)"},
@@ -1627,7 +1778,7 @@ function bindHeader(){
 function applyRuby(){ document.body.classList.toggle("noruby",!rubyOn); const b=$("rubyBtn"); if(b) b.setAttribute("aria-pressed",String(rubyOn)); }
 function paintSound(){ const b=$("soundBtn"); if(!b) return; b.innerHTML=ic(soundOn?'spk':'spkoff'); b.setAttribute("aria-label",soundOn?"おと：オン":"おと：オフ"); b.setAttribute("aria-pressed",String(soundOn)); }
 
-/* ---------- メニュー：漢字のはんい・問題のしゅるい・ことばのしゅるい ---------- */
+/* ---------- ホームと せってい：漢字のはんい・言語・おんせい・問題のしゅるい・ことばの グループ ---------- */
 const kjSel=$("kjSel");
 (function(){
   let h='<option value="none">ぜんぶ ひらがな</option>', book='';
@@ -1645,21 +1796,26 @@ if(LANGS.length<2) $("lgBox").remove();
 else{
   lgSel.innerHTML=LANGS.map(l=>'<option value="'+l[0]+'">'+esc(l[1])+(l[2]?'（draft）':'')+'</option>').join('');
   lgSel.value=lang;
-  const paintLg=()=>$("lgInfo").classList.toggle("on",!!(LANGS.find(l=>l[0]===lang)||[])[2]);
-  lgSel.onchange=()=>{ lang=lgSel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paintLg(); fillCatSel(); updateStats(); };
+  // せってい のシートの 言語のボタン（その言語の書き方を大きく、日本語の名前を小さく）。えらんだ値は 見えない select（lgSel）が持つ
+  const LGJ={en:'{英語|えいご}', ne:'ネパール{語|ご}', bn:'ベンガル{語|ご}', si:'シンハラ{語|ご}', my:'ミャンマー{語|ご}', zh:'{中国語|ちゅうごくご}', vi:'ベトナム{語|ご}'};
+  $("lgBtns").innerHTML=LANGS.map(l=>'<button role="radio" data-lg="'+l[0]+'"><b class="tr" lang="'+(LCODE[l[0]]||l[0])+'">'+esc(l[1])+'</b><small>'+ruby(LGJ[l[0]]||'')+'</small></button>').join('');
+  $("lgBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ lgSel.value=b.dataset.lg; lgSel.onchange(); });
+  const paintLg=()=>{ $("lgInfo").classList.toggle("on",!!(LANGS.find(l=>l[0]===lang)||[])[2]);
+    $("lgBtns").querySelectorAll("button").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.lg===lang))); };
+  lgSel.onchange=()=>{ lang=lgSel.value; try{localStorage.setItem('jlpt_lang',lang);}catch(e){} paintLg(); updateStats(); };
   paintLg();
 }
-// はじめて開いた時だけ：ことば（Language）を いちばん上で えらんでもらう（はじめは英語なので、えらばずに始めると英語の意味で出る）。えらんだら 次からは せってい の中だけ
+// はじめて開いた時だけ：わたしの言語（Language）を いちばん上で えらんでもらう（はじめは英語なので、えらばずに始めると英語の意味で出る）。えらんだら 次からは せってい の中だけ
 (function(){ const box=$("lgFirst"); let has='x'; try{ has=localStorage.getItem('jlpt_lang'); }catch(e){}
   if(!box||has||LANGS.length<2) return;
-  box.classList.remove("hidden"); $("lgBox").classList.add("hidden");   // えらぶまでは 大きいボタンの箱だけ。えらんだら 同じ場所に えらぶ欄
+  box.classList.remove("hidden");   // えらぶまでは ホームの上に 大きいボタンの箱。えらんだ後は せってい のシートで変える
   $("lgFirstBtns").innerHTML=LANGS.map(l=>'<button data-lg="'+l[0]+'">'+esc(l[1])+'</button>').join('');
-  $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ lgSel.value=b.dataset.lg; lgSel.onchange(); box.classList.add("hidden"); $("lgBox").classList.remove("hidden"); });
+  $("lgFirstBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{ lgSel.value=b.dataset.lg; lgSel.onchange(); box.classList.add("hidden"); });
 })();
 // ことばの おんせい（オン／オフ。級をまたいで同じ設定＝jlpt_voice）。音声が無い級では 設定ごと出さない
 function paintVoice(){ document.body.classList.toggle('novoice',!voiceOn);
   document.querySelectorAll("#vcBtns button").forEach(b=>b.setAttribute("aria-pressed",String((b.dataset.vc==='1')===voiceOn))); }
-if(!HAS_VOICE) $("vcBox").remove();
+if(!HAS_VOICE){ $("vcBox").remove(); $("vcCredit").remove(); }
 else{
   $("vcIc").innerHTML=ic('spk');
   document.querySelectorAll("#vcBtns button").forEach(b=>b.onclick=()=>{ voiceOn=b.dataset.vc==='1'; try{localStorage.setItem('jlpt_voice',voiceOn?"1":"0");}catch(e){} if(!voiceOn&&vAu) vAu.pause(); paintVoice(); });
@@ -1667,16 +1823,24 @@ else{
 paintVoice();
 if(!YOMI_ON) $("qtY").remove();
 if(!CLOZE_ON) $("qtC").remove();
+$("qtMixN").textContent=document.querySelectorAll("#qtBox button").length-1;
+// 問題のしゅるい の例（食べる → eat）に出す、えらんだ言語の「食べる」。無い言語は 英語
+const EXT={en:'eat', ne:'खानु', bn:'খাওয়া', si:'කනවා', my:'စားတယ်', zh:'吃', vi:'ăn'};
 document.querySelectorAll("#qtBox button").forEach(b=>b.onclick=()=>{ qtype=b.dataset.qt; try{localStorage.setItem(KEY+"_qtype",qtype);}catch(e){} updateStats(); });
-const QT_INFO={mix:(YOMI_ON?'いみ・ことば・よみ<ruby>方<rt>かた</rt></ruby>を':'いみ・ことばを')+' まぜて <ruby>出<rt>だ</rt></ruby>します',
-  m:'ことばを <ruby>見<rt>み</rt></ruby>て、いみを えらびます', w:'いみを <ruby>見<rt>み</rt></ruby>て、ことばを えらびます',
-  y:'<ruby>漢字<rt>かんじ</rt></ruby>の ことばを <ruby>見<rt>み</rt></ruby>て、よみ<ruby>方<rt>かた</rt></ruby>を えらびます',
-  c:'<ruby>文<rt>ぶん</rt></ruby>の （　）に <ruby>入<rt>はい</rt></ruby>る ことばを えらびます'};
 
 const catSel=$("catSel");
-function fillCatSel(){ const v=catSel.value;   // スマホの えらぶ所（select）。訳は かっこで付ける
-  catSel.innerHTML='<option value="">すべての ことば（'+esc(catT(''))+'）</option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}">${esc(catName(c))}（${esc(catT(c))}）</option>`).join(""); catSel.value=v; }
-fillCatSel();
+// ことばの グループ：えらんだ値は 見えない select（catSel）が持つ（出題・ことばリストの「これを練習」が 前と同じに読む）。画面には 横にならぶチップで出す
+catSel.innerHTML='<option value=""></option>'+CAT_ORDER.map(c=>`<option value="${esc(c)}"></option>`).join("");
+$("catChips").innerHTML=[""].concat(CAT_ORDER).map(k=>`<button data-cat="${esc(k)}">${k?ruby(CATN[k]||k):'ぜんぶ'}</button>`).join("");
+$("catChips").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
+document.querySelectorAll("#setup .pi").forEach(x=>{ x.innerHTML=ic('play'); });
+// ホームの「この せっていで 出ます」に出す名前
+const QTN={mix:'ぜんぶ まぜる', m:'いみを えらぶ', w:'{日本語|にほんご}を えらぶ', y:'よみ{方|かた}を えらぶ', c:'（　）に {入|い}れる'};
+function kjTag(){
+  if(scope==='all') return '{漢字|かんじ} ぜんぶ'; if(scope==='none') return 'ぜんぶ ひらがな'; if(scope==='n4') return 'N4の {漢字|かんじ}';
+  const s=KJ.steps.find(x=>x.id===scope); return s ? '{漢字|かんじ} '+stepLabel(s)+' まで' : '';
+}
+const DAYR=['','ついたち','ふつか','みっか','よっか','いつか','むいか','なのか','ようか','ここのか','とおか','じゅういちにち','じゅうににち','じゅうさんにち','じゅうよっか','じゅうごにち','じゅうろくにち','じゅうしちにち','じゅうはちにち','じゅうくにち','はつか','にじゅういちにち','にじゅうににち','にじゅうさんにち','にじゅうよっか','にじゅうごにち','にじゅうろくにち','にじゅうしちにち','にじゅうはちにち','にじゅうくにち','さんじゅうにち','さんじゅういちにち'];
 // よみ方の問題は、今のはんいで漢字で出る語だけ
 const canQ = it => (qtype!=='y'||canY(it)) && (qtype!=='c'||!!it.cz);
 function pool(){ const c=catSel.value; return ITEMS.filter(it=>(!c||it.cat===c)&&canQ(it)); }
@@ -1685,30 +1849,58 @@ function updateStats(){
   const seen=p.filter(it=>rec[it.id]);
   const wrong=p.filter(it=>rec[it.id]&&rec[it.id].last===0);
   let ok=0,tot=0; seen.forEach(it=>{ok+=rec[it.id].ok;tot+=rec[it.id].n;});
-  $("sTotal").textContent=p.length; $("sSeen").textContent=seen.length;
-  $("sRate").textContent=tot?Math.round(ok/tot*100)+"%":"–";
-  const MON='<ruby>問<rt>もん</rt></ruby>';
-  $("allCount").innerHTML=p.length+MON;
-  $("wrongCount").innerHTML=wrong.length+MON; $("unseenCount").innerHTML=(p.length-seen.length)+MON;
-  const c=catSel.value;
-  $("catRuby").innerHTML=c?catR(c):ALLH();
-  $("catPill").innerHTML=$("catRuby").innerHTML;
-  $("catList").innerHTML=[""].concat(CAT_ORDER).map(k=>{
-    const n=ITEMS.filter(it=>(!k||it.cat===k)&&canQ(it)).length;
-    return `<button data-cat="${esc(k)}" aria-pressed="${k===c}"><span>${k?catR(k):ALLH()}</span><span class="n">${n}${MON}</span></button>`;
-  }).join("");
-  $("catList").querySelectorAll("button").forEach(b=>b.onclick=()=>{ catSel.value=b.dataset.cat; updateStats(); });
-  $("wrongBtn").disabled=!wrong.length;
-  document.querySelector('[data-mode="unseen"]').disabled=(p.length===seen.length);
-  document.querySelector('[data-mode="random10"]').disabled=!p.length;
-  document.querySelector('[data-mode="all"]').disabled=!p.length;
-  // 漢字のはんい・問題のしゅるい
+  const MON='<ruby>問<rt>もん</rt></ruby>', c=catSel.value;
+  // ことばの グループ（えらんだチップが、下の数字ぜんぶの はんい）
+  $("catChips").querySelectorAll("button").forEach(b=>{ const on=b.dataset.cat===c, was=b.getAttribute("aria-pressed")==="true";
+    b.setAttribute("aria-pressed",String(on)); if(on&&!was&&b.scrollIntoView) b.scrollIntoView({block:'nearest',inline:'nearest'}); });
+  // スタートカード：4つのボタン（おすと すぐ はじまる。0問は おせない）
+  const setB=(m,n)=>{ const b=document.querySelector('#setup [data-mode="'+m+'"]'); b.querySelector('small').innerHTML=n+MON; b.disabled=!n; };
+  setB('wrong',wrong.length); setB('all',p.length); setB('unseen',p.length-seen.length); setB('random10',Math.min(10,p.length));
+  // きょうの10問・試験日（assets/jlpt-study.js が読めた時。読めない時は ランダム10問 として動く）
+  const S=window.__jlptStudy;
+  const stg=it=>{ if(S) return S.stageOf(it.id); const r=rec[it.id]; return !r?0:((typeof r.box==='number'?r.box:(r.last===1?1:0))>=2?2:1); };
+  let sub='';
+  if(S){ const x=S.pickToday();
+    sub = x.due ? 'ふくしゅう '+x.due+MON+(x.fresh?'　あたらしい ことば '+x.fresh+MON:'') : x.fresh ? 'あたらしい ことば '+x.fresh+MON : 'もう<ruby>一度<rt>いちど</rt></ruby> れんしゅう';
+    $("hmToday").disabled=!x.list.length; }
+  else $("hmToday").disabled=!p.length;
+  $("hmTodaySub").innerHTML=sub;
+  const ex=S&&S.exam?S.exam():null;
+  $("hmExam").classList.toggle("hidden",!ex);
+  if(ex){ const a=ex.date.split('-');
+    $("hmExam").innerHTML='<span>JLPTまで あと<b>'+ex.left+'</b><ruby>日<rt>にち</rt></ruby></span><span class="d">'+(+a[1])+'<ruby>月<rt>がつ</rt></ruby><ruby>'+(+a[2])+'日<rt>'+DAYR[+a[2]]+'</rt></ruby></span>'; }
+  // 今週（月〜日）：10問以上 解いた日。「今週」のボタンを おした時だけ 出す
+  const wk=S&&S.week?S.week():null;
+  $("hmWeekBtn").classList.toggle("hidden",!wk);
+  if(wk) $("hmWeek").innerHTML='<div class="hmwd">'+wk.days.map((d,i)=>'<span class="'+(d.on?'on':'')+(d.now?' now':'')+'"><i></i>'+'月火水木金土日'[i]+'</span>').join('')+'</div>'
+    +'<div class="hmwt">'+(wk.done>=wk.goal?'<b class="g"><ruby>今週<rt>こんしゅう</rt></ruby>の もくひょう たっせい！</b>':'<ruby>今週<rt>こんしゅう</rt></ruby> <b>'+wk.done+'</b> / '+wk.goal+'<ruby>日<rt>にち</rt></ruby>')
+    +'<small>（<ruby>1日<rt>いちにち</rt></ruby>に '+wk.line+'<ruby>問<rt>もん</rt></ruby> <ruby>解<rt>と</rt></ruby>いた <ruby>日<rt>ひ</rt></ruby>を かぞえます）</small></div>';
+  // この せっていで 出ます（ならびは せってい と同じ：言語 → 問題のしゅるい → 漢字のはんい → おんせい）
+  const lgN=(LANGS.find(l=>l[0]===lang)||LANGS[0])[1];
+  $("hmTags").innerHTML=[ LANGS.length>1?'<span class="tr" lang="'+(LCODE[lang]||lang)+'">'+esc(lgN)+'</span>':'', '<span>'+ruby(QTN[qtype])+'</span>', '<span>'+ruby(kjTag())+'</span>',
+    HAS_VOICE?'<span>おんせい '+(voiceOn?'オン':'オフ')+'</span>':'' ].join('');
+  // きろくカード
+  const n=[0,0,0]; p.forEach(it=>{ n[stg(it)]++; }); const T=p.length||1;
+  $("hmRecH").innerHTML=(c?ruby(CATN[c]||c):'ぜんぶ')+' '+p.length+'ことばの きろく';
+  $("hmRec").innerHTML='<div class="hmbar" role="img" aria-label="おぼえた '+n[2]+'、れんしゅうちゅう '+n[1]+'、まだ '+n[0]+'"><i class="a" style="width:'+(n[2]/T*100)+'%"></i><i class="b" style="width:'+(n[1]/T*100)+'%"></i></div>'
+    +'<div class="hm3"><div class="a"><span><i></i>おぼえた</span><b>'+n[2]+'</b></div><div class="b"><span><i></i>れんしゅう<ruby>中<rt>ちゅう</rt></ruby></span><b>'+n[1]+'</b></div><div><span><i></i>まだ</span><b>'+n[0]+'</b></div></div>'
+    +'<div class="hmrate"><ruby>正答率<rt>せいとうりつ</rt></ruby> <b>'+(tot?Math.round(ok/tot*100)+'%':'–')+'</b>（<ruby>解<rt>と</rt></ruby>いた '+seen.length+'ことば）</div>';
+  // 漢字のはんい・問題のしゅるい（せってい のシート）
   const withK=ITEMS.filter(it=>it.ks.length), inK=withK.filter(inKanji);
-  $("kjInfo").innerHTML='<ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>で</rt></ruby>る ことば <b>'+inK.length+'</b> / '+withK.length+'　（ほかは ひらがな）';
-  document.querySelectorAll("#qtBox button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.qt===qtype)));
-  $("qtInfo").innerHTML=QT_INFO[qtype];
+  $("kjInfo").innerHTML='<ruby>漢字<rt>かんじ</rt></ruby>で <ruby>出<rt>で</rt></ruby>る ことば <b>'+inK.length+'</b> / '+withK.length;
+  document.querySelectorAll("#qtBox button").forEach(b=>b.setAttribute("aria-checked",String(b.dataset.qt===qtype)));
+  document.querySelectorAll('#qtBox [data-ex="tr"]').forEach(x=>{ x.textContent=EXT[lang]||EXT.en; x.lang=EXT[lang]?(LCODE[lang]||lang):'en'; });
 }
 catSel.onchange=updateStats;
+// きょうの10問（えらび方は assets/jlpt-study.js）
+$("hmToday").onclick=()=>{ const S=window.__jlptStudy; const x=S?S.pickToday().list:shuffle(pool()).slice(0,10); if(x.length) start(x); };
+// せってい のシート
+let setOpen=false;
+function openSet(){ $("setov").classList.remove("hidden"); setOpen=true; $("setIn").scrollTop=0; $("setClose").focus(); }
+function closeSet(){ $("setov").classList.add("hidden"); $("resetConfirm").classList.add("hidden"); setOpen=false; updateStats(); $("hmSetBtn").focus(); }
+$("hmWeekBtn").onclick=()=>{ const o=$("hmWeek").classList.toggle("hidden"); $("hmWeekBtn").setAttribute("aria-expanded",String(!o)); };
+$("hmSetBtn").onclick=openSet; $("setClose").onclick=closeSet; $("setDone").onclick=closeSet;
+$("setov").onclick=e=>{ if(e.target===$("setov")) closeSet(); };
 
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
 
@@ -1915,6 +2107,7 @@ $("shov").onclick=e=>{ if(e.target===$("shov")) closeSheet(); };
 
 /* ---------- キーボード ---------- */
 document.addEventListener("keydown",e=>{
+  if(setOpen){ if(e.key==="Escape") closeSet(); return; }
   if(sheetOpen){ if(e.key==="Escape") closeSheet(); return; }
   if(view!=="quiz") return;
   if(!answered && /^[1-4]$/.test(e.key)){ const b=$("choices").children[+e.key-1]; if(b) b.click(); }
