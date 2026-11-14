@@ -555,6 +555,8 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 }
 /* 文法：グループの名前（〜ば・〜たら など／条件）。スマホのチップは 上の形だけ、PC のリストは 2行 */
 .hmchips .cf{display:inline;} .hmchips .ct{display:none;}
+/* 文法のグループは 名前が長く 数も多いので、スマホ幅では 2段にして 横に動かす（1段だと 左右に長すぎる。きあ 2026-11-15） */
+@media (max-width:640px){ .hmchips.rows2{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);justify-content:start;gap:6px 8px;} .hmchips.rows2 button{padding:0 12px;font-size:14px;} }
 @media (min-width:641px){ #catChips .cf{display:block;font-size:20px;line-height:1.7;} #catChips .ct{display:block;font-size:18px;} #catChips button[aria-pressed="true"] .ct{color:#c9d4e6;} #catChips button{padding:8px 18px;} }
 </style>
 </head>
@@ -566,7 +568,7 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
   <section id="setup">
     <div class="hmgrp" id="hmgrp">
       <div class="hmg1"><div class="hmgl"><ruby>文法<rt>ぶんぽう</rt></ruby>の グループ</div>
-      <div class="hmchips" id="catChips" role="group" aria-label="文法の グループ"></div></div>
+      <div class="hmchips rows2" id="catChips" role="group" aria-label="文法の グループ"></div></div>
     </div>
     <select id="catSel" hidden aria-hidden="true"></select>
     <div id="lgFirst" class="lgfirst hidden"><div class="lgfh">わたしの <ruby>言語<rt>げんご</rt></ruby>を えらんで ください<span>Choose your language</span></div><div class="lgfb" id="lgFirstBtns"></div></div>

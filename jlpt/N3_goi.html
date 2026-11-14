@@ -555,6 +555,8 @@ button,.hd,.bottom,.choice{-webkit-user-select:none;user-select:none;}
 }
 /* 文法：グループの名前（〜ば・〜たら など／条件）。スマホのチップは 上の形だけ、PC のリストは 2行 */
 .hmchips .cf{display:inline;} .hmchips .ct{display:none;}
+/* 文法のグループは 名前が長く 数も多いので、スマホ幅では 2段にして 横に動かす（1段だと 左右に長すぎる。きあ 2026-11-15） */
+@media (max-width:640px){ .hmchips.rows2{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);justify-content:start;gap:6px 8px;} .hmchips.rows2 button{padding:0 12px;font-size:14px;} }
 @media (min-width:641px){ #catChips .cf{display:block;font-size:20px;line-height:1.7;} #catChips .ct{display:block;font-size:18px;} #catChips button[aria-pressed="true"] .ct{color:#c9d4e6;} #catChips button{padding:8px 18px;} }
 
 /* ===== ここから語彙ドリルだけの見た目（上は jlpt/N4_bunpou.html の <style> を組み立て時にそのまま写したもの） ===== */
