@@ -762,7 +762,7 @@
 1049	N	{人|じん}{類|るい}	mankind, humanity	n-human
 1050	N	{酢|す}	vinegar
 1051	S	{推|すい}{薦|せん}	recommendation
-1053	S	{睡|すい}{眠|みん}	sleep	s-sleep
+1053	N	{睡|すい}{眠|みん}	sleep	s-sleep
 1054	N	{数|すう}	number (amount, count)	n-number
 1055	N	{数|すう}{字|じ}	number (figure), numeral	n-number
 1056	N	{姿|すがた}	figure, appearance (of a person)	n-appearance

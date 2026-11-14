@@ -185,7 +185,7 @@
 183	S	{食|しょく}{事|じ}	meal
 184	S	{心|しん}{配|ぱい}	worry
 185	S	{準|じゅん}{備|び}	preparation	prep
-186	S	{水|すい}{泳|えい}	swimming
+186	N	{水|すい}{泳|えい}	swimming
 187	S	{生|せい}{活|かつ}	life, daily living	life
 188	S	{生|せい}{産|さん}	production
 189	S	{説|せつ}{明|めい}	explanation
@@ -194,7 +194,7 @@
 192	S	{卒|そつ}{業|ぎょう}	graduation
 193	S	{退|たい}{院|いん}	leaving the hospital	hosp
 194	S	{誕|たん}{生|じょう}	birth	birth
-195	S	{暖|だん}{房|ぼう}	heating	aircon
+195	N	{暖|だん}{房|ぼう}	heating	aircon
 196	S	チェック	check
 197	S	{遅|ち}{刻|こく}	being late	late
 198	S	{注|ちゅう}{意|い}	caution, attention; warning
@@ -221,7 +221,7 @@
 219	S	{予|よ}{約|やく}	reservation	appoint
 220	S	{利|り}{用|よう}	use
 221	N	{留|る}{守|す}	being away from home
-222	S	{冷|れい}{房|ぼう}	air conditioning (cooling)	aircon
+222	N	{冷|れい}{房|ぼう}	air conditioning (cooling)	aircon
 223	S	{連|れん}{絡|らく}	contact, getting in touch
 224	I	{浅|あさ}い	shallow
 225	I	{美|うつく}しい	beautiful	great
