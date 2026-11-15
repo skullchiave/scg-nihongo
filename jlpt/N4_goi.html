@@ -1868,18 +1868,21 @@ const trH = it => '<span class="tr" lang="'+(it.m[lang]?(LCODE[lang]||lang):'en'
 
 /* ---------- 習った漢字（どこまで漢字で出すか） ---------- */
 const KJ = window.JLPT_KANJI || {base:'',n4:'',steps:[]};
+// 級でえらぶ はんい（N4まで・N3まで・N2まで）。そのページの級までを出す（N3 のページ＝N4・N3、N2 から上＝N4・N3・N2）。きあ 2026-11-15
+const KLV = ['n4','n3','n2'].filter((v,i)=>KJ[v] && i<=['n4','n3','n2','n1'].indexOf('n4'));
+const KLVN = v => v.toUpperCase();
 // N4 は「N4の漢字ぜんぶ」が最初の設定（えらんだ範囲は jlpt_kanji_scope）。N3 から上は級ごとに別に覚え、最初は「ぜんぶ漢字」
 // （N4 で「初級◯課まで」をえらんだ学生が N3 を開くと、ほとんどの語が ひらがなになってしまうため）
 const SCOPE_KEY='n4'==='n4' ? 'jlpt_kanji_scope' : 'jlpt_kanji_scope_n4';
-const SCOPE_DEF='n4'==='n4' ? 'n4' : 'all';
+const SCOPE_DEF=KLV.includes('n4') ? 'n4' : 'all';   // 最初は そのページの級まで（N3＝N3 まで、N2＝N2 まで。よみ方に出る範囲を級に合わせる。きあ 2026-11-15）。表に無い級（N1）は ぜんぶ
 let scope=SCOPE_DEF;
 try{ scope=localStorage.getItem(SCOPE_KEY)||SCOPE_DEF; }catch(e){}
-if(!(scope==='n4'||scope==='all'||scope==='none'||KJ.steps.some(s=>s.id===scope))) scope=SCOPE_DEF;
+if(!(KLV.includes(scope)||scope==='all'||scope==='none'||KJ.steps.some(s=>s.id===scope))) scope=SCOPE_DEF;
 let KNOWN=new Set();
 function buildKnown(){
   KNOWN=new Set();
   if(scope==='none'||scope==='all') return;
-  if(scope==='n4'){ (KJ.n4+KJ.base).split('').forEach(k=>KNOWN.add(k)); return; }
+  if(KLV.includes(scope)){ (KLV.slice(0,KLV.indexOf(scope)+1).map(v=>KJ[v]).join('')+KJ.base).split('').forEach(k=>KNOWN.add(k)); return; }
   KJ.base.split('').forEach(k=>KNOWN.add(k));
   for(const s of KJ.steps){ s.k.split('').forEach(k=>KNOWN.add(k)); if(s.id===scope) break; }
 }
@@ -1930,7 +1933,7 @@ function whereKanji(k){   // その字をどこで習うか
   const s=KJ.steps.find(x=>x.k.includes(k));
   if(s) return ruby(stepLabel(s));
   if(KJ.base.includes(k)) return 'すうじ など';
-  if(KJ.n4.includes(k)) return 'N4の <ruby>漢字<rt>かんじ</rt></ruby>';
+  for(const v of ['n4','n3','n2']) if((KJ[v]||'').includes(k)) return KLVN(v)+'の <ruby>漢字<rt>かんじ</rt></ruby>';
   return '―';
 }
 
@@ -2012,7 +2015,7 @@ const kjSel=$("kjSel");
     h+='<option value="'+s.id+'">'+esc(s.b+' '+plain(s.l))+' まで</option>';
   });
   if(book) h+='</optgroup>';
-  h+='<optgroup label="そのほか"><option value="none">かんじを つかわない</option><option value="n4">N4の 漢字まで</option><option value="all">漢字を 全部 使う</option></optgroup>';
+  h+='<optgroup label="そのほか"><option value="none">かんじを つかわない</option>'+KLV.map(v=>'<option value="'+v+'">'+KLVN(v)+'の 漢字まで</option>').join('')+'<option value="all">漢字を 全部 使う</option></optgroup>';
   kjSel.innerHTML=h; kjSel.value=scope;
 })();
 kjSel.onchange=()=>{ scope=kjSel.value; try{localStorage.setItem(SCOPE_KEY,scope);}catch(e){} buildKnown(); updateStats(); };
@@ -2085,7 +2088,7 @@ document.querySelectorAll("#setup .pi").forEach(x=>{ x.innerHTML=ic('play'); });
 // ホームの「この せっていで 出ます」に出す名前
 const QTN={mix:'ぜんぶ まぜる', m:'いみを えらぶ', w:'{日本語|にほんご}を えらぶ', y:'よみ{方|かた}を えらぶ', c:'（　）に {入|い}れる'};
 function kjTag(){
-  if(scope==='all') return '{漢字|かんじ}を {全部|ぜんぶ} {使|つか}う'; if(scope==='none') return 'かんじを つかわない'; if(scope==='n4') return 'N4の {漢字|かんじ}まで';
+  if(scope==='all') return '{漢字|かんじ}を {全部|ぜんぶ} {使|つか}う'; if(scope==='none') return 'かんじを つかわない'; if(KLV.includes(scope)) return KLVN(scope)+'の {漢字|かんじ}まで';
   const s=KJ.steps.find(x=>x.id===scope); return s ? '{漢字|かんじ} '+stepLabel(s)+' まで' : '';
 }
 const DAYR=['','ついたち','ふつか','みっか','よっか','いつか','むいか','なのか','ようか','ここのか','とおか','じゅういちにち','じゅうににち','じゅうさんにち','じゅうよっか','じゅうごにち','じゅうろくにち','じゅうしちにち','じゅうはちにち','じゅうくにち','はつか','にじゅういちにち','にじゅうににち','にじゅうさんにち','にじゅうよっか','にじゅうごにち','にじゅうろくにち','にじゅうしちにち','にじゅうはちにち','にじゅうくにち','さんじゅうにち','さんじゅういちにち'];
