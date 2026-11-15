@@ -27,11 +27,11 @@
 240	1	thăm bệnh
 240	2	bị (thiên tai) ập đến
 242	1	được may mắn có (thời tiết đẹp)
-242	2	giàu có, được ưu đãi (thiên nhiên)
+242	2	được ưu đãi, phong phú (thiên nhiên)
 243	1	đi vòng quanh, tham quan
 243	2	xung quanh, về việc (tranh cãi)
 272	1	ý thức, chú ý đến
-272	2	ý thức, tri giác (sự tỉnh táo)
+272	2	sự tỉnh táo, ý thức
 294	1	vận dụng, tận dụng
 294	2	chia động từ
 367	1	vứt bỏ, thanh lý
@@ -48,11 +48,11 @@
 502	1	dẫn dắt, hướng dẫn
 502	2	dẫn trước (về điểm số)
 594	1	mới mẻ
-594	2	mới, một lần nữa
+594	2	mới, thêm mới
 602	1	chính, chủ yếu
 602	2	chủ yếu, phần lớn
 630	1	may mắn thay
-630	2	mừng, biết ơn (nếu ... thì tôi rất mừng)
+630	2	rất biết ơn (nếu…)
 653	1	tồi tàn, kém chất lượng
 653	2	coi thường, lãng phí (đối xử cẩu thả)
 691	1	đỡ hơn
@@ -79,7 +79,7 @@
 989	2	ơn (trả ơn)
 1021	1	ôm, bế
 1021	2	mang (vấn đề), đang gánh
-1034	1	trong khả năng (có thể)
+1034	1	hết mức có thể
 1034	2	theo như, trong phạm vi (tôi biết)
 1071	1	sự sôi động, sức sống
 1071	2	sôi động, nhộn nhịp
@@ -97,16 +97,16 @@
 1263	2	bày tỏ kính trọng
 1266	1	nhân dịp, bước ngoặt
 1296	1	cảm giác có người, sự hiện diện
-1296	2	dấu hiệu, triệu chứng
+1296	2	dấu hiệu, có vẻ
 1305	1	phỏng đoán, đoán chừng
 1305	2	không hề đoán ra
-1308	1	hết sức, liều mạng
+1308	1	hết sức, cật lực
 1308	2	hết mình, nỗ lực
 1350	1	chính thức
 1350	2	công thức (toán học)
 1352	1	công cộng (điện thoại)
 1352	2	công cộng (nhà vệ sinh)
-1379	1	manh mối, có ý niệm (nơi để quên)
+1379	1	manh mối, nghĩ ra được (chỗ)
 1379	2	đầu mối, nghi ngờ (ai làm)
 1407	1	hợp lý
 1407	2	hợp lý hóa, tinh giản
@@ -117,7 +117,7 @@
 1451	1	không sao, không trở ngại
 1451	2	nếu không phiền, nếu tiện
 1461	1	sự cản trở (làm vướng)
-1461	2	trở ngại (không cản trở)
+1461	2	sự cản trở, trở ngại
 1536	1	chủ nghĩa cá nhân
 1536	2	chủ nghĩa tư bản
 1548	1	chướng ngại, rào cản
@@ -135,12 +135,12 @@
 1872	2	chẳng qua là
 1884	1	trật bánh (tàu)
 1884	2	lạc đề, nói lan man
-1907	1	đều đặn, từng bước
+1907	1	tiến triển đều đặn
 1907	2	từng bước một, chuẩn bị dần
 1917	1	dở dang, nửa chừng
 2002	1	phía gần mình
 2002	2	ngay trước (khi tới)
-2065	1	phóng, thả bay
+2065	1	thả bay, làm bay
 2065	2	bỏ qua, nhảy cóc
 2065	3	chạy nhanh, phóng
 2070	1	cùng với, theo đà
@@ -203,7 +203,7 @@
 2425	1	học được, nắm vững (kỹ năng)
 2425	2	tự bảo vệ mình
 2427	1	tiễn, đưa tiễn
-2427	2	hoãn lại, bỏ qua
+2427	2	hoãn lại, hủy bỏ
 2451	1	dưới (tuổi)
 2451	2	chưa đến (số tiền)
 2466	1	tự ý, không xin phép
@@ -219,8 +219,8 @@
 2525	1	than phiền, phàn nàn
 2525	2	không có gì để chê
 2553	1	thong dong, ung dung
-2584	1	mánh, khéo tay
-2584	2	vụng về, thiếu khéo léo
+2584	1	bí quyết, biết cách làm việc
+2584	2	bí quyết, biết cách làm việc
 2591	1	thừa thãi, không cần thiết
 2591	2	càng, hơn nữa
 2594	1	thôi đi, dừng lại
@@ -237,7 +237,7 @@
 2850	2	ngã gục đột ngột
 2860	1	thanh đạm, nhẹ vị
 2860	2	dễ dàng, nhẹ nhàng
-2869	1	khá ngon, ăn được
+2869	1	khá ngon, ngon đấy
 2869	2	ổn, khả thi
 2885	1	nhờ có
 2885	2	nhờ ơn (trời), cảm ơn
@@ -245,7 +245,7 @@
 2912	2	xin hãy hết sức (giữ gìn)
 2925	1	ở lì (trong nhà)
 2925	2	chứa đựng (tình cảm), chân thành
-2926	1	lăn lóc, lăn lông lốc
+2926	1	lăn lông lốc
 2926	2	thay đổi xoành xoạch
 2942	1	hết, kết thúc
 2942	2	cuối cùng, rốt cuộc
@@ -281,7 +281,7 @@
 3067	1	có lẽ
 3067	2	biết đâu, có thể
 3068	1	có khả năng là
-3068	2	nếu có thể thì có lẽ
+3068	2	có lẽ, có khả năng là
 3081	1	đáng làm, có ý nghĩa
 3081	2	đáng giá, đáng làm
 3301	1	hỏi (xin ý kiến)
