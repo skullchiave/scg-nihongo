@@ -1724,7 +1724,7 @@
 2101	I	{何|なに}{気|げ}ない	casual; unintentional
 2102	F	{何|なに}しろ	anyway; in any case	e-anyway
 2103	N	{何|なに}{々|なに}	such and such; what (is it)?
-2104	F	{何|なに}{分|ぶん}	please (polite request); after all	e-please
+2104	F	{何|なに}{分|ぶん}	after all; anyway (giving a reason)
 2109	V	{鳴|な}る	to ring; to sound
 2110	V	{成|な}る	to become (written style); to consist of
 2111	N	{慣|な}れ	getting used to something
