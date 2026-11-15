@@ -883,3 +883,94 @@
 883	K	ウイスキー	whiskey
 884	K	トンネル	tunnel
 885	N	トラ	tiger
+886	P	{気|き}を{付|つ}ける	to be careful; to pay attention
+887	V	{塗|ぬ}る	to paint; to spread on
+888	V	{引|ひ}き{出|だ}す	to pull out; to withdraw (money)
+889	V	{混|ま}ぜる	to mix; to stir
+890	S	おすすめ	recommendation
+891	S	リサイクル	recycling
+892	N	お{手|て}{洗|あら}い	restroom, toilet
+893	N	{支|し}{払|はら}い	payment
+894	I	{狭|せま}い	narrow, small (space)
+895	N	{窓|まど}{口|ぐち}	service window, counter
+896	S	{挨|あい}{拶|さつ}	greeting
+897	V	{祈|いの}る	to pray, to wish
+898	S	{打|う}ち{合|あ}わせ	meeting to discuss plans
+899	N	{売|う}り{上|あ}げ	sales (amount of money)
+900	N	{押|お}し{入|い}れ	closet (for futons)
+901	N	おじさん	middle-aged man
+902	G	お{邪|じゃ}{魔|ま}します	Excuse me for coming in
+903	G	お{世|せ}{話|わ}になりました	Thank you for your help
+904	N	おばさん	middle-aged woman
+905	N	{親|おや}	parent
+906	N	{改|かい}{札|さつ}	ticket gate
+907	N	{神|かみ}{様|さま}	god
+908	N	{学|がく}{年|ねん}	school year, grade
+909	N	{楽|がっ}{器|き}	musical instrument
+910	N	{着|き}{替|が}え	change of clothes
+911	N	{敬|けい}{語|ご}	honorific language
+912	N	{主|しゅ}{人|じん}	(my) husband; master
+913	N	{小|しょう}{学|がく}{生|せい}	elementary school student
+914	S	{勝|しょう}{負|ぶ}	match; contest
+915	N	{食|しょっ}{器|き}	tableware
+916	N	{地|じ}{面|めん}	ground
+917	S	{受|じゅ}{験|けん}	taking an exam
+918	N	{正|せい}{社|しゃ}{員|いん}	full-time employee
+919	N	{咳|せき}	cough
+920	N	{倉|そう}{庫|こ}	warehouse
+921	N	{送|そう}{料|りょう}	shipping fee
+922	N	{竹|たけ}	bamboo
+923	N	{助|たす}け	help, aid
+924	V	{積|つ}もる	to pile up (snow, dust)
+925	N	{定|てい}{期|き}{券|けん}	commuter pass
+926	P	{手|て}に{入|い}れる	to obtain, to get
+927	N	{電|でん}{球|きゅう}	light bulb
+928	N	{電|でん}{池|ち}	battery
+929	V	{亡|な}くす	to lose (a family member by death)
+930	N	{母|はは}{親|おや}	mother
+931	V	{腫|は}れる	to swell
+932	V	{引|ひ}く	to subtract; to pull
+933	N	{引|ひ}っ{越|こ}し	moving (to a new home)
+934	N	{広|ひろ}さ	size; area; width
+935	N	{紫|むらさき}	purple
+936	N	{目|め}{上|うえ}	superiors; elders
+937	N	{免|めん}{許|きょ}	license
+938	V	{求|もと}める	to seek; to request
+939	N	{門|もん}	gate
+940	N	やけど	burn (injury)
+941	N	{有|ゆう}{料|りょう}	paid (not free)
+942	V	{別|わか}れる	to part from; to break up
+943	N	{和|わ}{服|ふく}	Japanese clothes
+944	K	アイドル	idol (pop star)
+945	K	エプロン	apron
+946	K	キャップ	cap (hat or lid)
+947	K	サイレン	siren
+948	K	ストーリー	story
+949	K	ネットワーク	network
+950	K	プリント	handout (printed sheet)
+951	K	プログラム	program
+952	K	ペンキ	paint
+953	K	ボーナス	bonus
+954	K	マンション	apartment (condominium)
+955	K	メーカー	manufacturer
+956	K	モデル	model (fashion or example)
+957	K	ライター	lighter
+958	K	レース	race (competition)
+959	N	うどん	udon noodles
+960	I	かっこいい	cool / good-looking
+961	N	くしゃみ	sneeze
+962	G	ごちそうさま	thank you for the meal
+963	G	{失|しつ}{礼|れい}しました	excuse me / I'm sorry
+964	V	なさる	to do (honorific)
+965	F	やっぱり	as expected / after all
+966	J	〜{以|い}{上|じょう}	〜 or more / over 〜
+967	J	〜{以|い}{内|ない}	within 〜
+968	J	〜{室|しつ}	~ room
+969	J	〜{社|しゃ}	~ company
+970	J	〜{足|そく}	counter for pairs of shoes
+971	J	〜{頭|とう}	counter for large animals
+972	J	〜{度|ど}	~ degrees; ~ level
+973	J	〜{名|めい}	counter for people
+974	V	{載|の}せる	to put on; to publish
+975	P	{身|み}につける	to acquire (a skill); to put on (clothes)
+976	N	あご	chin; jaw

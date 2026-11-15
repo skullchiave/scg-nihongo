@@ -886,3 +886,95 @@
 883	rượu whisky
 884	đường hầm
 885	hổ
+
+886	cẩn thận; chú ý
+887	sơn; bôi
+888	rút ra; rút (tiền)
+889	trộn; khuấy
+890	gợi ý (món nên chọn)
+891	tái chế
+892	nhà vệ sinh (nói lịch sự)
+893	sự thanh toán
+894	hẹp; chật
+895	quầy giao dịch, cửa sổ phục vụ
+896	lời chào hỏi
+897	cầu nguyện, cầu mong
+898	cuộc họp bàn trước
+899	doanh thu (số tiền bán được)
+900	tủ âm tường (để chăn nệm)
+901	chú/bác (người đàn ông trung niên)
+902	Xin phép làm phiền (khi vào nhà)
+903	Cảm ơn đã giúp đỡ tôi
+904	cô/dì (người phụ nữ trung niên)
+905	bố mẹ, phụ huynh
+906	cổng soát vé
+907	thần linh, ông trời
+908	năm học, khối lớp
+909	nhạc cụ
+910	quần áo thay
+911	kính ngữ
+912	chồng (của tôi); ông chủ
+913	học sinh tiểu học
+914	trận đấu, cuộc thi đấu
+915	bát đĩa, chén bát
+916	mặt đất
+917	dự thi
+918	nhân viên chính thức
+919	ho
+920	kho
+921	phí gửi hàng
+922	tre
+923	sự giúp đỡ
+924	tích tụ (tuyết, bụi)
+925	vé tháng
+926	có được, giành được
+927	bóng đèn
+928	pin
+929	mất (người thân qua đời)
+930	mẹ
+931	sưng
+932	trừ; kéo
+933	chuyển nhà
+934	độ rộng
+935	màu tím
+936	bề trên, người bậc trên
+937	bằng lái, giấy phép
+938	tìm kiếm; yêu cầu
+939	cổng
+940	vết bỏng
+941	mất phí
+942	chia tay; chia ly
+943	trang phục Nhật
+944	thần tượng (ca sĩ nổi tiếng)
+945	tạp dề
+946	mũ lưỡi trai; nắp (chai)
+947	còi báo động
+948	câu chuyện
+949	mạng lưới
+950	tài liệu phát tay (in ra)
+951	chương trình
+952	sơn
+953	tiền thưởng
+954	chung cư
+955	nhà sản xuất
+956	người mẫu; mẫu
+957	bật lửa
+958	cuộc đua
+959	mì udon
+960	ngầu; đẹp trai
+961	cái hắt hơi
+962	cảm ơn vì bữa ăn
+963	xin lỗi; thất lễ rồi
+964	làm (kính ngữ)
+965	quả nhiên; rốt cuộc
+966	… trở lên
+967	trong vòng …
+968	phòng …
+969	công ty …
+970	(đếm đôi giày, tất)
+971	(đếm gia súc lớn)
+972	… độ; mức …
+973	(đếm người)
+974	đặt lên; đăng (báo)
+975	học được (kỹ năng); mặc, đeo
+976	cằm

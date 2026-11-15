@@ -1287,3 +1287,313 @@
 1828	sản xuất tại …
 1830	… trận thua
 1832	hàng/cột thứ …
+
+1833	bắt đầu nói; đề xuất
+1834	bắt nạt
+1835	gật đầu
+1836	bán hết
+1837	mặc quần áo cho (ai)
+1838	dính vào; bám vào
+1839	đâm; chích, đốt
+1840	dịch (cái gì) đi một chút; xếp lệch (giờ)
+1841	cạo
+1842	được truyền lại; lan truyền
+1843	tiếp thu; đưa vào sử dụng
+1844	bị lật; lộn ngược
+1845	hẹn gặp (đúng giờ và nơi)
+1846	bắt chước
+1847	ngước nhìn
+1848	nhìn xuống
+1849	nhắm tới; hướng tới
+1850	gọi ra; triệu tập
+1851	tình yêu; tình thương
+1852	xem thi đấu
+1853	để ý; lo lắng (về điều gì)
+1854	kiểm soát
+1855	tuyển dụng; thông qua
+1856	tập hợp (tại một chỗ)
+1857	về sớm
+1858	thấy thỏa đáng; tâm phục
+1859	vào công ty
+1860	phát triển (trưởng thành)
+1861	bán ra thị trường
+1862	phát minh
+1863	ngủ trưa
+1864	đóng cửa tiệm
+1865	massage
+1866	dự đoán
+1867	đáng ngờ
+1868	sự nghi ngờ
+1869	vĩ đại; đáng nể (địa vị cao)
+1870	kém ngầu; không bảnh
+1871	tiền tiêu vặt
+1872	thích và ghét; kén chọn
+1873	gian xảo; không công bằng
+1874	hoài niệm; nhớ về
+1875	phiền phức
+1876	chung chung; phổ biến
+1877	thoải mái
+1878	tồi tệ nhất
+1879	thiệt; bất lợi
+1880	có lợi, đáng giá
+1881	không cần thiết
+1882	riêng tư
+1883	chỉ một chút, ít ỏi
+1884	môn khoa học tự nhiên (môn học)
+1885	điều ác, cái ác
+1886	đương nhiên, lẽ tất nhiên
+1887	phần còn lại, phần thừa
+1888	bắt đầu nói, nói dở chừng
+1889	lúc đi và lúc về
+1890	từ sau đó trở đi, kể từ
+1891	sau này, từ nay về sau
+1892	ý định, ý chí
+1893	đi khám bác sĩ
+1894	việc gấp, sự vội vã
+1895	tạm thời, phòng khi
+1896	đồng loạt
+1897	ghét, không muốn
+1898	phi hành gia
+1899	cướp đoạt, chiếm lấy
+1900	phản bội
+1901	video, cảnh quay
+1902	vẽ, miêu tả
+1903	chất lỏng
+1904	màu vẽ, thuốc màu
+1905	đuổi ra, tống đi
+1906	công chúa
+1907	vạch qua đường cho người đi bộ
+1908	mưa to
+1909	che phủ, bao phủ
+1910	phần thêm, ly thêm (ăn/uống thêm lần nữa)
+1911	tặng (quà)
+1912	Chúc bạn mạnh khỏe
+1913	Xin phép đi trước
+1914	sợ, e sợ
+1915	đến thăm, ghé thăm
+1916	Xin lỗi đã để bạn chờ
+1917	Xin vui lòng chờ
+1918	ngày nghỉ, kỳ nghỉ
+1919	ngón cái
+1920	bơi lội
+1921	tranh (hội họa)
+1922	số lần
+1923	viết lại
+1924	sự cho mượn, cho vay
+1925	thanh kiếm
+1926	cổ phiếu
+1927	thay vào đó, thay vì
+1928	vùng Kansai (quanh Osaka)
+1929	vùng Kanto (quanh Tokyo)
+1930	khoa (của đại học)
+1931	hình ảnh (trên màn hình)
+1932	cơ quan, tổ chức
+1933	bị tổn thương, bị hỏng
+1934	làm tổn thương, làm hỏng
+1935	dịp, cái cớ
+1936	thích, hài lòng
+1937	hết (hàng, đồ)
+1938	sự kiện, lễ hội
+1939	cỏ
+1940	môi
+1941	sự khéo léo, ý tưởng hay
+1942	cảnh báo, báo động
+1943	tính từ (thuật ngữ ngữ pháp)
+1944	người bị thương
+1945	huyết áp
+1946	khám sức khỏe
+1947	đào tạo, tập huấn
+1948	quyền (quyền hợp pháp)
+1949	ngôn ngữ
+1950	công nghiệp
+1951	cảnh tượng
+1952	thay thế; đổi người
+1953	phương tiện giao thông
+1954	công bố
+1955	lá đỏ mùa thu
+1956	hiệu suất
+1957	công lập
+1958	ngón út
+1959	từ vựng
+1960	xé rách
+1961	tác giả
+1962	soạn thảo (tài liệu, kế hoạch)
+1963	chống đỡ, hỗ trợ
+1964	lời mời rủ
+1965	hình tam giác
+1966	số học
+1967	nơi sản xuất
+1968	không còn cách nào khác
+1969	bốn mùa
+1970	chi nhánh công ty
+1971	chất lượng
+1972	kết thúc
+1973	ngày lễ quốc gia (ngày nghỉ)
+1974	chủ ngữ
+1975	thắng bại
+1976	lính cứu hỏa
+1977	nghề nghiệp, việc làm
+1978	nhân viên
+1979	nơi làm việc
+1980	người mới bắt đầu
+1981	chẩn đoán
+1982	đêm khuya
+1983	nam châm
+1984	nhà riêng
+1985	điểm yếu
+1986	súng
+1987	lớp học thêm
+1988	thứ tự
+1989	thước kẻ
+1990	trên dưới
+1991	lên xe, lên tàu
+1992	nhân sự
+1993	nhân vật; con người
+1994	tổ (chim, côn trùng)
+1995	phỏng đoán, ước tính
+1996	cứu
+1997	đi lướt qua nhau; lỡ mất nhau
+1998	chính nghĩa
+1999	tính năng
+2000	tổ tiên, ông cha
+2001	chuyên gia
+2002	trước sau; khoảng (thời gian)
+2003	đáy
+2004	chất liệu
+2005	con voi
+2006	biết; nghĩ (khiêm nhường)
+2007	thể lực
+2008	chịu đựng
+2009	thác nước
+2010	phép cộng
+2011	giúp đỡ lẫn nhau
+2012	lời nhờ vả
+2013	từ
+2014	nhược điểm
+2015	khá, tương đối nhiều
+2016	máu
+2017	trái đất nóng lên
+2018	ưu điểm
+2019	ngay sau khi
+2020	tạo ra
+2021	số người quy định
+2022	sự giảm sút, hạ thấp
+2023	sự dừng lại, đình chỉ
+2024	sự dừng xe (tàu, ô tô)
+2025	được đến tay, có trong tay
+2026	công sức, thời gian
+2027	ví dụ điển hình
+2028	sự ra đón
+2029	sự hỏi thông tin
+2030	hỏi thông tin, liên hệ hỏi
+2031	tháp
+2032	đông tây
+2033	tình cờ đi ngang qua
+2034	sắp xếp chỉnh tề, chuẩn bị
+2035	lao ra, nhảy ra
+2036	đi bộ
+2037	xử lý, đối đãi
+2038	nỗ lực giải quyết
+2039	loại bỏ
+2040	bạn cùng lớp
+2041	động tác
+2042	giống nhau, tương tự
+2043	ngón giữa
+2044	điều bí ẩn
+2045	chéo, xiên
+2046	reo, kêu vang
+2047	trở thành (văn viết); gồm có
+2048	sự quen dần, sự quen tay
+2049	không hiểu sao; hơi
+2050	…làm sao! (văn nói); (nói) gì cơ
+2051	bằng mọi giá
+2052	cầu vồng
+2053	hàng giả
+2054	rụng ra, tuột ra (tự nó)
+2055	não
+2056	lỡ mất ga xuống
+2057	động viên
+2058	bắt chuyện
+2059	đánh răng; kem đánh răng
+2060	đi về trong ngày
+2061	phép trừ
+2062	bị lật ngược; ngã nhào
+2063	tác giả (người viết bài)
+2064	ban ngày (đối lập ban đêm)
+2065	mỹ thuật
+2066	bóng bay
+2067	xui xẻo, kém may mắn
+2068	hàng lỗi
+2069	chạm nhẹ; đề cập đến
+2070	đài phun nước
+2071	phương hướng (bắc, nam...)
+2072	nghiêm túc (không đùa)
+2073	hôm nay (trang trọng)
+2074	điểm tối đa
+2075	đồ bơi
+2076	họ
+2077	thuốc nhỏ mắt
+2078	vai (diễn); chức vụ
+2079	động lực, hứng thú làm
+2080	công viên giải trí
+2081	tình bạn
+2082	trường mẫu giáo
+2083	băng qua
+2084	con dâu; cô dâu
+2085	sơ yếu lý lịch
+2086	ghi âm
+2087	lý do; ý nghĩa
+2088	phòng kiểu Nhật
+2089	kiểu Nhật
+2090	lớp hội thảo (đại học)
+2091	đồng hồ hẹn giờ
+2092	bài tây
+2093	người vô gia cư
+2094	chạy ma-ra-tông
+2095	phục hồi chức năng
+2096	áo mưa
+2097	chụp X-quang
+2098	vốn dĩ; từ đầu
+2099	trán
+2100	tôi mới là người nên nói vậy; cũng vậy nhé
+2101	có ai ở nhà không? (khi vào nhà)
+2102	hết cách; vô vọng
+2103	oẳn tù tì
+2104	thoải mái; gọn gàng rõ ràng
+2105	xin lỗi (vì làm phiền)
+2106	nhắc mới nhớ
+2107	phòng đôi hai giường
+2108	nếu có thể
+2109	xin làm ơn; mong sao
+2110	không hiểu sao
+2111	vu vơ; không vì lý do cụ thể
+2112	mềm xốp
+2113	tơi tả; rách nát
+2114	nếu như (nhấn mạnh)
+2115	ít lâu sau; rồi thì
+2116	nguy hiểm; tệ quá (tiếng lóng)
+2117	né; tránh
+2118	…hóa
+2119	phi …; không …
+2120	hằng … (hằng ngày)
+2121	… tới; … sắp tới
+2122	tiền …; lệ phí …
+2123	năng lực …; sức …
+2124	kiểu Nhật …
+2125	bắn (súng)
+2126	rách; nứt toác
+2127	dây thừng
+2128	lừa
+2129	nhìn trộm; ngó
+2130	được đăng (trên báo)
+2131	ăn thoải mái không giới hạn
+2132	uống thoải mái không giới hạn
+2133	người khỏe (sức lực)
+2134	đã qua sử dụng
+2135	trẻ con, như con nít
+2136	ăn quá nhiều
+2137	uống quá nhiều
+2138	dành cho trẻ em
+2139	dùng hết
+2140	chán nản, suy sụp
+2141	cái ngáp
