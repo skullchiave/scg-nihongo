@@ -1596,3 +1596,70 @@
 2139	dùng hết
 2140	chán nản, suy sụp
 2141	cái ngáp
+
+2142	dính líu, liên quan đến
+2143	gọi điện lại
+2144	làm cứng lại / củng cố
+2145	thần
+2146	rỗng, trống không
+2147	trực giác, linh cảm
+2148	hiểu lầm
+2149	đồ hộp
+2150	nâng ly chúc mừng
+2151	chăm sóc người bệnh
+2152	ký hiệu
+2153	nền tảng, cơ bản
+2154	quy mô
+2155	nghi vấn, câu hỏi
+2156	cơn đói, bụng đói
+2157	sự lặp lại
+2158	cảnh sát viên
+2159	xu hướng
+2160	dấu hiệu, cảm giác có người
+2161	nghệ sĩ
+2162	xuống xe (tàu, xe buýt)
+2163	cao cấp
+2164	công cộng
+2165	chính thức; công thức
+2166	công bằng
+2167	cấu trúc
+2168	hàng sản xuất trong nước
+2169	đang giữa lúc
+2170	hàng tồn kho
+2171	một cách tự nhiên
+2172	tư tưởng
+2173	họ tên
+2174	tìm việc làm
+2175	đi làm (đến nơi làm việc)
+2176	tiêu hóa
+2177	thời khóa biểu
+2178	bản thân
+2179	trình độ nâng cao
+2180	trình độ, mức
+2181	tính chất
+2182	đám tang
+2183	khí quyển
+2184	đối lập, xung đột
+2185	địa danh
+2186	trung ương, chính giữa
+2187	điều chỉnh
+2188	bổ sung
+2189	lối đi
+2190	móng (tay, chân)
+2191	giá niêm yết
+2192	mất điện
+2193	cổ tay
+2194	đặc biệt, đặc thù
+2195	sự khai báo (với cơ quan)
+2196	nhà nông, hộ nông dân
+2197	sự chuyển tàu, xe
+2198	tiêu chuẩn
+2199	nét mặt, biểu cảm
+2200	đồ thật
+2201	vị thành niên
+2202	diện mạo, trông như thế nào
+2203	nhà kho
+2204	nguyên bản; độc đáo
+2205	bị đổ (tự đổ)
+2206	cười tươi
+2207	sáng bóng; sạch bong

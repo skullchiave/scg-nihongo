@@ -25,3 +25,6 @@ logs/
 # 実データ・受け渡しの置き場（絶対に追跡しない）
 _scratch/
 scripts/__pycache__/
+
+# Google ドライブが各フォルダに作るファイル
+desktop.ini

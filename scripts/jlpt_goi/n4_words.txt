@@ -974,3 +974,20 @@
 974	V	{載|の}せる	to put on; to publish
 975	P	{身|み}につける	to acquire (a skill); to put on (clothes)
 976	N	あご	chin; jaw
+977	N	{落|お}とし{物|もの}	lost item
+978	N	{科|か}{学|がく}{者|しゃ}	scientist
+979	N	{看|かん}{板|ばん}	sign, signboard
+980	N	{行|ぎょう}{列|れつ}	line of people, queue
+981	N	{銀|ぎん}{行|こう}{口|こう}{座|ざ}	bank account
+982	N	{初|しょ}{級|きゅう}	beginner level
+983	N	{新|しん}{入|にゅう}{生|せい}	new student
+984	N	{乗|じょう}{車|しゃ}{券|けん}	ticket (for riding)
+985	N	{通|つう}{帳|ちょう}	bankbook
+986	N	{津|つ}{波|なみ}	tsunami
+987	N	{点|てん}{数|すう}	score, points
+988	N	{電|でん}{柱|ちゅう}	utility pole
+989	N	{不|ふ}{合|ごう}{格|かく}	failing (an exam)
+990	K	クラスメイト	classmate
+991	K	クーラー	air conditioner
+992	K	ゴム	rubber
+993	K	スタッフ	staff member

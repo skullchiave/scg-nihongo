@@ -978,3 +978,21 @@
 974	đặt lên; đăng (báo)
 975	học được (kỹ năng); mặc, đeo
 976	cằm
+
+977	đồ đánh rơi, đồ thất lạc
+978	nhà khoa học
+979	biển hiệu, bảng hiệu
+980	hàng người, hàng dài
+981	tài khoản ngân hàng
+982	sơ cấp
+983	tân sinh viên, học sinh mới
+984	vé đi tàu xe
+985	sổ ngân hàng
+986	sóng thần
+987	điểm số
+988	cột điện
+989	trượt (kỳ thi)
+990	bạn cùng lớp
+991	máy lạnh (máy điều hòa)
+992	cao su
+993	nhân viên

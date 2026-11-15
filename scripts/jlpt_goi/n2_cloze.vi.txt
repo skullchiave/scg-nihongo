@@ -84,8 +84,6 @@
 1071	1	sự sôi động, sức sống
 1071	2	sôi động, nhộn nhịp
 1081	1	không nhất thiết
-1103	1	trực giác, linh cảm
-1103	2	giác quan nhạy bén (giác quan thứ sáu)
 1114	1	một cách gián tiếp
 1114	2	mang tính gián tiếp
 1202	1	ngại quá, thật áy náy (cảm ơn)
@@ -96,14 +94,10 @@
 1263	1	sự kính trọng, lòng tôn kính
 1263	2	bày tỏ kính trọng
 1266	1	nhân dịp, bước ngoặt
-1296	1	cảm giác có người, sự hiện diện
-1296	2	dấu hiệu, có vẻ
 1305	1	phỏng đoán, đoán chừng
 1305	2	không hề đoán ra
 1308	1	hết sức, cật lực
 1308	2	hết mình, nỗ lực
-1350	1	chính thức
-1350	2	công thức (toán học)
 1352	1	công cộng (điện thoại)
 1352	2	công cộng (nhà vệ sinh)
 1379	1	manh mối, nghĩ ra được (chỗ)
@@ -112,8 +106,6 @@
 1407	2	hợp lý hóa, tinh giản
 1413	1	lâu rồi không liên lạc
 1413	2	lâu nay chưa liên lạc (khiêm nhường)
-1425	1	đang giữa lúc
-1425	2	ngay trong lúc (đang làm)
 1451	1	không sao, không trở ngại
 1451	2	nếu không phiền, nếu tiện
 1461	1	sự cản trở (làm vướng)
@@ -122,8 +114,6 @@
 1536	2	chủ nghĩa tư bản
 1548	1	chướng ngại, rào cản
 1548	2	khuyết tật
-1617	1	bản thân mình
-1617	2	chính tôi
 1704	1	món gợi ý, đề xuất
 1704	2	lời khuyên, sự giới thiệu
 1782	1	đáp ứng (kỳ vọng)

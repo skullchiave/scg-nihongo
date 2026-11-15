@@ -1595,3 +1595,69 @@
 2139	V	{使|つか}い{切|き}る	to use up
 2140	V	{落|お}ち{込|こ}む	to feel down, to get depressed
 2141	N	あくび	yawn
+2142	V	{関|かか}わる	to be involved in, to affect
+2143	V	かけ{直|なお}す	to call again
+2144	V	{固|かた}める	to harden / to strengthen
+2145	N	{神|かみ}	god
+2146	A	{空|から}っぽ	empty
+2147	N	{勘|かん}	intuition, hunch
+2148	S	{勘|かん}{違|ちが}い	misunderstanding
+2149	N	{缶|かん}{詰|づめ}	canned food
+2150	S	{乾|かん}{杯|ぱい}	toast (raising glasses)
+2151	S	{看|かん}{病|びょう}	nursing care (for a sick person)
+2152	N	{記|き}{号|ごう}	symbol, sign
+2153	N	{基|き}{礎|そ}	foundation, basics
+2154	N	{規|き}{模|ぼ}	scale, size
+2155	N	{疑|ぎ}{問|もん}	doubt, question
+2156	N	{空|くう}{腹|ふく}	hunger, empty stomach
+2157	N	{繰|く}り{返|かえ}し	repetition
+2158	N	{警|けい}{官|かん}	police officer
+2159	N	{傾|けい}{向|こう}	tendency
+2160	N	{気|け}{配|はい}	sign, feeling of presence
+2161	N	{芸|げい}{術|じゅつ}{家|か}	artist
+2162	S	{下|げ}{車|しゃ}	getting off (a train or bus)
+2163	A	{高|こう}{級|きゅう}	high-class; luxury
+2164	N	{公|こう}{共|きょう}	public (shared by everyone)
+2165	N	{公|こう}{式|しき}	official; formula
+2166	A	{公|こう}{正|せい}	fair; impartial
+2167	N	{構|こう}{造|ぞう}	structure
+2168	N	{国|こく}{産|さん}	made in one's own country
+2169	N	{最|さい}{中|ちゅう}	in the middle of
+2170	N	{在|ざい}{庫|こ}	stock; inventory
+2171	F	{自|し}{然|ぜん}に	naturally
+2172	N	{思|し}{想|そう}	thought; ideology
+2173	N	{氏|し}{名|めい}	full name
+2174	S	{就|しゅう}{職|しょく}{活|かつ}{動|どう}	job hunting
+2175	S	{出|しゅっ}{勤|きん}	going to work
+2176	S	{消|しょう}{化|か}	digestion
+2177	N	{時|じ}{間|かん}{割|わり}	class timetable
+2178	N	{自|じ}{身|しん}	oneself
+2179	N	{上|じょう}{級|きゅう}	advanced level
+2180	N	{水|すい}{準|じゅん}	level; standard
+2181	N	{性|せい}{質|しつ}	nature; characteristic
+2182	N	{葬|そう}{式|しき}	funeral
+2183	N	{大|たい}{気|き}	atmosphere (of the earth)
+2184	S	{対|たい}{立|りつ}	conflict, opposition
+2185	N	{地|ち}{名|めい}	place name
+2186	N	{中|ちゅう}{央|おう}	center, middle
+2187	S	{調|ちょう}{整|せい}	adjustment
+2188	S	{追|つい}{加|か}	addition
+2189	N	{通|つう}{路|ろ}	aisle, passage
+2190	N	{爪|つめ}	nail (finger or toe)
+2191	N	{定|てい}{価|か}	list price, fixed price
+2192	S	{停|てい}{電|でん}	power outage
+2193	N	{手|て}{首|くび}	wrist
+2194	A	{特|とく}{殊|しゅ}	special, unusual
+2195	N	{届|とど}け{出|で}	report, notification (to an office)
+2196	N	{農|のう}{家|か}	farmer; farm household
+2197	N	{乗|の}り{換|か}え	transfer (trains, buses)
+2198	N	{標|ひょう}{準|じゅん}	standard
+2199	N	{表|ひょう}{情|じょう}	facial expression
+2200	N	{本|ほん}{物|もの}	the real thing
+2201	N	{未|み}{成|せい}{年|ねん}	minor (not yet an adult)
+2202	N	{見|み}た{目|め}	appearance; how it looks
+2203	N	{物|もの}{置|おき}	storage room
+2204	K	オリジナル	original
+2205	V	こぼれる	to spill (by itself)
+2206	F	にこにこ	smiling happily
+2207	F	ぴかぴか	shiny / sparkling clean

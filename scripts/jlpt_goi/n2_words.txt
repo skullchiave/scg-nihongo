@@ -650,7 +650,6 @@
 946	N	{恐|おそ}れ	fear, risk
 948	N	{落|お}ち{葉|ば}	fallen leaves	na-leaves
 950	N	お{手|て}{伝|つだ}いさん	housekeeper, maid
-952	N	{落|おと}し{物|もの}	lost item
 954	V	{劣|おと}る	to be inferior
 955	N	{衰|おとろ}え	decline, weakening
 956	V	{衰|おとろ}える	to decline, to become weak	v-weak
@@ -706,8 +705,6 @@
 1021	V	{抱|かか}える	to hold in one's arms, to have (a problem)	v-hold-arms
 1022	N	{係|かかり}{員|いん}	staff member in charge	na-staff
 1023	N	{関|かか}わり	connection, relationship
-1024	V	{関|かか}わる	to be involved in, to affect	v-involve
-1025	N	{科|か}{学|がく}{者|しゃ}	scientist	na-scholar
 1026	N	{輝|かがや}き	shine, brightness
 1027	V	{書|か}き{上|あ}げる	to finish writing	v-finish
 1028	N	{書|かき}{留|とめ}	registered mail	na-mail
@@ -727,7 +724,6 @@
 1044	N	{家|か}{計|けい}	household budget
 1045	N	かけ{算|ざん}	multiplication
 1046	S	{可|か}{決|けつ}	approval (of a bill)
-1047	V	かけ{直|なお}す	to call again	v-redo
 1049	N	{陰|かげ}	shade
 1051	N	{火|か}{口|こう}	crater (of a volcano)
 1052	S	{下|か}{降|こう}	descent, decline	s-decrease
@@ -741,7 +737,6 @@
 1064	I	{数|かぞ}え{切|き}れない	countless
 1066	N	{塊|かたまり}	lump
 1067	N	{片|かた}{道|みち}	one-way (trip)
-1068	V	{固|かた}める	to harden / to strengthen	v-harden
 1069	V	{偏|かたよ}る	to be biased	v-biased
 1070	N	{語|かた}り	narration, storytelling
 1071	N	{活|かっ}{気|き}	liveliness	na-energy
@@ -759,17 +754,14 @@
 1086	N	{株|かぶ}{式|しき}	stocks, shares	na-stock
 1087	N	{釜|かま}	iron pot (for cooking rice)	na-rice-pot
 1088	G	{構|かま}いません	it doesn't matter, I don't mind
-1089	N	{神|かみ}	god	na-god
 1091	N	{紙|かみ}くず	wastepaper	na-wastepaper
 1093	N	かみそり	razor
 1094	P	{雷|かみなり}が{落|お}ちる	lightning strikes
 1095	P	{髪|かみ}をとかす	to comb one's hair
 1096	N	{貨|か}{物|もつ}	cargo, freight
-1097	A	{空|から}っぽ	empty
 1098	N	{枯|か}れ{葉|は}	dead leaves	na-leaves
 1099	N	{為替|かわせ}	money exchange, money order
 1100	N	{瓦|かわら}	roof tile
-1103	N	{勘|かん}	intuition, hunch
 1106	V	{考|かんが}え{込|こ}む	to think deeply
 1107	V	{考|かんが}え{出|だ}す	to think up, to invent	v-think-of
 1108	V	{考|かんが}えつく	to think of	v-think-of
@@ -781,14 +773,9 @@
 1115	N	{関|かん}{税|ぜい}	customs duty, tariff	na-customs
 1118	S	{観|かん}{測|そく}	observation	s-observe
 1119	N	{寒|かん}{帯|たい}	cold zone
-1120	S	{勘|かん}{違|ちが}い	misunderstanding
 1121	N	{官|かん}{庁|ちょう}	government office	na-gov-office
-1122	N	{缶|かん}{詰|づめ}	canned food
 1123	N	{乾|かん}{電|でん}{池|ち}	dry battery
 1125	N	{観|かん}{念|ねん}	idea, concept	na-idea
-1126	N	{看|かん}{板|ばん}	sign, signboard	na-board
-1127	S	{乾|かん}{杯|ぱい}	toast (raising glasses)
-1128	S	{看|かん}{病|びょう}	nursing care (for a sick person)
 1129	N	{冠|かんむり}	crown
 1130	N	{漢|かん}{和|わ}	Chinese and Japanese
 1131	N	{外|がい}{線|せん}	outside (phone) line
@@ -814,13 +801,11 @@
 1161	V	{聞|き}き{逃|のが}す	to miss hearing	v-miss
 1163	N	{器|き}{具|ぐ}	tool, apparatus	na-apparatus
 1164	N	{喜|き}{劇|げき}	comedy
-1166	N	{記|き}{号|ごう}	symbol, sign	na-signal
 1167	S	{起|き}{床|しょう}	getting out of bed
 1169	N	{基|き}{準|じゅん}	standard, criteria	na-standard
 1171	N	{傷|きず}{跡|あと}	scar	na-wound
 1172	P	{傷|きず}がつく	to get scratched, to get damaged
 1173	N	{傷|きず}{口|ぐち}	wound	na-wound
-1176	N	{基|き}{礎|そ}	foundation, basics	na-basics
 1177	V	{競|きそ}う	to compete
 1178	N	{気|き}{体|たい}	gas (state of matter)
 1179	N	{基|き}{地|ち}	base (military, etc.)
@@ -828,7 +813,6 @@
 1184	N	{絹|きぬ}	silk
 1185	P	{気|き}のせい	just one's imagination
 1187	P	{気|き}{分|ぶん}がいい	to feel good
-1188	N	{規|き}{模|ぼ}	scale, size	na-size
 1189	N	{客|きゃく}{席|せき}	seats for guests, audience seats
 1190	N	{客|きゃく}{間|ま}	guest room
 1191	S	{休|きゅう}{業|ぎょう}	closing (of a business)	s-close
@@ -858,14 +842,10 @@
 1217	N	{技|ぎ}{師|し}	engineer, technician
 1218	N	{儀|ぎ}{式|しき}	ceremony
 1219	N	{議|ぎ}{長|ちょう}	chairperson
-1221	N	{疑|ぎ}{問|もん}	doubt, question	na-doubt
-1223	N	{行|ぎょう}{列|れつ}	line of people, queue
 1224	N	{漁|ぎょ}{業|ぎょう}	fishing industry	na-fishing
-1225	N	{銀|ぎん}{行|こう}{口|こう}{座|ざ}	bank account
 1226	N	{区|く}{域|いき}	area, zone	na-area
 1227	S	{空|くう}{想|そう}	daydream, fantasy
 1228	N	{空|くう}{中|ちゅう}	in the air
-1229	N	{空|くう}{腹|ふく}	hunger, empty stomach
 1230	N	{区|く}{間|かん}	section (of a route)
 1231	N	くぎ	nail
 1232	N	{区|く}{切|ぎ}り	break, dividing point
@@ -885,7 +865,6 @@
 1249	N	{組|くみ}{合|あい}	union, association
 1250	N	{組|く}み{合|あ}わせ	combination
 1252	V	{汲|く}む	to draw (water), to scoop
-1254	N	{繰|く}り{返|かえ}し	repetition
 1255	V	{苦|くる}しめる	to make someone suffer
 1258	N	{偶|ぐう}{数|すう}	even number
 1259	N	{具|ぐ}{体|たい}{性|せい}	concreteness
@@ -893,10 +872,8 @@
 1261	N	{軍|ぐん}	army, military	na-army
 1262	N	{軍|ぐん}{隊|たい}	army, troops	na-army
 1263	N	{敬|けい}{意|い}	respect
-1264	N	{警|けい}{官|かん}	police officer	na-police
 1266	N	{契|けい}{機|き}	opportunity, turning point	na-chance
 1267	S	{稽|けい}{古|こ}	practice, lesson (martial arts, music)	s-train
-1268	N	{傾|けい}{向|こう}	tendency
 1269	N	{蛍|けい}{光|こう}{灯|とう}	fluorescent light
 1270	N	{蛍|けい}{光|こう}ペン	highlighter
 1272	N	{経|けい}{済|ざい}{学|がく}	economics
@@ -917,7 +894,6 @@
 1290	N	{桁|けた}	digit (place in a number)
 1291	N	{欠|けっ}{陥|かん}	defect, fault	na-defect
 1292	N	{傑|けっ}{作|さく}	masterpiece	na-art
-1296	N	{気|け}{配|はい}	sign, feeling of presence
 1297	N	{見|けん}{解|かい}	opinion, view	na-opinion
 1298	N	{研|けん}{究|きゅう}{室|しつ}	laboratory, professor's office
 1299	A	{謙|けん}{虚|きょ}	humble, modest
@@ -929,10 +905,8 @@
 1307	N	{憲|けん}{法|ぽう}	constitution (of a country)
 1308	A	{懸|けん}{命|めい}	earnest; trying one's hardest	e-eager
 1309	N	{件|けん}{名|めい}	subject (of an email)	na-subject
-1312	N	{芸|げい}{術|じゅつ}{家|か}	artist
 1313	N	{芸|げい}{能|のう}	entertainment; performing arts	na-entertainment
 1314	S	{激|げき}{増|ぞう}	sharp increase	s-increase
-1315	S	{下|げ}{車|しゃ}	getting off (a train or bus)
 1316	N	{下|げ}{旬|じゅん}	last ten days of a month	na-ten-days
 1317	N	{下|げ}{水|すい}	sewage; drainage
 1319	N	{下|げ}{駄|た}{箱|ばこ}	shoe cabinet (at an entrance)
@@ -950,21 +924,16 @@
 1338	N	{公|こう}{害|がい}	pollution (public nuisance)
 1339	N	{高|こう}{気|き}{圧|あつ}	high pressure (weather)	na-pressure
 1340	N	{好|こう}{奇|き}{心|しん}	curiosity
-1341	A	{高|こう}{級|きゅう}	high-class; luxury	e-luxury
 1342	N	{高|こう}{級|きゅう}{品|ひん}	luxury product
-1343	N	{公|こう}{共|きょう}	public (shared by everyone)	na-public
 1346	N	{工|こう}{芸|げい}	crafts
 1347	S	{孝|こう}{行|こう}	being good to one's parents
 1348	S	{交|こう}{差|さ}	crossing
 1349	N	{講|こう}{師|し}	lecturer	na-teacher
-1350	N	{公|こう}{式|しき}	official; formula
 1352	N	{公|こう}{衆|しゅう}	the general public	na-public
 1354	N	{香|こう}{水|すい}	perfume
 1355	N	{洪|こう}{水|ずい}	flood
-1356	A	{公|こう}{正|せい}	fair; impartial	e-fair
 1357	N	{光|こう}{線|せん}	ray of light
 1358	N	{高|こう}{層|そう}	high-rise (building)
-1359	N	{構|こう}{造|ぞう}	structure
 1364	S	{肯|こう}{定|てい}	affirmation; saying yes
 1365	A	{高|こう}{等|とう}	advanced; high-level	e-advanced
 1366	A	{高|こう}{度|ど}	advanced; high-level	e-advanced
@@ -972,7 +941,6 @@
 1370	N	{公|こう}{務|む}	official duties	na-duty
 1371	N	{項|こう}{目|もく}	item (in a list)
 1376	N	{高|こう}{齢|れい}{化|か}	aging of society
-1377	N	{国|こく}{産|さん}	made in one's own country
 1378	N	{穀|こく}{物|もつ}	grain
 1379	N	{心|こころ}{当|あ}たり	idea (of who or where); clue	na-guess
 1380	V	{心|こころ}がける	to keep in mind; to try to	v-try
@@ -1007,7 +975,6 @@
 1422	N	{再|さい}{試|し}{験|けん}	re-examination; retest
 1423	N	{祭|さい}{日|じつ}	national holiday	na-holiday
 1424	S	{催|さい}{促|そく}	urging; reminder
-1425	N	{最|さい}{中|ちゅう}	in the middle of
 1427	S	{採|さい}{点|てん}	grading; marking
 1428	N	{災|さい}{難|なん}	misfortune; bad luck	na-disaster
 1429	S	{裁|さい}{縫|ほう}	sewing
@@ -1038,7 +1005,6 @@
 1470	N	{産|さん}{婦|ふ}{人|じん}{科|か}	obstetrics and gynecology
 1471	N	{山|さん}{林|りん}	mountain forest	na-forest
 1472	S	{在|ざい}{学|がく}	being enrolled in a school
-1473	N	{在|ざい}{庫|こ}	stock; inventory	na-stock
 1474	N	{座|ざ}{敷|しき}	tatami room
 1475	N	{雑|ざつ}{音|おん}	noise (unwanted sound)	na-noise
 1476	N	{座|ざ}{布|ぶ}{団|とん}	floor cushion
@@ -1048,9 +1014,7 @@
 1485	N	{資|し}{金|きん}	funds; capital	na-capital
 1487	S	{四|し}{捨|しゃ}{五|ご}{入|にゅう}	rounding off (numbers)
 1490	V	{沈|しず}める	to sink (something)
-1492	F	{自|し}{然|ぜん}に	naturally	e-naturally
 1493	N	{自|し}{然|ぜん}{保|ほ}{護|ご}	nature conservation
-1494	N	{思|し}{想|そう}	thought; ideology	na-thought
 1495	N	{子|し}{孫|そん}	descendants
 1496	N	{死|し}{体|たい}	dead body
 1497	V	{従|したが}う	to follow; to obey
@@ -1067,7 +1031,6 @@
 1510	N	{紙|し}{幣|へい}	paper money	na-money
 1511	N	{資|し}{本|ほん}	capital (money for business)	na-capital
 1512	N	{縞|しま}	stripes
-1513	N	{氏|し}{名|めい}	full name	na-name
 1516	N	{霜|しも}	frost
 1517	N	{車|しゃ}{庫|こ}	garage
 1518	N	{車|しゃ}{掌|しょう}	train conductor
@@ -1075,7 +1038,6 @@
 1520	N	{車|しゃ}{輪|りん}	wheel (of a vehicle)
 1521	N	しゃれ	joke; pun
 1524	S	{集|しゅう}{金|きん}	collecting money	s-collect-money
-1525	S	{就|しゅう}{職|しょく}{活|かつ}{動|どう}	job hunting
 1526	N	{終|しゅう}{日|じつ}	all day
 1527	N	{修|しゅう}{正|せい}{液|えき}	correction fluid
 1528	S	{修|しゅう}{繕|ぜん}	repair; mending	s-repair
@@ -1086,11 +1048,9 @@
 1534	N	{周|しゅう}{辺|へん}	surrounding area	na-area
 1536	N	{主|しゅ}{義|ぎ}	principle; -ism	na-principle
 1537	S	{縮|しゅく}{小|しょう}	reduction; shrinking	s-decrease
-1542	S	{出|しゅっ}{勤|きん}	going to work	s-commute
 1544	N	{出|しゅっ}{費|ぴ}	expense	na-expense
 1545	N	{主|しゅ}{役|やく}	leading role
 1546	N	{瞬|しゅん}{間|かん}	moment; instant
-1547	S	{消|しょう}{化|か}	digestion
 1548	N	{障|しょう}{害|がい}	obstacle; disability	na-obstacle
 1550	A	{消|しょう}{極|きょく}{的|てき}	passive; negative
 1551	N	{賞|しょう}{金|きん}	prize money	na-prize
@@ -1108,7 +1068,6 @@
 1567	N	{正|しょう}{味|み}	net (weight); actual content
 1568	N	{正|しょう}{面|めん}	front (of a building)	na-front
 1569	S	{消|しょう}{耗|もう}	exhaustion; using up
-1571	N	{初|しょ}{級|きゅう}	beginner level	na-beginner
 1574	N	{食|しょく}{塩|えん}	table salt
 1575	N	{職|しょく}{人|にん}	craftsman
 1578	N	{食|しょく}{糧|りょう}	food supply	na-food
@@ -1126,7 +1085,6 @@
 1596	N	{新|しん}{築|ちく}	newly built (house)
 1597	N	{震|しん}{度|ど}	earthquake intensity
 1598	S	{侵|しん}{入|にゅう}	invasion; trespassing
-1599	N	{新|しん}{入|にゅう}{生|せい}	new student
 1600	N	{神|しん}{父|ぷ}	Catholic priest
 1603	N	{心|しん}{理|り}{学|がく}	psychology (the study)	na-psychology
 1604	N	{森|しん}{林|りん}	forest	na-forest
@@ -1135,12 +1093,10 @@
 1608	K	ジェット{機|き}	jet plane
 1609	S	{自|じ}{衛|えい}	self-defense	s-protect
 1610	N	{自|じ}{衛|えい}{隊|たい}	Self-Defense Forces
-1611	N	{時|じ}{間|かん}{割|わり}	class timetable	na-timetable
 1612	N	{事|じ}{業|ぎょう}	business; enterprise	na-business
 1613	N	{時|じ}{刻|こく}{表|ひょう}	timetable (for trains)	na-timetable
 1614	S	{持|じ}{参|さん}	bringing (with you)
 1615	N	{自|じ}{社|しゃ}	one's own company
-1617	N	{自|じ}{身|しん}	oneself
 1620	N	{事|じ}{態|たい}	situation	na-situation
 1622	N	{自|じ}{治|ち}	self-government
 1624	N	{実|じっ}{績|せき}	track record; results
@@ -1168,8 +1124,6 @@
 1656	A	{純|じゅん}{情|じょう}	innocent; pure-hearted	e-pure
 1657	A	{純|じゅん}{粋|すい}	pure; genuine	e-pure
 1658	N	{蒸|じょう}{気|き}	steam	na-steam
-1659	N	{上|じょう}{級|きゅう}	advanced level
-1665	N	{乗|じょう}{車|しゃ}{券|けん}	ticket (for riding)	na-ticket
 1666	N	{上|じょう}{旬|じゅん}	first ten days of a month	na-ten-days
 1667	S	{蒸|じょう}{発|はつ}	evaporation
 1668	A	{上|じょう}{品|ひん}	elegant; refined
@@ -1180,7 +1134,6 @@
 1679	N	{水|すい}{産|さん}	marine products; fisheries	na-fishing
 1680	N	{水|すい}{産|さん}{業|ぎょう}	fishing industry	na-fishing
 1681	S	{炊|すい}{事|じ}	cooking (meals)	s-cook
-1682	N	{水|すい}{準|じゅん}	level; standard	na-standard
 1683	N	{水|すい}{蒸|じょう}{気|き}	water vapor	na-steam
 1684	N	{推|すい}{薦|せん}{状|じょう}	letter of recommendation	na-recommend
 1685	N	{水|すい}{素|そ}	hydrogen
@@ -1210,7 +1163,6 @@
 1722	N	{請|せい}{求|きゅう}{書|しょ}	invoice; bill
 1724	S	{製|せい}{作|さく}	manufacturing (goods)	s-make
 1725	S	{制|せい}{作|さく}	production (of a film, artwork)	s-make
-1726	N	{性|せい}{質|しつ}	nature; characteristic
 1728	S	{清|せい}{書|しょ}	making a clean copy	s-copy
 1730	N	{政|せい}{治|じ}{家|か}	politician
 1731	N	{政|せい}{治|じ}{学|がく}	political science
@@ -1249,7 +1201,6 @@
 1783	N	{相|そう}{違|い}	difference
 1786	N	{相|そう}{互|ご}	mutual
 1787	S	{創|そう}{作|さく}	creation (of a story, artwork)	s-make
-1788	N	{葬|そう}{式|しき}	funeral
 1789	N	{想|そう}{像|ぞう}{力|りょく}	imagination
 1790	N	{装|そう}{置|ち}	device; equipment	na-equipment
 1791	N	{送|そう}{別|べつ}	farewell; send-off
@@ -1268,7 +1219,6 @@
 1812	N	{造|ぞう}{船|せん}	shipbuilding
 1813	S	{増|ぞう}{大|だい}	increase; growth	s-increase
 1815	F	{続|ぞく}{々|ぞく}	one after another	e-one-after
-1818	N	{大|たい}{気|き}	atmosphere (of the earth)
 1819	N	{大|たい}{金|きん}	large sum of money
 1820	N	{体|たい}{系|けい}	system (organized whole)	nb-system
 1821	N	{太|たい}{鼓|こ}	drum
@@ -1280,7 +1230,6 @@
 1828	N	{体|たい}{積|せき}	volume (of an object)	nb-volume
 1832	N	{大|たい}{半|はん}	most, the majority
 1833	N	{大|たい}{木|ぼく}	big tree
-1835	S	{対|たい}{立|りつ}	conflict, opposition	s-conflict
 1838	N	{田|た}{植|う}え	rice planting
 1839	F	{絶|た}えず	constantly, all the time	e-always
 1841	V	{絶|た}える	to die out, to stop completely
@@ -1323,9 +1272,7 @@
 1902	N	{地|ち}{帯|たい}	area, zone
 1904	N	{地|ち}{点|てん}	point, spot (on a map)	nb-spot
 1905	N	{地|ち}{平|へい}{線|せん}	horizon
-1906	N	{地|ち}{名|めい}	place name
 1907	F	{着|ちゃく}{々|ちゃく}	steadily, step by step
-1909	N	{中|ちゅう}{央|おう}	center, middle	nb-center
 1910	N	{中|ちゅう}{間|かん}	middle, halfway	nb-halfway
 1911	N	{抽|ちゅう}{象|しょう}	abstraction
 1912	N	{中|ちゅう}{小|しょう}{企|き}{業|ぎょう}	small and medium-sized companies	nb-company
@@ -1339,7 +1286,6 @@
 1921	S	{彫|ちょう}{刻|こく}	sculpture, carving
 1923	N	{長|ちょう}{女|じょ}	eldest daughter
 1924	N	{頂|ちょう}{上|じょう}	top, summit	nb-top
-1925	S	{調|ちょう}{整|せい}	adjustment
 1926	N	{長|ちょう}{短|たん}	length, strong and weak points	nb-merit
 1927	N	{頂|ちょう}{点|てん}	top, peak	nb-top
 1928	N	{長|ちょう}{方|ほう}{形|けい}	rectangle	nb-square
@@ -1352,38 +1298,30 @@
 1936	N	{直|ちょっ}{径|けい}	diameter
 1937	V	{散|ち}らす	to scatter, to spread around	v-scatter
 1938	N	{地|ち}{理|り}	geography
-1940	S	{追|つい}{加|か}	addition
 1942	N	{通|つう}{行|こう}{止|ど}め	road closed, no passage
 1943	S	{通|つう}{知|ち}	notice, notification	s-notice
-1944	N	{通|つう}{帳|ちょう}	bankbook
 1945	S	{通|つう}{用|よう}	being accepted, being valid
-1946	N	{通|つう}{路|ろ}	aisle, passage	nb-road
 1950	N	{突|つ}き{当|あ}たり	end (of a street or hallway)	nb-end
 1951	N	{月|つき}{日|ひ}	time, days and months	nb-time-passing
 1953	V	{浸|つ}ける	to soak	v-soak
 1954	V	{漬|つ}ける	to pickle	v-soak
 1955	N	{綱|つな}	rope
 1956	N	つながり	connection, link	nb-connection
-1959	N	{津|つ}{波|なみ}	tsunami
 1961	N	{角|つの}	horn
 1962	N	{粒|つぶ}	grain, drop
 1963	V	{積|つ}み{上|あ}げる	to pile up	v-pile
-1964	N	{爪|つめ}	nail (finger or toe)
 1967	N	{艶|つや}	shine, gloss
 1968	P	{梅雨|つゆ}が{明|あ}ける	the rainy season ends
 1969	A	{強|つよ}{気|き}	confident, assertive
 1972	N	つり{革|かわ}	strap (to hold on a train)
-1975	N	{定|てい}{価|か}	list price, fixed price	nb-price
 1978	N	{低|てい}{気|き}{圧|あつ}	low pressure system
 1980	N	{定|てい}{休|きゅう}{日|び}	regular day off
-1983	S	{停|てい}{電|でん}	power outage	s-outage
 1985	S	{手|て}{入|い}れ	care, maintenance	s-repair
 1986	P	{手|て}が{空|あ}く	to be free, to have no work now
 1987	P	{手|て}がかかる	to need a lot of care and effort
 1988	P	{手|て}が{足|た}りない	to be short of people
 1989	P	{手|て}が{離|はな}せない	to be too busy to leave a task	e-busy
 1990	A	{的|てき}{確|かく}	precise, accurate	e-precise
-1991	N	{手|て}{首|くび}	wrist
 1992	A	{手|て}{頃|ごろ}	reasonable, suitable (price, size)	e-tegoro
 1994	N	{手|て}{数|すう}{料|りょう}	fee, commission	nb-price
 1995	N	{手|て}{帳|ちょう}	pocket notebook, planner
@@ -1394,9 +1332,8 @@
 2005	P	{手|て}を{借|か}りる	to get help	e-te-help
 2006	P	{手|て}をつける	to start (work), to touch
 2007	P	{手|て}を{抜|ぬ}く	to cut corners, to slack off
-2010	N	{点|てん}{数|すう}	score, points	nb-score
 2011	F	{点|てん}{々|てん}	here and there, scattered	e-here-there
-2012	N	{天|てん}{皇|のう}	the Emperor
+2012	N	{天|てん}{皇|のう}	the Japanese emperor
 2014	S	{出|で}{入|い}り	coming and going	s-come-go
 2015	N	{出|で}{入|い}り{口|ぐち}	entrance and exit
 2016	N	でき{上|あ}がり	finished product, completion
@@ -1405,7 +1342,6 @@
 2020	N	{伝|でん}{記|き}	biography
 2022	S	{伝|でん}{染|せん}	infection, spreading (of a disease)
 2023	N	{電|でん}{卓|たく}	calculator
-2025	N	{電|でん}{柱|ちゅう}	utility pole
 2026	N	{電|でん}{波|ぱ}	radio waves
 2028	N	{電|でん}{流|りゅう}	electric current	nb-current
 2029	N	{電|でん}{力|りょく}	electric power
@@ -1422,7 +1358,6 @@
 2048	S	{等|とう}{分|ぶん}	dividing equally
 2049	N	{灯|とう}{油|ゆ}	kerosene
 2051	V	{溶|と}く	to dissolve, to mix into liquid	v-melt
-2052	A	{特|とく}{殊|しゅ}	special, unusual	e-unusual
 2053	N	{特|とく}{色|しょく}	characteristic, distinctive quality	nb-feature
 2054	N	{特|とく}{長|ちょう}	special strength (of a product)	nb-feature
 2056	S	{特|とく}{定|てい}	specifying, identifying	s-specify
@@ -1431,7 +1366,6 @@
 2060	N	{都|と}{心|しん}	city center
 2061	N	{戸|と}{棚|だな}	cupboard	nb-cupboard
 2063	N	{届|とど}け	report, notification (form)	nb-report-form
-2064	N	{届|とど}け{出|で}	report, notification (to an office)	nb-report-form
 2065	V	{飛|と}ばす	to make fly, to skip
 2068	V	{留|と}める	to fasten, to fix in place
 2069	N	{友|とも}	friend	nb-friend
@@ -1471,7 +1405,6 @@
 2145	N	{狙|ねら}い	aim; target
 2147	F	{年|ねん}{中|じゅう}	all year round; always	e-always
 2149	N	{年|ねん}{度|ど}	fiscal year; school year
-2152	N	{農|のう}{家|か}	farmer; farm household	nb-farmer
 2154	N	{農|のう}{産|さん}{物|ぶつ}	farm products
 2155	N	{農|のう}{村|そん}	farming village
 2156	N	{濃|のう}{度|ど}	concentration; density
@@ -1483,7 +1416,6 @@
 2164	N	{野|の}{原|はら}	field; open plain	nb-field
 2165	N	{上|のぼ}り	going up; inbound (train toward Tokyo)
 2166	N	{糊|のり}	glue; paste
-2168	N	{乗|の}り{換|か}え	transfer (trains, buses)	nb-transfer
 2169	N	{乗|の}り{越|こ}し	riding past one's stop
 2170	V	{乗|の}り{越|こ}す	to ride past (one's stop)	v-ride-past
 2172	V	{乗|の}り{継|つ}ぐ	to change (trains, buses)
@@ -1520,7 +1452,7 @@
 2224	N	{日|ひ}{当|あ}たり	sunshine exposure; sunny spot	nb-sunlight
 2225	V	{控|ひか}える	to hold back; to cut down on	v-hold-back
 2226	F	{比|ひ}{較|かく}{的|てき}	relatively; comparatively	e-relatively
-2231	A	ひきょう	cowardly; unfair	e-unfair
+2231	A	{卑|ひ}{怯|きょう}	cowardly; unfair	e-unfair
 2233	N	{引|ひ}き{分|わ}け	draw; tie (in a game)	nb-draw
 2235	N	{悲|ひ}{劇|げき}	tragedy
 2236	N	{非|ひ}{公|こう}{開|かい}	closed to the public; private	nb-undisclosed
@@ -1551,8 +1483,6 @@
 2269	N	{百|ひゃっ}{科|か}{事|じ}{典|てん}	encyclopedia	nb-encyclopedia
 2270	N	{表|ひょう}{紙|し}	cover (of a book)	nb-cover
 2271	N	{標|ひょう}{識|しき}	sign; road sign	nb-sign
-2272	N	{標|ひょう}{準|じゅん}	standard	nb-standard
-2273	N	{表|ひょう}{情|じょう}	facial expression
 2274	N	{標|ひょう}{本|ほん}	specimen; sample	nb-sample
 2275	N	{評|ひょう}{論|ろん}	critical essay; criticism
 2278	N	{広|ひろ}{場|ば}	open square; plaza	nb-square
@@ -1572,7 +1502,6 @@
 2298	N	{複|ふく}{数|すう}	plural; more than one
 2300	A	{不|ふ}{潔|けつ}	dirty; unclean
 2301	N	{符|ふ}{号|ごう}	sign; symbol (such as + or -)	nb-sign
-2302	N	{不|ふ}{合|ごう}{格|かく}	failing (an exam)	nb-fail
 2303	N	{夫|ふ}{妻|さい}	husband and wife	nb-wife
 2304	N	{節|ふし}{目|め}	turning point; milestone
 2305	N	{夫|ふ}{人|じん}	wife (someone else's); Mrs.	nb-wife
@@ -1639,7 +1568,6 @@
 2384	V	ほほえむ	to smile
 2387	N	{本|ほん}{店|てん}	main store
 2389	N	{本|ほん}{部|ぶ}	headquarters
-2390	N	{本|ほん}{物|もの}	the real thing
 2391	F	{本|ほん}{来|らい}	originally; by nature	e-originally
 2392	N	{望|ぼう}{遠|えん}{鏡|きょう}	telescope
 2393	S	{冒|ぼう}{険|けん}	adventure	s-explore
@@ -1680,8 +1608,6 @@
 2434	N	{幹|みき}	tree trunk
 2435	V	{見|み}{比|くら}べる	to compare	v-compare
 2436	F	{自|みずか}ら	by oneself; personally
-2438	N	{未|み}{成|せい}{年|ねん}	minor (not yet an adult)
-2439	N	{見|み}た{目|め}	appearance; how it looks	nb-appearance
 2440	N	{見|み}{出|だ}し	headline; heading
 2441	N	{道|みち}{順|じゅん}	route; the way to get there
 2442	V	{満|み}ちる	to be filled
@@ -1737,7 +1663,6 @@
 2507	N	{持|も}ち{込|こ}み	bringing in
 2508	V	{持|も}ち{込|こ}む	to bring in
 2509	V	{基|もと}づく	to be based on
-2513	N	{物|もの}{置|おき}	storage room
 2514	N	{物|もの}{音|おと}	sound; noise	nb-sound
 2515	N	{物|もの}{事|ごと}	things; matters	nb-matter
 2516	N	{物|もの}{差|さ}し	ruler; yardstick
@@ -1854,7 +1779,6 @@
 2668	K	エッセイ	essay
 2670	K	エンジニア	engineer
 2671	K	オイル	oil
-2672	K	オリジナル	original
 2673	K	オルガン	organ (instrument)
 2674	K	オーケストラ	orchestra	nb-music-group
 2675	K	オートメーション	automation
@@ -1871,9 +1795,7 @@
 2690	K	キャラクター	character (in a story or cartoon)
 2691	K	キャンパス	campus
 2692	K	ギャング	gang (criminals)
-2693	K	クラスメート	classmate
 2694	K	クリーニング	dry cleaning; laundry service
-2695	K	クーラー	air conditioner
 2696	K	ケーブル	cable
 2697	K	コスト	cost
 2698	K	コック	cook (chef)
@@ -1883,7 +1805,6 @@
 2702	K	コンクール	contest; competition	nb-competition
 2703	K	コンセント	electrical outlet
 2704	K	コンパ	party (for students)
-2706	K	ゴム	rubber
 2708	N	サメ	shark
 2709	K	サラリーマン	office worker	nb-office-worker
 2710	K	サンプル	sample	nb-k-sample
@@ -1901,7 +1822,6 @@
 2724	K	ジャーナリスト	journalist
 2726	K	スカーフ	scarf	nb-scarf
 2727	K	スクール	school (for lessons)
-2728	K	スタッフ	staff member
 2730	K	ステージ	stage (for performances)
 2731	K	ストッキング	stockings
 2733	K	ストロー	drinking straw
@@ -1966,7 +1886,7 @@
 2823	S	ランニング	running
 2824	K	リズム	rhythm	nb-rhythm
 2825	K	リットル	liter
-2828	K	ルームメート	roommate
+2828	K	ルームメイト	roommate
 2831	K	レクリエーション	recreation	nb-recreation
 2832	K	レジャー	leisure (activities)	nb-recreation
 2833	K	レンズ	lens
@@ -2000,11 +1920,8 @@
 2885	N	おかげ	thanks to / owing to
 2888	N	おかず	side dish (eaten with rice)
 2889	G	おかまいなく	please don't go to any trouble
-2891	G	おはよう	good morning (casual)
-2894	N	おやつ	snack (between meals)
 2895	F	およそ	about / approximately	e-approx
 2896	F	{及|およ}び	and (formal) / as well as	e-and
-2901	N	かたかな	katakana
 2903	F	かつて	once / in the past
 2907	F	ぎっしり	tightly packed / full
 2909	I	くだらない	silly / worthless	e-silly
@@ -2016,8 +1933,6 @@
 2916	F	こうして	in this way / and so
 2918	V	こだわる	to be particular about
 2920	F	こっそり	secretly / quietly	e-quietly
-2921	N	こつ	knack / trick	nb-knack
-2924	V	こぼれる	to spill (by itself)	v-spill
 2925	V	こもる	to shut oneself in	v-indoors
 2926	F	ころころ	rolling around (small round thing)
 2930	F	さっさと	quickly (without wasting time)	e-quickly
@@ -2079,7 +1994,6 @@
 3021	F	なお	furthermore / still	e-besides
 3024	F	なぜなら	because
 3025	F	なにしろ	at any rate / after all	e-anyway
-3030	F	にこにこ	smiling happily
 3031	I	ぬるい	lukewarm
 3032	N	ねじ	screw
 3033	N	のこぎり	saw
@@ -2092,7 +2006,6 @@
 3042	F	ひとりでに	by itself / automatically	e-naturally
 3044	F	ひょっとしたら	maybe / by any chance	e-maybe
 3045	F	びっしょり	soaking wet
-3046	F	ぴかぴか	shiny / sparkling clean
 3047	F	ぴたり	exactly / snugly
 3048	K	フォルダー	folder
 3049	F	ふと	suddenly (for no reason)	e-sudden
