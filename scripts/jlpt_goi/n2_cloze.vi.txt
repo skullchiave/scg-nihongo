@@ -1,0 +1,309 @@
+3	1	đến cùng, kiên quyết
+3	2	chỉ là, chỉ mang tính
+25	1	nổi (trên mặt nước)
+25	2	nảy ra (trong đầu)
+26	1	rưng rưng (nước mắt)
+26	2	nở (nụ cười), mỉm cười
+43	1	giữ chặt, đè xuống
+43	2	nắm chắc (điểm quan trọng)
+57	1	không sao, không phiền
+57	2	có phiền không, có được không
+103	1	vắt (khăn)
+103	2	thu hẹp lại (còn)
+131	1	xoăn (tóc)
+131	2	bị xoăn, hơi quăn (tóc)
+133	1	bày bừa, vương vãi khắp nơi
+133	2	bừa bộn, lộn xộn
+136	1	đứng sau, tiếp theo (về thứ hạng)
+136	2	đứng thứ hai sau, chỉ sau
+156	1	nhọn
+156	2	bị nhọn, sắc nhọn
+193	1	xuất phát từ (Tokyo)
+193	2	khởi hành lúc (10 giờ)
+220	1	ném, tung
+220	2	bỏ mặc, mặc kệ
+238	1	quen mắt, quen thuộc
+238	2	lạ mặt, không quen
+240	1	thăm bệnh
+240	2	bị (thiên tai) ập đến
+242	1	được may mắn có (thời tiết đẹp)
+242	2	giàu có, được ưu đãi (thiên nhiên)
+243	1	đi vòng quanh, tham quan
+243	2	xung quanh, về việc (tranh cãi)
+272	1	ý thức, chú ý đến
+272	2	ý thức, tri giác (sự tỉnh táo)
+294	1	vận dụng, tận dụng
+294	2	chia động từ
+367	1	vứt bỏ, thanh lý
+367	2	bị xử phạt, kỷ luật
+421	1	phù hợp với
+421	2	thích hợp với, hợp với
+424	1	đi ra ngoài
+478	1	nhẹ nhõm (thở phào)
+478	2	vẻ nhẹ nhõm
+482	1	thành thạo, nắm vững
+482	2	chủ quán, ông chủ quán
+494	1	dự đoán, đoán trước
+494	2	lường trước, dự liệu
+502	1	dẫn dắt, hướng dẫn
+502	2	dẫn trước (về điểm số)
+594	1	mới mẻ
+594	2	mới, một lần nữa
+602	1	chính, chủ yếu
+602	2	chủ yếu, phần lớn
+630	1	may mắn thay
+630	2	mừng, biết ơn (nếu ... thì tôi rất mừng)
+653	1	tồi tàn, kém chất lượng
+653	2	coi thường, lãng phí (đối xử cẩu thả)
+691	1	đỡ hơn
+691	2	còn hơn, tốt hơn (so với cái tệ hơn)
+775	1	gặp (tai nạn)
+775	2	chịu (thiệt hại)
+805	1	sôi nổi, đầy sức sống
+805	2	tràn đầy sinh khí, khỏe khoắn
+825	1	cho đến, kể cả
+825	2	khắp nơi, mọi chỗ
+847	1	sắp sửa, chỉ chực
+903	1	phòng tiếp khách
+903	2	phòng khách (tiếp khách)
+946	1	nguy cơ, e rằng
+962	1	trí nhớ, từng nghe
+962	2	ký ức, nhớ là từng làm
+980	1	mặt trước, mặt ngoài
+980	2	bên ngoài (nhà)
+987	1	gây ra, ảnh hưởng đến
+987	2	gây (thiệt hại)
+988	1	dịp, khi
+988	2	dịp đó, lúc ấy
+989	1	ơn, ơn nghĩa
+989	2	ơn (trả ơn)
+1021	1	ôm, bế
+1021	2	mang (vấn đề), đang gánh
+1034	1	trong khả năng (có thể)
+1034	2	theo như, trong phạm vi (tôi biết)
+1071	1	sự sôi động, sức sống
+1071	2	sôi động, nhộn nhịp
+1081	1	không nhất thiết
+1103	1	trực giác, linh cảm
+1103	2	giác quan nhạy bén (giác quan thứ sáu)
+1114	1	một cách gián tiếp
+1114	2	mang tính gián tiếp
+1202	1	ngại quá, thật áy náy (cảm ơn)
+1202	2	xin lỗi đã làm phiền
+1248	1	lớp
+1248	2	nhóm
+1248	3	bộ (đơn vị đếm)
+1263	1	sự kính trọng, lòng tôn kính
+1263	2	bày tỏ kính trọng
+1266	1	nhân dịp, bước ngoặt
+1296	1	cảm giác có người, sự hiện diện
+1296	2	dấu hiệu, triệu chứng
+1305	1	phỏng đoán, đoán chừng
+1305	2	không hề đoán ra
+1308	1	hết sức, liều mạng
+1308	2	hết mình, nỗ lực
+1350	1	chính thức
+1350	2	công thức (toán học)
+1352	1	công cộng (điện thoại)
+1352	2	công cộng (nhà vệ sinh)
+1379	1	manh mối, có ý niệm (nơi để quên)
+1379	2	đầu mối, nghi ngờ (ai làm)
+1407	1	hợp lý
+1407	2	hợp lý hóa, tinh giản
+1413	1	lâu rồi không liên lạc
+1413	2	lâu nay chưa liên lạc (khiêm nhường)
+1425	1	đang giữa lúc
+1425	2	ngay trong lúc (đang làm)
+1451	1	không sao, không trở ngại
+1451	2	nếu không phiền, nếu tiện
+1461	1	sự cản trở (làm vướng)
+1461	2	trở ngại (không cản trở)
+1536	1	chủ nghĩa cá nhân
+1536	2	chủ nghĩa tư bản
+1548	1	chướng ngại, rào cản
+1548	2	khuyết tật
+1617	1	bản thân mình
+1617	2	chính tôi
+1704	1	món gợi ý, đề xuất
+1704	2	lời khuyên, sự giới thiệu
+1782	1	đáp ứng (kỳ vọng)
+1782	2	nép sát, ở sát bên
+1824	1	không ... lắm
+1864	1	thở dài
+1864	2	buông tiếng thở dài
+1872	1	chỉ là, đơn thuần
+1872	2	chẳng qua là
+1884	1	trật bánh (tàu)
+1884	2	lạc đề, nói lan man
+1907	1	đều đặn, từng bước
+1907	2	từng bước một, chuẩn bị dần
+1917	1	dở dang, nửa chừng
+2002	1	phía gần mình
+2002	2	ngay trước (khi tới)
+2065	1	phóng, thả bay
+2065	2	bỏ qua, nhảy cóc
+2065	3	chạy nhanh, phóng
+2070	1	cùng với, theo đà
+2070	2	kéo theo, đi kèm
+2089	1	giữa (tháng)
+2089	2	một nửa, phần nào
+2101	1	vô tình, tình cờ
+2101	2	vu vơ, thoảng qua
+2116	1	thật là ... biết bao
+2116	2	biết bao là ...
+2120	1	chẳng nghĩ gì cả (hoàn toàn)
+2120	2	chưa thể nói chắc điều gì
+2136	1	bỗng nhiên
+2136	2	mưa rào
+2141	1	rễ (cây)
+2141	2	bản chất, bản tính
+2165	1	lên dốc, chiều lên
+2165	2	chiều đi lên (tàu về Tokyo)
+2181	1	buồn nôn
+2181	2	cơn buồn nôn (không dứt)
+2189	1	liệu có thực sự
+2189	2	rốt cuộc liệu có
+2194	1	phát huy (khả năng)
+2194	2	thể hiện (thực lực)
+2211	1	căng (dây)
+2211	2	đóng (băng)
+2211	3	đắt (giá cao)
+2224	1	nhiều nắng (được chiếu sáng tốt)
+2224	2	ít nắng (thiếu ánh sáng)
+2225	1	hạn chế, kiêng
+2225	2	sắp có (sự kiện), đang chờ
+2244	1	bị vướng, mắc kẹt
+2244	2	bị lừa, mắc bẫy
+2244	3	canh cánh, vương vấn trong lòng
+2245	1	vắt tạm, treo tạm lên
+2245	2	mắc vào làm rách
+2257	1	đông người qua lại
+2257	2	vắng người qua lại
+2261	1	lời mỉa mai, châm chọc
+2261	2	trớ trêu
+2279	1	rộng rãi, thoáng đãng
+2279	2	thênh thang, rộng thoáng
+2318	1	phàn nàn, than phiền
+2318	2	bất bình và bất mãn
+2321	1	không phân biệt tuổi
+2321	2	bỏ qua, không truy cứu
+2354	1	không sao, không bận tâm
+2354	2	thản nhiên, bình thản
+2362	1	riêng ra, tách riêng
+2362	2	khác nhau, riêng biệt
+2377	1	hướng đi, đi về phía
+2377	2	khu vực, vùng
+2377	3	lĩnh vực, mảng
+2404	1	lễ Obon (lễ Vu Lan Nhật Bản)
+2404	2	khay, mâm
+2414	1	đầu tiên, trước hết
+2414	2	việc đầu tiên, trước tiên
+2422	1	lỡ như
+2422	2	nhỡ mà, trong trường hợp
+2425	1	học được, nắm vững (kỹ năng)
+2425	2	tự bảo vệ mình
+2427	1	tiễn, đưa tiễn
+2427	2	hoãn lại, bỏ qua
+2451	1	dưới (tuổi)
+2451	2	chưa đến (số tiền)
+2466	1	tự ý, không xin phép
+2466	2	nghỉ không phép
+2495	1	mặt, phương diện
+2495	2	mặt (của vật)
+2503	1	xin lỗi rất nhiều
+2503	2	xin lỗi rất nhiều (rất lịch sự)
+2509	1	dựa trên
+2509	2	dựa vào
+2520	1	gần nhất
+2520	2	ga gần nhất
+2525	1	than phiền, phàn nàn
+2525	2	không có gì để chê
+2553	1	thong dong, ung dung
+2584	1	mánh, khéo tay
+2584	2	vụng về, thiếu khéo léo
+2591	1	thừa thãi, không cần thiết
+2591	2	càng, hơn nữa
+2594	1	thôi đi, dừng lại
+2594	2	thôi đi, đừng
+2607	1	yếu đi
+2607	2	khổ rồi, bó tay
+2737	1	thon gọn, mảnh mai
+2737	2	lịch lãm, sành điệu
+2845	1	sắp, chẳng bao lâu nữa
+2845	2	chút nữa, sớm thôi
+2849	1	lát nữa, sau
+2849	2	sau đó, rồi (chuyển sang)
+2850	1	tình cờ gặp
+2850	2	ngã gục đột ngột
+2860	1	thanh đạm, nhẹ vị
+2860	2	dễ dàng, nhẹ nhàng
+2869	1	khá ngon, ăn được
+2869	2	ổn, khả thi
+2885	1	nhờ có
+2885	2	nhờ ơn (trời), cảm ơn
+2912	1	nhất định, xin hãy
+2912	2	xin hãy hết sức (giữ gìn)
+2925	1	ở lì (trong nhà)
+2925	2	chứa đựng (tình cảm), chân thành
+2926	1	lăn lóc, lăn lông lốc
+2926	2	thay đổi xoành xoạch
+2942	1	hết, kết thúc
+2942	2	cuối cùng, rốt cuộc
+2956	1	xếp thành hàng dài
+2956	2	bày thành dãy dài
+2961	1	nhất định, rất muốn
+2961	2	nhất định, xin hãy
+2982	1	chịu không nổi, không thể chịu được
+2982	2	vô cùng, không chịu nổi
+2989	1	không ... chút nào
+2989	2	hoàn toàn không
+2993	1	lỡ, vô ý
+2993	2	vừa mới
+2995	1	nhân tiện
+2995	2	tiện thể, nhân lúc
+3010	1	dù sao thì, cứ
+3010	2	chưa bàn đến, tạm gác
+3012	1	quá đỗi, cực kỳ
+3012	2	không có gì đâu
+3012	3	quá đáng, không thể chấp nhận
+3024	1	vì, bởi vì
+3024	2	lý do là
+3025	1	dù sao thì, vì
+3025	2	dù gì thì, bởi vì
+3044	1	biết đâu chừng
+3044	2	có thể là, không chừng
+3050	1	giả vờ
+3050	2	vờ như, làm bộ
+3058	1	lẽ nào (không)
+3058	2	không ngờ rằng
+3064	1	lộn xộn, tan hoang
+3064	2	cực kỳ, siêu
+3067	1	có lẽ
+3067	2	biết đâu, có thể
+3068	1	có khả năng là
+3068	2	nếu có thể thì có lẽ
+3081	1	đáng làm, có ý nghĩa
+3081	2	đáng giá, đáng làm
+3301	1	hỏi (xin ý kiến)
+3301	2	bất kể, không phân biệt
+3301	3	bị truy cứu (trách nhiệm)
+3306	1	bướng bỉnh, cố chấp
+3306	2	xấu tính, độc địa
+3307	1	vẫn, vẫn như cũ
+3307	2	vẫn, y nguyên
+3333	1	triệt để, kỹ lưỡng
+3333	2	thực thi nghiêm ngặt
+3340	1	tránh ra, nhường đường
+3340	2	nhích ra, đứng tránh
+3368	1	hơi nhiều, dư dả
+3368	2	nhiều hơn một chút
+3369	1	sớm hơn một chút
+3369	2	sớm hơn thường lệ
+3371	1	ngập ngừng, e dè
+3371	2	rụt rè, e dè
+3386	1	coi như, xem như
+3386	2	bị coi là, bị xem là
+3387	1	(không) ... lắm
+3387	2	(không) dễ như vậy
+3388	1	(không) ra hồn, tử tế
+3388	2	(không) đàng hoàng, ra gì
