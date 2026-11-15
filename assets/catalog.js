@@ -38,16 +38,16 @@ window.SCG_CATALOG={
       {kind:'goi', label:'<ruby>語彙<rt>ごい</rt></ruby>', ready:false},
     ]},
     {id:'n2', label:'N2', ready:true, items:[
-      {kind:'bunpou', label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 212<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N2_bunpou.html', ready:true},
-      {kind:'goi', label:'<ruby>語彙<rt>ごい</rt></ruby>', ready:false},
+      {kind:'bunpou', label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 213<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N2_bunpou.html', ready:true},
+      {kind:'goi', label:'<ruby>語彙<rt>ごい</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 2325<ruby>語<rt>ご</rt></ruby>', file:'jlpt/N2_goi.html', ready:true},
     ]},
     {id:'n3', label:'N3', ready:true, items:[
       {kind:'bunpou', label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 149<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N3_bunpou.html', ready:true},
-      {kind:'goi', label:'<ruby>語彙<rt>ごい</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 1289<ruby>語<rt>ご</rt></ruby>', file:'jlpt/N3_goi.html', ready:true},
+      {kind:'goi', label:'<ruby>語彙<rt>ごい</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 1597<ruby>語<rt>ご</rt></ruby>', file:'jlpt/N3_goi.html', ready:true},
     ]},
     {id:'n4', label:'N4', ready:true, items:[
       {kind:'bunpou', label:'<ruby>文法<rt>ぶんぽう</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 139<ruby>問<rt>もん</rt></ruby>', file:'jlpt/N4_bunpou.html', ready:true},
-      {kind:'goi', label:'<ruby>語彙<rt>ごい</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 885<ruby>語<rt>ご</rt></ruby>', file:'jlpt/N4_goi.html', ready:true},
+      {kind:'goi', label:'<ruby>語彙<rt>ごい</rt></ruby>', count:'<ruby>全<rt>ぜん</rt></ruby> 976<ruby>語<rt>ご</rt></ruby>', file:'jlpt/N4_goi.html', ready:true},
     ]},
   ]
 };
