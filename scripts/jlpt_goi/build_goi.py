@@ -86,7 +86,7 @@ for l2 in LVS[:LVS.index(lv) + 1]:
         c = l.split('\t')
         if len(c) >= 3 and not l.startswith('#'): byyomi[RB.sub(r'\2', c[2])].add(RB.sub(r'\1', c[2]))
 homo = set()
-data = []; keys = collections.Counter(); order = 'VSIANKFX'; nny = 0
+data = []; keys = collections.Counter(); order = 'VSIANKFPGJX'; nny = 0
 for r in rows:
     assert len(r) in (4, 5), r
     no, cat, w, en = r[:4]; tag = r[4] if len(r) == 5 else ''

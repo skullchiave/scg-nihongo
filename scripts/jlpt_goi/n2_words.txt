@@ -472,7 +472,7 @@
 688	A	{不|ぶ}{器|き}{用|よう}	clumsy
 690	A	{朗|ほが}らか	cheerful, bright	e-cheerful
 691	A	まし	better (than the other choice)
-692	A	{真っ青|まっさお}	deep blue, pale (face)	e-pale
+692	A	{真|ま}っ{青|さお}	deep blue, pale (face)	e-pale
 693	A	{真|ま}っ{白|しろ}	pure white
 694	A	{未|み}{完|かん}{成|せい}	unfinished	e-unfinished
 696	A	{惨|みじ}め	miserable, pitiful	e-pitiful
