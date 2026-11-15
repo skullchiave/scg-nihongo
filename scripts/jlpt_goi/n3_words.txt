@@ -1516,7 +1516,6 @@
 2059	N	{歯|は}{磨|みが}き	toothbrushing; toothpaste
 2060	N	{日|ひ}{帰|がえ}り	day trip
 2061	N	{引|ひ}き{算|ざん}	subtraction
-2062	V	ひっくり{返|かえ}る	to fall over; to be turned upside down
 2063	N	{筆|ひっ}{者|しゃ}	writer; author
 2064	N	{昼|ひる}{間|ま}	daytime
 2065	N	{美|び}{術|じゅつ}	art; fine arts

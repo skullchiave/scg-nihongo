@@ -1517,7 +1517,6 @@
 2059	đánh răng; kem đánh răng
 2060	đi về trong ngày
 2061	phép trừ
-2062	bị lật ngược; ngã nhào
 2063	tác giả (người viết bài)
 2064	ban ngày (đối lập ban đêm)
 2065	mỹ thuật
