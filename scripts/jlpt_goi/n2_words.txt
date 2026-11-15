@@ -206,7 +206,7 @@
 252	V	もむ	to rub; to massage	v-rub
 253	V	{燃|も}やす	to burn (something)	v-burn
 254	V	{盛|も}る	to serve (food) in a dish; to pile up	v-pile
-255	I	やかましい	noisy; strict	e-noisy
+255	I	やかましい	noisy	e-noisy
 256	V	やっつける	to beat; to defeat	v-attack
 257	V	{破|やぶ}く	to tear	v-tear
 258	V	よこす	to send (to me); to hand over	v-send
@@ -380,7 +380,7 @@
 498	S	リサイクル	recycling	s-reuse
 499	S	リストラ	restructuring (job cuts)	s-jobless
 500	S	{了|りょう}{解|かい}	understanding, consent	s-understand
-501	S	{領|りょう}{収|しゅう}	receipt (of payment)
+501	N	{領|りょう}{収|しゅう}{書|しょ}	receipt
 502	S	リード	lead
 503	S	{恋|れん}{愛|あい}	romantic love	s-love
 504	S	レンタル	rental
