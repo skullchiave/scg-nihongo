@@ -1,0 +1,507 @@
+1	1	ngước nhìn (lên trời)
+1	2	kính trọng, coi (ai) là (thầy)
+1	3	xin (chỉ thị), thỉnh thị
+2	1	thổ lộ, bày tỏ (tâm sự)
+2	2	thức trắng đêm
+10	1	bị lo ngại, bị nghi ngại
+10	2	lo ngại, e ngại
+13	1	(năm) mới bắt đầu, sang năm mới
+13	2	trang trọng, nghiêm trang (dịp, nơi)
+29	1	say mê, dốc lòng vào
+29	2	đóng (cọc) xuống
+29	3	nhập (số liệu) vào
+33	1	(da) được dưỡng ẩm, mềm mịn
+33	2	được lợi, phát đạt
+47	1	tiếc nuối (khi chia tay)
+47	2	không tiếc (công sức)
+50	1	thật ngại quá, cảm ơn nhiều
+50	2	xin lỗi, phiền (anh/chị)
+60	1	lan đến, ảnh hưởng đến
+60	2	không cần (phải làm)
+60	3	không sánh bằng, kém xa
+61	1	(gọi) lại ngay
+63	1	nhìn lại, suy ngẫm lại
+63	2	bất chấp, không màng đến
+68	1	(chi phí) tăng lên, chồng chất
+68	2	(chi tiêu) tăng dồn lên
+70	1	nghiêng (đầu)
+70	2	lắng nghe chăm chú
+74	1	bị nổi mẩn, bị dị ứng da
+74	2	bị ảnh hưởng, mê (một cách thái quá)
+75	1	giơ (máy ảnh) sẵn sàng, chĩa vào
+75	2	mở (cửa hàng), lập (tiệm)
+75	3	giữ thái độ thong thả, ung dung
+77	1	bị vướng, bị quấn (vào)
+77	2	liên quan đến (tiền bạc)
+77	3	kiếm chuyện, gây sự (với ai)
+84	1	sắp tới, tới đây (dùng trang trọng)
+84	2	sắp đến, chắc chắn sẽ đến
+104	1	căng mắt, nhìn chăm chú
+104	2	dốc công sức, trau chuốt (ý tưởng)
+106	1	mê mải, say mê
+106	2	(vai) bị mỏi, cứng
+110	1	(đầu óc) tỉnh táo, tỉnh như sáo
+110	2	ủ rũ, buồn bã (vẻ mặt)
+115	1	không sao, không trở ngại gì
+115	2	nếu không phiền
+121	1	có hại (cho sức khỏe)
+121	2	chạm tự ái, làm khó chịu
+123	1	nếu buộc phải nói, nếu phải chọn
+123	2	nếu buộc phải nêu ra, nếu phải kể ra
+127	1	ngăn (phòng), chia ra
+127	2	điều hành, chủ trì
+131	1	may, cắt may (quần áo)
+131	2	vu cho (là), gán cho (là)
+134	1	chịu đựng, vượt qua (cái nóng)
+134	2	vượt, cao hơn hẳn
+136	1	sành điệu, thời trang
+136	2	ăn mặc sành điệu, bảnh bao
+142	1	lắng tai nghe, nghe chăm chú
+142	2	tỉnh bơ, làm ra vẻ thản nhiên
+148	1	làm hại, tổn hại (sức khỏe)
+148	2	không nói được, nói hụt
+179	1	(chuyện) không bao giờ hết
+179	2	chỉ có, không gì bằng
+179	3	hết (tiền)
+180	1	dốc hết (sức), cố hết sức
+180	2	hết lòng chăm sóc, tận tụy với (ai)
+187	1	xin kính cẩn, trân trọng
+187	2	xin kính cẩn (nhận lời)
+189	1	tuyển, kêu gọi (người tham gia)
+189	2	(cảm xúc) tăng lên, dâng lên
+207	1	giữ lại ở mức, hạn chế ở mức
+207	2	ghi nhớ (trong lòng)
+210	1	giàu (về), dồi dào
+210	2	đầy (hài hước), giàu (tính hài hước)
+213	1	thu hồi (nợ), đòi nợ
+213	2	(không có gì) đặc biệt
+213	3	được đề bạt, được cất nhắc
+214	1	lắp đặt, gắn
+214	2	nhận được (lời hứa), giành được
+224	1	liếm, ngậm (kẹo)
+224	2	coi thường, xem nhẹ
+254	1	nảy lên
+254	2	(câu chuyện) rôm rả
+254	3	boa hậu hĩnh, chi rộng rãi
+256	1	kiệt sức hoàn toàn
+256	2	thay đổi hoàn toàn (theo hướng xấu đi)
+258	1	vừa khít, vừa vặn
+258	2	nghiện, mê mẩn
+258	3	sa vào (bẫy)
+263	1	tăng (giá)
+263	2	rút lui, rút khỏi
+268	1	nhận (hành lý), lấy
+268	2	nhận nuôi
+268	3	trút hơi thở cuối cùng, qua đời
+299	1	lẫn vào, hòa lẫn (trong đám đông)
+299	2	khuây khỏa, nguôi đi
+304	1	không tránh khỏi (bị chỉ trích)
+304	2	tránh khỏi (trách nhiệm)
+321	1	được thiên nhiên ưu đãi, được ban cho
+321	2	thuận lợi, may mắn
+323	1	(kính ngữ) vừa ý, hợp ý
+323	2	(kính ngữ) mặc
+374	1	sự làm sáng tỏ, giải mã (cơ chế)
+374	2	việc được làm sáng tỏ, giải đáp (bí ẩn)
+384	1	điều tra làm rõ, truy tìm (sự thật)
+384	2	sự làm sáng tỏ, truy cứu (sự thật)
+419	1	tự xưng là, giả danh
+419	2	tự xưng, tự nhận là
+456	1	phù hợp với, dựa trên (tình hình thực tế)
+456	2	phù hợp với, sát với (thực tế)
+519	1	sự nhầm lẫn, lệch nhau (liên lạc)
+519	2	gửi chéo nhau, đi lệch nhau (tin nhắn)
+528	1	chắc chắn, vững (phòng thủ)
+528	2	ổn định, vững chắc (nghề nghiệp đàng hoàng)
+528	3	kín miệng, giữ bí mật
+545	1	dễ chịu, sảng khoái
+545	2	vui vẻ, sẵn lòng
+555	1	giống nhau, đồng bộ (đôi, bộ)
+555	2	một bộ (đầy đủ)
+560	1	quý giá, thiêng liêng (sinh mạng)
+560	2	cao quý, đáng kính
+568	1	khó quyết định, phân vân
+575	1	(đã) lâu rồi (kể từ khi)
+575	2	từ lâu, đã lâu
+617	1	tốt đẹp, quý giá
+617	2	(không,) cảm ơn; đủ rồi (từ chối lịch sự)
+617	3	khá, tương đối
+621	1	nghiêm khắc (người)
+621	2	nghiêm ngặt, cứng nhắc (quy định)
+622	1	nghiêm ngặt, chặt chẽ (an ninh)
+622	2	cẩn mật, kỹ lưỡng (bảo quản)
+686	1	sự niềm nở, thân thiện
+686	2	chán ngán, hết hy vọng (ở ai)
+697	1	ngay sau mưa (vừa tạnh)
+697	2	vừa mới khỏi bệnh
+697	3	doanh thu, tiền thu được
+711	1	đáng (làm), xứng đáng
+711	2	không đáng (làm), không xứng đáng
+724	1	trông cậy, dựa vào
+724	2	(không có) chỗ dựa, kế hoạch trông cậy
+759	1	phản đối, ý kiến phản đối (trang trọng)
+759	2	phản đối, kháng nghị (trang trọng)
+761	1	nhiều, vô số
+761	2	nhiều, rất nhiều
+785	1	nói chung (không thể nói là), một cách đại khái
+785	2	nói chung (không thể nói là), một cách đại khái
+789	1	một phần ăn, một suất
+789	2	đủ tư cách, thành thạo độc lập
+792	1	mặt, khía cạnh (của một người)
+792	2	phủ kín, trắng xóa cả vùng
+797	1	đồng giá, như nhau cho mọi người
+797	2	đồng loạt, như nhau cho tất cả
+798	1	một loạt, hàng loạt
+798	2	một loạt, toàn bộ chuỗi
+801	1	một phần của (nỗ lực lớn hơn)
+801	2	là một phần của (chương trình lớn hơn)
+802	1	nhất quán, từ đầu đến cuối
+802	2	nhất quán, không thay đổi
+805	1	thoạt nhìn, bề ngoài
+805	2	đáng xem, đáng một lần ghé thăm
+806	1	hoàn toàn (không), tuyệt đối (không)
+806	2	hoàn toàn (không)
+808	1	chỉ một lòng (muốn), một mực mong
+808	2	chăm chú, hết lòng
+820	1	vẫn (chưa), đến nay vẫn
+820	2	vẫn (chưa), (vẫn) chưa
+830	1	ý kiến phản đối, bất đồng
+830	2	ý kiến khác, bất đồng
+838	1	(thể) bị động
+838	2	thụ động (không chủ động)
+858	1	lộn trái, mặc trái
+858	2	mặt trái, mặt đối lập (cảm xúc thể hiện ngược lại)
+865	1	vận chuyển (dịch vụ có trả phí)
+865	2	vận tải, vận chuyển hàng hóa (nghề)
+869	1	khuân vác, chuyển (vật nặng)
+869	2	vận chuyển, chở (hàng hóa)
+891	1	sơ cứu khẩn cấp
+891	2	biện pháp khẩn cấp, xử lý tạm thời
+895	1	đa số, phần lớn
+895	2	có lẽ, chắc là
+896	1	to con, vóc dáng lớn
+896	2	họa tiết to (trên vải)
+905	1	công khai (được công bố)
+905	2	chính thức, công khai (nơi)
+929	1	khó phân hơn kém, ngang tài ngang sức
+929	2	bên B, bên thứ hai
+941	1	nét duyên, vẻ thanh nhã
+941	2	đại ý, nội dung chính (của thư)
+965	1	chuyển tiếp (thư)
+965	2	tàu không chở khách, không phục vụ
+969	1	sự sửa đổi, điều chỉnh (giá vé, giá cả)
+969	2	sự sửa đổi (nội quy)
+970	1	bản sửa đổi, tái bản có chỉnh sửa (sách)
+970	2	sự hiệu đính, sửa đổi (nội dung sách)
+1027	1	bên cạnh, ven (đường)
+1027	2	vừa (làm việc) vừa (học thêm), song song
+1041	1	từ lâu, từ trước đến nay
+1041	2	từ trước, trước đây
+1058	1	hoàn lại (lợi nhuận cho khách hàng)
+1058	2	sự khử (trong hóa học)
+1065	1	phong tục, tập quán (của cộng đồng)
+1065	2	tập quán, thông lệ xã hội
+1068	1	cảm giác (khi sờ), cảm giác tay
+1068	2	ấn tượng (tốt), cảm giác về kết quả
+1082	1	tha thứ, bỏ qua cho
+1082	2	tha cho, đừng làm khó nữa
+1091	1	thông lệ (của tổ chức)
+1091	2	tiền lệ, thông lệ
+1103	1	khoa khám ngoại trú
+1103	2	từ ngoại lai, từ mượn
+1125	1	sự gây hại, gây thương tích
+1125	2	sự gây hại, gây thương tích
+1141	1	tính cách, khí chất (chung của nhóm)
+1141	2	tính cách, khí chất (của một thế hệ)
+1143	1	tính khí, bản tính (của một người)
+1143	2	tính khí (của một con vật)
+1154	1	quỹ đạo
+1154	2	(đi) vào quỹ đạo, vào guồng
+1168	1	chuyển thể (truyện thành phim)
+1168	2	thêm thắt, phóng đại (câu chuyện)
+1207	1	(món ăn) địa phương, đặc sản vùng
+1207	2	quê hương, địa phương
+1209	1	cộng hưởng
+1209	2	đồng cảm, tán thành
+1210	1	quê hương, quê nhà
+1210	2	quê hương, quê nhà
+1218	1	từ chối thẳng thừng
+1218	2	từ chối, cự tuyệt (người khác)
+1219	1	từ chối, bác bỏ
+1219	2	từ chối (làm gì)
+1232	1	đồng giá, đồng nhất
+1232	2	đồng giá, đồng nhất
+1240	1	điều cần tránh, điều cấm kỵ
+1240	2	điều cần tránh, điều cấm kỵ
+1260	1	nghĩa vụ, đạo nghĩa (đền đáp ân tình)
+1260	2	(mẹ) chồng/vợ, (quan hệ) qua hôn nhân
+1274	1	sự khúc xạ (ánh sáng)
+1274	2	méo mó, uẩn khúc (tâm trạng)
+1293	1	(tâm lý) đám đông, bầy đàn
+1294	1	đám đông, quần chúng
+1304	1	giảm nhẹ (gánh nặng)
+1309	1	cục diện, thế trận (của trận đấu)
+1326	1	biểu quyết, bỏ phiếu
+1333	1	đầy khói, khói mù mịt
+1333	2	(người) khiến ta e ngại, khó gần
+1336	1	người có uy tín, chuyên gia đầu ngành
+1336	2	uy quyền, uy thế
+1339	1	quyền hạn, quyền (quyết định)
+1345	1	(từ) quan điểm, góc độ (của)
+1345	2	quan điểm, góc nhìn
+1352	1	quyền lực (chính trị)
+1385	1	bên A, bên thứ nhất
+1399	1	luân phiên, lần lượt
+1399	2	luân phiên, thay phiên
+1401	1	thủ công, làm đồ thủ công (giờ học)
+1401	2	vận động ngầm, thao túng sau lưng
+1452	1	bán quốc gia (do nhà nước chỉ định)
+1452	2	do nhà nước biên soạn
+1461	1	hiểu biết, có chút kinh nghiệm (về)
+1461	2	điều cần ghi nhớ, quy tắc ứng xử
+1498	1	nằm ở gốc rễ, nền tảng (của)
+1498	2	(từ) tận gốc, một cách căn bản
+1509	1	khi, vào dịp
+1509	2	nhân dịp này, nhân tiện luôn
+1511	1	đồ thủ công (tre)
+1511	2	giở trò, làm giả (số liệu)
+1516	1	có lãi, thu hồi được vốn
+1516	2	không có lãi, lỗ vốn
+1538	1	cắt giảm (ngân sách)
+1538	2	cắt giảm (chi phí)
+1539	1	lạc hậu, không hợp thời đại
+1539	2	thử và sai
+1551	1	đang giữa lúc, trong lúc
+1551	2	đang giữa lúc (làm gì)
+1569	1	sản phẩm, sản vật (của vùng)
+1569	2	kết quả, thành quả (của)
+1609	1	luôn luôn, liên tục
+1609	2	toàn bộ câu chuyện, từ đầu đến cuối
+1613	1	con trai (kính ngữ, của người khác)
+1619	1	(đang) hạ nhiệt, giảm dần
+1624	1	suy dinh dưỡng
+1624	2	suy dinh dưỡng
+1641	1	dọn dẹp (sau đó)
+1641	2	(rơi vào) tình cảnh thảm hại như vậy
+1648	1	cấm thăm bệnh, không tiếp khách
+1654	1	chuyến đi dã ngoại của trường
+1661	1	từ đầu đến cuối, suốt
+1661	2	từ đầu đến cuối, suốt
+1669	1	bảo vệ, người gác cổng
+1669	2	phòng bảo vệ
+1672	1	tu hành (tôn giáo)
+1672	2	luyện tập, rèn luyện (võ thuật)
+1673	1	học nghề, đi học việc
+1673	2	học nghề, học việc
+1735	1	quy định, đã định
+1735	2	chỉ định, quy định
+1781	1	người mới, lính mới
+1781	2	gạo mới
+1794	1	tự do, thoải mái
+1794	2	thoải mái, thành thạo (tùy ý)
+1841	1	thị trấn quanh lâu đài
+1847	1	tình hình, thời cuộc (quốc tế)
+1847	2	tình hình, thời cuộc (chính trị)
+1854	1	thượng nguồn, đầu nguồn (sông)
+1854	2	thượng lưu (tầng lớp xã hội)
+1863	1	doanh trại, trận địa (quân sự)
+1863	2	nhóm phóng viên, giới báo chí
+1878	1	nhạc kèn (ban nhạc kèn đồng)
+1889	1	cốt truyện, tình tiết
+1889	2	lý lẽ, logic
+1889	3	nguồn tin (có liên quan)
+1899	1	sự sinh trưởng (của cây)
+1899	2	sinh trưởng, mọc (cây)
+1900	1	lớn lên, trưởng thành (động vật non)
+1900	2	sự lớn lên (động vật non)
+1905	1	sinh kế, kế sinh nhai
+1905	2	sinh kế, cuộc sống
+1921	1	ngay ngắn, gọn gàng
+1921	2	ngăn nắp, có trật tự
+1958	1	trước, tiền nhiệm
+1997	1	phù hợp với tuổi
+1997	2	tương xứng, thích hợp
+2054	1	mong đợi từ lâu
+2069	1	lém lỉnh, nói giỏi
+2069	2	khỏe mạnh
+2252	1	sự khéo léo, nhanh nhẹn (khi làm việc)
+2252	2	khéo léo, nhanh gọn
+2256	1	(xin lỗi) làm phiền
+2256	2	phiền phức, rắc rối (làm phiền ai)
+2261	1	quá sức, vượt khả năng
+2261	2	quá sức, vượt quá khả năng
+2262	1	không thể kiểm soát, không dạy nổi
+2262	2	vượt khỏi tầm kiểm soát
+2273	1	có biện pháp, ra tay xử lý
+2273	2	chốt giá, đồng ý thỏa thuận
+2324	1	(không thể) nào, tuyệt đối (không thể)
+2324	2	(không thể) nào, hoàn toàn (không)
+2349	1	đang phát triển (nước đang phát triển)
+2349	2	trên đường, giữa đường
+2410	1	hoặc
+2410	2	(từ ... ) đến ...
+2484	1	để cho chắc, phòng hờ
+2484	2	nhắc kỹ, dặn đi dặn lại
+2500	1	tổng lượt (người)
+2500	2	tổng số lượt người
+2541	1	tận cùng, cuối (trời)
+2541	2	rốt cuộc, cuối cùng (kết cục xấu)
+2552	1	nói thẳng thắn, cởi mở
+2554	1	xa xa, xa tít
+2554	2	hơn hẳn, hơn nhiều
+2559	1	vang vọng, dội lại
+2559	2	phản ứng, tiếng vang (của công chúng)
+2575	1	độ phóng đại
+2575	2	tỷ lệ chọi
+2586	1	dự bị, thay thế (cầu thủ)
+2586	2	bản lưu (giữ lại làm hồ sơ)
+2600	1	trọng tâm, sự coi trọng (đặt nặng)
+2600	2	tỷ trọng, mức độ quan trọng
+2607	1	nghỉ một chút, giải lao
+2607	2	một hơi (uống một hơi)
+2607	3	cố thêm một chút
+2613	1	chỉ một lòng (với), toàn tâm toàn ý
+2613	2	một tia (sáng)
+2615	1	con mắt người khác, sự chú ý của người đời
+2615	2	(bị) người khác để ý, gây chú ý
+2651	1	bất ngờ, đột nhiên
+2651	2	lúc không đề phòng, sơ hở
+2671	1	khuya, về khuya (đêm)
+2671	2	khuya, về khuya (đêm)
+2698	1	điểm xuất phát, quay về vạch xuất phát
+2698	2	điểm xuất phát, từ đầu
+2699	1	hàng lỗi, hàng hỏng
+2699	2	thiếu niên hư, du côn
+2716	1	gây tranh cãi
+2729	1	tử số
+2729	2	phân tử
+2739	1	khổ sở, hết chịu nổi (vì)
+2739	2	phát ngán, chán ngấy
+2747	1	phát ngán, chán ngấy
+2747	2	ngán ngẩm, chịu không nổi
+2749	1	sau khi trải qua
+2749	2	đã trải qua (thời gian)
+2758	1	tạo điều kiện thuận lợi (cho ai)
+2758	2	để tiện, cho thuận tiện
+2768	1	chế độ phong kiến
+2768	2	phong kiến, cổ hủ
+2794	1	bảo thủ
+2794	2	bảo trì, bảo dưỡng
+2809	1	bắt đầu chính thức, triển khai rầm rộ
+2809	2	chính hiệu, đúng kiểu
+2826	1	sững sờ, chết lặng
+2826	2	đứng chết lặng (sững sờ)
+2842	1	cảm ơn quý khách đã luôn ủng hộ
+2842	2	lần nào cũng vậy, lúc nào cũng thế
+2858	1	(có) sự đoàn kết, gắn kết
+2858	2	(thiếu) mạch lạc, lộn xộn
+2873	1	toàn thể hội trường, toàn bộ người dự
+2873	2	toàn thể khán giả (trong hội trường)
+2877	1	không nhúc nhích được, không xoay người được
+2877	2	cử động (cơ thể)
+2885	1	(không) một chút nào, mảy may (không)
+2885	2	(không) một chút nào, mảy may (không)
+2888	1	phòng ngừa từ trước
+2889	1	rãnh, mương
+2889	2	khoảng cách, rạn nứt (giữa hai người)
+2891	1	(đi) men theo con đường
+2904	1	đặt mình vào vị trí (của ai)
+2904	2	có ích, bổ ích (cho bản thân)
+2914	1	mạch (đập)
+2914	2	còn hy vọng (trong tình cảm)
+2926	1	miễn phí
+2926	2	vô điều kiện, không vụ lợi
+2969	1	(triển vọng) trở nên rõ ràng, có dự kiến
+2969	2	(triển vọng) trở nên rõ ràng
+2983	1	xấu hổ, không còn mặt mũi (nhìn ai)
+2983	2	giữ thể diện
+2987	1	hoàn hảo, không chê vào đâu được
+2987	2	hoàn hảo, không chê vào đâu được
+2996	1	(mọi người) chỉ bàn tán về một chuyện
+3022	1	lợi thế, ưu thế
+3022	2	lợi thế, thế thượng phong
+3032	1	sự linh hoạt, uyển chuyển
+3032	2	cho vay, cho mượn (tiền)
+3033	1	chiếm ưu thế, dẫn trước
+3033	2	chiếm ưu thế, dẫn trước
+3059	1	mang dáng vẻ, trở nên (hỗn loạn)
+3059	2	dấu hiệu, tình hình (của sự việc)
+3083	1	(không có) chỗ, khoảng trống (để)
+3083	2	chỗ, khoảng trống (để cải thiện)
+3088	1	hẳn là rất, thật sự (rất)
+3088	2	suýt nữa, thật sự (đã nghĩ đến việc)
+3098	1	lãi (phải trả khi vay)
+3098	2	lãi (trả khi mượn tiền)
+3102	1	tiền lãi (nhận từ tiền gửi)
+3102	2	tiền lãi (nhận từ tiền gửi)
+3120	1	lãnh địa (của lãnh chúa)
+3120	2	lãnh địa (của lãnh chúa)
+3121	1	lãnh thổ (của quốc gia)
+3121	2	lãnh thổ (của quốc gia)
+3130	1	không có gì sánh bằng, chưa từng có
+3130	2	các loại, những thứ tương tự
+3273	1	gặp may, đang may mắn
+3273	2	vận may quay lại
+3405	1	dù ... đến đâu, cho dù
+3405	2	... đến mức nào, bao nhiêu
+3406	1	đúng là, quả đúng là
+3406	2	quả thật, trông thật là
+3409	1	(phòng khi) khẩn cấp, lúc cần thiết
+3409	2	đến lúc thật sự (thì)
+3413	1	hoàn toàn (không), mãi mà (không)
+3413	2	hoàn toàn (không), mãi mà (không)
+3415	1	thà rằng, chi bằng
+3415	2	chi bằng, thà (đi bộ còn hơn chờ)
+3437	1	không địch nổi, không bằng
+3437	2	không chịu nổi
+3454	1	không có điểm dừng, vô tận
+3454	2	không có điểm dừng, vô tận
+3467	1	hẳn lên, nhiều hơn hẳn
+3467	2	nén chặt, cố nhịn (hết sức)
+3467	3	xúc động mạnh; cảm động
+3487	1	hẳn là, chắc hẳn (rất)
+3487	2	hẳn là, chắc hẳn (rất)
+3488	1	(không) lắm, (không) đến mức
+3488	2	(không) lắm, (không) đến mức
+3489	1	cứ như thể, làm như là
+3489	2	cứ như thể, làm như là
+3520	1	khá, tương đối
+3520	2	chừng, mới chỉ (khoảng tuổi)
+3533	1	nếu (là) …
+3533	2	nếu (cứ) …
+3551	1	cứ tưởng chắc là, ngỡ là (hóa ra sai)
+3551	2	cứ tưởng chắc là, ngỡ là (hóa ra sai)
+3553	1	hoàn toàn (không)
+3553	2	hoàn toàn (không)
+3558	1	hay, thường hay (có xu hướng)
+3558	2	hay, thường hay (có xu hướng)
+3572	1	có vẻ như, hình như
+3572	2	có vẻ như, hình như
+3578	1	kính xin, xin vui lòng (rất lịch sự)
+3578	2	kính xin, xin vui lòng (rất lịch sự)
+3588	1	nuốt, uống
+3588	2	chấp nhận (yêu cầu)
+3588	3	nín thở, há hốc (vì kinh ngạc)
+3590	1	kẹp (ở giữa)
+3590	2	xen vào giữa (nghỉ giải lao)
+3590	3	chen ngang, xen vào lời
+3601	1	biết đâu, có lẽ
+3601	2	biết đâu, có lẽ
+3625	1	huống chi, nói gì đến
+3625	2	huống chi, nói gì đến
+3671	1	chỉ có hai người (một mình với nhau)
+3671	2	đi rồi không về nữa
+3683	1	khớp nhau, nhất quán
+3683	2	không khớp nhau, mâu thuẫn
+3694	1	ngồi dạng chân, cưỡi
+3694	2	trải dài qua, vắt qua
+3699	1	viết (sách), biên soạn
+3699	2	biểu lộ, thể hiện
+3699	3	xuất hiện, lộ diện
+3700	1	đáng, đủ (để tin)
+3700	2	không đáng kể, vụn vặt
+3701	1	thành bầy, thành đàn
+3701	2	(không) có nghĩa, (không) thành câu
+3712	1	do, bởi
+3712	2	tùy theo
+3734	1	biểu hiện, dấu hiệu (của)
