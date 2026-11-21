@@ -127,7 +127,7 @@
 170	nhận (khiêm nhường); được ban
 172	chùng; trễ xuống
 173	rủ xuống; nhỏ giọt
-174	làm sai; đổi
+174	làm trái; không giữ (lời hứa)
 175	co ngắn lại; co rút
 177	phụng sự; làm việc cho
 178	phụ trách; cai quản
@@ -1303,7 +1303,6 @@
 1892	lỗi thời, suy tàn
 1896	bất cứ lúc nào, khi cần
 1898	thành ý
-1899	sinh trưởng (cây, vật nuôi)
 1900	lớn lên (trẻ em, con non)
 1901	cổ vũ
 1905	kế sinh nhai

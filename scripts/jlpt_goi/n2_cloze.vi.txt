@@ -297,3 +297,47 @@
 3387	2	(không) dễ như vậy
 3388	1	(không) ra hồn, tử tế
 3388	2	(không) đàng hoàng, ra gì
+3391	1	làm nũng
+3391	2	xin nhận (ý tốt của người khác)
+3405	1	thấm vào
+3405	2	xót, buốt (vết thương)
+3405	3	thấm thía (trong lòng)
+3406	1	làm xong, giải quyết xong
+3406	2	tạm dùng (…) cho xong
+3412	1	đạt được (mục tiêu)
+3412	2	trải qua, đạt được (sự phát triển)
+3420	1	nuốt (trôi)
+3420	2	nắm bắt, hiểu được
+3423	1	đảm nhận (vai trò)
+3423	2	giữ (lời hứa), thực hiện
+3428	1	tạm ngừng, hoãn lại
+3428	2	nhìn nhau
+3430	1	đổ đầy
+3430	2	đáp ứng (điều kiện)
+3434	1	nuôi (gia đình)
+3434	2	bồi dưỡng, rèn luyện (năng lực)
+3465	1	qua loa, cẩu thả
+3465	2	thôi đi, vừa phải thôi
+3470	1	bây giờ mới (… thì đã muộn)
+3470	2	bây giờ mới (… thì đã muộn)
+3546	1	cảm giác (dễ chịu)
+3546	2	cảm giác khi sống (ở đâu đó)
+3553	1	cảm giác ớn lạnh
+3590	1	một cách tự giác, chủ động
+3590	2	tự tập luyện (tự giác)
+3616	1	ai đến trước được trước
+3616	2	… người đến đầu tiên
+3621	1	cách được nuôi dạy, giáo dưỡng
+3621	2	lớn lên ở …
+3650	1	thu (đồ phơi) vào nhà
+3650	2	nhập (dữ liệu) vào máy tính
+3695	1	niềm tự hào (tự hào về)
+3695	2	lòng tự hào (về công việc)
+3703	1	trọn, nguyên cả (một ngày)
+3703	2	mũm mĩm, tròn trịa
+3787	1	đồ tặng kèm
+3787	2	lại còn, tệ hơn nữa là
+3790	1	giả sử (dù … đi nữa)
+3790	2	giả sử, nếu như
+3803	1	buồn nôn, nôn nao
+3803	2	bực bội, tức tối (trong lòng)

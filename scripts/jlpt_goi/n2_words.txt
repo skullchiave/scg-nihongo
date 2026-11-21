@@ -523,7 +523,7 @@
 754	N	{大|だい}{学|がく}{院|いん}	graduate school
 755	N	{楕|だ}{円|えん}	oval, ellipse
 756	N	{長|ちょう}{男|なん}	eldest son
-757	N	{出|で}{入|いり}{口|ぐち}	entrance and exit	n-deiriguchi
+757	N	{出|で}{入|いり}{口|ぐち}	entrance and exit
 758	N	{内|ない}{科|か}	internal medicine
 759	N	{並|なみ}{木|き}	row of trees
 761	N	{早|はや}{口|くち}	fast talking
@@ -1335,7 +1335,6 @@
 2011	F	{点|てん}{々|てん}	here and there, scattered	e-here-there
 2012	N	{天|てん}{皇|のう}	the Japanese emperor
 2014	S	{出|で}{入|い}り	coming and going	s-come-go
-2015	N	{出|で}{入|い}り{口|ぐち}	entrance and exit	n-deiriguchi
 2016	N	でき{上|あ}がり	finished product, completion
 2017	N	でこぼこ	unevenness, bumpiness
 2018	N	{弟|で}{子|し}	pupil, apprentice	nb-pupil
@@ -2459,10 +2458,10 @@
 3610	N	{制|せい}{服|ふく}	uniform
 3611	N	{性|せい}{別|べつ}	gender; sex
 3612	S	{設|せっ}{置|ち}	setting up; installation
-3613	S	{折|せっ}{衷|ちゅう}	compromise; blending two things
+3613	N	{折|せっ}{衷|ちゅう}	compromise; blending two things
 3614	S	{設|せつ}{立|りつ}	establishment
 3615	N	{先|せん}{進|しん}{国|こく}	developed country
-3616	S	{先|せん}{着|ちゃく}	arriving first
+3616	N	{先|せん}{着|ちゃく}	arriving first
 3617	N	{専|せん}{用|よう}	exclusive use
 3618	N	{税|ぜい}{込|こ}み	tax included
 3619	S	{走|そう}{行|こう}	driving; running (a vehicle)

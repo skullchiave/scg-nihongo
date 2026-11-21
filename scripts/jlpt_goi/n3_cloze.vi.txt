@@ -276,3 +276,25 @@
 1799	1	đã … từ lâu
 1185	1	đơn giản chỉ là (… thôi)
 1160	1	chỉ (… thôi)
+2209	1	(ước mơ) thành hiện thực
+2209	2	(mong ước) thành hiện thực
+2210	1	thực hiện (ước mơ)
+2210	2	biến (điều ước) thành hiện thực
+2211	1	dồn (tâm huyết) vào
+2211	2	gửi gắm (tình cảm) vào
+2217	1	vâng, tôi đã rõ (khiêm nhường)
+2217	2	(như quý vị đã) biết (kính ngữ)
+2223	1	trầm và cuốn hút (giọng)
+2223	2	chát (trà)
+2234	1	chồng lên nhau
+2234	2	trùng nhau (thời gian)
+2239	1	san bằng (núi)
+2239	2	làm hại (sức khỏe), bị ốm
+2239	3	đổi (tiền chẵn) ra tiền lẻ
+2243	1	xong, kết thúc
+2243	2	không cần phải (…) cũng xong
+2245	1	bị nghẹt (mũi)
+2245	2	kín (lịch)
+2245	3	nghẹn lời
+2314	1	phải chăng, có phải là … không (đoán)
+2314	2	biết đâu, có lẽ

@@ -127,7 +127,7 @@
 170	V	{賜|たまわ}る	to receive (humble); to be granted
 172	V	たるむ	to become loose; to slacken
 173	V	{垂|た}れる	to hang down; to drip
-174	V	{違|ちが}える	to make a mistake in; to change
+174	V	{違|たが}える	to break (a promise); to go against
 175	V	{縮|ちぢ}まる	to become shorter; to shrink
 177	V	{仕|つか}える	to serve; to work for
 178	V	{司|つかさど}る	to be in charge of; to govern
@@ -650,7 +650,7 @@
 993	N	{格|かく}{差|さ}	gap; disparity
 994	S	{拡|かく}{散|さん}	spreading
 996	N	{隔|かく}{週|しゅう}	every other week
-998	S	{革|かく}{新|しん}	innovation; reform
+998	N	{革|かく}{新|しん}	innovation; reform
 999	N	{革|かく}{新|しん}{派|は}	reformists
 1001	S	{獲|かく}{得|とく}	acquisition; winning
 1002	S	{確|かく}{保|ほ}	securing
@@ -714,7 +714,7 @@
 1095	N	{外|がい}{貨|か}	foreign currency
 1096	N	{外|がい}{観|かん}	outward appearance
 1098	N	{外|がい}{相|しょう}	foreign minister
-1099	S	{概|がい}{説|せつ}	general outline
+1099	N	{概|がい}{説|せつ}	general outline
 1100	S	{該|がい}{当|とう}	applying to; falling under
 1101	N	{街|がい}{頭|とう}	on the street
 1102	N	{概|がい}{念|ねん}	concept; general idea
@@ -785,7 +785,7 @@
 1182	S	{休|きゅう}{戦|せん}	truce
 1183	N	{旧|きゅう}{知|ち}	old acquaintance
 1184	N	{宮|きゅう}{殿|でん}	palace
-1185	S	{窮|きゅう}{乏|ぼう}	poverty; being very poor
+1185	N	{窮|きゅう}{乏|ぼう}	poverty; being very poor
 1187	J	〜{強|きょう}	a little over (a number)
 1188	N	{驚|きょう}{異|い}	wonder; marvel
 1191	S	{共|きょう}{感|かん}	sympathy; feeling the same
@@ -796,7 +796,7 @@
 1196	A	{強|きょう}{硬|こう}	firm; hard-line
 1197	N	{凶|きょう}{作|さく}	bad harvest
 1198	N	{共|きょう}{産|さん}{主|しゅ}{義|ぎ}	communism
-1200	S	{教|きょう}{習|しゅう}	training; lessons (e.g., driving)
+1200	N	{教|きょう}{習|しゅう}	training; lessons (e.g., driving)
 1201	N	{郷|きょう}{愁|しゅう}	nostalgia; homesickness
 1202	N	{教|きょう}{職|しょく}	teaching profession
 1203	S	{強|きょう}{制|せい}	compulsion; forcing
@@ -810,7 +810,7 @@
 1211	N	{恐|きょう}{竜|りゅう}	dinosaur
 1212	A	{強|きょう}{烈|れつ}	intense; powerful
 1213	N	{共|きょう}{和|わ}	republic (system of government)
-1214	S	{局|きょく}{限|げん}	limiting to a small area
+1214	N	{局|きょく}{限|げん}	limiting to a small area
 1215	N	{極|きょく}{限|げん}	the limit; extreme
 1216	A	{極|きょく}{端|たん}	extreme
 1217	S	{居|きょ}{住|じゅう}	living (in a place); residence
@@ -884,9 +884,9 @@
 1313	N	{警|けい}{備|び}{員|いん}	security guard
 1314	N	{警|けい}{部|ぶ}	police inspector
 1318	N	{結|けっ}{核|かく}	tuberculosis
-1321	S	{決|けっ}{算|さん}	settlement of accounts
+1321	N	{決|けっ}{算|さん}	settlement of accounts
 1322	N	{決|けっ}{勝|しょう}	final (in a sports match)
-1323	S	{結|けっ}{晶|しょう}	crystal; crystallization
+1323	N	{結|けっ}{晶|しょう}	crystal; crystallization
 1324	S	{結|けっ}{成|せい}	forming (a group)
 1325	S	{結|けっ}{束|そく}	unity; solidarity
 1326	N	{決|けつ}	vote; decision
@@ -1179,7 +1179,7 @@
 1702	N	{守|しゅ}{備|び}	defense (in sports)
 1703	N	{手|しゅ}{法|ほう}	method, technique
 1704	N	{旬|しゅん}	peak season (of food)
-1705	S	{私|し}{有|ゆう}	private ownership
+1705	N	{私|し}{有|ゆう}	private ownership
 1706	N	{章|しょう}	chapter
 1707	N	{省|しょう}	ministry
 1711	N	{衝|しょう}{撃|げき}	shock, impact
@@ -1206,7 +1206,7 @@
 1742	N	{庶|しょ}{民|みん}	ordinary people
 1743	N	{庶|しょ}{務|む}	general affairs
 1746	N	{使|し}{用|よう}{人|にん}	employee, servant
-1748	S	{指|し}{令|れい}	order, directive
+1748	N	{指|し}{令|れい}	order, directive
 1749	F	{四|し}{六|ろく}{時|じ}{中|ちゅう}	all the time
 1751	N	{新|しん}{規|き}	new (newly started)
 1752	S	{審|しん}{議|ぎ}	deliberation
@@ -1243,7 +1243,7 @@
 1801	S	{持|じ}{続|ぞく}	continuing
 1802	N	{字|じ}{体|たい}	style of letters, typeface
 1803	N	{自|じ}{治|ち}{体|たい}	local government
-1808	F	{十|じっ}{中|ちゅう}{八|はっ}{九|く}	most likely, nine times out of ten
+1808	F	{十|じゅっ}{中|ちゅう}{八|はっ}{九|く}	most likely, nine times out of ten
 1809	N	{実|じっ}{費|ぴ}	actual cost
 1811	N	{実|じつ}{業|ぎょう}{家|か}	businessperson
 1812	N	{実|じつ}{情|じょう}	actual situation
@@ -1291,7 +1291,7 @@
 1873	N	{人|じん}{民|みん}	the people
 1874	N	{水|すい}{源|げん}	source of a river
 1875	S	{推|すい}{進|しん}	promotion; pushing forward
-1878	S	{吹|すい}{奏|そう}	playing a wind instrument
+1878	N	{吹|すい}{奏|そう}	playing a wind instrument
 1880	S	{衰|すい}{退|たい}	decline
 1881	N	{水|すい}{田|でん}	rice paddy
 1884	N	{数|すう}{詞|し}	numeral
@@ -1303,13 +1303,12 @@
 1892	V	{廃|すた}れる	to go out of use; to decline
 1896	F	{随|ずい}{時|じ}	at any time; as needed
 1898	N	{誠|せい}{意|い}	sincerity
-1899	S	{生|せい}{育|いく}	growth (of plants or animals)
 1900	S	{成|せい}{育|いく}	growth (of children, young animals)
-1901	S	{声|せい}{援|えん}	cheering; support
+1901	N	{声|せい}{援|えん}	cheering; support
 1905	N	{生|せい}{計|けい}	livelihood
 1907	N	{政|せい}{権|けん}	government; political power
 1908	N	{成|せい}{功|こう}{率|りつ}	success rate
-1909	S	{制|せい}{裁|さい}	punishment; sanctions
+1909	N	{制|せい}{裁|さい}	punishment; sanctions
 1910	N	{政|せい}{策|さく}	policy
 1911	N	{星|せい}{座|ざ}	constellation
 1912	N	{生|せい}{死|し}	life and death
@@ -1348,13 +1347,13 @@
 1961	S	{宣|せん}{言|げん}	declaration
 1963	S	{先|せん}{行|こう}	going ahead; coming first
 1964	N	{戦|せん}{災|さい}	war damage
-1965	S	{専|せん}{修|しゅう}	specializing in a subject
+1965	N	{専|せん}{修|しゅう}	specializing in a subject
 1967	N	{戦|せん}{術|じゅつ}	tactics
 1968	N	{先|せん}{人|じん}	people of the past; predecessors
 1969	S	{潜|せん}{水|すい}	diving (underwater)
 1970	N	{先|せん}{端|たん}	tip; cutting edge
 1971	N	{先|せん}{代|だい}	previous head or generation
-1972	F	{先|せん}だって	the other day; recently
+1972	F	{先|さき}だって	the other day; recently
 1974	A	{先|せん}{天|てん}{的|てき}	innate; congenital
 1975	N	{戦|せん}{闘|とう}	battle; fighting
 1977	S	{潜|せん}{入|にゅう}	sneaking in
@@ -1519,7 +1518,7 @@
 2179	A	{著|ちょ}{名|めい}	famous; well-known
 2180	N	{塵|ちり}{取|と}り	dustpan
 2181	N	{賃|ちん}{金|ぎん}	wages
-2182	S	{賃|ちん}{貸|たい}	renting out; rental
+2182	N	{賃|ちん}{貸|たい}	renting out; rental
 2183	S	{沈|ちん}{殿|でん}	settling (of sediment)
 2184	S	{沈|ちん}{没|ぼつ}	sinking
 2185	S	{沈|ちん}{黙|もく}	silence
@@ -1604,7 +1603,7 @@
 2295	S	{転|てん}{任|にん}	transfer to a new post
 2297	S	{展|てん}{望|ぼう}	view; outlook
 2298	S	{転|てん}{落|らく}	falling down; sliding down
-2299	S	{出|で}{直|なお}し	starting over
+2299	N	{出|で}{直|なお}し	starting over
 2301	N	{電|でん}{圧|あつ}	voltage
 2302	N	{田|でん}{園|えん}	countryside; rural area
 2306	S	{伝|でん}{達|たつ}	conveying; communication
@@ -1659,7 +1658,7 @@
 2374	N	{胴|どう}	torso; body (trunk)
 2376	A	{同|どう}{一|いつ}	identical; the same
 2377	S	{動|どう}{員|いん}	mobilization; gathering people
-2378	S	{同|どう}{感|かん}	agreeing; sharing the same feeling
+2378	N	{同|どう}{感|かん}	agreeing; sharing the same feeling
 2380	N	{動|どう}{機|き}	motive
 2381	N	{同|どう}{級|きゅう}	the same class (or grade)
 2382	S	{同|どう}{居|きょ}	living together
@@ -1768,7 +1767,7 @@
 2523	S	{迫|はく}{害|がい}	persecution
 2524	A	{薄|はく}{弱|じゃく}	weak; feeble
 2525	S	{白|はく}{状|じょう}	confession
-2527	S	{橋|はし}{渡|わた}し	acting as a go-between; mediation
+2527	N	{橋|はし}{渡|わた}し	acting as a go-between; mediation
 2530	S	{破|は}{損|そん}	damage; breaking
 2531	N	{裸足|はだし}	barefoot
 2533	S	{発|はっ}{掘|くつ}	excavation; discovery
@@ -1953,9 +1952,9 @@
 2758	N	{便|べん}{宜|ぎ}	convenience, special help
 2759	S	{弁|べん}{護|ご}	defense (in court)
 2761	S	{弁|べん}{償|しょう}	compensation, paying for damage
-2762	S	{弁|べん}{論|ろん}	debate, argument
+2762	N	{弁|べん}{論|ろん}	debate, argument
 2763	N	{穂|ほ}	ear (of rice, wheat)
-2764	S	{保|ほ}{育|いく}	child care
+2764	N	{保|ほ}{育|いく}	child care
 2765	N	{法|ほう}{案|あん}	bill (proposed law)
 2766	S	{崩|ほう}{壊|かい}	collapse
 2767	N	{法|ほう}{学|がく}	law (the study of)
@@ -2172,14 +2171,14 @@
 3035	A	{有|ゆう}{毒|どく}	poisonous
 3036	A	{優|ゆう}{美|び}	graceful; elegant
 3037	A	{有|ゆう}{望|ぼう}	promising
-3038	S	{遊|ゆう}{牧|ぼく}	nomadic herding
+3038	N	{遊|ゆう}{牧|ぼく}	nomadic herding
 3041	A	{有|ゆう}{力|りょく}	influential; strong
 3043	S	{誘|ゆう}{惑|わく}	temptation
 3044	V	{歪|ゆが}める	to distort; to twist
 3049	A	{緩|ゆる}やか	gentle; gradual
 3052	N	{溶|よう}{液|えき}	solution (liquid)
 3053	N	{用|よう}{件|けん}	business; matter to deal with
-3054	S	{養|よう}{護|ご}	protection; care
+3054	N	{養|よう}{護|ご}	protection; care
 3057	N	{様|よう}{式|しき}	style; form
 3058	S	{要|よう}{請|せい}	request; demand
 3059	N	{様|よう}{相|そう}	aspect; state of affairs

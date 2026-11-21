@@ -1335,7 +1335,6 @@
 2011	rải rác, đây đó
 2012	Thiên hoàng
 2014	sự ra vào
-2015	cửa ra vào
 2016	thành phẩm, sự hoàn thành
 2017	gồ ghề, lồi lõm
 2018	đệ tử, học trò

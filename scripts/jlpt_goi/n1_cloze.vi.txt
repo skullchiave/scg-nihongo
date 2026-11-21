@@ -310,8 +310,6 @@
 1889	1	cốt truyện, tình tiết
 1889	2	lý lẽ, logic
 1889	3	nguồn tin (có liên quan)
-1899	1	sự sinh trưởng (của cây)
-1899	2	sinh trưởng, mọc (cây)
 1900	1	lớn lên, trưởng thành (động vật non)
 1900	2	sự lớn lên (động vật non)
 1905	1	sinh kế, kế sinh nhai
