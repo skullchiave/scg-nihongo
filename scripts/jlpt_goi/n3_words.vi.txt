@@ -1663,3 +1663,112 @@
 2205	bị đổ (tự đổ)
 2206	cười tươi
 2207	sáng bóng; sạch bong
+2208	đỗ (kỳ thi)
+2209	thành hiện thực (điều ước)
+2210	biến (điều ước) thành hiện thực
+2211	gửi gắm (tình cảm); đặt (tâm huyết) vào
+2212	trốn (học, việc); lười biếng
+2213	được trang bị; có sẵn
+2214	sự thu hút; kêu gọi, thể hiện bản thân
+2216	việc mặc thử (quần áo)
+2217	sự biết, hiểu rõ; chấp thuận
+2218	sự hiện thực hóa, thực hiện được
+2219	giao hàng tận nhà
+2220	sự giảm xuống; sự sụt giảm
+2221	sự thử; cố gắng thử
+2222	sự phân tích
+2223	trầm lắng, tinh tế (kín đáo mà sành điệu); chát
+2224	trong nháy mắt
+2225	đồ đi mưa
+2226	tranh chấp, cãi nhau
+2227	nói cách khác, diễn đạt lại
+2228	đổi chỗ cho nhau; thay cái mới vào
+2229	sự chuyển động; xu hướng
+2230	ngồi dậy, đứng dậy (từ tư thế nằm)
+2231	tôi, tớ (cách xưng thân mật của nam)
+2232	sự phát triển (sản phẩm, công nghệ); khai thác
+2233	viết vào; đăng bài (trên mạng)
+2234	chồng lên nhau; dồn dập
+2235	bài tập; vấn đề cần giải quyết
+2236	thoải mái, dễ gần
+2237	nghe hiểu
+2238	môn học
+2239	phá vỡ; tháo rời
+2240	nửa sau
+2241	công chức, viên chức nhà nước
+2242	nhân vật chính
+2243	xong; đủ rồi
+2244	nửa đầu
+2245	bị tắc; bị nhồi đầy
+2246	cơm suất, cơm phần
+2247	tuổi nghỉ hưu
+2248	trời, bầu trời; ông trời
+2249	chuyển công tác
+2250	thiên đường, thiên quốc
+2251	thiên tài
+2252	việc đến trường
+2253	sự đăng ký
+2254	sở trường, kỹ năng đặc biệt
+2255	điểm số
+2256	sự đổi, thay thế
+2257	sự đồng ý, tán thành
+2258	video, clip
+2259	sống, tươi (chưa nấu); trực tiếp (không thu sẵn)
+2260	làm kêu; rung (chuông)
+2261	buồn ngủ
+2262	hẹn gặp (đúng giờ, đúng chỗ)
+2263	sự tóm tắt, kết luận
+2264	ngay trước mắt
+2265	người nổi tiếng
+2266	yêu cầu biểu diễn lại (encore)
+2267	vâng, có (yes)
+2268	trực tuyến
+2269	nhiếp ảnh gia, thợ chụp ảnh
+2270	thảm trải sàn
+2271	hướng dẫn viên; sự hướng dẫn
+2272	sách hướng dẫn du lịch
+2273	góc; khu vực (trong cửa hàng)
+2274	cỡ, kích cỡ
+2275	buổi biểu diễn, chương trình
+2276	áo khoác (jumper)
+2277	quần jean
+2278	xe thể thao
+2279	đợt giảm giá
+2280	thạch, rau câu
+2281	tất, vớ
+2282	thời gian (thành tích chạy đua)
+2283	tháp
+2284	sự thay đổi, đổi
+2285	kênh (truyền hình)
+2286	khăn giấy
+2287	tài xế; cái tua vít
+2288	khăn ăn
+2289	móc áo
+2290	phi công
+2291	gói, bao (đóng gói)
+2292	xe tuần tra cảnh sát
+2293	anh hùng
+2294	tập tin, tệp; bìa hồ sơ
+2295	người hâm mộ, fan
+2296	tốt nhất
+2297	ống nước mềm (vòi tưới)
+2298	điểm; điểm quan trọng
+2299	bình giữ nhiệt; ấm đun nước
+2300	quản lý
+2301	dấu, ký hiệu; đánh dấu
+2302	nhạc sĩ, nhạc công
+2303	đồng phục (đội, thể thao)
+2304	buổi diễn live, hòa nhạc trực tiếp
+2305	đèn (đèn dầu, đèn bàn)
+2306	bài học, buổi học
+2307	bếp; lò vi sóng
+2308	xe thuê
+2309	kính áp tròng
+2310	có gu, có khiếu thẩm mỹ
+2311	mềm mại, dịu dàng
+2312	vui vẻ, tươi sáng
+2313	gần như, hầu như
+2314	biết đâu, có lẽ
+2315	… gì đó; những thứ như …
+2316	… phần mười (mỗi phần 10%)
+2317	nguồn điện; công tắc nguồn

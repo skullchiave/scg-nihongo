@@ -991,3 +991,10 @@
 991	K	クーラー	air conditioner
 992	K	ゴム	rubber
 993	K	スタッフ	staff member
+994	V	{休|やす}める	to rest (something); to take a break from
+995	K	サンタクロース	Santa Claus
+996	S	ジャンプ	jumping
+997	K	ソース	sauce; source
+998	K	パジャマ	pajamas
+999	K	ミュージック	music
+1000	K	ライス	cooked rice

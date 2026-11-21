@@ -1661,3 +1661,112 @@
 2205	V	こぼれる	to spill (by itself)
 2206	F	にこにこ	smiling happily
 2207	F	ぴかぴか	shiny / sparkling clean
+2208	V	{受|う}かる	to pass (an exam)
+2209	V	{叶|かな}う	to come true
+2210	V	{叶|かな}える	to make (a wish) come true
+2211	V	{込|こ}める	to put (feeling) into; to include
+2212	V	サボる	to skip (class, work); to slack off
+2213	V	{備|そな}わる	to be equipped with; to be provided
+2214	S	アピール	appeal; making an appeal
+2216	S	{試|し}{着|ちゃく}	trying on (clothes)
+2217	S	{承|しょう}{知|ち}	consent; understanding
+2218	S	{実|じつ}{現|げん}	realization; coming true
+2219	S	{宅|たく}{配|はい}	home delivery
+2220	S	ダウン	going down; a drop
+2221	S	トライ	try; attempt
+2222	S	{分|ぶん}{析|せき}	analysis
+2223	I	{渋|しぶ}い	tasteful (quiet and cool); astringent
+2224	P	あっという{間|ま}	in an instant, in no time
+2225	N	{雨|あま}{具|ぐ}	rain gear
+2226	N	{争|あらそ}い	dispute, quarrel
+2227	V	{言|い}い{換|か}える	to say in other words, to rephrase
+2228	V	{入|い}れ{替|か}える	to replace; to change (something)
+2229	N	{動|うご}き	movement; trend
+2230	V	{起|お}き{上|あ}がる	to get up; to sit up
+2231	X	{俺|おれ}	I (informal, used by men)
+2232	S	{開|かい}{発|はつ}	development
+2233	V	{書|か}き{込|こ}む	to write in; to post (online)
+2234	V	{重|かさ}なる	to overlap; to pile up
+2235	N	{課|か}{題|だい}	assignment; issue to solve
+2236	A	{気|き}{軽|がる}	casual; easygoing
+2237	N	{聞|き}き{取|と}り	listening comprehension
+2238	N	{教|きょう}{科|か}	school subject
+2239	V	{崩|くず}す	to break down; to take apart
+2240	N	{後|こう}{半|はん}	second half
+2241	N	{公|こう}{務|む}{員|いん}	public servant
+2242	N	{主|しゅ}{人|じん}{公|こう}	main character
+2243	V	{済|す}む	to be finished; to be enough
+2244	N	{前|ぜん}{半|はん}	first half
+2245	V	{詰|つ}まる	to be blocked; to be packed full
+2246	N	{定|てい}{食|しょく}	set meal
+2247	N	{定|てい}{年|ねん}	retirement age
+2248	N	{天|てん}	heaven; sky
+2249	S	{転|てん}{勤|きん}	job transfer
+2250	N	{天|てん}{国|ごく}	heaven; paradise
+2251	N	{天|てん}{才|さい}	genius
+2252	S	{登|とう}{校|こう}	going to school
+2253	S	{登|とう}{録|ろく}	registration
+2254	N	{特|とく}{技|ぎ}	special skill
+2255	N	{得|とく}{点|てん}	score; points
+2256	N	{取|と}り{替|か}え	exchange; replacement
+2257	S	{同|どう}{意|い}	agreement; consent
+2258	N	{動|どう}{画|が}	video
+2259	N	{生|なま}	raw; live (not recorded)
+2260	V	{鳴|な}らす	to sound; to ring (something)
+2261	I	{眠|ねむ}たい	sleepy
+2262	S	{待|ま}ち{合|あ}わせ	meeting at an arranged time and place
+2263	N	まとめ	summary, conclusion
+2264	N	{目|め}の{前|まえ}	right in front of one's eyes
+2265	N	{有|ゆう}{名|めい}{人|じん}	famous person
+2266	K	アンコール	encore
+2267	K	イエス	yes
+2268	K	オンライン	online
+2269	K	カメラマン	photographer
+2270	K	カーペット	carpet
+2271	K	ガイド	guide (person or book)
+2272	K	ガイドブック	guidebook
+2273	K	コーナー	corner; section
+2274	K	サイズ	size
+2275	K	ショー	show
+2276	K	ジャンパー	jacket
+2277	K	ジーパン	jeans
+2278	K	スポーツカー	sports car
+2279	K	セール	sale
+2280	K	ゼリー	jelly
+2281	K	ソックス	socks
+2282	K	タイム	time (of a race)
+2283	K	タワー	tower
+2284	S	チェンジ	change
+2285	K	チャンネル	channel
+2286	K	ティッシュペーパー	tissue paper
+2287	K	ドライバー	driver; screwdriver
+2288	K	ナプキン	napkin
+2289	K	ハンガー	clothes hanger
+2290	K	パイロット	pilot
+2291	K	パック	pack; package
+2292	K	パトカー	police car
+2293	K	ヒーロー	hero
+2294	K	ファイル	file
+2295	K	ファン	fan (supporter)
+2296	K	ベスト	best
+2297	K	ホース	hose
+2298	K	ポイント	point
+2299	K	ポット	pot; thermos
+2300	K	マネージャー	manager
+2301	S	マーク	mark
+2302	K	ミュージシャン	musician
+2303	K	ユニフォーム	uniform
+2304	K	ライブ	live (concert or broadcast)
+2305	K	ランプ	lamp
+2306	K	レッスン	lesson
+2307	K	レンジ	stove; microwave oven
+2308	K	レンタカー	rental car
+2309	K	コンタクト	contact lens
+2310	P	センスがいい	to have good taste
+2311	A	ソフト	soft, gentle
+2312	A	ほがらか	cheerful, bright
+2313	F	ほぼ	almost
+2314	F	もしかして	perhaps, possibly
+2315	J	〜なんか	things like ~; ~ or the like
+2316	J	〜{割|わり}	~ tenths (10% each)
+2317	N	{電|でん}{源|げん}	power source; power switch

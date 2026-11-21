@@ -996,3 +996,10 @@
 991	máy lạnh (máy điều hòa)
 992	cao su
 993	nhân viên
+994	cho (cơ thể) nghỉ ngơi; tạm dừng (việc)
+995	ông già Noel
+996	nhảy (sự nhảy)
+997	nước sốt, xốt
+998	đồ ngủ (pijama)
+999	âm nhạc
+1000	cơm trắng

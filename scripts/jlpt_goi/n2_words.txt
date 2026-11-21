@@ -523,7 +523,7 @@
 754	N	{大|だい}{学|がく}{院|いん}	graduate school
 755	N	{楕|だ}{円|えん}	oval, ellipse
 756	N	{長|ちょう}{男|なん}	eldest son
-757	N	{出|で}{入|いり}{口|ぐち}	entrance and exit
+757	N	{出|で}{入|いり}{口|ぐち}	entrance and exit	n-deiriguchi
 758	N	{内|ない}{科|か}	internal medicine
 759	N	{並|なみ}{木|き}	row of trees
 761	N	{早|はや}{口|くち}	fast talking
@@ -1335,7 +1335,7 @@
 2011	F	{点|てん}{々|てん}	here and there, scattered	e-here-there
 2012	N	{天|てん}{皇|のう}	the Japanese emperor
 2014	S	{出|で}{入|い}り	coming and going	s-come-go
-2015	N	{出|で}{入|い}り{口|ぐち}	entrance and exit
+2015	N	{出|で}{入|い}り{口|ぐち}	entrance and exit	n-deiriguchi
 2016	N	でき{上|あ}がり	finished product, completion
 2017	N	でこぼこ	unevenness, bumpiness
 2018	N	{弟|で}{子|し}	pupil, apprentice	nb-pupil
@@ -2236,3 +2236,419 @@
 3387	F	そう	(not) so, (not) that (used with a negative)
 3388	F	ろくな	(not) decent, (not) proper (used with a negative)
 3389	V	{買|か}い{替|か}える	to replace by buying a new one
+3390	V	{焦|あせ}る	to be impatient; to be in a rush
+3391	V	{甘|あま}える	to depend on someone's kindness; to act spoiled
+3392	V	{受|う}け{入|い}れる	to accept; to take in
+3393	V	{受|う}け{付|つ}ける	to accept (an application); to receive
+3394	V	うつむく	to look down
+3395	V	{促|うなが}す	to urge; to encourage
+3396	V	{老|お}いる	to grow old
+3397	V	{納|おさ}まる	to be put in place; to fit in
+3398	V	{治|おさ}まる	to calm down; to subside
+3399	P	{恥|はじ}をかく	to be embarrassed; to lose face
+3400	V	{禁|きん}じる	to forbid
+3401	V	{組|く}み{合|あ}わせる	to combine; to put together
+3402	V	ごまかす	to cheat; to cover up
+3403	V	{定|さだ}める	to decide; to set
+3404	V	{仕|し}{上|あ}げる	to finish; to complete
+3405	V	{染|し}みる	to soak in; to sting
+3406	V	{済|す}ます	to finish; to get by without
+3407	V	{染|そ}める	to dye
+3408	V	{保|たも}つ	to keep; to maintain
+3409	V	{費|つい}やす	to spend (time, money); to use up
+3410	V	{告|つ}げる	to tell; to announce
+3411	V	つねる	to pinch
+3412	V	{遂|と}げる	to achieve; to accomplish
+3413	V	{取|と}り{戻|もど}す	to get back; to recover
+3414	V	{取|と}り{寄|よ}せる	to order (from elsewhere); to have sent
+3415	V	{悩|なや}ます	to trouble; to torment
+3416	V	{賑|にぎ}わう	to be lively; to be crowded
+3417	V	{逃|に}げ{出|だ}す	to run away; to escape
+3418	V	{逃|のが}す	to let escape; to miss (a chance)
+3419	V	{逃|のが}れる	to escape; to avoid
+3420	V	{飲|の}み{込|こ}む	to swallow; to understand
+3421	V	{乗|の}り{込|こ}む	to get on board; to march into
+3422	V	{励|はげ}む	to work hard at; to strive
+3423	V	{果|は}たす	to fulfill; to carry out
+3424	V	{率|ひき}いる	to lead (a group)
+3425	V	{引|ひ}き{下|さ}げる	to lower; to reduce
+3426	V	{老|ふ}ける	to grow old; to look older
+3427	V	{丸|まる}める	to make round; to roll up
+3428	V	{見|み}{合|あ}わせる	to postpone; to exchange glances
+3429	V	{見|み}{落|お}とす	to overlook; to miss
+3430	V	{満|み}たす	to fill; to satisfy (a condition)
+3431	V	{見|み}{習|なら}う	to follow (someone's) example; to learn by watching
+3432	V	{目|め}{覚|ざ}める	to wake up; to awaken
+3433	V	{盛|も}り{上|あ}がる	to get lively; to swell up
+3434	V	{養|やしな}う	to support (a family); to build up
+3435	S	アップ	going up; an increase
+3436	S	イメージチェンジ	changing one's image
+3437	S	{強|きょう}{化|か}	strengthening
+3438	S	{協|きょう}{議|ぎ}	discussion; conference
+3439	S	{支|し}{援|えん}	support
+3440	S	{志|し}{望|ぼう}	wish; aspiration (to apply)
+3441	S	{出|しゅつ}{力|りょく}	output
+3442	S	{受|じゅ}{講|こう}	taking a course
+3443	S	{整|せい}{備|び}	maintenance; putting in order
+3444	S	{説|せっ}{教|きょう}	lecture; scolding
+3445	S	{捜|そう}{査|さ}	criminal investigation
+3446	S	{創|そう}{造|ぞう}	creation
+3447	S	デビュー	debut
+3448	S	フォロー	follow-up; support
+3449	S	{保|ほ}{障|しょう}	guarantee; security
+3450	S	{要|よう}{約|やく}	summary
+3451	I	{乏|とぼ}しい	scarce, lacking
+3452	A	{圧|あっ}{倒|とう}{的|てき}	overwhelming
+3453	A	{格|かく}{別|べつ}	special, exceptional
+3454	A	{完|かん}{璧|ぺき}	perfect, flawless
+3455	A	{抽|ちゅう}{象|しょう}{的|てき}	abstract
+3456	A	{平|へい}{穏|おん}	peaceful, calm
+3457	V	{相|あい}{次|つ}ぐ	to happen one after another
+3458	N	{赤|あか}{字|じ}	deficit
+3459	A	{鮮|あざ}やか	vivid, brilliant
+3460	S	{悪|あっ}{化|か}	worsening
+3461	N	{扱|あつか}い	treatment, handling
+3462	N	{網|あみ}	net
+3463	F	{予|あらかじ}め	in advance
+3464	V	{歩|ある}き{回|まわ}る	to walk around
+3465	A	いい{加|か}{減|げん}	sloppy, irresponsible
+3466	S	{言|い}い{訳|わけ}	excuse
+3467	S	{家|いえ}{出|で}	running away from home
+3468	N	{意|い}{向|こう}	intention, plan
+3469	N	{衣|い}{装|しょう}	costume, clothes
+3470	F	{今|いま}{更|さら}	now (too late); at this point
+3471	N	{衣|い}{類|るい}	clothing
+3472	N	{受|う}け{入|い}れ	acceptance; receiving
+3473	N	うちわ	round fan
+3474	N	{写|うつ}し	copy
+3475	N	{雨|う}{天|てん}	rainy weather
+3476	S	{浮|うわ}{気|き}	cheating (on a partner)
+3477	N	{運|うん}{賃|ちん}	fare; freight charge
+3478	S	{演|えん}{出|しゅつ}	direction; staging
+3479	N	{沖|おき}	open sea (offshore)
+3480	V	{置|お}き{換|か}える	to replace; to rephrase
+3481	V	{補|おぎな}う	to make up for; to supplement
+3482	N	{同|おな}い{年|どし}	the same age
+3483	N	{思|おも}いやり	caring; considerate
+3484	N	{親|おや}{父|じ}	father (informal); old man
+3485	S	{介|かい}{護|ご}	nursing care
+3486	S	{回|かい}{収|しゅう}	collection; recovery
+3487	S	{改|かい}{良|りょう}	improvement
+3488	N	{各|かく}{種|しゅ}	every kind; various types
+3489	S	{確|かく}{信|しん}	conviction
+3490	N	{箇|か}{条|じょう}{書|が}き	itemized list; bullet points
+3491	N	{火|か}{星|せい}	Mars
+3492	N	{化|か}{石|せき}	fossil
+3493	N	{河|か}{川|せん}	rivers
+3494	S	{加|か}{入|にゅう}	joining (a group or insurance)
+3495	N	{歌|か}{舞|ぶ}{伎|き}	traditional Japanese stage drama
+3496	A	{簡|かん}{易|い}	simple; easy and quick
+3497	S	{看|かん}{護|ご}	nursing
+3498	N	{漢|かん}{語|ご}	Sino-Japanese word
+3499	S	{感|かん}{染|せん}	infection
+3500	S	{観|かん}{覧|らん}	viewing (a show, an exhibit)
+3501	N	{外|がい}{交|こう}{官|かん}	diplomat
+3502	N	{眼|がん}{科|か}	eye clinic; ophthalmology
+3503	N	{願|がん}{書|しょ}	application form
+3504	S	{記|き}{述|じゅつ}	description; writing out
+3505	N	{記|き}{述|じゅつ}{式|しき}	written-answer type (of test)
+3506	N	{規|き}{定|てい}	rule; regulation
+3507	P	{気|き}にかける	to worry about; to care about
+3508	P	{気|き}に{障|さわ}る	to offend; to annoy
+3509	N	{期|き}{末|まつ}	end of a term
+3510	S	{休|きゅう}{学|がく}	taking time off from school
+3511	N	{給|きゅう}{食|しょく}	school lunch
+3512	N	{協|きょう}{会|かい}	association; society
+3513	N	{教|きょう}{材|ざい}	teaching materials
+3514	P	{気|き}を{抜|ぬ}く	to relax; to let one's guard down
+3515	N	{近|きん}{眼|がん}	nearsightedness
+3516	A	{緊|きん}{急|きゅう}	urgent; emergency
+3517	S	{勤|きん}{務|む}	working (at a workplace)
+3518	N	{議|ぎ}{題|だい}	topic for discussion; agenda item
+3519	N	{技|ぎ}{能|のう}	skill
+3520	S	{逆|ぎゃく}{転|てん}	reversal; turnaround
+3521	N	{業|ぎょう}{界|かい}	industry; business world
+3522	N	{業|ぎょう}{績|せき}	achievements; business results
+3523	N	{業|ぎょう}{務|む}	duties; business operations
+3524	N	{空|くう}{間|かん}	space
+3525	N	{苦|く}{痛|つう}	pain; suffering
+3526	N	{黒|くろ}{字|じ}	profit; being in the black
+3527	S	{経|けい}{過|か}	passing (of time); progress
+3528	N	{経|けい}{歴|れき}	personal history; career
+3529	N	{経|けい}{路|ろ}	route; path
+3530	S	{決|けつ}{意|い}	determination
+3531	N	{下|げ}{痢|り}	diarrhea
+3532	N	{原|げん}{則|そく}	principle; general rule
+3533	S	{現|げん}{像|ぞう}	developing (film)
+3534	N	{現|げん}{地|ち}	the actual place; local
+3535	N	{好|こう}{意|い}	goodwill; kindness
+3536	N	{行|こう}{為|い}	act; deed
+3537	N	{工|こう}{学|がく}	engineering
+3538	S	{向|こう}{上|じょう}	improvement
+3539	N	{降|こう}{水|すい}	precipitation (rain or snow)
+3540	N	{降|こう}{水|すい}{量|りょう}	amount of rainfall
+3541	S	{購|こう}{入|にゅう}	purchase
+3542	N	{光|こう}{熱|ねつ}{費|ひ}	utility costs (gas, electricity)
+3543	N	{国|こく}{土|ど}	national land
+3544	S	{告|こく}{白|はく}	confession
+3545	N	{国|こく}{連|れん}	United Nations
+3546	N	{心|ここ}{地|ち}	feeling; sensation
+3547	S	{固|こ}{定|てい}	fixing in place; fixed
+3548	S	{再|さい}{生|せい}	playback; regeneration
+3549	N	{最|さい}{善|ぜん}	the best
+3550	N	{裁|さい}{判|ばん}{官|かん}	judge
+3551	N	{作|さく}{戦|せん}	strategy; tactics
+3552	N	{殺|さつ}{人|じん}	murder
+3553	N	{寒|さむ}{気|け}	chill; shiver
+3554	S	{作|さ}{用|よう}	action; effect
+3555	N	{山|さん}{脈|みゃく}	mountain range
+3556	N	{雑|ざっ}{貨|か}	miscellaneous goods
+3557	N	{仕|し}{上|あ}げ	finishing touches
+3558	N	{仕|し}{組|く}み	structure, mechanism
+3559	N	{施|し}{設|せつ}	facility
+3560	S	{失|しっ}{格|かく}	disqualification
+3561	S	{指|し}{摘|てき}	pointing out
+3562	S	{収|しゅう}{集|しゅう}	collecting
+3563	S	{主|しゅ}{演|えん}	playing the lead role
+3564	S	{主|しゅ}{催|さい}	hosting, organizing
+3565	S	{取|しゅ}{材|ざい}	gathering information (for a news story)
+3566	N	{主|しゅ}{食|しょく}	staple food
+3567	S	{出|しゅっ}{社|しゃ}	going to work (at the office)
+3568	N	{首|しゅ}{都|と}{圏|けん}	capital region
+3569	N	{省|しょう}エネルギー	energy saving
+3570	S	{消|しょう}{去|きょ}	erasing
+3571	N	{証|しょう}{拠|こ}	evidence, proof
+3572	N	{小|しょう}{児|に}{科|か}	pediatrics
+3573	N	{賞|しょう}{味|み}{期|き}{限|げん}	best-before date
+3574	S	{勝|しょう}{利|り}	victory
+3575	S	{所|しょ}{属|ぞく}	belonging (to a group)
+3576	N	{書|しょ}{物|もつ}	books (formal)
+3577	S	{所|しょ}{有|ゆう}	ownership
+3578	N	{調|しら}べ	investigation
+3579	S	{進|しん}{化|か}	evolution
+3580	N	{新|しん}{婚|こん}	newlywed
+3581	S	{審|しん}{査|さ}	screening, judging
+3582	N	{紳|しん}{士|し}	gentleman
+3583	N	{真|しん}{実|じつ}	truth
+3584	N	{新|しん}{人|じん}	newcomer
+3585	S	{振|しん}{動|どう}	vibration
+3586	N	{新|しん}{品|ぴん}	brand-new item
+3587	N	{進|しん}{路|ろ}	future path (after school)
+3588	N	{地|じ}{獄|ごく}	hell
+3589	N	{時|じ}{差|さ}	time difference
+3590	N	{自|じ}{主|しゅ}	independence
+3591	N	{実|じっ}{家|か}	parents' home
+3592	S	{実|じっ}{感|かん}	real feeling, sense
+3593	N	{実|じっ}{態|たい}	actual situation
+3594	N	{実|じつ}{技|ぎ}	practical skills
+3595	N	{耳|じ}{鼻|び}{科|か}	ear, nose and throat clinic
+3596	N	{地|じ}{元|もと}	local area, hometown
+3597	N	{従|じゅう}{業|ぎょう}{員|いん}	employee
+3598	N	{順|じゅん}{位|い}	rank; ranking
+3599	N	{常|じょう}{連|れん}	regular customer
+3600	S	{助|じょ}{言|げん}	advice
+3601	S	{徐|じょ}{行|こう}	driving slowly
+3602	S	{自|じ}{立|りつ}	independence
+3603	N	{人|じん}{体|たい}	human body
+3604	S	{推|すい}{理|り}	reasoning; mystery (detective story)
+3605	A	{健|すこ}やか	healthy; sound
+3606	N	{成|せい}{果|か}	result; achievement
+3607	S	{正|せい}{解|かい}	correct answer
+3608	N	{正|せい}{規|き}	regular; official
+3609	N	{青|せい}{春|しゅん}	youth
+3610	N	{制|せい}{服|ふく}	uniform
+3611	N	{性|せい}{別|べつ}	gender; sex
+3612	S	{設|せっ}{置|ち}	setting up; installation
+3613	S	{折|せっ}{衷|ちゅう}	compromise; blending two things
+3614	S	{設|せつ}{立|りつ}	establishment
+3615	N	{先|せん}{進|しん}{国|こく}	developed country
+3616	S	{先|せん}{着|ちゃく}	arriving first
+3617	N	{専|せん}{用|よう}	exclusive use
+3618	N	{税|ぜい}{込|こ}み	tax included
+3619	S	{走|そう}{行|こう}	driving; running (a vehicle)
+3620	S	{総|そう}{合|ごう}	combining; comprehensive
+3621	N	{育|そだ}ち	upbringing
+3622	A	{素|そ}{朴|ぼく}	simple; naive
+3623	N	{体|たい}{格|かく}	physique
+3624	F	{大|たい}{概|がい}	mostly; generally
+3625	S	{体|たい}{験|けん}	personal experience
+3626	S	{対|たい}{抗|こう}	rivalry; opposing
+3627	S	{退|たい}{職|しょく}	retirement; leaving a job
+3628	P	{体|たい}{調|ちょう}を{崩|くず}す	to become unwell
+3629	N	{多|た}{数|すう}	large number
+3630	N	{短|たん}{大|だい}	junior college
+3631	S	{調|ちょう}{理|り}	cooking
+3632	N	{直|ちょく}{前|ぜん}	right before
+3633	N	{通|つう}{常|じょう}	normal; usual
+3634	N	{通|つう}{販|はん}	mail-order shopping
+3635	N	{杖|つえ}	cane; walking stick
+3636	N	{使|つか}い{道|みち}	use (what something is used for)
+3637	N	{作|つく}り	make; structure
+3639	N	{勤|つと}め{先|さき}	workplace
+3640	P	{手|て}が{届|とど}く	to be within reach (affordable)
+3641	A	{手|て}{軽|がる}	easy; simple
+3642	N	{手|て}{順|じゅん}	procedure; steps
+3643	N	{手|て}{本|ほん}	model; example to follow
+3644	N	{伝|でん}{説|せつ}	legend
+3645	S	{討|とう}{論|ろん}	debate; discussion
+3646	N	{特|とく}{産|さん}{品|ひん}	local specialty product
+3647	N	{扉|とびら}	door
+3648	N	{共|とも}{働|ばたら}き	both husband and wife working
+3649	V	{取|と}り{返|かえ}す	to get back; to recover
+3650	V	{取|と}り{込|こ}む	to take in; to import
+3651	S	{同|どう}{情|じょう}	sympathy
+3652	S	{内|ない}{定|てい}	informal decision (e.g., a job offer)
+3653	N	{内|ない}{部|ぶ}	inside; interior
+3654	N	{苗|なえ}	seedling
+3655	F	{長|なが}{々|なが}	at great length; for a long time
+3656	N	{生|なま}もの	raw food
+3657	S	{荷|に}{造|づく}り	packing (baggage)
+3658	S	{入|にゅう}{賞|しょう}	winning a prize
+3659	S	{入|にゅう}{浴|よく}	taking a bath
+3660	S	{認|にん}{識|しき}	recognition; understanding
+3661	N	{沼|ぬま}	swamp; marsh
+3662	N	{年|ねん}{金|きん}	pension
+3663	N	{年|ねん}{号|ごう}	era name
+3664	N	{燃|ねん}{料|りょう}	fuel
+3665	N	{排|はい}{気|き}ガス	exhaust gas
+3666	S	{廃|はい}{止|し}	abolition; ending
+3667	S	{破|は}{壊|かい}	destruction
+3668	N	{恥|はじ}	shame; embarrassment
+3669	N	{蜂|はち}{蜜|みつ}	honey
+3670	A	{華|はな}やか	gorgeous; bright and showy
+3671	N	{浜|はま}	beach
+3672	N	{浜|はま}{辺|べ}	beach; seashore
+3673	N	{張|は}り{紙|がみ}	poster; notice
+3674	S	{反|はん}{応|のう}	reaction; response
+3675	N	ばい{菌|きん}	germs; bacteria
+3676	N	{爆|ばく}{弾|だん}	bomb
+3677	N	{罰|ばつ}	punishment; penalty
+3678	N	{秘|ひ}{書|しょ}	secretary
+3679	S	{日|ひ}{焼|や}け	sunburn, suntan
+3680	N	{昼|ひる}{飯|めし}	lunch
+3681	N	{疲|ひ}{労|ろう}	fatigue, exhaustion
+3682	N	{品|ひん}{質|しつ}	quality
+3683	A	{貧|びん}{乏|ぼう}	poor (no money)
+3684	N	{不|ふ}{動|どう}{産|さん}	real estate
+3685	N	{古|ふる}{着|ぎ}	used clothes
+3686	N	{付|ふ}{録|ろく}	supplement, appendix
+3687	S	{紛|ふん}{失|しつ}	loss (of something)
+3688	N	{部|ぶ}{下|か}	subordinate
+3689	S	{分|ぶん}{担|たん}	sharing (work, cost)
+3690	S	{返|へん}{答|とう}	reply
+3691	S	{報|ほう}{道|どう}	news report
+3692	S	{保|ほ}{温|おん}	keeping warm
+3693	S	{保|ほ}{管|かん}	storage, keeping safe
+3694	N	{保|ほ}{険|けん}	insurance
+3695	N	{誇|ほこ}り	pride
+3696	N	{本|ほん}{館|かん}	main building
+3697	N	{本|ほん}{体|たい}	main body, real thing
+3698	N	{母|ぼ}{国|こく}	one's home country
+3699	N	{墓|ぼ}{地|ち}	cemetery
+3700	N	{間|ま}{取|ど}り	room layout (of a house)
+3701	N	{瞬|まばた}き	blinking; twinkling
+3702	F	{丸|まる}ごと	whole; in one piece
+3703	F	{丸|まる}{々|まる}	completely; fully
+3704	N	{満|まん}{月|げつ}	full moon
+3705	N	{見|み}{合|あ}い	arranged meeting for marriage
+3706	N	{味|み}{覚|かく}	sense of taste
+3707	N	{未|み}{婚|こん}	unmarried
+3708	A	{身|み}{近|ぢか}	close to oneself; familiar
+3709	N	{見|み}{積|つ}もり	estimate (of cost)
+3710	N	{未|み}{定|てい}	undecided; not yet fixed
+3711	N	{名|めい}{作|さく}	masterpiece
+3712	N	{名|めい}{簿|ぼ}	list of names
+3713	N	{役|やく}{者|しゃ}	actor
+3714	N	{役|やく}{職|しょく}	position; post
+3715	I	{安|やす}っぽい	cheap-looking
+3716	N	{闇|やみ}	darkness
+3717	N	{夕|ゆう}{暮|ぐ}れ	evening; dusk
+3718	N	{夕|ゆう}{焼|や}け	sunset glow
+3719	N	{幽|ゆう}{霊|れい}	ghost
+3720	N	{弓|ゆみ}	bow (for arrows)
+3721	N	{用|よう}{紙|し}	form; paper for a purpose
+3722	N	{用|よう}{品|ひん}	supplies; articles
+3723	N	{用|よう}{法|ほう}	how to use; directions for use
+3724	S	{要|よう}{望|ぼう}	request; demand
+3725	S	{預|よ}{金|きん}	bank deposit; savings
+3726	N	{浴|よく}{室|しつ}	bathroom
+3727	N	{履|り}{歴|れき}	personal history; record
+3728	N	{連|れん}{日|じつ}	day after day
+3729	N	{惑|わく}{星|せい}	planet
+3730	N	{技|わざ}	skill; technique
+3731	S	アクセス	access; way to get to a place
+3732	K	アマチュア	amateur
+3733	K	インターチェンジ	interchange (highway entrance and exit)
+3734	K	インターナショナル	international
+3735	K	イントネーション	intonation
+3736	K	エリア	area
+3737	K	エレガント	elegant
+3738	K	オプション	option; optional extra
+3739	K	オペラ	opera
+3740	K	オリエンテーション	orientation
+3741	S	カンニング	cheating (on a test)
+3742	K	ガレージ	garage
+3743	S	キャッチ	catching
+3744	K	ゲスト	guest
+3745	K	シート	seat; sheet
+3746	K	シーン	scene
+3747	K	ジャンボ	jumbo; very large
+3748	K	スタジオ	studio
+3749	K	スチーム	steam
+3750	K	ステップ	step
+3751	K	セミナー	seminar
+3752	K	センス	sense; good taste
+3753	K	タイル	tile
+3754	K	タレント	TV personality
+3755	K	チームワーク	teamwork
+3756	K	テクノロジー	technology
+3757	K	デメリット	disadvantage
+3758	K	ドライクリーニング	dry cleaning
+3759	K	ドライブイン	roadside restaurant
+3760	K	ドリル	drill
+3761	K	ナイター	night game
+3762	K	バッテリー	battery
+3763	K	バラエティー	variety
+3764	K	パッケージ	package
+3765	K	フロント	front desk
+3766	K	プロセス	process
+3767	K	ベストセラー	best-seller
+3768	K	ベース	base; foundation
+3769	K	ペア	pair
+3770	K	ボルト	volt; bolt
+3771	K	ポジション	position
+3772	K	ポスト	mailbox; post (position)
+3773	K	ポンプ	pump
+3774	K	ポーズ	pose; pause
+3775	K	マスメディア	mass media
+3776	K	メイン	main
+3777	K	メディア	media
+3778	K	メリット	advantage
+3779	K	メロディー	melody
+3780	K	リスト	list
+3781	F	ひっそり	quietly, silently
+3782	A	アクティブ	active
+3783	N	あざ	bruise, birthmark
+3784	A	あべこべ	the opposite, reversed
+3785	A	あやふや	vague, uncertain
+3786	A	ありのまま	just as it is, honest
+3787	N	おまけ	extra, freebie
+3788	N	おむつ	diaper
+3789	S	おんぶ	carrying on one's back
+3790	F	かりに	supposing, if
+3791	F	がっしり	sturdy, solidly built
+3792	F	がっちり	firmly, tightly
+3793	F	きっぱり	flatly, firmly
+3794	A	グローバル	global
+3795	F	こつこつ	steadily, diligently
+3796	F	すらすら	smoothly, fluently
+3797	A	だぶだぶ	baggy, loose
+3798	I	だるい	sluggish, heavy (tired)
+3799	A	トータル	total, overall
+3800	A	のどか	peaceful, calm
+3801	F	はらはら	anxiously, with suspense
+3802	V	むかつく	to feel sick, to be angry
+3803	F	むかむか	feeling nauseous
+3804	A	リアル	realistic; real
+3805	J	〜{宛|あて}	addressed to ~
+3806	N	{途|と}{上|じょう}{国|こく}	developing country

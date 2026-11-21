@@ -2236,3 +2236,419 @@
 3387	lắm (dùng với phủ định)
 3388	ra hồn, tử tế (dùng với phủ định)
 3389	mua cái mới thay cái cũ
+3390	sốt ruột, vội vàng
+3391	nũng nịu, dựa dẫm vào lòng tốt của người khác
+3392	chấp nhận; tiếp nhận
+3393	nhận (đơn, hồ sơ, đăng ký)
+3394	cúi mặt xuống
+3395	thúc giục; khuyến khích
+3396	già (về tuổi tác)
+3397	nằm gọn vào đúng chỗ; được sắp xếp ổn thỏa
+3398	dịu xuống, lắng xuống
+3399	xấu hổ, mất mặt
+3400	cấm
+3401	kết hợp; ghép lại
+3402	lừa dối; che giấu, lấp liếm
+3403	quyết định; ấn định
+3404	hoàn thiện (làm cho xong hẳn)
+3405	thấm vào; xót, buốt
+3406	làm xong; xoay xở không cần
+3407	nhuộm
+3408	giữ; duy trì
+3409	tiêu tốn (thời gian, tiền); dùng hết
+3410	báo cho biết; thông báo
+3411	véo
+3412	đạt được; hoàn thành (mục tiêu)
+3413	lấy lại; khôi phục
+3414	đặt mua (từ nơi khác); cho gửi đến
+3415	làm phiền lòng, làm đau đầu
+3416	nhộn nhịp, náo nhiệt
+3417	chạy trốn, bỏ trốn
+3418	để vuột mất; bỏ lỡ (cơ hội)
+3419	thoát khỏi; tránh được
+3420	nuốt; hiểu (nắm được)
+3421	lên (tàu, xe); tiến vào (nơi nào đó)
+3422	chăm chỉ, nỗ lực
+3423	hoàn thành; thực hiện (nhiệm vụ)
+3424	dẫn dắt, chỉ huy (một nhóm)
+3425	hạ xuống; giảm bớt
+3426	già đi; trông già hơn
+3427	làm tròn; cuộn lại
+3428	hoãn lại; nhìn nhau
+3429	bỏ sót; nhìn sót
+3430	làm đầy; đáp ứng (điều kiện)
+3431	noi gương; học bằng cách quan sát
+3432	tỉnh giấc, thức dậy
+3433	trở nên sôi nổi; phồng lên, nổi lên
+3434	nuôi dưỡng (gia đình); bồi dưỡng
+3435	sự tăng lên; sự gia tăng
+3436	thay đổi hình ảnh bản thân
+3437	sự tăng cường
+3438	sự thảo luận; hội nghị
+3439	sự hỗ trợ
+3440	nguyện vọng (đăng ký vào)
+3441	sự xuất ra; đầu ra
+3442	việc theo học (một khóa)
+3443	sự bảo dưỡng; sự chuẩn bị, xây dựng (hạ tầng)
+3444	bài giảng; sự thuyết giáo, la mắng
+3445	điều tra tội phạm
+3446	sự sáng tạo
+3447	sự ra mắt, debut
+3448	sự theo dõi tiếp; sự hỗ trợ
+3449	sự bảo đảm (an ninh, xã hội)
+3450	bản tóm tắt
+3451	thiếu thốn, nghèo nàn
+3452	áp đảo
+3453	đặc biệt, khác thường
+3454	hoàn hảo, hoàn mỹ
+3455	trừu tượng
+3456	bình yên, yên ổn
+3457	xảy ra liên tiếp
+3458	thâm hụt, lỗ (số đỏ)
+3459	tươi tắn, rõ nét (màu sắc)
+3460	sự xấu đi
+3461	cách đối xử; cách xử lý
+3462	lưới
+3463	trước, sẵn từ trước
+3464	đi bộ quanh, đi khắp nơi
+3465	cẩu thả, vô trách nhiệm
+3466	lời bào chữa, cớ
+3467	bỏ nhà đi
+3468	ý định, dự định
+3469	trang phục (biểu diễn), phục trang
+3470	đến giờ này (đã muộn); bây giờ mới
+3471	quần áo, y phục (nói chung)
+3472	sự chấp nhận; sự tiếp nhận
+3473	quạt giấy tròn
+3474	bản sao, bản chép
+3475	trời mưa
+3476	ngoại tình; lăng nhăng
+3477	tiền vé, cước (tiền xe, cước vận chuyển)
+3478	sự đạo diễn; sự dàn dựng
+3479	ngoài khơi
+3480	thay thế; diễn đạt lại
+3481	bù đắp; bổ sung
+3482	cùng tuổi
+3483	sự quan tâm, biết nghĩ cho người khác
+3484	bố (thân mật); ông già
+3485	chăm sóc người già, người bệnh (hộ lý)
+3486	sự thu hồi; sự thu gom
+3487	sự cải tiến, cải thiện
+3488	đủ loại, các loại
+3489	sự tin chắc
+3490	viết gạch đầu dòng (từng mục)
+3491	sao Hỏa
+3492	hóa thạch
+3493	sông ngòi
+3494	sự tham gia, gia nhập (nhóm, bảo hiểm)
+3495	kabuki (kịch truyền thống Nhật Bản)
+3496	đơn giản; dễ và nhanh
+3497	sự điều dưỡng, chăm sóc bệnh nhân
+3498	từ Hán-Nhật
+3499	sự lây nhiễm
+3500	sự xem, tham quan (buổi biểu diễn, triển lãm)
+3501	nhà ngoại giao
+3502	khoa mắt; phòng khám mắt
+3503	đơn xin, đơn đăng ký
+3504	sự mô tả; sự viết ra
+3505	dạng bài tự luận (viết câu trả lời)
+3506	quy định (điều khoản)
+3507	lo lắng về; quan tâm đến
+3508	làm phật lòng; làm khó chịu
+3509	cuối kỳ
+3510	sự nghỉ học tạm thời, bảo lưu
+3511	bữa ăn trưa ở trường
+3512	hiệp hội, hội
+3513	tài liệu giảng dạy
+3514	thả lỏng; lơ là cảnh giác
+3515	cận thị
+3516	khẩn cấp
+3517	sự làm việc (tại nơi làm việc)
+3518	chủ đề thảo luận; mục trong chương trình nghị sự
+3519	kỹ năng, năng lực chuyên môn
+3520	sự đảo ngược; sự lật ngược tình thế
+3521	ngành, giới (kinh doanh)
+3522	thành tích; kết quả kinh doanh
+3523	nhiệm vụ, công việc; hoạt động kinh doanh
+3524	không gian
+3525	nỗi đau; sự đau khổ
+3526	lãi (có lợi nhuận)
+3527	sự trôi qua (thời gian); diễn biến
+3528	quá trình học tập và làm việc
+3529	tuyến đường, lộ trình
+3530	sự quyết tâm
+3531	tiêu chảy
+3532	nguyên tắc; quy tắc chung
+3533	sự rửa (phim) ảnh
+3534	tại chỗ, nơi sở tại (bản địa)
+3535	thiện ý, lòng tốt
+3536	hành vi, hành động
+3537	kỹ thuật, ngành kỹ thuật
+3538	sự nâng cao, tiến bộ
+3539	mưa, tuyết rơi (giáng thủy)
+3540	lượng mưa
+3541	sự mua
+3542	tiền điện, ga và nhiên liệu
+3543	lãnh thổ quốc gia; đất đai
+3544	sự tỏ tình; sự thú nhận
+3545	Liên Hợp Quốc
+3546	cảm giác (dễ chịu, thoải mái)
+3547	sự cố định
+3548	sự phát lại (âm thanh, video); sự tái sinh
+3549	tốt nhất, tối ưu
+3550	thẩm phán
+3551	chiến lược, chiến thuật
+3552	giết người
+3553	cảm giác ớn lạnh, rùng mình
+3554	tác dụng
+3555	dãy núi
+3556	tạp hóa, đồ lặt vặt
+3557	sự hoàn thiện, bước hoàn tất
+3558	cấu trúc, cơ chế
+3559	cơ sở vật chất, công trình
+3560	sự bị loại, mất tư cách
+3561	sự chỉ ra, nêu ra (lỗi)
+3562	sự thu thập
+3563	sự đóng vai chính
+3564	sự tổ chức (sự kiện)
+3565	sự thu thập tin tức, phỏng vấn (để viết bài)
+3566	lương thực chính
+3567	việc đi làm (đến công ty)
+3568	vùng thủ đô
+3569	tiết kiệm năng lượng
+3570	sự xóa
+3571	chứng cứ, bằng chứng
+3572	khoa nhi
+3573	hạn sử dụng tốt nhất
+3574	chiến thắng
+3575	sự thuộc về (một nhóm, tổ chức)
+3576	sách vở (cách nói trang trọng)
+3577	quyền sở hữu; sự sở hữu
+3578	sự điều tra, tìm hiểu
+3579	sự tiến hóa
+3580	mới cưới, tân hôn
+3581	sự thẩm định; sự xét duyệt
+3582	quý ông
+3583	sự thật
+3584	người mới, tân binh
+3585	sự rung động, rung chuyển
+3586	hàng mới
+3587	con đường tương lai (sau khi tốt nghiệp)
+3588	địa ngục
+3589	chênh lệch múi giờ
+3590	sự tự chủ, chủ động
+3591	nhà bố mẹ đẻ
+3592	cảm giác thực, sự cảm nhận rõ
+3593	thực trạng
+3594	kỹ năng thực hành
+3595	khoa tai mũi họng
+3596	địa phương, quê nhà
+3597	nhân viên, người lao động
+3598	thứ hạng
+3599	khách quen
+3600	lời khuyên
+3601	chạy chậm (xe)
+3602	sự tự lập, độc lập
+3603	cơ thể con người
+3604	sự suy luận; truyện trinh thám
+3605	khỏe mạnh, lành mạnh
+3606	thành quả, kết quả
+3607	đáp án đúng
+3608	chính quy; chính thức
+3609	tuổi trẻ, thanh xuân
+3610	đồng phục (học sinh, công ty)
+3611	giới tính
+3612	sự lắp đặt
+3613	sự dung hòa, thỏa hiệp; sự pha trộn hai thứ
+3614	sự thành lập
+3615	nước phát triển
+3616	sự đến trước
+3617	dành riêng, chuyên dụng
+3618	đã gồm thuế
+3619	sự chạy, di chuyển (xe cộ)
+3620	sự tổng hợp; mang tính tổng hợp
+3621	sự lớn lên, hoàn cảnh nuôi dưỡng
+3622	giản dị, chất phác
+3623	vóc dáng, thể hình
+3624	phần lớn, thường là
+3625	sự trải nghiệm cá nhân
+3626	sự đối đầu, cạnh tranh
+3627	sự nghỉ hưu; sự thôi việc
+3628	bị mệt, sức khỏe không tốt
+3629	số lượng lớn, đa số
+3630	cao đẳng ngắn hạn
+3631	sự nấu nướng
+3632	ngay trước (lúc đó)
+3633	bình thường, thông thường
+3634	mua hàng qua mạng, bán hàng từ xa
+3635	gậy chống
+3636	mục đích sử dụng, công dụng
+3637	cách làm, kiểu làm (đồ vật)
+3639	nơi làm việc, công ty đang làm
+3640	trong tầm với (mua nổi)
+3641	nhanh gọn, tiện lợi (không tốn công)
+3642	trình tự, thủ tục (làm việc)
+3643	mẫu, gương mẫu
+3644	truyền thuyết
+3645	sự tranh luận
+3646	đặc sản địa phương
+3647	cánh cửa
+3648	vợ chồng cùng đi làm
+3649	đòi lại, giành lại
+3650	thu vào; nhập vào (đưa vào)
+3651	sự đồng cảm, thương cảm
+3652	quyết định không chính thức (ví dụ được nhận việc)
+3653	bên trong, nội bộ
+3654	cây giống, cây con
+3655	dài dòng; rất lâu
+3656	thực phẩm tươi sống
+3657	sự đóng gói (hành lý)
+3658	sự đoạt giải
+3659	sự tắm
+3660	sự nhận thức
+3661	đầm lầy
+3662	lương hưu
+3663	niên hiệu
+3664	nhiên liệu
+3665	khí thải
+3666	sự bãi bỏ; sự chấm dứt
+3667	sự phá hủy
+3668	sự xấu hổ, nhục
+3669	mật ong
+3670	lộng lẫy, rực rỡ
+3671	bãi biển
+3672	bờ biển, ven biển
+3673	áp phích, thông báo dán
+3674	phản ứng
+3675	vi khuẩn, mầm bệnh
+3676	bom
+3677	hình phạt
+3678	thư ký
+3679	sự cháy nắng, rám nắng
+3680	cơm trưa
+3681	sự mệt mỏi, kiệt sức
+3682	chất lượng
+3683	nghèo (không có tiền)
+3684	bất động sản
+3685	quần áo cũ
+3686	phụ lục; phần phụ kèm theo
+3687	sự mất (đồ vật)
+3688	cấp dưới
+3689	sự phân chia, chia nhau (công việc, chi phí)
+3690	sự trả lời
+3691	bản tin, sự đưa tin
+3692	sự giữ ấm
+3693	sự bảo quản, cất giữ
+3694	bảo hiểm
+3695	niềm tự hào
+3696	tòa nhà chính
+3697	thân máy, phần chính (của máy)
+3698	đất nước mình, quê hương
+3699	nghĩa trang
+3700	sơ đồ bố trí phòng (của nhà)
+3701	sự chớp mắt; sự lấp lánh
+3702	nguyên cả, nguyên con
+3703	hoàn toàn, trọn vẹn
+3704	trăng tròn
+3705	buổi xem mắt (để kết hôn)
+3706	vị giác
+3707	chưa kết hôn
+3708	gần gũi, quen thuộc (với bản thân)
+3709	bản dự toán (chi phí)
+3710	chưa quyết định, chưa ấn định
+3711	kiệt tác
+3712	danh sách tên (thành viên)
+3713	diễn viên
+3714	chức vụ
+3715	trông rẻ tiền
+3716	bóng tối
+3717	chiều tối, hoàng hôn
+3718	ráng chiều
+3719	ma, hồn ma
+3720	cây cung
+3721	giấy tờ, mẫu (giấy dùng cho việc nhất định)
+3722	đồ dùng, vật dụng
+3723	cách dùng, hướng dẫn sử dụng
+3724	sự yêu cầu, đề nghị
+3725	tiền gửi ngân hàng
+3726	phòng tắm
+3727	lịch sử (cuộc gọi, duyệt web); lý lịch
+3728	ngày này qua ngày khác
+3729	hành tinh
+3730	kỹ thuật, chiêu thức
+3731	truy cập; cách đi đến (một nơi)
+3732	nghiệp dư
+3733	nút giao (lối vào, lối ra đường cao tốc)
+3734	quốc tế
+3735	ngữ điệu
+3736	khu vực
+3737	thanh lịch, sang trọng
+3738	tùy chọn; phần tùy chọn thêm
+3739	nhạc kịch opera
+3740	buổi định hướng, buổi giới thiệu
+3741	quay cóp (trong kỳ thi)
+3742	nhà để xe, ga-ra
+3743	sự bắt, đón bắt
+3744	khách mời
+3745	ghế; tờ, tấm (giấy, vải)
+3746	cảnh (phim, kịch)
+3747	khổng lồ, rất lớn
+3748	trường quay, phòng thu
+3749	hơi nước
+3750	bước (đi, tiến hành)
+3751	hội thảo chuyên đề
+3752	cảm nhận, khiếu thẩm mỹ
+3753	gạch ốp lát
+3754	nghệ sĩ truyền hình
+3755	tinh thần đồng đội
+3756	công nghệ
+3757	điểm bất lợi
+3758	giặt khô
+3759	quán ăn ven đường
+3760	bài luyện tập; mũi khoan
+3761	trận đấu ban đêm
+3762	pin, ắc quy
+3763	sự đa dạng, tạp kỹ
+3764	bao bì, gói hàng
+3765	quầy lễ tân
+3766	quy trình, tiến trình
+3767	sách bán chạy nhất
+3768	nền tảng, cơ sở
+3769	cặp, đôi
+3770	vôn; bu lông
+3771	vị trí (trong đội)
+3772	hòm thư; chỗ làm (việc)
+3773	máy bơm
+3774	tư thế (chụp ảnh); sự tạm dừng
+3775	truyền thông đại chúng
+3776	chính, chủ yếu
+3777	phương tiện truyền thông
+3778	ưu điểm, lợi thế
+3779	giai điệu
+3780	danh sách
+3781	lặng lẽ, im ắng
+3782	năng động, tích cực
+3783	vết bầm; vết bớt
+3784	ngược lại, trái ngược
+3785	mơ hồ, không rõ ràng
+3786	nguyên như vốn có; thành thật
+3787	phần thêm, quà tặng kèm
+3788	tã, bỉm
+3789	cõng trên lưng
+3790	giả sử, nếu
+3791	vạm vỡ, rắn chắc
+3792	chắc chắn, chặt chẽ
+3793	dứt khoát, thẳng thừng
+3794	toàn cầu
+3795	đều đặn, chăm chỉ
+3796	trôi chảy, suôn sẻ
+3797	rộng thùng thình
+3798	uể oải, nặng nề (mệt mỏi)
+3799	tổng cộng, toàn bộ
+3800	thanh bình, thư thả
+3801	hồi hộp, thấp thỏm
+3802	bực mình, phát cáu
+3803	cảm giác buồn nôn
+3804	giống thật, thực tế
+3805	gửi (cho) …
+3806	nước đang phát triển
