@@ -10,6 +10,7 @@ batches（作った問題の TSV）→ jlpt/mondai/n1.js〜n4.js（級ごと。�
 
 ★問題を直したら（別の窓の見直しなど）、これを回し直すだけで入れかわる。js は手で直さない。
 ★本番の構成（形式ごとの数）は下の COMPOSITION が正本。ページはデータの中の構成を読む。
+★N4 だけ ルビ を付ける（n4_ruby.py。pykakasi が要る）。まだ確かめていない読みが出たら、ここが知らせる。
 
 出さない問題（理由ごとに数を出す）:
   確認の列が空でない／形がこわれている（選択肢が4つない・正答が1〜4でない・下線や空欄の印が無い・
@@ -144,6 +145,33 @@ def load(src):
     return ok, ng, ignored, used
 
 
+RE_RUBY = re.compile(r'\{([^{}|]+)\|([^{}|]+)\}')
+
+
+def check_ruby(ok):
+    """ルビの形と置き場を点検する。まちがいの番号を返す。
+    N3 から上には付けない／漢字読み・表記の選択肢と解説、漢字読み・表記・用法の【 】の中には付けない／{ } の形がこわれていない。"""
+    bad = []
+    for lv, rows in ok.items():
+        for q in rows:
+            f = FORMS[q[1]]
+            texts = [q[4]] + q[5] + [q[8]]
+            if lv != 'N4':
+                if any('{' in t for t in texts):
+                    bad.append(q[0] + '(N4以外)')
+                continue
+            for t in texts:
+                if RE_RUBY.sub('', t).count('{') or RE_RUBY.sub('', t).count('}'):
+                    bad.append(q[0] + '(形)')
+            if f in ('漢字読み', '表記') and any('{' in t for t in q[5] + [q[8]]):
+                bad.append(q[0] + '(選択肢・解説)')
+            if f in ('漢字読み', '表記', '用法'):
+                for t in texts:
+                    if any('{' in m for m in re.findall(r'【[^】]*】', t)):
+                        bad.append(q[0] + '(【】の中)')
+    return bad
+
+
 def sample_exam(pool_by_form, comp, rng):
     """ページと同じ選び方：大問の順に、まだ出していない対象だけを無作為に取る。"""
     used, out = set(), []
@@ -174,6 +202,23 @@ def main():
 
     ok, ng, ignored, used = load(a.src)
     print('読んだ束: %d（名前が束の形でないので読まなかった物 %d）' % (used, len(ignored)))
+    # N4 だけ ルビ（2026-11-24 きあ：本番の N4 は N5 より上の漢字にルビがある）。決まりは n4_ruby.py
+    import n4_ruby
+    rb = n4_ruby.Ruby()
+    for q in ok['N4']:
+        n4_ruby.apply(q, FORMS[q[1]], rb)
+    bad_ruby = check_ruby(ok)
+    nr = sum(1 for q in ok['N4'] if '{' in q[4] + ''.join(q[5]) + q[8])
+    unc = rb.unchecked()
+    print('N4 のルビ: %d問に付けた（語と読みの組 %d・直しの表 %d行）' % (nr, len(rb.seen), len(rb.fix)))
+    if unc:
+        print('  ★まだ確かめていない組 %d（前後を見て、まちがいなら n4_ruby_fix.txt に、見たら n4_ruby_checked.txt に足す）：' % len(unc))
+        for (k, r), (n, qid) in sorted(unc.items())[:30]:
+            print('    %s %s（%d回・例 %s）' % (k, r, n, qid))
+    for k, (n, qid) in rb.unaligned.items():
+        print('  ★読みと字を合わせられなかった所：%s（%s）' % (k, qid))
+    if bad_ruby:
+        print('  ★ルビの置き場のまちがい %d：%s' % (len(bad_ruby), ' '.join(bad_ruby[:12])))
     print('出す問題: ' + '・'.join('%s %d' % (lv, len(ok[lv])) for lv in COMPOSITION))
     nng = sum(len(v) for v in ng.values())
     print('出さない問題: %d' % nng)
@@ -200,6 +245,8 @@ def main():
 
     if bad:
         sys.exit('\n止めました：構成の数に足りない級があります（書いていません）')
+    if bad_ruby:
+        sys.exit('\n止めました：答えにかかわる所にルビが付いています（書いていません）')
     if not a.execute:
         print('\n（点検だけ。書く時は --execute）')
         return
@@ -215,7 +262,7 @@ def main():
     for lv, comp in COMPOSITION.items():
         key = lv.lower()
         head = {'lv': lv, 'forms': FORMS, 'vocab': [f for f in FORMS if f in VOCAB_FORMS],
-                'comp': comp, 'n': len(ok[lv]),
+                'comp': comp, 'n': len(ok[lv]), 'ruby': lv == 'N4',
                 'cols': ['番号', '形式', '★', '対象', '問題文', '選択肢', '正答', '並び', '解説']}
         body = ',\n'.join(json.dumps(q, ensure_ascii=False, separators=(',', ':')) for q in ok[lv])
         txt = ('/* 自動生成（手で直さない）：py -X utf8 scripts/jlpt_mondai/build_mondai.py --execute\n'

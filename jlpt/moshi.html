@@ -46,6 +46,10 @@ rt{font-size:.5em;font-weight:500;color:var(--sub);}
 .ibtn.frame{border-color:var(--line);background:#fff;}
 .ibtn:active{transform:scale(.95);}
 .ibtn.on{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+/* ルビ（N4 だけ）。消すのは 問題・選択肢・解説 のルビだけ（見出しや指示のルビは残す） */
+.rubybtn{height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:700;color:var(--sub);flex-shrink:0;}
+.rubybtn[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+body.noruby .qtext rt, body.noruby .ch rt, body.noruby .ex rt, body.noruby .rch rt{display:none;}
 .ttl{flex:1;min-width:0;padding-left:2px;}
 .ttl-s{font-size:11px;color:var(--sub);font-weight:700;line-height:1.3;}
 .ttl-m{font-size:17px;font-weight:700;line-height:1.4;}
@@ -175,6 +179,7 @@ u.ul{text-decoration:underline;text-decoration-thickness:2px;text-underline-offs
   <div class="hdrow">
     <a class="ibtn" id="back" href="../#/quiz" aria-label="もどる"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></a>
     <div class="ttl"><div class="ttl-s" id="ttlS">JLPT</div><div class="ttl-m" id="ttlM"><ruby>模試<rt>もし</rt></ruby>（<ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby>・<ruby>文法<rt>ぶんぽう</rt></ruby>）</div></div>
+    <button class="rubybtn hidden" id="rubyB" aria-pressed="true">ルビ</button>
     <button class="ibtn frame" id="aa" aria-label="文字の大きさ">Aa</button>
   </div>
   <div class="prog hidden" id="prog"><div class="bar"><i id="barI"></i></div><span class="qcount" id="qcount"></span></div>
@@ -240,8 +245,10 @@ function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }c
 function save(st){ try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){} }
 function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+// ルビ：データの {漢字|よみ}（N4 だけ。scripts/jlpt_mondai/n4_ruby.py が付ける）
+const rb=s=>esc(s).replace(/\{([^{}|]+)\|([^{}|]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>');
 function fmt(s,long){   // 問題文・選択肢の印を画面の形に
-  let h=esc(s);
+  let h=rb(s);
   if(long) h=h.split('／').map(p=>'<p>'+p+'</p>').join('');
   h=h.replace(/【([^】]*)】/g,'<u class="ul">$1</u>');
   h=h.replace(/（[\s　]*[0-9０-９]*[\s　]*）/g,'<span class="blank"></span>');
@@ -290,9 +297,15 @@ function setHeader(sub,main,prog){
   $('prog').classList.toggle('hidden',!prog); $('ft').classList.toggle('hidden',view!=='test');
 }
 function toTop(){ $('main').scrollTop=0; }
+// ルビの ON/OFF（N4 だけボタンを出す。はじめは ON。localStorage['jlpt_moshi_ruby']＝'0' で OFF）
+let rubyOn=true; try{ rubyOn=localStorage.getItem('jlpt_moshi_ruby')!=='0'; }catch(e){}
+function applyRuby(){ document.body.classList.toggle('noruby',!rubyOn); $('rubyB').setAttribute('aria-pressed',String(rubyOn)); }
+function showRubyBtn(lv){ $('rubyB').classList.toggle('hidden',!(lv&&DATA[lv]&&DATA[lv].ruby)); }
+$('rubyB').onclick=()=>{ rubyOn=!rubyOn; try{ localStorage.setItem('jlpt_moshi_ruby',rubyOn?'1':'0'); }catch(e){} applyRuby(); };
+applyRuby();
 
 function viewHome(){
-  view='home'; stopClock();
+  view='home'; stopClock(); showRubyBtn(null);
   $('back').href='../#/quiz'; $('back').onclick=null;
   setHeader('JLPT','<ruby>模試<rt>もし</rt></ruby>（<ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby>・<ruby>文法<rt>ぶんぽう</rt></ruby>）',false);
   const hist=st.hist||[];
@@ -332,6 +345,7 @@ function viewIntro(lv){
   loadLevel(lv,ok=>{
     if(!ok){ page.innerHTML='<div class="msg"><ruby>問題<rt>もんだい</rt></ruby>を よみこめませんでした。インターネットに つないで、もう<ruby>一度<rt>いちど</rt></ruby> ひらいて ください。</div>'; return; }
     const d=DATA[lv], secs=sections(d); let total=0;
+    showRubyBtn(lv);
     let rows='<tr class="grp"><td colspan="2"><ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby></td></tr>', inG=false, k=0;
     for(const [f,n] of secs){
       if(!d.vocab.includes(f)&&!inG){ inG=true; rows+='<tr class="grp"><td colspan="2"><ruby>文法<rt>ぶんぽう</rt></ruby></td></tr>'; }
@@ -341,6 +355,7 @@ function viewIntro(lv){
     page.innerHTML='<div class="h">'+lv.toUpperCase()+' <ruby>模試<rt>もし</rt></ruby>　'+total+'<ruby>問<rt>もん</rt></ruby></div>'+
       '<div class="lead"><ruby>本番<rt>ほんばん</rt></ruby>と <ruby>同<rt>おな</rt></ruby>じ <ruby>数<rt>かず</rt></ruby>です。<ruby>時間<rt>じかん</rt></ruby>の きまりは ありません（おわったら、かかった <ruby>時間<rt>じかん</rt></ruby>が <ruby>出<rt>で</rt></ruby>ます）。</div>'+
       '<div class="card"><table class="comp">'+rows+'<tr><td><b>ぜんぶ</b></td><td>'+total+' <ruby>問<rt>もん</rt></ruby></td></tr></table></div>'+
+      (d.ruby?'<div class="note">※ '+lv.toUpperCase()+' は <ruby>本番<rt>ほんばん</rt></ruby>と <ruby>同<rt>おな</rt></ruby>じように、むずかしい <ruby>漢字<rt>かんじ</rt></ruby>に ルビが あります。<ruby>上<rt>うえ</rt></ruby>の「ルビ」で けせます。</div>':'')+
       (st.cur&&!resumeHere?'<div class="note">※ '+st.cur.lv.toUpperCase()+' の とちゅうの こたえは きえます。</div>':'')+
       '<div class="row2">'+(resumeHere?'<button class="btn" id="resB">つづきから</button>':'')+'<button class="btn pri" id="goB">'+(resumeHere?'はじめから':'はじめる')+'</button></div>'+
       '<div class="note">※ <ruby>点<rt>てん</rt></ruby>は 60<ruby>点<rt>てん</rt></ruby>に なおした <ruby>目安<rt>めやす</rt></ruby>です。<ruby>合格<rt>ごうかく</rt></ruby>ライン '+PASS[lv]+'<ruby>点<rt>てん</rt></ruby>・18<ruby>点<rt>てん</rt></ruby> <ruby>以下<rt>いか</rt></ruby>は <ruby>基準点<rt>きじゅんてん</rt></ruby>（19<ruby>点<rt>てん</rt></ruby>）に とどきません。</div>';
@@ -384,7 +399,7 @@ function secOf(i){   // i 番目の問題の 大問番号・形式・大問の�
 }
 
 function viewTest(){
-  view='test'; startClock();
+  view='test'; startClock(); showRubyBtn(cur.lv);
   $('back').href='#'; $('back').onclick=e=>{ e.preventDefault(); $('back').onclick=null; stopClock(); viewHome(); };
   setHeader('JLPT <ruby>模試<rt>もし</rt></ruby>',cur.lv.toUpperCase(),true);
   showQ(cur.pos);
@@ -457,6 +472,7 @@ function viewResult(r){
   loadLevel(r.lv,ok=>{
     if(!ok){ page.innerHTML='<div class="msg"><ruby>問題<rt>もんだい</rt></ruby>を よみこめませんでした。</div>'; return; }
     const d=DATA[r.lv], ix=index(r.lv), rec=r.rec, g=grade(rec.s,r.lv);
+    showRubyBtn(r.lv);
     let h='<div class="card score"><div class="big">'+rec.s+'<small>/ 60</small></div><div class="lbl s'+g.c+'">'+g.t+'</div>'+
       '<div class="scale"><i style="width:'+(rec.s/60*100)+'%"></i>'+
       [[CUT,'19'],[PASS[r.lv],'<ruby>合格<rt>ごうかく</rt></ruby> '+PASS[r.lv]],[40,'40'],[50,'50']].map(m=>'<span style="left:'+(m[0]/60*100)+'%"><em>'+m[1]+'</em></span>').join('')+'</div>'+
@@ -490,8 +506,8 @@ function viewResult(r){
           return '<div class="'+(a?'ans':m?'mine':'')+'"><span class="t">'+(a?'こたえ':m?'あなた':'')+'</span><span>'+(j+1)+'. '+fmt(c,false)+'</span></div>';
         }).join('')+'</div>';
         if(!mine) x+='<div class="note" style="margin-top:4px">こたえて いません</div>';
-        let ex=esc(q[8]);
-        if(f==='文の組み立て'&&q[7]) ex='<b>ならべかた</b>　'+q[7].split('-').map(n=>esc(q[5][+n-1])).join(' → ')+'<br>'+ex;
+        let ex=rb(q[8]);
+        if(f==='文の組み立て'&&q[7]) ex='<b>ならべかた</b>　'+q[7].split('-').map(n=>rb(q[5][+n-1])).join(' → ')+'<br>'+ex;
         x+='<div class="ex">'+ex+'</div></div>';
         return x;
       }).join('')||'<div class="msg">まちがえた <ruby>問題<rt>もんだい</rt></ruby>は ありません。</div>';
