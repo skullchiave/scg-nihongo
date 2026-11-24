@@ -264,7 +264,7 @@ const DATA={
   categories:[
     {id:'textbook', label:'<ruby>教科書<rt>きょうかしょ</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>', sub:'きょうかしょで べんきょうした こと', ready:true},
     {id:'drill',    label:'ドリル', sub:'JLPTの ぶんぽうや ことばの れんしゅう', ready:true},
-    {id:'quiz',     label:'<ruby>問題<rt>もんだい</rt></ruby>', sub:'おぼえたことを ためす', ready:false},
+    {id:'quiz',     label:'<ruby>問題<rt>もんだい</rt></ruby>', sub:'おぼえたことを ためす', ready:true},
   ],
   textbooks:window.SCG_CATALOG.textbooks,   // ← 一覧は assets/catalog.js（ドリルを足すのはそちら）
   drills:window.SCG_CATALOG.drills,
@@ -549,6 +549,14 @@ function viewDrillLevel(id){
   });
   return h+'</div></main>';
 }
+// ===== 問題：JLPT 模試（文字・語彙・文法）。中身は jlpt/moshi.html（2026-11-24〜） =====
+function viewQuiz(){
+  let h=hdSub('#/','ホーム','<ruby>問題<rt>もんだい</rt></ruby>')+'<main class="page narrow"><section class="lsec"><div class="lh">JLPT <ruby>模試<rt>もし</rt></ruby>（<ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby>・<ruby>文法<rt>ぶんぽう</rt></ruby>）</div><div class="list">';
+  ['n1','n2','n3','n4'].forEach(function(lv){
+    h+='<a class="row" href="jlpt/moshi.html?lv='+lv+'"><span class="nm">'+lv.toUpperCase()+'</span><span class="go">'+ic('fwd')+'</span></a>';
+  });
+  return h+'</div></section></main>';
+}
 function render(){
   const parts=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
   let html;
@@ -558,7 +566,7 @@ function render(){
   else if(parts[0]==='textbook'){ html=viewTextbook(parts[1]); }
   else if(parts[0]==='drill' && parts.length===1){ html=viewDrill(); }
   else if(parts[0]==='drill'){ html=viewDrillLevel(parts[1]); }
-  else if(parts[0]==='quiz'){ html=hdSub('#/','ホーム','<ruby>問題<rt>もんだい</rt></ruby>')+'<main class="page narrow">'+soonHTML('<ruby>問題<rt>もんだい</rt></ruby>')+'</main>'; }
+  else if(parts[0]==='quiz'){ html=viewQuiz(); }
   else { html=viewHome(); }
   if(html===null) return;   // 転送した（hashchange でもう一度 render される）
   app.innerHTML=html;

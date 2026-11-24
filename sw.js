@@ -48,7 +48,10 @@ self.addEventListener('fetch', e => {
   //   1回目は旧版が出て「直っていない」に見える（PC版レイアウト公開時に実際に起きた）
   const p = url.pathname;
   const isPortal = p.endsWith('/') || p.endsWith('/index.html') || p.endsWith('/assets/catalog.js')
-    || p.endsWith('/assets/drill-base.css') || p.endsWith('/assets/drill-ui.css') || p.endsWith('/assets/drill-ui.js') || p.endsWith('/assets/jlpt-study.js') || p.endsWith('/assets/jlpt-kanji.js');
+    || p.endsWith('/assets/drill-base.css') || p.endsWith('/assets/drill-ui.css') || p.endsWith('/assets/drill-ui.js') || p.endsWith('/assets/jlpt-study.js') || p.endsWith('/assets/jlpt-kanji.js')
+    // ★模試（2026-11-24）：問題を直して道具を回し直したら、次に開いた時すぐ新しい問題に（SWR だと1回目は前の版）。
+    //   変わっていなければ 304 なので通信はほとんど無い。圏外ではキャッシュで動く
+    || p.endsWith('/jlpt/moshi.html') || p.includes('/jlpt/mondai/');
 
   // 再取得は cache:'no-cache' で条件付き再検証（サーバに変更有無を確認＝未変更は304で激安・変更時のみ実DL）
   const fresh = () => fetch(new Request(url.href, { cache: 'no-cache' }));

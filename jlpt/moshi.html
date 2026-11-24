@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ja" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="/scg-nihongo/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/scg-nihongo/icon-192.png">
+<link rel="manifest" href="/scg-nihongo/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="SCG日本語">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffffff">
+<title>JLPT 模試（言語知識）</title>
+<!--
+  JLPT 模試（文字・語彙・文法）。2026-11-24〜
+  問題データ＝mondai/n1.js〜n4.js（scripts/jlpt_mondai/build_mondai.py が作る。手で直さない）。
+  本番の構成（形式ごとの数）はデータの comp を読む。点は 60点に換算した目安。
+  記録＝localStorage['jlpt_moshi_v1']（途中の回 cur と、結果 hist。端末の中だけ）。
+-->
+<style>
+@font-face{font-family:'SCG Kyokasho';font-style:normal;font-weight:400;src:local('UD Digi Kyokasho NK'),local('UDDigiKyokashoNK'),local('UD Digi Kyokasho NK-R'),local('UDDigiKyokashoNK-R');}
+@font-face{font-family:'SCG Kyokasho';font-style:normal;font-weight:700;src:local('UD Digi Kyokasho NK Bold'),local('UDDigiKyokashoNK-Bold'),local('UD Digi Kyokasho NK-B'),local('UDDigiKyokashoNK-B');}
+@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:400;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Regular.subset.woff2') format('woff2');}
+@font-face{font-family:'BIZ UDPGothic';font-style:normal;font-weight:700;font-display:swap;src:url('/scg-nihongo/fonts/BIZUDPGothic-Bold.subset.woff2') format('woff2');}
+:root{
+  --bg:#eef1f7; --panel:#ffffff; --ink:#16233a; --sub:#5a6b86; --line:#c9d4e6; --hair:#dfe5ef;
+  --accentT:#b45309; --accentSoft:#fff3e0; --accentStrong:#d97706; --muted:#3c4c66;
+  --ok:#15803d; --ng:#dc2626; --okSoft:#e7f5ec; --ngSoft:#fdecec;
+  --card-shadow:0 1px 2px rgba(22,35,58,.06),0 4px 16px rgba(22,35,58,.06);
+  --z:1;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{font-family:"SCG Kyokasho","BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;background:var(--bg);color:var(--ink);
+  display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;line-height:1.6;}
+button{font-family:inherit;color:inherit;-webkit-tap-highlight-color:transparent;cursor:pointer;}
+rt{font-size:.5em;font-weight:500;color:var(--sub);}
+.ic{width:22px;height:22px;flex-shrink:0;display:block;}
+.hidden{display:none !important;}
+
+/* ヘッダー */
+.hd{flex-shrink:0;background:#fff;border-bottom:1px solid var(--hair);}
+.hdrow{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:6px 8px;min-height:60px;}
+.ibtn{width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;border-radius:12px;border:1px solid transparent;background:none;color:var(--ink);text-decoration:none;font-size:15px;font-weight:700;}
+.ibtn.frame{border-color:var(--line);background:#fff;}
+.ibtn:active{transform:scale(.95);}
+.ibtn.on{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+.ttl{flex:1;min-width:0;padding-left:2px;}
+.ttl-s{font-size:11px;color:var(--sub);font-weight:700;line-height:1.3;}
+.ttl-m{font-size:17px;font-weight:700;line-height:1.4;}
+.prog{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:0 12px 8px;}
+.bar{flex:1;height:8px;background:#e6ebf3;border-radius:99px;overflow:hidden;}
+.bar i{display:block;height:100%;width:0;background:var(--accentStrong);border-radius:99px;transition:width .25s;}
+.qcount{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;}
+
+main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.page{max-width:720px;margin:0 auto;padding:18px 16px 28px;font-size:calc(16px * var(--z));}
+.h{font-size:1.4em;font-weight:700;line-height:1.4;}
+.lead{font-size:.85em;color:var(--muted);margin-top:4px;}
+.card{background:#fff;border-radius:16px;box-shadow:var(--card-shadow);padding:16px;margin-top:14px;}
+.note{font-size:.8em;color:var(--sub);margin-top:10px;line-height:1.7;}
+
+/* ホーム：級のボタン */
+.lvlist{display:grid;gap:10px;margin-top:16px;}
+.lvbtn{display:flex;align-items:center;gap:14px;width:100%;min-height:72px;border:1px solid var(--line);border-radius:16px;background:#fff;padding:10px 16px;text-align:left;box-shadow:var(--card-shadow);}
+.lvbtn .lv{font-size:1.6em;font-weight:700;width:2.4em;color:var(--accentT);}
+.lvbtn .d{flex:1;font-size:.9em;color:var(--muted);line-height:1.5;}
+.lvbtn .d b{color:var(--ink);}
+.lvbtn .last{font-size:.8em;color:var(--sub);text-align:right;white-space:nowrap;}
+.lvbtn .last b{display:block;font-size:1.4em;color:var(--ink);font-variant-numeric:tabular-nums;}
+.resume{border:2px solid var(--accentStrong);background:var(--accentSoft);}
+.row2{display:flex;gap:10px;margin-top:12px;}
+.btn{flex:1;min-height:52px;border-radius:14px;border:1px solid var(--line);background:#fff;font-size:1em;font-weight:700;padding:6px 12px;}
+.btn.pri{background:var(--accentT);border-color:var(--accentT);color:#fff;}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:#fff;}
+.btn:disabled{opacity:.45;cursor:default;}
+.hist{margin-top:8px;font-size:.85em;}
+.hist div{display:flex;gap:10px;padding:8px 2px;border-top:1px solid #edf1f7;font-variant-numeric:tabular-nums;}
+.hist div:first-child{border-top:none;}
+.hist .s{margin-left:auto;font-weight:700;}
+
+/* 始める前：構成の表 */
+.comp{width:100%;border-collapse:collapse;margin-top:10px;font-size:.9em;}
+.comp td{padding:7px 4px;border-top:1px solid #edf1f7;}
+.comp td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.comp tr.grp td{border-top:none;padding-top:12px;font-size:.85em;color:var(--sub);font-weight:700;}
+.ulm{display:inline-block;width:2.2em;border-bottom:2px solid var(--ink);margin:0 3px;vertical-align:.15em;}
+
+/* 問題 */
+.sec{display:inline-block;font-size:.8em;font-weight:700;color:var(--accentT);background:var(--accentSoft);border-radius:99px;padding:3px 12px;}
+.inst{font-size:.85em;color:var(--muted);margin-top:8px;line-height:1.8;}
+.qno{font-size:.85em;font-weight:700;color:var(--sub);margin-top:14px;}
+.qtext{font-size:1.15em;line-height:2;margin-top:4px;word-break:normal;line-break:strict;}
+.qtext p{margin:0 0 .6em;text-indent:1em;}
+.qtext p:last-child{margin-bottom:0;}
+.qtext.long{font-size:1.02em;line-height:1.95;background:#fff;border-radius:12px;padding:12px 14px;box-shadow:var(--card-shadow);}
+.yoho{font-size:1.5em;font-weight:700;margin-top:4px;}
+u.ul{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;}
+.blank{display:inline-block;min-width:3.2em;height:1.4em;vertical-align:-.25em;border:2px solid var(--accentStrong);border-radius:6px;margin:0 3px;background:#fffaf2;}
+.slot{display:inline-block;min-width:2.6em;border-bottom:2px solid var(--ink);margin:0 4px;text-align:center;line-height:1.2;}
+.slot.st{color:var(--accentT);font-weight:700;}
+.chs{display:grid;gap:10px;margin-top:16px;}
+.ch{display:flex;gap:12px;align-items:flex-start;width:100%;min-height:56px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:12px 14px;text-align:left;font-size:1.05em;line-height:1.7;}
+.ch .n{flex-shrink:0;width:1.7em;height:1.7em;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.85em;font-weight:700;color:var(--sub);margin-top:.05em;}
+.ch[aria-pressed="true"]{border-color:var(--accentT);background:var(--accentSoft);box-shadow:inset 0 0 0 1px var(--accentT);}
+.ch[aria-pressed="true"] .n{background:var(--accentT);border-color:var(--accentT);color:#fff;}
+.ft{flex-shrink:0;background:#fff;border-top:1px solid var(--hair);}
+.ftrow{max-width:720px;margin:0 auto;display:flex;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));}
+.ftrow .btn{min-height:48px;}
+
+/* 一覧 */
+.ov{position:fixed;inset:0;background:rgba(22,35,58,.45);display:flex;align-items:flex-end;justify-content:center;z-index:20;}
+.sheet{background:#fff;width:100%;max-width:720px;max-height:86dvh;border-radius:20px 20px 0 0;display:flex;flex-direction:column;}
+.sheet .sh{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid var(--hair);font-weight:700;}
+.sheet .sh .ibtn{margin-left:auto;}
+.sheet .sb{overflow-y:auto;padding:8px 16px 16px;}
+.gsec{font-size:.8em;font-weight:700;color:var(--sub);margin:12px 0 6px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:8px;}
+.grid button{height:48px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:700;font-variant-numeric:tabular-nums;}
+.grid button.done{background:var(--accentSoft);border-color:#f3d9ad;color:var(--accentT);}
+.grid button.cur{outline:3px solid var(--accentT);outline-offset:1px;}
+.sheet .sf{padding:10px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--hair);}
+
+/* 結果 */
+.score{text-align:center;padding:20px 12px 18px;}
+.score .big{font-size:3.6em;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;}
+.score .big small{font-size:.4em;color:var(--sub);margin-left:4px;}
+.score .lbl{display:inline-block;margin-top:10px;font-size:1.15em;font-weight:700;border-radius:99px;padding:4px 18px;}
+.lbl.s0{background:var(--ngSoft);color:#a1271b;}
+.lbl.s1{background:#f1f3f8;color:var(--muted);}
+.lbl.s2,.lbl.s3,.lbl.s4,.lbl.s5{background:var(--okSoft);color:var(--ok);}
+.scale{position:relative;height:10px;background:#e6ebf3;border-radius:99px;margin:18px 4px 30px;}
+.scale > i{position:absolute;left:0;top:0;bottom:0;background:var(--accentStrong);border-radius:99px;}
+.scale > span{position:absolute;top:-4px;width:2px;height:18px;background:var(--ink);opacity:.5;}
+.scale > span em{position:absolute;top:20px;left:50%;transform:translateX(-50%);font-style:normal;font-size:11px;color:var(--sub);white-space:nowrap;}
+.meta{display:flex;justify-content:center;gap:18px;font-size:.9em;color:var(--muted);flex-wrap:wrap;}
+.meta b{color:var(--ink);font-variant-numeric:tabular-nums;}
+.bd{width:100%;border-collapse:collapse;font-size:.9em;}
+.bd td{padding:8px 4px;border-top:1px solid #edf1f7;vertical-align:middle;}
+.bd tr.sub td{font-weight:700;background:#f7f9fc;}
+.bd td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:700;width:4.5em;}
+.bd td.b{width:24%;}
+.bd .k{display:inline-grid;place-items:center;width:1.5em;height:1.5em;border-radius:50%;background:#eef1f7;font-size:.8em;font-weight:700;color:var(--sub);margin-right:8px;vertical-align:.1em;}
+.mini{height:8px;background:#e6ebf3;border-radius:99px;overflow:hidden;}
+.mini i{display:block;height:100%;background:var(--ok);}
+.rv{margin-top:12px;}
+.rv .card{margin-top:10px;}
+.rvh{display:flex;align-items:center;gap:8px;font-size:.85em;font-weight:700;color:var(--sub);}
+.rvh .id{margin-left:auto;font-weight:400;font-size:.85em;color:#8a97ad;}
+.mk{display:inline-grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;color:#fff;font-weight:700;font-size:.9em;}
+.mk.o{background:var(--ok);} .mk.x{background:var(--ng);}
+.rch{margin-top:8px;display:grid;gap:4px;}
+.rch div{display:flex;gap:8px;padding:6px 10px;border-radius:10px;font-size:.95em;line-height:1.7;}
+.rch div.ans{background:var(--okSoft);}
+.rch div.mine{background:var(--ngSoft);}
+.rch .t{flex-shrink:0;font-size:.75em;font-weight:700;padding-top:.35em;width:5.2em;}
+.rch div.ans .t{color:var(--ok);} .rch div.mine .t{color:var(--ng);}
+.ex{margin-top:8px;font-size:.92em;line-height:1.8;background:#f7f9fc;border-radius:10px;padding:8px 12px;}
+.ex b{font-size:.85em;color:var(--sub);}
+.tabs{display:flex;gap:8px;margin-top:16px;}
+.tabs button{flex:1;min-height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:.9em;}
+.tabs button[aria-pressed="true"]{background:var(--accentSoft);color:var(--accentT);border-color:#f3d9ad;}
+.msg{text-align:center;color:var(--sub);padding:40px 10px;}
+
+@media (min-width:641px){
+  .page{font-size:calc(19px * var(--z));padding-top:26px;}
+  .ttl-m{font-size:20px;}
+  .lvlist{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<header class="hd">
+  <div class="hdrow">
+    <a class="ibtn" id="back" href="../#/quiz" aria-label="もどる"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <div class="ttl"><div class="ttl-s" id="ttlS">JLPT</div><div class="ttl-m" id="ttlM"><ruby>模試<rt>もし</rt></ruby>（<ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby>・<ruby>文法<rt>ぶんぽう</rt></ruby>）</div></div>
+    <button class="ibtn frame" id="aa" aria-label="文字の大きさ">Aa</button>
+  </div>
+  <div class="prog hidden" id="prog"><div class="bar"><i id="barI"></i></div><span class="qcount" id="qcount"></span></div>
+</header>
+<main id="main"><div class="page" id="page"></div></main>
+<footer class="ft hidden" id="ft"><div class="ftrow">
+  <button class="btn" id="prevB">‹ まえ</button>
+  <button class="btn" id="listB"><ruby>一覧<rt>いちらん</rt></ruby></button>
+  <button class="btn dark" id="nextB">つぎ ›</button>
+</div></footer>
+<div class="ov hidden" id="ov"><div class="sheet">
+  <div class="sh"><span><ruby>問題<rt>もんだい</rt></ruby>の <ruby>一覧<rt>いちらん</rt></ruby></span><button class="ibtn" id="ovX" aria-label="とじる">✕</button></div>
+  <div class="sb" id="ovB"></div>
+  <div class="sf"><button class="btn pri" id="ovEnd" style="width:100%">おわって <ruby>点<rt>てん</rt></ruby>を <ruby>見<rt>み</rt></ruby>る</button></div>
+</div></div>
+
+<script>
+'use strict';
+/* ===== 決まり（あとで動かせる数） ===== */
+const LEVELS=['n1','n2','n3','n4'];                // ホームの並び（ドリルの級の一覧と同じ）
+// 合格ライン＝公式の総合得点の合格点（180点中）÷3 を切り上げ。N1 100・N2 90・N3 95・N4 90（jlpt.jp「合否の判定」）
+const PASS={n1:34, n2:30, n3:32, n4:30};
+const CUT=19;                                       // 基準点（19点）。18点以下は「もっと がんばろう」
+const AUTO_NEXT_MS=350;                             // 答えをえらんでから つぎへ 進むまで
+const KEY='jlpt_moshi_v1', HIST_MAX=50;
+// 大問の名前（ルビ）と、やること（自作のことば）
+const FN={
+  '漢字読み':'<ruby>漢字<rt>かんじ</rt></ruby><ruby>読<rt>よ</rt></ruby>み',
+  '表記':'<ruby>表記<rt>ひょうき</rt></ruby>',
+  '語形成':'<ruby>語形成<rt>ごけいせい</rt></ruby>',
+  '文脈規定':'<ruby>文脈規定<rt>ぶんみゃくきてい</rt></ruby>',
+  '言い換え類義':'<ruby>言<rt>い</rt></ruby>い<ruby>換<rt>か</rt></ruby>え<ruby>類義<rt>るいぎ</rt></ruby>',
+  '用法':'<ruby>用法<rt>ようほう</rt></ruby>',
+  '文法形式判断':'<ruby>文法形式<rt>ぶんぽうけいしき</rt></ruby>の<ruby>判断<rt>はんだん</rt></ruby>',
+  '文の組み立て':'<ruby>文<rt>ぶん</rt></ruby>の<ruby>組<rt>く</rt></ruby>み<ruby>立<rt>た</rt></ruby>て',
+  '文章の文法':'<ruby>文章<rt>ぶんしょう</rt></ruby>の<ruby>文法<rt>ぶんぽう</rt></ruby>'
+};
+const INST={
+  '漢字読み':'<span class="ulm"></span>の ことばは どう <ruby>読<rt>よ</rt></ruby>みますか。',
+  '表記':'<span class="ulm"></span>の ことばは <ruby>漢字<rt>かんじ</rt></ruby>で どう <ruby>書<rt>か</rt></ruby>きますか。',
+  '語形成':'（　）に <ruby>入<rt>い</rt></ruby>れるのに いちばん よい ものを えらんで ください。',
+  '文脈規定':'（　）に <ruby>入<rt>い</rt></ruby>れるのに いちばん よい ものを えらんで ください。',
+  '言い換え類義':'<span class="ulm"></span>に いみが いちばん <ruby>近<rt>ちか</rt></ruby>い ものを えらんで ください。',
+  '用法':'つぎの ことばの つかいかたとして いちばん よい ものを えらんで ください。',
+  '文法形式判断':'つぎの <ruby>文<rt>ぶん</rt></ruby>の（　）に <ruby>入<rt>い</rt></ruby>れるのに いちばん よい ものを えらんで ください。',
+  '文の組み立て':'つぎの <ruby>文<rt>ぶん</rt></ruby>の <b style="color:var(--accentT)">★</b> に <ruby>入<rt>はい</rt></ruby>る いちばん よい ものを えらんで ください。',
+  '文章の文法':'つぎの <ruby>文章<rt>ぶんしょう</rt></ruby>を <ruby>読<rt>よ</rt></ruby>んで、（　）に <ruby>入<rt>はい</rt></ruby>る いちばん よい ものを えらんで ください。'
+};
+// 区切りのことば（2026-11-24 きあ）。19〜合格ラインの手前は きあの決まりに無い＝仮のことば
+function grade(s,lv){
+  if(s>=60) return {c:5,t:'<ruby>満点<rt>まんてん</rt></ruby>！'};
+  if(s>=50) return {c:4,t:'すばらしい！'};
+  if(s>=40) return {c:3,t:'<ruby>良<rt>よ</rt></ruby>い'};
+  if(s>=PASS[lv]) return {c:2,t:'<ruby>合格<rt>ごうかく</rt></ruby>ライン'};
+  if(s>=CUT) return {c:1,t:'あと すこし'};
+  return {c:0,t:'もっと がんばろう'};
+}
+
+/* ===== 道具 ===== */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ return {}; } }
+function save(st){ try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function fmt(s,long){   // 問題文・選択肢の印を画面の形に
+  let h=esc(s);
+  if(long) h=h.split('／').map(p=>'<p>'+p+'</p>').join('');
+  h=h.replace(/【([^】]*)】/g,'<u class="ul">$1</u>');
+  h=h.replace(/（[\s　]*[0-9０-９]*[\s　]*）/g,'<span class="blank"></span>');
+  h=h.replace(/＿★＿/g,'<span class="slot st">★</span>').replace(/＿＿＿/g,'<span class="slot">　</span>');
+  return h;
+}
+function mmss(sec){ const m=Math.floor(sec/60), s=sec%60; return m+'<ruby>分<rt>ふん</rt></ruby>'+(m<60?' '+s+'<ruby>秒<rt>びょう</rt></ruby>':''); }
+
+/* ===== データの読みこみ（えらんだ級だけ） ===== */
+const DATA={};
+function loadLevel(lv,cb){
+  if(window.MONDAI&&window.MONDAI[lv]){ DATA[lv]=window.MONDAI[lv]; return cb(true); }
+  const sc=document.createElement('script');
+  sc.src='mondai/'+lv+'.js';
+  sc.onload=()=>{ if(window.MONDAI&&window.MONDAI[lv]){ DATA[lv]=window.MONDAI[lv]; cb(true); } else cb(false); };
+  sc.onerror=()=>cb(false);
+  document.head.appendChild(sc);
+}
+function index(lv){   // 番号 → 問題
+  const d=DATA[lv]; if(d._ix) return d._ix;
+  d._ix={}; d.q.forEach(q=>{ d._ix[q[0]]=q; }); return d._ix;
+}
+function sections(d){  // [[形式, 数], …]（本番の順）
+  return d.forms.filter(f=>d.comp[f]).map(f=>[f,d.comp[f]]);
+}
+// 1回分を組む：大問の順に、まだ出していない対象（語・文型）だけを無作為に取る
+function build(lv){
+  const d=DATA[lv], by={}, used=new Set(), ids=[];
+  d.q.forEach(q=>{ const f=d.forms[q[1]]; (by[f]=by[f]||[]).push(q); });
+  for(const [f,n] of sections(d)){
+    let got=0;
+    for(const q of shuffle((by[f]||[]).slice())){
+      if(used.has(q[3])) continue;
+      used.add(q[3]); ids.push(q[0]); if(++got===n) break;
+    }
+    if(got<n) return null;
+  }
+  return ids;
+}
+
+/* ===== 画面 ===== */
+let st=load(), view='home', cur=null, timer=null, segStart=0;
+const page=$('page');
+function setHeader(sub,main,prog){
+  $('ttlS').innerHTML=sub; $('ttlM').innerHTML=main;
+  $('prog').classList.toggle('hidden',!prog); $('ft').classList.toggle('hidden',view!=='test');
+}
+function toTop(){ $('main').scrollTop=0; }
+
+function viewHome(){
+  view='home'; stopClock();
+  $('back').href='../#/quiz'; $('back').onclick=null;
+  setHeader('JLPT','<ruby>模試<rt>もし</rt></ruby>（<ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby>・<ruby>文法<rt>ぶんぽう</rt></ruby>）',false);
+  const hist=st.hist||[];
+  let h='<div class="h"><ruby>模試<rt>もし</rt></ruby>で ちからだめし</div>'+
+    '<div class="lead"><ruby>本番<rt>ほんばん</rt></ruby>と <ruby>同<rt>おな</rt></ruby>じ <ruby>数<rt>かず</rt></ruby>の <ruby>問題<rt>もんだい</rt></ruby>が、<ruby>毎回<rt>まいかい</rt></ruby> ちがう <ruby>組<rt>く</rt></ruby>み<ruby>合<rt>あ</rt></ruby>わせで <ruby>出<rt>で</rt></ruby>ます。<ruby>読解<rt>どっかい</rt></ruby>・<ruby>聴解<rt>ちょうかい</rt></ruby>は ありません。</div>';
+  if(st.cur){
+    const c=st.cur, done=c.ans.filter(a=>a).length;
+    h+='<div class="card resume"><b>'+c.lv.toUpperCase()+' の つづき</b>（'+done+' / '+c.ids.length+' <ruby>問<rt>もん</rt></ruby> こたえた）'+
+      '<div class="row2"><button class="btn pri" id="resB">つづきから</button><button class="btn" id="dropB">やめる</button></div></div>';
+  }
+  h+='<div class="lvlist">';
+  for(const lv of LEVELS){
+    const last=hist.find(x=>x.lv===lv);
+    h+='<button class="lvbtn" data-lv="'+lv+'"><span class="lv">'+lv.toUpperCase()+'</span>'+
+      '<span class="d"><ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby>・<ruby>文法<rt>ぶんぽう</rt></ruby></span>'+
+      (last?'<span class="last">まえの <ruby>点<rt>てん</rt></ruby><b>'+last.s+'</b></span>':'')+'</button>';
+  }
+  h+='</div>';
+  if(hist.length){
+    h+='<div class="card"><b>きろく</b><div class="hist">'+hist.slice(0,10).map(x=>
+      '<div><span>'+x.d.slice(5).replace('-','/')+'</span><span>'+x.lv.toUpperCase()+'</span><span>'+x.c+' / '+x.n+'</span><span class="s">'+x.s+' <ruby>点<rt>てん</rt></ruby></span></div>').join('')+'</div></div>';
+  }
+  h+='<div class="note">※ <ruby>点<rt>てん</rt></ruby>は、<ruby>正<rt>ただ</rt></ruby>しかった <ruby>数<rt>かず</rt></ruby>を 60<ruby>点<rt>てん</rt></ruby>に なおした <ruby>目安<rt>めやす</rt></ruby>です。<ruby>本番<rt>ほんばん</rt></ruby>の <ruby>点<rt>てん</rt></ruby>とは ちがいます。</div>';
+  page.innerHTML=h; toTop();
+  page.querySelectorAll('.lvbtn').forEach(b=>b.onclick=()=>viewIntro(b.dataset.lv));
+  if(st.cur){
+    $('resB').onclick=()=>resume();
+    $('dropB').onclick=()=>{ if(confirm('とちゅうの こたえを けしますか？')){ delete st.cur; save(st); viewHome(); } };
+  }
+}
+
+function viewIntro(lv){
+  view='intro';
+  $('back').href='#'; $('back').onclick=e=>{ e.preventDefault(); $('back').onclick=null; viewHome(); };
+  setHeader('JLPT <ruby>模試<rt>もし</rt></ruby>',lv.toUpperCase(),false);
+  page.innerHTML='<div class="msg">よみこみ<ruby>中<rt>ちゅう</rt></ruby>…</div>';
+  loadLevel(lv,ok=>{
+    if(!ok){ page.innerHTML='<div class="msg"><ruby>問題<rt>もんだい</rt></ruby>を よみこめませんでした。インターネットに つないで、もう<ruby>一度<rt>いちど</rt></ruby> ひらいて ください。</div>'; return; }
+    const d=DATA[lv], secs=sections(d); let total=0;
+    let rows='<tr class="grp"><td colspan="2"><ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby></td></tr>', inG=false, k=0;
+    for(const [f,n] of secs){
+      if(!d.vocab.includes(f)&&!inG){ inG=true; rows+='<tr class="grp"><td colspan="2"><ruby>文法<rt>ぶんぽう</rt></ruby></td></tr>'; }
+      k++; total+=n; rows+='<tr><td>もんだい'+k+'　'+FN[f]+'</td><td>'+n+' <ruby>問<rt>もん</rt></ruby></td></tr>';
+    }
+    const resumeHere=st.cur&&st.cur.lv===lv;
+    page.innerHTML='<div class="h">'+lv.toUpperCase()+' <ruby>模試<rt>もし</rt></ruby>　'+total+'<ruby>問<rt>もん</rt></ruby></div>'+
+      '<div class="lead"><ruby>本番<rt>ほんばん</rt></ruby>と <ruby>同<rt>おな</rt></ruby>じ <ruby>数<rt>かず</rt></ruby>です。<ruby>時間<rt>じかん</rt></ruby>の きまりは ありません（おわったら、かかった <ruby>時間<rt>じかん</rt></ruby>が <ruby>出<rt>で</rt></ruby>ます）。</div>'+
+      '<div class="card"><table class="comp">'+rows+'<tr><td><b>ぜんぶ</b></td><td>'+total+' <ruby>問<rt>もん</rt></ruby></td></tr></table></div>'+
+      (st.cur&&!resumeHere?'<div class="note">※ '+st.cur.lv.toUpperCase()+' の とちゅうの こたえは きえます。</div>':'')+
+      '<div class="row2">'+(resumeHere?'<button class="btn" id="resB">つづきから</button>':'')+'<button class="btn pri" id="goB">'+(resumeHere?'はじめから':'はじめる')+'</button></div>'+
+      '<div class="note">※ <ruby>点<rt>てん</rt></ruby>は 60<ruby>点<rt>てん</rt></ruby>に なおした <ruby>目安<rt>めやす</rt></ruby>です。<ruby>合格<rt>ごうかく</rt></ruby>ライン '+PASS[lv]+'<ruby>点<rt>てん</rt></ruby>・18<ruby>点<rt>てん</rt></ruby> <ruby>以下<rt>いか</rt></ruby>は <ruby>基準点<rt>きじゅんてん</rt></ruby>（19<ruby>点<rt>てん</rt></ruby>）に とどきません。</div>';
+    toTop();
+    if(resumeHere) $('resB').onclick=()=>resume();
+    $('goB').onclick=()=>start(lv);
+  });
+}
+
+function start(lv){
+  const ids=build(lv);
+  if(!ids){ alert('問題が たりません'); return; }
+  st.cur={lv:lv, ids:ids, ans:ids.map(()=>0), pos:0, el:0, d:today()};
+  save(st); cur=st.cur; viewTest();
+}
+function resume(){
+  const lv=st.cur.lv;
+  page.innerHTML='<div class="msg">よみこみ<ruby>中<rt>ちゅう</rt></ruby>…</div>';
+  loadLevel(lv,ok=>{
+    if(!ok){ page.innerHTML='<div class="msg"><ruby>問題<rt>もんだい</rt></ruby>を よみこめませんでした。</div>'; return; }
+    const ix=index(lv);
+    if(!st.cur.ids.every(id=>ix[id])){   // 問題が直されて無くなった時
+      alert('問題が あたらしく なったので、はじめから に なります。');
+      delete st.cur; save(st); viewIntro(lv); return;
+    }
+    cur=st.cur; viewTest();
+  });
+}
+
+/* かかった時間（画面を開いている間だけ数える） */
+function startClock(){ segStart=Date.now(); }
+function stopClock(){ if(cur&&segStart){ cur.el+=Math.round((Date.now()-segStart)/1000); segStart=0; save(st); } }
+document.addEventListener('visibilitychange',()=>{ if(view!=='test') return; if(document.hidden) stopClock(); else startClock(); });
+addEventListener('pagehide',()=>{ if(view==='test') stopClock(); });
+addEventListener('pageshow',e=>{ if(e.persisted&&view==='test'&&!segStart) startClock(); });
+
+function secOf(i){   // i 番目の問題の 大問番号・形式・大問の中の最初か
+  const d=DATA[cur.lv], ix=index(cur.lv), f=d.forms[ix[cur.ids[i]][1]];
+  const secs=sections(d).map(x=>x[0]);
+  return {k:secs.indexOf(f)+1, f:f, first:i===0||d.forms[ix[cur.ids[i-1]][1]]!==f};
+}
+
+function viewTest(){
+  view='test'; startClock();
+  $('back').href='#'; $('back').onclick=e=>{ e.preventDefault(); $('back').onclick=null; stopClock(); viewHome(); };
+  setHeader('JLPT <ruby>模試<rt>もし</rt></ruby>',cur.lv.toUpperCase(),true);
+  showQ(cur.pos);
+}
+function showQ(i){
+  cur.pos=i; save(st);
+  const d=DATA[cur.lv], q=index(cur.lv)[cur.ids[i]], s=secOf(i), n=cur.ids.length;
+  $('barI').style.width=(cur.ans.filter(a=>a).length/n*100)+'%';
+  $('qcount').textContent=(i+1)+' / '+n;
+  let h='<span class="sec">もんだい'+s.k+'　'+FN[s.f]+'</span><div class="inst">'+INST[s.f]+'</div>';
+  h+='<div class="qno">'+(i+1)+'.</div>';
+  if(s.f==='用法') h+='<div class="yoho">'+esc(q[4].replace(/[【】\s　]/g,''))+'</div>';
+  else h+='<div class="qtext'+(s.f==='文章の文法'?' long':'')+'">'+fmt(q[4],s.f==='文章の文法')+'</div>';
+  h+='<div class="chs">'+q[5].map((c,j)=>'<button class="ch" data-j="'+(j+1)+'" aria-pressed="'+(cur.ans[i]===j+1)+'"><span class="n">'+(j+1)+'</span><span>'+fmt(c,false)+'</span></button>').join('')+'</div>';
+  page.innerHTML=h; toTop();
+  page.querySelectorAll('.ch').forEach(b=>b.onclick=()=>pick(+b.dataset.j));
+  $('prevB').disabled=i===0;
+  const last=i===n-1;
+  $('nextB').innerHTML=last?'おわる':'つぎ ›';
+}
+function pick(j){
+  const i=cur.pos; cur.ans[i]=j; save(st);
+  page.querySelectorAll('.ch').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.j===j));
+  $('barI').style.width=(cur.ans.filter(a=>a).length/cur.ids.length*100)+'%';
+  clearTimeout(timer);
+  if(i<cur.ids.length-1) timer=setTimeout(()=>{ if(view==='test'&&cur.pos===i) showQ(i+1); },AUTO_NEXT_MS);
+}
+$('prevB').onclick=()=>{ clearTimeout(timer); if(cur.pos>0) showQ(cur.pos-1); };
+$('nextB').onclick=()=>{ clearTimeout(timer); if(cur.pos<cur.ids.length-1) showQ(cur.pos+1); else openList(); };
+$('listB').onclick=()=>{ clearTimeout(timer); openList(); };
+$('ovX').onclick=()=>$('ov').classList.add('hidden');
+$('ov').onclick=e=>{ if(e.target===$('ov')) $('ov').classList.add('hidden'); };
+$('ovEnd').onclick=()=>{
+  const left=cur.ans.filter(a=>!a).length;
+  if(left&&!confirm('まだ '+left+'問 こたえて いません。おわって 点を 見ますか？')) return;
+  $('ov').classList.add('hidden'); finish();
+};
+function openList(){
+  let h='', k=-1;
+  cur.ids.forEach((id,i)=>{
+    const s=secOf(i);
+    if(s.first){ if(k>=0) h+='</div>'; k=s.k; h+='<div class="gsec">もんだい'+s.k+'　'+FN[s.f]+'</div><div class="grid">'; }
+    h+='<button data-i="'+i+'" class="'+(cur.ans[i]?'done':'')+(i===cur.pos?' cur':'')+'">'+(i+1)+'</button>';
+  });
+  h+='</div>';
+  const left=cur.ans.filter(a=>!a).length;
+  h+='<div class="note">'+(left?'こたえて いない <ruby>問題<rt>もんだい</rt></ruby>：'+left+'<ruby>問<rt>もん</rt></ruby>':'ぜんぶ こたえました。')+'</div>';
+  $('ovB').innerHTML=h;
+  $('ovB').querySelectorAll('button').forEach(b=>b.onclick=()=>{ $('ov').classList.add('hidden'); showQ(+b.dataset.i); });
+  $('ov').classList.remove('hidden');
+}
+
+function finish(){
+  stopClock();
+  const d=DATA[cur.lv], ix=index(cur.lv), by={};
+  let c=0;
+  cur.ids.forEach((id,i)=>{ const q=ix[id], f=d.forms[q[1]]; const ok=cur.ans[i]===q[6]; if(ok) c++; (by[f]=by[f]||[0,0]); by[f][1]++; if(ok) by[f][0]++; });
+  const n=cur.ids.length, s=Math.round(c/n*60);
+  const rec={d:cur.d||today(), lv:cur.lv, s:s, c:c, n:n, sec:cur.el, by:by};
+  st.hist=[rec].concat(st.hist||[]).slice(0,HIST_MAX);
+  st.last={lv:cur.lv, ids:cur.ids, ans:cur.ans, rec:rec};   // 結果の画面を あとで もう一度 見られるように
+  delete st.cur; save(st);
+  viewResult(st.last);
+}
+
+function viewResult(r){
+  view='result';
+  $('back').href='#'; $('back').onclick=e=>{ e.preventDefault(); $('back').onclick=null; viewHome(); };
+  setHeader('JLPT <ruby>模試<rt>もし</rt></ruby>',r.lv.toUpperCase()+' の けっか',false);
+  loadLevel(r.lv,ok=>{
+    if(!ok){ page.innerHTML='<div class="msg"><ruby>問題<rt>もんだい</rt></ruby>を よみこめませんでした。</div>'; return; }
+    const d=DATA[r.lv], ix=index(r.lv), rec=r.rec, g=grade(rec.s,r.lv);
+    let h='<div class="card score"><div class="big">'+rec.s+'<small>/ 60</small></div><div class="lbl s'+g.c+'">'+g.t+'</div>'+
+      '<div class="scale"><i style="width:'+(rec.s/60*100)+'%"></i>'+
+      [[CUT,'19'],[PASS[r.lv],'<ruby>合格<rt>ごうかく</rt></ruby> '+PASS[r.lv]],[40,'40'],[50,'50']].map(m=>'<span style="left:'+(m[0]/60*100)+'%"><em>'+m[1]+'</em></span>').join('')+'</div>'+
+      '<div class="meta"><span><ruby>正<rt>ただ</rt></ruby>しい こたえ <b>'+rec.c+' / '+rec.n+'</b></span><span>かかった <ruby>時間<rt>じかん</rt></ruby> <b>'+mmss(rec.sec||0)+'</b></span></div>'+
+      '<div class="note">60<ruby>点<rt>てん</rt></ruby>に なおした <ruby>目安<rt>めやす</rt></ruby>です。<ruby>本番<rt>ほんばん</rt></ruby>の <ruby>点<rt>てん</rt></ruby>とは ちがいます。</div></div>';
+    // 大問ごと
+    let rows='', k=0, gv=[0,0], gg=[0,0];
+    for(const [f] of sections(d)){
+      const b=rec.by[f]||[0,0]; k++;
+      (d.vocab.includes(f)?gv:gg)[0]+=b[0]; (d.vocab.includes(f)?gv:gg)[1]+=b[1];
+      rows+='<tr><td><span class="k">'+k+'</span>'+FN[f]+'</td><td class="b"><div class="mini"><i style="width:'+(b[1]?b[0]/b[1]*100:0)+'%"></i></div></td><td class="n">'+b[0]+' / '+b[1]+'</td></tr>';
+      if(f===d.vocab.filter(x=>d.comp[x]).slice(-1)[0]) rows+='<tr class="sub"><td><ruby>文字<rt>もじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby></td><td></td><td class="n">'+gv[0]+' / '+gv[1]+'</td></tr>';
+    }
+    rows+='<tr class="sub"><td><ruby>文法<rt>ぶんぽう</rt></ruby></td><td></td><td class="n">'+gg[0]+' / '+gg[1]+'</td></tr>';
+    h+='<div class="card"><b><ruby>問題<rt>もんだい</rt></ruby>ごと</b><table class="bd">'+rows+'</table></div>';
+    const wrong=r.ids.filter((id,i)=>r.ans[i]!==ix[id][6]).length;
+    h+='<div class="tabs"><button id="tW" aria-pressed="true">まちがえた <ruby>問題<rt>もんだい</rt></ruby>（'+wrong+'）</button><button id="tA" aria-pressed="false">ぜんぶ（'+r.ids.length+'）</button></div><div class="rv" id="rv"></div>';
+    h+='<div class="row2"><button class="btn pri" id="againB">もう<ruby>一度<rt>いちど</rt></ruby>（ほかの <ruby>問題<rt>もんだい</rt></ruby>で）</button></div>'+
+       '<div class="row2"><button class="btn" id="homeB"><ruby>模試<rt>もし</rt></ruby>の はじめへ</button></div>';
+    page.innerHTML=h; toTop();
+    const paint=all=>{
+      $('tW').setAttribute('aria-pressed',!all); $('tA').setAttribute('aria-pressed',all);
+      $('rv').innerHTML=r.ids.map((id,i)=>{
+        const q=ix[id], f=d.forms[q[1]], mine=r.ans[i], ok=mine===q[6];
+        if(!all&&ok) return '';
+        let x='<div class="card"><div class="rvh"><span class="mk '+(ok?'o':'x')+'">'+(ok?'○':'×')+'</span>'+(i+1)+'.　'+FN[f]+'<span class="id">'+esc(id)+'</span></div>';
+        x+=f==='用法'?'<div class="yoho" style="font-size:1.2em">'+esc(q[4].replace(/[【】\s　]/g,''))+'</div>'
+                    :'<div class="qtext'+(f==='文章の文法'?' long':'')+'" style="font-size:1em">'+fmt(q[4],f==='文章の文法')+'</div>';
+        x+='<div class="rch">'+q[5].map((c,j)=>{
+          const a=j+1===q[6], m=j+1===mine&&!ok;
+          return '<div class="'+(a?'ans':m?'mine':'')+'"><span class="t">'+(a?'こたえ':m?'あなた':'')+'</span><span>'+(j+1)+'. '+fmt(c,false)+'</span></div>';
+        }).join('')+'</div>';
+        if(!mine) x+='<div class="note" style="margin-top:4px">こたえて いません</div>';
+        let ex=esc(q[8]);
+        if(f==='文の組み立て'&&q[7]) ex='<b>ならべかた</b>　'+q[7].split('-').map(n=>esc(q[5][+n-1])).join(' → ')+'<br>'+ex;
+        x+='<div class="ex">'+ex+'</div></div>';
+        return x;
+      }).join('')||'<div class="msg">まちがえた <ruby>問題<rt>もんだい</rt></ruby>は ありません。</div>';
+    };
+    paint(false);
+    $('tW').onclick=()=>paint(false); $('tA').onclick=()=>paint(true);
+    $('againB').onclick=()=>viewIntro(r.lv);
+    $('homeB').onclick=()=>viewHome();
+  });
+}
+
+/* 文字の大きさ（Aa：100→115→130%。drill_zoom はほかのドリルと共通） */
+(function(){
+  const steps=[1,1.15,1.3];
+  let z=1; try{ z=parseFloat(localStorage.getItem('drill_zoom'))||1; }catch(e){}
+  let k=steps.reduce((b,v,i)=>Math.abs(v-z)<Math.abs(steps[b]-z)?i:b,0);
+  const apply=()=>{ document.documentElement.style.setProperty('--z',steps[k]); $('aa').classList.toggle('on',k>0); };
+  apply();
+  $('aa').onclick=()=>{ k=(k+1)%steps.length; apply(); try{ localStorage.setItem('drill_zoom',String(steps[k])); }catch(e){} };
+})();
+
+/* はじまり：?lv=n4 なら その級の はじめの画面、?last=1 なら まえの結果 */
+(function(){
+  const p=new URLSearchParams(location.search), lv=(p.get('lv')||'').toLowerCase();
+  if(p.get('last')&&st.last) viewResult(st.last);
+  else if(LEVELS.includes(lv)) viewIntro(lv);
+  else viewHome();
+})();
+</script>
+<script>
+// Service Worker 登録（オフライン対応・通信節約）
+if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/scg-nihongo/sw.js').catch(function(){});});}
+// 利用記録（端末ローカルのみ・表示なし・ログイン不要）
+(function(){try{
+  var id='moshi', k='drill_stats', s=JSON.parse(localStorage.getItem(k)||'{}');
+  var d=s[id]||(s[id]={opens:0,correct:0,total:0,last:null});
+  d.opens++; d.last=new Date().toISOString();
+  localStorage.setItem(k,JSON.stringify(s));
+}catch(e){}})();
+</script>
+</body>
+</html>
